@@ -69,7 +69,7 @@ jobs:
           path: network
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.0.1
         if: steps.classify.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
@@ -157,7 +157,7 @@ jobs:
           path: network
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.0.1
         if: steps.pr.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
