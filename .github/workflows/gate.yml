@@ -1,0 +1,205 @@
+# The gate (D-4, D-35): the only thing with authority to say a proof counts.
+#
+# Two jobs, never sharing a secret:
+#   gate       on every pull request — checks out the `network` commit this graph pins in its
+#              gate-spec.json and runs steps 1, 2, 4 and 5 inside the step-3 sandbox. No secret,
+#              no write permission (C8). Its check status is what branch protection requires.
+#   postmerge  on every push to main — if the commit merged a pull request that touched a node,
+#              re-derives the verdict on the merge commit, records the approving reviewer
+#              (step 9), signs the attestation with the gate key (in a step of its own) and
+#              commits it to attestations/<id>.json, pushing with a write deploy key (the main
+#              ruleset lets deploy keys bypass the review requirement; nothing else does).
+#
+# The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
+name: gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions: {}
+
+env:
+  UV_VERSION: "0.12.10"
+
+jobs:
+  gate:
+    name: gate (steps 1, 2, 4, 5 in the sandbox)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the graph at the pull request's merge commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Find the node this pull request touches and the network pin
+        id: classify
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$BASE...HEAD" > changed.txt
+          target="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          node="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\2#p' changed.txt | sort -u)"
+          if [ -z "$node" ]; then
+            echo "gate: no node directory changed; nothing to gate (maintenance PR, review only)"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ] || [ "$(printf '%s\n' "$node" | wc -l)" -ne 1 ]; then
+            echo "gate: a submission touches exactly one node (D-2, D-3); found:"; cat changed.txt; exit 1
+          fi
+          pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+          echo "run=true" >> "$GITHUB_OUTPUT"
+          echo "target=$target" >> "$GITHUB_OUTPUT"
+          echo "node=$node" >> "$GITHUB_OUTPUT"
+          echo "pin=$pin" >> "$GITHUB_OUTPUT"
+          echo "gate: node $node of target $target; network pin $pin"
+
+      - name: Check out the pinned network commit
+        if: steps.classify.outputs.run == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.classify.outputs.pin }}
+          path: network
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v10
+        if: steps.classify.outputs.run == 'true'
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Run the gate
+        if: steps.classify.outputs.run == 'true'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          OPN_RUNNER: hosted
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
+          uv sync --frozen --project network --quiet
+          uv run --frozen --project network python -m opn_gate.cli gate \
+            --graph . --base "$BASE" --head HEAD \
+            --target "${{ steps.classify.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
+            --pr-body-file "$RUNNER_TEMP/pr-body.md" --out "$RUNNER_TEMP/gate-out" \
+            | tee "$RUNNER_TEMP/verdict.txt"
+
+      - name: Keep the verdict and attestation
+        if: always() && steps.classify.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/gate-out/*.json
+          if-no-files-found: ignore
+
+  postmerge:
+    name: postmerge (step 9 record, gate signature, attestation commit)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Find the merged pull request, its author and approving reviewer
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pulls="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"
+          number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+          if [ -z "$number" ]; then
+            echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+          git diff --name-only "${GITHUB_SHA}^...${GITHUB_SHA}" > changed.txt
+          target="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          node="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\2#p' changed.txt | sort -u)"
+          if [ -z "$node" ]; then
+            echo "postmerge: PR #$number touched no node; nothing to record"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}/reviews")"
+          reviewer="$(printf '%s' "$reviews" | python3 -c "
+          import json, sys
+          author = sys.argv[1]
+          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author]
+          ok.sort(key=lambda r: r['submitted_at'])
+          print(ok[-1]['user']['login'] if ok else '')" "$author")"
+          if [ -z "$reviewer" ]; then
+            echo "::error::PR #$number merged without a non-author approving review (D-4 step 9)"; exit 1
+          fi
+          pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+          {
+            echo "run=true"; echo "number=$number"; echo "author=$author"; echo "reviewer=$reviewer"
+            echo "target=$target"; echo "node=$node"; echo "pin=$pin"
+          } >> "$GITHUB_OUTPUT"
+          echo "postmerge: PR #$number by $author, approved by $reviewer; node $node; pin $pin"
+
+      - name: Check out the pinned network commit
+        if: steps.pr.outputs.run == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pr.outputs.pin }}
+          path: network
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v10
+        if: steps.pr.outputs.run == 'true'
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Re-derive the verdict on the merge commit (no secret in this step)
+        if: steps.pr.outputs.run == 'true'
+        env:
+          OPN_RUNNER: hosted
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network --quiet
+          uv run --frozen --project network python -m opn_gate.cli postmerge \
+            --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
+            --reviewer "${{ steps.pr.outputs.reviewer }}" \
+            --target "${{ steps.pr.outputs.target }}" --node "${{ steps.pr.outputs.node }}" \
+            --out "$RUNNER_TEMP/postmerge-out"
+
+      - name: Sign with the gate key (the only step that sees it)
+        if: steps.pr.outputs.run == 'true'
+        env:
+          OPN_GATE_SIGNING_KEY: ${{ secrets.OPN_GATE_SIGNING_KEY }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv run --frozen --project network python -m opn_gate.cli sign \
+            --attestation "$RUNNER_TEMP/postmerge-out/attestation.json" \
+            --public-key keys/gate.pub \
+            --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
+
+      - name: Commit the attestation (pushed with the write deploy key, which the ruleset lets bypass)
+        if: steps.pr.outputs.run == 'true'
+        env:
+          OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          umask 077
+          printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
+          git config user.name "opn-gate"
+          git config user.email "gate@openproof.network"
+          git add attestations/
+          git commit -m "attestation: PR #${{ steps.pr.outputs.number }} (${{ steps.pr.outputs.node }})"
+          GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
+            git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
+          rm -f "$RUNNER_TEMP/deploy_key"
