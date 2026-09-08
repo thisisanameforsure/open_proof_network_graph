@@ -18,3 +18,5 @@ checks locally before you open a pull request.
 The permanently open tutorial node is `targets/tutorial/nodes/tutorial-and-swap/`: prove
 `∀ p q : Prop, p ∧ q → q ∧ p` by adding `Proof.lean` (Statement.lean with the `sorry` replaced),
 run `pregate.sh`, paste the attestation block it prints into your pull request.
+
+The gate runs on every pull request; this line exists to exercise it on a change that touches no node.
