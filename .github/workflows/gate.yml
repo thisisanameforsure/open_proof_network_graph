@@ -10,9 +10,12 @@
 #              one exists.
 #   postmerge  on every push to main — if the commit merged a pull request that touched a node,
 #              re-derives the verdict on the merge commit, records what satisfied step 9 (the
-#              `review` block), signs the attestation with the gate key (in a step of its own) and
-#              commits it to attestations/<id>.json, pushing with a write deploy key (the main
-#              ruleset lets deploy keys bypass the review requirement; nothing else does). A proof
+#              `review` block), signs the attestation with the gate key (in a step of its own),
+#              regenerates the merge products (frontier.json, info.json, targets/index.json,
+#              every graph.json and each node's META status — F03, D-25, D-35) and commits them
+#              all with the attestation in one commit `gate: #<pr> <verdict>`, pushing with a
+#              write deploy key (the main ruleset lets deploy keys bypass the review requirement;
+#              nothing else does). A proof
 #              that used native_decide under a waiver (F02) is attested only if an approving
 #              review's body contains the line `waiver: native_decide`; the approvals' bodies are
 #              handed to the gate for that check.
@@ -236,7 +239,20 @@ jobs:
             --public-key keys/gate.pub \
             --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
 
-      - name: Commit the attestation (pushed with the write deploy key, which the ruleset lets bypass)
+      - name: Regenerate the merge products from the committed facts (F03; no secret)
+        if: steps.pr.outputs.run == 'true'
+        id: products
+        env:
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv run --frozen --project network python -m opn_gate.cli products \
+            --graph . --commit "$GITHUB_SHA"
+          verdict="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['verdict'])" \
+            "$RUNNER_TEMP/postmerge-out/attestation.json")"
+          echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
+
+      - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
         env:
           OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
@@ -246,8 +262,8 @@ jobs:
           printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
           git config user.name "opn-gate"
           git config user.email "gate@openproof.network"
-          git add attestations/
-          git commit -m "attestation: PR #${{ steps.pr.outputs.number }} (${{ steps.pr.outputs.node }})"
+          git add attestations/ frontier.json info.json targets/
+          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}"
           GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
             git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
           rm -f "$RUNNER_TEMP/deploy_key"
