@@ -2,7 +2,7 @@
 #
 # Two jobs, never sharing a secret:
 #   gate       on every pull request (and every review on one) — checks out the `network` commit
-#              this graph pins in its gate-spec.json and runs steps 1, 2, 4 and 5 inside the
+#              this graph pins in its gate-spec.json and runs steps 1, 2 and 4 to 8 inside the
 #              step-3 sandbox. No secret, no write permission (C8). Its check status is what the
 #              main ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the
 #              tutorial node needs no review; a node under a root with no certificate or registry
@@ -12,7 +12,10 @@
 #              re-derives the verdict on the merge commit, records what satisfied step 9 (the
 #              `review` block), signs the attestation with the gate key (in a step of its own) and
 #              commits it to attestations/<id>.json, pushing with a write deploy key (the main
-#              ruleset lets deploy keys bypass the review requirement; nothing else does).
+#              ruleset lets deploy keys bypass the review requirement; nothing else does). A proof
+#              that used native_decide under a waiver (F02) is attested only if an approving
+#              review's body contains the line `waiver: native_decide`; the approvals' bodies are
+#              handed to the gate for that check.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
 name: gate
@@ -32,7 +35,7 @@ env:
 
 jobs:
   gate:
-    name: gate (steps 1, 2, 4, 5 in the sandbox)
+    name: gate (steps 1, 2 and 4-8 in the sandbox)
     if: github.event_name == 'pull_request' || github.event_name == 'pull_request_review'
     runs-on: ubuntu-24.04
     permissions:
@@ -164,12 +167,15 @@ jobs:
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}/reviews")"
+          mkdir -p "$RUNNER_TEMP/approvals"
           reviewer="$(printf '%s' "$reviews" | python3 -c "
-          import json, sys
-          author = sys.argv[1]
+          import json, sys, pathlib
+          author, out = sys.argv[1], pathlib.Path(sys.argv[2])
           ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author]
           ok.sort(key=lambda r: r['submitted_at'])
-          print(ok[-1]['user']['login'] if ok else '')" "$author")"
+          for i, r in enumerate(ok):  # bodies for the native_decide waiver check (F02-R9)
+              (out / f'{i:03d}.md').write_text(r.get('body') or '', encoding='utf-8')
+          print(ok[-1]['user']['login'] if ok else '')" "$author" "$RUNNER_TEMP/approvals")"
           if grep -q '^tutorial: true' "targets/$target/nodes/$node/META.yaml"; then
             kind=tutorial; reviewer=""
           elif [ -n "$reviewer" ]; then
@@ -206,10 +212,15 @@ jobs:
         run: |
           set -euo pipefail
           uv sync --frozen --project network --quiet
+          approvals=()
+          for f in "$RUNNER_TEMP"/approvals/*.md; do
+            [ -e "$f" ] && approvals+=(--approval-body-file "$f")
+          done
           uv run --frozen --project network python -m opn_gate.cli postmerge \
             --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
             --review-kind "${{ steps.pr.outputs.kind }}" \
             ${{ steps.pr.outputs.reviewer && format('--reviewer {0}', steps.pr.outputs.reviewer) || '' }} \
+            "${approvals[@]}" \
             --target "${{ steps.pr.outputs.target }}" --node "${{ steps.pr.outputs.node }}" \
             --out "$RUNNER_TEMP/postmerge-out"
 
