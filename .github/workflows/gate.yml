@@ -11,6 +11,8 @@
 #   postmerge  on every push to main — if the commit merged a pull request that touched a node,
 #              re-derives the verdict on the merge commit, records what satisfied step 9 (the
 #              `review` block), signs the attestation with the gate key (in a step of its own),
+#              refreshes claims.json from the service if one is configured (F05-R10; the
+#              committed snapshot stands when it is not reachable),
 #              regenerates the merge products (frontier.json, info.json, targets/index.json,
 #              every graph.json and each node's META status — F03, D-25, D-35) and commits them
 #              all with the attestation in one commit `gate: #<pr> <verdict>`, pushing with a
@@ -244,10 +246,14 @@ jobs:
         id: products
         env:
           PYTHONPATH: network/gate
+          # F05-R10: the service's claim snapshot. Unset or unreachable, the committed
+          # claims.json stands and the merge proceeds (AC16) — never a block on the service.
+          OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
         run: |
           set -euo pipefail
           uv run --frozen --project network python -m opn_gate.cli products \
-            --graph . --commit "$GITHUB_SHA"
+            --graph . --commit "$GITHUB_SHA" \
+            ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
           verdict="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['verdict'])" \
             "$RUNNER_TEMP/postmerge-out/attestation.json")"
           echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
@@ -263,6 +269,7 @@ jobs:
           git config user.name "opn-gate"
           git config user.email "gate@openproof.network"
           git add attestations/ frontier.json info.json targets/
+          [ -f claims.json ] && git add claims.json
           git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}"
           GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
             git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
