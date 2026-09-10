@@ -2,4 +2,4 @@
 
 theorem OpnProp.and_swap : ∀ p q : Prop, p ∧ q → q ∧ p := by
   intro p q h
-  exact ⟨h.2, h.1⟩
+  exact ⟨h.right, h.left⟩
