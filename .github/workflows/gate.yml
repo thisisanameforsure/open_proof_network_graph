@@ -392,6 +392,18 @@ jobs:
           fi
           echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
 
+      # F08-R13: a merged proposal earns its proposer the statement line — for a variant or a
+      # speculative crux, never a hole (D-31), never a revision (D-19). The ledger is derived
+      # from the merge, so it rides in the same bot commit as the products (F07-R12 shape).
+      - name: Write the proposer's statement line (F08-R13; no secret)
+        if: steps.pr.outputs.run == 'true' && steps.classify.outputs.mode == 'proposal'
+        env:
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv run --frozen --project network python -m opn_gate.cli ledger \
+            --graph . --commit "$GITHUB_SHA"
+
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
         env:
@@ -404,6 +416,7 @@ jobs:
           git config user.email "gate@openproof.network"
           git add attestations/ frontier.json info.json targets/
           [ -f claims.json ] && git add claims.json
+          [ -d ledger ] && git add ledger/
           if git diff --cached --quiet; then
             echo "postmerge: PR #${{ steps.pr.outputs.number }} changed no product; nothing to commit"
             rm -f "$RUNNER_TEMP/deploy_key"; exit 0
