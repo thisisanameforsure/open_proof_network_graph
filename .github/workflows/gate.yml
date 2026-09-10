@@ -9,7 +9,9 @@
 #              a hole's empty slot — runs F08-R1's admission inside the same sandbox and needs no
 #              review (D-29: nobody approves structure). An append or an explainer gets the path
 #              and schema checks the classifier itself runs and no Lean build at all (F07-R9,
-#              R10). A curator record is classified the same way, its author checked against
+#              R10) — unless it carries a Lean exhibit (a revision request or a defect claim,
+#              F08-R6, R7), which elaborates in the sandbox or fails the pull request. A
+#              curator record is classified the same way, its author checked against
 #              curators.json (F08-R8), and reviewed by a second listed identity when there is
 #              one. No secret, no write permission (C8). Its check status is what the main
 #              ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the tutorial
@@ -130,7 +132,8 @@ jobs:
           import json, pathlib
           doc = json.loads(pathlib.Path("classification.json").read_text())
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
-                               ("needs_review", False), ("needs_admission", False), ("admit", None)):
+                               ("needs_review", False), ("needs_admission", False), ("admit", None),
+                               ("needs_exhibits", False)):
               value = doc.get(key, default)
               print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
           PY
@@ -184,6 +187,21 @@ jobs:
             "targets/${{ steps.pin.outputs.target }}/nodes/${{ steps.classify.outputs.admit }}" \
             --sandbox --out "$RUNNER_TEMP/gate-out" | tee "$RUNNER_TEMP/admission.txt"
 
+      # F08-R6, R7: a revision request or a defect claim may carry a Lean exhibit. The record
+      # merges as an append, but the exhibit is contributor Lean, so it elaborates inside the
+      # step-3 sandbox (C9) or the pull request fails naming the file. Nothing else is built.
+      - name: Elaborate the exhibits inside the step-3 sandbox
+        if: steps.classify.outputs.needs_exhibits == 'true'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gate-out"
+          uv run --frozen --project network python -m opn_gate.cli exhibits \
+            --graph . --base "$BASE" --head HEAD --sandbox --out "$RUNNER_TEMP/gate-out" \
+            | tee "$RUNNER_TEMP/exhibits.txt"
+
       - name: Run the gate
         if: steps.classify.outputs.needs_gate == 'true'
         env:
@@ -201,7 +219,7 @@ jobs:
             | tee "$RUNNER_TEMP/verdict.txt"
 
       - name: Keep the verdict and attestation
-        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true')
+        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
