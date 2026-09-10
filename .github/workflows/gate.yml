@@ -3,30 +3,39 @@
 # Two jobs, never sharing a secret:
 #   gate       on every pull request (and every review on one) — checks out the `network` commit
 #              this graph pins in its gate-spec.json, asks that pinned gate what the diff *is*
-#              (F07-R3: proof, partial, append or explainer) and runs steps 1, 2 and 4 to 8
-#              inside the step-3 sandbox for the two modes that assert something. An append or
-#              an explainer gets the path and schema checks the classifier itself runs and no
-#              Lean build at all (F07-R9, R10), so it costs no sandbox and needs no review.
-#              No secret, no write permission (C8). Its check status is what the
-#              main ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the
-#              tutorial node needs no review; a node under a root with no certificate or registry
+#              (F07-R3, F08-R2, R8: proof, partial, append, explainer, proposal or curator) and
+#              then does what that mode needs. A proof or a partial runs steps 1, 2 and 4 to 8
+#              inside the step-3 sandbox. A proposal — one new node directory, or a witness for
+#              a hole's empty slot — runs F08-R1's admission inside the same sandbox and needs no
+#              review (D-29: nobody approves structure). An append or an explainer gets the path
+#              and schema checks the classifier itself runs and no Lean build at all (F07-R9,
+#              R10). A curator record is classified the same way, its author checked against
+#              curators.json (F08-R8), and reviewed by a second listed identity when there is
+#              one. No secret, no write permission (C8). Its check status is what the main
+#              ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the tutorial
+#              node needs no review; a node under a root with no certificate or registry
 #              provenance still needs a non-author approving review, and this job stays red until
 #              one exists.
-#   postmerge  on every push to main — if the commit merged a pull request that touched a node,
-#              re-derives the verdict on the merge commit, records what satisfied step 9 (the
-#              `review` block), signs the attestation with the gate key (in a step of its own),
-#              refreshes claims.json from the service if one is configured (F05-R10; the
-#              committed snapshot stands when it is not reachable),
-#              regenerates the merge products (frontier.json, info.json, targets/index.json,
-#              every graph.json and each node's META status — F03, D-25, D-35) and commits them
-#              all with the attestation in one commit `gate: #<pr> <verdict>`, pushing with a
-#              write deploy key (the main ruleset lets deploy keys bypass the review requirement;
-#              nothing else does). A proof
-#              that used native_decide under a waiver (F02) is attested only if an approving
-#              review's body contains the line `waiver: native_decide`; the approvals' bodies are
-#              handed to the gate for that check.
+#   postmerge  on every push to main — if the commit merged a pull request that touched a target,
+#              classifies the merged diff with the pinned gate, and for the modes that build a
+#              proof (proof, partial) re-derives the verdict on the merge commit, records what
+#              satisfied step 9 (the `review` block) and signs the attestation with the gate key
+#              (in a step of its own). For every merged mode it then refreshes claims.json from
+#              the service if one is configured (F05-R10; the committed snapshot stands when it
+#              is not reachable), regenerates the merge products (frontier.json, info.json,
+#              targets/index.json, every graph.json and each node's META status — F03, D-25,
+#              D-35; a merged proposal enters the frontier here, F08-R13) and commits them all,
+#              with the attestation when there is one, in one commit `gate: #<pr> <verdict>`,
+#              pushing with a write deploy key (the main ruleset lets deploy keys bypass the
+#              review requirement; nothing else does). A proof that used native_decide under a
+#              waiver (F02) is attested only if an approving review's body contains the line
+#              `waiver: native_decide`; the approvals' bodies are handed to the gate for that
+#              check.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
+# Every field this file reads from the classifier is read with a default, and the pull request's
+# author reaches the classifier as OPN_PR_AUTHOR rather than as a flag, so the file works on a
+# pin that predates F08 and the F08 behaviour switches on with the re-pin (F08-Q8).
 name: gate
 
 on:
@@ -100,13 +109,17 @@ jobs:
       # submitter cannot choose which checks run by mislabelling the PR body (F07-Q9).
       # An append or an explainer is *finished* here: R9 and R10 give them the path and schema
       # checks and no Lean build at all, so `needs_gate` is false and the sandbox never starts.
-      # A non-zero exit is the refusal — a PR fitting no mode, or one whose appends fail their
+      # A proposal's shape is checked here too, so a malformed one never costs a sandbox
+      # (F08-R2); its admission is the step after step 9. A curator record's author is checked
+      # against curators.json here (F08-R8) — the author is the one fact the host supplies.
+      # A non-zero exit is the refusal — a PR fitting no mode, or one whose records fail their
       # schema — and it fails this job, which is the check the ruleset requires.
       - name: Classify the pull request and check what needs no sandbox
         id: classify
         if: steps.pin.outputs.run == 'true'
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
+          OPN_PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           PYTHONPATH: network/gate
         run: |
           set -euo pipefail
@@ -116,16 +129,22 @@ jobs:
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import json, pathlib
           doc = json.loads(pathlib.Path("classification.json").read_text())
-          for key in ("mode", "node", "needs_gate", "needs_review"):
-              print(f"{key}={json.dumps(doc[key]) if isinstance(doc[key], bool) else (doc[key] or '')}")
+          for key, default in (("mode", None), ("node", None), ("needs_gate", False),
+                               ("needs_review", False), ("needs_admission", False), ("admit", None)):
+              value = doc.get(key, default)
+              print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
           PY
-          node="$(python3 -c "import json;print(json.load(open('classification.json'))['node'] or '')")"
+          node="$(python3 -c "import json;print(json.load(open('classification.json')).get('node') or '')")"
           tutorial=false
           if [ -n "$node" ] && grep -q '^tutorial: true' "targets/${{ steps.pin.outputs.target }}/nodes/$node/META.yaml"; then
             tutorial=true
           fi
           echo "tutorial=$tutorial" >> "$GITHUB_OUTPUT"
 
+      # For a proof or a partial any non-author may approve (D-4). For a curator record the
+      # approver must be another listed curator (F08-R8; D-21's separation): the classifier
+      # names who is eligible, and names nobody when the founder is the only curator — then
+      # `needs_review` is false and the waiver is in classification.json (D-22, F08-Q9).
       - name: Step 9 — a non-author approving review, unless the statement is certified
         if: steps.classify.outputs.needs_review == 'true' && steps.classify.outputs.tutorial != 'true'
         env:
@@ -137,16 +156,33 @@ jobs:
           # F00 knows no certificates or registry provenance yet (F11 records them); every
           # non-tutorial node therefore needs the pr-approval form of step 9 for now.
           reviewer="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews" | python3 -c "
-          import json, sys
+          import json, sys, pathlib
           author = sys.argv[1]
-          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author]
+          eligible = json.loads(pathlib.Path('classification.json').read_text()).get('reviewers')
+          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author
+                and (eligible is None or r['user']['login'] in eligible)]
           ok.sort(key=lambda r: r['submitted_at'])
           print(ok[-1]['user']['login'] if ok else '')" "$AUTHOR")"
           if [ -z "$reviewer" ]; then
-            echo "::error::step 9: this node's root has no fidelity certificate or registry provenance, so a non-author approving review is required before merge (D-4 v3.11). Re-runs when a review is submitted."
+            echo "::error::step 9: this node's root has no fidelity certificate or registry provenance, so a non-author approving review is required before merge (D-4 v3.11; a curator record needs another listed curator's, F08-R8). Re-runs when a review is submitted."
             exit 1
           fi
           echo "gate: step 9 satisfied by approving review from $reviewer"
+
+      # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
+      # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
+      # inside the step-3 sandbox, because a statement elaborates arbitrary code too (C9).
+      # Nobody reviews the result (D-29). A curator's versioned node is admitted the same way.
+      - name: Admit the proposed node inside the step-3 sandbox
+        if: steps.classify.outputs.needs_admission == 'true'
+        env:
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gate-out"
+          uv run --frozen --project network python -m opn_gate.cli admit \
+            "targets/${{ steps.pin.outputs.target }}/nodes/${{ steps.classify.outputs.admit }}" \
+            --sandbox --out "$RUNNER_TEMP/gate-out" | tee "$RUNNER_TEMP/admission.txt"
 
       - name: Run the gate
         if: steps.classify.outputs.needs_gate == 'true'
@@ -165,7 +201,7 @@ jobs:
             | tee "$RUNNER_TEMP/verdict.txt"
 
       - name: Keep the verdict and attestation
-        if: always() && steps.classify.outputs.needs_gate == 'true'
+        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
@@ -184,7 +220,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find the merged pull request, its author and approving reviewer
+      - name: Find the merged pull request, its author and the target it touched
         id: pr
         env:
           GH_TOKEN: ${{ github.token }}
@@ -198,35 +234,20 @@ jobs:
           fi
           author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
           git diff --name-only "${GITHUB_SHA}^...${GITHUB_SHA}" > changed.txt
-          target="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
-          node="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\2#p' changed.txt | sort -u)"
-          if [ -z "$node" ]; then
-            echo "postmerge: PR #$number touched no node; nothing to record"
+          target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          if [ -z "$target" ]; then
+            echo "postmerge: PR #$number touched no target; nothing to record"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}/reviews")"
-          mkdir -p "$RUNNER_TEMP/approvals"
-          reviewer="$(printf '%s' "$reviews" | python3 -c "
-          import json, sys, pathlib
-          author, out = sys.argv[1], pathlib.Path(sys.argv[2])
-          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author]
-          ok.sort(key=lambda r: r['submitted_at'])
-          for i, r in enumerate(ok):  # bodies for the native_decide waiver check (F02-R9)
-              (out / f'{i:03d}.md').write_text(r.get('body') or '', encoding='utf-8')
-          print(ok[-1]['user']['login'] if ok else '')" "$author" "$RUNNER_TEMP/approvals")"
-          if grep -q '^tutorial: true' "targets/$target/nodes/$node/META.yaml"; then
-            kind=tutorial; reviewer=""
-          elif [ -n "$reviewer" ]; then
-            kind=pr-approval
-          else
-            echo "::error::PR #$number merged without a non-author approving review and its statement carries no certificate (D-4 step 9, v3.11)"; exit 1
+          if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
+            echo "::error::PR #$number touched more than one target (D-2, D-3):"; cat changed.txt; exit 1
           fi
           pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
           {
-            echo "run=true"; echo "number=$number"; echo "author=$author"; echo "reviewer=$reviewer"
-            echo "kind=$kind"; echo "target=$target"; echo "node=$node"; echo "pin=$pin"
+            echo "run=true"; echo "number=$number"; echo "author=$author"
+            echo "target=$target"; echo "pin=$pin"
           } >> "$GITHUB_OUTPUT"
-          echo "postmerge: PR #$number by $author; step 9 = $kind ${reviewer:+by $reviewer}; node $node; pin $pin"
+          echo "postmerge: PR #$number by $author; target $target; pin $pin"
 
       - name: Check out the pinned network commit
         if: steps.pr.outputs.run == 'true'
@@ -242,28 +263,85 @@ jobs:
         with:
           version: ${{ env.UV_VERSION }}
 
-      - name: Re-derive the verdict on the merge commit (no secret in this step)
+      # The same classifier the gate job ran, over the merged diff: only the modes that build a
+      # proof have a verdict to re-derive and attest; every other merge goes straight to the
+      # products (F07-R9, F08-R13). A merged diff the pinned gate refuses fails the job here,
+      # visibly — it can only have arrived by a bypass (C7).
+      - name: Classify the merged diff with the pinned gate
+        id: classify
         if: steps.pr.outputs.run == 'true'
+        env:
+          OPN_PR_AUTHOR: ${{ steps.pr.outputs.author }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network --quiet
+          uv run --frozen --project network python -m opn_gate.cli classify \
+            --graph . --base "${GITHUB_SHA}^" --head "$GITHUB_SHA" | tee classification.json
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          doc = json.loads(pathlib.Path("classification.json").read_text())
+          for key, default in (("mode", None), ("node", None), ("needs_gate", False),
+                               ("needs_review", False), ("needs_admission", False), ("admit", None)):
+              value = doc.get(key, default)
+              print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
+          PY
+
+      - name: Record what satisfied step 9
+        id: review
+        if: steps.classify.outputs.needs_review == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.pr.outputs.number }}
+          AUTHOR: ${{ steps.pr.outputs.author }}
+          TARGET: ${{ steps.pr.outputs.target }}
+          NODE: ${{ steps.classify.outputs.node }}
+        run: |
+          set -euo pipefail
+          reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews")"
+          mkdir -p "$RUNNER_TEMP/approvals"
+          reviewer="$(printf '%s' "$reviews" | python3 -c "
+          import json, sys, pathlib
+          author, out = sys.argv[1], pathlib.Path(sys.argv[2])
+          eligible = json.loads(pathlib.Path('classification.json').read_text()).get('reviewers')
+          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author
+                and (eligible is None or r['user']['login'] in eligible)]
+          ok.sort(key=lambda r: r['submitted_at'])
+          for i, r in enumerate(ok):  # bodies for the native_decide waiver check (F02-R9)
+              (out / f'{i:03d}.md').write_text(r.get('body') or '', encoding='utf-8')
+          print(ok[-1]['user']['login'] if ok else '')" "$AUTHOR" "$RUNNER_TEMP/approvals")"
+          if [ -n "$NODE" ] && grep -q '^tutorial: true' "targets/$TARGET/nodes/$NODE/META.yaml"; then
+            kind=tutorial; reviewer=""
+          elif [ -n "$reviewer" ]; then
+            kind=pr-approval
+          else
+            echo "::error::PR #$NUMBER merged without a non-author approving review and its statement carries no certificate (D-4 step 9, v3.11)"; exit 1
+          fi
+          echo "kind=$kind" >> "$GITHUB_OUTPUT"
+          echo "reviewer=$reviewer" >> "$GITHUB_OUTPUT"
+          echo "postmerge: step 9 = $kind ${reviewer:+by $reviewer}"
+
+      - name: Re-derive the verdict on the merge commit (no secret in this step)
+        if: steps.classify.outputs.needs_gate == 'true'
         env:
           OPN_RUNNER: hosted
           PYTHONPATH: network/gate
         run: |
           set -euo pipefail
-          uv sync --frozen --project network --quiet
           approvals=()
           for f in "$RUNNER_TEMP"/approvals/*.md; do
             [ -e "$f" ] && approvals+=(--approval-body-file "$f")
           done
           uv run --frozen --project network python -m opn_gate.cli postmerge \
             --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
-            --review-kind "${{ steps.pr.outputs.kind }}" \
-            ${{ steps.pr.outputs.reviewer && format('--reviewer {0}', steps.pr.outputs.reviewer) || '' }} \
+            --review-kind "${{ steps.review.outputs.kind }}" \
+            ${{ steps.review.outputs.reviewer && format('--reviewer {0}', steps.review.outputs.reviewer) || '' }} \
             "${approvals[@]}" \
-            --target "${{ steps.pr.outputs.target }}" --node "${{ steps.pr.outputs.node }}" \
+            --target "${{ steps.pr.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
             --out "$RUNNER_TEMP/postmerge-out"
 
       - name: Sign with the gate key (the only step that sees it)
-        if: steps.pr.outputs.run == 'true'
+        if: steps.classify.outputs.needs_gate == 'true'
         env:
           OPN_GATE_SIGNING_KEY: ${{ secrets.OPN_GATE_SIGNING_KEY }}
           PYTHONPATH: network/gate
@@ -282,13 +360,18 @@ jobs:
           # F05-R10: the service's claim snapshot. Unset or unreachable, the committed
           # claims.json stands and the merge proceeds (AC16) — never a block on the service.
           OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
+          NEEDS_GATE: ${{ steps.classify.outputs.needs_gate }}
         run: |
           set -euo pipefail
           uv run --frozen --project network python -m opn_gate.cli products \
             --graph . --commit "$GITHUB_SHA" \
             ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
-          verdict="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['verdict'])" \
-            "$RUNNER_TEMP/postmerge-out/attestation.json")"
+          if [ "$NEEDS_GATE" = "true" ]; then
+            verdict="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['verdict'])" \
+              "$RUNNER_TEMP/postmerge-out/attestation.json")"
+          else
+            verdict=pass  # the merged diff passed the pinned classifier's checks, above
+          fi
           echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
 
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
@@ -303,6 +386,10 @@ jobs:
           git config user.email "gate@openproof.network"
           git add attestations/ frontier.json info.json targets/
           [ -f claims.json ] && git add claims.json
+          if git diff --cached --quiet; then
+            echo "postmerge: PR #${{ steps.pr.outputs.number }} changed no product; nothing to commit"
+            rm -f "$RUNNER_TEMP/deploy_key"; exit 0
+          fi
           git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}"
           GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
             git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
