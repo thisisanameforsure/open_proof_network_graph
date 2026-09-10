@@ -2,8 +2,12 @@
 #
 # Two jobs, never sharing a secret:
 #   gate       on every pull request (and every review on one) — checks out the `network` commit
-#              this graph pins in its gate-spec.json and runs steps 1, 2 and 4 to 8 inside the
-#              step-3 sandbox. No secret, no write permission (C8). Its check status is what the
+#              this graph pins in its gate-spec.json, asks that pinned gate what the diff *is*
+#              (F07-R3: proof, partial, append or explainer) and runs steps 1, 2 and 4 to 8
+#              inside the step-3 sandbox for the two modes that assert something. An append or
+#              an explainer gets the path and schema checks the classifier itself runs and no
+#              Lean build at all (F07-R9, R10), so it costs no sandbox and needs no review.
+#              No secret, no write permission (C8). Its check status is what the
 #              main ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the
 #              tutorial node needs no review; a node under a root with no certificate or registry
 #              provenance still needs a non-author approving review, and this job stays red until
@@ -53,33 +57,77 @@ jobs:
           ref: refs/pull/${{ github.event.pull_request.number }}/merge
           fetch-depth: 0
 
-      - name: Find the node this pull request touches and the network pin
-        id: classify
+      # Which target, and so which `network` commit — the only thing this shell decides. It
+      # cannot ask the gate, because the gate is the pinned commit it is about to check out.
+      # What the diff *is* (F07-R3) is decided by that pinned gate, one step below.
+      - name: Find the target this pull request touches and the network commit it pins
+        id: pin
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
           git diff --name-only "$BASE...HEAD" > changed.txt
-          target="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
-          node="$(sed -n 's#^targets/\([^/]*\)/nodes/\([^/]*\)/.*#\2#p' changed.txt | sort -u)"
-          if [ -z "$node" ]; then
-            echo "gate: no node directory changed; nothing to gate (maintenance PR, review only)"
+          target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          if [ -z "$target" ]; then
+            echo "gate: nothing under targets/ changed; nothing to gate (maintenance PR, review only)"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ] || [ "$(printf '%s\n' "$node" | wc -l)" -ne 1 ]; then
-            echo "gate: a submission touches exactly one node (D-2, D-3); found:"; cat changed.txt; exit 1
+          if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
+            echo "gate: a submission touches exactly one target (D-2, D-3); found:"; cat changed.txt; exit 1
           fi
           pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
-          tutorial="$(grep -q '^tutorial: true' "targets/$target/nodes/$node/META.yaml" && echo true || echo false)"
           echo "run=true" >> "$GITHUB_OUTPUT"
           echo "target=$target" >> "$GITHUB_OUTPUT"
-          echo "node=$node" >> "$GITHUB_OUTPUT"
           echo "pin=$pin" >> "$GITHUB_OUTPUT"
+          echo "gate: target $target; network pin $pin"
+
+      - name: Check out the pinned network commit
+        if: steps.pin.outputs.run == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pin.outputs.pin }}
+          path: network
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v10.0.1
+        if: steps.pin.outputs.run == 'true'
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      # F07-R3: exactly one mode, decided from the touched paths by the pinned gate rather than
+      # by this file — so the rule travels with the commit the graph pins (D-35), and a
+      # submitter cannot choose which checks run by mislabelling the PR body (F07-Q9).
+      # An append or an explainer is *finished* here: R9 and R10 give them the path and schema
+      # checks and no Lean build at all, so `needs_gate` is false and the sandbox never starts.
+      # A non-zero exit is the refusal — a PR fitting no mode, or one whose appends fail their
+      # schema — and it fails this job, which is the check the ruleset requires.
+      - name: Classify the pull request and check what needs no sandbox
+        id: classify
+        if: steps.pin.outputs.run == 'true'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network --quiet
+          uv run --frozen --project network python -m opn_gate.cli classify \
+            --graph . --base "$BASE" --head HEAD | tee classification.json
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          doc = json.loads(pathlib.Path("classification.json").read_text())
+          for key in ("mode", "node", "needs_gate", "needs_review"):
+              print(f"{key}={json.dumps(doc[key]) if isinstance(doc[key], bool) else (doc[key] or '')}")
+          PY
+          node="$(python3 -c "import json;print(json.load(open('classification.json'))['node'] or '')")"
+          tutorial=false
+          if [ -n "$node" ] && grep -q '^tutorial: true' "targets/${{ steps.pin.outputs.target }}/nodes/$node/META.yaml"; then
+            tutorial=true
+          fi
           echo "tutorial=$tutorial" >> "$GITHUB_OUTPUT"
-          echo "gate: node $node of target $target; network pin $pin; tutorial=$tutorial"
 
       - name: Step 9 — a non-author approving review, unless the statement is certified
-        if: steps.classify.outputs.run == 'true' && steps.classify.outputs.tutorial != 'true'
+        if: steps.classify.outputs.needs_review == 'true' && steps.classify.outputs.tutorial != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           NUMBER: ${{ github.event.pull_request.number }}
@@ -100,22 +148,8 @@ jobs:
           fi
           echo "gate: step 9 satisfied by approving review from $reviewer"
 
-      - name: Check out the pinned network commit
-        if: steps.classify.outputs.run == 'true'
-        uses: actions/checkout@v7
-        with:
-          repository: thisisanameforsure/open_proof_network
-          ref: ${{ steps.classify.outputs.pin }}
-          path: network
-          persist-credentials: false
-
-      - uses: astral-sh/setup-uv@v10.0.1
-        if: steps.classify.outputs.run == 'true'
-        with:
-          version: ${{ env.UV_VERSION }}
-
       - name: Run the gate
-        if: steps.classify.outputs.run == 'true'
+        if: steps.classify.outputs.needs_gate == 'true'
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
           PR_BODY: ${{ github.event.pull_request.body }}
@@ -124,15 +158,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
-          uv sync --frozen --project network --quiet
           uv run --frozen --project network python -m opn_gate.cli gate \
             --graph . --base "$BASE" --head HEAD \
-            --target "${{ steps.classify.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
+            --target "${{ steps.pin.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
             --pr-body-file "$RUNNER_TEMP/pr-body.md" --out "$RUNNER_TEMP/gate-out" \
             | tee "$RUNNER_TEMP/verdict.txt"
 
       - name: Keep the verdict and attestation
-        if: always() && steps.classify.outputs.run == 'true'
+        if: always() && steps.classify.outputs.needs_gate == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
