@@ -233,6 +233,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: read
+      id-token: write  # F10-R7: the olean cache upload assumes a role through OIDC (C8 item 4)
     steps:
       - uses: actions/checkout@v7
         with:
@@ -403,6 +404,29 @@ jobs:
           set -euo pipefail
           uv run --frozen --project network python -m opn_gate.cli ledger \
             --graph . --commit "$GITHUB_SHA"
+
+      # F10-R7: build every proved node's oleans from the merged tree inside the step-3 image and
+      # upload them keyed by this commit, so the next pregate.sh, devcontainer and gate run fetch
+      # instead of compiling. Only when the repository variables name the bucket and the role;
+      # unset, the step is skipped and a pinned gate that predates the command is never asked
+      # (F08-Q8's shape). A failed upload is a warning: the next run builds (C7).
+      - name: Assume the cache upload role (OIDC, no stored key)
+        if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.OPN_CACHE_UPLOAD_ROLE_ARN }}
+          aws-region: ${{ vars.OPN_AWS_REGION }}
+
+      - name: Publish the olean cache for this commit (F10-R7; no gate secret in this step)
+        if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
+        env:
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          uv run --frozen --project network python -m opn_gate.cli cache publish \
+            --graph . --commit "$GITHUB_SHA" --target "${{ steps.pr.outputs.target }}" \
+            --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
+            || echo "::warning::the olean cache was not published for ${GITHUB_SHA}; the next run builds (C7)"
 
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
