@@ -1,0 +1,109 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "bc3887dbecf7f3ec031876de0d604e4b989c9d3d7648738ceff080b64c1f9cb1",
+  "graph_commit": "609a18d7c15b401c8f78ebc5c588ea8db3158f44",
+  "graph_id": "euclid-primes",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "609a18d7c15b401c8f78ebc5c588ea8db3158f44",
+  "model_and_tooling": "undeclared",
+  "network_commit": "dc25d2b011757c4bb3ece433051e12953ec8a47b",
+  "node_id": "infinitude-of-primes",
+  "precheck_attestation": {
+    "hash": null,
+    "signature_kind": null
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-12T12:42:03Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQEKCwS+nozUb8PyjR0adckY1ZqvYYHkcYf2zI3pYYX3YhXJmAb\nINOFE/KwCKu0kya/rsfB5cPTGAMfGDR9FZqwk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "5b109e7fcdb6efbec7644a28e98752abf8a0b84253a4c259dcb10f7a5968d451",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260912T110722Z-thisisanameforsure-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260912T110722Z-thisisanameforsure-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "dvd_fact",
+            "prime_divisor",
+            "dvd_consecutive",
+            "fact_pos"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.infinitude_of_primes declares ∀ (n : ℕ), ∃ p, n < p ∧ Opn.IsPrime p; 4 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": null,
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": null,
+    "model": null
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
