@@ -1,4 +1,4 @@
-/-! Non-vacuity witness (D-4 step 7): the statement has no hypotheses, so the expected
-witness type is `True`. -/
+/-! Non-vacuity witness (D-4 step 7): the statement's leading binder and hypotheses,
+`∀ ε : ℝ, 0 < ε → ε < 1 → …`, are satisfiable — ε = 1/2. -/
 
-theorem witness : True := trivial
+theorem witness : ∃ ε : ℝ, 0 < ε ∧ ε < 1 := ⟨1 / 2, by norm_num, by norm_num⟩
