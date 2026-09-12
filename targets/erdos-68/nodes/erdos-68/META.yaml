@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-68
+status: ready
+deps: []
+statement-hash: abc6fbf1e2ebedbce8bba7d0e497cffd34ffff17ef3138faeb76b6a6e5be17be
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (↑(n + 2).factorial - 1)
+  justification: The divisor is (n+2)! - 1 ≥ 1 for every natural n, so the real division is never at 0;
+    the summand is the registry's own expression for Erdős problem 68 (the sum of 1/((n+2)!-1)) and the
+    total division is not exercised at the junk value.
