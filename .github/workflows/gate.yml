@@ -340,22 +340,41 @@ jobs:
           echo "reviewer=$reviewer" >> "$GITHUB_OUTPUT"
           echo "postmerge: step 9 = $kind ${reviewer:+by $reviewer}"
 
+      # F07-R6 (F11-T4): a merged partial's holes become child nodes, written into this checkout
+      # for the bot commit below to carry, and the assembly is filed under attempts/ for the
+      # pseudonym the submission block names. Only in partial mode — an older pin never merged
+      # a partial (its gate could not run one), so it is never handed the flag (F08-Q8).
+      - name: Fetch the merged pull request's body (the submission block names the proposer)
+        if: steps.classify.outputs.mode == 'partial'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${{ steps.pr.outputs.number }}" --jq '.body // ""' \
+            > "$RUNNER_TEMP/pr-body.md"
+
       - name: Re-derive the verdict on the merge commit (no secret in this step)
         if: steps.classify.outputs.needs_gate == 'true'
         env:
           OPN_RUNNER: hosted
           PYTHONPATH: network/gate
+          MODE: ${{ steps.classify.outputs.mode }}
+          AUTHOR: ${{ steps.pr.outputs.author }}
         run: |
           set -euo pipefail
           approvals=()
           for f in "$RUNNER_TEMP"/approvals/*.md; do
             [ -e "$f" ] && approvals+=(--approval-body-file "$f")
           done
+          partial=()
+          if [ "$MODE" = "partial" ]; then
+            partial=(--apply-partial --pr-body-file "$RUNNER_TEMP/pr-body.md" --author "$AUTHOR")
+          fi
           uv run --frozen --project network python -m opn_gate.cli postmerge \
             --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
             --review-kind "${{ steps.review.outputs.kind }}" \
             ${{ steps.review.outputs.reviewer && format('--reviewer {0}', steps.review.outputs.reviewer) || '' }} \
-            "${approvals[@]}" \
+            "${approvals[@]}" "${partial[@]}" \
             --target "${{ steps.pr.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
             --out "$RUNNER_TEMP/postmerge-out"
 
