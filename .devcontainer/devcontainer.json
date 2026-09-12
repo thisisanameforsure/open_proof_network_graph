@@ -1,0 +1,18 @@
+{
+  "name": "Open Proof Network \u2014 euclid-primes",
+  "image": "ghcr.io/thisisanameforsure/opn-gate@sha256:05f3670971243f74446a5f402d1ed8db3bee69904a740896ca0c25c7d76d4804",
+  "remoteUser": "opn",
+  "containerEnv": {
+    "NETWORK": "/opt/opn/network",
+    "GRAPH": "${containerWorkspaceFolder}",
+    "OPN_API": "https://api.openproofnetwork.org"
+  },
+  "postCreateCommand": "bash /opt/opn/network/gate/devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "leanprover.lean4"
+      ]
+    }
+  }
+}

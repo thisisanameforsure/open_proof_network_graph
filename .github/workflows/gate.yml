@@ -73,11 +73,17 @@ jobs:
       # What the diff *is* (F07-R3) is decided by that pinned gate, one step below.
       - name: Find the target this pull request touches and the network commit it pins
         id: pin
-        env:
-          BASE: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
-          git diff --name-only "$BASE...HEAD" > changed.txt
+          # The diff base is the first parent of the merge ref checked out above, which GitHub
+          # recomputes whenever main moves — never github.event.pull_request.base.sha, which is
+          # frozen at the moment the pull request was opened. Under the strict up-to-date rule a
+          # pull request that is BEHIND diffs against that stale base, so everything merged since
+          # reads as part of this submission and the one-target step below refuses it (F11-Q29).
+          base="$(git rev-parse HEAD^1)"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "gate: diffing from HEAD^1 $base (the base branch tip this merge ref carries)"
+          git diff --name-only "$base...HEAD" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
           if [ -z "$target" ]; then
             echo "gate: nothing under targets/ changed; nothing to gate (maintenance PR, review only)"
@@ -120,7 +126,7 @@ jobs:
         id: classify
         if: steps.pin.outputs.run == 'true'
         env:
-          BASE: ${{ github.event.pull_request.base.sha }}
+          BASE: ${{ steps.pin.outputs.base }}
           OPN_PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           PYTHONPATH: network/gate
         run: |
@@ -193,7 +199,7 @@ jobs:
       - name: Elaborate the exhibits inside the step-3 sandbox
         if: steps.classify.outputs.needs_exhibits == 'true'
         env:
-          BASE: ${{ github.event.pull_request.base.sha }}
+          BASE: ${{ steps.pin.outputs.base }}
           PYTHONPATH: network/gate
         run: |
           set -euo pipefail
@@ -205,7 +211,7 @@ jobs:
       - name: Run the gate
         if: steps.classify.outputs.needs_gate == 'true'
         env:
-          BASE: ${{ github.event.pull_request.base.sha }}
+          BASE: ${{ steps.pin.outputs.base }}
           PR_BODY: ${{ github.event.pull_request.body }}
           OPN_RUNNER: hosted
           PYTHONPATH: network/gate
