@@ -139,7 +139,7 @@ jobs:
           doc = json.loads(pathlib.Path("classification.json").read_text())
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
                                ("needs_review", False), ("needs_admission", False), ("admit", None),
-                               ("needs_exhibits", False)):
+                               ("needs_exhibits", False), ("needs_qa_rerun", False)):
               value = doc.get(key, default)
               print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
           PY
@@ -208,6 +208,25 @@ jobs:
             --graph . --base "$BASE" --head HEAD --sandbox --out "$RUNNER_TEMP/gate-out" \
             | tee "$RUNNER_TEMP/exhibits.txt"
 
+      # F12-T8 (finding D3): a clean screen and a compile leave no exhibit (F12-Q15), so a QA
+      # record's `pass` rows read the same typed as run. The pinned gate re-runs, inside the step-3
+      # sandbox on the tree at head, every compile and soundness screen the record says passed
+      # without an exhibit, and fails the pull request naming each row the re-run does not also
+      # pass. Brief and back-translation rows ask a model, and this job holds no key (C8): they
+      # are listed as not re-run. No secret, no write permission. Inert on a pin that predates the
+      # command: `needs_qa_rerun` then reads false and the step is skipped (F08-Q8's shape).
+      - name: Re-run the screens a QA record claims inside the step-3 sandbox
+        if: steps.classify.outputs.needs_qa_rerun == 'true'
+        env:
+          BASE: ${{ steps.pin.outputs.base }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gate-out"
+          uv run --frozen --project network python -m opn_gate.cli qa-rerun \
+            --graph . --base "$BASE" --head HEAD --sandbox --out "$RUNNER_TEMP/gate-out/qa-rerun" \
+            | tee "$RUNNER_TEMP/qa-rerun.txt"
+
       - name: Run the gate
         if: steps.classify.outputs.needs_gate == 'true'
         env:
@@ -225,11 +244,13 @@ jobs:
             | tee "$RUNNER_TEMP/verdict.txt"
 
       - name: Keep the verdict and attestation
-        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true')
+        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true' || steps.classify.outputs.needs_qa_rerun == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/gate-out/*.json
+          path: |
+            ${{ runner.temp }}/gate-out/*.json
+            ${{ runner.temp }}/gate-out/qa-rerun/qa-rerun.json
           if-no-files-found: ignore
 
   postmerge:
