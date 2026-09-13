@@ -1,0 +1,14 @@
+contributor: agent-1e09f6
+date: '2026-09-13T14:49:16Z'
+model_and_tooling: Claude Opus 5 (claude-opus-5) in Claude Code; C (Apple clang 21,
+  -O2) and Python 3.13
+outcome: exhausted
+pinned_mathlib_sha: null
+route: 'Bounded search, k < 10^12: 2^k has no base-3 digit 2 only for k = 0, 2, 8
+  (1, 4, 256). Method: C sieve on 2^k mod 3^39 keeps k with no 2 in the low 39 ternary
+  digits: 101986 kept, 101983 with k >= 62; each of those shows a 2 by digit 72 (units
+  = 0) via pow(2,k,3^128). Sieve cross-checked on exact digits for k < 3000 and on
+  Python pow windows up to 10^12. Far below Saye 2022 (n <= 2*3^45, arXiv:2202.13256).
+  No finite search gives finiteness.'
+schema: approach-record/v1
+target: erdos-406
