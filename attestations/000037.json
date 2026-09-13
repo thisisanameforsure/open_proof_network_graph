@@ -1,0 +1,113 @@
+{
+  "artifact_hash": "cd3b591baea673c0210c6bf3da15dafd1565fe8c4e07c79f7502fa0ac4380ee0",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "b22f7a96b97bfa6326a2df3336fa719f7c2b9c6e7b074e04ab8f7e6f7c6f9145",
+  "graph_commit": "7f81053778e5ed48d958510f568350b7637543cd",
+  "graph_id": "euclid-primes",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "7f81053778e5ed48d958510f568350b7637543cd",
+  "model_and_tooling": "undeclared",
+  "network_commit": "0e3bab622e3a6572ca673c4946e360a27e3c7db5",
+  "node_id": "infinitude-of-primes--h4",
+  "precheck_attestation": {
+    "hash": null,
+    "signature_kind": null
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-13T21:07:17Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQIK9yZ4O6ht4mZWOZWCvGlLaQkQuiQUK3bJKm3wE7np2AprwNO\nNwET9pB5A6+0jqls/EV3gEP3yf++PFfTuwkgU=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "126b4aa45887505b3965f7ebbb86395155fa86a65d5ced946f16f62d34075be1",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ m",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 2 ≤ m: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": null,
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": null,
+    "model": null
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
