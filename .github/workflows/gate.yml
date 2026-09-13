@@ -495,3 +495,24 @@ jobs:
           GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
             git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
           rm -f "$RUNNER_TEMP/deploy_key"
+
+      # F04-R12 (F04-Q10): ask the network repo's site-deploy to render what main now holds, so a
+      # merge reaches the site in seconds instead of on GitHub's best-effort schedule. Skipped for
+      # the bot's own `gate: #N pass` commit, whose merge already dispatched it; a direct push to
+      # main (a re-pin, a workflow change) dispatches too. The token is a fine-grained token on the
+      # network repository with Actions: read and write and nothing else (C8). Without it, or if
+      # the dispatch fails, the five-minute schedule deploys and this job does not fail (C7).
+      - name: Ask the site to deploy this commit
+        if: github.event.head_commit.author.name != 'opn-gate'
+        env:
+          GH_TOKEN: ${{ secrets.OPN_SITE_DEPLOY_TOKEN }}
+        run: |
+          set -euo pipefail
+          commit="$(git rev-parse HEAD)"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "site: OPN_SITE_DEPLOY_TOKEN is not set; the schedule deploys $commit"; exit 0
+          fi
+          gh workflow run site-deploy.yml --repo thisisanameforsure/open_proof_network --ref main \
+            -f graph_commit="$commit" \
+            && echo "site: dispatched site-deploy for $commit" \
+            || echo "::warning::site-deploy was not dispatched for $commit; the schedule deploys (C7)"
