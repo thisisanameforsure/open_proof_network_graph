@@ -350,20 +350,33 @@ jobs:
           import json, pathlib
           doc = json.loads(pathlib.Path("classification.json").read_text())
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
-                               ("needs_review", False), ("needs_admission", False), ("admit", None)):
+                               ("needs_review", False), ("needs_admission", False), ("admit", None),
+                               ("review_kind", None), ("review_reference", None)):
               value = doc.get(key, default)
               print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
           PY
 
+      # D-4 v3.11 (F07-T17, Mike 2026-09-14): step 9 is a property of the statement. A root certified
+      # at screened-and-signed or above, or inherited from a D-10 registry with provenance recorded,
+      # satisfies it with no person; the pinned gate says which in review_kind and review_reference,
+      # and the attestation names that instead of a reviewer. Otherwise a non-author approving review
+      # is required, as before. Runs for every building merge, since a certified one asks no review,
+      # and for every merge that asked one (a curator record), so a bypass still fails here (C7).
+      # The reviews are read in every case: a waived proof is attested only if an approving review
+      # names the waiver (F02-R9), and a reviewer may still leave one where nobody had to. On a pin
+      # that predates F07-T17 review_kind is empty and needs_review decides, exactly as before.
       - name: Record what satisfied step 9
         id: review
-        if: steps.classify.outputs.needs_review == 'true'
+        if: steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_review == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           NUMBER: ${{ steps.pr.outputs.number }}
           AUTHOR: ${{ steps.pr.outputs.author }}
           TARGET: ${{ steps.pr.outputs.target }}
           NODE: ${{ steps.classify.outputs.node }}
+          NEEDS_REVIEW: ${{ steps.classify.outputs.needs_review }}
+          REVIEW_KIND: ${{ steps.classify.outputs.review_kind }}
+          REVIEW_REFERENCE: ${{ steps.classify.outputs.review_reference }}
         run: |
           set -euo pipefail
           reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews")"
@@ -378,16 +391,26 @@ jobs:
           for i, r in enumerate(ok):  # bodies for the native_decide waiver check (F02-R9)
               (out / f'{i:03d}.md').write_text(r.get('body') or '', encoding='utf-8')
           print(ok[-1]['user']['login'] if ok else '')" "$AUTHOR" "$RUNNER_TEMP/approvals")"
+          reference=""
           if [ -n "$NODE" ] && grep -q '^tutorial: true' "targets/$TARGET/nodes/$NODE/META.yaml"; then
             kind=tutorial; reviewer=""
+          elif [ "$REVIEW_KIND" = "certificate" ] || [ "$REVIEW_KIND" = "provenance" ]; then
+            if [ -z "$REVIEW_REFERENCE" ]; then
+              echo "::error::PR #$NUMBER: the pinned gate says step 9 is satisfied by $REVIEW_KIND but names no reference"; exit 1
+            fi
+            kind="$REVIEW_KIND"; reference="$REVIEW_REFERENCE"; reviewer=""
           elif [ -n "$reviewer" ]; then
             kind=pr-approval
+          elif [ "$NEEDS_REVIEW" != "true" ]; then
+            # No review asked and no basis named (an alternate, D-4 v3.13): nothing to record here.
+            kind=""
           else
-            echo "::error::PR #$NUMBER merged without a non-author approving review and its statement carries no certificate (D-4 step 9, v3.11)"; exit 1
+            echo "::error::PR #$NUMBER merged without a non-author approving review and its statement carries no certificate or provenance (D-4 step 9, v3.11)"; exit 1
           fi
           echo "kind=$kind" >> "$GITHUB_OUTPUT"
           echo "reviewer=$reviewer" >> "$GITHUB_OUTPUT"
-          echo "postmerge: step 9 = $kind ${reviewer:+by $reviewer}"
+          echo "reference=$reference" >> "$GITHUB_OUTPUT"
+          echo "postmerge: step 9 = ${kind:-not asked} ${reviewer:+by $reviewer}${reference:+ ($reference)}"
 
       # F07-T14: every merged pull request's body, so the attestation records the submission block
       # (submitter, declared model and tooling) and the precheck it consumed. F07-R6 (F11-T4): a
@@ -426,6 +449,7 @@ jobs:
             --review-kind "${{ steps.review.outputs.kind }}" \
             --pr-body-file "$RUNNER_TEMP/pr-body.md" --author "$AUTHOR" \
             ${{ steps.review.outputs.reviewer && format('--reviewer {0}', steps.review.outputs.reviewer) || '' }} \
+            ${{ steps.review.outputs.reference && format('--review-reference {0}', steps.review.outputs.reference) || '' }} \
             "${approvals[@]}" "${partial[@]}" \
             --target "${{ steps.pr.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
             --out "$RUNNER_TEMP/postmerge-out"
