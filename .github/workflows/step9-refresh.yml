@@ -1,0 +1,53 @@
+# Step 9 refresh (F07-T8; D-4, C8): when a review is submitted or dismissed on a pull request,
+# re-run the `step 9` job of that pull request's existing gate run, in place.
+#
+# The gate workflow runs once per pull request push: the sandbox build (steps 1, 2 and 4-8), then
+# step 9 as a job of its own that reads the reviews. A review arrives later. Starting the whole
+# gate again would rebuild the proof and leave the earlier red run on the pull request, which the
+# ruleset keeps reading; re-running the step-9 job of the run that already exists turns that one
+# check green (or red again, for a dismissal) and repeats nothing else — a re-run job reuses the
+# outputs of the jobs it needs from the run's first attempt.
+#
+# Inert on any pinned network commit: this workflow checks nothing out and runs no gate code. Its
+# one permission beyond reading pull requests is `actions: write`, which lets it re-run a job of a
+# run that already exists (C8 lists it). No secret is named. A review on a pull request from a fork
+# receives a read-only token by GitHub's rule, so there the reviewer re-runs the check by hand.
+name: step 9 refresh
+
+on:
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions: {}
+
+jobs:
+  refresh:
+    name: re-run step 9 on the pull request's gate run
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: write
+      pull-requests: read
+    steps:
+      - name: Re-run the step-9 job of the gate run for this pull request's head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          repo="$GITHUB_REPOSITORY"
+          run_id="$(gh run list --repo "$repo" --workflow gate.yml --event pull_request \
+            --commit "$HEAD_SHA" --limit 1 --json databaseId,status \
+            --jq '.[0] | select(.status == "completed") | .databaseId')"
+          if [ -z "$run_id" ]; then
+            echo "step 9 refresh: PR #$NUMBER has no completed gate run for $HEAD_SHA yet; its step 9 reads this review when it runs"
+            exit 0
+          fi
+          job_id="$(gh run view "$run_id" --repo "$repo" --json jobs \
+            --jq '.jobs[] | select(.name | startswith("step 9")) | select(.conclusion == "success" or .conclusion == "failure") | .databaseId')"
+          if [ -z "$job_id" ]; then
+            echo "step 9 refresh: gate run $run_id asked no review of PR #$NUMBER (skipped, or its build failed); nothing to refresh"
+            exit 0
+          fi
+          gh run rerun "$run_id" --repo "$repo" --job "$job_id"
+          echo "step 9 refresh: re-ran job $job_id of gate run $run_id for PR #$NUMBER"

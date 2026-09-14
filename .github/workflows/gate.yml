@@ -1,7 +1,7 @@
 # The gate (D-4, D-35): the only thing with authority to say a proof counts.
 #
 # Two jobs, never sharing a secret:
-#   gate       on every pull request (and every review on one) — checks out the `network` commit
+#   gate       on every pull request — checks out the `network` commit
 #              this graph pins in its gate-spec.json, asks that pinned gate what the diff *is*
 #              (F07-R3, F08-R2, R8: proof, partial, append, explainer, proposal or curator) and
 #              then does what that mode needs. A proof or a partial runs steps 1, 2 and 4 to 8
@@ -14,10 +14,14 @@
 #              curator record is classified the same way, its author checked against
 #              curators.json (F08-R8), and reviewed by a second listed identity when there is
 #              one. No secret, no write permission (C8). Its check status is what the main
-#              ruleset requires. Step 9 (D-4 v3.11) is a property of the statement: the tutorial
-#              node needs no review; a node under a root with no certificate or registry
-#              provenance still needs a non-author approving review, and this job stays red until
-#              one exists.
+#              ruleset requires. It no longer asks for a review: it exports what step 9 needs.
+#   step 9     after the gate job, on the same pull request run (F07-T8, D-4's order): step 9 is a
+#              property of the statement (v3.11) — the tutorial node needs no review; a node under a
+#              root with no certificate or registry provenance needs a non-author approving review,
+#              and this job stays red until one exists. It reads the reviews and nothing else
+#              (pull-requests: read). A submitted or dismissed review re-runs this job in place
+#              through step9-refresh.yml, so the build is never repeated and no stale red run is
+#              left on the pull request. The ruleset requires this job's check by its exact name.
 #   postmerge  on every push to main — if the commit merged a pull request that touched a target,
 #              classifies the merged diff with the pinned gate, and for the modes that build a
 #              proof (proof, partial) re-derives the verdict on the merge commit, records what
@@ -43,8 +47,6 @@ name: gate
 on:
   pull_request:
     branches: [main]
-  pull_request_review:
-    types: [submitted, dismissed]
   push:
     branches: [main]
 
@@ -56,11 +58,16 @@ env:
 jobs:
   gate:
     name: gate (steps 1, 2 and 4-8 in the sandbox)
-    if: github.event_name == 'pull_request' || github.event_name == 'pull_request_review'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: read
+    # F07-T8: the step-9 job has no checkout, so everything it needs comes out of this job.
+    outputs:
+      needs_review: ${{ steps.classify.outputs.needs_review }}
+      tutorial: ${{ steps.classify.outputs.tutorial }}
+      reviewers: ${{ steps.classify.outputs.reviewers }}
     steps:
       - name: Check out the graph at the pull request's merge commit
         uses: actions/checkout@v7
@@ -139,9 +146,10 @@ jobs:
           doc = json.loads(pathlib.Path("classification.json").read_text())
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
                                ("needs_review", False), ("needs_admission", False), ("admit", None),
-                               ("needs_exhibits", False), ("needs_qa_rerun", False)):
+                               ("needs_exhibits", False), ("needs_qa_rerun", False),
+                               ("reviewers", None)):
               value = doc.get(key, default)
-              print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
+              print(f"{key}={json.dumps(value) if isinstance(value, (bool, list)) else (value or '')}")
           PY
           node="$(python3 -c "import json;print(json.load(open('classification.json')).get('node') or '')")"
           tutorial=false
@@ -149,34 +157,6 @@ jobs:
             tutorial=true
           fi
           echo "tutorial=$tutorial" >> "$GITHUB_OUTPUT"
-
-      # For a proof or a partial any non-author may approve (D-4). For a curator record the
-      # approver must be another listed curator (F08-R8; D-21's separation): the classifier
-      # names who is eligible, and names nobody when the founder is the only curator — then
-      # `needs_review` is false and the waiver is in classification.json (D-22, F08-Q9).
-      - name: Step 9 — a non-author approving review, unless the statement is certified
-        if: steps.classify.outputs.needs_review == 'true' && steps.classify.outputs.tutorial != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          NUMBER: ${{ github.event.pull_request.number }}
-          AUTHOR: ${{ github.event.pull_request.user.login }}
-        run: |
-          set -euo pipefail
-          # F00 knows no certificates or registry provenance yet (F11 records them); every
-          # non-tutorial node therefore needs the pr-approval form of step 9 for now.
-          reviewer="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews" | python3 -c "
-          import json, sys, pathlib
-          author = sys.argv[1]
-          eligible = json.loads(pathlib.Path('classification.json').read_text()).get('reviewers')
-          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author
-                and (eligible is None or r['user']['login'] in eligible)]
-          ok.sort(key=lambda r: r['submitted_at'])
-          print(ok[-1]['user']['login'] if ok else '')" "$AUTHOR")"
-          if [ -z "$reviewer" ]; then
-            echo "::error::step 9: this node's root has no fidelity certificate or registry provenance, so a non-author approving review is required before merge (D-4 v3.11; a curator record needs another listed curator's, F08-R8). Re-runs when a review is submitted."
-            exit 1
-          fi
-          echo "gate: step 9 satisfied by approving review from $reviewer"
 
       # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
       # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
@@ -232,6 +212,7 @@ jobs:
         env:
           BASE: ${{ steps.pin.outputs.base }}
           PR_BODY: ${{ github.event.pull_request.body }}
+          OPN_PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           OPN_RUNNER: hosted
           PYTHONPATH: network/gate
         run: |
@@ -252,6 +233,47 @@ jobs:
             ${{ runner.temp }}/gate-out/*.json
             ${{ runner.temp }}/gate-out/qa-rerun/qa-rerun.json
           if-no-files-found: ignore
+
+  # D-4 step 9 after steps 1-8 (F07-T8). For a proof or a partial any non-author may approve. For a
+  # curator record the approver must be another listed curator (F08-R8; D-21's separation): the
+  # classifier names who is eligible, and names nobody when the founder is the only curator — then
+  # `needs_review` is false and the waiver is in the gate job's classification (D-22, F08-Q9).
+  # Skipped (which reports as success) when no review is asked; blocked behind a failing gate job.
+  step9:
+    name: step 9 (a non-author approving review)
+    needs: gate
+    if: needs.gate.outputs.needs_review == 'true' && needs.gate.outputs.tutorial != 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: read
+    steps:
+      - name: A non-author approving review, unless the statement is certified
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          REVIEWERS: ${{ needs.gate.outputs.reviewers }}
+        run: |
+          set -euo pipefail
+          # F00 knows no certificates or registry provenance yet (F11 records them); every
+          # non-tutorial node therefore needs the pr-approval form of step 9 for now.
+          reviewer="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews" | python3 -c "
+          import json, os, sys
+          author = sys.argv[1]
+          raw = os.environ.get('REVIEWERS') or ''
+          eligible = json.loads(raw) if raw else None
+          ok = [r for r in json.load(sys.stdin) if r['state'] == 'APPROVED' and r['user']['login'] != author
+                and (eligible is None or r['user']['login'] in eligible)]
+          ok.sort(key=lambda r: r['submitted_at'])
+          print(ok[-1]['user']['login'] if ok else '')" "$AUTHOR")"
+          if [ -z "$reviewer" ]; then
+            msg="step 9: this node's root has no fidelity certificate or registry provenance, so a non-author approving review is required before merge (D-4 v3.11; a curator record needs another listed curator's, F08-R8). Approving re-runs this check; the build above is not repeated."
+            echo "::error::$msg"
+            printf '### Step 9 — waiting for a review\n\n%s\n' "$msg" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "gate: step 9 satisfied by approving review from $reviewer"
+          printf '### Step 9 — satisfied\n\nApproved by @%s (D-4 step 9).\n' "$reviewer" >> "$GITHUB_STEP_SUMMARY"
 
   postmerge:
     name: postmerge (step 9 record, gate signature, attestation commit)
@@ -367,12 +389,13 @@ jobs:
           echo "reviewer=$reviewer" >> "$GITHUB_OUTPUT"
           echo "postmerge: step 9 = $kind ${reviewer:+by $reviewer}"
 
-      # F07-R6 (F11-T4): a merged partial's holes become child nodes, written into this checkout
-      # for the bot commit below to carry, and the assembly is filed under attempts/ for the
-      # pseudonym the submission block names. Only in partial mode — an older pin never merged
-      # a partial (its gate could not run one), so it is never handed the flag (F08-Q8).
+      # F07-T14: every merged pull request's body, so the attestation records the submission block
+      # (submitter, declared model and tooling) and the precheck it consumed. F07-R6 (F11-T4): a
+      # merged partial's holes become child nodes, written into this checkout for the bot commit
+      # below to carry, and the assembly is filed under attempts/ for the pseudonym the block names.
+      # Only a partial is handed --apply-partial — an older pin never merged a partial (F08-Q8).
       - name: Fetch the merged pull request's body (the submission block names the proposer)
-        if: steps.classify.outputs.mode == 'partial'
+        if: steps.pr.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -384,6 +407,7 @@ jobs:
         if: steps.classify.outputs.needs_gate == 'true'
         env:
           OPN_RUNNER: hosted
+          OPN_PR_AUTHOR: ${{ steps.pr.outputs.author }}
           PYTHONPATH: network/gate
           MODE: ${{ steps.classify.outputs.mode }}
           AUTHOR: ${{ steps.pr.outputs.author }}
@@ -395,11 +419,12 @@ jobs:
           done
           partial=()
           if [ "$MODE" = "partial" ]; then
-            partial=(--apply-partial --pr-body-file "$RUNNER_TEMP/pr-body.md" --author "$AUTHOR")
+            partial=(--apply-partial)
           fi
           uv run --frozen --project network python -m opn_gate.cli postmerge \
             --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
             --review-kind "${{ steps.review.outputs.kind }}" \
+            --pr-body-file "$RUNNER_TEMP/pr-body.md" --author "$AUTHOR" \
             ${{ steps.review.outputs.reviewer && format('--reviewer {0}', steps.review.outputs.reviewer) || '' }} \
             "${approvals[@]}" "${partial[@]}" \
             --target "${{ steps.pr.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
@@ -439,11 +464,13 @@ jobs:
           fi
           echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
 
-      # F08-R13: a merged proposal earns its proposer the statement line — for a variant or a
-      # speculative crux, never a hole (D-31), never a revision (D-19). The ledger is derived
-      # from the merge, so it rides in the same bot commit as the products (F07-R12 shape).
-      - name: Write the proposer's statement line (F08-R13; no secret)
-        if: steps.pr.outputs.run == 'true' && steps.classify.outputs.mode == 'proposal'
+      # F07-R12 (T15), F08-R13: what the merge earned — the proof line for a proof or a partial, the
+      # attempts line for the first postmortem per route class, the statement line for a variant or
+      # a speculative crux; nothing for the tutorial node, an alternate or a curator's own proof.
+      # After signing, because it reads this merge's attestation for the declared tooling. The
+      # ledger is derived from the merge, so it rides in the same bot commit as the products.
+      - name: Write what the merge earned to the ledger (F07-R12, F08-R13; no secret)
+        if: steps.pr.outputs.run == 'true'
         env:
           PYTHONPATH: network/gate
         run: |
