@@ -1,0 +1,20 @@
+schema: meta/v2
+id: erdos-51
+status: ready
+deps: []
+statement-hash: b79d40a0e3c6e43334f96826cb639a8869689305128bdbba29156275b312e42a
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(n a) / ↑↑a
+  justification: The division sits inside a limit along atTop on A; a junk value at
+    a = 0 affects at most one point and cannot change the limit.
+- checker: unused-binder
+  location: a._@._internal._hyg.0
+  justification: The binder is introduced by notation elaboration (its hygienic name
+    is not the author's); every binder the statement names is used.
