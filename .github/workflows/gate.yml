@@ -538,6 +538,7 @@ jobs:
           git add attestations/ frontier.json info.json targets/
           [ -f claims.json ] && git add claims.json
           [ -d ledger ] && git add ledger/
+          [ -f THIRD_PARTY_NOTICES.md ] && git add THIRD_PARTY_NOTICES.md  # F14-R12: a merge product
           if git diff --cached --quiet; then
             echo "postmerge: PR #${{ steps.pr.outputs.number }} changed no product; nothing to commit"
             rm -f "$RUNNER_TEMP/deploy_key"; exit 0
