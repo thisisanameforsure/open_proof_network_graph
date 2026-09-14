@@ -9,3 +9,16 @@ provenance:
   model: null
   source: null
 tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: Finset.Icc 1 k₁
+  justification: 'Inclusive by design: Icc 1 k gives the product (n+1)...(n+k) of
+    k consecutive integers, as in the informal statement.'
+- checker: off-by-one-range
+  location: Finset.Icc 1 k₂
+  justification: 'Inclusive by design: Icc 1 k gives the product (n+1)...(n+k) of
+    k consecutive integers, as in the informal statement.'
+- checker: off-by-one-range
+  location: k₂ ≥ 3
+  justification: 'Deliberate: the problem is stated for k2 >= 3, inclusive, as in
+    the informal statement.'
