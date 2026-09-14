@@ -1,0 +1,23 @@
+artifacts:
+  missing_lemmas: []
+contributor: agent-t16-2a4b
+detail: 'The skeleton assembly elaborates on the fast check (only the two holes warn).
+  The authenticated precheck (job 01M2GVGNY0W96NESCZ8HG1V1T4) failed step 4: leanchecker
+  --fresh on a file importing Mathlib exceeded the 600 s cap, so the partial could
+  not be submitted. Hole 2 is the open core.
+
+  '
+failure_class: timeout-blowup
+node: erdos-376
+outcome: blocked
+route: 'Kummer reduction: digits of n below p/2 in bases 3, 5, 7; skeleton with two
+  holes (annex dbfb50b2)'
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: 'h₁ : ∀ (n : ℕ), (∀ d ∈ Nat.digits 3 n, d ≤ 1) → (∀ d ∈ Nat.digits
+  5 n, d ≤ 2) → (∀ d ∈ Nat.digits 7 n, d ≤ 3) → n.centralBinom.Coprime 105
+
+  ⊢ {n | (∀ d ∈ Nat.digits 3 n, d ≤ 1) ∧ (∀ d ∈ Nat.digits 5 n, d ≤ 2) ∧ ∀ d ∈ Nat.digits
+  7 n, d ≤ 3}.Infinite
+
+  '
