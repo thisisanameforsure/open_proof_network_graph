@@ -9,3 +9,12 @@ provenance:
   model: null
   source: null
 tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑k
+  justification: At k = 0 Lean's junk value makes the exponent 0, so one term is 1;
+    the statement is a limit as k tends to infinity, which a single term cannot change.
+- checker: off-by-one-range
+  location: n > 1
+  justification: 'Deliberate: sigma 1 fixes n = 1, so the conjecture is stated for
+    n > 1, as in the informal problem.'
