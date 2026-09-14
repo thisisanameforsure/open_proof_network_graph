@@ -9,3 +9,13 @@ provenance:
   model: null
   source: null
 tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑{k | k ∈ Set.range φ ∧ ↑k ≤ x}.ncard / ↑(φ '' {m | 1 ≤ m ∧ ↑m ≤ x}).ncard
+  justification: The denominator counts totients of 1..x and is zero only for x <
+    1; the statement is a limit as x tends to infinity, which a junk value there cannot
+    change.
+- checker: off-by-one-range
+  location: 1 ≤ m
+  justification: 'Deliberate: the set is the totients of positive integers; Mathlib
+    sets totient 0 = 0, which the informal statement excludes.'
