@@ -104,6 +104,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-849
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/c7f31d5fd3d2ca3d69979f2d213eb9b58fe956ae/FormalConjectures/ErdosProblems/849.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-850
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/c7f31d5fd3d2ca3d69979f2d213eb9b58fe956ae/FormalConjectures/ErdosProblems/850.lean)
