@@ -1,0 +1,20 @@
+schema: meta/v2
+id: erdos-849
+status: ready
+deps: []
+statement-hash: ae9bea283a266537e6f5da313e13d8cadd6b8761590d3f42af1378b9085a47a8
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: 'Deliberate: k = 0 would count the trivial binomial C(n, 0) = 1,
+    which the informal problem excludes.'
+- checker: off-by-one-range
+  location: t ≥ 1
+  justification: 'Deliberate: t is the number of solutions and the problem asks about
+    every t >= 1, inclusive.'

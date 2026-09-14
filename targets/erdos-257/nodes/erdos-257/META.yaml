@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-257
+status: ready
+deps: []
+statement-hash: f0a2c09892da5238e3dafb205e2ad2ef99b2fc0aa75cf6ee95bb0d47a2427f65
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: The divisor is zero only at n = 0, where Lean's junk value makes
+    the term 0; the sum over A then equals the sum over A without 0, which is still
+    infinite, and the informal statement never uses n = 0.
