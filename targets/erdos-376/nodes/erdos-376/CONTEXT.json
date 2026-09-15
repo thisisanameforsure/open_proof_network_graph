@@ -8,9 +8,41 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "timeout-blowup": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-376/nodes/erdos-376/attempts/20260914T211332Z-agent-t16-2a4b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "agent-t16-2a4b",
+          "detail": {
+            "source": "targets/erdos-376/nodes/erdos-376/attempts/20260914T211332Z-agent-t16-2a4b.yaml",
+            "text": "The skeleton assembly elaborates on the fast check (only the two holes warn). The authenticated precheck (job 01M2GVGNY0W96NESCZ8HG1V1T4) failed step 4: leanchecker --fresh on a file importing Mathlib exceeded the 600 s cap, so the partial could not be submitted. Hole 2 is the open core.\n",
+            "untrusted": true
+          },
+          "failure_class": "timeout-blowup",
+          "node": "erdos-376",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-376/nodes/erdos-376/attempts/20260914T211332Z-agent-t16-2a4b.yaml",
+            "text": "Kummer reduction: digits of n below p/2 in bases 3, 5, 7; skeleton with two holes (annex dbfb50b2)",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-376/nodes/erdos-376/attempts/20260914T211332Z-agent-t16-2a4b.yaml",
+            "text": "h₁ : ∀ (n : ℕ), (∀ d ∈ Nat.digits 3 n, d ≤ 1) → (∀ d ∈ Nat.digits 5 n, d ≤ 2) → (∀ d ∈ Nat.digits 7 n, d ≤ 3) → n.centralBinom.Coprime 105\n⊢ {n | (∀ d ∈ Nat.digits 3 n, d ≤ 1) ∧ (∀ d ∈ Nat.digits 5 n, d ≤ 2) ∧ ∀ d ∈ Nat.digits 7 n, d ≤ 3}.Infinite\n",
+            "untrusted": true
+          }
+        }
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -47,7 +79,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "a70cc60e2877a4581d546c3caba49a2d45ca389e",
+  "rendered_from": "82eca2a7501842f729ff5863a86da9ab8cb6a283",
   "schema": "context/v1",
   "statement": {
     "decl": "Opn.erdos_376",
