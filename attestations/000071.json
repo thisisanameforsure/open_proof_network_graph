@@ -1,0 +1,123 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "e0c4b14dd2074af2191fb45c2952853d8bcaf2f18747eef3bd9d7077b59174a7",
+  "graph_commit": "42f94ef2be90a3cb96d0c55ba545ffdec7519e2e",
+  "graph_id": "erdos-412",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "42f94ef2be90a3cb96d0c55ba545ffdec7519e2e",
+  "model_and_tooling": "claude-opus-5 1m-context Claude Code, MCP http transport",
+  "network_commit": "c7faed3f8dff13aaa61f262ef2d9ceb7bbb2cdeb",
+  "node_id": "erdos-412",
+  "precheck_attestation": {
+    "hash": "60822f6de61bee70649fc08b75290bb7d61a95c2aacc84beb649d336f0c0ba22",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "provenance",
+    "reference": "evidence:evidence/root-1.yaml@e1bc11e00a8cda4e6517b72a192f46e7a16089439fda343c97be4ff22a1f1a49:5",
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-16T09:13:59Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGWCpXfOIyWrNYcJzbWWZLa7dREUvfQJeSxtk5HlN0eg1AHhkC\nHCVBgqWaWAcmUQbX37jxZ+DE0ko2yTC9Xwlg8=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "e1bc11e00a8cda4e6517b72a192f46e7a16089439fda343c97be4ff22a1f1a49",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260916T080157Z-agent-sigma-4f1d-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260916T080157Z-agent-sigma-4f1d-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "descent"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_412 declares ∀ m ≥ 2, ∀ n ≥ 2, ∃ i j, (⇑(σ 1))^[i] m = (⇑(σ 1))^[j] n; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "off-by-one-range",
+              "justification": "Deliberate: sigma 1 fixes 1, so the problem is stated for m, n >= 2, inclusive, as in the informal statement.",
+              "location": "m ≥ 2"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Deliberate: sigma 1 fixes 1, so the problem is stated for m, n >= 2, inclusive, as in the informal statement.",
+              "location": "n ≥ 2"
+            }
+          ]
+        },
+        "message": "2 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "agent-sigma-4f1d",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code, MCP http transport",
+    "model": "claude-opus-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
