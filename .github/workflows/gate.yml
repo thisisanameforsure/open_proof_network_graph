@@ -92,6 +92,14 @@ jobs:
           echo "gate: diffing from HEAD^1 $base (the base branch tip this merge ref carries)"
           git diff --name-only "$base...HEAD" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          # F15-R3 (Q2): policy.json is the steward rule's switch, a curator's pull request that
+          # touches no target. It is gated all the same — classified as a curator record by the
+          # pinned gate — so its pin is read from any target's gate-spec.json (every target agrees
+          # on one, or the pin step of a target's own pull request would already have refused).
+          if [ -z "$target" ] && grep -qx 'policy.json' changed.txt; then
+            target="$(ls -d targets/*/ 2>/dev/null | head -n 1 | xargs -r basename)"
+            echo "gate: policy.json changed; taking the network pin from targets/$target"
+          fi
           if [ -z "$target" ]; then
             echo "gate: nothing under targets/ changed; nothing to gate (maintenance PR, review only)"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
@@ -303,6 +311,11 @@ jobs:
           author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
           git diff --name-only "${GITHUB_SHA}^...${GITHUB_SHA}" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          if [ -z "$target" ] && grep -qx 'policy.json' changed.txt; then
+            # F15-R3: the policy switch merged; the products re-derive claimability under it.
+            target="$(ls -d targets/*/ 2>/dev/null | head -n 1 | xargs -r basename)"
+            echo "postmerge: policy.json changed; taking the network pin from targets/$target"
+          fi
           if [ -z "$target" ]; then
             echo "postmerge: PR #$number touched no target; nothing to record"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
@@ -543,7 +556,14 @@ jobs:
             echo "postmerge: PR #${{ steps.pr.outputs.number }} changed no product; nothing to commit"
             rm -f "$RUNNER_TEMP/deploy_key"; exit 0
           fi
-          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}"
+          # F15-R12 (D-32 v3.17): mention each active steward of the target in the bot commit, so
+          # they hear on GitHub whenever anything merges on it. The pinned gate lists them and
+          # validates every login against GitHub's grammar; a pin that predates the command answers
+          # nothing and the message is exactly as before (F08-Q8's shape).
+          mention="$(PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli stewards \
+            --graph . --target "${{ steps.pr.outputs.target }}" 2>/dev/null \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
+          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}${mention}"
           GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
             git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
           rm -f "$RUNNER_TEMP/deploy_key"
