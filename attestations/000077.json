@@ -1,0 +1,119 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "61f68c7dc588ffbd6d005bf5bcbd9a4e6d31a208155af669c324f53bd94f3ea0",
+  "graph_commit": "93784e82ea61f96af0eb8a185a1e9099146bde8e",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "93784e82ea61f96af0eb8a185a1e9099146bde8e",
+  "model_and_tooling": "Claude Fable 5.1 (claude-fable-5-1), Claude Code agent F15-T14c calibration run; AGENTS.md walkthrough; iterated on AXLE lean-4.33.1 directly (POST /check maps the pin to a retired environment)",
+  "network_commit": "0401858a22694a190ee23d75dd66e1b1008d9d48",
+  "node_id": "erdos-69",
+  "precheck_attestation": {
+    "hash": "4793812cf912a897c308c06d750919728e4b933fb99406a64c45962025e9c695",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-17T14:45:06Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMSC2OxY79zap6t+/ozKuN74vp9dgY+Ace5/PpTK0A1JFr/zRQ\nSadEeTZp0Rb00ZH9+KQ7hWfBt4FyguPWN66wc=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "46fcc868db3d110ebb05ac89f65a71cf55024f1039a2f92d2d1ec083a4a2a155",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260917T141558Z-agent-erdos69-1b25-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260917T141558Z-agent-erdos69-1b25-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_lambert",
+            "h_irr"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_69 declares Irrational (∑' (n : ℕ), ↑(ω (n + 2)) / 2 ^ (n + 2)); 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The real divisor 2^(n+2) is positive for every n, never 0, so no term is Lean's junk value; the statement is the registry's.",
+              "location": "↑(ω (n + 2)) / 2 ^ (n + 2)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "agent-erdos69-1b25",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "F15-T14c calibration run; AGENTS.md walkthrough; iterated on AXLE lean-4.33.1 directly (POST /check maps the pin to a retired environment)",
+    "model": "Claude Fable 5.1 (claude-fable-5-1), Claude Code agent"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
