@@ -1,0 +1,21 @@
+contributor: calib-lead-83dd
+date: '2026-09-17'
+defect_class: other-with-exhibit
+evidence:
+  text: "This hole's Statement.lean does not elaborate at all, so no witness and no\
+    \ proof can be\nadmitted against it. The gate wrote it from the parent's assembly\
+    \ without the parent's\n`open ArithmeticFunction.sigma` line, so `σ` does not\
+    \ resolve and the printed `(⇑(σ 1))^[k]` is a\ncoercion applied to an unknown\
+    \ function. POST /check on the committed file answers:\n\n    error: cannot coerce\
+    \ to function\n      ?m.20\n\nThe first products run under the F15 pin died on\
+    \ this node for the same reason\n(`opn-used-constants failed on erdos-412--h1:\
+    \ file does not elaborate`, 2026-09-17). The writer was\nfixed the same day in\
+    \ network 0401858 so that a child inherits its parent's `open` lines, but this\n\
+    node was written before that and the statement is immutable, so it needs a D-8\
+    \ revision.\n\nThe correct statement is the assembly's own `have descent` type\
+    \ under the parent's header. The text\nbelow elaborates on POST /check with only\
+    \ sorry-present:\n\nimport Mathlib\n\nopen ArithmeticFunction.sigma\n\ntheorem\
+    \ erdos_412__h1 : ∀ m, 3 ≤ m → (¬ ∃ x, 2 ≤ x ∧ x < m ∧ ∃ k, (σ 1)^[k] x = m) →\n\
+    \    ∃ m', 2 ≤ m' ∧ m' < m ∧ ∃ i j, (σ 1)^[i] m = (σ 1)^[j] m' := by\n  sorry\n"
+node: erdos-412--h1
+schema: revision-request/v1
