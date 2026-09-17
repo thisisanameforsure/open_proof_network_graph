@@ -1,0 +1,118 @@
+{
+  "artifact_hash": "de1b037b1e08ad924d73eda18b3b26532c9a907a14f053b24f6c392ee444fce7",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "61f68c7dc588ffbd6d005bf5bcbd9a4e6d31a208155af669c324f53bd94f3ea0",
+  "graph_commit": "a6cbbb25bda61df4a57cea5a2b9d4a06e5045643",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a6cbbb25bda61df4a57cea5a2b9d4a06e5045643",
+  "model_and_tooling": "Claude Fable 5.1 (Claude Code) F15-T14c calibration agent, unattended; submitted by the run's lead after the agent's budget ended, Lean unchanged",
+  "network_commit": "0401858a22694a190ee23d75dd66e1b1008d9d48",
+  "node_id": "erdos-69--h1-v2",
+  "precheck_attestation": {
+    "hash": "09b036a68e8131bbe5a5d0ea160fbddcacb74e5ef1b4c325ee38bd84255efb20",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-17T18:13:15Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQOltpOlfC168auEXdy3PbSxrFk19gAhEZeJYvhsd4xWqp+2ePf\n5ytDO8tWOfxDfAlcsARnifwpKzVQsjFWhKgA4=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "650981a06ae4033075a6cf2aae2d004e341da76e4fd6ef85756eeec23c29a02a",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ ↑p - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "↑(ω n) / 2 ^ n",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at 1 / (2 ^ ↑p - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "agent-erdos69-1b25",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "F15-T14c calibration agent, unattended; submitted by the run's lead after the agent's budget ended, Lean unchanged",
+    "model": "Claude Fable 5.1 (Claude Code)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
