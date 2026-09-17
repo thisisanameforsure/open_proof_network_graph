@@ -1,5 +1,46 @@
-/-! The witness slot for a hole (D-29, F07-R6). Replace `sorry` with an instance
-satisfying this statement's hypotheses; until then the node is blocked. -/
+import Mathlib
 
-theorem witness : True := by
-  sorry
+open Filter
+
+theorem witness : ∃ A : Finset ℕ,
+    (∀ (A : Finset ℕ) (m : ℕ), 0 ∉ A → (∀ a ∈ A, ∀ b ∈ A, a ≤ m * a.gcd b) →
+      ∀ a ∈ A, ∀ b ∈ A, ∃ u v : ℕ, 0 < u ∧ u ≤ m ∧ 0 < v ∧ v ≤ m ∧ Nat.Coprime u v ∧ a * v = b * u) ∧
+    0 ∉ A ∧ A.Nonempty ∧
+    (∀ B : Finset ℕ, 0 ∉ B → B.card = A.card → B.gcd id = 1 →
+      ∃ a ∈ B, ∃ b ∈ B, a.gcd b ≤ (a / B.card : ℚ)) := by
+  have hh1 : ∀ (A : Finset ℕ) (m : ℕ), 0 ∉ A → (∀ a ∈ A, ∀ b ∈ A, a ≤ m * a.gcd b) →
+      ∀ a ∈ A, ∀ b ∈ A, ∃ u v : ℕ, 0 < u ∧ u ≤ m ∧ 0 < v ∧ v ≤ m ∧ Nat.Coprime u v ∧ a * v = b * u := by
+      intro A m hA hbound a ha b hb
+      have ha0 : a ≠ 0 := ne_of_mem_of_not_mem ha hA
+      have hb0 : b ≠ 0 := ne_of_mem_of_not_mem hb hA
+      have hd : 0 < a.gcd b := Nat.gcd_pos_of_pos_left b (Nat.pos_of_ne_zero ha0)
+      obtain ⟨u, hu⟩ := Nat.gcd_dvd_left a b
+      obtain ⟨v, hv⟩ := Nat.gcd_dvd_right a b
+      refine ⟨u, v, ?_, ?_, ?_, ?_, ?_, ?_⟩
+      · apply Nat.pos_of_ne_zero
+        intro h0
+        apply ha0
+        rw [hu, h0, mul_zero]
+      · have h1 : a.gcd b * u ≤ a.gcd b * m := by
+          rw [← hu, mul_comm]
+          exact hbound a ha b hb
+        exact Nat.le_of_mul_le_mul_left h1 hd
+      · apply Nat.pos_of_ne_zero
+        intro h0
+        apply hb0
+        rw [hv, h0, mul_zero]
+      · have h2 : a.gcd b * v ≤ a.gcd b * m := by
+          rw [← hv, mul_comm, Nat.gcd_comm]
+          exact hbound b hb a ha
+        exact Nat.le_of_mul_le_mul_left h2 hd
+      · have h3 : a.gcd b * u.gcd v = a.gcd b * 1 := by
+          rw [← Nat.gcd_mul_left, ← hu, ← hv, mul_one]
+        exact Nat.eq_of_mul_eq_mul_left hd h3
+      · calc a * v = a.gcd b * u * v := by rw [← hu]
+          _ = a.gcd b * v * u := by ring
+          _ = b * u := by rw [← hv]
+  refine ⟨{1}, hh1, by simp, by simp, ?_⟩
+  intro B hB hcard hg
+  rw [Finset.card_singleton] at hcard
+  obtain ⟨c, rfl⟩ := Finset.card_eq_one.mp hcard
+  exact ⟨c, by simp, c, by simp, by simp⟩
