@@ -1,0 +1,118 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "2d1de8399f8cec1da3852fe8ebfe2638c4481317d14f60a1ffbccca10af13a38",
+  "graph_commit": "7963dfe00bd8b26e50f779997d30ed9dc2cfee1b",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "7963dfe00bd8b26e50f779997d30ed9dc2cfee1b",
+  "model_and_tooling": "Claude Fable 5.1 (Claude Code agent, unattended calibration run F15-T14c) AGENTS.md walkthrough over HTTP; fast checks sent directly to AXLE lean-4.33.1 (network /check mapping stale)",
+  "network_commit": "0401858a22694a190ee23d75dd66e1b1008d9d48",
+  "node_id": "erdos-1050",
+  "precheck_attestation": {
+    "hash": "547ad0a91ff7bce742221bc5a8962c478dd52310564c18a4da7e5debdcd83b79",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-17T14:53:33Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGe8iFup0NzhNDr5dWWRUqtOeZWn6UOr8DJmkWCeIhUqfEQeUY\nm+ooAIA2IuQ0X1TSfZoKvwqX9jE6uuXg/BPA8=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "679c2dd5b1400f16ae52bf3dcf9a26574e89e793eedd7fe5ff2e98a9fa7bd6c2",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260917T141921Z-calib-1050-fable-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260917T141921Z-calib-1050-fable-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "borwein"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_1050 declares Irrational (∑' (n : ℕ), 1 / (2 ^ (n + 1) - 3)); 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The real divisor 2^(n+1) - 3 is -1 at n = 0 and at least 1 for n >= 1, never 0, so no term is Lean's junk value; the n = 0 term is -1, the registry's reindexing of the source sum from n >= 1.",
+              "location": "1 / (2 ^ (n + 1) - 3)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "calib-1050-fable",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "AGENTS.md walkthrough over HTTP; fast checks sent directly to AXLE lean-4.33.1 (network /check mapping stale)",
+    "model": "Claude Fable 5.1 (Claude Code agent, unattended calibration run F15-T14c)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
