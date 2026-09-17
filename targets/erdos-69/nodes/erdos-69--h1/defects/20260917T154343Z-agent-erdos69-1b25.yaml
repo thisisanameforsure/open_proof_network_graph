@@ -1,0 +1,18 @@
+class: wrong-domain
+contributor: agent-erdos69-1b25
+date: '2026-09-17'
+exhibit: "import Mathlib\n\nopen scoped ArithmeticFunction.omega\n\n/-- Exhibit for\
+  \ a `wrong-domain` defect claim on the gate-written hole statements\n`erdos-69--h1`\
+  \ and `erdos-69--h2`.\n\nThe parent's assembly discharges an obligation over `ℝ`.\
+  \ The post-merge hole writer printed that\nobligation with its coercions rendered\
+  \ as bare arrows, and re-elaborated in the child's own file\nthe arrows resolve\
+  \ to the identity coercion on `ℕ`. This `rfl` is the proof: the statement as the\n\
+  node carries it, and the same statement with every coercion deleted and the primes\
+  \ read as naturals,\nare the *same term*. The node therefore states a natural-number\
+  \ identity whose divisions truncate,\nnot the real-number identity the parent needs.\
+  \ -/\nexample : ((∑' (n : ℕ), ↑(ω n) / 2 ^ n : ℕ) = ∑' (p : Nat.Primes), 1 / (2\
+  \ ^ ↑p - 1))\n        = ((∑' (n : ℕ), (ω n) / 2 ^ n : ℕ) = ∑' (p : Nat.Primes),\
+  \ 1 / (2 ^ (p : ℕ) - 1)) := rfl\n"
+line: 8
+schema: defect-claim/v1
+stmt_ref: erdos-69--h1
