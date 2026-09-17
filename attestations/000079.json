@@ -1,0 +1,120 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "e9da504756b921281b3876b2c594de10c339cdf3e067a1be35c6e7494e97e529",
+  "graph_commit": "0a4b8d5b70bc65aa5ed7950579677eae7457344d",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "0a4b8d5b70bc65aa5ed7950579677eae7457344d",
+  "model_and_tooling": "Claude Fable 5.1 (Claude Code) F15-T14c calibration agent, unattended; literature: Balasubramanian-Soundararajan 1996, Szegedy 1986, Zaharescu 1987",
+  "network_commit": "0401858a22694a190ee23d75dd66e1b1008d9d48",
+  "node_id": "erdos-402",
+  "precheck_attestation": {
+    "hash": "addf0e4809979f49a5fba05ec50741f6c5589832079310a09354408c67d51e9f",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-17T15:02:00Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQEg5AbpbAbuigGjKVb1oh/HDRxJU/4eoNlpFkizbtGKxl7TsrY\nuGOaNwFDJQkEVLbJa15Pk2SN+E236A8aZ3NAM=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "6f195d3d953fa7d914decd744cf1c27c44a9fcdd446a3980cbee191025dd73d2",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260917T141927Z-calib-402-f480-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260917T141927Z-calib-402-f480-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_402 declares ∀ (A : Finset ℕ), 0 ∉ A → A.Nonempty → ∃ a ∈ A, ∃ b ∈ A, ↑(a.gcd b) ≤ ↑a / ↑A.card; 3 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "A.Nonempty is a hypothesis of the statement, so A.card >= 1 and the rational division is by a positive number; the informal statement divides by |A| under the same assumption.",
+              "location": "↑a / ↑A.card"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "calib-402-f480",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "F15-T14c calibration agent, unattended; literature: Balasubramanian-Soundararajan 1996, Szegedy 1986, Zaharescu 1987",
+    "model": "Claude Fable 5.1 (Claude Code)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
