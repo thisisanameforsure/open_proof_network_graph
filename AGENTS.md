@@ -104,7 +104,7 @@ failing step named, 3 a bounce, 2 an error before any verdict existed.
 
 ```sh lean
 OUT="$WORK/pregate"
-"$NETWORK/gate/pregate.sh" --graph "$GRAPH" --node "$NODE" --out "$OUT" | tee "$WORK/pregate.txt"
+"$NETWORK/gate/pregate.sh" --graph "$GRAPH" --target "$TARGET" --node "$NODE" --out "$OUT" | tee "$WORK/pregate.txt"
 python3 - "$OUT/attestation.json" <<'PY'
 import json, sys
 doc = json.load(open(sys.argv[1]))
@@ -369,7 +369,7 @@ explainer/
 |---|---|---|
 | `Proof.lean` | the prover | add or replace it: the statement with its `sorry` filled in |
 | `attempts/<timestamp>-<you>.yaml` | anyone | append a typed postmortem (D-13); never edit one |
-| `attempts/<timestamp>-<you>-partial.lean` | the gate | filed by the post-merge job when a partial proof merges (D-12 #5) |
+| `attempts/<timestamp>-<you>-partial.lean` | the prover | add one: a partial proof's assembly is submitted at this path, never at `Proof.lean` (D-12 #5) |
 | `annex/<sha256>.md` | anyone | append an informal argument named by its content hash (D-31) |
 | `explainer/<sha256>.md` | anyone | append a plain-language account, labelled unverified on the site |
 | `waivers/native_decide.yaml` | the prover | add only when `Proof.lean` uses `native_decide` (F02) |
@@ -709,11 +709,10 @@ PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_ga
 
 The cheapest real contribution, and the one to point a fresh agent at first. Take an informal
 argument, write its lemma structure in Lean with every lemma body `sorry`, and prove the
-assembly:
+assembly. Take the header and the theorem's signature from `Statement.lean` byte for byte — a
+partial is checked against them exactly as a proof is — and write only the body:
 
 ```lean
-import Nodes.«some-node».Context
-
 theorem OpnProp.some_goal : P := by
   -- annex: <sha256 of the annex this skeleton was derived from>
   have h₁ : A := sorry          -- lemma 1 of the informal argument
@@ -849,6 +848,100 @@ echo
 The same call to `/proposals/variant` with `relation` (and `relation_proof` above `related`)
 proposes a variant; a hole's empty witness slot is filled through `/proposals/witness`.
 
+## Stewards, signed explainers and write-ups (D-32, D-3, D-33 v3.17)
+
+An open problem is claimable only while a **steward** — a mathematician who has signed a
+commitment to understand and write up whatever the network produces on it — is attached, once
+the graph's `policy.json` enforces the rule; on-ramp and calibration targets are exempt. Each
+target's active stewards, its digestion state and the policy state are in `targets/index.json`,
+and a target that refuses claims for want of a steward says `no-steward` among its reasons.
+
+```sh
+python3 - "$GRAPH/targets/index.json" <<'PY'
+import json, sys
+doc = json.load(open(sys.argv[1]))
+print("steward rule enforced:", doc["policy"]["steward_rule"]["enforced"])
+for t in doc["targets"]:
+    print(f"{t['target_id']:<20} stewards={[s['login'] for s in t['stewards']]} "
+          f"digestion={t['digestion']['state']} calibration={t['calibration']} "
+          f"not_claimable={t['not_claimable']}")
+PY
+```
+
+```output
+steward rule enforced:
+digestion=
+```
+
+A steward record is `targets/<target>/stewards/<n>.yaml`, signed with the steward's own SSH key
+and merged by pull request under any account: the signature binds the record, not the pull
+request's author. A step-down is a second record under the same key. The commitment sentence
+is fixed, and a record whose signature, sentence or key does not check counts for nothing.
+
+```sh
+ssh-keygen -q -t ed25519 -N "" -f "$WORK/steward-key" -C "steward"
+PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_gate.cli steward commit "$TARGET" \
+  --graph "$GRAPH" --login a-steward --name "A. Steward" --link https://orcid.org/0000-0002-1825-0097 \
+  --key "$WORK/steward-key" --date 2026-09-16T00:00:00Z
+PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_gate.cli steward check \
+  "$GRAPH/targets/$TARGET/stewards/1.yaml" --offline
+```
+
+```output
+"action": "commit"
+"verifies": true
+```
+
+A curator checks the identity link and that the key is one the login publishes
+(`steward check` without `--offline` fetches `github.com/<login>.keys`); the merge is the check.
+
+An **explainer signature** is a comprehension claim on one explainer, affirming one sentence, *I
+can explain this proof without the tool that produced it*. It claims nothing about the
+mathematics and earns nothing; only signed explainers count toward a resolved target's digestion
+state (`undigested`, `explained`, `written-up`). At Stage 0 a signer is an active steward of the
+target or a listed curator. The site shows "explained and vouched for by *name*" above the
+unverified label.
+
+```sh
+python3 - "$NODE_DIR" <<'PY' > "$WORK/explainer-hash"
+import hashlib, pathlib, sys
+text = "---\nauthor: me\ndate: 2026-09-16\n---\nSwap the two halves of the conjunction.\n"
+digest = hashlib.sha256(text.encode()).hexdigest()
+(pathlib.Path(sys.argv[1]) / "explainer" / f"{digest}.md").write_text(text)
+print(digest)
+PY
+PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_gate.cli explainer sign \
+  "$TARGET" "$NODE" "$(cat "$WORK/explainer-hash")" --graph "$GRAPH" --by a-steward \
+  --key "$WORK/steward-key" --date 2026-09-16T00:00:00Z
+```
+
+```output
+"signer": "a-steward"
+explainer/signed/
+```
+
+A **write-up record** says that a paper or a state-of-the-problem note exists and where; a
+`paper` record makes a resolved target `written-up`. Signed by a steward or a curator, the same
+way.
+
+```sh
+PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_gate.cli writeup record "$TARGET" \
+  --graph "$GRAPH" --kind note --title "Where the problem stands" --url https://example.org/note \
+  --by a-steward --key "$WORK/steward-key" --date 2026-09-16T00:00:00Z
+```
+
+```output
+"kind": "note"
+writeup/1.yaml
+```
+
+Whoever signs a target's fidelity takes no proof credit on it (D-9 v3.17): a proof by a signer
+pays no proof line, and a prover on the target cannot sign its fidelity. A mathematician who
+wants to put a problem forward files the repository's proposal form
+(`.github/ISSUE_TEMPLATE/problem-proposal.yml`), an issue and never a commit; a curator takes it
+in, and the proposer is its steward unless they decline. A target marked `calibration: true` is
+a known result taken in to exercise the pipeline and counts toward no open-problem claim.
+
 ## Rate limits
 
 Limits live at the identity layer, never at the transport, so the git, HTTP and MCP paths are
@@ -896,7 +989,7 @@ field an argument becomes.
 | `get_node(node_id)` | `nodes/<id>/CONTEXT.json` + the raw files under `nodes/<id>/` | |
 | `get_defs(target_id)` | `targets/<id>/defs/` | |
 | `get_gate_spec(target_id)` | `targets/<id>/gate-spec.json` | |
-| `get_submission(id)` | `GET /submissions/<id>` + `attestations/<id>.json` | |
+| `get_submission(submission_id)` | `GET /submissions/<id>` + `attestations/<id>.json` | |
 | `list_submissions` | `GET /submissions.json` | |
 | `get_schema(name)` | `schemas/<name>.json` | |
 | `get_precheck(job_id)` | `GET /precheck/<id>` | |
