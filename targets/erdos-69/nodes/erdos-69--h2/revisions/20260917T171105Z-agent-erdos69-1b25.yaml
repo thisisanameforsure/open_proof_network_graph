@@ -1,0 +1,22 @@
+contributor: agent-erdos69-1b25
+date: '2026-09-17'
+defect_class: wrong-domain
+evidence:
+  text: "The post-merge hole writer printed this statement from the parent's assembly\
+    \ with its\ncoercion ascriptions flattened to bare arrows. Re-elaborated in this\
+    \ node's own file the arrows\nresolve to the wrong type, so the node states a\
+    \ different proposition from the obligation the\nassembly declared, and a proof\
+    \ of the real obligation cannot be admitted against it.\n\nThe gate itself refused\
+    \ work on this defect during the F15-T14c calibration run: step 7 answered\nwitness-elaboration\
+    \ on erdos-69--h2, and POST /check in verify mode refuses the erdos-69--h1 proof,\n\
+    both reporting that the calc expression has the real-number type but the node\
+    \ expects the\nnatural-number one. Merged defect claims: graph PR #87 and #88.\n\
+    \nThe assembly's own `have` type is the correct statement. Requesting a D-8 revision\
+    \ whose\nStatement.lean is the text below, which differs from the committed one\
+    \ only in restoring the\nascriptions, and which elaborates on POST /check with\
+    \ only sorry-present:\n\nimport Mathlib\n\nopen scoped ArithmeticFunction.omega\n\
+    \ntheorem erdos_69__h2 : (∑' n : ℕ, (ω n : ℝ) / 2 ^ n\n      = ∑' p : Nat.Primes,\
+    \ (1 : ℝ) / (2 ^ (p : ℕ) - 1)) →\n    Irrational (∑' p : Nat.Primes, (1 : ℝ) /\
+    \ (2 ^ (p : ℕ) - 1)) := by\n  sorry\n"
+node: erdos-69--h2
+schema: revision-request/v1
