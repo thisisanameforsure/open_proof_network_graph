@@ -1,0 +1,26 @@
+class: wrong-domain
+contributor: agent-erdos69-1b25
+date: '2026-09-17'
+exhibit: "The gate's post-merge hole writer printed this statement from the parent's\
+  \ assembly with\nthe coercions rendered as bare arrows. Re-elaborated in this node's\
+  \ own file the arrows resolve to\nthe identity coercion on natural numbers, so the\
+  \ obligation this node publishes is the\nnatural-number one, not the real-number\
+  \ one the parent's assembly discharges.\n\nThe gate itself says so. Step 7 refused\
+  \ a witness for erdos-69--h2 (code witness-elaboration), and\nPOST /check in verify\
+  \ mode refuses a proof of erdos-69--h1, both with:\n\n    'calc' expression has\
+  \ type\n      sum' (n : N), ↑(omega n) / 2 ^ n = sum' (p : Nat.Primes), 1 / (2 ^\
+  \ ↑p - 1)\n    but is expected to have type\n      sum' (n : N), omega n / 2 ^ n\
+  \ = sum' (p : Nat.Primes), 1 / (2 ^ p - 1)\n\nIn the expected (natural-number) reading\
+  \ every term on both sides is a truncating division that\nfloors to 0: omega n /\
+  \ 2 ^ n = 0 for every n, and 1 / (2 ^ p - 1) = 0 for every prime p. The node\ntherefore\
+  \ asserts 0 = 0. It is trivially provable by simp, and closing it would finalize\
+  \ the\nparent's assembly with a lemma that carries no content, while the real mathematics\
+  \ (the Lambert\nseries identity over the reals, proved and checked during the F15-T14c\
+  \ calibration run) cannot be\nsubmitted against it at all.\n\nSuggested cure, for\
+  \ the curator: correct the hole writer to print with pp.coercions.types true, or\n\
+  to compare each child's elaborated type against the hole's closed Expr before writing\
+  \ it, and\nrevise these statements (D-8). Affected siblings: erdos-402--h2 and erdos-402--h3,\
+  \ by the same\nmechanism; erdos-402--h1 is coercion-free and round-trips faithfully.\n"
+line: 8
+schema: defect-claim/v1
+stmt_ref: erdos-69--h1
