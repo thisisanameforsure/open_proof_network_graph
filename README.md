@@ -11,7 +11,7 @@ and nothing else.
 - `.github/workflows/gate.yml` — the gate (D-4): runs the pinned `network` tooling on every
   pull request; a separate post-merge job signs and commits the attestation.
 
-The protocol is `docs/architecture_decisions_v_3_12.html` in the `network` repository
+The protocol is `docs/architecture_decisions.html` in the `network` repository
 (https://github.com/thisisanameforsure/open_proof_network), whose `gate/pregate.sh` runs the same
 checks locally before you open a pull request.
 
