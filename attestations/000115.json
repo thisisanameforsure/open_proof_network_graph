@@ -1,0 +1,107 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "42837199f3fc934e8f44fe48c9714262de1b36776f8a6d5c986d38aaaae8d6b9",
+  "graph_commit": "1a0b2230862e6c6f0605d2b1a818291a949d4d73",
+  "graph_id": "euclid-primes",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "1a0b2230862e6c6f0605d2b1a818291a949d4d73",
+  "model_and_tooling": "claude fable-5.1 curl, outside-contributor test",
+  "network_commit": "84bec4173a098cadd071a858c0488936d542d096",
+  "node_id": "variant-2a7919a9",
+  "precheck_attestation": {
+    "hash": "2b45ae556e7a16ed7795e9c9ef95661e14f76d4f83211a5f7d00fe33079943da",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "pr-approval",
+    "reference": null,
+    "reviewer": "thisisanameforsure"
+  },
+  "runner": "hosted",
+  "schema": "attestation/v4",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-20T03:57:11Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQG/FvoGtVSNAwW0JwWFCPnJr1YZi9G9wF4OCzQxewULKxRdEoq\n5hqnvdE9urfpWbkM0y2F4cMeiGhij2+6ZWHAw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "2a7919a9cf736954b293aa118cece228b4807770042561f24d39d97ce9d7c43b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20260919T185907Z-euclid-list-61d1ea-partial.lean"
+        },
+        "message": "a partial proof: attempts/20260919T185907Z-euclid-list-61d1ea-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "bound",
+            "euclid"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.no_finite_list_of_primes declares ∀ (l : List ℕ), ∃ p, Opn.IsPrime p ∧ p ∉ l; 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "euclid-list-61d1ea",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "curl, outside-contributor test",
+    "model": "claude"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
