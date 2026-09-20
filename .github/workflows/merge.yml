@@ -121,13 +121,20 @@ jobs:
               return "green" if ok else "red"
 
 
-          def decide(pulls, rules, checks_of, behind_of):
-              """(number, sha, action) for the oldest green candidate, or ("", "", "")."""
+          def decide(pulls, rules, checks_of, behind_of, conflicted=lambda number: False):
+              """(number, sha, action) for the oldest green candidate, or ("", "", ""). A green
+              pull request the host says cannot be merged (a conflict with main) is passed over:
+              acting on it would fail on every run and hold everything behind it, and a person
+              has to look at it either way."""
               required, strict = required_checks(rules)
               for number, sha in candidates(pulls):
-                  if verdict(checks_of(sha), required) == "green":
-                      behind = behind_of(sha) > 0
-                      return number, sha, "update" if behind and strict else "merge"
+                  if verdict(checks_of(sha), required) != "green":
+                      continue
+                  if conflicted(number):
+                      print(f"#{number} is green but conflicts with main: passed over")
+                      continue
+                  behind = behind_of(sha) > 0
+                  return number, sha, "update" if behind and strict else "merge"
               return "", "", ""
 
 
@@ -144,6 +151,8 @@ jobs:
                   api(f"repos/{repo}/rules/branches/main"),
                   lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
                   lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
+                  # `mergeable` is false for a conflict, null while the host is still computing
+                  lambda n: api(f"repos/{repo}/pulls/{n}").get("mergeable") is False,
               )
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
                   out.write(f"number={number}\nsha={sha}\naction={action}\n")
