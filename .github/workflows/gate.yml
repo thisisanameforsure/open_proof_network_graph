@@ -378,6 +378,8 @@ jobs:
       # The reviews are read in every case: a waived proof is attested only if an approving review
       # names the waiver (F02-R9), and a reviewer may still leave one where nobody had to. On a pin
       # that predates F07-T17 review_kind is empty and needs_review decides, exactly as before.
+      # v3.20 (F07-T24): the review is asked only of a proof that settles the target's root, and
+      # never on a calibration target; for everything else review_kind says why nobody was asked.
       - name: Record what satisfied step 9
         id: review
         if: steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_review == 'true'
@@ -412,6 +414,11 @@ jobs:
               echo "::error::PR #$NUMBER: the pinned gate says step 9 is satisfied by $REVIEW_KIND but names no reference"; exit 1
             fi
             kind="$REVIEW_KIND"; reference="$REVIEW_REFERENCE"; reviewer=""
+          elif [ "$REVIEW_KIND" = "intermediate" ] || [ "$REVIEW_KIND" = "calibration" ]; then
+            # D-4 v3.20 (F07-T24): step 9 was not asked at all — the artifact settles no root, or
+            # the target is a known result — and the attestation says which, naming nobody, even
+            # if someone approved anyway. A pin that predates v3.20 never emits these (F08-Q8).
+            kind="$REVIEW_KIND"; reviewer=""
           elif [ -n "$reviewer" ]; then
             kind=pr-approval
           elif [ "$NEEDS_REVIEW" != "true" ]; then
