@@ -552,6 +552,7 @@ jobs:
         run: |
           set -euo pipefail
           umask 077
+          trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
           printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
           git config user.name "opn-gate"
           git config user.email "gate@openproof.network"
@@ -571,9 +572,28 @@ jobs:
             --graph . --target "${{ steps.pr.outputs.target }}" 2>/dev/null \
             | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
           git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}${mention}"
-          GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
-            git push "git@github.com:${GITHUB_REPOSITORY}.git" HEAD:main
-          rm -f "$RUNNER_TEMP/deploy_key"
+          # F07-T29: this push happens minutes after the merge it renders, and main can move in
+          # between (an owner's re-pin or guide copy; found live on #130, whose products were lost
+          # to a non-fast-forward). What landed is rebased over only if it touched nothing these
+          # products derive from; otherwise the render is of a tree that no longer exists, and
+          # that is a failure said loudly, never a retry.
+          export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+          remote="git@github.com:${GITHUB_REPOSITORY}.git"
+          rendered_from="$(git rev-parse HEAD~1)"
+          pushed=""
+          for attempt in 1 2 3; do
+            if git push "$remote" HEAD:main; then pushed=yes; break; fi
+            git fetch "$remote" main
+            moved="$(git diff --name-only "$rendered_from" FETCH_HEAD -- targets attestations frontier.json info.json claims.json ledger | head -5)"
+            if [ -n "$moved" ]; then
+              echo "::error::PR #${{ steps.pr.outputs.number }}: main moved under the post-merge job and touched what its products derive from ($moved); re-render by hand"; exit 1
+            fi
+            echo "postmerge: main moved (attempt $attempt) without touching the products' inputs; rebasing"
+            git rebase FETCH_HEAD
+          done
+          if [ -z "$pushed" ]; then
+            echo "::error::PR #${{ steps.pr.outputs.number }}: the products commit could not be pushed after three attempts"; exit 1
+          fi
 
       # F04-R12 (F04-Q10): ask the network repo's site-deploy to render what main now holds, so a
       # merge reaches the site in seconds instead of on GitHub's best-effort schedule. Skipped for
