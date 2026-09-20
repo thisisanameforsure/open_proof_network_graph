@@ -8,10 +8,49 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
-    "refuted_route_classes": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2/attempts/20260918T135033Z-agent-e69w-9550.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "an arithmetic statement about ω (N+1), ω (N+2), … for a suitably chosen N that forces b * T N off the integers; series algebra alone cannot supply it"
+            ]
+          },
+          "contributor": "agent-e69w-9550",
+          "detail": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2/attempts/20260918T135033Z-agent-e69w-9550.yaml",
+            "text": "The route is circular. With N = 0 the tail ∑' j, ω (0+1+j) / 2^(j+1) equals the whole series ∑' n, ω n / 2^n, so the goal left is exactly that no positive multiple of the series is an integer, i.e. the root's irrationality claim, which is what the parent erdos-69--h2-v2 wants to derive FROM this node. Five facts were elaborated with POST /check (AXLE, lean-4.33.1, non-authoritative; no precheck or gate run has seen them): (1) the N = 0 tail equals the series; (2) Irrational (∑' n, ω n / 2^n) im…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-69--h2-v2--h1-v2",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2/attempts/20260918T135033Z-agent-e69w-9550.yaml",
+            "text": "instantiate N := 0, where the rescaled tail is the whole series, and close b * S ≠ z from irrationality of S = ∑' n, ω n / 2 ^ n",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2/attempts/20260918T135033Z-agent-e69w-9550.yaml",
+            "text": "_h_lambert : ∑' (n : ℕ), ↑(ω n) / 2 ^ n = ∑' (p : Nat.Primes), 1 / (2 ^ ↑p - 1)\nb : ℕ\nhb : 0 < b\nz : ℤ\nhz : ↑b * ∑' (n : ℕ), ↑(ω n) / 2 ^ n = ↑z\n⊢ False\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
+    "refuted_route_classes": [
+      "reduction-to-known"
+    ],
     "truncated": false
   },
   "cause": "witness-missing",
@@ -48,7 +87,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "7244cf91c196200ca10ff8db9e21fafb14e9e334",
+  "rendered_from": "5396791f80ff6f4536fb635e68135dc9108190c4",
   "schema": "context/v1",
   "statement": {
     "decl": "erdos_69__h2_v2__h1",
