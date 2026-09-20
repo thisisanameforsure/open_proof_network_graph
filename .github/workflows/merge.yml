@@ -1,0 +1,148 @@
+# The merge actor (F07-T25; D-4, F07-Q16, C8): "when steps 1-8 are green and step 9 is satisfied,
+# the merge happens with no person pressing a button" (D-4, since v3.11). Until this file, a person
+# pressed it: a gate-green proposal sat unmerged for half an hour while its author could do nothing
+# (the 2026-09-19 primes run), because nothing on the network merged anything.
+#
+# What it may do is decided elsewhere, and that is the design. It holds a token that does NOT
+# bypass the `main` ruleset, so GitHub itself refuses any merge whose required checks are not
+# green: the sandbox gate, and step 9 where the pinned gate asks it (a proof that settles a root
+# waits for its reviewer exactly as before). A bug here can press the button late, or not at all;
+# it cannot merge something red. It decides nothing about mathematics and reads nothing a
+# contributor wrote: no checkout, no gate code, no pull request content — only the host's own facts
+# about a pull request (its branch name, its checks, whether it is behind).
+#
+# One pull request per run, oldest first, and only branches the service opened (propose/, append/,
+# submit/): the ruleset requires an up-to-date branch, so every merge puts the others behind, and
+# the rounds are sequential whatever the tooling. A run either updates the oldest green pull
+# request's branch (the gate then re-runs on it and wakes this workflow again) or, once it is up to
+# date and green, merges it (the post-merge job then commits the products and wakes it for the
+# next). The merge names the head commit it saw, so a push in between refuses the merge rather than
+# landing unchecked.
+#
+# The token is a fine-grained one on this repository alone, contents and pull requests write, an
+# Actions secret read by the one step that acts. `GITHUB_TOKEN` cannot stand in: a merge or a branch
+# update made with it starts no workflow, so neither the post-merge job nor the re-gate would run.
+# Without the secret the workflow is a dry run: it says what it would have done and changes nothing,
+# so a missing permission never reads as a passing merge (C7).
+name: merge
+
+on:
+  workflow_run:
+    workflows: [gate]
+    types: [completed]
+  schedule:
+    - cron: "23 * * * *" # a backstop only: Actions crons are a hope, not a schedule
+  workflow_dispatch: {}
+
+permissions: {}
+
+concurrency:
+  group: merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    name: merge the oldest pull request the ruleset allows
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: read
+      checks: read
+      contents: read
+    steps:
+      - name: Pick one pull request, from the host's own facts
+        id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          cat > pick.py <<'PY'
+          """Pick at most one pull request and say what to do with it. Pure functions over the
+          host's JSON, so the network repo's tests run this file as it stands (F07-T25)."""
+          import json
+          import os
+          import subprocess
+          import sys
+
+          SERVICE_PREFIXES = ("propose/", "append/", "submit/")
+          REQUIRED = ("gate (", "step 9 (")  # the ruleset's two checks, by their jobs' prefixes
+
+
+          def candidates(pulls):
+              """Open, non-draft pull requests on branches the service opened, oldest first."""
+              out = []
+              for pr in sorted(pulls, key=lambda pr: pr["number"]):
+                  head, base = pr["head"], pr["base"]
+                  same_repo = (head.get("repo") or {}).get("full_name") == base["repo"]["full_name"]
+                  if pr.get("draft") or not same_repo or base["ref"] != "main":
+                      continue
+                  if head["ref"].startswith(SERVICE_PREFIXES):
+                      out.append((pr["number"], head["sha"]))
+              return out
+
+
+          def verdict(check_runs):
+              """green: both required checks finished, the gate succeeded and step 9 succeeded or was
+              not asked. Anything unfinished is pending; anything else is red."""
+              latest = {}
+              for run in sorted(check_runs, key=lambda r: r["id"]):
+                  latest[run["name"]] = run  # a re-run job replaces its earlier attempt
+              states = []
+              for prefix in REQUIRED:
+                  found = [r for name, r in latest.items() if name.startswith(prefix)]
+                  if not found or any(r["status"] != "completed" for r in found):
+                      return "pending"
+                  allowed = ("success",) if prefix == "gate (" else ("success", "skipped")
+                  states.append(all(r["conclusion"] in allowed for r in found))
+              return "green" if all(states) else "red"
+
+
+          def decide(pulls, checks_of, behind_of):
+              """(number, sha, action) for the oldest green candidate, or ("", "", "")."""
+              for number, sha in candidates(pulls):
+                  if verdict(checks_of(sha)) == "green":
+                      return number, sha, "update" if behind_of(sha) > 0 else "merge"
+              return "", "", ""
+
+
+          def api(path):
+              out = subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True)
+              return json.loads(out.stdout)
+
+
+          if __name__ == "__main__":
+              repo = os.environ["REPO"]
+              pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
+              number, sha, action = decide(
+                  pulls,
+                  lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
+                  lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
+              )
+              with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+                  out.write(f"number={number}\nsha={sha}\naction={action}\n")
+              print(f"merge actor: {action or 'nothing to do'} {'#' + str(number) if number else ''}")
+              sys.exit(0)
+          PY
+          python3 pick.py
+
+      - name: Act (the only step that sees the token)
+        if: steps.pick.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.OPN_GRAPH_MERGE_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ steps.pick.outputs.number }}
+          SHA: ${{ steps.pick.outputs.sha }}
+          ACTION: ${{ steps.pick.outputs.action }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::notice::dry run: would $ACTION #$NUMBER at $SHA; OPN_GRAPH_MERGE_TOKEN is not set, so nothing was changed"
+            exit 0
+          fi
+          if [ "$ACTION" = "update" ]; then
+            gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null
+            echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
+          else
+            gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
+            echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
+          fi
