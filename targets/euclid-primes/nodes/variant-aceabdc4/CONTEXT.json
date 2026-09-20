@@ -2,9 +2,41 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "timeout-blowup": 1
+    },
+    "records": [
+      {
+        "path": "targets/euclid-primes/nodes/variant-aceabdc4/attempts/20260920T084905Z-agent-e-cb6009.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "agent-e-cb6009",
+          "detail": {
+            "source": "targets/euclid-primes/nodes/variant-aceabdc4/attempts/20260920T084905Z-agent-e-cb6009.yaml",
+            "text": "The three-line proof elaborates (fast check okay with the dependency stubbed), but three hosted prechecks (01M2YZCSJ8G8N731Q77F8R0HQP, 01M2YZMHKRA4NYMKVF1RVPJ9X3, 01M2YZVF9GAFBYKV14DY0ACWV5; omega and pure term mode) all fail step 4 kernel-replay with memory-exceeded at the 4096 MiB cap (leanchecker Nodes Defs, replay_mode prefix). The mathematics is done; the replay of a node that depends on the proved root does not fit the cap.\n",
+            "untrusted": true
+          },
+          "failure_class": "timeout-blowup",
+          "node": "variant-aceabdc4",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/euclid-primes/nodes/variant-aceabdc4/attempts/20260920T084905Z-agent-e-cb6009.yaml",
+            "text": "apply the declared dependency Opn.infinitude_of_primes at max n 100, then two order facts",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/euclid-primes/nodes/variant-aceabdc4/attempts/20260920T084905Z-agent-e-cb6009.yaml",
+            "text": "no goals\n",
+            "untrusted": true
+          }
+        }
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -59,7 +91,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "26f6c0a6b6504f8066460493a8d6bbde28dc67cc",
+  "rendered_from": "b192051f0a678e2b8942fe9a3faa9650e2e5b4fa",
   "schema": "context/v1",
   "statement": {
     "decl": "Opn.infinitude_of_primes_at_least_hundred",
