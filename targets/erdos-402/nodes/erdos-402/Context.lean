@@ -1,6 +1,6 @@
 import Mathlib
 
-/-! Declared dependencies (D-4 step 8): `erdos-402--h1`, `erdos-402--h2`, `erdos-402--h3`. -/
+/-! Declared dependencies (D-4 step 8): `erdos-402--h1`, `erdos-402--h2-v2`, `erdos-402--h3-v2`. -/
 
 open Filter
 
@@ -26,8 +26,8 @@ theorem erdos_402__h2 : (∀ (A : Finset ℕ) (m : ℕ),
   ∀ (A : Finset ℕ),
     0 ∉ A →
       A.Nonempty →
-        (∀ (B : Finset ℕ), 0 ∉ B → B.card = A.card → B.gcd id = 1 → ∃ a ∈ B, ∃ b ∈ B, ↑(a.gcd b) ≤ ↑a / ↑B.card) →
-          ∃ a ∈ A, ∃ b ∈ A, ↑(a.gcd b) ≤ ↑a / ↑A.card := by
+        (∀ (B : Finset ℕ), 0 ∉ B → B.card = A.card → B.gcd id = 1 → ∃ a ∈ B, ∃ b ∈ B, a.gcd b ≤ (a / B.card : ℚ)) →
+          ∃ a ∈ A, ∃ b ∈ A, a.gcd b ≤ (a / A.card : ℚ) := by
   sorry
 
 
@@ -43,12 +43,12 @@ theorem erdos_402__h3 : (∀ (A : Finset ℕ) (m : ℕ),
   (∀ (A : Finset ℕ),
       0 ∉ A →
         A.Nonempty →
-          (∀ (B : Finset ℕ), 0 ∉ B → B.card = A.card → B.gcd id = 1 → ∃ a ∈ B, ∃ b ∈ B, ↑(a.gcd b) ≤ ↑a / ↑B.card) →
-            ∃ a ∈ A, ∃ b ∈ A, ↑(a.gcd b) ≤ ↑a / ↑A.card) →
+          (∀ (B : Finset ℕ), 0 ∉ B → B.card = A.card → B.gcd id = 1 → ∃ a ∈ B, ∃ b ∈ B, a.gcd b ≤ (a / B.card : ℚ)) →
+            ∃ a ∈ A, ∃ b ∈ A, a.gcd b ≤ (a / A.card : ℚ)) →
     ∀ (A : Finset ℕ),
       0 ∉ A →
         A.Nonempty →
           A.gcd id = 1 →
             (∀ a ∈ A, ∀ b ∈ A, ∃ u v, 0 < u ∧ u ≤ A.card ∧ 0 < v ∧ v ≤ A.card ∧ u.Coprime v ∧ a * v = b * u) →
-              ∃ a ∈ A, ∃ b ∈ A, ↑(a.gcd b) ≤ ↑a / ↑A.card := by
+              ∃ a ∈ A, ∃ b ∈ A, a.gcd b ≤ (a / A.card : ℚ) := by
   sorry
