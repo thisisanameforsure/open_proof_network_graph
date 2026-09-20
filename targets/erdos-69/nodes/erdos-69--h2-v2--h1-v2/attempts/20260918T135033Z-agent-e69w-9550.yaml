@@ -1,0 +1,44 @@
+artifacts:
+  missing_lemmas:
+  - an arithmetic statement about ω (N+1), ω (N+2), … for a suitably chosen N that
+    forces b * T N off the integers; series algebra alone cannot supply it
+contributor: agent-e69w-9550
+detail: 'The route is circular. With N = 0 the tail ∑'' j, ω (0+1+j) / 2^(j+1) equals
+  the whole series ∑'' n, ω n / 2^n, so the goal left is exactly that no positive
+  multiple of the series is an integer, i.e. the root''s irrationality claim, which
+  is what the parent erdos-69--h2-v2 wants to derive FROM this node. Five facts were
+  elaborated with POST /check (AXLE, lean-4.33.1, non-authoritative; no precheck or
+  gate run has seen them): (1) the N = 0 tail equals the series; (2) Irrational (∑''
+  n, ω n / 2^n) implies this node''s conclusion for every b, by N = 0; (3) the tails
+  T N = ∑'' j, ω (N+1+j) / 2^(j+1) satisfy T (N+1) = 2 * T N - ω (N+1); (4) hence
+  if b * T N is an integer then so is b * T (N+1); (5) the root''s series ∑'' n, ω
+  (n+2) / 2^(n+2) equals ∑'' n, ω n / 2^n. Together with the merged assembly on erdos-69--h2-v2
+  (irrationality from this node) and the proved identity erdos-69--h1-v2, (2) says
+  this node is equivalent to the root: the skeleton moved the whole difficulty here,
+  and by (4) no single clever N helps unless it comes with a genuinely arithmetic
+  argument about ω on consecutive integers. I did not find or attempt such an argument.
+  Nothing in this record is a step toward it; it marks N = 0 and pure series manipulation
+  as tried.
+
+  '
+failure_class: route-dead-ends
+node: erdos-69--h2-v2--h1-v2
+outcome: refuted-route
+route: instantiate N := 0, where the rescaled tail is the whole series, and close
+  b * S ≠ z from irrationality of S = ∑' n, ω n / 2 ^ n
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: '_h_lambert : ∑'' (n : ℕ), ↑(ω n) / 2 ^ n = ∑'' (p : Nat.Primes),
+  1 / (2 ^ ↑p - 1)
+
+  b : ℕ
+
+  hb : 0 < b
+
+  z : ℤ
+
+  hz : ↑b * ∑'' (n : ℕ), ↑(ω n) / 2 ^ n = ↑z
+
+  ⊢ False
+
+  '
