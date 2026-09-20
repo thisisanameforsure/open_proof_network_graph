@@ -3,13 +3,21 @@
 # pressed it: a gate-green proposal sat unmerged for half an hour while its author could do nothing
 # (the 2026-09-19 primes run), because nothing on the network merged anything.
 #
-# What it may do is decided elsewhere, and that is the design. It holds a token that does NOT
-# bypass the `main` ruleset, so GitHub itself refuses any merge whose required checks are not
-# green: the sandbox gate, and step 9 where the pinned gate asks it (a proof that settles a root
-# waits for its reviewer exactly as before). A bug here can press the button late, or not at all;
-# it cannot merge something red. It decides nothing about mathematics and reads nothing a
-# contributor wrote: no checkout, no gate code, no pull request content — only the host's own facts
-# about a pull request (its branch name, its checks, whether it is behind).
+# What it may merge is decided elsewhere: the required checks are read from the `main` ruleset on
+# every run, by their exact names, never written here, so this file cannot drift from what GitHub
+# enforces on everyone else. Green is every one of them finished and passed on the head commit —
+# the sandbox gate, and step 9 where the pinned gate asks it (a proof that settles a root waits for
+# its reviewer exactly as before) — and, the ruleset being strict, a branch that is up to date.
+# It decides nothing about mathematics and reads nothing a contributor wrote: no checkout, no gate
+# code, no pull request content — only the host's own facts about a pull request.
+#
+# Said plainly, because the first draft of this comment claimed more: the token is the owner's,
+# the ruleset lets the repository's admin role bypass it (that is how a 27-target re-pin is pushed),
+# and so GitHub would NOT refuse a merge this workflow got wrong. The check above is the guard on
+# the merge. The guard on the *record* is the post-merge job, which re-derives the verdict on the
+# merge commit and attests nothing that fails or lacks a review it needed; a node with no
+# attestation is never proved (F03-Q7). A defect here could land a commit that should not have
+# landed; it could not make a false statement read as proved.
 #
 # One pull request per run, oldest first, and only branches the service opened (propose/, append/,
 # submit/): the ruleset requires an up-to-date branch, so every merge puts the others behind, and
@@ -65,7 +73,20 @@ jobs:
           import sys
 
           SERVICE_PREFIXES = ("propose/", "append/", "submit/")
-          REQUIRED = ("gate (", "step 9 (")  # the ruleset's two checks, by their jobs' prefixes
+          #: The one check that may never be `skipped`: a gate that did not run checked nothing.
+          MUST_SUCCEED_PREFIX = "gate ("
+
+
+          def required_checks(rules):
+              """The exact check names the branch's ruleset requires, and whether it is strict
+              (an up-to-date branch). No such rule means nothing may be merged by this file."""
+              names, strict = [], False
+              for rule in rules:
+                  if rule.get("type") == "required_status_checks":
+                      params = rule.get("parameters") or {}
+                      names += [c["context"] for c in params.get("required_status_checks") or []]
+                      strict = strict or bool(params.get("strict_required_status_checks_policy"))
+              return sorted(set(names)), strict
 
 
           def candidates(pulls):
@@ -81,27 +102,32 @@ jobs:
               return out
 
 
-          def verdict(check_runs):
-              """green: both required checks finished, the gate succeeded and step 9 succeeded or was
-              not asked. Anything unfinished is pending; anything else is red."""
+          def verdict(check_runs, required):
+              """green: every required check finished; the gate succeeded, and the rest succeeded or
+              were not asked (GitHub counts a skipped required check as passed). Anything
+              unfinished or absent is pending; anything else is red. No required checks: red."""
+              if not required or not any(n.startswith(MUST_SUCCEED_PREFIX) for n in required):
+                  return "red"  # a ruleset that requires no gate is not one this file merges under
               latest = {}
               for run in sorted(check_runs, key=lambda r: r["id"]):
                   latest[run["name"]] = run  # a re-run job replaces its earlier attempt
-              states = []
-              for prefix in REQUIRED:
-                  found = [r for name, r in latest.items() if name.startswith(prefix)]
-                  if not found or any(r["status"] != "completed" for r in found):
+              ok = True
+              for name in required:
+                  run = latest.get(name)
+                  if run is None or run["status"] != "completed":
                       return "pending"
-                  allowed = ("success",) if prefix == "gate (" else ("success", "skipped")
-                  states.append(all(r["conclusion"] in allowed for r in found))
-              return "green" if all(states) else "red"
+                  must = name.startswith(MUST_SUCCEED_PREFIX)
+                  ok = ok and run["conclusion"] in (("success",) if must else ("success", "skipped"))
+              return "green" if ok else "red"
 
 
-          def decide(pulls, checks_of, behind_of):
+          def decide(pulls, rules, checks_of, behind_of):
               """(number, sha, action) for the oldest green candidate, or ("", "", "")."""
+              required, strict = required_checks(rules)
               for number, sha in candidates(pulls):
-                  if verdict(checks_of(sha)) == "green":
-                      return number, sha, "update" if behind_of(sha) > 0 else "merge"
+                  if verdict(checks_of(sha), required) == "green":
+                      behind = behind_of(sha) > 0
+                      return number, sha, "update" if behind and strict else "merge"
               return "", "", ""
 
 
@@ -115,6 +141,7 @@ jobs:
               pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
               number, sha, action = decide(
                   pulls,
+                  api(f"repos/{repo}/rules/branches/main"),
                   lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
                   lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
               )
