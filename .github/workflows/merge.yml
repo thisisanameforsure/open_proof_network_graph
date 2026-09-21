@@ -21,7 +21,16 @@
 #
 # One pull request per run, oldest first, and only branches the service opened (propose/, append/,
 # submit/): the ruleset requires an up-to-date branch, so every merge puts the others behind, and
-# the rounds are sequential whatever the tooling. A run either updates the oldest green pull
+# the rounds are sequential whatever the tooling.
+#
+# The queue holds (F07-T31). A pull request that is up to date and whose gate is running is next
+# in line, and nothing is merged past it: main may not move under a gate run this workflow
+# started. Without that, the pull request it had just updated read as "not green", the next green
+# one (always a fifteen-second append) was merged, and the updated one was behind again; on
+# 2026-09-21 green Mathlib pull requests waited 13 to 33 minutes behind appends that took one. And
+# a slow pull request is not updated while a post-merge job is about to commit the products: that
+# commit moves main a second time and would cost the round just started. An append waits at most
+# one gate round; a hold older than HOLD_S is ignored, so a run that never reports holds nothing. A run either updates the oldest green pull
 # request's branch (the gate then re-runs on it and wakes this workflow again) or, once it is up to
 # date and green, merges it (the post-merge job then commits the products and wakes it for the
 # next). The merge names the head commit it saw, so a push in between refuses the merge rather than
@@ -56,6 +65,7 @@ jobs:
       pull-requests: read
       checks: read
       contents: read
+      actions: read # F07-T31: whether a post-merge job is still running on main
     steps:
       - name: Pick one pull request, from the host's own facts
         id: pick
@@ -71,8 +81,15 @@ jobs:
           import os
           import subprocess
           import sys
+          from datetime import datetime, timedelta, timezone
 
           SERVICE_PREFIXES = ("propose/", "append/", "submit/")
+          #: The one kind whose gate builds no Lean: re-gating it costs seconds, so it never waits
+          #: for a post-merge job the way a building pull request does.
+          APPEND_PREFIX = "append/"
+          #: How long an up-to-date pull request whose gate has not reported holds the queue. The
+          #: gate's own cap is well under it; a run that never reports must not hold forever.
+          HOLD_S = 45 * 60
           #: The one check that may never be `skipped`: a gate that did not run checked nothing.
           MUST_SUCCEED_PREFIX = "gate ("
 
@@ -121,20 +138,53 @@ jobs:
               return "green" if ok else "red"
 
 
-          def decide(pulls, rules, checks_of, behind_of, conflicted=lambda number: False):
-              """(number, sha, action) for the oldest green candidate, or ("", "", ""). A green
-              pull request the host says cannot be merged (a conflict with main) is passed over:
-              acting on it would fail on every run and hold everything behind it, and a person
-              has to look at it either way."""
+          def gate_started(check_runs):
+              """When the newest gate check run on a commit started, or None if none has."""
+              runs = [r for r in check_runs if r["name"].startswith(MUST_SUCCEED_PREFIX)]
+              stamp = max(runs, key=lambda r: r["id"]).get("started_at") if runs else None
+              return datetime.fromisoformat(stamp.replace("Z", "+00:00")) if stamp else None
+
+
+          def decide(
+              pulls,
+              rules,
+              checks_of,
+              behind_of,
+              conflicted=lambda number: False,
+              *,
+              now=None,
+              postmerge_running=lambda: False,
+          ):
+              """(number, sha, action) for the pull request at the head of the queue, or
+              ("", "", "") when there is nothing to do and ("", "", "hold") when the queue is
+              waiting: for the gate of the pull request next in line, or for a post-merge job.
+              A green pull request the host says cannot be merged (a conflict with main) is
+              passed over: acting on it would fail on every run and hold everything behind it,
+              and a person has to look at it either way."""
               required, strict = required_checks(rules)
+              now = now or datetime.now(timezone.utc)
+              refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
               for number, sha in candidates(pulls):
-                  if verdict(checks_of(sha), required) != "green":
+                  runs = checks_of(sha)
+                  state = verdict(runs, required)
+                  if state == "pending" and strict and behind_of(sha) == 0:
+                      started = gate_started(runs)
+                      if started is None or now - started < timedelta(seconds=HOLD_S):
+                          print(f"#{number} is up to date and its gate is running: holding for it")
+                          return "", "", "hold"
+                      print(f"#{number} has been pending for over {HOLD_S} s: not held for")
+                  if state != "green":
                       continue
                   if conflicted(number):
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
                   behind = behind_of(sha) > 0
-                  return number, sha, "update" if behind and strict else "merge"
+                  if behind and strict:
+                      if not refs[number].startswith(APPEND_PREFIX) and postmerge_running():
+                          print(f"#{number} is next; a post-merge job is about to move main: holding")
+                          return "", "", "hold"
+                      return number, sha, "update"
+                  return number, sha, "merge"
               return "", "", ""
 
 
@@ -153,6 +203,15 @@ jobs:
                   lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
                   # `mergeable` is false for a conflict, null while the host is still computing
                   lambda n: api(f"repos/{repo}/pulls/{n}").get("mergeable") is False,
+                  # the gate workflow on a push to main is the post-merge job; this workflow's own
+                  # trigger is that run completing, so a hold here is always woken
+                  postmerge_running=lambda: any(
+                      run["name"] == "gate"
+                      for status in ("in_progress", "queued")
+                      for run in api(
+                          f"repos/{repo}/actions/runs?branch=main&event=push&status={status}&per_page=20"
+                      )["workflow_runs"]
+                  ),
               )
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
                   out.write(f"number={number}\nsha={sha}\naction={action}\n")
