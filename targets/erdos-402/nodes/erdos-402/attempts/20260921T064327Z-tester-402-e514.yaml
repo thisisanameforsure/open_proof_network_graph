@@ -1,0 +1,35 @@
+artifacts:
+  missing_lemmas: []
+contributor: tester-402-e514
+detail: 'The injectivity claim is false: A = {2, 4, 6}, a = 6, b = 2, b'' = 4 gives
+  6 / gcd(6,2) = 6 / gcd(6,4) = 3. Checked in Lean on the hosted fast check (the negation
+  of the claim closes by decide on this set, then omega). The theorem itself still
+  holds on this set, so only the route is dead: the quotients a / gcd(a,b) for a fixed
+  a collide, and any pigeonhole has to range over pairs, which is where the Farey
+  structure of hole h1 comes in.'
+failure_class: route-dead-ends
+node: erdos-402
+outcome: refuted-route
+route: 'pigeonhole on the largest element: with a = max A, show b ↦ a / gcd(a,b) is
+  injective on A, so some value is at least |A|'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 'A : Finset ℕ
+
+  hA : 0 ∉ A
+
+  a : ℕ
+
+  ha : a ∈ A
+
+  hmax : ∀ c ∈ A, c ≤ a
+
+  b b'' : ℕ
+
+  hb : b ∈ A
+
+  hb'' : b'' ∈ A
+
+  h : a / a.gcd b = a / a.gcd b''
+
+  ⊢ b = b'''
