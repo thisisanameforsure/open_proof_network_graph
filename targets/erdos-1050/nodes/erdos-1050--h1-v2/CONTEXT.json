@@ -1,17 +1,65 @@
 {
-  "annexes": [],
+  "annexes": [
+    {
+      "bytes": 2664,
+      "hash": "64a620c1871c74b895ed548471f33a563f6b78f76de69ee1c3852308605c5122",
+      "path": "targets/erdos-1050/nodes/erdos-1050--h1-v2/annex/64a620c1871c74b895ed548471f33a563f6b78f76de69ee1c3852308605c5122.md"
+    }
+  ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1050/nodes/erdos-1050--h1-v2/attempts/20260921T063256Z-tester-1050-2045.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "Irrational (∑' n : ℕ, (1 : ℝ) / ((q : ℝ) ^ (n + 1) + r)) for integer q ≥ 2 and rational r ≠ 0 with no vanishing denominator (Borwein 1991)"
+            ]
+          },
+          "contributor": "tester-1050-2045",
+          "detail": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2/attempts/20260921T063256Z-tester-1050-2045.yaml",
+            "text": "The reduction itself closes (fast check only, not the gate): Irrational T gives the hole's integer sequences through Real.exists_int_int_abs_mul_sub_le; the Lean is in annex 64a620c1871c74b895ed548471f33a563f6b78f76de69ee1c3852308605c5122 on this node. What remains is the irrationality of T, which is Borwein's 1991 theorem for q = 2, r = -3 in full. I found nothing in the pinned Mathlib toward it (no q-series Pade approximants), and T converges only geometrically, so the Liouville-number route …",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1050--h1-v2",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2/attempts/20260921T063256Z-tester-1050-2045.yaml",
+            "text": "reduce the approximant form to Irrational T by Dirichlet approximation, then look for the irrationality of T in the pinned Mathlib",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2/attempts/20260921T063256Z-tester-1050-2045.yaml",
+            "text": "⊢ Irrational (∑' n : ℕ, (1 : ℝ) / ((2 : ℝ) ^ (n + 3) - 3))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": "witness-missing",
   "claims": {
-    "active": [],
-    "history_count": 0
+    "active": [
+      {
+        "expires": "2026-09-21T07:28:14Z",
+        "pseudonym": "tester-1050-2045"
+      }
+    ],
+    "history_count": 1
   },
   "deps": [],
   "explainer_present": false,
@@ -42,7 +90,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "040f0558c926f8089788fd926e9032e6327d9643",
+  "rendered_from": "bfe4c734ac282c56e60f6c599e45395270c6625b",
   "schema": "context/v1",
   "statement": {
     "decl": "erdos_1050__h1",
