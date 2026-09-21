@@ -14,10 +14,44 @@
         "path": "targets/erdos-402/nodes/erdos-402/attempts/20260917T141927Z-calib-402-f480-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
-    "refuted_route_classes": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-402/nodes/erdos-402/attempts/20260921T064327Z-tester-402-e514.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "tester-402-e514",
+          "detail": {
+            "source": "targets/erdos-402/nodes/erdos-402/attempts/20260921T064327Z-tester-402-e514.yaml",
+            "text": "The injectivity claim is false: A = {2, 4, 6}, a = 6, b = 2, b' = 4 gives 6 / gcd(6,2) = 6 / gcd(6,4) = 3. Checked in Lean on the hosted fast check (the negation of the claim closes by decide on this set, then omega). The theorem itself still holds on this set, so only the route is dead: the quotients a / gcd(a,b) for a fixed a collide, and any pigeonhole has to range over pairs, which is where the Farey structure of hole h1 comes in.",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-402",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-402/nodes/erdos-402/attempts/20260921T064327Z-tester-402-e514.yaml",
+            "text": "pigeonhole on the largest element: with a = max A, show b ↦ a / gcd(a,b) is injective on A, so some value is at least |A|",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-402/nodes/erdos-402/attempts/20260921T064327Z-tester-402-e514.yaml",
+            "text": "A : Finset ℕ\nhA : 0 ∉ A\na : ℕ\nha : a ∈ A\nhmax : ∀ c ∈ A, c ≤ a\nb b' : ℕ\nhb : b ∈ A\nhb' : b' ∈ A\nh : a / a.gcd b = a / a.gcd b'\n⊢ b = b'",
+            "untrusted": true
+          }
+        }
+      }
+    ],
+    "refuted_route_classes": [
+      "direct-estimate"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -82,7 +116,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "df11859e42f4909ef332491600b15957df1c2c70",
+  "rendered_from": "530c60bdc8f428dab5ea726ea2ab2d8eb9fe9c44",
   "schema": "context/v1",
   "statement": {
     "decl": "Opn.erdos_402",
