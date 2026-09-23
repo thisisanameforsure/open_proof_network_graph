@@ -30,11 +30,22 @@
 # 2026-09-21 green Mathlib pull requests waited 13 to 33 minutes behind appends that took one. And
 # a slow pull request is not updated while a post-merge job is about to commit the products: that
 # commit moves main a second time and would cost the round just started. An append waits at most
-# one gate round; a hold older than HOLD_S is ignored, so a run that never reports holds nothing. A run either updates the oldest green pull
-# request's branch (the gate then re-runs on it and wakes this workflow again) or, once it is up to
-# date and green, merges it (the post-merge job then commits the products and wakes it for the
-# next). The merge names the head commit it saw, so a push in between refuses the merge rather than
-# landing unchecked.
+# one gate round; a hold older than HOLD_S is ignored, so a run that never reports holds nothing. A
+# run either updates the oldest green pull request's branch (the gate then re-runs on it and wakes
+# this workflow again) or, once it is up to date and green, merges it (the post-merge job's last
+# step then wakes it for the next). The merge names the head commit it saw, so a push in between
+# refuses the merge rather than landing unchecked.
+#
+# Every way a run can stop has a wake after it (F07-T32). The first draft said "a hold here is
+# always woken", and on 2026-09-23 the queue froze twice with green pull requests waiting: the host
+# reports a check done seconds to minutes after it is (#148 was read pending 19 s after its gate
+# finished), a push run `in_progress` for eight minutes after its jobs had ended, and `mergeable`
+# null while it computes (#150 was updated in that state, the update failed, and a failed run wakes
+# nothing); the concurrency group drops older pending wakes, and the cron below fired four times in
+# seventeen hours. So a hold is not the end of a run: it is decided again every SETTLE_EVERY_S until
+# it resolves or SETTLE_CAP_S passes. A post-merge job is running while one of its *jobs* is, not
+# while the host says its run is. The post-merge job dispatches this workflow when it ends, however
+# it ends; a failed run here dispatches it once more. The cron is a last resort, nothing more.
 #
 # The token is a fine-grained one on this repository alone, contents and pull requests write, an
 # Actions secret read by the one step that acts. `GITHUB_TOKEN` cannot stand in: a merge or a branch
@@ -48,7 +59,7 @@ on:
     workflows: [gate]
     types: [completed]
   schedule:
-    - cron: "23 * * * *" # a backstop only: Actions crons are a hope, not a schedule
+    - cron: "*/15 * * * *" # a last resort only: Actions crons are a hope, not a schedule
   workflow_dispatch: {}
 
 permissions: {}
@@ -61,6 +72,7 @@ jobs:
   merge:
     name: merge the oldest pull request the ruleset allows
     runs-on: ubuntu-24.04
+    timeout-minutes: 20 # above SETTLE_CAP_S, so a hold ends on its own terms
     permissions:
       pull-requests: read
       checks: read
@@ -81,6 +93,7 @@ jobs:
           import os
           import subprocess
           import sys
+          import time
           from datetime import datetime, timedelta, timezone
 
           SERVICE_PREFIXES = ("propose/", "append/", "submit/")
@@ -90,6 +103,10 @@ jobs:
           #: How long an up-to-date pull request whose gate has not reported holds the queue. The
           #: gate's own cap is well under it; a run that never reports must not hold forever.
           HOLD_S = 45 * 60
+          #: A hold is decided again this often, from fresh reads, until it resolves (F07-T32).
+          SETTLE_EVERY_S = 20
+          #: and for at most this long in one run; the job's timeout sits above it.
+          SETTLE_CAP_S = 15 * 60
           #: The one check that may never be `skipped`: a gate that did not run checked nothing.
           MUST_SUCCEED_PREFIX = "gate ("
 
@@ -160,7 +177,8 @@ jobs:
               waiting: for the gate of the pull request next in line, or for a post-merge job.
               A green pull request the host says cannot be merged (a conflict with main) is
               passed over: acting on it would fail on every run and hold everything behind it,
-              and a person has to look at it either way."""
+              and a person has to look at it either way. `conflicted` may answer None, the host
+              still computing: that is a hold, never an update (#150, F07-T32)."""
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
               refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
@@ -175,7 +193,11 @@ jobs:
                       print(f"#{number} has been pending for over {HOLD_S} s: not held for")
                   if state != "green":
                       continue
-                  if conflicted(number):
+                  conflict = conflicted(number)
+                  if conflict is None:
+                      print(f"#{number} is green; the host is still computing whether it conflicts: holding")
+                      return "", "", "hold"
+                  if conflict:
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
                   behind = behind_of(sha) > 0
@@ -188,6 +210,36 @@ jobs:
               return "", "", ""
 
 
+          def postmerge_running_from(runs, jobs_of):
+              """Whether one of these push runs of the gate on main is still to commit: one of
+              its jobs is unfinished, or it has started none. The run's own status is not asked:
+              the host reported #147's post-merge run in progress for eight minutes after its
+              jobs had ended (F07-T32)."""
+              for run in runs:
+                  jobs = jobs_of(run["id"])
+                  if not jobs or any(job["status"] != "completed" for job in jobs):
+                      return True
+              return False
+
+
+          def settle(step, sleep, *, clock=time.monotonic):
+              """Decide, and while the answer is a hold decide again from fresh reads, every
+              SETTLE_EVERY_S for at most SETTLE_CAP_S. A hold used to end the run, and nothing
+              woke it when what it held for had already happened (F07-T32)."""
+              started = clock()
+              while True:
+                  decision = step()
+                  if decision[2] != "hold" or clock() - started >= SETTLE_CAP_S:
+                      return decision
+                  sleep(SETTLE_EVERY_S)
+
+
+          def mergeability(pull):
+              """True for a conflict, False for none, None while the host computes it."""
+              mergeable = pull.get("mergeable")
+              return None if mergeable is None else mergeable is False
+
+
           def api(path):
               out = subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True)
               return json.loads(out.stdout)
@@ -195,24 +247,34 @@ jobs:
 
           if __name__ == "__main__":
               repo = os.environ["REPO"]
-              pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
-              number, sha, action = decide(
-                  pulls,
-                  api(f"repos/{repo}/rules/branches/main"),
-                  lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
-                  lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
-                  # `mergeable` is false for a conflict, null while the host is still computing
-                  lambda n: api(f"repos/{repo}/pulls/{n}").get("mergeable") is False,
-                  # the gate workflow on a push to main is the post-merge job; this workflow's own
-                  # trigger is that run completing, so a hold here is always woken
-                  postmerge_running=lambda: any(
-                      run["name"] == "gate"
+              rules = api(f"repos/{repo}/rules/branches/main")
+
+              def live_push_runs():
+                  # the gate workflow on a push to main is the post-merge job
+                  return [
+                      run
                       for status in ("in_progress", "queued")
                       for run in api(
                           f"repos/{repo}/actions/runs?branch=main&event=push&status={status}&per_page=20"
                       )["workflow_runs"]
-                  ),
-              )
+                      if run["name"] == "gate"
+                  ]
+
+              def step():
+                  # every read is fresh: a hold is decided again on what the host says now
+                  return decide(
+                      api(f"repos/{repo}/pulls?state=open&base=main&per_page=100"),
+                      rules,
+                      lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
+                      lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
+                      lambda n: mergeability(api(f"repos/{repo}/pulls/{n}")),
+                      postmerge_running=lambda: postmerge_running_from(
+                          live_push_runs(),
+                          lambda run_id: api(f"repos/{repo}/actions/runs/{run_id}/jobs")["jobs"],
+                      ),
+                  )
+
+              number, sha, action = settle(step, time.sleep)
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
                   out.write(f"number={number}\nsha={sha}\naction={action}\n")
               print(f"merge actor: {action or 'nothing to do'} {'#' + str(number) if number else ''}")
@@ -241,3 +303,25 @@ jobs:
             gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
             echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
           fi
+
+  # F07-T32: a failed run wakes nothing, so the queue froze at 17:51 on 2026-09-23 after an update
+  # of #150 failed. This job starts one more run when the acting job fails. Its own token may start
+  # this repository's workflows and do nothing else; the acting job above still only reads.
+  rewake:
+    name: wake the merge actor after a failed run
+    needs: merge
+    if: failure()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Dispatch this workflow once more
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          sleep 30 # let the host settle whatever made the act fail
+          gh workflow run merge.yml --repo "$REPO" --ref main
+          echo "dispatched the merge actor again after a failed run"
