@@ -1,5 +1,6 @@
-/-! The witness slot for a hole (D-29, F07-R6). Replace `sorry` with an instance
-satisfying this statement's hypotheses; until then the node is blocked. -/
+import Mathlib
+import Nodes.«erdos-1050--h1-v2--h1».Context
 
-theorem witness : True := by
-  sorry
+/-! Non-vacuity witness (D-4 step 7): the statement has no binders, so the expected type is `True`. -/
+
+theorem witness : True := trivial
