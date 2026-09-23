@@ -438,6 +438,7 @@ jobs:
           NEEDS_REVIEW: ${{ steps.classify.outputs.needs_review }}
           REVIEW_KIND: ${{ steps.classify.outputs.review_kind }}
           REVIEW_REFERENCE: ${{ steps.classify.outputs.review_reference }}
+          MODE: ${{ steps.classify.outputs.mode }}
         run: |
           set -euo pipefail
           reviews="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/reviews")"
@@ -465,6 +466,16 @@ jobs:
             # the target is a known result — and the attestation says which, naming nobody, even
             # if someone approved anyway. A pin that predates v3.20 never emits these (F08-Q8).
             kind="$REVIEW_KIND"; reviewer=""
+          elif [ "$MODE" = "alternate" ]; then
+            # F07-T38: an alternate is never asked (D-4 v3.13) and says why, as v3.20's words do. A
+            # pin whose classifier gives it no kind (every pin before network 0b474b9, and so every
+            # replay of an older merge, F07-T33) would otherwise pass --review-kind "" and die.
+            if grep -q '^calibration: true' "targets/$TARGET/target.yaml" 2>/dev/null; then
+              kind=calibration
+            else
+              kind=intermediate
+            fi
+            reviewer=""
           elif [ -n "$reviewer" ]; then
             kind=pr-approval
           elif [ "$NEEDS_REVIEW" != "true" ]; then
