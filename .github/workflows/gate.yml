@@ -49,6 +49,14 @@ on:
     branches: [main]
   push:
     branches: [main]
+  # F07-T33: replay the post-merge job for one merged pull request whose job was lost, from main
+  # as it now is. A job that finds main moved under it dispatches this itself; the owner may too.
+  workflow_dispatch:
+    inputs:
+      replay_pr:
+        description: "the merged pull request whose post-merge job to replay"
+        required: true
+        type: string
 
 permissions: {}
 
@@ -285,12 +293,13 @@ jobs:
 
   postmerge:
     name: postmerge (step 9 record, gate signature, attestation commit)
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     permissions:
       contents: write
       pull-requests: read
       id-token: write  # F10-R7: the olean cache upload assumes a role through OIDC (C8 item 4)
+      actions: write  # F07-T32: dispatch the merge actor when this job ends
     steps:
       - uses: actions/checkout@v7
         with:
@@ -300,16 +309,39 @@ jobs:
         id: pr
         env:
           GH_TOKEN: ${{ github.token }}
+          REPLAY_PR: ${{ inputs.replay_pr }}
         run: |
           set -euo pipefail
-          pulls="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"
-          number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
-          if [ -z "$number" ]; then
-            echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
-            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            # F07-T33: a replay. The merge commit is the pull request's, not this run's commit
+            # (main's head), and every later step reads it from the `merge` output.
+            if ! printf '%s' "$REPLAY_PR" | grep -Eq '^[0-9]+$'; then
+              echo "::error::replay_pr must be a pull request number, not '$REPLAY_PR'"; exit 1
+            fi
+            number="$REPLAY_PR"
+            pr="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}")"
+            merge="$(printf '%s' "$pr" | python3 -c "import json,sys; p=json.load(sys.stdin); print(p['merge_commit_sha'] if p.get('merged_at') else '')")"
+            if [ -z "$merge" ]; then
+              echo "::error::PR #$number is not merged; there is no post-merge job to replay"; exit 1
+            fi
+            # Idempotent: the ledger appends, so a merge that has its commit is never replayed.
+            if git log --format=%s HEAD | grep -q "^gate: #$number "; then
+              echo "postmerge: PR #$number already has its gate commit; nothing to replay"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+            author="$(printf '%s' "$pr" | python3 -c "import json,sys; print(json.load(sys.stdin)['user']['login'])")"
+            echo "postmerge: replaying PR #$number (merge $merge) on main at ${GITHUB_SHA}"
+          else
+            merge="$GITHUB_SHA"
+            pulls="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"
+            number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+            if [ -z "$number" ]; then
+              echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+            author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
           fi
-          author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
-          git diff --name-only "${GITHUB_SHA}^...${GITHUB_SHA}" > changed.txt
+          git diff --name-only "${merge}^...${merge}" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
           if [ -z "$target" ] && grep -qx 'policy.json' changed.txt; then
             # F15-R3: the policy switch merged; the products re-derive claimability under it.
@@ -326,7 +358,7 @@ jobs:
           pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
           {
             echo "run=true"; echo "number=$number"; echo "author=$author"
-            echo "target=$target"; echo "pin=$pin"
+            echo "target=$target"; echo "pin=$pin"; echo "merge=$merge"
           } >> "$GITHUB_OUTPUT"
           echo "postmerge: PR #$number by $author; target $target; pin $pin"
 
@@ -354,11 +386,12 @@ jobs:
         env:
           OPN_PR_AUTHOR: ${{ steps.pr.outputs.author }}
           PYTHONPATH: network/gate
+          MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
           uv sync --frozen --project network --quiet
           uv run --frozen --project network python -m opn_gate.cli classify \
-            --graph . --base "${GITHUB_SHA}^" --head "$GITHUB_SHA" | tee classification.json
+            --graph . --base "${MERGE}^" --head "$MERGE" | tee classification.json
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import json, pathlib
           doc = json.loads(pathlib.Path("classification.json").read_text())
@@ -454,6 +487,7 @@ jobs:
           PYTHONPATH: network/gate
           MODE: ${{ steps.classify.outputs.mode }}
           AUTHOR: ${{ steps.pr.outputs.author }}
+          MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
           approvals=()
@@ -465,7 +499,7 @@ jobs:
             partial=(--apply-partial)
           fi
           uv run --frozen --project network python -m opn_gate.cli postmerge \
-            --graph . --commit "$GITHUB_SHA" --pr "${{ steps.pr.outputs.number }}" \
+            --graph . --commit "$MERGE" --pr "${{ steps.pr.outputs.number }}" \
             --review-kind "${{ steps.review.outputs.kind }}" \
             --pr-body-file "$RUNNER_TEMP/pr-body.md" --author "$AUTHOR" \
             ${{ steps.review.outputs.reviewer && format('--reviewer {0}', steps.review.outputs.reviewer) || '' }} \
@@ -497,8 +531,9 @@ jobs:
           NEEDS_GATE: ${{ steps.classify.outputs.needs_gate }}
         run: |
           set -euo pipefail
+          # the checkout's own commit: the merge on a push, main's head on a replay (F07-T33)
           uv run --frozen --project network python -m opn_gate.cli products \
-            --graph . --commit "$GITHUB_SHA" \
+            --graph . --commit "$(git rev-parse HEAD)" \
             ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
           if [ "$NEEDS_GATE" = "true" ]; then
             verdict="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['verdict'])" \
@@ -517,10 +552,11 @@ jobs:
         if: steps.pr.outputs.run == 'true'
         env:
           PYTHONPATH: network/gate
+          MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
           uv run --frozen --project network python -m opn_gate.cli ledger \
-            --graph . --commit "$GITHUB_SHA"
+            --graph . --commit "$MERGE"
 
       # F10-R7: build every proved node's oleans from the merged tree inside the step-3 image and
       # upload them keyed by this commit, so the next pregate.sh, devcontainer and gate run fetch
@@ -538,17 +574,19 @@ jobs:
         if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
         env:
           PYTHONPATH: network/gate
+          MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
           uv run --frozen --project network python -m opn_gate.cli cache publish \
-            --graph . --commit "$GITHUB_SHA" --target "${{ steps.pr.outputs.target }}" \
+            --graph . --commit "$MERGE" --target "${{ steps.pr.outputs.target }}" \
             --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
-            || echo "::warning::the olean cache was not published for ${GITHUB_SHA}; the next run builds (C7)"
+            || echo "::warning::the olean cache was not published for ${MERGE}; the next run builds (C7)"
 
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
         env:
           OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
+          GH_TOKEN: ${{ github.token }}  # F07-T33: only to dispatch a replay if main moved
         run: |
           set -euo pipefail
           umask 077
@@ -571,12 +609,16 @@ jobs:
           mention="$(PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli stewards \
             --graph . --target "${{ steps.pr.outputs.target }}" 2>/dev/null \
             | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
-          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}${mention}"
+          replayed=""
+          [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && replayed=" (replayed)"
+          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}${replayed}${mention}"
           # F07-T29: this push happens minutes after the merge it renders, and main can move in
           # between (an owner's re-pin or guide copy; found live on #130, whose products were lost
           # to a non-fast-forward). What landed is rebased over only if it touched nothing these
-          # products derive from; otherwise the render is of a tree that no longer exists, and
-          # that is a failure said loudly, never a retry.
+          # products derive from. Otherwise the render is of a tree that no longer exists, and
+          # F07-T33: rather than ask for hands (five merges' records were lost waiting for them,
+          # #145's attestation among them), this job dispatches its own replay, which renders
+          # main as it then is; the merge actor waits for that run like any post-merge job.
           export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
           remote="git@github.com:${GITHUB_REPOSITORY}.git"
           rendered_from="$(git rev-parse HEAD~1)"
@@ -586,7 +628,10 @@ jobs:
             git fetch "$remote" main
             moved="$(git diff --name-only "$rendered_from" FETCH_HEAD -- targets attestations frontier.json info.json claims.json ledger | head -5)"
             if [ -n "$moved" ]; then
-              echo "::error::PR #${{ steps.pr.outputs.number }}: main moved under the post-merge job and touched what its products derive from ($moved); re-render by hand"; exit 1
+              rm -f "$RUNNER_TEMP/deploy_key"
+              echo "::warning::PR #${{ steps.pr.outputs.number }}: main moved under the post-merge job and touched what its products derive from ($moved); dispatching its replay"
+              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="${{ steps.pr.outputs.number }}"
+              exit 0
             fi
             echo "postmerge: main moved (attempt $attempt) without touching the products' inputs; rebasing"
             git rebase FETCH_HEAD
@@ -615,3 +660,16 @@ jobs:
             -f graph_commit="$commit" \
             && echo "site: dispatched site-deploy for $commit" \
             || echo "::warning::site-deploy was not dispatched for $commit; the schedule deploys (C7)"
+
+      # F07-T32: wake the merge actor now, however this job ended. Its own wake is this run
+      # completing, which the host reported eight minutes after #147's post-merge jobs had ended on
+      # 2026-09-23; a failed job (#145) woke nothing at all. `workflow_dispatch` is the one event
+      # this job's own token may start a run with.
+      - name: Wake the merge actor
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run merge.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            && echo "dispatched the merge actor" \
+            || echo "::warning::the merge actor was not dispatched; its gate wake and cron remain"
