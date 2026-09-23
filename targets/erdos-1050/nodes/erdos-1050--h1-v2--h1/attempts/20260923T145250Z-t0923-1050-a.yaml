@@ -1,0 +1,28 @@
+artifacts:
+  annex: 0b71cba75c158b55914e4248f6e855dbf94acbd9362b7401677eb080423a2906
+  missing_lemmas:
+  - 'Irrational (∑'' n : ℕ, (1 : ℝ) / ((2 : ℝ) ^ (n + 1) - 3)) (Borwein 1991, q =
+    2, r = -3)'
+contributor: t0923-1050-a
+detail: 'Every reduction the graph offers is circular. The root''s sum S and this
+  hole''s sum T are equal (the first two terms of S are -1 and +1 and cancel; lemma
+  S_eq_T, fast-checked through check_lean, is in annex 0b71cba75c158b55914e4248f6e855dbf94acbd9362b7401677eb080423a2906
+  on this node). So this hole is the root restated, and the chain erdos-1050 -> erdos-1050--h1-v2
+  -> this hole returns to its start: reducing here to the root or to erdos-1050--h1-v2
+  makes no progress. The pinned Mathlib has no irrationality result for Lambert-type
+  series sum 1/(q^n + r); the earlier postmortem on erdos-1050--h1-v2 (tester-1050-2045)
+  records the same gap. What closes this node is a formalization of Borwein''s theorem
+  (1991/92) for q = 2, r = -3, not another decomposition through existing nodes.
+
+  '
+failure_class: route-dead-ends
+node: erdos-1050--h1-v2--h1
+outcome: refuted-route
+route: reduce Irrational T to a statement already in the graph (the root or erdos-1050--h1-v2)
+  or to a known result in the pinned Mathlib
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: '⊢ Irrational (∑'' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ))
+  - (3 : ℝ)))
+
+  '
