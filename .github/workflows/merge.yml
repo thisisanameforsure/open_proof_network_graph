@@ -28,9 +28,11 @@
 # started. Without that, the pull request it had just updated read as "not green", the next green
 # one (always a fifteen-second append) was merged, and the updated one was behind again; on
 # 2026-09-21 green Mathlib pull requests waited 13 to 33 minutes behind appends that took one. And
-# a slow pull request is not updated while a post-merge job is about to commit the products: that
-# commit moves main a second time and would cost the round just started. An append waits at most
-# one gate round; a hold older than HOLD_S is ignored, so a run that never reports holds nothing. A
+# nothing is updated or merged while a post-merge job has not committed (F07-T33): its commit
+# moves main a second time, and a merge in between moved main under the job itself, which then
+# could not push and lost its record (#125, #132, #133, #145). An append waits at most one gate
+# round and one post-merge job; a hold older than HOLD_S is ignored, so a run that never reports
+# holds nothing. A
 # run either updates the oldest green pull request's branch (the gate then re-runs on it and wakes
 # this workflow again) or, once it is up to date and green, merges it (the post-merge job's last
 # step then wakes it for the next). The merge names the head commit it saw, so a push in between
@@ -97,9 +99,6 @@ jobs:
           from datetime import datetime, timedelta, timezone
 
           SERVICE_PREFIXES = ("propose/", "append/", "submit/")
-          #: The one kind whose gate builds no Lean: re-gating it costs seconds, so it never waits
-          #: for a post-merge job the way a building pull request does.
-          APPEND_PREFIX = "append/"
           #: How long an up-to-date pull request whose gate has not reported holds the queue. The
           #: gate's own cap is well under it; a run that never reports must not hold forever.
           HOLD_S = 45 * 60
@@ -181,7 +180,6 @@ jobs:
               still computing: that is a hold, never an update (#150, F07-T32)."""
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
-              refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
               for number, sha in candidates(pulls):
                   runs = checks_of(sha)
                   state = verdict(runs, required)
@@ -200,11 +198,15 @@ jobs:
                   if conflict:
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
-                  behind = behind_of(sha) > 0
-                  if behind and strict:
-                      if not refs[number].startswith(APPEND_PREFIX) and postmerge_running():
-                          print(f"#{number} is next; a post-merge job is about to move main: holding")
-                          return "", "", "hold"
+                  if postmerge_running():
+                      # F07-T33: nothing moves main under a post-merge job, an append included.
+                      # T31 held only a building pull request's update, and an append updated
+                      # in the window was merged fifteen seconds later while the job was still
+                      # rendering: its push was refused and its record lost (#125, #132, #133,
+                      # #145). Main moves only between jobs.
+                      print(f"#{number} is next; a post-merge job has not committed yet: holding")
+                      return "", "", "hold"
+                  if behind_of(sha) > 0 and strict:
                       return number, sha, "update"
                   return number, sha, "merge"
               return "", "", ""
@@ -250,12 +252,14 @@ jobs:
               rules = api(f"repos/{repo}/rules/branches/main")
 
               def live_push_runs():
-                  # the gate workflow on a push to main is the post-merge job
+                  # the gate workflow on main is the post-merge job: by push, or by dispatch
+                  # when it replays a merge whose job was lost (F07-T33)
                   return [
                       run
+                      for event in ("push", "workflow_dispatch")
                       for status in ("in_progress", "queued")
                       for run in api(
-                          f"repos/{repo}/actions/runs?branch=main&event=push&status={status}&per_page=20"
+                          f"repos/{repo}/actions/runs?branch=main&event={event}&status={status}&per_page=20"
                       )["workflow_runs"]
                       if run["name"] == "gate"
                   ]
