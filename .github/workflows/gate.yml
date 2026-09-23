@@ -355,10 +355,14 @@ jobs:
           if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
             echo "::error::PR #$number touched more than one target (D-2, D-3):"; cat changed.txt; exit 1
           fi
-          pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+          # F07-T33: the gate that re-derives and attests a merge is the one its own tree pinned (an
+          # attestation names that pin, and runs its image); the products, the ledger and the cache
+          # are rendered by the pin main carries now. On a push the two are the same commit.
+          pin="$(git show "$merge:targets/$target/gate-spec.json" | python3 -c "import json,sys; print(json.load(sys.stdin)['network_commit'])")"
+          render_pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
           {
             echo "run=true"; echo "number=$number"; echo "author=$author"
-            echo "target=$target"; echo "pin=$pin"; echo "merge=$merge"
+            echo "target=$target"; echo "pin=$pin"; echo "merge=$merge"; echo "render_pin=$render_pin"
           } >> "$GITHUB_OUTPUT"
           echo "postmerge: PR #$number by $author; target $target; pin $pin"
 
@@ -369,6 +373,15 @@ jobs:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pr.outputs.pin }}
           path: network
+          persist-credentials: false
+
+      - name: Check out the network commit main pins now, which renders (F07-T33)
+        if: steps.pr.outputs.run == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pr.outputs.render_pin }}
+          path: network-render
           persist-credentials: false
 
       - uses: astral-sh/setup-uv@v10.0.1
@@ -524,7 +537,7 @@ jobs:
         if: steps.pr.outputs.run == 'true'
         id: products
         env:
-          PYTHONPATH: network/gate
+          PYTHONPATH: network-render/gate
           # F05-R10: the service's claim snapshot. Unset or unreachable, the committed
           # claims.json stands and the merge proceeds (AC16) — never a block on the service.
           OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
@@ -532,7 +545,8 @@ jobs:
         run: |
           set -euo pipefail
           # the checkout's own commit: the merge on a push, main's head on a replay (F07-T33)
-          uv run --frozen --project network python -m opn_gate.cli products \
+          uv sync --frozen --project network-render --quiet
+          uv run --frozen --project network-render python -m opn_gate.cli products \
             --graph . --commit "$(git rev-parse HEAD)" \
             ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
           if [ "$NEEDS_GATE" = "true" ]; then
@@ -551,11 +565,11 @@ jobs:
       - name: Write what the merge earned to the ledger (F07-R12, F08-R13; no secret)
         if: steps.pr.outputs.run == 'true'
         env:
-          PYTHONPATH: network/gate
+          PYTHONPATH: network-render/gate
           MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
-          uv run --frozen --project network python -m opn_gate.cli ledger \
+          uv run --frozen --project network-render python -m opn_gate.cli ledger \
             --graph . --commit "$MERGE"
 
       # F10-R7: build every proved node's oleans from the merged tree inside the step-3 image and
@@ -573,11 +587,11 @@ jobs:
       - name: Publish the olean cache for this commit (F10-R7; no gate secret in this step)
         if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
         env:
-          PYTHONPATH: network/gate
+          PYTHONPATH: network-render/gate
           MERGE: ${{ steps.pr.outputs.merge }}
         run: |
           set -euo pipefail
-          uv run --frozen --project network python -m opn_gate.cli cache publish \
+          uv run --frozen --project network-render python -m opn_gate.cli cache publish \
             --graph . --commit "$MERGE" --target "${{ steps.pr.outputs.target }}" \
             --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
             || echo "::warning::the olean cache was not published for ${MERGE}; the next run builds (C7)"
@@ -606,7 +620,7 @@ jobs:
           # they hear on GitHub whenever anything merges on it. The pinned gate lists them and
           # validates every login against GitHub's grammar; a pin that predates the command answers
           # nothing and the message is exactly as before (F08-Q8's shape).
-          mention="$(PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli stewards \
+          mention="$(PYTHONPATH=network-render/gate uv run --frozen --project network-render python -m opn_gate.cli stewards \
             --graph . --target "${{ steps.pr.outputs.target }}" 2>/dev/null \
             | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
           replayed=""
