@@ -1,0 +1,103 @@
+{
+  "artifact_hash": "bbec2e7770a63c84a106f446451e1ec584346a390a5c108e2b9cf8067f6573b3",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "57cde770946c28868e37f6554f47a1820008ca0ff9a3963a2d858cb6e61aa980",
+  "graph_commit": "64f9634636742470bd617146841f8866d1a8953e",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "64f9634636742470bd617146841f8866d1a8953e",
+  "model_and_tooling": "claude-fable-5-1 Claude Code agent, MCP-first tester",
+  "network_commit": "2c3030a5b516331ed788facf51aad1e7ffbd4b19",
+  "node_id": "variant-d865c9c6",
+  "precheck_attestation": {
+    "hash": "247ac465dc5e72b80f16cc4e7d616893a15c2dfaf7114a7860c6f918feede89b",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-23T18:53:21Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBGx+O4Dcw/pqZ53rLFCxD/9vzA2YHe1UloKzwvogSce/iDAJG\n6gOm939ASRDhf6N1QOzfOZKxFKKSiX5aXOYAY=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "3221b41f78b74a03719670832c74ddd0e94b22130554feb3ff034cff8116cf53",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "A.card = 2 is a hypothesis, so the rational division is by 2.",
+              "location": "↑a / ↑A.card"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "tester-402-e514",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent, MCP-first tester",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
