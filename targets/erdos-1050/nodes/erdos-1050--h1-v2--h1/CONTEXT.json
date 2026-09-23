@@ -1,25 +1,54 @@
 {
-  "annexes": [],
+  "annexes": [
+    {
+      "bytes": 2929,
+      "hash": "0b71cba75c158b55914e4248f6e855dbf94acbd9362b7401677eb080423a2906",
+      "path": "targets/erdos-1050/nodes/erdos-1050--h1-v2--h1/annex/0b71cba75c158b55914e4248f6e855dbf94acbd9362b7401677eb080423a2906.md"
+    }
+  ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1050/nodes/erdos-1050--h1-v2--h1/attempts/20260923T144632Z-t0923-1050-c.yaml",
+        "record": {
+          "contributor": "t0923-1050-c",
+          "detail": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2--h1/attempts/20260923T144632Z-t0923-1050-c.yaml",
+            "text": "Machine-checked (network fast check /check, AXLE lean-4.33.1, okay true, 2026-09-23 14:46Z, not the gate):\nthe per-term expansion, as a `have` inside the hole's own statement, then `rw [tsum_congr geo]`\ngiving the goal above. The Lean of `geo` (sorry-free):\n  intro n\n  have h1 : (1 : ℝ) ≤ (2 : ℝ) ^ n := one_le_pow₀ (by norm_num)\n  have hN : (2 : ℝ) ^ (n + 3) = 8 * 2 ^ n := by ring\n  have hpos : (0 : ℝ) < (2 : ℝ) ^ (n + 3) := by positivity\n  have hr0 : (0 : ℝ) ≤ 3 / (2 : ℝ) ^ (n + 3) := by posit…",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "erdos-1050--h1-v2--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2--h1/attempts/20260923T144632Z-t0923-1050-c.yaml",
+            "text": "Erdős's 1948 binary-expansion route (as for the sum of 1/(2^n-1)): expand each term as a geometric (Lambert-type) series, T = sum_n sum_k 3^k / 2^((n+3)(k+1)) = sum_{m>=3} a_m 2^-m with a_m = sum over divisors d>=3 of m of 3^(m/d-1), then show the binary digits of T are not eventually periodic.",
+            "untrusted": true
+          },
+          "route_class": "generating-function",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1050/nodes/erdos-1050--h1-v2--h1/attempts/20260923T144632Z-t0923-1050-c.yaml",
+            "text": "geo : ∀ (n : ℕ), 1 / (2 ^ (n + 3) - 3) = ∑' (k : ℕ), 3 ^ k / 2 ^ ((n + 3) * (k + 1))\n⊢ Irrational (∑' (b : ℕ) (k : ℕ), 3 ^ k / 2 ^ ((b + 3) * (k + 1)))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-09-23T15:44:07Z",
-        "pseudonym": "t0923-1050-b"
-      },
-      {
-        "expires": "2026-09-23T15:45:17Z",
-        "pseudonym": "t0923-1050-a"
-      }
-    ],
+    "active": [],
     "history_count": 3
   },
   "deps": [],
@@ -51,7 +80,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "125fa85dba6a1e59cdf481d09e1727f84390b80c",
+  "rendered_from": "94bdf8ff0d312399ad66ccdabf24bf6cb3398c2d",
   "schema": "context/v1",
   "statement": {
     "decl": "erdos_1050__h1_v2__h1",
