@@ -1,0 +1,109 @@
+{
+  "artifact_hash": "44051df08b7afcb5e825f809f07cec109a0e80fa3f07787a37c078342385521c",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "ea53721ada68febbebff0fbb1135ecc270540f981361b46f368d58da6f60a70a",
+  "graph_commit": "991b03b1aeeb4e4a099737746bf0e481c65deabc",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "991b03b1aeeb4e4a099737746bf0e481c65deabc",
+  "model_and_tooling": "Claude (Anthropic) MCP client, hand-written proof, check_lean iteration",
+  "network_commit": "0b474b9f1e63c7bf16d5bf4217bf42e690ac187c",
+  "node_id": "variant-3377fd96",
+  "precheck_attestation": {
+    "hash": "3524a64ba341211a9cd95dd8022d389b337267614dd7e92b4d6d9fd5e3542b56",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-24T13:25:11Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMma2kqU19+K7AfZyzp1oSZq84AobQCDJh7DQ2jr77PmyxyFml\nIDBPszxlfwLMfsDOoM+cpc3SX/FN906j7xXgQ=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "0ffc7ce5aaa788a189ffa997f1a4545604cf8043c08146f68c75adc65efe94d9",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "alternate-submission",
+        "details": {
+          "path": "attempts/20260924T123408Z-tester-402-mcp-alternate.lean"
+        },
+        "message": "an alternate proof: attempts/20260924T123408Z-tester-402-mcp-alternate.lean (D-25); the node's Proof.lean is unchanged"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "x ∈ A is a hypothesis, so A.card ≥ 1 and the rational division is never by zero.",
+              "location": "↑a / ↑A.card"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "tester-402-mcp",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "MCP client, hand-written proof, check_lean iteration",
+    "model": "Claude (Anthropic)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
