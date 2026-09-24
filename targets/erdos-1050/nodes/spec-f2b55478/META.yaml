@@ -1,0 +1,72 @@
+schema: meta/v2
+id: spec-f2b55478
+status: speculative
+deps: []
+statement-hash: 92aaad99514f42f37a81fbe65c8b2ed89ef325ad033924a3b75a3332dbb4d318
+origin: authored
+provenance:
+  author: h0924-1050-http
+  model: Claude (Anthropic) agent session; identity found by exact rational computation
+    (Python fractions)
+  source: null
+  date: '2026-09-24'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: "(((-1) ^ j * 2 ^ (j * (j - 1) / 2) * ∏ i ∈ Finset.range j, (2 ^ (n -\
+    \ i) - 1) / (2 ^ (i + 1) - 1)) *\n    ∏ i ∈ Finset.range n, (2 ^ (2 * n - j -\
+    \ i) - 1) / (2 ^ (i + 1) - 1)) /\n  (2 ^ (m - j) - 1)"
+  justification: Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j
+    <= n < m), or a product of such, so it is nonzero; no junk value arises.
+- checker: div-zero
+  location: "((2 ^ (n * n) * ∏ i ∈ Finset.range n, (2 ^ (i + 1) - 1)) *\n    ∏ i ∈\
+    \ Finset.range n, (2 ^ (m - n - 1 - i) - 1) / (2 ^ (i + 1) - 1)) /\n  ∏ j ∈ Finset.range\
+    \ (n + 1), (2 ^ (m - j) - 1)"
+  justification: Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j
+    <= n < m), or a product of such, so it is nonzero; no junk value arises.
+- checker: div-zero
+  location: (2 ^ (2 * n - j - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j
+    <= n < m), or a product of such, so it is nonzero; no junk value arises.
+- checker: div-zero
+  location: (2 ^ (m - n - 1 - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j
+    <= n < m), or a product of such, so it is nonzero; no junk value arises.
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j
+    <= n < m), or a product of such, so it is nonzero; no junk value arises.
+- checker: nat-sub
+  location: 2 * n - j
+  justification: 'j <= n and i < n, so 2n - j - i >= 1: no truncation.'
+- checker: nat-sub
+  location: 2 * n - j - i
+  justification: 'j <= n and i < n, so 2n - j - i >= 1: no truncation.'
+- checker: nat-sub
+  location: j - 1
+  justification: Used only in j*(j-1)/2, which is 0 at j = 0 both with and without
+    truncation, as intended.
+- checker: nat-sub
+  location: m - j
+  justification: 'j <= n < m, so m - j >= 1: no truncation.'
+- checker: nat-sub
+  location: m - n
+  justification: n < m by hypothesis, so m - n >= 1 and no truncation occurs; the
+    only truncation in m-n-1-i is intended (see that finding).
+- checker: nat-sub
+  location: m - n - 1
+  justification: 'Truncation is intended: when m-n-1-i would be negative (m-n-1 <
+    n) the factor becomes 2^0 - 1 = 0, the correct value of the Gaussian binomial
+    [m-n-1 n]_2 = 0.'
+- checker: nat-sub
+  location: m - n - 1 - i
+  justification: 'Truncation is intended: when m-n-1-i would be negative (m-n-1 <
+    n) the factor becomes 2^0 - 1 = 0, the correct value of the Gaussian binomial
+    [m-n-1 n]_2 = 0.'
+- checker: nat-sub
+  location: n - i
+  justification: 'Inside the product over i < j <= n, so n - i >= 1: no truncation.'
+- checker: off-by-one-range
+  location: Finset.range (n + 1)
+  justification: 'Checked: every value in range is the intended one; exact rational
+    check for n <= 15, m <= 3n+29.'
