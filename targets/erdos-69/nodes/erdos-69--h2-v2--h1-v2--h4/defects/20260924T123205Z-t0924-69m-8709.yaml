@@ -1,0 +1,80 @@
+ancestor: erdos-69--h2-v2--h1-v2
+class: circular-decomposition
+contributor: t0924-69m-8709
+date: '2026-09-24'
+exhibit: "import Mathlib\n\nopen scoped ArithmeticFunction.omega\n\ntheorem circular_h4\
+  \ :\n    ((∑' n : ℕ, (ω n : ℝ) / 2 ^ n = ∑' p : Nat.Primes, (1 : ℝ) / (2 ^ (p :\
+  \ ℕ) - 1)) →\n    ∀ b : ℕ, 0 < b → ∃ N : ℕ, ∀ z : ℤ,\n      (b : ℝ) * ∑' j : ℕ,\
+  \ (ω (N + 1 + j) : ℝ) / 2 ^ (j + 1) ≠ (z : ℝ)) →\n    (∑' (n : ℕ), (↑((ω : ℕ → ℕ)\
+  \ n) : ℝ) / (2 : ℝ) ^ n = ∑' (p : Nat.Primes), (1 : ℝ) / ((2 : ℝ) ^ (↑p : ℕ) - (1\
+  \ : ℝ)) →\n  (∀ (N k : ℕ),\n      ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (N + (1 : ℕ) + j))\
+  \ : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n        ∑ j ∈ Finset.range k, (↑((ω : ℕ → ℕ)\
+  \ (N + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) +\n          (∑' (j : ℕ), (↑((ω\
+  \ : ℕ → ℕ) (N + k + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))) / (2 : ℝ) ^ k)\
+  \ →\n    (∀ (M : ℕ), (0 : ℝ) < ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + j)) : ℝ)\
+  \ / (2 : ℝ) ^ (j + (1 : ℕ))) →\n      (∀ (M : ℕ),\n          ∑' (j : ℕ), (↑((ω :\
+  \ ℕ → ℕ) (M + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤\n            Real.logb\
+  \ (2 : ℝ) ((↑M : ℝ) + (1 : ℝ)) + (1 : ℝ)) →\n        ∀ (b : ℕ),\n          (0 :\
+  \ ℕ) < b →\n            ∃ N k,\n              (↑((b * ∑ j ∈ Finset.range k, (ω :\
+  \ ℕ → ℕ) (N + (1 : ℕ) + j) * (2 : ℕ) ^ (k - (1 : ℕ) - j)) %\n                  \
+  \      (2 : ℕ) ^ k) :\n                    ℝ) +\n                  (↑b : ℝ) * (Real.logb\
+  \ (2 : ℝ) ((↑(N + k) : ℝ) + (1 : ℝ)) + (1 : ℝ)) <\n                (2 : ℝ) ^ k)\
+  \ := by\n  intro hanc hL hsplit hpos hbound b hb\n  obtain ⟨N, hN⟩ := hanc hL b\
+  \ hb\n  have hb' : (0 : ℝ) < b := by exact_mod_cast hb\n  -- t = b * T N is positive\
+  \ and not an integer\n  set t : ℝ := (b : ℝ) * ∑' j : ℕ, (ω (N + 1 + j) : ℝ) / 2\
+  \ ^ (j + 1) with ht\n  have ht0 : 0 < t := mul_pos hb' (hpos N)\n  set m : ℕ :=\
+  \ ⌊t⌋₊ with hm\n  have hm1 : (m : ℝ) ≤ t := Nat.floor_le ht0.le\n  have hm2 : t\
+  \ < (m : ℝ) + 1 := Nat.lt_floor_add_one t\n  have hne : (m : ℝ) ≠ t := by\n    intro\
+  \ h\n    exact hN (m : ℤ) (by rw [Int.cast_natCast]; exact h.symm)\n  have hlt :\
+  \ (m : ℝ) < t := lt_of_le_of_ne hm1 hne\n  set c : ℝ := min (t - m) ((m : ℝ) + 1\
+  \ - t) with hc\n  have hc0 : 0 < c := lt_min (by linarith) (by linarith)\n  have\
+  \ hc1 : c ≤ t - m := min_le_left _ _\n  have hc2 : c ≤ (m : ℝ) + 1 - t := min_le_right\
+  \ _ _\n  -- choose k = n + n with 2^n large\n  obtain ⟨n, hn⟩ := pow_unbounded_of_one_lt\
+  \ (2 * b * ((N : ℝ) + 2) / c) (by norm_num : (1 : ℝ) < 2)\n  refine ⟨N, n + n, ?_⟩\n\
+  \  set k := n + n with hk\n  have h2n : (0 : ℝ) < 2 ^ n := by positivity\n  have\
+  \ hn1 : ((n : ℝ) + 1) ≤ 2 ^ n := by\n    have : n + 1 ≤ 2 ^ n := Nat.lt_two_pow_self\n\
+  \    exact_mod_cast this\n  have hcn : 2 * b * ((N : ℝ) + 2) < c * 2 ^ n := by\n\
+  \    rw [div_lt_iff₀ hc0] at hn\n    linarith\n  have hlog : Real.logb 2 (((N +\
+  \ k : ℕ) : ℝ) + 1) ≤ ((N + k : ℕ) : ℝ) := by\n    have hj : (0 : ℝ) < ((N + k :\
+  \ ℕ) : ℝ) + 1 := by positivity\n    rw [Real.logb_le_iff_le_rpow (by norm_num) hj,\
+  \ Real.rpow_natCast]\n    have : N + k + 1 ≤ 2 ^ (N + k) := Nat.lt_two_pow_self\n\
+  \    exact_mod_cast this\n  have h2k : (2 : ℝ) ^ k = 2 ^ n * 2 ^ n := by rw [hk,\
+  \ pow_add]\n  have hkey : (b : ℝ) * (Real.logb 2 (((N + k : ℕ) : ℝ) + 1) + 1) <\
+  \ c * 2 ^ k := by\n    have e1 : (b : ℝ) * (Real.logb 2 (((N + k : ℕ) : ℝ) + 1)\
+  \ + 1) ≤ b * ((N : ℝ) + 2 * n + 1) := by\n      apply mul_le_mul_of_nonneg_left\
+  \ _ hb'.le\n      have hk' : (k : ℝ) = 2 * n := by rw [hk]; push_cast; ring\n  \
+  \    push_cast at hlog ⊢\n      linarith\n    have e2 : (b : ℝ) * ((N : ℝ) + 2 *\
+  \ n + 1) ≤ 2 * b * ((N : ℝ) + 2) * ((n : ℝ) + 1) := by\n      have h0 : (0 : ℝ)\
+  \ ≤ N := Nat.cast_nonneg N\n      have h1 : (0 : ℝ) ≤ n := Nat.cast_nonneg n\n \
+  \     nlinarith [mul_nonneg hb'.le (mul_nonneg h0 h1), mul_nonneg hb'.le h0, mul_nonneg\
+  \ hb'.le h1]\n    have e3 : 2 * b * ((N : ℝ) + 2) * ((n : ℝ) + 1) < c * 2 ^ n *\
+  \ 2 ^ n := by\n      have : (0 : ℝ) < (n : ℝ) + 1 := by positivity\n      calc 2\
+  \ * b * ((N : ℝ) + 2) * ((n : ℝ) + 1) < c * 2 ^ n * ((n : ℝ) + 1) :=\n         \
+  \   mul_lt_mul_of_pos_right hcn this\n        _ ≤ c * 2 ^ n * 2 ^ n := mul_le_mul_of_nonneg_left\
+  \ hn1 (by positivity)\n    rw [h2k]; linarith\n  -- the finite sum A as 2^k times\
+  \ the partial sum\n  have hA : ((∑ j ∈ Finset.range k, ω (N + 1 + j) * 2 ^ (k -\
+  \ 1 - j) : ℕ) : ℝ)\n      = 2 ^ k * ∑ j ∈ Finset.range k, (ω (N + 1 + j) : ℝ) /\
+  \ 2 ^ (j + 1) := by\n    push_cast\n    rw [Finset.mul_sum]\n    apply Finset.sum_congr\
+  \ rfl\n    intro j hj\n    rw [Finset.mem_range] at hj\n    have : (2 : ℝ) ^ k =\
+  \ 2 ^ (k - 1 - j) * 2 ^ (j + 1) := by\n      rw [← pow_add]; congr 1; omega\n  \
+  \  rw [this]\n    field_simp\n  set A : ℕ := ∑ j ∈ Finset.range k, ω (N + 1 + j)\
+  \ * 2 ^ (k - 1 - j) with hAdef\n  set δ : ℝ := (b : ℝ) * ∑' j : ℕ, (ω (N + k + 1\
+  \ + j) : ℝ) / 2 ^ (j + 1) with hδ\n  have hδ0 : 0 < δ := mul_pos hb' (by simpa [add_assoc]\
+  \ using hpos (N + k))\n  have hδ1 : δ ≤ (b : ℝ) * (Real.logb 2 (((N + k : ℕ) : ℝ)\
+  \ + 1) + 1) := by\n    apply mul_le_mul_of_nonneg_left _ hb'.le\n    have := hbound\
+  \ (N + k)\n    push_cast at this ⊢\n    exact this\n  have hsp := hsplit N k\n \
+  \ have hpk : (0 : ℝ) < 2 ^ k := by positivity\n  have hBA : ((b * A : ℕ) : ℝ) =\
+  \ 2 ^ k * t - δ := by\n    push_cast\n    rw [hA, ht, hδ, hsp]\n    field_simp\n\
+  \    ring\n  -- so 2^k m < b A < 2^k (m+1)\n  have hlo : ((2 ^ k * m : ℕ) : ℝ) <\
+  \ ((b * A : ℕ) : ℝ) := by\n    rw [hBA]; push_cast\n    nlinarith\n  have hhi :\
+  \ ((b * A : ℕ) : ℝ) < (((m + 1) * 2 ^ k : ℕ) : ℝ) := by\n    rw [hBA]; push_cast\n\
+  \    nlinarith\n  have hdiv : (b * A) / 2 ^ k = m :=\n    Nat.div_eq_of_lt_le (by\
+  \ rw [mul_comm]; exact_mod_cast hlo.le) (by exact_mod_cast hhi)\n  have hmod : (((b\
+  \ * A) % 2 ^ k : ℕ) : ℝ) = ((b * A : ℕ) : ℝ) - 2 ^ k * m := by\n    have h := Nat.mod_add_div\
+  \ (b * A) (2 ^ k)\n    rw [hdiv] at h\n    have h' : (((b * A) % 2 ^ k : ℕ) : ℝ)\
+  \ + ((2 ^ k * m : ℕ) : ℝ) = ((b * A : ℕ) : ℝ) := by\n      exact_mod_cast h\n  \
+  \  push_cast at h' ⊢\n    linarith\n  show (((b * A) % 2 ^ k : ℕ) : ℝ) + (b : ℝ)\
+  \ * (Real.logb 2 (((N + k : ℕ) : ℝ) + 1) + 1) < 2 ^ k\n  rw [hmod, hBA]\n  nlinarith\n"
+line: 9
+schema: defect-claim/v3
+stmt_ref: erdos-69--h2-v2--h1-v2--h4
