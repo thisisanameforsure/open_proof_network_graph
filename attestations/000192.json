@@ -1,0 +1,103 @@
+{
+  "artifact_hash": "78e976a0874c4d8df5b25243504a99e185588854766b8f5ef6116d8e374b6744",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "ea53721ada68febbebff0fbb1135ecc270540f981361b46f368d58da6f60a70a",
+  "graph_commit": "c7955ccab7df0472a74ca1a0c2eff930b702d5a6",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "c7955ccab7df0472a74ca1a0c2eff930b702d5a6",
+  "model_and_tooling": "claude-opus-5-5 Claude Code agent via plain HTTP (AGENTS.md walkthrough)",
+  "network_commit": "0b474b9f1e63c7bf16d5bf4217bf42e690ac187c",
+  "node_id": "variant-bc28297c",
+  "precheck_attestation": {
+    "hash": "102368596dbd3f6ce9d8bee0091e6d05c3c90e887d5d3c4b993813c2bf17cc9b",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-24T14:45:11Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQONQ3Cjs4aX1n376M0MIKGrIy0qNxzF2KBW/y2Cr/gf1FJLdJf\nhO9OxxNzoZZGbOWk+B7L7IsGfpgOAvDkSkCQw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "381db374de6485fa2c934faa88a52ee1397c2e5e31b6c42b671197d5273ac911",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "A.card = 5 is a hypothesis, so the rational division is by 5.",
+              "location": "↑a / ↑A.card"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0924-402-http",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent via plain HTTP (AGENTS.md walkthrough)",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
