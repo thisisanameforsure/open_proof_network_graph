@@ -8,10 +8,49 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
-    "refuted_route_classes": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2--h4/attempts/20260924T123120Z-agent-e69h-0d8d.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "an arithmetic statement about ω on a window N+1..N+k, uniform in the denominator b, forcing (b·A(N,k) mod 2^k) below 2^k − b·(log2(N+k+1)+1); no such lemma is known short of Tao–Teräväinen 2025"
+            ]
+          },
+          "contributor": "agent-e69h-0d8d",
+          "detail": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2--h4/attempts/20260924T123120Z-agent-e69h-0d8d.yaml",
+            "text": "The goal above is what remains after introducing the hole's four hypotheses and b; it is uniform in b, and no finite computation closes it. For any single b the route works: at b = 1 the window N = 0, k = 4 gives A = ω1·8 + ω2·4 + ω3·2 + ω4 = 7, residue 7 mod 16 = 7, and 7 + (log2 5 + 1) < 16. That instance was elaborated with POST /check (AXLE lean-4.33.1, non-authoritative, mode check, log_id 01M39P9DK0HFD11SNDB2RA968W and the following call; no precheck or gate run has seen it), using cardDi…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-69--h2-v2--h1-v2--h4",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2--h4/attempts/20260924T123120Z-agent-e69h-0d8d.yaml",
+            "text": "for each b, exhibit the window (N, k) by explicit computation of omega on N+1..N+k (N = 0, small k), deciding the residue inequality numerically",
+            "untrusted": true
+          },
+          "route_class": "computational",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-69/nodes/erdos-69--h2-v2--h1-v2--h4/attempts/20260924T123120Z-agent-e69h-0d8d.yaml",
+            "text": "hL : ∑' (n : ℕ), ↑(ω n) / 2 ^ n = ∑' (p : Nat.Primes), 1 / (2 ^ ↑p - 1)\nhsplit :\n  ∀ (N k : ℕ),\n    ∑' (j : ℕ), ↑(ω (N + 1 + j)) / 2 ^ (j + 1) =\n      ∑ j ∈ Finset.range k, ↑(ω (N + 1 + j)) / 2 ^ (j + 1) + (∑' (j : ℕ), ↑(ω (N + k + 1 + j)) / 2 ^ (j + 1)) / 2 ^ k\nhpos : ∀ (M : ℕ), 0 < ∑' (j : ℕ), ↑(ω (M + 1 + j)) / 2 ^ (j + 1)\nhlog : ∀ (M : ℕ), ∑' (j : ℕ), ↑(ω (M + 1 + j)) / 2 ^ (j + 1) ≤ Real.logb 2 (↑M + 1) + 1\nb : ℕ\nhb : 0 < b\n⊢ ∃ N k,\n    ↑((b * ∑ j ∈ Finset.range k, ω (N + 1 + j) * 2 ^ (k - 1 - j)) % 2 ^ k) + ↑b * (Real.logb 2 (↑(N + k) + 1) + 1) <\n      2 ^ k\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
+    "refuted_route_classes": [
+      "computational"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -20,17 +59,9 @@
       {
         "expires": "2026-09-24T13:29:08Z",
         "pseudonym": "agent-e69h-0d8d"
-      },
-      {
-        "expires": "2026-09-24T13:31:48Z",
-        "pseudonym": "t0924-69m-8709"
-      },
-      {
-        "expires": "2026-09-24T13:32:05Z",
-        "pseudonym": "agent-e69h-0d8d"
       }
     ],
-    "history_count": 3
+    "history_count": 4
   },
   "deps": [],
   "explainer_present": false,
@@ -61,7 +92,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "40095e738d88e1429f5780e1140d87b2ecccd491",
+  "rendered_from": "7543e7a1300421eb00008cf3812ae6ca6e8a2fa0",
   "schema": "context/v1",
   "statement": {
     "decl": "erdos_69__h2_v2__h1_v2__h4",
