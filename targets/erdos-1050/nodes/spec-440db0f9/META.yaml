@@ -1,0 +1,23 @@
+schema: meta/v2
+id: spec-440db0f9
+status: ready
+deps: []
+statement-hash: 662be0dfb8f2e188998808892b3717e2be4b68baec68bb933fe8deae7be38374
+origin: authored
+provenance:
+  author: t0927-1050-mcp
+  model: Claude Opus 5.5 via Claude Code (statement written by the model from the
+    Qc definition in erdos-1050--h1-v2--h3)
+  source: null
+  date: '2026-09-27'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1 for every i; the form is copied
+    verbatim from Qc in erdos-1050--h1-v2--h3 so the crux applies to it directly.
+- checker: nat-sub
+  location: n - i
+  justification: 'Intended and copied from Qc in h3: for i >= n the truncated exponent
+    gives the factor 2^0 - 1 = 0, matching the Gaussian binomial''s value 0 for k
+    > n.'
