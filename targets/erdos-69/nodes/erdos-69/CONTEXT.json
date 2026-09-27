@@ -9,6 +9,11 @@
       "bytes": 3659,
       "hash": "9dc42dc5475c235f8233214d00849f610a676aff83b25de5443be6d1cb0e1442",
       "path": "targets/erdos-69/nodes/erdos-69/annex/9dc42dc5475c235f8233214d00849f610a676aff83b25de5443be6d1cb0e1442.md"
+    },
+    {
+      "bytes": 4766,
+      "hash": "b32cd0b12a44da2c4b6e47f890f435e515edfb7dc0235effde98de61c9716a52",
+      "path": "targets/erdos-69/nodes/erdos-69/annex/b32cd0b12a44da2c4b6e47f890f435e515edfb7dc0235effde98de61c9716a52.md"
     }
   ],
   "attempts": {
@@ -19,16 +24,52 @@
         "path": "targets/erdos-69/nodes/erdos-69/attempts/20260917T141558Z-agent-erdos69-1b25-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-69/nodes/erdos-69/attempts/20260927T195540Z-e69-http-7c1.yaml",
+        "record": {
+          "artifacts": {
+            "annex": "b32cd0b12a44da2c4b6e47f890f435e515edfb7dc0235effde98de61c9716a52",
+            "missing_lemmas": []
+          },
+          "contributor": "e69-http-7c1",
+          "detail": {
+            "source": "targets/erdos-69/nodes/erdos-69/attempts/20260927T195540Z-e69-http-7c1.yaml",
+            "text": "The integrality step (hint) is sorry-free and returned okay on POST /check (AXLE lean-4.33.1); the Lean is in the annex b32cd0b1 on this node (graph PR 208). It was not prechecked or gated. What remains needs one window of about log2 log2 N consecutive integers whose binary-weighted omega sum avoids about log2 N residues mod 2^k, i.e. control of omega (even its parity) on consecutive integers, which neither Mathlib nor any elementary argument I found supplies. This is the b = 1 instance of the …",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-69",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-69/nodes/erdos-69/attempts/20260927T195540Z-e69-http-7c1.yaml",
+            "text": "special case first: rule out a power-of-two denominator x = a/2^m by the 2-adic congruences it forces on the tails T_N",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-69/nodes/erdos-69/attempts/20260927T195540Z-e69-http-7c1.yaml",
+            "text": "m : ℕ\na : ℤ\nhx : ∑' (n : ℕ), ↑(ω n) / 2 ^ n = ↑a / 2 ^ m\nhint : ∀ (N : ℕ), m ≤ N → ∃ z, ∑' (j : ℕ), ↑(ω (N + 1 + j)) / 2 ^ (j + 1) = ↑z\n⊢ False\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
     "active": [],
-    "history_count": 0
+    "history_count": 1
   },
   "deps": [
     {
@@ -46,10 +87,10 @@
   ],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "b4f3ffd2095548e9965aa37eb75de55d78ab1763ed2936f5c7ae77c8fe611801",
+    "hash": "51011fcedb4c150a7d7f470506aa2ef9e407cf8a24c579d3bdef6a3263b14a68",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "0b474b9f1e63c7bf16d5bf4217bf42e690ac187c",
+    "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
     "path": "targets/erdos-69/gate-spec.json"
   },
   "meta": {
@@ -81,7 +122,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "bc2e0b30cc3d5bdf595846f2104c07c950b431fc",
+  "rendered_from": "0409990150420f8c3aa1450773631f5b13895db6",
   "schema": "context/v1",
   "statement": {
     "decl": "Opn.erdos_69",
