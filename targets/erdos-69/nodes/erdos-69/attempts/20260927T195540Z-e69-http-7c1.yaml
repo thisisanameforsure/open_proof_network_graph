@@ -1,0 +1,32 @@
+artifacts:
+  annex: b32cd0b12a44da2c4b6e47f890f435e515edfb7dc0235effde98de61c9716a52
+  missing_lemmas: []
+contributor: e69-http-7c1
+detail: 'The integrality step (hint) is sorry-free and returned okay on POST /check
+  (AXLE lean-4.33.1); the Lean is in the annex b32cd0b1 on this node (graph PR 208).
+  It was not prechecked or gated. What remains needs one window of about log2 log2
+  N consecutive integers whose binary-weighted omega sum avoids about log2 N residues
+  mod 2^k, i.e. control of omega (even its parity) on consecutive integers, which
+  neither Mathlib nor any elementary argument I found supplies. This is the b = 1
+  instance of the circular hole erdos-69--h2-v2--h1-v2--h4, so the dyadic case is
+  not a cheaper entry point.
+
+  '
+failure_class: missing-library
+node: erdos-69
+outcome: blocked
+route: 'special case first: rule out a power-of-two denominator x = a/2^m by the 2-adic
+  congruences it forces on the tails T_N'
+route_class: case-split
+schema: postmortem/v1
+terminal_goal_state: 'm : ℕ
+
+  a : ℤ
+
+  hx : ∑'' (n : ℕ), ↑(ω n) / 2 ^ n = ↑a / 2 ^ m
+
+  hint : ∀ (N : ℕ), m ≤ N → ∃ z, ∑'' (j : ℕ), ↑(ω (N + 1 + j)) / 2 ^ (j + 1) = ↑z
+
+  ⊢ False
+
+  '
