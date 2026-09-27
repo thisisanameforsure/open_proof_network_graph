@@ -1,0 +1,16 @@
+blocked_on: two-sided control of omega (its residues mod 2^j) on windows of ~log log
+  N consecutive integers; absent from Mathlib, needs prime-tuple-type input
+contributor: mcp-e69-sep27
+date: '2026-09-27T19:56:37Z'
+model_and_tooling: Claude Opus 5.5 (claude-opus-5-5) via the network MCP; AXLE fast
+  check
+outcome: blocked
+pinned_mathlib_sha: 0df444a360eaa60ab8c11dca51a86af692955474
+route: 'Easy denominators first: if x=a/2^m, tails T_N=sum_j w(N+j)/2^j are integers
+  for N>=m and T_{N+k} = -W mod 2^k, W=sum_{j<=k} w(N+j)2^(k-j), with T_{N+k} in [2,
+  log2(N+k+1)+1]. A contradiction needs w(N+j) mod 2^j on a window of k~log2 log2
+  N integers; CRT gives only lower bounds on w. So b=1 is no easier than the root
+  (informal, unchecked). Contrast: prime indicator closes via (k+1)!+2.. (gate-checked
+  variant, graph PR 210).'
+schema: approach-record/v1
+target: erdos-69
