@@ -1,0 +1,168 @@
+{
+  "artifact_hash": "4b6884a484fb214bd184ff34c3f3fe0d74c82aa297e7eaf777202a454f9f8e8b",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "4148e31256513d10a0096ae4142010ad37388702",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "4148e31256513d10a0096ae4142010ad37388702",
+  "model_and_tooling": "Claude Opus 5.5 (Anthropic) plain HTTP + AXLE /check",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "spec-f2b55478",
+  "precheck_attestation": {
+    "hash": "5fce1de393b2d60c2d32704e3318bbf036653b3aafcb29eb84097f06060647af",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-27T22:04:16Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQNDRpRX6aANLMsHFG/cr/YW0DaFEx6xuUXQpCNWn8xvIt1A/Rs\nE6rQ05y0hwI+odEZo8p8+GPMe//BP5NIMu3QY=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "92aaad99514f42f37a81fbe65c8b2ed89ef325ad033924a3b75a3332dbb4d318",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j <= n < m), or a product of such, so it is nonzero; no junk value arises.",
+              "location": "(((-1) ^ j * 2 ^ (j * (j - 1) / 2) * ∏ i ∈ Finset.range j, (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)) *\n    ∏ i ∈ Finset.range n, (2 ^ (2 * n - j - i) - 1) / (2 ^ (i + 1) - 1)) /\n  (2 ^ (m - j) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j <= n < m), or a product of such, so it is nonzero; no junk value arises.",
+              "location": "((2 ^ (n * n) * ∏ i ∈ Finset.range n, (2 ^ (i + 1) - 1)) *\n    ∏ i ∈ Finset.range n, (2 ^ (m - n - 1 - i) - 1) / (2 ^ (i + 1) - 1)) /\n  ∏ j ∈ Finset.range (n + 1), (2 ^ (m - j) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j <= n < m), or a product of such, so it is nonzero; no junk value arises.",
+              "location": "(2 ^ (2 * n - j - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j <= n < m), or a product of such, so it is nonzero; no junk value arises.",
+              "location": "(2 ^ (m - n - 1 - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Every divisor is 2^k - 1 with k >= 1 (k = i+1, or k = m-j with j <= n < m), or a product of such, so it is nonzero; no junk value arises.",
+              "location": "(2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j <= n and i < n, so 2n - j - i >= 1: no truncation.",
+              "location": "2 * n - j"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j <= n and i < n, so 2n - j - i >= 1: no truncation.",
+              "location": "2 * n - j - i"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Used only in j*(j-1)/2, which is 0 at j = 0 both with and without truncation, as intended.",
+              "location": "j - 1"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j <= n < m, so m - j >= 1: no truncation.",
+              "location": "m - j"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "n < m by hypothesis, so m - n >= 1 and no truncation occurs; the only truncation in m-n-1-i is intended (see that finding).",
+              "location": "m - n"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Truncation is intended: when m-n-1-i would be negative (m-n-1 < n) the factor becomes 2^0 - 1 = 0, the correct value of the Gaussian binomial [m-n-1 n]_2 = 0.",
+              "location": "m - n - 1"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Truncation is intended: when m-n-1-i would be negative (m-n-1 < n) the factor becomes 2^0 - 1 = 0, the correct value of the Gaussian binomial [m-n-1 n]_2 = 0.",
+              "location": "m - n - 1 - i"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Inside the product over i < j <= n, so n - i >= 1: no truncation.",
+              "location": "n - i"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Checked: every value in range is the intended one; exact rational check for n <= 15, m <= 3n+29.",
+              "location": "Finset.range (n + 1)"
+            }
+          ]
+        },
+        "message": "14 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "e1050-http-0927",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "plain HTTP + AXLE /check",
+    "model": "Claude Opus 5.5 (Anthropic)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
