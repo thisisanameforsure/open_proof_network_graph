@@ -1,0 +1,22 @@
+schema: meta/v2
+id: variant-f592e3ab
+status: ready
+deps: []
+statement-hash: daa63d936808636a9a390525c85e55438ba7643a7608d136b9bd681d864e9e35
+origin: variant
+provenance:
+  author: t0929-3
+  model: Claude Opus 5.5 (claude-opus-5-5), tester agent 69-B, via the network HTTP
+    API; AXLE fast check
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑b ^ ↑p
+  justification: The divisor is b^p with b ≥ 2 by hypothesis, so it is never 0 and
+    no term takes Lean's junk value.
+- checker: off-by-one-range
+  location: 2 ≤ b
+  justification: 'Inclusive on purpose: bases b ≥ 2 are exactly those where the series
+    is a base-b expansion (b = 1 diverges to the junk value 0 of tsum, b = 0 is junk).'
