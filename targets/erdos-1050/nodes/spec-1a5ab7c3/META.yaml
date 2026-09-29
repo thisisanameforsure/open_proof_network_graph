@@ -1,0 +1,25 @@
+schema: meta/v2
+id: spec-1a5ab7c3
+status: ready
+deps: []
+statement-hash: bfd87790d29aa105a372bb0b06451e96c388a6171be5062d2b895c704cd3fec2
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 (Anthropic) via Claude Code, agent 1050-F
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(c j) / (2 ^ (k - j) - 1)
+  justification: 'Intended and matches h3: the divisor is 0 exactly at j = k, where
+    Lean''s x / 0 = 0 makes that term 0, as in the inner sum of Aq in erdos-1050--h1-v2--h3.'
+- checker: nat-sub
+  location: k - j
+  justification: j ranges over range (k + 1), so j ≤ k and k - j never truncates;
+    the same expression appears in h3's Aq.
+- checker: off-by-one-range
+  location: Finset.range (k + 1)
+  justification: The sum is over 0 ≤ j ≤ k inclusive, exactly the inner sum p_k(n)
+    of Aq in h3.
