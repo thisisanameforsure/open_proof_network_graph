@@ -1,0 +1,56 @@
+schema: meta/v2
+id: spec-1124e173
+status: ready
+deps: []
+statement-hash: 66ae4c29f2923da51aac6bc8df5b6e99a278be63024b91aedda6212ee7eeb01d
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 (Anthropic) via Claude Code, agent 1050-F
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; the divisor 2^(i+1) - 1 ≥ 1 is never 0.
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; the divisor 2^(i+1) - 1 ≥ 1 is never 0.
+- checker: div-zero
+  location: Qc n j / (2 ^ (k - j) - 1)
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; the divisor is 0 only at j = k, where h3 intends x / 0 = 0 (that
+    term is absent from p_k).
+- checker: nat-sub
+  location: 2 * n - k
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; for k ≤ n it is exact.
+- checker: nat-sub
+  location: 2 * n - k - i
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; for k ≤ n and i < n it is at least 1, exact.
+- checker: nat-sub
+  location: 2 ^ m - 1
+  justification: 'Copied from h3''s Qc (and its p_k), so that this node is the hole
+    hpint''s content; 2^m ≥ 1, so the Mersenne factor of M_n is exact (it is #253''s
+    M).'
+- checker: nat-sub
+  location: k - 1
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; at k = 0 it gives the intended exponent k(k-1)/2 = 0.
+- checker: nat-sub
+  location: k - j
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; j ≤ k on range (k + 1), exact.
+- checker: nat-sub
+  location: n - i
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; exact for i ≤ n; for k > n a zero factor gives the Gaussian binomial's
+    value 0, as h3 intends.
+- checker: off-by-one-range
+  location: Finset.range (k + 1)
+  justification: Copied from h3's Qc (and its p_k), so that this node is the hole
+    hpint's content; the inner sum is over 0 ≤ j ≤ k inclusive, exactly h3's p_k.
