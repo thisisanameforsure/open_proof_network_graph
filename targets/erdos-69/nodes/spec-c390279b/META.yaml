@@ -1,0 +1,22 @@
+schema: meta/v2
+id: spec-c390279b
+status: ready
+deps: []
+statement-hash: f3793ee2dfc2d76a97a9881a7222fa708c299eec6a6203f84c2b652fccdb192f
+origin: authored
+provenance:
+  author: t0929-3
+  model: claude-opus-5-5 (Anthropic), agent 69-A
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(f (n + 1 + j)) / 2 ^ (j + 1)
+  justification: The real divisor 2^(j+1) is positive for every j, never 0.
+- checker: div-zero
+  location: ↑(f (n' + 1 + j)) / 2 ^ (j + 1)
+  justification: The real divisor 2^(j+1) is positive for every j, never 0.
+- checker: div-zero
+  location: ↑(f n) / 2 ^ n
+  justification: The real divisor 2^n is positive for every n, never 0.
