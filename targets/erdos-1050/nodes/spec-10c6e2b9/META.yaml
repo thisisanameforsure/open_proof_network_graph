@@ -1,0 +1,25 @@
+schema: meta/v2
+id: spec-10c6e2b9
+status: ready
+deps: []
+statement-hash: 3a7d314c0a2e5f58d28cb86ed13abe9a032cdbea415454b7634a5248ed8dd037
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 (Anthropic) via Claude Code, agent 1050-F
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: nat-sub
+  location: 2 ^ (j + 1) - 3
+  justification: j ≥ 2 on Finset.Ico 2 n, so 2^(j+1) ≥ 8 > 3 and the subtraction is
+    exact; it is the factor 2^(j+1) - 3 of the annex's D_n.
+- checker: nat-sub
+  location: 2 ^ m - 1
+  justification: 2^m ≥ 1 for every m, so 2^m - 1 is exact; it is the Mersenne factor
+    of the annex's D_n.
+- checker: off-by-one-range
+  location: Finset.Ico 2 n
+  justification: 'Intended: the annex''s product runs over 2 ≤ j < n, lower end included,
+    upper end excluded.'
