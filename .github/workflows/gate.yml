@@ -312,6 +312,150 @@ jobs:
           REPLAY_PR: ${{ inputs.replay_pr }}
         run: |
           set -euo pipefail
+          # F07-T45: which merges this run records, and the gate-commit matcher, as one program the
+          # network repo's tests run as it stands (test_finding_postmerge_batch.py).
+          helper="$RUNNER_TEMP/postmerge_batch.py"
+          cat > "$helper" <<'PY'
+          """Which merges this post-merge run records (F07-T45). Pure functions over the first-parent
+          history of main, so the network repo's tests run this file as it stands; the commands at the
+          bottom read that history with git and nothing else (no network, no secret, no contributor code).
+
+          One run records every merge that has no `gate:` commit yet, not only its own: the merge actor
+          merges a batch of appends in one go, so the runs of the earlier ones find a later merge on main
+          and leave their merges to it (`later-merge`), and the run at the head records them all (`plan`)."""
+          import json
+          import re
+          import subprocess
+          import sys
+
+          APPEND_PREFIX = "append/"
+          #: How far back a run looks for the last gate commit before it records its own merge alone.
+          WALK_LIMIT = 400
+          MERGE_RE = re.compile(r"^Merge pull request #([0-9]+) from [^/\s]+/(\S+)$")
+          CREDIT_RE = re.compile(r"^gate:((?: #[0-9]+)+)(?: |$)")
+          TARGET_RE = re.compile(r"^targets/([^/]+)/")
+          SAFE_TARGET_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+          COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+
+
+          def credits(subject):
+              """As it stood: `grep "^gate: #$number "`, one number per gate commit."""
+              found = re.match(r"^gate: #([0-9]+) ", subject)
+              return [int(found.group(1))] if found else []
+
+
+          def credited(subjects, number):
+              return any(number in credits(subject) for subject in subjects)
+
+
+          def merge_of(subject, parents):
+              """(number, branch) for a pull request's merge commit, else None. Only the host writes
+              this subject on main's first-parent line; a two-parent commit is required as well."""
+              found = MERGE_RE.match(subject) if parents == 2 else None
+              return (int(found.group(1)), found.group(2)) if found else None
+
+
+          def uncredited(log):
+              """As it stood: a run records its own merge and nothing else."""
+              if log and merge_of(log[0][2], log[0][1]):
+                  number, branch = merge_of(log[0][2], log[0][1])
+                  return [(number, log[0][0], branch)]
+              return None
+
+
+          def later_merge(log):
+              """As it stood: no run leaves its merge to a later one."""
+              return False
+
+
+          def plan(merge, own, *, log, targets_of, pin_of):
+              """What this run records, as output lines. `batch=false`: its own merge alone, exactly as
+              before, and `replay` the other uncredited merges, each dispatched to a replay of its own
+              after this run commits. `batch=true`: every uncredited merge in `numbers`, in order.
+
+              A batch is appends only, each touching one target, all pinned to one gate: an append earns
+              no attestation, so the run needs one classifier and no signature. A building merge is never
+              batched (the actor never batches one; if one is here, a run was lost, and it is replayed on
+              its own). A merge the run cannot record is named in `replay`, never dropped."""
+              found = uncredited(log)
+              single = {"batch": "false", "replay": ""}
+              if not found or found[-1][:2] != (own, merge):
+                  return single
+              others = [number for number, _sha, _branch in found[:-1]]
+              if not others:
+                  return single
+              if any(not branch.startswith(APPEND_PREFIX) for _n, _s, branch in found):
+                  return {"batch": "false", "replay": " ".join(map(str, others))}
+              records, bad = [], []
+              for number, sha, _branch in found:
+                  targets = targets_of(sha)
+                  if not targets:
+                      continue  # touched no target: nothing to record, as before
+                  if len(targets) != 1 or not SAFE_TARGET_RE.match(targets[0]):
+                      bad.append(number)
+                      continue
+                  try:
+                      pin = pin_of(sha, targets[0])
+                  except (KeyError, ValueError, subprocess.CalledProcessError):
+                      bad.append(number)
+                      continue
+                  records.append((number, sha, targets[0], pin))
+              if len({record[3] for record in records}) > 1:
+                  return {"batch": "false", "replay": " ".join(map(str, others))}
+              if [record[0] for record in records] in ([own], []):
+                  return {"batch": "false", "replay": " ".join(str(n) for n in bad if n != own)}
+              targets = list(dict.fromkeys(record[2] for record in records))
+              return {
+                  "batch": "true",
+                  "numbers": " ".join(str(record[0]) for record in records),
+                  "merges": " ".join(record[1] for record in records),
+                  "targets": " ".join(targets),
+                  "target": records[-1][2],
+                  "pin": records[0][3],
+                  "replay": " ".join(map(str, bad)),
+              }
+
+
+          def git(*args):
+              return subprocess.run(["git", *args], check=True, capture_output=True, text=True).stdout
+
+
+          def first_parent_log(rev, limit=None):
+              count = [f"-n{limit}"] if limit else []
+              rows = []
+              for line in git("log", "--first-parent", *count, "--format=%H%x09%P%x09%s", rev).splitlines():
+                  sha, parents, subject = line.split("\t", 2)
+                  rows.append((sha, len(parents.split()), subject))
+              return rows
+
+
+          def targets_of(sha):
+              names = git("diff", "--name-only", f"{sha}^", sha).splitlines()
+              return sorted({found.group(1) for found in map(TARGET_RE.match, names) if found})
+
+
+          def pin_of(sha, target):
+              pin = str(json.loads(git("show", f"{sha}:targets/{target}/gate-spec.json"))["network_commit"])
+              if not COMMIT_RE.match(pin):
+                  raise ValueError(pin)
+              return pin
+
+
+          if __name__ == "__main__":
+              command, args = sys.argv[1], sys.argv[2:]
+              if command == "credited":  # credited <rev> <number>: exit 0 if a gate commit credits it
+                  subjects = [subject for _sha, _p, subject in first_parent_log(args[0])]
+                  sys.exit(0 if credited(subjects, int(args[1])) else 1)
+              if command == "later-merge":  # later-merge <from> <to>: exit 0 if a merge is in between
+                  sys.exit(0 if later_merge(first_parent_log(f"{args[0]}..{args[1]}")) else 1)
+              if command == "plan":  # plan <merge> <number>: output lines for this run
+                  log = first_parent_log(args[0], WALK_LIMIT + 1)
+                  decided = plan(args[0], int(args[1]), log=log, targets_of=targets_of, pin_of=pin_of)
+                  for key, value in decided.items():
+                      print(f"{key}={value}")
+                  sys.exit(0)
+              sys.exit(f"unknown command {command!r}")
+          PY
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             # F07-T33: a replay. The merge commit is the pull request's, not this run's commit
             # (main's head), and every later step reads it from the `merge` output.
@@ -325,7 +469,7 @@ jobs:
               echo "::error::PR #$number is not merged; there is no post-merge job to replay"; exit 1
             fi
             # Idempotent: the ledger appends, so a merge that has its commit is never replayed.
-            if git log --format=%s HEAD | grep -q "^gate: #$number "; then
+            if python3 "$helper" credited HEAD "$number"; then
               echo "postmerge: PR #$number already has its gate commit; nothing to replay"
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
