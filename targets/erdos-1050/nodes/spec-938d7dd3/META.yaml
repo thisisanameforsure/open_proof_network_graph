@@ -1,0 +1,51 @@
+schema: meta/v2
+id: spec-938d7dd3
+status: ready
+deps:
+- spec-440db0f9
+statement-hash: 778aca22bbee5f43b5f6b7f8e2f44f965f2d3e15c7dd547a17fd78ecc7056b6f
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 (Anthropic) via Claude Code, agent 1050-F
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; the divisor 2^(i+1) - 1 is at least 1 in ℚ,
+    so never 0.
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; the divisor 2^(i+1) - 1 is at least 1 in ℚ,
+    so never 0.
+- checker: div-zero
+  location: 3 / 2 ^ n
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; the divisor 2^n is positive.
+- checker: nat-sub
+  location: 2 * n - k
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; in Qx only k ≤ n occurs, where 2n - k is exact.
+- checker: nat-sub
+  location: 2 * n - k - i
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; for k ≤ n and i < n, 2n - k - i ≥ 1 is exact.
+- checker: nat-sub
+  location: k - 1
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; at k = 0 the truncation gives k(k-1)/2 = 0,
+    the intended exponent.
+- checker: nat-sub
+  location: n - i
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; for i ≤ n it is exact; for k > n a factor 2^0
+    - 1 = 0 makes the product 0, which is the Gaussian binomial's value, as intended
+    in h3.
+- checker: off-by-one-range
+  location: Finset.range (n + 1)
+  justification: Copied verbatim from the definition of `Qc`/`Qx` in erdos-1050--h1-v2--h3,
+    so that this node's `Qx` is h3's; the sum is over 0 ≤ k ≤ n inclusive.
