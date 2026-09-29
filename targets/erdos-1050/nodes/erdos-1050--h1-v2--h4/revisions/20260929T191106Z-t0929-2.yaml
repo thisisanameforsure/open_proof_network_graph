@@ -1,0 +1,51 @@
+contributor: t0929-2
+date: '2026-09-29'
+defect_class: other-with-exhibit
+evidence:
+  exhibit: "import Mathlib\n\n/-- The revised hole's hypotheses are satisfiable at\
+    \ once: its witness is three `rfl`s. -/\ntheorem witness_of_revised_hrem : ∃ (Qc\
+    \ : ℕ → ℕ → ℚ) (Qx : ℕ → ℚ) (Aq : ℕ → ℚ) (n : ℕ),\n  (Qc = fun (n k : ℕ) =>\n\
+    \      ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n          ∏\
+    \ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ))\
+    \ - (1 : ℚ))) *\n        ∏ i ∈ Finset.range n, ((2 : ℚ) ^ ((2 : ℕ) * n - k - i)\
+    \ - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) ∧\n    (Qx = fun (n : ℕ) =>\
+    \ ∑ k ∈ Finset.range (n + (1 : ℕ)), Qc n k * ((3 : ℚ) / (2 : ℚ) ^ n) ^ k) ∧\n\
+    \      (Aq = fun (n : ℕ) =>\n          ∑ k ∈ Finset.range (n + (1 : ℕ)),\n   \
+    \           (∑ j ∈ Finset.range (k + (1 : ℕ)), Qc n j / ((2 : ℚ) ^ (k - j) - (1\
+    \ : ℚ))) * ((3 : ℚ) / (2 : ℚ) ^ n) ^ k +\n            Qx n * ∑ j ∈ Finset.range\
+    \ n, (3 : ℚ) / ((2 : ℚ) ^ (j + (1 : ℕ)) - (3 : ℚ))) :=\n  ⟨_, _, _, 0, rfl, rfl,\
+    \ rfl⟩\n"
+  text: 'This hole carries a hypothesis its assembly removed, and that hypothesis
+    makes it unworkable. The parent''s partial (attempts/20260924T123718Z-h0924-1050-http-partial.lean
+    on erdos-1050--h1-v2) proves `hrem` under `clear hden`, with the comment "independent
+    of `hden`: cleared so that this hole does not carry it as a hypothesis". The gate-written
+    statement carries it anyway: its fourth hypothesis is `∀ n, ∃ d, 0 < d ∧ d^2 ≤
+    2^(3n^2) ∧ ...`, which is sibling hole erdos-1050--h1-v2--h3 (hden) verbatim,
+    and the conclusion never uses it.
+
+
+    Consequence: step 7 wants a witness of `∃ Qc Qx Aq n, hQc ∧ hQx ∧ hAq ∧ (∀ n,
+    ∃ d, ...)` (POST /check mode witness, log 01M3Q93QD0Q259FJ5B156GXBX9), and since
+    the first three conjuncts fix Qc, Qx, Aq, the witness is a complete proof of h3,
+    which is open. A witness cannot cite h3 (witness-sorry). So h4 cannot be proved
+    (409 node-blocked) until h3 is proved and then re-proved inside a witness, although
+    the remainder bound is independent of the denominator bound.
+
+
+    Requested revision: the same statement without the `hden` hypothesis (the conclusion
+    unchanged, so the statement is stronger, not weaker, and the parent''s assembly
+    still closes through it, with fewer arguments). The exhibit below is the revised
+    statement''s witness, three `rfl`s; it elaborates on POST /check (log 01M3Q96YXGTRDEFN8YK0Y5XSPF),
+    and the revised statement elaborates with sorry-present as its only lint (log
+    01M3Q96YXGGTT44HGC2H67995W).
+
+
+    Numerics (exact rationals, not a proof): both conjuncts of the conclusion hold
+    for n = 0..30; the tightest case is n = 1 (0.74 bits of slack in the squared inequality).
+    A proof of hrem would naturally use spec-f2b55478 (proved: the Padé remainder
+    coefficient identity), so if the revision can declare it as a dependency that
+    would also help.
+
+    '
+node: erdos-1050--h1-v2--h4
+schema: revision-request/v1
