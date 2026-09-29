@@ -36,7 +36,13 @@
 #              review requirement; nothing else does). A proof that used native_decide under a
 #              waiver (F02) is attested only if an approving review's body contains the line
 #              `waiver: native_decide`; the approvals' bodies are handed to the gate for that
-#              check.
+#              check. F07-T45: one run records every merge that has no gate commit yet. The merge
+#              actor merges appends in batches, so a run that finds a later merge on main leaves
+#              its merge to that push's run, and the run at the head records the batch (appends
+#              pinned to one gate) in one commit `gate: #A #B #C pass`: each merge classified on
+#              its own diff, one ledger call each in order, the products once. Anything else it
+#              finds unrecorded — a building merge, another pin, a diff the gate refuses — is
+#              replayed on its own after it commits, never dropped.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
 # Every field this file reads from the classifier is read with a default, and the pull request's
@@ -315,6 +321,15 @@ jobs:
           # F07-T45: which merges this run records, and the gate-commit matcher, as one program the
           # network repo's tests run as it stands (test_finding_postmerge_batch.py).
           helper="$RUNNER_TEMP/postmerge_batch.py"
+          replay=""
+          dispatch_replays() {  # F07-T45: merges this run cannot record, each replayed on its own
+            for n in $replay; do
+              if python3 "$helper" credited HEAD "$n"; then continue; fi
+              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="$n" \
+                && echo "postmerge: dispatched a replay of #$n" \
+                || echo "::warning::a replay of #$n was not dispatched; dispatch gate.yml with replay_pr=$n"
+            done
+          }
           cat > "$helper" <<'PY'
           """Which merges this post-merge run records (F07-T45). Pure functions over the first-parent
           history of main, so the network repo's tests run this file as it stands; the commands at the
@@ -339,9 +354,10 @@ jobs:
 
 
           def credits(subject):
-              """As it stood: `grep "^gate: #$number "`, one number per gate commit."""
-              found = re.match(r"^gate: #([0-9]+) ", subject)
-              return [int(found.group(1))] if found else []
+              """The pull requests a gate commit credits: `gate: #2 #3 pass` is [2, 3], and a number
+              inside a longer one is not credited (`gate: #23 pass` credits neither 2 nor 3)."""
+              found = CREDIT_RE.match(subject)
+              return [int(n) for n in found.group(1).split("#") if n.strip()] if found else []
 
 
           def credited(subjects, number):
@@ -356,16 +372,33 @@ jobs:
 
 
           def uncredited(log):
-              """As it stood: a run records its own merge and nothing else."""
-              if log and merge_of(log[0][2], log[0][1]):
-                  number, branch = merge_of(log[0][2], log[0][1])
-                  return [(number, log[0][0], branch)]
+              """The merges since the last gate commit that was not a replay, oldest first, as
+              (number, sha, branch), less any a replay in between already credits. `log` is
+              (sha, parents, subject) along the first-parent line, newest first. None when no such gate
+              commit is within WALK_LIMIT: the run then records its own merge alone, as before.
+
+              A replay's commit is walked past because it credits one old merge and says nothing of the
+              merges before it; any other gate commit on this line rendered a tree that held every merge
+              before it (its push is refused if main moved under it, F07-T29), so it credited them or
+              dispatched their replays."""
+              found, replayed = [], set()
+              for sha, parents, subject in log[:WALK_LIMIT]:
+                  numbers = credits(subject)
+                  if numbers:
+                      if "(replayed)" in subject:
+                          replayed.update(numbers)
+                          continue
+                      return [merge for merge in reversed(found) if merge[0] not in replayed]
+                  merge = merge_of(subject, parents)
+                  if merge:
+                      found.append((merge[0], sha, merge[1]))
               return None
 
 
           def later_merge(log):
-              """As it stood: no run leaves its merge to a later one."""
-              return False
+              """Whether a pull request merged on this stretch of main's first-parent line: its push has
+              a post-merge run of its own, and that run covers everything this one would have."""
+              return any(merge_of(subject, parents) for _sha, parents, subject in log)
 
 
           def plan(merge, own, *, log, targets_of, pin_of):
@@ -484,6 +517,40 @@ jobs:
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
             author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+            # F07-T45 (a): the merge actor merges appends in batches, so main may already hold a
+            # later merge. That merge is a push with a post-merge run of its own, which records
+            # every merge since the last gate commit, this one included (b); this run renders
+            # nothing, so it cannot race that run's push. If main has only moved by a commit that
+            # merged nothing (a bot commit, an owner's push), no later run records this merge, and
+            # this run records it as before.
+            git fetch --quiet origin main
+            if git merge-base --is-ancestor "$merge" origin/main \
+              && python3 "$helper" later-merge "$merge" origin/main; then
+              echo "postmerge: a later pull request merged on main after #$number; the post-merge run of that push records #$number with its own (F07-T45)"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+            # F07-T45 (b): every merge on main's first-parent line since the last gate commit that
+            # was not a replay. Appends pinned to one gate are recorded here together; anything
+            # else is replayed on its own after this run commits, and this merge is recorded alone.
+            python3 "$helper" plan "$merge" "$number" > "$RUNNER_TEMP/plan.txt"
+            cat "$RUNNER_TEMP/plan.txt"
+            replay="$(sed -n 's/^replay=//p' "$RUNNER_TEMP/plan.txt")"
+            if [ "$(sed -n 's/^batch=//p' "$RUNNER_TEMP/plan.txt")" = "true" ]; then
+              numbers="$(sed -n 's/^numbers=//p' "$RUNNER_TEMP/plan.txt")"
+              target="$(sed -n 's/^target=//p' "$RUNNER_TEMP/plan.txt")"
+              authors=""
+              for n in $numbers; do
+                authors="$authors $(gh api "repos/${GITHUB_REPOSITORY}/pulls/$n" --jq '.user.login')"
+              done
+              render_pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+              {
+                echo "run=true"; echo "number=$number"; echo "author=$author"; echo "merge=$merge"
+                echo "authors=${authors# }"; echo "render_pin=$render_pin"
+                grep -E '^(batch|numbers|merges|targets|target|pin|replay)=' "$RUNNER_TEMP/plan.txt"
+              } >> "$GITHUB_OUTPUT"
+              echo "postmerge: one run records #${numbers// / #}, appends merged in one batch (F07-T45)"
+              exit 0
+            fi
           fi
           git diff --name-only "${merge}^...${merge}" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
@@ -494,9 +561,11 @@ jobs:
           fi
           if [ -z "$target" ]; then
             echo "postmerge: PR #$number touched no target; nothing to record"
+            dispatch_replays
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
+            dispatch_replays
             echo "::error::PR #$number touched more than one target (D-2, D-3):"; cat changed.txt; exit 1
           fi
           # F07-T33: the gate that re-derives and attests a merge is the one its own tree pinned (an
@@ -507,6 +576,7 @@ jobs:
           {
             echo "run=true"; echo "number=$number"; echo "author=$author"
             echo "target=$target"; echo "pin=$pin"; echo "merge=$merge"; echo "render_pin=$render_pin"
+            echo "replay=$replay"  # F07-T45: dispatched once this run has committed
           } >> "$GITHUB_OUTPUT"
           echo "postmerge: PR #$number by $author; target $target; pin $pin"
 
@@ -544,12 +614,19 @@ jobs:
           OPN_PR_AUTHOR: ${{ steps.pr.outputs.author }}
           PYTHONPATH: network/gate
           MERGE: ${{ steps.pr.outputs.merge }}
+          NUMBER: ${{ steps.pr.outputs.number }}
+          BATCH: ${{ steps.pr.outputs.batch }}
+          NUMBERS: ${{ steps.pr.outputs.numbers }}
+          MERGES: ${{ steps.pr.outputs.merges }}
+          AUTHORS: ${{ steps.pr.outputs.authors }}
+          REPLAY: ${{ steps.pr.outputs.replay }}
         run: |
           set -euo pipefail
           uv sync --frozen --project network --quiet
-          uv run --frozen --project network python -m opn_gate.cli classify \
-            --graph . --base "${MERGE}^" --head "$MERGE" | tee classification.json
-          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          if [ "$BATCH" != "true" ]; then
+            uv run --frozen --project network python -m opn_gate.cli classify \
+              --graph . --base "${MERGE}^" --head "$MERGE" | tee classification.json
+            python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import json, pathlib
           doc = json.loads(pathlib.Path("classification.json").read_text())
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
@@ -558,6 +635,39 @@ jobs:
               value = doc.get(key, default)
               print(f"{key}={json.dumps(value) if isinstance(value, bool) else (value or '')}")
           PY
+            { echo "numbers=$NUMBER"; echo "merges=$MERGE"; echo "replay=$REPLAY"; } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # F07-T45: a batch of appends, each merge classified on its own diff against its first
+          # parent with the pinned gate, exactly as a single merge is. One the gate refuses, or one
+          # that builds after all, is left out of the batch and replayed on its own, where it fails
+          # visibly (C7) — never recorded here, and never allowed to block the rest.
+          read -r -a numbers <<< "$NUMBERS"
+          read -r -a merges <<< "$MERGES"
+          read -r -a authors <<< "$AUTHORS"
+          if [ "${#numbers[@]}" -ne "${#merges[@]}" ] || [ "${#numbers[@]}" -ne "${#authors[@]}" ]; then
+            echo "::error::a batch of ${#numbers[@]} numbers, ${#merges[@]} merges, ${#authors[@]} authors"; exit 1
+          fi
+          kept=(); kept_merges=(); replay="$REPLAY"
+          for i in "${!numbers[@]}"; do
+            n="${numbers[$i]}"; m="${merges[$i]}"
+            out="$RUNNER_TEMP/classification-$n.json"
+            if OPN_PR_AUTHOR="${authors[$i]}" uv run --frozen --project network python -m opn_gate.cli classify \
+                --graph . --base "${m}^" --head "$m" > "$out" \
+              && python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); sys.exit(1 if d.get("needs_gate") or d.get("needs_review") else 0)' "$out"; then
+              kept+=("$n"); kept_merges+=("$m")
+            else
+              cat "$out" || true
+              echo "::warning::PR #$n: the pinned gate refused its merged diff, or it needs a gate run or a review; left out of this batch and replayed on its own"
+              replay="$replay $n"
+            fi
+          done
+          {
+            echo "mode=append"; echo "node="; echo "needs_gate=false"; echo "needs_review=false"
+            echo "needs_admission=false"; echo "admit="; echo "review_kind="; echo "review_reference="
+            echo "numbers=${kept[*]:-}"; echo "merges=${kept_merges[*]:-}"; echo "replay=${replay# }"
+          } >> "$GITHUB_OUTPUT"
+          echo "postmerge: the batch records #${kept[*]:-}; replayed on their own:${replay:- none}"
 
       # D-4 v3.11 (F07-T17, Mike 2026-09-14): step 9 is a property of the statement. A root certified
       # at screened-and-signed or above, or inherited from a D-10 registry with provenance recorded,
@@ -721,11 +831,14 @@ jobs:
         if: steps.pr.outputs.run == 'true'
         env:
           PYTHONPATH: network-render/gate
-          MERGE: ${{ steps.pr.outputs.merge }}
+          MERGES: ${{ steps.classify.outputs.merges }}
         run: |
           set -euo pipefail
-          uv run --frozen --project network-render python -m opn_gate.cli ledger \
-            --graph . --commit "$MERGE"
+          # F07-T45: every merge this run records, oldest first (one, unless a batch of appends)
+          for merge in $MERGES; do
+            uv run --frozen --project network-render python -m opn_gate.cli ledger \
+              --graph . --commit "$merge"
+          done
 
       # F10-R7: build every proved node's oleans from the merged tree inside the step-3 image and
       # upload them keyed by this commit, so the next pregate.sh, devcontainer and gate run fetch
@@ -744,22 +857,43 @@ jobs:
         env:
           PYTHONPATH: network-render/gate
           MERGE: ${{ steps.pr.outputs.merge }}
+          TARGETS: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
         run: |
           set -euo pipefail
-          uv run --frozen --project network-render python -m opn_gate.cli cache publish \
-            --graph . --commit "$MERGE" --target "${{ steps.pr.outputs.target }}" \
-            --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
-            || echo "::warning::the olean cache was not published for ${MERGE}; the next run builds (C7)"
+          for target in $TARGETS; do  # F07-T45: a batch may touch several targets
+            uv run --frozen --project network-render python -m opn_gate.cli cache publish \
+              --graph . --commit "$MERGE" --target "$target" \
+              --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
+              || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
+          done
 
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
         env:
           OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
           GH_TOKEN: ${{ github.token }}  # F07-T33: only to dispatch a replay if main moved
+          # F07-T45: the merges this commit records (one, unless a batch of appends), and the ones
+          # this run could not, each replayed on its own once this run is done
+          NUMBERS: ${{ steps.classify.outputs.numbers }}
+          REPLAY: ${{ steps.classify.outputs.replay }}
+          TARGETS: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
         run: |
           set -euo pipefail
           umask 077
           trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
+          helper="$RUNNER_TEMP/postmerge_batch.py"  # written by the first step (F07-T45)
+          replay_owed() {  # replay_owed <rev> "<numbers>": each not yet credited on rev, replayed
+            for n in $2; do
+              if python3 "$helper" credited "$1" "$n"; then continue; fi
+              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="$n" \
+                && echo "postmerge: dispatched a replay of #$n" \
+                || echo "::warning::a replay of #$n was not dispatched; dispatch gate.yml with replay_pr=$n"
+            done
+          }
+          if [ -z "$NUMBERS" ]; then
+            echo "postmerge: nothing in this batch could be recorded here"
+            rm -f "$RUNNER_TEMP/deploy_key"; replay_owed HEAD "$REPLAY"; exit 0
+          fi
           printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
           git config user.name "opn-gate"
           git config user.email "gate@openproof.network"
@@ -768,19 +902,25 @@ jobs:
           [ -d ledger ] && git add ledger/
           [ -f THIRD_PARTY_NOTICES.md ] && git add THIRD_PARTY_NOTICES.md  # F14-R12: a merge product
           if git diff --cached --quiet; then
-            echo "postmerge: PR #${{ steps.pr.outputs.number }} changed no product; nothing to commit"
-            rm -f "$RUNNER_TEMP/deploy_key"; exit 0
+            echo "postmerge: PR #${NUMBERS// / #} changed no product; nothing to commit"
+            rm -f "$RUNNER_TEMP/deploy_key"; replay_owed HEAD "$REPLAY"; exit 0
           fi
           # F15-R12 (D-32 v3.17): mention each active steward of the target in the bot commit, so
           # they hear on GitHub whenever anything merges on it. The pinned gate lists them and
           # validates every login against GitHub's grammar; a pin that predates the command answers
-          # nothing and the message is exactly as before (F08-Q8's shape).
-          mention="$(PYTHONPATH=network-render/gate uv run --frozen --project network-render python -m opn_gate.cli stewards \
-            --graph . --target "${{ steps.pr.outputs.target }}" 2>/dev/null \
-            | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
+          # nothing and the message is exactly as before (F08-Q8's shape). A batch mentions the
+          # stewards of every target it touched (F07-T45).
+          mention=""
+          for target in $TARGETS; do
+            said="$(PYTHONPATH=network-render/gate uv run --frozen --project network-render python -m opn_gate.cli stewards \
+              --graph . --target "$target" 2>/dev/null \
+              | python3 -c 'import json,sys; print(json.load(sys.stdin).get("mention", ""))' 2>/dev/null || true)"
+            case "$mention" in *"$said"*) ;; *) mention="$mention$said" ;; esac
+          done
           replayed=""
           [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && replayed=" (replayed)"
-          git commit -m "gate: #${{ steps.pr.outputs.number }} ${{ steps.products.outputs.verdict }}${replayed}${mention}"
+          credits="$(printf '#%s ' $NUMBERS)"; credits="${credits% }"  # F07-T45: `#A #B #C`
+          git commit -m "gate: ${credits} ${{ steps.products.outputs.verdict }}${replayed}${mention}"
           # F07-T29: this push happens minutes after the merge it renders, and main can move in
           # between (an owner's re-pin or guide copy; found live on #130, whose products were lost
           # to a non-fast-forward). What landed is rebased over only if it touched nothing these
@@ -788,6 +928,9 @@ jobs:
           # F07-T33: rather than ask for hands (five merges' records were lost waiting for them,
           # #145's attestation among them), this job dispatches its own replay, which renders
           # main as it then is; the merge actor waits for that run like any post-merge job.
+          # F07-T45: unless what moved main credits these merges already, or is a later merge:
+          # that push's post-merge run records every merge since the last gate commit, and this
+          # one's commit never landed, so these are among them. A replay is never left to it.
           export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
           remote="git@github.com:${GITHUB_REPOSITORY}.git"
           rendered_from="$(git rev-parse HEAD~1)"
@@ -798,16 +941,29 @@ jobs:
             moved="$(git diff --name-only "$rendered_from" FETCH_HEAD -- targets attestations frontier.json info.json claims.json ledger | head -5)"
             if [ -n "$moved" ]; then
               rm -f "$RUNNER_TEMP/deploy_key"
-              echo "::warning::PR #${{ steps.pr.outputs.number }}: main moved under the post-merge job and touched what its products derive from ($moved); dispatching its replay"
-              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="${{ steps.pr.outputs.number }}"
+              owed=""
+              for n in $NUMBERS; do
+                python3 "$helper" credited FETCH_HEAD "$n" || owed="$owed $n"
+              done
+              if [ -z "$owed" ]; then
+                echo "postmerge: main moved under this job, and a gate commit there records #${NUMBERS// / #} already"
+                replay_owed FETCH_HEAD "$REPLAY"
+              elif [ "$GITHUB_EVENT_NAME" = "push" ] \
+                && python3 "$helper" later-merge "$rendered_from" FETCH_HEAD; then
+                echo "::notice::main moved under this job by a later merge; the post-merge run of that push records${owed// / #} with its own (F07-T45)"
+              else
+                echo "::warning::PR$owed: main moved under the post-merge job and touched what its products derive from ($moved); dispatching replays"
+                replay_owed FETCH_HEAD "$owed $REPLAY"
+              fi
               exit 0
             fi
             echo "postmerge: main moved (attempt $attempt) without touching the products' inputs; rebasing"
             git rebase FETCH_HEAD
           done
           if [ -z "$pushed" ]; then
-            echo "::error::PR #${{ steps.pr.outputs.number }}: the products commit could not be pushed after three attempts"; exit 1
+            echo "::error::PR #${NUMBERS// / #}: the products commit could not be pushed after three attempts"; exit 1
           fi
+          replay_owed HEAD "$REPLAY"
 
       # F04-R12 (F04-Q10): ask the network repo's site-deploy to render what main now holds, so a
       # merge reaches the site in seconds instead of on GitHub's best-effort schedule. Skipped for
