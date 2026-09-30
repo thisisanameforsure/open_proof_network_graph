@@ -1,0 +1,103 @@
+{
+  "artifact_hash": "aab87793a8c0f7e89166a9002ad1d9ac77e846b4ec093325f68764d74a4898dc",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "51011fcedb4c150a7d7f470506aa2ef9e407cf8a24c579d3bdef6a3263b14a68",
+  "graph_commit": "d69d9751de5a067dd4c1fca77c76c1708b31fdf4",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "d69d9751de5a067dd4c1fca77c76c1708b31fdf4",
+  "model_and_tooling": "claude-opus-5-5 Claude Code agent 69-P1 (wave 2 tester), POST /check + /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "variant-14c6c771",
+  "precheck_attestation": {
+    "hash": "8cdfd59abb900e130dc41fd1ba73c671e49872f3e51f42c63e1e396e8b095129",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T12:02:22Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQL1UAhRk7mR2MTtBBiTN1FaFwaEHSJOX7lACuZ1Yh7nIRN9lYG\nSUPqwovTHmYjlSt9xFP6puMW1XnjCSIRSTFgI=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "becb1dbdb320191b8073cf9ef213f2eeca4089e017311e963cb5133d3edeae59",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "off-by-one-range",
+              "justification": "Inclusive on purpose: m = 0 must be excluded, since ω n = 0 only for n = 0 and n = 1 and that level set's number is 3/2, rational; every m ≥ 1 is claimed.",
+              "location": "1 ≤ m"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-3",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 69-P1 (wave 2 tester), POST /check + /precheck",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
