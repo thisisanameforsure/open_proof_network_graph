@@ -1,0 +1,26 @@
+schema: meta/v2
+id: spec-9f8cb4ea
+status: speculative
+deps: []
+statement-hash: 2e350ae9102ad16fe67d7dd4b7b1afd2a17673d1cab2a17c8fd29c16b31a5afe
+origin: authored
+provenance:
+  author: t0929-3
+  model: claude-opus-5-5 (Anthropic), agent 69-A
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 2 ^ (m % p) / (2 ^ p - 1)
+  justification: p ranges over the prime factors of a, so p ≥ 2 and the real divisor
+    2^p − 1 is at least 3, never 0.
+- checker: div-zero
+  location: m % p
+  justification: p ranges over the prime factors of a, so p ≥ 2, never 0.
+- checker: div-zero
+  location: ↑(ω (a * (m + (k + 1)))) / 2 ^ (k + 1)
+  justification: The real divisor 2^(k+1) is positive for every k, never 0.
+- checker: div-zero
+  location: ↑(ω (m + (k + 1))) / 2 ^ (k + 1)
+  justification: The real divisor 2^(k+1) is positive for every k, never 0.
