@@ -225,6 +225,8 @@ jobs:
               *,
               now=None,
               postmerge_running=lambda: False,
+              branch_head_of=lambda ref: None,
+              stuck=None,
           ):
               """(number, sha, action) for the pull request at the head of the queue, or
               ("", "", "") when there is nothing to do and ("", "", "hold") when the queue is
@@ -368,6 +370,7 @@ jobs:
           NUMBER: ${{ steps.pick.outputs.number }}
           SHA: ${{ steps.pick.outputs.sha }}
           ACTION: ${{ steps.pick.outputs.action }}
+          STUCK: ${{ steps.pick.outputs.stuck }}
         run: |
           set -euo pipefail
           if [ -z "${GH_TOKEN:-}" ]; then
