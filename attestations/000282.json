@@ -1,0 +1,113 @@
+{
+  "artifact_hash": "fb2d53c7f931a2c0562e9e3cedd767b60e91434c5d64db9f42da26e66ad6d62a",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "23ebf32068e0851f33ac01b5d766d0abe0609138",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "23ebf32068e0851f33ac01b5d766d0abe0609138",
+  "model_and_tooling": "Claude Opus 5.5 (Anthropic) Claude Code agent 1050-F via the MCP server; iterated with check_lean",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "spec-1a5ab7c3",
+  "precheck_attestation": {
+    "hash": "ff12f760c54358206056f138a53a44342c3ae5432cb90168f9b0c5ae0d25967e",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T01:26:28Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGF2BfC9a7n/FO/Tc5O6kXEDau8U213kF+oaY8y1S6Z6dA1LrX\nlJwiUKSgvFoXrxsL4ZniQwLT0GC4P34KgoCgg=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "bfd87790d29aa105a372bb0b06451e96c388a6171be5062d2b895c704cd3fec2",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Intended and matches h3: the divisor is 0 exactly at j = k, where Lean's x / 0 = 0 makes that term 0, as in the inner sum of Aq in erdos-1050--h1-v2--h3.",
+              "location": "↑(c j) / (2 ^ (k - j) - 1)"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j ranges over range (k + 1), so j ≤ k and k - j never truncates; the same expression appears in h3's Aq.",
+              "location": "k - j"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "The sum is over 0 ≤ j ≤ k inclusive, exactly the inner sum p_k(n) of Aq in h3.",
+              "location": "Finset.range (k + 1)"
+            }
+          ]
+        },
+        "message": "3 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-2",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 1050-F via the MCP server; iterated with check_lean",
+    "model": "Claude Opus 5.5 (Anthropic)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
