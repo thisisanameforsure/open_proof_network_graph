@@ -1,0 +1,108 @@
+{
+  "artifact_hash": "23537c88ca6c31f68159183b8774a710d22c5c72a8381d71e5dfdca4faddfc95",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "51011fcedb4c150a7d7f470506aa2ef9e407cf8a24c579d3bdef6a3263b14a68",
+  "graph_commit": "dc94c2f71b52a75daaa5c4e97f4f2fb24b5c560e",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "dc94c2f71b52a75daaa5c4e97f4f2fb24b5c560e",
+  "model_and_tooling": "Claude Opus 5.5 (claude-opus-5-5) tester agent 69-B, network HTTP API, AXLE fast check",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "variant-f592e3ab",
+  "precheck_attestation": {
+    "hash": "f68585baba01f5aa140797ff1de46678680948ced80c4f34ad125f0efb5aa4cd",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T03:21:25Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQPozozYrCT1k5WIeM2cy5pt9HHfUuC/2au9uz0nzM5rSK0Dzi+\nCfuGMSKLTwLOpCst2Hmzba+kgKzMC+RHorcQk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "daa63d936808636a9a390525c85e55438ba7643a7608d136b9bd681d864e9e35",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is b^p with b ≥ 2 by hypothesis, so it is never 0 and no term takes Lean's junk value.",
+              "location": "1 / ↑b ^ ↑p"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Inclusive on purpose: bases b ≥ 2 are exactly those where the series is a base-b expansion (b = 1 diverges to the junk value 0 of tsum, b = 0 is junk).",
+              "location": "2 ≤ b"
+            }
+          ]
+        },
+        "message": "2 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-3",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "tester agent 69-B, network HTTP API, AXLE fast check",
+    "model": "Claude Opus 5.5 (claude-opus-5-5)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
