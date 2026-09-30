@@ -1,0 +1,103 @@
+{
+  "artifact_hash": "14d0aa6c9dba52efc6ebc9022087358d9a8e839b19d283be03043c4dc1f55557",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "51011fcedb4c150a7d7f470506aa2ef9e407cf8a24c579d3bdef6a3263b14a68",
+  "graph_commit": "fee48729440a019d2f6979c396f8ba479b1356a5",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "fee48729440a019d2f6979c396f8ba479b1356a5",
+  "model_and_tooling": "claude-opus-5-5 Claude Code agent 69-W3-1 (wave 3 tester), POST /check + /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "variant-3a1bcb9a",
+  "precheck_attestation": {
+    "hash": "4d0dfdcd4fe7742cc03c20d55ade4a23ad90133da280786501abd3f08a8207ef",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T13:06:07Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQDU3LoiKKK1tBMcijHSrd8s7S14BvdHlKL7Vy0oKRcPRwYyJI+\nojWrC6AJQduB+jrVV9htCjbpNgX8bdofwyhgg=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "e52f31fe3a27f4a3808c1205121accfecd547a7594c10f5163c442129b7ecb76",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is n!, which is at least 1 for every n (0! = 1), so no term takes Lean's junk value.",
+              "location": "↑(ω n) / ↑n.factorial"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-3",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 69-W3-1 (wave 3 tester), POST /check + /precheck",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

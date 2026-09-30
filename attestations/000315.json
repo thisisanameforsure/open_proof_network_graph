@@ -1,0 +1,123 @@
+{
+  "artifact_hash": "7421b35be87d12cef4b27e14ad93dfe61d5a82a708769f131d531f7b84574719",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "51011fcedb4c150a7d7f470506aa2ef9e407cf8a24c579d3bdef6a3263b14a68",
+  "graph_commit": "612c41e635dbb5a7769b9955fbc618898a9688c0",
+  "graph_id": "erdos-69",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "612c41e635dbb5a7769b9955fbc618898a9688c0",
+  "model_and_tooling": "claude-opus-5-5 Claude Code agent 69-W3-1 (wave 3 tester), POST /check + /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "spec-84446025",
+  "precheck_attestation": {
+    "hash": "366819c2a4e36900b75ba064ec4d298fdc9716366bb2dfb32402304de57197da",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T13:16:10Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQO3oCuEBkWaJTcVOzKsNNzv6lymtglzgiDoj8fWBwYjIKEYkhA\nBgt1DRaNiTiJ+rOfJn8oRxoQN/0yeuF5tf+wk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "075a1d3e6cb4dbebc668df287cf1c4f34647ff12b393adf56005f2a024cbb69b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "T > 0 is a hypothesis, so the average's divisor is positive.",
+              "location": "(∑ t ∈ Finset.range T,\n    |↑q * ∑' (k : ℕ), ↑(ω (a * (b + Q * t + (k + 1)))) / 2 ^ (k + 1) -\n        ↑(round (↑q * ∑' (k : ℕ), ↑(ω (a * (b + Q * t + (k + 1)))) / 2 ^ (k + 1)))|) /\n  ↑T"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "T > 0 is a hypothesis, so 1/T is never the junk value.",
+              "location": "1 / ↑T"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "p ranges over prime factors, so p ≥ 2 and 1/p is never the junk value.",
+              "location": "1 / ↑p"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(k+1) in ℝ is positive for every k.",
+              "location": "↑(ω (a * (b + Q * t + (k + 1)))) / 2 ^ (k + 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^n in ℝ is positive for every n.",
+              "location": "↑(ω n) / 2 ^ n"
+            }
+          ]
+        },
+        "message": "5 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-3",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 69-W3-1 (wave 3 tester), POST /check + /precheck",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
