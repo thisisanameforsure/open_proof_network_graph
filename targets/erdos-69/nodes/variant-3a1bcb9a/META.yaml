@@ -1,0 +1,18 @@
+schema: meta/v2
+id: variant-3a1bcb9a
+status: ready
+deps: []
+statement-hash: e52f31fe3a27f4a3808c1205121accfecd547a7594c10f5163c442129b7ecb76
+origin: variant
+provenance:
+  author: t0929-3
+  model: Claude Opus 5.5 (claude-opus-5-5), tester agent 69-B, via the network HTTP
+    API; AXLE fast check
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(ω n) / ↑n.factorial
+  justification: The divisor is n!, which is at least 1 for every n (0! = 1), so no
+    term takes Lean's junk value.
