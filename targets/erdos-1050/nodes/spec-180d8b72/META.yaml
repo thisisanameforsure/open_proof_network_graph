@@ -1,0 +1,64 @@
+schema: meta/v2
+id: spec-180d8b72
+status: speculative
+deps: []
+statement-hash: 25d989d8f45e8910d1f4c75f8451699cc0ac7b2ac83772bf316a7e883d31acf9
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 via Claude Code (agent 1050-D); statement is hole hrem of
+    erdos-1050--h1-v2 without its unused hden hypothesis
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1 for every i; the definition
+    of Qc is copied verbatim from erdos-1050--h1-v2--h4 (and h3).
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1 for every i; copied verbatim
+    from Qc in erdos-1050--h1-v2--h4.
+- checker: div-zero
+  location: 1 / (2 ^ (n + 3) - 3)
+  justification: 2^(n+3) - 3 >= 5 for every n, so no junk value; this is the target's
+    own sum T.
+- checker: div-zero
+  location: 3 / (2 ^ (j + 1) - 3)
+  justification: 2^(j+1) - 3 is -1 at j = 0, 1 at j = 1 and >= 5 after, never 0; c_n
+    = sum_{j<n} 3/(2^(j+1) - 3), copied from the hole.
+- checker: div-zero
+  location: 3 / 2 ^ n
+  justification: 2^n is never 0.
+- checker: div-zero
+  location: Qc n j / (2 ^ (k - j) - 1)
+  justification: 'Intended: the divisor is 0 exactly at j = k, and Lean''s x / 0 =
+    0 makes that term vanish, which is the Pade numerator''s coefficient (f has no
+    constant term); copied verbatim from the hole.'
+- checker: nat-sub
+  location: 2 * n - k
+  justification: 'Inside Qc n k with k <= n (Qx and Aq only use k in range (n+1)),
+    so 2n - k >= n: no truncation.'
+- checker: nat-sub
+  location: 2 * n - k - i
+  justification: 'k <= n and i < n, so 2n - k - i >= 1: no truncation.'
+- checker: nat-sub
+  location: k - 1
+  justification: Used only in k*(k-1)/2, which is 0 at k = 0 with or without truncation,
+    as intended.
+- checker: nat-sub
+  location: k - j
+  justification: j ranges over range (k+1), so j <= k and k - j never truncates; k
+    - j = 0 at j = k is intended (see the division finding).
+- checker: nat-sub
+  location: n - i
+  justification: 'i < k <= n inside Qc n k as used here, so n - i >= 1: no truncation.'
+- checker: off-by-one-range
+  location: Finset.range (k + 1)
+  justification: 'Intended inclusive endpoint: the coefficient of x^k sums over j
+    = 0..k.'
+- checker: off-by-one-range
+  location: Finset.range (n + 1)
+  justification: 'Intended inclusive endpoint: Q_n and P_n are polynomials of degree
+    n, summed over k = 0..n.'
