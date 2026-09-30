@@ -1,0 +1,70 @@
+schema: meta/v2
+id: spec-ffd3137a
+status: speculative
+deps: []
+statement-hash: 8b001fac81c3d1b22f5189523430ced23305dbcb46b7f6986c3895b7f17fdbdf
+origin: authored
+provenance:
+  author: t0929-1
+  model: Claude Opus 5.5 (Anthropic), agent session; closed form derived by hand and
+    checked in Python fractions
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1; the quotient is a factor of
+    the Gaussian binomial in Qc, copied verbatim from erdos-1050--h1-v2--h3.
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1; Qc is copied verbatim from
+    erdos-1050--h1-v2--h3.
+- checker: div-zero
+  location: 1 / (1 - 2 ^ (b + 1))
+  justification: 2^(b+1) is at least 2, so the divisor is at most -1 and never zero.
+- checker: div-zero
+  location: 1 / (1 - 2 ^ (n + 1 + i - k))
+  justification: Under k ≤ n the exponent is at least 1, so the divisor is at most
+    -1 and never zero.
+- checker: div-zero
+  location: 2 ^ (b + 1) / (2 ^ (b + 1) - 1)
+  justification: The divisor 2^(b+1) - 1 is at least 1.
+- checker: div-zero
+  location: Qc n (k + b + 1) * 2 ^ (b + 1) / (2 ^ (b + 1) - 1)
+  justification: The divisor 2^(b+1) - 1 is at least 1.
+- checker: div-zero
+  location: Qc n j / (2 ^ (k - j) - 1)
+  justification: 'Intended: the divisor is zero exactly at j = k, and that term is
+    0 in Lean, which is how the hole hpint and the definition of Aq in erdos-1050--h1-v2--h3
+    sum only over j < k.'
+- checker: nat-sub
+  location: 2 * n - k
+  justification: Every Qc n j used here has j ≤ n, so 2n - j does not truncate; Qc
+    is copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: 2 * n - k - i
+  justification: Here j ≤ n and i < n, so 2n - j - i ≥ 1 and does not truncate; Qc
+    is copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: k - 1
+  justification: At k = 0 it truncates to 0 and gives 0 * 0 / 2 = 0 = C(0,2), which
+    is intended.
+- checker: nat-sub
+  location: k - j
+  justification: j ranges over Finset.range (k + 1), so j ≤ k and k - j does not truncate.
+- checker: nat-sub
+  location: n + 1 + i - k
+  justification: Under the hypothesis k ≤ n this is at least 1 + i and does not truncate.
+- checker: nat-sub
+  location: n - i
+  justification: In Qc's first product i < j ≤ n for every Qc n j used here, so n
+    - i ≥ 1 and does not truncate.
+- checker: nat-sub
+  location: n - k
+  justification: Under the hypothesis k ≤ n this is the exact count of indices j =
+    k+1, ..., n.
+- checker: off-by-one-range
+  location: Finset.range (k + 1)
+  justification: 'Intended: j runs over 0..k inclusive as in hole hpint; the j = k
+    term is 0.'
