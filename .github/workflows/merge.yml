@@ -23,6 +23,17 @@
 # submit/): the ruleset requires an up-to-date branch, so every merge puts the others behind, and
 # the rounds are sequential whatever the tooling.
 #
+# Except appends, which merge in batches (F07-T45, the owner's ruling 2026-09-29). An append is one
+# new file under a target, earns no attestation and builds nothing, so the up-to-date rebuild buys
+# it nothing, and on 2026-09-27 every fifteen-second append still cost a whole round and a
+# three-minute post-merge job (20 pull requests, 7 merged in 45 minutes). When the oldest pull
+# request the actor would act on is a green append, it merges it behind main, with every following
+# green append that does not conflict, in queue order, up to MAX_BATCH; the batch ends at the first
+# green building pull request (first in, first out) and at an up-to-date one whose gate is running
+# (T31). A building pull request is never in a batch and is still updated before it merges. One
+# post-merge run then records the whole batch (gate.yml, F07-T45). The token's bypass is what lets
+# an append merge behind main; if the host ever refuses, the acting step updates it as before.
+#
 # The queue holds (F07-T31). A pull request that is up to date and whose gate is running is next
 # in line, and nothing is merged past it: main may not move under a gate run this workflow
 # started. Without that, the pull request it had just updated read as "not green", the next green
@@ -99,6 +110,11 @@ jobs:
           from datetime import datetime, timedelta, timezone
 
           SERVICE_PREFIXES = ("propose/", "append/", "submit/")
+          #: The service's append routes and nothing else push to this prefix (api/opn_api/appends.py).
+          APPEND_PREFIX = "append/"
+          #: At most this many appends in one run (F07-T45): one post-merge job records them all,
+          #: and this bounds its work and the damage of a batch the host half-refuses.
+          MAX_BATCH = 8
           #: How long an up-to-date pull request whose gate has not reported holds the queue. The
           #: gate's own cap is well under it; a run that never reports must not hold forever.
           HOLD_S = 45 * 60
@@ -161,6 +177,45 @@ jobs:
               return datetime.fromisoformat(stamp.replace("Z", "+00:00")) if stamp else None
 
 
+          def holds_the_line(state, runs, sha, strict, behind_of, now):
+              """F07-T31: an up-to-date pull request whose gate is running is next in line, and
+              nothing is merged past it — unless its run has not reported for HOLD_S."""
+              if state != "pending" or not strict or behind_of(sha) != 0:
+                  return False
+              started = gate_started(runs)
+              return started is None or now - started < timedelta(seconds=HOLD_S)
+
+
+          def more_appends(rest, refs, required, strict, checks_of, behind_of, conflicted, now):
+              """F07-T45: the green appends after the first, in queue order, that go with it: up
+              to the first green building pull request, the first that holds the line (T31) or
+              the first whose mergeability is still unknown (T32), and never past MAX_BATCH - 1.
+              Red, conflicting, and behind-and-pending ones are passed over, as at the head."""
+              out = []
+              for number, sha in rest:
+                  if len(out) >= MAX_BATCH - 1:
+                      break
+                  runs = checks_of(sha)
+                  state = verdict(runs, required)
+                  if holds_the_line(state, runs, sha, strict, behind_of, now):
+                      print(f"#{number} is up to date and its gate is running: the batch ends before it")
+                      break
+                  if state != "green":
+                      continue
+                  if not refs[number].startswith(APPEND_PREFIX):
+                      print(f"#{number} is green and builds: the batch ends before it (first in, first out)")
+                      break
+                  conflict = conflicted(number)
+                  if conflict is None:
+                      print(f"#{number}: the host is still computing whether it conflicts: the batch ends before it")
+                      break
+                  if conflict:
+                      print(f"#{number} is green but conflicts with main: passed over")
+                      continue
+                  out.append((number, sha))
+              return out
+
+
           def decide(
               pulls,
               rules,
@@ -177,15 +232,21 @@ jobs:
               A green pull request the host says cannot be merged (a conflict with main) is
               passed over: acting on it would fail on every run and hold everything behind it,
               and a person has to look at it either way. `conflicted` may answer None, the host
-              still computing: that is a hold, never an update (#150, F07-T32)."""
+              still computing: that is a hold, never an update (#150, F07-T32).
+
+              F07-T45: when that pull request is an append, the answer is ("n1 n2 ...",
+              "sha1 sha2 ...", "merge-batch"), the numbers and heads aligned: the appends are
+              merged in that order, behind main or not. One append that is up to date is a plain
+              "merge", exactly as before."""
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
-              for number, sha in candidates(pulls):
+              refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
+              queue = candidates(pulls)
+              for index, (number, sha) in enumerate(queue):
                   runs = checks_of(sha)
                   state = verdict(runs, required)
                   if state == "pending" and strict and behind_of(sha) == 0:
-                      started = gate_started(runs)
-                      if started is None or now - started < timedelta(seconds=HOLD_S):
+                      if holds_the_line(state, runs, sha, strict, behind_of, now):
                           print(f"#{number} is up to date and its gate is running: holding for it")
                           return "", "", "hold"
                       print(f"#{number} has been pending for over {HOLD_S} s: not held for")
@@ -206,6 +267,18 @@ jobs:
                       # #145). Main moves only between jobs.
                       print(f"#{number} is next; a post-merge job has not committed yet: holding")
                       return "", "", "hold"
+                  if refs[number].startswith(APPEND_PREFIX):
+                      batch = [(number, sha)] + more_appends(
+                          queue[index + 1 :], refs, required, strict, checks_of, behind_of,
+                          conflicted, now,
+                      )
+                      if len(batch) == 1 and behind_of(sha) == 0:
+                          return number, sha, "merge"
+                      return (
+                          " ".join(str(n) for n, _ in batch),
+                          " ".join(s for _, s in batch),
+                          "merge-batch",
+                      )
                   if behind_of(sha) > 0 and strict:
                       return number, sha, "update"
                   return number, sha, "merge"
@@ -281,7 +354,8 @@ jobs:
               number, sha, action = settle(step, time.sleep)
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
                   out.write(f"number={number}\nsha={sha}\naction={action}\n")
-              print(f"merge actor: {action or 'nothing to do'} {'#' + str(number) if number else ''}")
+              named = " ".join(f"#{n}" for n in str(number).split())
+              print(f"merge actor: {action or 'nothing to do'} {named}")
               sys.exit(0)
           PY
           python3 pick.py
@@ -303,6 +377,34 @@ jobs:
           if [ "$ACTION" = "update" ]; then
             gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null
             echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
+          elif [ "$ACTION" = "merge-batch" ]; then
+            # F07-T45: appends, in queue order, each at the head the decision saw. The first refusal
+            # ends the batch (C7): the rest wait for the next run, which the post-merge job of any
+            # merge that landed wakes. A refused first merge is updated instead, as before T45, so
+            # a host that ever refuses an append behind main slows the queue and never freezes it.
+            read -r -a numbers <<< "$NUMBER"
+            read -r -a shas <<< "$SHA"
+            if [ "${#numbers[@]}" -eq 0 ] || [ "${#numbers[@]}" -ne "${#shas[@]}" ]; then
+              echo "::error::a batch of ${#numbers[@]} numbers and ${#shas[@]} heads"; exit 1
+            fi
+            merged=0
+            for i in "${!numbers[@]}"; do
+              n="${numbers[$i]}"
+              s="${shas[$i]}"
+              if gh api -X PUT "repos/$REPO/pulls/$n/merge" -f sha="$s" -f merge_method=merge >/dev/null; then
+                merged=$((merged + 1))
+                echo "merged #$n at $s ($merged of ${#numbers[@]})"
+              elif [ "$merged" -eq 0 ]; then
+                echo "::warning::the host refused to merge #$n behind main; updating its branch instead"
+                gh api -X PUT "repos/$REPO/pulls/$n/update-branch" -f expected_head_sha="$s" >/dev/null
+                echo "updated the branch of #$n; the gate re-runs on it and wakes this workflow"
+                exit 0
+              else
+                echo "::warning::#$n was not merged; it and the rest of the batch wait for the next run"
+                break
+              fi
+            done
+            echo "merged $merged appends; the last one's post-merge job records them all and wakes this workflow"
           else
             gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
             echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
