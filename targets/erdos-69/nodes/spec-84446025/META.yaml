@@ -1,0 +1,30 @@
+schema: meta/v2
+id: spec-84446025
+status: speculative
+deps: []
+statement-hash: 075a1d3e6cb4dbebc668df287cf1c4f34647ff12b393adf56005f2a024cbb69b
+origin: authored
+provenance:
+  author: t0929-3
+  model: Claude Opus 5.5 (claude-opus-5-5) in Claude Code; POST /check
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: "(∑ t ∈ Finset.range T,\n    |↑q * ∑' (k : ℕ), ↑(ω (a * (b + Q * t + (k\
+    \ + 1)))) / 2 ^ (k + 1) -\n        ↑(round (↑q * ∑' (k : ℕ), ↑(ω (a * (b + Q *\
+    \ t + (k + 1)))) / 2 ^ (k + 1)))|) /\n  ↑T"
+  justification: T > 0 is a hypothesis, so the average's divisor is positive.
+- checker: div-zero
+  location: 1 / ↑T
+  justification: T > 0 is a hypothesis, so 1/T is never the junk value.
+- checker: div-zero
+  location: 1 / ↑p
+  justification: p ranges over prime factors, so p ≥ 2 and 1/p is never the junk value.
+- checker: div-zero
+  location: ↑(ω (a * (b + Q * t + (k + 1)))) / 2 ^ (k + 1)
+  justification: The divisor 2^(k+1) in ℝ is positive for every k.
+- checker: div-zero
+  location: ↑(ω n) / 2 ^ n
+  justification: The divisor 2^n in ℝ is positive for every n.
