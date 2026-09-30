@@ -1,0 +1,60 @@
+schema: meta/v2
+id: spec-eb1219eb
+status: proved
+deps: []
+statement-hash: 5972d5025d7f87c1ddbc096ce1fdd1fb0c62dfe57db63ef16847251ccc7083cd
+origin: authored
+provenance:
+  author: t0929-2
+  model: Claude Opus 5.5 (Anthropic), agent 1050-E via curl
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1 for every i, so it is never
+    0; copied verbatim from erdos-1050--h1-v2--h3's Qc.
+- checker: div-zero
+  location: (2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)
+  justification: The divisor 2^(i+1) - 1 is at least 1 for every i, so it is never
+    0; copied verbatim from erdos-1050--h1-v2--h3's Qc.
+- checker: div-zero
+  location: 3 / (2 ^ (j + 1) - 3)
+  justification: The divisor 2^(j+1) - 3 is odd, hence never 0; copied verbatim from
+    erdos-1050--h1-v2--h3's Aq.
+- checker: div-zero
+  location: 3 / 2 ^ n
+  justification: A power of 2 is never 0.
+- checker: div-zero
+  location: Qc n j / (2 ^ (k - j) - 1)
+  justification: 'Intended: at j = k the divisor is 2^0 - 1 = 0 and the term is 0
+    in ℚ, exactly as in erdos-1050--h1-v2--h3 and the merged assembly whose hole it
+    is; the statement is about those same Qx and Aq.'
+- checker: nat-sub
+  location: 2 * n - k
+  justification: k ranges over range (n + 1), so k ≤ n ≤ 2n and the subtraction is
+    exact; copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: 2 * n - k - i
+  justification: k ≤ n and i < n, so 2n - k - i ≥ 1 and the subtraction is exact;
+    copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: k - 1
+  justification: At k = 0 it truncates to 0, and then k * (k - 1) / 2 = 0 as intended;
+    copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: k - j
+  justification: j ranges over range (k + 1), so j ≤ k and the subtraction is exact;
+    copied verbatim from erdos-1050--h1-v2--h3.
+- checker: nat-sub
+  location: n - i
+  justification: 'Truncation is intended: it matches erdos-1050--h1-v2--h3''s Qc verbatim
+    (for i < k ≤ n it is exact).'
+- checker: off-by-one-range
+  location: Finset.range (k + 1)
+  justification: The endpoint k is meant to be included (j = 0..k), as in erdos-1050--h1-v2--h3.
+- checker: off-by-one-range
+  location: Finset.range (n + 1)
+  justification: The endpoint n is meant to be included (k = 0..n, a polynomial of
+    degree n), as in erdos-1050--h1-v2--h3.

@@ -1,0 +1,26 @@
+schema: meta/v2
+id: spec-fa8046e4
+status: proved
+deps: []
+statement-hash: 9adbca8e9dffca9d83438e7a431dd3400b5269ed7978a7aae471c7cb3c799efc
+origin: authored
+provenance:
+  author: t0929-6
+  model: claude-opus-5-5 (Claude Code agent 402-F, t0929-6)
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: L * j / k
+  justification: k ranges over 1 ≤ j < k, so k is positive, and the same hypothesis
+    asserts k ∣ L * j, so the division is exact.
+- checker: div-zero
+  location: ↑a / ↑A.card
+  justification: This is the conclusion of Erdős 402 as the root states it; A.card
+    = n ≥ 2 makes the rational division by a positive number.
+- checker: off-by-one-range
+  location: 2 ≤ n
+  justification: 'The bound is intended: it excludes n = 0, where the empty set would
+    make the statement false, and n = 1, which has no colour class; every case of
+    interest has n ≥ 2.'
