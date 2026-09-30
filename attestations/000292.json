@@ -1,0 +1,168 @@
+{
+  "artifact_hash": "da8d67aab2f67610ce0da375db6019d53ff85895969dcf1830f5fab179a7b683",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "2987e49b6fb3b7cdadc1627f357844b7d0795454",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "2987e49b6fb3b7cdadc1627f357844b7d0795454",
+  "model_and_tooling": "Claude Opus 5.5 (claude-opus-5-5) Claude Code agent, HTTP path, POST /check iteration",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "erdos-1050--h1-v2--h3",
+  "precheck_attestation": {
+    "hash": "d053114fa6937fca642ea896d79b2ca84c8710ce985f6c9a678803b5d59e9cd9",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T02:27:15Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQOPUuyEN1jMNWTpcMD3+Q3V6k2TZdt/+GCXFYb6zvCE8zGNYC9\n3TwO0gL0rMnQS0AlMRh0HEP+PIcrilRQAGmQA=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "69944e54bedc3e3dcb2d1e674f9add0c8208fae05f646ac3041c97192568a9e1",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "(2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "3 / (2 ^ (j + 1) - 3)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "3 / 2 ^ n",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "Qc n j / (2 ^ (k - j) - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "2 * n - k",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "2 * n - k - i",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "k - 1",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "k - j",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "n - i",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.range (k + 1)",
+              "message": "Finset.range with a literal-adjusted bound: check whether the endpoint is included"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.range (n + 1)",
+              "message": "Finset.range with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "12 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at (2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-1",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent, HTTP path, POST /check iteration",
+    "model": "Claude Opus 5.5 (claude-opus-5-5)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
