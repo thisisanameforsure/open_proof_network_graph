@@ -60,6 +60,27 @@
 # while the host says its run is. The post-merge job dispatches this workflow when it ends, however
 # it ends; a failed run here dispatches it once more. The cron is a last resort, nothing more.
 #
+# A pull request whose branch has left its own head is passed over, and nudged (F07-T46). On
+# 2026-09-30 an update of #306 moved its branch to the merge commit while the host kept the pull
+# request's head where it was (`refs/pull/306/head` too), fired no `synchronize`, so no gate ran and
+# nothing woke this workflow; the cron did not fire. Six hours later, woken by an unrelated merge,
+# decide() read the stale head, chose `update #306` at it, the host refused it (`422 expected head
+# sha didn't match current head ref`, with or without an expected sha), the failed run dispatched
+# `rewake`, and that repeated every fifty seconds: 89 failed runs in 35 minutes with fifteen pull
+# requests behind it. What unstuck it was a real push of main merged into the branch: the host
+# re-synced the head and ran the gate. So decide() asks the host for each non-red candidate's
+# branch head (`git/ref/heads/<ref>`) and passes over one that is not the pull request's head,
+# printing both, and the acting step nudges each such pull request with the server-side merge of
+# main into its branch (`POST /merges`, base=<branch>, head=main): that push is what re-syncs the
+# pull request, and the gate then runs on it and wakes this workflow. A nudge never fails the run;
+# the endpoint answers 204 when the branch already contains main, and then nothing was pushed and
+# the pull request is still stuck, which the step says. And a refused update or single merge is a
+# warning and exit 0, not a failed job: every such refusal already has a wake after it (a head that
+# moved has a gate run, a desync has its nudge, the rest the next gate completion, post-merge job
+# or cron), and decide() passes the stuck one over meanwhile, so the queue moves. `rewake` fires
+# only on a genuine crash. A batch keeps T45's shape: its first refusal falls back to an update,
+# and if that fails too the run fails and is rewoken once.
+#
 # The token is a fine-grained one on this repository alone, contents and pull requests write, an
 # Actions secret read by the one step that acts. `GITHUB_TOKEN` cannot stand in: a merge or a branch
 # update made with it starts no workflow, so neither the post-merge job nor the re-gate would run.
@@ -186,17 +207,39 @@ jobs:
               return started is None or now - started < timedelta(seconds=HOLD_S)
 
 
-          def more_appends(rest, refs, required, strict, checks_of, behind_of, conflicted, now):
+          def desynced(number, ref, sha, branch_head_of, stuck):
+              """F07-T46: whether the branch has left the pull request's head. The host answered
+              #306's update by moving the branch and not the pull request, and every act on the
+              head it then reported was refused. Such a pull request is recorded for a nudge and
+              never acted on or held for. An unknown branch head (None) is not asked about."""
+              head = branch_head_of(ref)
+              if head is None or head == sha:
+                  return False
+              print(f"#{number}'s branch {ref} is at {head} but the pull request's head is {sha}: stuck, passed over")
+              if stuck is not None and (number, ref) not in stuck:
+                  stuck.append((number, ref))
+              return True
+
+
+          def more_appends(
+              rest, refs, required, strict, checks_of, behind_of, conflicted, now,
+              branch_head_of=lambda ref: None, stuck=None,
+          ):
               """F07-T45: the green appends after the first, in queue order, that go with it: up
               to the first green building pull request, the first that holds the line (T31) or
               the first whose mergeability is still unknown (T32), and never past MAX_BATCH - 1.
-              Red, conflicting, and behind-and-pending ones are passed over, as at the head."""
+              Red, conflicting, behind-and-pending and desynced (T46) ones are passed over, as at
+              the head."""
               out = []
               for number, sha in rest:
                   if len(out) >= MAX_BATCH - 1:
                       break
                   runs = checks_of(sha)
                   state = verdict(runs, required)
+                  if state == "red":
+                      continue
+                  if desynced(number, refs[number], sha, branch_head_of, stuck):
+                      continue
                   if holds_the_line(state, runs, sha, strict, behind_of, now):
                       print(f"#{number} is up to date and its gate is running: the batch ends before it")
                       break
@@ -239,7 +282,12 @@ jobs:
               F07-T45: when that pull request is an append, the answer is ("n1 n2 ...",
               "sha1 sha2 ...", "merge-batch"), the numbers and heads aligned: the appends are
               merged in that order, behind main or not. One append that is up to date is a plain
-              "merge", exactly as before."""
+              "merge", exactly as before.
+
+              F07-T46: `branch_head_of(ref)` is the branch's own head as the host reports it, or
+              None when not asked. A candidate whose branch head is not its pull request head is
+              passed over like a conflict, and appended to `stuck` as (number, ref) when the
+              caller passes a list: the acting step nudges each. The triple is unchanged."""
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
               refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
@@ -247,6 +295,10 @@ jobs:
               for index, (number, sha) in enumerate(queue):
                   runs = checks_of(sha)
                   state = verdict(runs, required)
+                  if state == "red":
+                      continue
+                  if desynced(number, refs[number], sha, branch_head_of, stuck):
+                      continue  # its checks belong to a commit the branch has left
                   if state == "pending" and strict and behind_of(sha) == 0:
                       if holds_the_line(state, runs, sha, strict, behind_of, now):
                           print(f"#{number} is up to date and its gate is running: holding for it")
@@ -272,7 +324,7 @@ jobs:
                   if refs[number].startswith(APPEND_PREFIX):
                       batch = [(number, sha)] + more_appends(
                           queue[index + 1 :], refs, required, strict, checks_of, behind_of,
-                          conflicted, now,
+                          conflicted, now, branch_head_of, stuck,
                       )
                       if len(batch) == 1 and behind_of(sha) == 0:
                           return number, sha, "merge"
@@ -339,8 +391,18 @@ jobs:
                       if run["name"] == "gate"
                   ]
 
+              def branch_head(ref):
+                  # F07-T46: the branch's own head; a branch the host cannot show is "not asked"
+                  try:
+                      return api(f"repos/{repo}/git/ref/heads/{ref}")["object"]["sha"]
+                  except (subprocess.CalledProcessError, KeyError, ValueError):
+                      return None
+
+              latest_stuck = []
+
               def step():
                   # every read is fresh: a hold is decided again on what the host says now
+                  latest_stuck.clear()
                   return decide(
                       api(f"repos/{repo}/pulls?state=open&base=main&per_page=100"),
                       rules,
@@ -351,19 +413,25 @@ jobs:
                           live_push_runs(),
                           lambda run_id: api(f"repos/{repo}/actions/runs/{run_id}/jobs")["jobs"],
                       ),
+                      branch_head_of=branch_head,
+                      stuck=latest_stuck,
                   )
 
               number, sha, action = settle(step, time.sleep)
+              stuck = " ".join(f"{n}:{ref}" for n, ref in latest_stuck)
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
                   out.write(f"number={number}\nsha={sha}\naction={action}\n")
+                  out.write(f"stuck={stuck}\n")
               named = " ".join(f"#{n}" for n in str(number).split())
               print(f"merge actor: {action or 'nothing to do'} {named}")
+              if stuck:
+                  print(f"stuck, to be nudged: {stuck}")
               sys.exit(0)
           PY
           python3 pick.py
 
       - name: Act (the only step that sees the token)
-        if: steps.pick.outputs.number != ''
+        if: steps.pick.outputs.number != '' || steps.pick.outputs.stuck != ''
         env:
           GH_TOKEN: ${{ secrets.OPN_GRAPH_MERGE_TOKEN }}
           REPO: ${{ github.repository }}
@@ -374,12 +442,38 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::notice::dry run: would $ACTION #$NUMBER at $SHA; OPN_GRAPH_MERGE_TOKEN is not set, so nothing was changed"
+            echo "::notice::dry run: would ${ACTION:-nudge} ${NUMBER:+#$NUMBER at $SHA} ${STUCK:+and nudge $STUCK}; OPN_GRAPH_MERGE_TOKEN is not set, so nothing was changed"
+            exit 0
+          fi
+          # F07-T46: nudge each stuck pull request first (its branch has left its head): the
+          # server-side merge of main into the branch is the push that makes the host re-sync the
+          # pull request and run the gate. Never a reason to fail the run.
+          for entry in ${STUCK:-}; do
+            n="${entry%%:*}"
+            ref="${entry#*:}"
+            if body=$(gh api -X POST "repos/$REPO/merges" -f base="$ref" -f head=main 2>&1); then
+              if [ -z "$body" ]; then
+                echo "::warning::#$n: $ref already contains main (204), so nothing was pushed and it is still stuck; a person has to push to it"
+              else
+                echo "nudged #$n: merged main into $ref; the host re-syncs the pull request and the gate runs on it"
+              fi
+            else
+              echo "::warning::the nudge of #$n ($ref) was refused: $body"
+            fi
+          done
+          if [ -z "${NUMBER:-}" ]; then
+            echo "nothing to act on beyond the nudges"
             exit 0
           fi
           if [ "$ACTION" = "update" ]; then
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null
-            echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
+            if gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null; then
+              echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
+            else
+              # F07-T46: not a failed run (that dispatched rewake every fifty seconds for 35 minutes
+              # on 2026-09-30); the next gate completion, post-merge job or cron decides again
+              echo "::warning::the host refused to update #$NUMBER at $SHA; decided again at the next wake"
+              exit 0
+            fi
           elif [ "$ACTION" = "merge-batch" ]; then
             # F07-T45: appends, in queue order, each at the head the decision saw. The first refusal
             # ends the batch (C7): the rest wait for the next run, which the post-merge job of any
@@ -409,8 +503,12 @@ jobs:
             done
             echo "merged $merged appends; the last one's post-merge job records them all and wakes this workflow"
           else
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
-            echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
+            if gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null; then
+              echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
+            else
+              echo "::warning::the host refused to merge #$NUMBER at $SHA; decided again at the next wake"
+              exit 0
+            fi
           fi
 
   # F07-T32: a failed run wakes nothing, so the queue froze at 17:51 on 2026-09-23 after an update
