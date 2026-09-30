@@ -1,0 +1,21 @@
+schema: meta/v2
+id: variant-77918742
+status: ready
+deps: []
+statement-hash: 75a0cca36bf72b69ff89cd744e39e681b419dfcb4ca25a9d5b93ac684027eb8c
+origin: variant
+provenance:
+  author: t0929-6
+  model: claude-opus-5-5 (Claude Code agent 402-D, HTTP entry)
+  source: null
+  date: '2026-09-29'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑a / ↑A.card
+  justification: The hypothesis A.Nonempty makes A.card positive, so the rational
+    division is never by zero.
+- checker: off-by-one-range
+  location: A.card ≤ 24
+  justification: 'Inclusive on purpose: the statement covers every set of size 1 through
+    24, and 24 is the largest size for which the proof carries a certificate.'
