@@ -1,0 +1,173 @@
+{
+  "artifact_hash": "e513f32b0a48902a2c88abe8aea9089472c415f8585a5c4a69a8c25c1b065cdc",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "1e6a4209cd149c7571be260b11b037da396ae710",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "1e6a4209cd149c7571be260b11b037da396ae710",
+  "model_and_tooling": "claude-opus-5-5 Claude Code agent (wave-3 tester 1050-W3-1), HTTP path with curl/python; POST /check (AXLE) for iteration, POST /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "spec-ffd3137a",
+  "precheck_attestation": {
+    "hash": "c3e4fde42445696bf5bb574956cc74a78bfbf6bb6eda7d5a472449a4b015a89a",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-09-30T12:41:29Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBktP8wsKvH0kWa7eRzaPR/46/7Js8diDsvax1vn4svC2NFQ2T\nffci8rDtCqMtQF0gfdsjJl4KaAtIRdiTmlUQs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "8b001fac81c3d1b22f5189523430ced23305dbcb46b7f6986c3895b7f17fdbdf",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) - 1 is at least 1; the quotient is a factor of the Gaussian binomial in Qc, copied verbatim from erdos-1050--h1-v2--h3.",
+              "location": "(2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) - 1 is at least 1; Qc is copied verbatim from erdos-1050--h1-v2--h3.",
+              "location": "(2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "2^(b+1) is at least 2, so the divisor is at most -1 and never zero.",
+              "location": "1 / (1 - 2 ^ (b + 1))"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Under k ≤ n the exponent is at least 1, so the divisor is at most -1 and never zero.",
+              "location": "1 / (1 - 2 ^ (n + 1 + i - k))"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(b+1) - 1 is at least 1.",
+              "location": "2 ^ (b + 1) / (2 ^ (b + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(b+1) - 1 is at least 1.",
+              "location": "Qc n (k + b + 1) * 2 ^ (b + 1) / (2 ^ (b + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Intended: the divisor is zero exactly at j = k, and that term is 0 in Lean, which is how the hole hpint and the definition of Aq in erdos-1050--h1-v2--h3 sum only over j < k.",
+              "location": "Qc n j / (2 ^ (k - j) - 1)"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Every Qc n j used here has j ≤ n, so 2n - j does not truncate; Qc is copied verbatim from erdos-1050--h1-v2--h3.",
+              "location": "2 * n - k"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Here j ≤ n and i < n, so 2n - j - i ≥ 1 and does not truncate; Qc is copied verbatim from erdos-1050--h1-v2--h3.",
+              "location": "2 * n - k - i"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "At k = 0 it truncates to 0 and gives 0 * 0 / 2 = 0 = C(0,2), which is intended.",
+              "location": "k - 1"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j ranges over Finset.range (k + 1), so j ≤ k and k - j does not truncate.",
+              "location": "k - j"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Under the hypothesis k ≤ n this is at least 1 + i and does not truncate.",
+              "location": "n + 1 + i - k"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "In Qc's first product i < j ≤ n for every Qc n j used here, so n - i ≥ 1 and does not truncate.",
+              "location": "n - i"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Under the hypothesis k ≤ n this is the exact count of indices j = k+1, ..., n.",
+              "location": "n - k"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Intended: j runs over 0..k inclusive as in hole hpint; the j = k term is 0.",
+              "location": "Finset.range (k + 1)"
+            }
+          ]
+        },
+        "message": "15 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t0929-1",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent (wave-3 tester 1050-W3-1), HTTP path with curl/python; POST /check (AXLE) for iteration, POST /precheck",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
