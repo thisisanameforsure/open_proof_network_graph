@@ -186,7 +186,9 @@ jobs:
               return started is None or now - started < timedelta(seconds=HOLD_S)
 
 
-          def more_appends(rest, refs, required, strict, checks_of, behind_of, conflicted, now):
+          def more_appends(
+              rest, refs, required, strict, checks_of, behind_of, conflicted, now, tip_of=lambda ref: None
+          ):
               """F07-T45: the green appends after the first, in queue order, that go with it: up
               to the first green building pull request, the first that holds the line (T31) or
               the first whose mergeability is still unknown (T32), and never past MAX_BATCH - 1.
@@ -225,6 +227,7 @@ jobs:
               *,
               now=None,
               postmerge_running=lambda: False,
+              tip_of=lambda ref: None,
           ):
               """(number, sha, action) for the pull request at the head of the queue, or
               ("", "", "") when there is nothing to do and ("", "", "hold") when the queue is
