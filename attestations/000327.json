@@ -1,0 +1,163 @@
+{
+  "artifact_hash": "3ff2a2cfeae6216ebd583042a291ffe3c409c85cf585e94dcd2d95519fd2e6e6",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "dfc7b5cc45a95ce68a05a7670e785180f3b501f5",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "dfc7b5cc45a95ce68a05a7670e785180f3b501f5",
+  "model_and_tooling": "claude-fable-5-1; body is the merged proof of erdos-1050--h1-v2--h4 (t0929-1) with the unused hden binder dropped Claude Code agent 1050-R1-a; POST /check verify, then precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "spec-180d8b72",
+  "precheck_attestation": {
+    "hash": "8757134ef8db09d48e9f823d21c904937a2e9b8ad2b0eb13b9d10ce11ceac5a2",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-01T12:30:10Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQCat+2WzjUFG1Ih/c2rC8X0k8Ug5yk6jHV6wqjBfUlN8T6NkSE\nwwnVL9lvrN7zKuFHTcwVz4msT73lz3IZBUJQw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "25d989d8f45e8910d1f4c75f8451699cc0ac7b2ac83772bf316a7e883d31acf9",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) - 1 is at least 1 for every i; the definition of Qc is copied verbatim from erdos-1050--h1-v2--h4 (and h3).",
+              "location": "(2 ^ (2 * n - k - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) - 1 is at least 1 for every i; copied verbatim from Qc in erdos-1050--h1-v2--h4.",
+              "location": "(2 ^ (n - i) - 1) / (2 ^ (i + 1) - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "2^(n+3) - 3 >= 5 for every n, so no junk value; this is the target's own sum T.",
+              "location": "1 / (2 ^ (n + 3) - 3)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "2^(j+1) - 3 is -1 at j = 0, 1 at j = 1 and >= 5 after, never 0; c_n = sum_{j<n} 3/(2^(j+1) - 3), copied from the hole.",
+              "location": "3 / (2 ^ (j + 1) - 3)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "2^n is never 0.",
+              "location": "3 / 2 ^ n"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Intended: the divisor is 0 exactly at j = k, and Lean's x / 0 = 0 makes that term vanish, which is the Pade numerator's coefficient (f has no constant term); copied verbatim from the hole.",
+              "location": "Qc n j / (2 ^ (k - j) - 1)"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Inside Qc n k with k <= n (Qx and Aq only use k in range (n+1)), so 2n - k >= n: no truncation.",
+              "location": "2 * n - k"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "k <= n and i < n, so 2n - k - i >= 1: no truncation.",
+              "location": "2 * n - k - i"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "Used only in k*(k-1)/2, which is 0 at k = 0 with or without truncation, as intended.",
+              "location": "k - 1"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "j ranges over range (k+1), so j <= k and k - j never truncates; k - j = 0 at j = k is intended (see the division finding).",
+              "location": "k - j"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "i < k <= n inside Qc n k as used here, so n - i >= 1: no truncation.",
+              "location": "n - i"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Intended inclusive endpoint: the coefficient of x^k sums over j = 0..k.",
+              "location": "Finset.range (k + 1)"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Intended inclusive endpoint: Q_n and P_n are polynomials of degree n, summed over k = 0..n.",
+              "location": "Finset.range (n + 1)"
+            }
+          ]
+        },
+        "message": "13 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1001-1050a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 1050-R1-a; POST /check verify, then precheck",
+    "model": "claude-fable-5-1; body is the merged proof of erdos-1050--h1-v2--h4 (t0929-1) with the unused hden binder dropped"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
