@@ -1,0 +1,133 @@
+{
+  "artifact_hash": "36efaada6df478f477dae4d00917792642aac3e3b69bbd2af3b0273a331bba47",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "b16ab29fc51b393c796156866b1d994c2b746a39",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "b16ab29fc51b393c796156866b1d994c2b746a39",
+  "model_and_tooling": "claude-fable-5-1 Claude Code agent 1050-R1-b; hosted /check, then /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "erdos-1050--h1-v2--h2",
+  "precheck_attestation": {
+    "hash": "7c35aa5078ff4d065d2253cc94af1eb0f1b095e86cc3f9177271ada06ffd2c88",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-01T13:37:51Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBQj8BN+Ti1g6+1rcNbc9Jd8aU44vaIRjFcE7CnDln4Y+9dRug\nheBmwd73vAzWeqfsN2WJ62qkwpAKF2yHQuzws=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "92c33e6b0c638e8fe85af0cc5609d35a09d9d52d2f923202f6931e7716424773",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "nat-sub",
+              "location": "n - 1",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "n - 2",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ n",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 (n - 1)",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 n",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "5 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: nat-sub at n - 1: subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1001-1050b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 1050-R1-b; hosted /check, then /precheck",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
