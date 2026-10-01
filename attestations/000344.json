@@ -1,0 +1,128 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d9af7df0959909beee872126fbcd11755d0220791923c4544e24f1abf2be865f",
+  "graph_commit": "f2aff77837fd044f7986688edf6bbba71269d679",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "f2aff77837fd044f7986688edf6bbba71269d679",
+  "model_and_tooling": "claude-fable-5-1 Claude Code agents 402-R2-a, 402-R2-b, 402-R3-a",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "erdos-402--h3-v2--h1--h1",
+  "precheck_attestation": {
+    "hash": "cbad331fc0479488cc4783a5298cfde0f71f30d9b998b57fde8e1333a7c2ff9b",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-01T14:47:11Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQH6ykaoQRvfa9odbWPRII0pedaDI4M3hKuQf6rzY7n206rLQGg\njto8ZT14HuV4tVafZqF7YMOmoc2CMHxCCWTw4=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "11242f7950702d267732a96c0b5db89c6a92bc2ae8cd9d0005b572c2d02cd4a2",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261001T143056Z-t1001-402a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261001T143056Z-t1001-402a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "hmid"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_402__h3_v2__h1__h1 declares ∀ (B : Finset ℕ),\n  0 ∉ B →\n    B.Nonempty →\n      B.gcd id = 1 →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + 1) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                (∃ a ∈ B, ∃ b ∈ B, ↑(a.gcd b) ≤ ↑a / ↑B.card) ∨ ∃ p, Nat.Prime p ∧ B.card ≤ 2 * p ∧ ∃ a ∈ B, p ∣ a; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "↑a / ↑B.card",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at ↑a / ↑B.card: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1001-402a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agents 402-R2-a, 402-R2-b, 402-R3-a",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
