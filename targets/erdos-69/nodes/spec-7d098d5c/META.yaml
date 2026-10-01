@@ -1,0 +1,24 @@
+schema: meta/v2
+id: spec-7d098d5c
+status: ready
+deps: []
+statement-hash: 173c0d1196bffd9bfef1548e02c6796d025bebf165f179835fbc0bf09f298b1a
+origin: authored
+provenance:
+  author: t1001-69-b
+  model: Claude Fable 5.1 (claude-fable-5-1) in Claude Code; POST /check
+  source: null
+  date: '2026-10-01'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑p
+  justification: p ranges over primes, so p ≥ 2 and 1/p is never the junk value.
+- checker: off-by-one-range
+  location: 2 ≤ x
+  justification: 'Inclusive on purpose: the bound is claimed for every x ≥ 2; below
+    2, log log x is not meaningful (log 1 = 0).'
+- checker: junk-value
+  location: Real.log (Real.log ↑x)
+  justification: The hypothesis 2 ≤ x gives log x ≥ log 2 > 0, so the outer logarithm
+    is taken of a positive number.
