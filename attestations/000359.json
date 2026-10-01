@@ -1,0 +1,128 @@
+{
+  "artifact_hash": "cd6a820a7f869118a065bb20c516cf9414fc9e78f6773a72c9af8d9b4e455f03",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d9af7df0959909beee872126fbcd11755d0220791923c4544e24f1abf2be865f",
+  "graph_commit": "14ac3cf837a07dcac616a72ba47e96303096e3a8",
+  "graph_id": "erdos-402",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "14ac3cf837a07dcac616a72ba47e96303096e3a8",
+  "model_and_tooling": "claude-fable-5-1 Claude Code agent 402-R6-a; proof written by agent 402-R6-b (same model) on 402-R5-b's certificates, independently re-checked",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "erdos-402--h3-v2--h1--h1--h1--h2--h1",
+  "precheck_attestation": {
+    "hash": "df078b96ef8bbf43187645693a5f7f0f108df62d152f4600e2c4c3850e7264d6",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-01T18:09:21Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQLEFTGPehJm02CVgGS4FOYZNFjM4cEQ9dajOkg8v4H8caCVb/z\nJTHmbtJtCkNDYPDg16TEg2moRMk5h7N+XO+QI=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "909df101a6cb0efb4a787af679151b8601bdf5980f4208143999a72432d026b6",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "nat-sub",
+              "location": "2 * n - p",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "p - α",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "10 ≤ n",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "n ≤ 228",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: nat-sub at 2 * n - p: subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1001-402a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 402-R6-a; proof written by agent 402-R6-b (same model) on 402-R5-b's certificates, independently re-checked",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
