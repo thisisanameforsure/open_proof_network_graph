@@ -1,0 +1,148 @@
+{
+  "artifact_hash": "4829240ca0f31728e9ea1616cfaa956ed4b018e48f2f30c11348de1fff3e403e",
+  "diagnostic": null,
+  "first_failing_step": null,
+  "gate_spec_hash": "d4c5ca9d6d8408f13aa338d70e345235c4023769e0d54879b948c4d06b6f338c",
+  "graph_commit": "b88a90ea8e90c2011168901549c0b78e2820b6d3",
+  "graph_id": "erdos-1050",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "b88a90ea8e90c2011168901549c0b78e2820b6d3",
+  "model_and_tooling": "claude-fable-5-1 Claude Code agent 1050-R1-b; hosted /check, then /precheck",
+  "network_commit": "3422bb401108f24a3006877a2af929894564a1c1",
+  "node_id": "erdos-1050--h1-v2--h2--h1",
+  "precheck_attestation": {
+    "hash": "c5a9b0a5ec16716dcb5cc4a5899b4186106f924384ca83d3e2d2a3b763e1e627",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "calibration",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v5",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-01T13:06:43Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMz1zRFC2t7DbzMk4CbNy235VnNG0frxpSeaSLPad3mfN7nVze\n18bQfiB9DyjNN7s24r04vSxIm89fZgSRR4BAw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "18b163c68cd707f524f89369f7d2e15c9b1ba1ea66a2dff25605c9378382367a",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "(-∏ t ∈ Finset.Icc 1 (n - 1), (1 - 8 / 3 * 2 ^ (t + k))) / ∏ l ∈ (Finset.Icc 1 n).erase k, (1 - 2 ^ (↑l - ↑k))",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(∑ k ∈ Finset.Icc 1 n,\n    ((-∏ t ∈ Finset.Icc 1 (n - 1), (1 - 8 / 3 * 2 ^ (t + k))) / ∏ l ∈ (Finset.Icc 1 n).erase k, (1 - 2 ^ (↑l - ↑k))) *\n      ((8 / 3 * 2 ^ k) ^ i)⁻¹) /\n  (2 ^ i - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "n - 1",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "n - 2",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ n",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 (n - 1)",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 k",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 n",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "8 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at (-∏ t ∈ Finset.Icc 1 (n - 1), (1 - 8 / 3 * 2 ^ (t + k))) / ∏ l ∈ (Finset.Icc 1 n).erase k, (1 - 2 ^ (↑l - ↑k)): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1001-1050b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code agent 1050-R1-b; hosted /check, then /precheck",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
