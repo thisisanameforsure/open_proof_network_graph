@@ -109,7 +109,8 @@ jobs:
       pull-requests: read
       checks: read
       contents: read
-      actions: read # F07-T31: whether a post-merge job is still running on main
+    outputs:
+      merged: ${{ steps.act.outputs.merged }}  # F07-T56: how many merged, for the rewake job
     steps:
       - name: Pick what to do in each lane, from the host's own facts
         id: pick
@@ -281,7 +282,6 @@ jobs:
               Anything else outside targets/ is shared (curators.json, policy.json, keys/,
               schemas/, the workflows) and reaches every lane. `lane` None is a pull request this
               file could not place in one target: everything but the products reaches it."""
-              return True  # F07-T56 seam: today every commit counts
               if path in PRODUCT_FILES or path.startswith(PRODUCT_DIRS):
                   return False
               parts = path.split("/")
@@ -299,7 +299,6 @@ jobs:
           def lane_of_paths(paths):
               """The one target a pull request touches, or None: no target, several, or a file
               outside targets/ (policy.json is a curator's pull request that touches none)."""
-              return None  # F07-T56 seam: today the queue is one line
               targets = {p.split("/")[1] for p in paths if p.startswith("targets/") and p.count("/") >= 2}
               if len(targets) != 1 or any(not p.startswith("targets/") for p in paths):
                   return None
@@ -342,7 +341,6 @@ jobs:
               now=None,
               tip_of=lambda ref: None,
               lane_of=lambda number: None,
-              postmerge_running=lambda: False,
           ):
               """F07-T56: a list of (number, sha, action), action one of "merge", "update" or
               "hold", for at most one step in each lane: a lane is the target a pull request
@@ -364,7 +362,7 @@ jobs:
               now = now or datetime.now(timezone.utc)
               refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
               queue = candidates(pulls)
-              lanes = {number: None for number, _sha in queue}  # F07-T56 seam: one line
+              lanes = {number: lane_of(number) for number, _sha in queue}
               decided, closed, batched = [], set(), 0
 
               def close(lane):
@@ -398,10 +396,6 @@ jobs:
                   if conflict:
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
-                  if postmerge_running():  # F07-T33, as it stood
-                      decided.append((number, sha, "hold"))
-                      close(lane)
-                      continue
                   if refs[number].startswith(APPEND_PREFIX):
                       if batched >= MAX_BATCH:
                           print(f"#{number}: this run has merged {MAX_BATCH} appends; the next run takes it")
@@ -419,14 +413,6 @@ jobs:
                   decided.append((number, sha, "update" if strict and behind_of(sha) > 0 else "merge"))
                   close(lane)
               return decided
-
-
-          def postmerge_running_from(runs, jobs_of):
-              for run in runs:
-                  jobs = jobs_of(run["id"])
-                  if not jobs or any(job["status"] != "completed" for job in jobs):
-                      return True
-              return False
 
 
           def acts(decided):
@@ -498,17 +484,6 @@ jobs:
                   except subprocess.CalledProcessError:
                       return ""
 
-              def live_push_runs():
-                  return [
-                      run
-                      for event in ("push", "workflow_dispatch")
-                      for status in ("in_progress", "queued")
-                      for run in api(
-                          f"repos/{repo}/actions/runs?branch=main&event={event}&status={status}&per_page=20"
-                      )["workflow_runs"]
-                      if run["name"] == "gate"
-                  ]
-
               def step():
                   # every read is fresh: a hold is decided again on what the host says now
                   pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
@@ -538,22 +513,21 @@ jobs:
                       lambda n: mergeability(api(f"repos/{repo}/pulls/{n}")),
                       tip_of=tip,
                       lane_of=lane_of,
-                      postmerge_running=lambda: postmerge_running_from(
-                          live_push_runs(),
-                          lambda run_id: api(f"repos/{repo}/actions/runs/{run_id}/jobs")["jobs"],
-                      ),
                   )
 
-              decided = acts(settle(step, time.sleep))[:1]  # F07-T56 seam: one action, as before
-              number, sha, action = decided[0] if decided else ("", "", "")
+              decided = acts(settle(step, time.sleep))
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-                  out.write(f"number={number}\nsha={sha}\naction={action}\n")
-              print(f"merge actor: {action or 'nothing to do'} {number}")
+                  out.write(f"number={' '.join(str(n) for n, _s, _a in decided)}\n")
+                  out.write(f"sha={' '.join(s for _n, s, _a in decided)}\n")
+                  out.write(f"action={' '.join(a for _n, _s, a in decided)}\n")
+              said = ", ".join(f"{a} #{n}" for n, _s, a in decided)
+              print(f"merge actor: {said or 'nothing to do'}")
               sys.exit(0)
           PY
           python3 pick.py
 
       - name: Act (the only step that sees the token)
+        id: act
         if: steps.pick.outputs.number != ''
         env:
           GH_TOKEN: ${{ secrets.OPN_GRAPH_MERGE_TOKEN }}
@@ -567,49 +541,51 @@ jobs:
             echo "::notice::dry run: would $ACTION #$NUMBER at $SHA; OPN_GRAPH_MERGE_TOKEN is not set, so nothing was changed"
             exit 0
           fi
-          if [ "$ACTION" = "update" ]; then
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null
-            echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
-          elif [ "$ACTION" = "merge-batch" ]; then
-            # F07-T45: appends, in queue order, each at the head the decision saw. The first refusal
-            # ends the batch (C7): the rest wait for the next run, which the post-merge job of any
-            # merge that landed wakes. A refused first merge is updated instead, as before T45, so
-            # a host that ever refuses an append behind main slows the queue and never freezes it.
-            read -r -a numbers <<< "$NUMBER"
-            read -r -a shas <<< "$SHA"
-            if [ "${#numbers[@]}" -eq 0 ] || [ "${#numbers[@]}" -ne "${#shas[@]}" ]; then
-              echo "::error::a batch of ${#numbers[@]} numbers and ${#shas[@]} heads"; exit 1
-            fi
-            merged=0
-            for i in "${!numbers[@]}"; do
-              n="${numbers[$i]}"
-              s="${shas[$i]}"
-              if gh api -X PUT "repos/$REPO/pulls/$n/merge" -f sha="$s" -f merge_method=merge >/dev/null; then
-                merged=$((merged + 1))
-                echo "merged #$n at $s ($merged of ${#numbers[@]})"
-              elif [ "$merged" -eq 0 ]; then
-                echo "::warning::the host refused to merge #$n behind main; updating its branch instead"
-                gh api -X PUT "repos/$REPO/pulls/$n/update-branch" -f expected_head_sha="$s" >/dev/null
-                echo "updated the branch of #$n; the gate re-runs on it and wakes this workflow"
-                exit 0
-              else
-                echo "::warning::#$n was not merged; it and the rest of the batch wait for the next run"
-                break
-              fi
-            done
-            echo "merged $merged appends; the last one's post-merge job records them all and wakes this workflow"
-          else
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
-            echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
+          # F07-T56: one entry per pull request, numbers, heads and actions aligned, in queue order:
+          # at most one step per lane, or a lane's batch of appends (F07-T45). Each merge names the
+          # head it saw, so a push in between refuses it rather than landing unchecked. A refused
+          # merge (a conflict that appeared since the decision, or a host that refuses to merge
+          # behind main) is updated instead, as before T45, and the rest go on: lanes are
+          # independent. A failed update fails the run, and the rewake job starts another.
+          read -r -a numbers <<< "$NUMBER"
+          read -r -a shas <<< "$SHA"
+          read -r -a actions <<< "$ACTION"
+          if [ "${#numbers[@]}" -eq 0 ] || [ "${#numbers[@]}" -ne "${#shas[@]}" ] \
+            || [ "${#numbers[@]}" -ne "${#actions[@]}" ]; then
+            echo "::error::${#numbers[@]} numbers, ${#shas[@]} heads and ${#actions[@]} actions"; exit 1
           fi
+          merged=0
+          failed=0
+          for i in "${!numbers[@]}"; do
+            n="${numbers[$i]}"
+            s="${shas[$i]}"
+            if [ "${actions[$i]}" = "merge" ] \
+              && gh api -X PUT "repos/$REPO/pulls/$n/merge" -f sha="$s" -f merge_method=merge >/dev/null; then
+              merged=$((merged + 1))
+              echo "merged #$n at $s"
+              continue
+            fi
+            [ "${actions[$i]}" = "merge" ] && echo "::warning::the host refused to merge #$n; updating its branch instead"
+            if gh api -X PUT "repos/$REPO/pulls/$n/update-branch" -f expected_head_sha="$s" >/dev/null; then
+              echo "updated the branch of #$n; the gate re-runs on it and wakes this workflow"
+            else
+              echo "::warning::#$n was neither merged nor updated"
+              failed=$((failed + 1))
+            fi
+          done
+          echo "merged=$merged" >> "$GITHUB_OUTPUT"
+          echo "merged $merged; each merge's post-merge job records it, catching up if main moved (F07-T55)"
+          [ "$failed" -eq 0 ] || exit 1
 
   # F07-T32: a failed run wakes nothing, so the queue froze at 17:51 on 2026-09-23 after an update
-  # of #150 failed. This job starts one more run when the acting job fails. Its own token may start
-  # this repository's workflows and do nothing else; the acting job above still only reads.
+  # of #150 failed. This job starts one more run when the acting job fails. F07-T56: and when it
+  # merged anything, since a merge no longer waits for its post-merge job and that job's wake comes
+  # minutes later: the next pull request in a lane whose head merged is updated at once. Its own
+  # token may start this repository's workflows and do nothing else; the acting job still only reads.
   rewake:
-    name: wake the merge actor after a failed run
+    name: wake the merge actor after a failed run or a merge
     needs: merge
-    if: failure()
+    if: failure() || (needs.merge.outputs.merged != '' && needs.merge.outputs.merged != '0')
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -621,6 +597,6 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          sleep 30 # let the host settle whatever made the act fail
+          sleep 30 # let the host settle whatever made the act fail, or register the merge
           gh workflow run merge.yml --repo "$REPO" --ref main
-          echo "dispatched the merge actor again after a failed run"
+          echo "dispatched the merge actor again"
