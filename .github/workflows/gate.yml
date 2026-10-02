@@ -337,8 +337,13 @@ jobs:
 
           One run records every merge that has no `gate:` commit yet, not only its own: the merge actor
           merges a batch of appends in one go, so the runs of the earlier ones find a later merge on main
-          and leave their merges to it (`later-merge`), and the run at the head records them all (`plan`)."""
+          and leave their merges to it (`later-merge`), and the run at the head records them all (`plan`).
+
+          And how a run publishes what it recorded (F07-T55, `publish`): when its push is refused because
+          main moved, it catches up on main as it now is instead of handing the merge to a replay."""
           import json
+          import os
+          import pathlib
           import re
           import subprocess
           import sys
@@ -351,6 +356,13 @@ jobs:
           TARGET_RE = re.compile(r"^targets/([^/]+)/")
           SAFE_TARGET_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
           COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+          #: F07-T55: how many pushes a run makes before it gives up and replays. Each refusal means another
+          #: run landed first, and is answered by a catch-up, not by waiting.
+          PUBLISH_ATTEMPTS = 6
+          #: What a gate commit stages: this run's record and the products (F03, F07-R12, F14-R12).
+          STAGED = ("attestations", "frontier.json", "info.json", "targets", "claims.json", "ledger",
+                    "THIRD_PARTY_NOTICES.md")
+          TAGS_CACHE = ".tags-cache.json"
 
 
           def credits(subject):
@@ -409,11 +421,18 @@ jobs:
               A batch is appends only, each touching one target, all pinned to one gate: an append earns
               no attestation, so the run needs one classifier and no signature. A building merge is never
               batched (the actor never batches one; if one is here, a run was lost, and it is replayed on
-              its own). A merge the run cannot record is named in `replay`, never dropped."""
+              its own). A merge the run cannot record is named in `replay`, never dropped.
+
+              F07-T55: a building merge records itself, and since the queue no longer waits for a post-merge
+              run, a later merge often lands while that run is still going. Such a merge is left to its own
+              run (`in_flight`); only one whose run has ended without crediting it is replayed."""
               found = uncredited(log)
               single = {"batch": "false", "replay": ""}
               if not found or found[-1][:2] != (own, merge):
                   return single
+              found = [
+                  m for m in found[:-1] if m[2].startswith(APPEND_PREFIX) or not in_flight(m[1])
+              ] + found[-1:]
               others = [number for number, _sha, _branch in found[:-1]]
               if not others:
                   return single
@@ -449,6 +468,41 @@ jobs:
               }
 
 
+          def owed(pairs, subjects):
+              """F07-T55: the (number, merge) pairs no gate commit on main credits yet. A merge two runs both
+              covered (its own, and a later one's batch) is credited by whichever pushes first; the other
+              drops it here, so no merge is ever credited twice."""
+              return [(number, merge) for number, merge in pairs if not credited(subjects, number)]
+
+
+          def merged_cache(ours, theirs):
+              """A tag cache maps a statement hash to its tags, one answer per hash, so the union loses
+              nothing: main's entries stand, and this run's scans are kept rather than paid for again."""
+              return {**ours, **theirs}
+
+
+          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay):
+              """F07-T55: push this run's gate commit, and while main has moved under it, catch up and push
+              again. The products are derived (F03-R11), so a render of a tree that no longer exists is
+              thrown away and made again on main as it is; what is this run's own (its record, its ledger
+              lines) is laid on that tree first. Answers `pushed`, `credited` (main records every merge
+              already), `replayed` (the record does not apply, or a re-pin moved the rendering gate) or
+              `gave-up` (refused every time; replayed as well, and the step fails)."""
+              for attempt in range(1, attempts + 1):
+                  if push():
+                      return "pushed"
+                  new = fetch()
+                  pairs = owed(pairs, subjects_of(new))
+                  if not pairs:
+                      return "credited"
+                  if pin_moved(new) or not rebuild(new, pairs):
+                      replay(pairs)
+                      return "replayed"
+                  print(f"postmerge: main moved (attempt {attempt}); caught up on {new[:12]}", flush=True)
+              replay(pairs)
+              return "gave-up"
+
+
           def git(*args):
               return subprocess.run(["git", *args], check=True, capture_output=True, text=True).stdout
 
@@ -474,6 +528,103 @@ jobs:
               return pin
 
 
+          def in_flight(sha):
+              """F07-T55: whether the gate workflow's run for this push is still going, from the host. A host
+              that does not answer is read as not in flight: a replay then costs a run, and `owed` keeps
+              it from crediting anything twice."""
+              path = f"repos/{os.environ.get('GITHUB_REPOSITORY', '')}/actions/runs?head_sha={sha}&event=push&per_page=20"
+              try:
+                  out = subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True).stdout
+                  runs = [run for run in json.loads(out)["workflow_runs"] if run.get("name") == "gate"]
+              except (OSError, subprocess.CalledProcessError, ValueError, KeyError, TypeError):
+                  return False
+              return any(run.get("status") != "completed" for run in runs)
+
+
+          def subjects_at(rev):
+              return [subject for _sha, _p, subject in first_parent_log(rev, WALK_LIMIT + 1)]
+
+
+          def run_publish(env):
+              """The `publish` command: the pairs and commands come from the commit step's environment."""
+              remote, record = env["REMOTE"], pathlib.Path(env["RECORD"])
+              pairs = list(zip(env["NUMBERS"].split(), env["MERGES"].split(), strict=True))
+              pairs = [(int(number), merge) for number, merge in pairs]
+
+              def push():
+                  done = subprocess.run(["git", "push", "-q", remote, "HEAD:main"], check=False)
+                  return done.returncode == 0
+
+              def fetch():
+                  git("fetch", "-q", remote, "main")
+                  return git("rev-parse", "FETCH_HEAD").strip()
+
+              def pin_moved(new):
+                  for target in env["TARGETS"].split():
+                      try:
+                          if pin_of(new, target) != env["RENDER_PIN"]:
+                              print(f"postmerge: main re-pinned {target}; the products are not this run's to render")
+                              return True
+                      except (KeyError, ValueError, subprocess.CalledProcessError):
+                          return True
+                  return False
+
+              def run(command, **extra):
+                  subprocess.run(["bash", "-c", command], check=True, env={**os.environ, **extra})
+
+              def rebuild(new, owed_pairs):
+                  caches = {
+                      path: json.loads(path.read_text(encoding="utf-8"))
+                      for path in pathlib.Path("targets").glob(f"*/{TAGS_CACHE}")
+                  }
+                  git("checkout", "-q", "-f", "--detach", new)
+                  if record.is_file() and record.stat().st_size:
+                      applied = subprocess.run(
+                          ["git", "apply", "--3way", "--index", str(record)], check=False,
+                          capture_output=True, text=True,
+                      )
+                      if applied.returncode != 0:
+                          print(f"::warning::this merge's record does not apply on main as it is: {applied.stderr.strip()}")
+                          git("reset", "-q", "--hard", new)
+                          return False
+                  for path, ours in caches.items():
+                      theirs = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+                      merged = merged_cache(ours, theirs)
+                      if merged != theirs:
+                          path.parent.mkdir(parents=True, exist_ok=True)
+                          text = json.dumps(merged, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+                          path.write_text(text, encoding="utf-8")
+                  for _number, merge in owed_pairs:
+                      run(env["LEDGER_CMD"], MERGE=merge)
+                  run(env["PRODUCTS_CMD"], COMMIT=new)
+                  git("add", "-A", "--", *[p for p in STAGED if pathlib.Path(p).exists()])
+                  credits = " ".join(f"#{number}" for number, _merge in owed_pairs)
+                  git("commit", "-q", "--allow-empty", "-m", f"gate: {credits} {env['SUFFIX']}")
+                  return True
+
+              def replay(owed_pairs):
+                  for number, _merge in owed_pairs:
+                      done = subprocess.run(
+                          ["gh", "workflow", "run", "gate.yml", "--repo", env["GITHUB_REPOSITORY"],
+                           "--ref", "main", "-f", f"replay_pr={number}"], check=False,
+                      )
+                      if done.returncode == 0:
+                          print(f"postmerge: dispatched a replay of #{number}")
+                      else:
+                          print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
+
+              attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
+              outcome = publish(
+                  pairs, attempts=attempts, push=push, fetch=fetch, subjects_of=subjects_at,
+                  pin_moved=pin_moved, rebuild=rebuild, replay=replay,
+              )
+              print(f"postmerge: publish {outcome}")
+              if outcome == "gave-up":
+                  print(f"::error::the gate commit was refused {attempts} times; its merges are replayed")
+                  return 1
+              return 0
+
+
           if __name__ == "__main__":
               command, args = sys.argv[1], sys.argv[2:]
               if command == "credited":  # credited <rev> <number>: exit 0 if a gate commit credits it
@@ -483,10 +634,20 @@ jobs:
                   sys.exit(0 if later_merge(first_parent_log(f"{args[0]}..{args[1]}")) else 1)
               if command == "plan":  # plan <merge> <number>: output lines for this run
                   log = first_parent_log(args[0], WALK_LIMIT + 1)
-                  decided = plan(args[0], int(args[1]), log=log, targets_of=targets_of, pin_of=pin_of)
+                  decided = plan(
+                      args[0], int(args[1]), log=log, targets_of=targets_of, pin_of=pin_of,
+                      in_flight=in_flight,
+                  )
                   for key, value in decided.items():
                       print(f"{key}={value}")
                   sys.exit(0)
+              if command == "branch-of":  # branch-of <merge>: the pull request's branch, or nothing
+                  (sha, parents, subject), = first_parent_log(args[0], 1)
+                  found = merge_of(subject, parents)
+                  print(found[1] if found else "")
+                  sys.exit(0)
+              if command == "publish":  # publish: push the gate commit, catching up while main moves
+                  sys.exit(run_publish(os.environ))
               sys.exit(f"unknown command {command!r}")
           PY
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
@@ -522,9 +683,13 @@ jobs:
             # every merge since the last gate commit, this one included (b); this run renders
             # nothing, so it cannot race that run's push. If main has only moved by a commit that
             # merged nothing (a bot commit, an owner's push), no later run records this merge, and
-            # this run records it as before.
+            # this run records it as before. F07-T55: an append only. A building merge's record is
+            # its own re-derive and signature, which a later run would only replay after it had
+            # committed, so a building merge always records itself and catches up if main moved.
             git fetch --quiet origin main
-            if git merge-base --is-ancestor "$merge" origin/main \
+            branch="$(python3 "$helper" branch-of "$merge")"
+            if [ "${branch#append/}" != "$branch" ] \
+              && git merge-base --is-ancestor "$merge" origin/main \
               && python3 "$helper" later-merge "$merge" origin/main; then
               echo "postmerge: a later pull request merged on main after #$number; the post-merge run of that push records #$number with its own (F07-T45)"
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
@@ -798,7 +963,11 @@ jobs:
             --public-key keys/gate.pub \
             --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
 
-      - name: Keep this merge's own record, for a catch-up (F07-T40; no secret)
+      # F07-T55: what this run wrote that is not a product — the attestation it signed, and the
+      # hole children, the parent's Context and the attempts file a partial writes — taken before
+      # any product is rendered. If main moves under this run, the commit step lays exactly this on
+      # main as it then is and renders the products afresh; nothing derived is carried over.
+      - name: Keep this merge's own record, for a catch-up (F07-T55; no secret)
         if: steps.pr.outputs.run == 'true'
         run: |
           set -euo pipefail
@@ -936,49 +1105,23 @@ jobs:
           [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && replayed=" (replayed)"
           credits="$(printf '#%s ' $NUMBERS)"; credits="${credits% }"  # F07-T45: `#A #B #C`
           git commit -m "gate: ${credits} ${VERDICT}${replayed}${mention}"
-          # F07-T29: this push happens minutes after the merge it renders, and main can move in
-          # between (an owner's re-pin or guide copy; found live on #130, whose products were lost
-          # to a non-fast-forward). What landed is rebased over only if it touched nothing these
-          # products derive from. Otherwise the render is of a tree that no longer exists, and
-          # F07-T33: rather than ask for hands (five merges' records were lost waiting for them,
-          # #145's attestation among them), this job dispatches its own replay, which renders
-          # main as it then is; the merge actor waits for that run like any post-merge job.
-          # F07-T45: unless what moved main credits these merges already, or is a later merge:
-          # that push's post-merge run records every merge since the last gate commit, and this
-          # one's commit never landed, so these are among them. A replay is never left to it.
+          # F07-T55: this push happens minutes after the merge it renders, and since the queue no
+          # longer waits for this job, main has often moved by then: another merge, another run's
+          # gate commit, an owner's re-pin. A refused push used to dispatch a replay (F07-T33) or
+          # leave the merges to a later run (F07-T45); now the job catches up. `publish` fetches
+          # main, drops whatever a gate commit there already credits, lays this merge's own record
+          # (record.patch) on main as it is, writes the ledger lines again on main's ledger, renders
+          # the products of that tree and pushes again — so one commit carries the products of
+          # every merge so far. A record that does not apply, or a re-pin of the rendering gate, is
+          # replayed on its own; a push refused every time replays too, and fails this step (C7).
           export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
           remote="git@github.com:${GITHUB_REPOSITORY}.git"
-          rendered_from="$(git rev-parse HEAD~1)"
-          pushed=""
-          for attempt in 1 2 3; do
-            if git push "$remote" HEAD:main; then pushed=yes; break; fi
-            git fetch "$remote" main
-            moved="$(git diff --name-only "$rendered_from" FETCH_HEAD -- targets attestations frontier.json info.json claims.json ledger | head -5)"
-            if [ -n "$moved" ]; then
-              rm -f "$RUNNER_TEMP/deploy_key"
-              owed=""
-              for n in $NUMBERS; do
-                python3 "$helper" credited FETCH_HEAD "$n" || owed="$owed $n"
-              done
-              if [ -z "$owed" ]; then
-                echo "postmerge: main moved under this job, and a gate commit there records #${NUMBERS// / #} already"
-                replay_owed FETCH_HEAD "$REPLAY"
-              elif [ "$GITHUB_EVENT_NAME" = "push" ] \
-                && python3 "$helper" later-merge "$rendered_from" FETCH_HEAD; then
-                echo "::notice::main moved under this job by a later merge; the post-merge run of that push records${owed// / #} with its own (F07-T45)"
-              else
-                echo "::warning::PR$owed: main moved under the post-merge job and touched what its products derive from ($moved); dispatching replays"
-                replay_owed FETCH_HEAD "$owed $REPLAY"
-              fi
-              exit 0
-            fi
-            echo "postmerge: main moved (attempt $attempt) without touching the products' inputs; rebasing"
-            git rebase FETCH_HEAD
-          done
-          if [ -z "$pushed" ]; then
-            echo "::error::PR #${NUMBERS// / #}: the products commit could not be pushed after three attempts"; exit 1
-          fi
-          replay_owed HEAD "$REPLAY"
+          status=0
+          REMOTE="$remote" RECORD="$RUNNER_TEMP/record.patch" SUFFIX="${VERDICT}${replayed}${mention}" \
+            python3 "$helper" publish || status=$?
+          git fetch -q "$remote" main
+          replay_owed FETCH_HEAD "$REPLAY"
+          exit "$status"
 
       # F04-R12 (F04-Q10): ask the network repo's site-deploy to render what main now holds, so a
       # merge reaches the site in seconds instead of on GitHub's best-effort schedule. Skipped for
