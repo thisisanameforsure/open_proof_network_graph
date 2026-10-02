@@ -401,7 +401,7 @@ jobs:
               return any(merge_of(subject, parents) for _sha, parents, subject in log)
 
 
-          def plan(merge, own, *, log, targets_of, pin_of):
+          def plan(merge, own, *, log, targets_of, pin_of, in_flight=lambda sha: False):
               """What this run records, as output lines. `batch=false`: its own merge alone, exactly as
               before, and `replay` the other uncredited merges, each dispatched to a replay of its own
               after this run commits. `batch=true`: every uncredited merge in `numbers`, in order.
@@ -798,6 +798,14 @@ jobs:
             --public-key keys/gate.pub \
             --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
 
+      - name: Keep this merge's own record, for a catch-up (F07-T40; no secret)
+        if: steps.pr.outputs.run == 'true'
+        run: |
+          set -euo pipefail
+          git add -A -- attestations targets
+          git diff --cached --binary > "$RUNNER_TEMP/record.patch"
+          git reset -q
+
       - name: Regenerate the merge products from the committed facts (F03; no secret)
         if: steps.pr.outputs.run == 'true'
         id: products
@@ -877,6 +885,13 @@ jobs:
           NUMBERS: ${{ steps.classify.outputs.numbers }}
           REPLAY: ${{ steps.classify.outputs.replay }}
           TARGETS: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
+          MERGES: ${{ steps.classify.outputs.merges }}
+          VERDICT: ${{ steps.products.outputs.verdict }}
+          RENDER_PIN: ${{ steps.pr.outputs.render_pin }}
+          PYTHONPATH: network-render/gate
+          OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
+          LEDGER_CMD: uv run --frozen --project network-render python -m opn_gate.cli ledger --graph . --commit "$MERGE"
+          PRODUCTS_CMD: uv run --frozen --project network-render python -m opn_gate.cli products --graph . --commit "$COMMIT" ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
         run: |
           set -euo pipefail
           umask 077
@@ -920,7 +935,7 @@ jobs:
           replayed=""
           [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && replayed=" (replayed)"
           credits="$(printf '#%s ' $NUMBERS)"; credits="${credits% }"  # F07-T45: `#A #B #C`
-          git commit -m "gate: ${credits} ${{ steps.products.outputs.verdict }}${replayed}${mention}"
+          git commit -m "gate: ${credits} ${VERDICT}${replayed}${mention}"
           # F07-T29: this push happens minutes after the merge it renders, and main can move in
           # between (an owner's re-pin or guide copy; found live on #130, whose products were lost
           # to a non-fast-forward). What landed is rebased over only if it touched nothing these
