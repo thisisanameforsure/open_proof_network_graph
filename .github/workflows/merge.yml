@@ -342,8 +342,9 @@ jobs:
               tip_of=lambda ref: None,
               lane_of=lambda number: None,
           ):
-              """F07-T56: a list of (number, sha, action), action one of "merge", "update" or
-              "hold", for at most one step in each lane: a lane is the target a pull request
+              """F07-T56: a list of (number, sha, action), action one of "merge", "update",
+              "hold" (a lane waits for it) or "wait" (nothing waits for it, but the run reads
+              its gate again before it ends), for at most one step in each lane: a lane is the target a pull request
               touches (`lane_of`), and `behind_of` counts only main's commits that touched what
               that lane is gated against. Lanes are independent: a merge on one target cannot
               change the verdict on another (D-2, D-3), so a pull request merges behind main
@@ -376,13 +377,24 @@ jobs:
                       continue
                   runs = checks_of(sha)
                   state = verdict(runs, required)
-                  if state == "pending" and strict and behind_of(sha) == 0:
-                      if holds_the_line(state, runs, sha, strict, behind_of, now):
+                  if state == "pending" and strict:
+                      started = gate_started(runs)
+                      recent = started is None or now - started < timedelta(seconds=HOLD_S)
+                      if behind_of(sha) == 0 and recent:
                           print(f"#{number} is up to date and its gate is running: holding its lane for it")
                           decided.append((number, sha, "hold"))
                           close(lane)
                           continue
-                      print(f"#{number} has been pending for over {HOLD_S} s: not held for")
+                      if recent:
+                          # F07-T56: behind on its own lane while its gate runs (a merge's own bot
+                          # commit can do that now that nothing waits for it). It holds nothing,
+                          # as T31 says, but its run's end must still be read: the wake for it
+                          # can come before the host reports the check (T32), and a run that
+                          # decided "nothing" would leave it until some other wake.
+                          print(f"#{number} is behind on its lane and its gate is running: waiting on it, holding nothing")
+                          decided.append((number, sha, "wait"))
+                      else:
+                          print(f"#{number} has been pending for over {HOLD_S} s: not held for")
                   if state != "green":
                       continue
                   if stale_head(number, sha, refs[number], tip_of):
@@ -416,12 +428,12 @@ jobs:
 
 
           def acts(decided):
-              """The decisions the acting step carries out: everything but the holds."""
-              return [d for d in decided if d[2] != "hold"]
+              """The decisions the acting step carries out: everything but the holds and waits."""
+              return [d for d in decided if d[2] not in ("hold", "wait")]
 
 
           def settle(step, sleep, *, clock=time.monotonic):
-              """Decide, and while every lane is holding decide again from fresh reads, every
+              """Decide, and while every lane is holding or waiting decide again from fresh reads, every
               SETTLE_EVERY_S for at most SETTLE_CAP_S. A hold used to end the run, and nothing
               woke it when what it held for had already happened (F07-T32). A run with anything
               to act on acts at once; a lane still holding is decided again by the run its act
