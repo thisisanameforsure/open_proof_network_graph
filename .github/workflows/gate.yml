@@ -1107,6 +1107,9 @@ jobs:
           REMOTE="$remote" RECORD="$RUNNER_TEMP/record.patch" SUFFIX="${VERDICT}${replayed}${mention}" \
             python3 "$helper" publish || status=$?
           git fetch -q "$remote" main
+          # what follows (the site's deploy) reads HEAD: leave it at main as the host has it, never at
+          # a commit this run made and did not push
+          git checkout -q -f --detach FETCH_HEAD
           replay_owed FETCH_HEAD "$REPLAY"
           exit "$status"
 
