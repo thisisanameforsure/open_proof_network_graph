@@ -1,6 +1,6 @@
 # The gate (D-4, D-35): the only thing with authority to say a proof counts.
 #
-# Two jobs, never sharing a secret:
+# Jobs that never share a secret:
 #   gate       on every pull request — checks out the `network` commit
 #              this graph pins in its gate-spec.json, asks that pinned gate what the diff *is*
 #              (F07-R3, F08-R2, R8: proof, partial, append, explainer, proposal or curator) and
@@ -42,7 +42,16 @@
 #              pinned to one gate) in one commit `gate: #A #B #C pass`: each merge classified on
 #              its own diff, one ledger call each in order, the products once. Anything else it
 #              finds unrecorded — a building merge, another pin, a diff the gate refuses — is
-#              replayed on its own after it commits, never dropped.
+#              replayed on its own after it commits, never dropped. F07-T55: only an append leaves
+#              its merge to a later run; a building merge records itself, and a plan leaves one
+#              whose run is still going to that run. Nothing waits for this job any more (the merge
+#              actor, F07-T56), so main often moves before it pushes: it then catches up — drops
+#              what a gate commit on main already credits, lays its own record (record.patch) on
+#              main as it is, writes the ledger lines again and renders the products of that tree
+#              — and pushes again, so one commit carries the products of every merge so far.
+#   cache      F07-T57: after postmerge, for a merge that built and passed, builds and uploads the
+#              olean cache (F10-R7). It used to run inside postmerge, before the commit, on every
+#              merge: four to seven of a job's five to eight minutes.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
 # Every field this file reads from the classifier is read with a default, and the pull request's
@@ -304,8 +313,13 @@ jobs:
     permissions:
       contents: write
       pull-requests: read
-      id-token: write  # F10-R7: the olean cache upload assumes a role through OIDC (C8 item 4)
       actions: write  # F07-T32: dispatch the merge actor when this job ends
+    # F07-T57: what the cache job needs, once this job's record is pushed
+    outputs:
+      cache: ${{ steps.classify.outputs.needs_gate == 'true' && steps.products.outputs.verdict == 'pass' }}
+      merge: ${{ steps.pr.outputs.merge }}
+      targets: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
+      render_pin: ${{ steps.pr.outputs.render_pin }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -1017,33 +1031,6 @@ jobs:
               --graph . --commit "$merge"
           done
 
-      # F10-R7: build every proved node's oleans from the merged tree inside the step-3 image and
-      # upload them keyed by this commit, so the next pregate.sh, devcontainer and gate run fetch
-      # instead of compiling. Only when the repository variables name the bucket and the role;
-      # unset, the step is skipped and a pinned gate that predates the command is never asked
-      # (F08-Q8's shape). A failed upload is a warning: the next run builds (C7).
-      - name: Assume the cache upload role (OIDC, no stored key)
-        if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ vars.OPN_CACHE_UPLOAD_ROLE_ARN }}
-          aws-region: ${{ vars.OPN_AWS_REGION }}
-
-      - name: Publish the olean cache for this commit (F10-R7; no gate secret in this step)
-        if: steps.pr.outputs.run == 'true' && steps.products.outputs.verdict == 'pass' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
-        env:
-          PYTHONPATH: network-render/gate
-          MERGE: ${{ steps.pr.outputs.merge }}
-          TARGETS: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
-        run: |
-          set -euo pipefail
-          for target in $TARGETS; do  # F07-T45: a batch may touch several targets
-            uv run --frozen --project network-render python -m opn_gate.cli cache publish \
-              --graph . --commit "$MERGE" --target "$target" \
-              --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
-              || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
-          done
-
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
         env:
@@ -1156,3 +1143,60 @@ jobs:
           gh workflow run merge.yml --repo "$GITHUB_REPOSITORY" --ref main \
             && echo "dispatched the merge actor" \
             || echo "::warning::the merge actor was not dispatched; its gate wake and cron remain"
+
+  # F10-R7, F07-T57: build every proved node's oleans from a merge that built something and passed,
+  # inside the step-3 image, and upload them keyed by that commit, so the next pregate.sh,
+  # devcontainer and gate run fetch instead of compiling. A job of its own, after the post-merge job
+  # has pushed: the upload took three and a half to seven minutes and ran before the commit on every
+  # merge, so an annex's record waited for oleans it had not changed. A merge that builds nothing
+  # publishes no cache; a fetch takes the newest cache at or before its commit, which holds every
+  # proved node. Only when the repository variables name the bucket and the role; unset, the job is
+  # skipped and a pinned gate that predates the command is never asked (F08-Q8's shape). It alone
+  # holds the OIDC grant the role needs (C8, item 4); a failed upload is a warning: the next run
+  # builds (C7). `cache publish` reads the merge commit's tree and nothing else, so one commit of
+  # history is all it is given.
+  cache:
+    name: olean cache for a merge that built (F10-R7), after its record is pushed
+    needs: postmerge
+    if: needs.postmerge.outputs.cache == 'true' && vars.OPN_CACHE_UPLOAD_ROLE_ARN != ''
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write  # the upload assumes a role through OIDC (C8 item 4)
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.postmerge.outputs.merge }}
+
+      - name: Check out the network commit main pins now, which builds the cache (F07-T33)
+        uses: actions/checkout@v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ needs.postmerge.outputs.render_pin }}
+          path: network-render
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v10.0.1
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Assume the cache upload role (OIDC, no stored key)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.OPN_CACHE_UPLOAD_ROLE_ARN }}
+          aws-region: ${{ vars.OPN_AWS_REGION }}
+
+      - name: Publish the olean cache for this merge (F10-R7; no gate secret in this job)
+        env:
+          PYTHONPATH: network-render/gate
+          MERGE: ${{ needs.postmerge.outputs.merge }}
+          TARGETS: ${{ needs.postmerge.outputs.targets }}
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network-render --quiet
+          for target in $TARGETS; do
+            uv run --frozen --project network-render python -m opn_gate.cli cache publish \
+              --graph . --commit "$MERGE" --target "$target" \
+              --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
+              || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
+          done
