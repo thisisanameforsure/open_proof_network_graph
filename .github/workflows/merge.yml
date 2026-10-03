@@ -19,11 +19,20 @@
 # attestation is never proved (F03-Q7). A defect here could land a commit that should not have
 # landed; it could not make a false statement read as proved.
 #
-# One pull request per run, oldest first, and only branches the service opened (propose/, append/,
-# submit/): the ruleset requires an up-to-date branch, so every merge puts the others behind, and
-# the rounds are sequential whatever the tooling.
+# Only branches the service opened (propose/, append/, submit/), oldest first, and one lane per
+# target (F07-T56, the owner's request 2026-10-02). A submission touches exactly one target (D-2,
+# D-3), so a merge on erdos-402 cannot change the verdict on erdos-69: the ruleset's up-to-date rule
+# is kept per target. A pull request is stale only if main's commits since its merge base touched
+# its own target, or a shared input (curators.json, policy.json, keys/, schemas/, the workflows);
+# what the post-merge job renders (graph.json, CONTEXT.json, the tag cache, frontier.json and the
+# rest) and the guides never count. A stale one is updated; any other merges behind main, as appends
+# already did. So lanes go in parallel, one run acting in each, and within a lane it is one at a
+# time, which is the safe choice now that a proof may import another node's proved lemma (F08-R16).
+# A pull request this file cannot place in one target (policy.json, or a history it cannot read)
+# goes in no lane: it waits until it is first, and then holds every lane, as the whole queue was
+# held before. The post-merge re-check on the merge commit stays the guard on the record.
 #
-# Except appends, which merge in batches (F07-T45, the owner's ruling 2026-09-29). An append is one
+# Appends merge in batches (F07-T45, the owner's ruling 2026-09-29), now within their lane. An append is one
 # new file under a target, earns no attestation and builds nothing, so the up-to-date rebuild buys
 # it nothing, and on 2026-09-27 every fifteen-second append still cost a whole round and a
 # three-minute post-merge job (20 pull requests, 7 merged in 45 minutes). When the oldest pull
@@ -32,22 +41,21 @@
 # green building pull request (first in, first out) and at an up-to-date one whose gate is running
 # (T31). A building pull request is never in a batch and is still updated before it merges. One
 # post-merge run then records the whole batch (gate.yml, F07-T45). The token's bypass is what lets
-# an append merge behind main; if the host ever refuses, the acting step updates it as before.
+# a pull request merge behind main; if the host ever refuses, the acting step updates it instead.
 #
-# The queue holds (F07-T31). A pull request that is up to date and whose gate is running is next
-# in line, and nothing is merged past it: main may not move under a gate run this workflow
-# started. Without that, the pull request it had just updated read as "not green", the next green
-# one (always a fifteen-second append) was merged, and the updated one was behind again; on
-# 2026-09-21 green Mathlib pull requests waited 13 to 33 minutes behind appends that took one. And
-# nothing is updated or merged while a post-merge job has not committed (F07-T33): its commit
-# moves main a second time, and a merge in between moved main under the job itself, which then
-# could not push and lost its record (#125, #132, #133, #145). An append waits at most one gate
-# round and one post-merge job; a hold older than HOLD_S is ignored, so a run that never reports
-# holds nothing. A
-# run either updates the oldest green pull request's branch (the gate then re-runs on it and wakes
-# this workflow again) or, once it is up to date and green, merges it (the post-merge job's last
-# step then wakes it for the next). The merge names the head commit it saw, so a push in between
-# refuses the merge rather than landing unchecked.
+# A lane holds (F07-T31). A pull request that is up to date and whose gate is running is next in
+# its lane, and nothing in that lane is merged past it: its target may not move under a gate run
+# this workflow started. Without that, the pull request it had just updated read as "not green", the
+# next green one (always a fifteen-second append) was merged, and the updated one was behind again;
+# on 2026-09-21 green Mathlib pull requests waited 13 to 33 minutes behind appends that took one. A
+# hold older than HOLD_S is ignored, so a run that never reports holds nothing. Nothing waits for a
+# post-merge job any more (F07-T56): F07-T33 held the whole queue until the job had committed,
+# because a merge in between used to cost the job its push and its record (#125, #132, #133, #145);
+# the job now catches up on main as it is instead (gate.yml, F07-T55), and the queue stopped
+# waiting five to eight minutes per merge. A run updates or merges in every lane at once (the gate
+# re-runs on an updated branch and wakes this workflow again; a run that merged dispatches it once
+# more). Each merge names the head commit it saw, so a push in between refuses the merge rather than
+# landing unchecked.
 #
 # Every way a run can stop has a wake after it (F07-T32). The first draft said "a hold here is
 # always woken", and on 2026-09-23 the queue froze twice with green pull requests waiting: the host
@@ -56,9 +64,9 @@
 # null while it computes (#150 was updated in that state, the update failed, and a failed run wakes
 # nothing); the concurrency group drops older pending wakes, and the cron below fired four times in
 # seventeen hours. So a hold is not the end of a run: it is decided again every SETTLE_EVERY_S until
-# it resolves or SETTLE_CAP_S passes. A post-merge job is running while one of its *jobs* is, not
-# while the host says its run is. The post-merge job dispatches this workflow when it ends, however
-# it ends; a failed run here dispatches it once more. The cron is a last resort, nothing more.
+# it resolves or SETTLE_CAP_S passes, unless some other lane has something to act on. The post-merge
+# job dispatches this workflow when it ends, however it ends; a run here that failed or merged
+# dispatches it once more. The cron is a last resort, nothing more.
 #
 # A hold on an unknown mergeability is right while the host computes it and wrong when the host's
 # record of the pull request is stale (F07-T46). On 2026-09-30 run 1094 updated #306's branch, the
@@ -94,16 +102,17 @@ concurrency:
 
 jobs:
   merge:
-    name: merge the oldest pull request the ruleset allows
+    name: merge what the ruleset allows, one lane per target
     runs-on: ubuntu-24.04
     timeout-minutes: 20 # above SETTLE_CAP_S, so a hold ends on its own terms
     permissions:
       pull-requests: read
       checks: read
       contents: read
-      actions: read # F07-T31: whether a post-merge job is still running on main
+    outputs:
+      merged: ${{ steps.act.outputs.merged }}  # F07-T56: how many merged, for the rewake job
     steps:
-      - name: Pick one pull request, from the host's own facts
+      - name: Pick what to do in each lane, from the host's own facts
         id: pick
         env:
           GH_TOKEN: ${{ github.token }}
@@ -111,8 +120,8 @@ jobs:
         run: |
           set -euo pipefail
           cat > pick.py <<'PY'
-          """Pick at most one pull request and say what to do with it. Pure functions over the
-          host's JSON, so the network repo's tests run this file as it stands (F07-T25)."""
+          """Pick what to do in each lane — one target's pull requests — and say it. Pure functions
+          over the host's JSON, so the network repo's tests run this file as it stands (F07-T25)."""
           import json
           import os
           import subprocess
@@ -135,6 +144,20 @@ jobs:
           SETTLE_CAP_S = 15 * 60
           #: The one check that may never be `skipped`: a gate that did not run checked nothing.
           MUST_SUCCEED_PREFIX = "gate ("
+          #: F07-T56: what the post-merge job renders from the tree (F03, F07-R12, F14-R12). A change
+          #: to one of these never changes what a pull request is gated against.
+          PRODUCT_FILES = ("frontier.json", "info.json", "claims.json", "targets/index.json",
+                           "THIRD_PARTY_NOTICES.md")
+          PRODUCT_DIRS = ("attestations/", "ledger/")
+          TARGET_PRODUCTS = ("graph.json", ".tags-cache.json")  # targets/<id>/<name>
+          NODE_PRODUCTS = ("CONTEXT.json",)  # targets/<id>/nodes/<node>/<name>
+          #: How far back along main's first-parent line a pull request's staleness is read; past
+          #: it, and past the host's own cap on a commit's file list, the branch is updated (C7).
+          WALK_LIMIT = 100
+          MAX_FILE_PAGES = 30
+          UNREADABLE = 10**6
+          #: The lane a pull request in no single target closes: every one.
+          EVERY_LANE = "*"
 
 
           def required_checks(rules):
@@ -213,15 +236,18 @@ jobs:
 
 
           def more_appends(
-              rest, refs, required, strict, checks_of, behind_of, conflicted, now, tip_of=lambda ref: None
+              rest, refs, required, strict, checks_of, behind_of, conflicted, now,
+              tip_of=lambda ref: None, limit=MAX_BATCH - 1,
           ):
               """F07-T45: the green appends after the first, in queue order, that go with it: up
               to the first green building pull request, the first that holds the line (T31) or
-              the first whose mergeability is still unknown (T32), and never past MAX_BATCH - 1.
-              Red, conflicting, and behind-and-pending ones are passed over, as at the head."""
+              the first whose mergeability is still unknown (T32), and never past `limit`.
+              Red, conflicting, and behind-and-pending ones are passed over, as at the head.
+              F07-T56: `rest` is the rest of the first one's lane, and `limit` what is left of
+              the run's MAX_BATCH."""
               out = []
               for number, sha in rest:
-                  if len(out) >= MAX_BATCH - 1:
+                  if len(out) >= limit:
                       break
                   runs = checks_of(sha)
                   state = verdict(runs, required)
@@ -246,6 +272,65 @@ jobs:
               return out
 
 
+          # --- F07-T56: one lane per target ---------------------------------------------------------
+
+
+          def gates_on(path, lane):
+              """Whether a change to `path` on main can change what a pull request in `lane` is
+              gated against. A submission touches one target (D-2, D-3), so another target's files
+              cannot; nor can what the post-merge job renders from the tree (F03), nor the guides.
+              Anything else outside targets/ is shared (curators.json, policy.json, keys/,
+              schemas/, the workflows) and reaches every lane. `lane` None is a pull request this
+              file could not place in one target: everything but the products reaches it."""
+              if path in PRODUCT_FILES or path.startswith(PRODUCT_DIRS):
+                  return False
+              parts = path.split("/")
+              if parts[0] == "targets" and len(parts) > 2:
+                  if len(parts) == 3 and parts[2] in TARGET_PRODUCTS:
+                      return False
+                  if len(parts) == 5 and parts[2] == "nodes" and parts[4] in NODE_PRODUCTS:
+                      return False
+                  return lane is None or parts[1] == lane
+              if len(parts) == 1 and path.endswith(".md"):
+                  return False  # prose for people and agents; no gate reads it
+              return True
+
+
+          def lane_of_paths(paths):
+              """The one target a pull request touches, or None: no target, several, or a file
+              outside targets/ (policy.json is a curator's pull request that touches none)."""
+              targets = {p.split("/")[1] for p in paths if p.startswith("targets/") and p.count("/") >= 2}
+              if len(targets) != 1 or any(not p.startswith("targets/") for p in paths):
+                  return None
+              return targets.pop()
+
+
+          def stale_count(walk, lane):
+              """How many of main's commits since a pull request's merge base touched what it is
+              gated against. `walk` is their changed paths, one list per commit on main's
+              first-parent line, or None when it could not be read; then every commit counts, so
+              an unreadable history updates the branch rather than merging it behind (C7)."""
+              if walk is None:
+                  return UNREADABLE
+              return sum(1 for paths in walk if any(gates_on(path, lane) for path in paths))
+
+
+          def main_since(base, head, commit_of, limit=WALK_LIMIT):
+              """The changed paths of each commit on main's first-parent line from `head` back to
+              `base`, newest first; None past `limit` commits or if the line never reaches `base`.
+              A merge commit's paths are its first-parent diff: exactly what it put on main."""
+              out, sha = [], head
+              while sha != base:
+                  if len(out) >= limit:
+                      return None
+                  paths, parents = commit_of(sha)
+                  if paths is None or not parents:
+                      return None
+                  out.append(paths)
+                  sha = parents[0]
+              return out
+
+
           def decide(
               pulls,
               rules,
@@ -254,91 +339,110 @@ jobs:
               conflicted=lambda number: False,
               *,
               now=None,
-              postmerge_running=lambda: False,
               tip_of=lambda ref: None,
+              lane_of=lambda number: None,
           ):
-              """(number, sha, action) for the pull request at the head of the queue, or
-              ("", "", "") when there is nothing to do and ("", "", "hold") when the queue is
-              waiting: for the gate of the pull request next in line, or for a post-merge job.
+              """F07-T56: a list of (number, sha, action), action one of "merge", "update",
+              "hold" (a lane waits for it) or "wait" (nothing waits for it, but the run reads
+              its gate again before it ends), for at most one step in each lane: a lane is the target a pull request
+              touches (`lane_of`), and `behind_of` counts only main's commits that touched what
+              that lane is gated against. Lanes are independent: a merge on one target cannot
+              change the verdict on another (D-2, D-3), so a pull request merges behind main
+              unless its own target or a shared input moved, and lanes go in parallel. Within a
+              lane everything is as it was for the whole queue: oldest first, T31's line, T32's
+              unknown mergeability, T45's batches of appends (MAX_BATCH across the whole run),
+              T46's stale heads. A pull request in no single lane (`lane_of` None) waits until it
+              is first, and then closes every lane; with no `lane_of` at all every pull request is
+              such a one, and the queue is the single line it was before T56.
+
               A green pull request the host says cannot be merged (a conflict with main) is
               passed over: acting on it would fail on every run and hold everything behind it,
               and a person has to look at it either way. `conflicted` may answer None, the host
-              still computing: that is a hold, never an update (#150, F07-T32).
-
-              F07-T45: when that pull request is an append, the answer is ("n1 n2 ...",
-              "sha1 sha2 ...", "merge-batch"), the numbers and heads aligned: the appends are
-              merged in that order, behind main or not. One append that is up to date is a plain
-              "merge", exactly as before."""
+              still computing: that is a hold, never an update (#150, F07-T32)."""
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
               refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
               queue = candidates(pulls)
+              lanes = {number: lane_of(number) for number, _sha in queue}
+              decided, closed, batched = [], set(), 0
+
+              def close(lane):
+                  closed.add(EVERY_LANE if lane is None else lane)
+
               for index, (number, sha) in enumerate(queue):
+                  lane = lanes[number]
+                  if EVERY_LANE in closed:
+                      break
+                  if lane in closed or (lane is None and closed):
+                      continue
                   runs = checks_of(sha)
                   state = verdict(runs, required)
-                  if state == "pending" and strict and behind_of(sha) == 0:
-                      if holds_the_line(state, runs, sha, strict, behind_of, now):
-                          print(f"#{number} is up to date and its gate is running: holding for it")
-                          return "", "", "hold"
-                      print(f"#{number} has been pending for over {HOLD_S} s: not held for")
+                  if state == "pending" and strict:
+                      started = gate_started(runs)
+                      recent = started is None or now - started < timedelta(seconds=HOLD_S)
+                      if behind_of(sha) == 0 and recent:
+                          print(f"#{number} is up to date and its gate is running: holding its lane for it")
+                          decided.append((number, sha, "hold"))
+                          close(lane)
+                          continue
+                      if recent:
+                          # F07-T56: behind on its own lane while its gate runs (a merge's own bot
+                          # commit can do that now that nothing waits for it). It holds nothing,
+                          # as T31 says, but its run's end must still be read: the wake for it
+                          # can come before the host reports the check (T32), and a run that
+                          # decided "nothing" would leave it until some other wake.
+                          print(f"#{number} is behind on its lane and its gate is running: waiting on it, holding nothing")
+                          decided.append((number, sha, "wait"))
+                      else:
+                          print(f"#{number} has been pending for over {HOLD_S} s: not held for")
                   if state != "green":
                       continue
                   if stale_head(number, sha, refs[number], tip_of):
                       continue
                   conflict = conflicted(number)
                   if conflict is None:
-                      print(f"#{number} is green; the host is still computing whether it conflicts: holding")
-                      return "", "", "hold"
+                      print(f"#{number} is green; the host is still computing whether it conflicts: holding its lane")
+                      decided.append((number, sha, "hold"))
+                      close(lane)
+                      continue
                   if conflict:
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
-                  if postmerge_running():
-                      # F07-T33: nothing moves main under a post-merge job, an append included.
-                      # T31 held only a building pull request's update, and an append updated
-                      # in the window was merged fifteen seconds later while the job was still
-                      # rendering: its push was refused and its record lost (#125, #132, #133,
-                      # #145). Main moves only between jobs.
-                      print(f"#{number} is next; a post-merge job has not committed yet: holding")
-                      return "", "", "hold"
                   if refs[number].startswith(APPEND_PREFIX):
+                      if batched >= MAX_BATCH:
+                          print(f"#{number}: this run has merged {MAX_BATCH} appends; the next run takes it")
+                          close(lane)
+                          continue
+                      rest = [(n, s) for n, s in queue[index + 1 :] if lanes[n] == lane]
                       batch = [(number, sha)] + more_appends(
-                          queue[index + 1 :], refs, required, strict, checks_of, behind_of,
-                          conflicted, now, tip_of,
+                          rest, refs, required, strict, checks_of, behind_of, conflicted, now,
+                          tip_of, limit=MAX_BATCH - batched - 1,
                       )
-                      if len(batch) == 1 and behind_of(sha) == 0:
-                          return number, sha, "merge"
-                      return (
-                          " ".join(str(n) for n, _ in batch),
-                          " ".join(s for _, s in batch),
-                          "merge-batch",
-                      )
-                  if behind_of(sha) > 0 and strict:
-                      return number, sha, "update"
-                  return number, sha, "merge"
-              return "", "", ""
+                      decided += [(n, s, "merge") for n, s in batch]
+                      batched += len(batch)
+                      close(lane)
+                      continue
+                  decided.append((number, sha, "update" if strict and behind_of(sha) > 0 else "merge"))
+                  close(lane)
+              return decided
 
 
-          def postmerge_running_from(runs, jobs_of):
-              """Whether one of these push runs of the gate on main is still to commit: one of
-              its jobs is unfinished, or it has started none. The run's own status is not asked:
-              the host reported #147's post-merge run in progress for eight minutes after its
-              jobs had ended (F07-T32)."""
-              for run in runs:
-                  jobs = jobs_of(run["id"])
-                  if not jobs or any(job["status"] != "completed" for job in jobs):
-                      return True
-              return False
+          def acts(decided):
+              """The decisions the acting step carries out: everything but the holds and waits."""
+              return [d for d in decided if d[2] not in ("hold", "wait")]
 
 
           def settle(step, sleep, *, clock=time.monotonic):
-              """Decide, and while the answer is a hold decide again from fresh reads, every
+              """Decide, and while every lane is holding or waiting decide again from fresh reads, every
               SETTLE_EVERY_S for at most SETTLE_CAP_S. A hold used to end the run, and nothing
-              woke it when what it held for had already happened (F07-T32)."""
+              woke it when what it held for had already happened (F07-T32). A run with anything
+              to act on acts at once; a lane still holding is decided again by the run its act
+              wakes (F07-T56)."""
               started = clock()
               while True:
-                  decision = step()
-                  if decision[2] != "hold" or clock() - started >= SETTLE_CAP_S:
-                      return decision
+                  decided = step()
+                  if acts(decided) or not decided or clock() - started >= SETTLE_CAP_S:
+                      return decided
                   sleep(SETTLE_EVERY_S)
 
 
@@ -353,22 +457,36 @@ jobs:
               return json.loads(out.stdout)
 
 
+          def paged_files(path, read=None):
+              """Every changed path the host lists for a pull request or a commit, page by page,
+              and the first page as read; the paths are None past the host's own cap, which is
+              read as unreadable rather than as complete."""
+              read = read or api
+              out, first = [], None
+              for page in range(1, MAX_FILE_PAGES + 1):
+                  doc = read(f"{path}?per_page=100&page={page}")
+                  first = doc if first is None else first
+                  files = doc if isinstance(doc, list) else doc.get("files") or []
+                  for entry in files:
+                      out.append(entry["filename"])
+                      if entry.get("previous_filename"):
+                          out.append(entry["previous_filename"])  # a rename leaves its old path too
+                  if len(files) < 100:
+                      return out, first
+              return None, first
+
+
           if __name__ == "__main__":
               repo = os.environ["REPO"]
               rules = api(f"repos/{repo}/rules/branches/main")
+              commits = {}  # a commit's paths and parents never change: read each once per run
+              pr_files = {}
 
-              def live_push_runs():
-                  # the gate workflow on main is the post-merge job: by push, or by dispatch
-                  # when it replays a merge whose job was lost (F07-T33)
-                  return [
-                      run
-                      for event in ("push", "workflow_dispatch")
-                      for status in ("in_progress", "queued")
-                      for run in api(
-                          f"repos/{repo}/actions/runs?branch=main&event={event}&status={status}&per_page=20"
-                      )["workflow_runs"]
-                      if run["name"] == "gate"
-                  ]
+              def commit_of(sha):
+                  if sha not in commits:
+                      paths, first = paged_files(f"repos/{repo}/commits/{sha}")
+                      commits[sha] = (paths, [p["sha"] for p in (first or {}).get("parents") or []])
+                  return commits[sha]
 
               def tip(ref):
                   # F07-T46: the branch's tip, or "" when the branch is gone; a failed run wakes
@@ -380,29 +498,54 @@ jobs:
 
               def step():
                   # every read is fresh: a hold is decided again on what the host says now
+                  pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
+                  number_of = {pr["head"]["sha"]: pr["number"] for pr in pulls}
+                  main = api(f"repos/{repo}/git/ref/heads/main")["object"]["sha"]
+
+                  def lane_of(number):
+                      head = next(pr["head"]["sha"] for pr in pulls if pr["number"] == number)
+                      if (number, head) not in pr_files:
+                          files, _first = paged_files(f"repos/{repo}/pulls/{number}/files")
+                          pr_files[(number, head)] = lane_of_paths(files) if files else None
+                      return pr_files[(number, head)]
+
+                  stale = {}  # one compare per pull request per decision: the token's budget is hourly
+
+                  def behind_of(sha):
+                      if sha not in stale:
+                          compare = api(f"repos/{repo}/compare/{sha}...{main}?per_page=1")
+                          # a compare's own commit list is capped; its counts and merge base are not
+                          if int(compare["ahead_by"]) == 0:
+                              stale[sha] = 0
+                          else:
+                              base = compare["merge_base_commit"]["sha"]
+                              walk = main_since(base, main, commit_of)
+                              stale[sha] = stale_count(walk, lane_of(number_of[sha]))
+                      return stale[sha]
+
                   return decide(
-                      api(f"repos/{repo}/pulls?state=open&base=main&per_page=100"),
+                      pulls,
                       rules,
                       lambda s: api(f"repos/{repo}/commits/{s}/check-runs?per_page=100")["check_runs"],
-                      lambda s: int(api(f"repos/{repo}/compare/{s}...main")["ahead_by"]),
+                      behind_of,
                       lambda n: mergeability(api(f"repos/{repo}/pulls/{n}")),
-                      postmerge_running=lambda: postmerge_running_from(
-                          live_push_runs(),
-                          lambda run_id: api(f"repos/{repo}/actions/runs/{run_id}/jobs")["jobs"],
-                      ),
                       tip_of=tip,
+                      lane_of=lane_of,
                   )
 
-              number, sha, action = settle(step, time.sleep)
+              decided = acts(settle(step, time.sleep))
               with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-                  out.write(f"number={number}\nsha={sha}\naction={action}\n")
-              named = " ".join(f"#{n}" for n in str(number).split())
-              print(f"merge actor: {action or 'nothing to do'} {named}")
+                  out.write(f"number={' '.join(str(n) for n, _s, _a in decided)}\n")
+                  out.write(f"sha={' '.join(s for _n, s, _a in decided)}\n")
+                  out.write(f"action={' '.join(a for _n, _s, a in decided)}\n")
+              said = ", ".join(f"{a} #{n}" for n, _s, a in decided)
+              print(f"merge actor: {said or 'nothing to do'}")
               sys.exit(0)
           PY
           python3 pick.py
 
       - name: Act (the only step that sees the token)
+        id: act
         if: steps.pick.outputs.number != ''
         env:
           GH_TOKEN: ${{ secrets.OPN_GRAPH_MERGE_TOKEN }}
@@ -416,49 +559,51 @@ jobs:
             echo "::notice::dry run: would $ACTION #$NUMBER at $SHA; OPN_GRAPH_MERGE_TOKEN is not set, so nothing was changed"
             exit 0
           fi
-          if [ "$ACTION" = "update" ]; then
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/update-branch" -f expected_head_sha="$SHA" >/dev/null
-            echo "updated the branch of #$NUMBER; the gate re-runs on it and wakes this workflow"
-          elif [ "$ACTION" = "merge-batch" ]; then
-            # F07-T45: appends, in queue order, each at the head the decision saw. The first refusal
-            # ends the batch (C7): the rest wait for the next run, which the post-merge job of any
-            # merge that landed wakes. A refused first merge is updated instead, as before T45, so
-            # a host that ever refuses an append behind main slows the queue and never freezes it.
-            read -r -a numbers <<< "$NUMBER"
-            read -r -a shas <<< "$SHA"
-            if [ "${#numbers[@]}" -eq 0 ] || [ "${#numbers[@]}" -ne "${#shas[@]}" ]; then
-              echo "::error::a batch of ${#numbers[@]} numbers and ${#shas[@]} heads"; exit 1
-            fi
-            merged=0
-            for i in "${!numbers[@]}"; do
-              n="${numbers[$i]}"
-              s="${shas[$i]}"
-              if gh api -X PUT "repos/$REPO/pulls/$n/merge" -f sha="$s" -f merge_method=merge >/dev/null; then
-                merged=$((merged + 1))
-                echo "merged #$n at $s ($merged of ${#numbers[@]})"
-              elif [ "$merged" -eq 0 ]; then
-                echo "::warning::the host refused to merge #$n behind main; updating its branch instead"
-                gh api -X PUT "repos/$REPO/pulls/$n/update-branch" -f expected_head_sha="$s" >/dev/null
-                echo "updated the branch of #$n; the gate re-runs on it and wakes this workflow"
-                exit 0
-              else
-                echo "::warning::#$n was not merged; it and the rest of the batch wait for the next run"
-                break
-              fi
-            done
-            echo "merged $merged appends; the last one's post-merge job records them all and wakes this workflow"
-          else
-            gh api -X PUT "repos/$REPO/pulls/$NUMBER/merge" -f sha="$SHA" -f merge_method=merge >/dev/null
-            echo "merged #$NUMBER at $SHA; the post-merge job commits the products and wakes this workflow"
+          # F07-T56: one entry per pull request, numbers, heads and actions aligned, in queue order:
+          # at most one step per lane, or a lane's batch of appends (F07-T45). Each merge names the
+          # head it saw, so a push in between refuses it rather than landing unchecked. A refused
+          # merge (a conflict that appeared since the decision, or a host that refuses to merge
+          # behind main) is updated instead, as before T45, and the rest go on: lanes are
+          # independent. A failed update fails the run, and the rewake job starts another.
+          read -r -a numbers <<< "$NUMBER"
+          read -r -a shas <<< "$SHA"
+          read -r -a actions <<< "$ACTION"
+          if [ "${#numbers[@]}" -eq 0 ] || [ "${#numbers[@]}" -ne "${#shas[@]}" ] \
+            || [ "${#numbers[@]}" -ne "${#actions[@]}" ]; then
+            echo "::error::${#numbers[@]} numbers, ${#shas[@]} heads and ${#actions[@]} actions"; exit 1
           fi
+          merged=0
+          failed=0
+          for i in "${!numbers[@]}"; do
+            n="${numbers[$i]}"
+            s="${shas[$i]}"
+            if [ "${actions[$i]}" = "merge" ] \
+              && gh api -X PUT "repos/$REPO/pulls/$n/merge" -f sha="$s" -f merge_method=merge >/dev/null; then
+              merged=$((merged + 1))
+              echo "merged #$n at $s"
+              continue
+            fi
+            [ "${actions[$i]}" = "merge" ] && echo "::warning::the host refused to merge #$n; updating its branch instead"
+            if gh api -X PUT "repos/$REPO/pulls/$n/update-branch" -f expected_head_sha="$s" >/dev/null; then
+              echo "updated the branch of #$n; the gate re-runs on it and wakes this workflow"
+            else
+              echo "::warning::#$n was neither merged nor updated"
+              failed=$((failed + 1))
+            fi
+          done
+          echo "merged=$merged" >> "$GITHUB_OUTPUT"
+          echo "merged $merged; each merge's post-merge job records it, catching up if main moved (F07-T55)"
+          [ "$failed" -eq 0 ] || exit 1
 
   # F07-T32: a failed run wakes nothing, so the queue froze at 17:51 on 2026-09-23 after an update
-  # of #150 failed. This job starts one more run when the acting job fails. Its own token may start
-  # this repository's workflows and do nothing else; the acting job above still only reads.
+  # of #150 failed. This job starts one more run when the acting job fails. F07-T56: and when it
+  # merged anything, since a merge no longer waits for its post-merge job and that job's wake comes
+  # minutes later: the next pull request in a lane whose head merged is updated at once. Its own
+  # token may start this repository's workflows and do nothing else; the acting job still only reads.
   rewake:
-    name: wake the merge actor after a failed run
+    name: wake the merge actor after a failed run or a merge
     needs: merge
-    if: failure()
+    if: failure() || (needs.merge.outputs.merged != '' && needs.merge.outputs.merged != '0')
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -470,6 +615,6 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          sleep 30 # let the host settle whatever made the act fail
+          sleep 30 # let the host settle whatever made the act fail, or register the merge
           gh workflow run merge.yml --repo "$REPO" --ref main
-          echo "dispatched the merge actor again after a failed run"
+          echo "dispatched the merge actor again"
