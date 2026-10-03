@@ -447,6 +447,9 @@ jobs:
               found = [
                   m for m in found[:-1] if m[2].startswith(APPEND_PREFIX) or not in_flight(m[1])
               ] + found[-1:]
+              # a merge that touched no target (a workflow change) has nothing to record and never gets a
+              # gate commit; replaying it costs a run that says so (#321, replayed by #361's run)
+              found = [m for m in found[:-1] if targets_of(m[1])] + found[-1:]
               others = [number for number, _sha, _branch in found[:-1]]
               if not others:
                   return single
