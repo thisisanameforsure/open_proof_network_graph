@@ -60,6 +60,17 @@
 # while the host says its run is. The post-merge job dispatches this workflow when it ends, however
 # it ends; a failed run here dispatches it once more. The cron is a last resort, nothing more.
 #
+# A hold on an unknown mergeability is right while the host computes it and wrong when the host's
+# record of the pull request is stale (F07-T46). On 2026-09-30 run 1094 updated #306's branch, the
+# push landed, and the host never synchronised the pull request: it went on reporting the old head,
+# green checks on that head and `mergeable: null`, and nine runs held on it for six hours with
+# fourteen green pull requests behind it, nothing red anywhere. The fact that tells the two apart
+# is the branch's tip: a pull request whose recorded head is not its branch's tip cannot be merged
+# at that head (the merge names the head it saw) and its checks are not the branch's, so it is
+# passed over with a notice, as a conflict is, and the queue moves. A branch that is gone is the
+# same case. Nothing is pushed to nudge the host: a push it does not register would repeat every
+# run; the notice names the pull request for a person.
+#
 # The token is a fine-grained one on this repository alone, contents and pull requests write, an
 # Actions secret read by the one step that acts. `GITHUB_TOKEN` cannot stand in: a merge or a branch
 # update made with it starts no workflow, so neither the post-merge job nor the re-gate would run.
@@ -186,7 +197,24 @@ jobs:
               return started is None or now - started < timedelta(seconds=HOLD_S)
 
 
-          def more_appends(rest, refs, required, strict, checks_of, behind_of, conflicted, now):
+          def stale_head(number, sha, ref, tip_of):
+              """F07-T46: whether the host's record of a pull request is stale — its branch's tip is
+              not the head it records (an update it never synchronised, #306 on 2026-09-30), or the
+              branch is gone (an empty tip). ``tip_of`` answers None when it was not asked, and
+              then nothing is stale: the older callers and tests decide as before."""
+              tip = tip_of(ref)
+              if tip is None or tip == sha:
+                  return False
+              if tip:
+                  print(f"#{number}: its branch is at {tip[:12]}, not the {sha[:12]} the host records: passed over (F07-T46)")
+              else:
+                  print(f"#{number}: its branch {ref} no longer exists: passed over (F07-T46)")
+              return True
+
+
+          def more_appends(
+              rest, refs, required, strict, checks_of, behind_of, conflicted, now, tip_of=lambda ref: None
+          ):
               """F07-T45: the green appends after the first, in queue order, that go with it: up
               to the first green building pull request, the first that holds the line (T31) or
               the first whose mergeability is still unknown (T32), and never past MAX_BATCH - 1.
@@ -205,6 +233,8 @@ jobs:
                   if not refs[number].startswith(APPEND_PREFIX):
                       print(f"#{number} is green and builds: the batch ends before it (first in, first out)")
                       break
+                  if stale_head(number, sha, refs[number], tip_of):
+                      continue
                   conflict = conflicted(number)
                   if conflict is None:
                       print(f"#{number}: the host is still computing whether it conflicts: the batch ends before it")
@@ -225,6 +255,7 @@ jobs:
               *,
               now=None,
               postmerge_running=lambda: False,
+              tip_of=lambda ref: None,
           ):
               """(number, sha, action) for the pull request at the head of the queue, or
               ("", "", "") when there is nothing to do and ("", "", "hold") when the queue is
@@ -252,6 +283,8 @@ jobs:
                       print(f"#{number} has been pending for over {HOLD_S} s: not held for")
                   if state != "green":
                       continue
+                  if stale_head(number, sha, refs[number], tip_of):
+                      continue
                   conflict = conflicted(number)
                   if conflict is None:
                       print(f"#{number} is green; the host is still computing whether it conflicts: holding")
@@ -270,7 +303,7 @@ jobs:
                   if refs[number].startswith(APPEND_PREFIX):
                       batch = [(number, sha)] + more_appends(
                           queue[index + 1 :], refs, required, strict, checks_of, behind_of,
-                          conflicted, now,
+                          conflicted, now, tip_of,
                       )
                       if len(batch) == 1 and behind_of(sha) == 0:
                           return number, sha, "merge"
@@ -337,6 +370,14 @@ jobs:
                       if run["name"] == "gate"
                   ]
 
+              def tip(ref):
+                  # F07-T46: the branch's tip, or "" when the branch is gone; a failed run wakes
+                  # nothing, so a 404 here is an answer, never an exception
+                  try:
+                      return api(f"repos/{repo}/git/ref/heads/{ref}")["object"]["sha"]
+                  except subprocess.CalledProcessError:
+                      return ""
+
               def step():
                   # every read is fresh: a hold is decided again on what the host says now
                   return decide(
@@ -349,6 +390,7 @@ jobs:
                           live_push_runs(),
                           lambda run_id: api(f"repos/{repo}/actions/runs/{run_id}/jobs")["jobs"],
                       ),
+                      tip_of=tip,
                   )
 
               number, sha, action = settle(step, time.sleep)
