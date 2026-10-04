@@ -97,7 +97,7 @@ jobs:
       reviewers: ${{ steps.classify.outputs.reviewers }}
     steps:
       - name: Check out the graph at the pull request's merge commit
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/merge
           fetch-depth: 0
@@ -184,14 +184,14 @@ jobs:
 
       - name: Check out the pinned network commit
         if: steps.pin.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pin.outputs.pin }}
           path: network
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         if: steps.pin.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
@@ -325,7 +325,7 @@ jobs:
 
       - name: Keep the verdict and attestation
         if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true' || steps.classify.outputs.needs_qa_rerun == 'true')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
           path: |
@@ -389,7 +389,7 @@ jobs:
       targets: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
       render_pin: ${{ steps.pr.outputs.render_pin }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -861,7 +861,7 @@ jobs:
 
       - name: Check out the pinned network commit
         if: steps.pr.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pr.outputs.pin }}
@@ -870,14 +870,14 @@ jobs:
 
       - name: Check out the network commit main pins now, which renders (F07-T33)
         if: steps.pr.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pr.outputs.render_pin }}
           path: network-render
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         if: steps.pr.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
@@ -1288,24 +1288,24 @@ jobs:
       contents: read
       id-token: write  # the upload assumes a role through OIDC (C8 item 4)
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ needs.postmerge.outputs.merge }}
 
       - name: Check out the network commit main pins now, which builds the cache (F07-T33)
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ needs.postmerge.outputs.render_pin }}
           path: network-render
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: ${{ env.UV_VERSION }}
 
       - name: Assume the cache upload role (OIDC, no stored key)
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
         with:
           role-to-assume: ${{ vars.OPN_CACHE_UPLOAD_ROLE_ARN }}
           aws-region: ${{ vars.OPN_AWS_REGION }}

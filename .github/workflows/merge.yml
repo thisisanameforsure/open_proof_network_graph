@@ -158,6 +158,11 @@ jobs:
           UNREADABLE = 10**6
           #: The lane a pull request in no single target closes: every one.
           EVERY_LANE = "*"
+          #: F07-T62: the lane of a pull request whose diff is empty. It changes nothing any other lane
+          #: is gated against, so it is a lane of its own rather than none (which closes every lane).
+          EMPTY_LANE = ""
+          #: F07-T62: open pull requests are read a hundred to a page, oldest first, up to this many.
+          MAX_PULL_PAGES = 10
 
 
           def required_checks(rules):
@@ -204,19 +209,23 @@ jobs:
               return "green" if ok else "red"
 
 
-          def gate_started(check_runs):
-              """When the newest gate check run on a commit started, or None if none has."""
+          def gate_started(check_runs, updated=None):
+              """When the newest gate check run on a commit started, or None if none has. F07-T62: with
+              no gate run at all (a workflow that never triggered, a runner that never came), when the
+              host last changed the pull request (`updated`, its `updated_at`) stands in, so a gate
+              that never starts holds for HOLD_S after that and not for ever."""
               runs = [r for r in check_runs if r["name"].startswith(MUST_SUCCEED_PREFIX)]
               stamp = max(runs, key=lambda r: r["id"]).get("started_at") if runs else None
+              stamp = stamp or updated
               return datetime.fromisoformat(stamp.replace("Z", "+00:00")) if stamp else None
 
 
-          def holds_the_line(state, runs, sha, strict, behind_of, now):
+          def holds_the_line(state, runs, sha, strict, behind_of, now, updated=None):
               """F07-T31: an up-to-date pull request whose gate is running is next in line, and
               nothing is merged past it — unless its run has not reported for HOLD_S."""
               if state != "pending" or not strict or behind_of(sha) != 0:
                   return False
-              started = gate_started(runs)
+              started = gate_started(runs, updated)
               return started is None or now - started < timedelta(seconds=HOLD_S)
 
 
@@ -237,7 +246,7 @@ jobs:
 
           def more_appends(
               rest, refs, required, strict, checks_of, behind_of, conflicted, now,
-              tip_of=lambda ref: None, limit=MAX_BATCH - 1,
+              tip_of=lambda ref: None, limit=MAX_BATCH - 1, updated_of=lambda number: None,
           ):
               """F07-T45: the green appends after the first, in queue order, that go with it: up
               to the first green building pull request, the first that holds the line (T31) or
@@ -251,7 +260,7 @@ jobs:
                       break
                   runs = checks_of(sha)
                   state = verdict(runs, required)
-                  if holds_the_line(state, runs, sha, strict, behind_of, now):
+                  if holds_the_line(state, runs, sha, strict, behind_of, now, updated_of(number)):
                       print(f"#{number} is up to date and its gate is running: the batch ends before it")
                       break
                   if state != "green":
@@ -298,7 +307,10 @@ jobs:
 
           def lane_of_paths(paths):
               """The one target a pull request touches, or None: no target, several, or a file
-              outside targets/ (policy.json is a curator's pull request that touches none)."""
+              outside targets/ (policy.json is a curator's pull request that touches none). F07-T62:
+              an empty diff is EMPTY_LANE, a lane of its own."""
+              if not paths:
+                  return EMPTY_LANE
               targets = {p.split("/")[1] for p in paths if p.startswith("targets/") and p.count("/") >= 2}
               if len(targets) != 1 or any(not p.startswith("targets/") for p in paths):
                   return None
@@ -362,6 +374,7 @@ jobs:
               required, strict = required_checks(rules)
               now = now or datetime.now(timezone.utc)
               refs = {pr["number"]: pr["head"]["ref"] for pr in pulls}
+              updated = {pr["number"]: pr.get("updated_at") for pr in pulls}  # F07-T62
               queue = candidates(pulls)
               lanes = {number: lane_of(number) for number, _sha in queue}
               decided, closed, batched = [], set(), 0
@@ -378,7 +391,7 @@ jobs:
                   runs = checks_of(sha)
                   state = verdict(runs, required)
                   if state == "pending" and strict:
-                      started = gate_started(runs)
+                      started = gate_started(runs, updated.get(number))
                       recent = started is None or now - started < timedelta(seconds=HOLD_S)
                       if behind_of(sha) == 0 and recent:
                           print(f"#{number} is up to date and its gate is running: holding its lane for it")
@@ -416,7 +429,7 @@ jobs:
                       rest = [(n, s) for n, s in queue[index + 1 :] if lanes[n] == lane]
                       batch = [(number, sha)] + more_appends(
                           rest, refs, required, strict, checks_of, behind_of, conflicted, now,
-                          tip_of, limit=MAX_BATCH - batched - 1,
+                          tip_of, limit=MAX_BATCH - batched - 1, updated_of=updated.get,
                       )
                       decided += [(n, s, "merge") for n, s in batch]
                       batched += len(batch)
@@ -455,6 +468,22 @@ jobs:
           def api(path):
               out = subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True)
               return json.loads(out.stdout)
+
+
+          def open_pulls(repo, read=None):
+              """F07-T62: every open pull request on main, a hundred to a page, oldest first. One page
+              was read before, and the host lists newest first, so with a hundred and one open the
+              oldest — the one the queue takes first — was never seen. Past MAX_PULL_PAGES the
+              newest are left to a later run, with a warning."""
+              read = read or api
+              out = []
+              for page in range(1, MAX_PULL_PAGES + 1):
+                  doc = read(f"repos/{repo}/pulls?state=open&base=main&sort=created&direction=asc&per_page=100&page={page}")
+                  out += doc
+                  if len(doc) < 100:
+                      return out
+              print(f"::warning::over {MAX_PULL_PAGES * 100} open pull requests; the newest wait for a later run")
+              return out
 
 
           def paged_files(path, read=None):
@@ -498,7 +527,7 @@ jobs:
 
               def step():
                   # every read is fresh: a hold is decided again on what the host says now
-                  pulls = api(f"repos/{repo}/pulls?state=open&base=main&per_page=100")
+                  pulls = open_pulls(repo)
                   number_of = {pr["head"]["sha"]: pr["number"] for pr in pulls}
                   main = api(f"repos/{repo}/git/ref/heads/main")["object"]["sha"]
 
@@ -506,7 +535,8 @@ jobs:
                       head = next(pr["head"]["sha"] for pr in pulls if pr["number"] == number)
                       if (number, head) not in pr_files:
                           files, _first = paged_files(f"repos/{repo}/pulls/{number}/files")
-                          pr_files[(number, head)] = lane_of_paths(files) if files else None
+                          # F07-T62: an empty list is an empty diff (a lane of its own); None is unreadable
+                          pr_files[(number, head)] = lane_of_paths(files) if files is not None else None
                       return pr_files[(number, head)]
 
                   stale = {}  # one compare per pull request per decision: the token's budget is hourly
