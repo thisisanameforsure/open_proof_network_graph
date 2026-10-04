@@ -107,6 +107,8 @@ jobs:
       # What the diff *is* (F07-R3) is decided by that pinned gate, one step below.
       - name: Find the target this pull request touches and the network commit it pins
         id: pin
+        env:
+          OPN_PR_AUTHOR: ${{ github.event.pull_request.user.login }}  # F07-T61: never interpolated
         run: |
           set -euo pipefail
           # The diff base is the first parent of the merge ref checked out above, which GitHub
@@ -117,28 +119,68 @@ jobs:
           base="$(git rev-parse HEAD^1)"
           echo "base=$base" >> "$GITHUB_OUTPUT"
           echo "gate: diffing from HEAD^1 $base (the base branch tip this merge ref carries)"
-          git diff --name-only "$base...HEAD" > changed.txt
+          git diff --name-only --no-renames "$base...HEAD" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          # F07-T61: fail closed. A submission changes files under targets/<id>/ and nothing else
+          # (policy.json, F15-R3, is classified by the pinned gate below). Anything else — a
+          # workflow, curators.json, a key, a schema, a product — is not a submission: the check
+          # fails, unless the author is a curator listed in curators.json *as the base has it* (a
+          # pull request cannot list itself), whose such pull request is review only, as before.
+          outside="$(grep -Ev '^(targets/[^/]+/.+|policy\.json)$' changed.txt || true)"
+          if [ -n "$outside" ]; then
+            if git show "$base:curators.json" 2>/dev/null | python3 -c '
+          import json, sys
+          author = sys.argv[1]
+          listed = {i.get("github_login") for i in json.load(sys.stdin).get("identities") or []}
+          sys.exit(0 if author and author in listed else 1)' "${OPN_PR_AUTHOR:-}"; then
+              curator=true
+            else
+              curator=false
+            fi
+            if [ "$curator" != "true" ]; then
+              echo "::error::not a submission: this pull request changes files outside targets/<id>/ and policy.json, and its author is not a curator listed on the base (F07-T61):"
+              printf '%s\n' "$outside"
+              exit 1
+            fi
+            if [ -z "$target" ]; then
+              echo "gate: a listed curator's pull request touches no target; nothing to gate (review only)"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          fi
           # F15-R3 (Q2): policy.json is the steward rule's switch, a curator's pull request that
           # touches no target. It is gated all the same — classified as a curator record by the
-          # pinned gate — so its pin is read from any target's gate-spec.json (every target agrees
-          # on one, or the pin step of a target's own pull request would already have refused).
+          # pinned gate — so its pin is taken from any target's on the base (every target agrees on
+          # one, or the pin step of a target's own pull request would already have refused).
           if [ -z "$target" ] && grep -qx 'policy.json' changed.txt; then
-            target="$(ls -d targets/*/ 2>/dev/null | head -n 1 | xargs -r basename)"
-            echo "gate: policy.json changed; taking the network pin from targets/$target"
+            target="$(git ls-tree --name-only "$base" targets/ | sed -n 's#^targets/##p' | while read -r t; do
+              git cat-file -e "$base:targets/$t/gate-spec.json" 2>/dev/null && { echo "$t"; break; }; done || true)"
+            echo "gate: policy.json changed; taking the network pin from targets/$target on the base"
           fi
           if [ -z "$target" ]; then
-            echo "gate: nothing under targets/ changed; nothing to gate (maintenance PR, review only)"
+            echo "gate: nothing under targets/ changed; nothing to gate"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
             echo "gate: a submission touches exactly one target (D-2, D-3); found:"; cat changed.txt; exit 1
           fi
-          pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+          # F07-T61: the pin is the base's, never the pull request's own: a submission that rewrites
+          # its target's gate-spec.json does not choose the gate that judges it (D-4). A new target
+          # has no gate-spec.json on the base, and is gated by the pin the base's targets carry.
+          spec="$base:targets/$target/gate-spec.json"
+          if ! git cat-file -e "$spec" 2>/dev/null; then
+            other="$(git ls-tree --name-only "$base" targets/ | sed -n 's#^targets/##p' | while read -r t; do
+              git cat-file -e "$base:targets/$t/gate-spec.json" 2>/dev/null && { echo "$t"; break; }; done || true)"
+            if [ -z "$other" ]; then
+              echo "::error::targets/$target is new and the base carries no target's pin to gate it with"; exit 1
+            fi
+            echo "gate: targets/$target is new; taking the network pin from targets/$other on the base"
+            spec="$base:targets/$other/gate-spec.json"
+          fi
+          pin="$(git show "$spec" | python3 -c "import json,sys; print(json.load(sys.stdin)['network_commit'])")"
           echo "run=true" >> "$GITHUB_OUTPUT"
           echo "target=$target" >> "$GITHUB_OUTPUT"
           echo "pin=$pin" >> "$GITHUB_OUTPUT"
-          echo "gate: target $target; network pin $pin"
+          echo "gate: target $target; network pin $pin (from the base)"
 
       - name: Check out the pinned network commit
         if: steps.pin.outputs.run == 'true'
