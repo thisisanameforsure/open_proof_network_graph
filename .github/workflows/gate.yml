@@ -193,6 +193,28 @@ jobs:
           fi
           echo "tutorial=$tutorial" >> "$GITHUB_OUTPUT"
 
+      # F07-T63: the submission block the attestation records (submitter, declared model and tooling,
+      # the precheck consumed) is the body this run saw, not whatever the body says when the pull
+      # request merges. It comes from this run's own event payload, through the environment, and is
+      # kept as an artifact named for the head it was gated at; the post-merge job reads it back.
+      - name: Keep the pull request's body as this run saw it (F07-T63; no secret)
+        if: steps.pin.outputs.run == 'true'
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/submission"
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/submission/pr-body.md"
+
+      - name: Upload it, named for the pull request and the head it was gated at
+        if: steps.pin.outputs.run == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: submission-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/submission/pr-body.md
+          if-no-files-found: error
+          overwrite: true  # a re-run of this job on the same head saw the same event
+
       # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
       # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
       # inside the step-3 sandbox, because a statement elaborates arbitrary code too (C9).
@@ -963,14 +985,35 @@ jobs:
       # merged partial's holes become child nodes, written into this checkout for the bot commit
       # below to carry, and the assembly is filed under attempts/ for the pseudonym the block names.
       # Only a partial is handed --apply-partial — an older pin never merged a partial (F08-Q8).
-      - name: Fetch the merged pull request's body (the submission block names the proposer)
+      # F07-T63: the body the gate job kept for the head that merged (the newest gate run on it, an
+      # expired artifact never), and the body as it reads now only when there is none — a merge gated
+      # before this change, or an artifact past its retention — with a warning that says so.
+      - name: Fetch the merged pull request's body as the gate saw it (the submission block names the proposer)
         if: steps.pr.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.pr.outputs.number }}
         run: |
           set -euo pipefail
-          gh api "repos/${GITHUB_REPOSITORY}/pulls/${{ steps.pr.outputs.number }}" --jq '.body // ""' \
-            > "$RUNNER_TEMP/pr-body.md"
+          pr="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}")"
+          head="$(printf '%s' "$pr" | python3 -c "import json,sys; print(json.load(sys.stdin)['head']['sha'])")"
+          name="submission-${NUMBER}-${head}"
+          run_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${name}&per_page=100" | python3 -c "
+          import json, sys
+          kept = [a for a in json.load(sys.stdin).get('artifacts') or [] if not a.get('expired')]
+          kept.sort(key=lambda a: a.get('created_at') or '')
+          print(kept[-1]['workflow_run']['id'] if kept else '')" || true)"
+          dir="$RUNNER_TEMP/submission"
+          rm -rf "$dir"
+          if [ -n "$run_id" ] && gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name "$name" --dir "$dir" \
+            && [ -f "$dir/pr-body.md" ]; then
+            cp "$dir/pr-body.md" "$RUNNER_TEMP/pr-body.md"
+            echo "postmerge: PR #$NUMBER's submission block as the gate saw it at ${head:0:12} (run $run_id)"
+          else
+            echo "::warning::PR #$NUMBER: the gate kept no body for ${head:0:12} (gated before F07-T63, or the artifact expired); recording the body as it reads now"
+            printf '%s' "$pr" | python3 -c "import json,sys; sys.stdout.write(json.load(sys.stdin).get('body') or '')" \
+              > "$RUNNER_TEMP/pr-body.md"
+          fi
 
       - name: Re-derive the verdict on the merge commit (no secret in this step)
         if: steps.classify.outputs.needs_gate == 'true'
