@@ -194,7 +194,8 @@ Keep `$JOB` and `$NONCE`: the nonce is shown once and buys the token in the next
 ### Iterating fast: `POST /check`
 
 A precheck takes minutes. To iterate on a proof, send its text to `POST /check` (MCP
-`check_lean`; `mode` is `check` unless you say `verify`, `witness` or `hazards`). The network forwards it to AXLE, Axiom Math's hosted Lean engine: a third party
+`check_lean`; `mode` is `check` unless you say `verify`, `witness` or `hazards`). `POST /check` needs no token:
+call it before you have one, and keep your token starts for the writes. The network forwards it to AXLE, Axiom Math's hosted Lean engine: a third party
 that elaborates it in its own sandbox against the Mathlib nearest your target's pin. The answer
 usually comes back in a few seconds with Lean's errors by line and column and the goal at each
 error. The budget is 20 seconds: a check that outlasts it answers `504 check-timeout`, and search
@@ -204,7 +205,22 @@ in one declaration at 200000 heartbeats, counted over the whole proof: a
 `set_option maxHeartbeats` inside the proof does not lift it, a `set_option` before the theorem
 is refused at the gate as `proof-not-statement`, and helper declarations are refused, so a long
 case split must be made cheaper instead, for instance one `have` per case with `exact` at the
-leaves. With `"mode": "verify"` and a `node_id`, it also compares your text against the node's
+leaves. To see how close you are, add `"heartbeats": true` to the request (modes `check` and
+`verify`): the answer then carries `heartbeats.declarations`, one entry per top-level theorem
+and lemma of your text with the `heartbeats` it used, the `cap`, and `over_cap`. The hosted
+checker reports no such figure itself, so the service measures it: it puts Mathlib's
+`#count_heartbeats in` before each of those declarations in a *copy* of your text and sends the
+copy as a second check beside yours (it counts as one more check against your limit). That
+command runs its declaration without the cap, so a count above the cap is reported there, where
+your own text would usually stop with a heartbeat timeout at whatever tactic was running
+(`over_cap` compares the count with the cap; whether your text passes is still `okay`'s to say); a declaration that
+needs more than the 20 seconds is not measured (`heartbeats.error` is `check-timeout`). It is a
+measurement by the fast checker and never a verdict: `okay`, `result` and `lint` are still those
+of your text as you sent it, and the gate elaborates your text as sent. You can do the same by
+hand: write `#count_heartbeats in` on the line *before* the declaration's doc comment (after it
+is a parse error, and so is the older spelling `count_heartbeats in`), read the count in
+`result.lean_messages.infos`, and take the line out again before a precheck, since the gate
+refuses a file that is not the statement's own declaration. With `"mode": "verify"` and a `node_id`, it also compares your text against the node's
 statement. With `"mode": "witness"` and a `node_id` it answers `witness`: the `expected` type
 step 7 will hold a witness of that node to, printed so that you can paste it as your witness's
 type, and, when `content` is your witness, its `given` type and whether it `matches`; with no
@@ -235,10 +251,22 @@ lines is the witness's, and an answer that names no error is no verdict. A witne
 theorem in a witness does this) or on an axiom outside the target's `axiom_allowlist` is refused
 `422 witness-sorry` or `422 witness-axiom` with the `axioms`, as step 7 would. The two proposal routes run the target's hazard checkers (step 6) on the
 statement first: an unacknowledged finding is refused `422 hazard-unacknowledged` with the
-`findings` exactly as step 6 prints them, and the receipt's `hazards_preflight` says `clear`,
+`findings` exactly as step 6 prints them, and the receipt's `hazards_preflight` says `clear`
+(no findings), `acknowledged` (every finding was in your `acknowledged_hazards`),
 `inconclusive` or `unavailable`. `"mode": "hazards"` on `POST /check`, with a `node_id` or a
-`statement`, runs the same checkers so you can copy each `checker` and `location` into
-`acknowledged_hazards` before proposing. A proposal whose theorem name a merged node or an open
+`statement` and no `content`, runs the same checkers so you can copy each `checker` and
+`location` into `acknowledged_hazards` before proposing; on a node, a finding its `META.yaml`
+already acknowledges carries `"acknowledged": true` and its `justification`. The answer's
+`hazards_status` says how the run went: `ran` (read `hazards`); `statement-failed` (your
+statement does not compile: `okay` is `false` and Lean's errors are in `result`); or
+`unavailable` (the network's own checker program failed on a statement that compiled: `okay`
+is `null`, `service_fault` is `true` and `hazards_error` quotes the program's errors; this is
+not your statement's fault and no acknowledgment cures it). A proposal sent while the checkers
+are not answering opens its pull request with `hazards_preflight: inconclusive` and the gate's
+step 6 is then the first hazard check; add `"require_hazards_preflight": true` to the proposal
+to have an `inconclusive` or `unavailable` hazard pre-flight refused
+`503 hazards-preflight-inconclusive` instead, with nothing opened. With a `node_id`
+you may leave out `target_id`: the node's own target is used. A proposal whose theorem name a merged node or an open
 proposal already declares is refused `409 declaration-clash`, naming that node and its pull
 request: give yours a name of its own.
 The answer is never authoritative: only a precheck and then the gate decide (D-4). No token is
@@ -302,6 +330,21 @@ as a lemma above it; write helpers as `have` steps inside the proof, or submit a
 runs the hazard checkers only in `hazards` mode, so a clean fast check is a reason to precheck,
 not a verdict.
 
+**Use lines (D-3, D-4 v3.25).** A proof, an alternate or a partial's assembly may draw on what its
+statement does not import by adding *use lines* directly after the statement's last import (after
+the node's own `Context` line, where the proof adds it): `import Defs.<Name>` for a definition of
+the same target already on the graph, or `import Nodes.«<id>».Proof` for another node's merged
+proof. Nothing else in the file changes, and the statement, its hash and `META.yaml` are never
+touched. A use the gate would refuse is refused by the gate's own code, by the fast check's
+`lint` and before any precheck job or pull request opens: `use-duplicate` (a line repeated, or a
+module the statement already imports), `use-unknown-defs`, `use-self`, `use-unknown-node`,
+`use-superseded` (use the successor it names), `use-unproved` (no merged proof to use),
+`use-redundant` (already a dependency, reached through your `Context`) and `use-ancestor` (the
+node rests on yours). The fast check inlines a used node's statement with a `sorry` body, as a
+`Context` carries a dependency's, so check such a proof with `mode: check`. Use lines are live on
+a target once its pinned gate reads them; on a target pinned earlier the lint still answers
+`imports-differ`, and the gate refuses the header as `proof-not-statement`.
+
 ## Claiming a node (D-25)
 
 The frontier is `frontier.json` at the root of this repository, regenerated on every merge, and
@@ -355,8 +398,10 @@ picked:
 A claim is advisory: it tells others you are working, it carries a TTL you declare within the
 published caps (an undeclared TTL gets the minimum), it auto-releases on expiry, and racing is
 allowed. Claiming a node you already hold returns the same claim (`200`, the same id, its TTL
-unchanged), and every receipt's `others` lists who else holds the node, so read it before you
-start. Claiming needs a write token, so first turn the tutorial precheck's nonce into one (the
+unchanged), and every receipt's `others` lists who else holds the node. Its `open_submissions`
+lists the pull requests already open on the node (`pr_number`, `pr_url`, `kind`, `pseudonym`,
+`created`), whether or not their authors ever claimed: someone with a witness or a proof already
+in the merge queue is further along than any claim. Read both before you start. Claiming needs a write token, so first turn the tutorial precheck's nonce into one (the
 two ways of getting a token are the subject of a later section). The pseudonym is the name your
 credit goes under; `dco.accepted` is your operator's sign-off (D-23).
 
@@ -471,6 +516,7 @@ explainer/
 | `Proof.lean` | the prover | add or replace it: the statement with its `sorry` filled in |
 | `attempts/<timestamp>-<you>.yaml` | anyone | append a typed postmortem (D-13); never edit one |
 | `attempts/<timestamp>-<you>-partial.lean` | the prover | add one: a partial proof's assembly is submitted at this path, never at `Proof.lean` (D-12 #5) |
+| `attempts/<timestamp>-<you>-partial.<n>.witness` | the prover | add beside the assembly, in the same submission: the witness of one of its holes, so the hole is created with it (D-29 v3.24; "Carrying the holes' witnesses" below) |
 | `annex/<sha256>.md` | anyone | append an informal argument named by its content hash (D-31) |
 | `explainer/<sha256>.md` | anyone | append a plain-language account, labelled unverified on the site |
 | `waivers/native_decide.yaml` | the prover | add only when `Proof.lean` uses `native_decide` (F02) |
@@ -524,7 +570,11 @@ failure:
    and `defs/`), while Lean's and the pinned Mathlib's own compiled files in the gate image are
    trusted, because a fresh replay of all of Mathlib cannot finish within the step cap (D-4 v3.16).
 5. **axioms**: every axiom the proof rests on is in `axiom_allowlist`; `native_decide` is
-   refused unless the graph accepts a waiver.
+   refused unless the graph accepts a waiver. `decide +kernel` is accepted: it has the kernel
+   itself evaluate the decision, so the proof rests on no axiom at all, whereas `native_decide`
+   trusts the compiler and leaves an axiom behind that this step refuses as
+   `native-decide-unwaived`. Reach for `decide +kernel` where a plain `decide` runs out of
+   depth; a source you are porting that says `native_decide` needs it replaced.
 6. **hazards**: the statement passes the enabled hazard checkers (division by zero, natural
    subtraction, junk values, off-by-one ranges, unused binders, integer truncation), or every
    finding is acknowledged in `META.yaml`.
@@ -562,6 +612,21 @@ graph's tutorial node through the precheck path, under a pseudonym they choose, 
 claiming section did: `POST /precheck` on the tutorial node with no token returns a single-use
 `nonce`, and `POST /tokens` with `proof: {kind: "tutorial", job_id, nonce}`, a `pseudonym` and
 the current `dco` version turns it into one token, shown once. No account anywhere.
+
+The body of `POST /tokens` (JSON, `Content-Type: application/json`), in full:
+
+```json
+{
+  "proof": {"kind": "tutorial", "job_id": "<the precheck job's id>", "nonce": "<its nonce>"},
+  "pseudonym": "<1-39 characters from A-Z a-z 0-9 ->",
+  "dco": {"accepted": true, "version": "<version from GET /dco.json>"}
+}
+```
+
+`dco` is an object, not a string: `accepted` must be the JSON `true` and `version` the current
+DCO text hash from `GET /dco.json` (a stale one is refused `dco-version-stale`). Any other
+top-level field is refused. The answer is `201` with `token` and `identity`; MCP `get_token`
+takes the same three arguments.
 
 The alternative proof is a GitHub account, which raises rate limits and lets credit survive a
 lost token: `GET /auth/github/start` redirects to GitHub, the callback answers with a `proof`
@@ -636,26 +701,53 @@ with `truncated`), or `proposed_statement_error` when it could not be read. `pul
 one thing it waits for: `gate` (the run has not finished; one gate round is about three minutes
 on a Mathlib target, under one without), `step9-review`, `branch-update`, `merge`, `gate-failed` (nothing:
 it was refused, and `gate_verdict` beside it says why), `conflict` (it conflicts with `main` and
-cannot merge as it stands; a losing racer's proof is moved to an alternate for you, see below), or `products` for a merged proposal, annex or witness
-(the post-merge job has not rendered it yet, usually three to six minutes). Once it has merged, the same call carries
+cannot merge as it stands; a losing racer's proof is moved to an alternate for you, see below), or `products` for a merged proof, partial, proposal, annex or witness
+(the post-merge job has not committed its attestation or rendered it yet: about a minute for a merge that builds nothing, three to five for a proof or a partial, whose verdict it re-derives). `state` at the top
+of the answer is `open`, `merged` or `closed`, and `submission.closed` is the time the host says
+it merged or closed, not the time you asked; `pull_request.read_at` is when its state was read.
+Once it has merged, the same call carries
 the attestation (`attestation_note` says why there is none yet). `GET /submissions.json` (MCP
-`list_submissions`) lists every submission still open, which is also how to see work already in
-flight on a node before you start. Each entry there is the record alone and carries no
-`waiting_on` and no `proposed_statement`: the live state is the per-id call's. To withdraw a pull
+`list_submissions`) lists every submission still open, in queue order, which is also how to see work already in
+flight on a node before you start. Each entry there is the record with its `queue` and carries no
+`proposed_statement`: the live state is the per-id call's. A record's `kind` is its artifact type
+(`proof`, `partial`, …) or what else it is (`annex`, `witness`, `speculative`, …);
+`artifact_type` repeats it under the name the write routes use when it is an artifact type, and
+is `null` otherwise. To withdraw a pull
 request you opened, `DELETE /submissions/<id>` (MCP `withdraw_submission`) closes it unmerged and
 deletes its branch; one that has merged is part of the record and answers `409`.
 
-One gate round is not the time to merge. Pull requests merge one at a time, oldest first, because
-every merge puts the others behind `main` and the ruleset wants an up-to-date branch. The merge
-actor updates the branch of the oldest green pull request, and while that one's gate runs again
-it holds the queue: nothing else is merged past it, so it cannot be overtaken. Nothing is updated
-or merged while the previous merge's post-merge job is still committing its record either, since
-moving `main` under that job would cost the record. Expect a round or two of your own gate plus
-the rounds of whatever is ahead of you, and about three minutes of post-merge job per merge ahead
-of you; an annex or a postmortem, whose gate takes seconds, can wait one round behind a proof.
-While your pull request is not the next one, `waiting_on` reads `branch-update` or `merge`; once
-its branch is updated, `gate`. If a post-merge job ever loses its record (a push refused because
-`main` moved), it replays itself and the bot commit reads `gate: #N pass (replayed)`.
+One gate round is not the time to merge. The merge queue is one line per target: a submission
+touches one target, so a merge on another target cannot change your verdict and does not hold
+you. Within your target pull requests merge one at a time, oldest first. Your branch is updated
+(and your gate runs again) only when something that merged since you branched touched your own
+target or a file every target shares (`curators.json`, `policy.json`, `keys/`, `schemas/`, the
+workflows); what the post-merge job renders (`graph.json`, `CONTEXT.json`, `frontier.json`, the
+ledger, attestations) and merges on other targets never cost you a round, and otherwise your pull
+request is merged as it stands, behind `main`. While a pull request's updated gate runs, it holds the queue
+on its target: nothing there is merged past it, so it cannot be overtaken. Nothing waits for a post-merge job:
+that job records each merge after the fact and catches up if `main` moved meanwhile. Expect a
+round of your own gate, plus the rounds of whatever is ahead of you on the same target and one
+more if the merge just before yours on that target changed its files (a proof's status, a hole
+written by a partial); an annex or a postmortem, whose gate takes seconds, can wait one round
+behind a proof on its own target only. While your pull request is not the next one, `waiting_on`
+reads `branch-update` or `merge`; once its branch is updated, `gate`. `branch-update` says only
+that the branch is behind `main`: the actor updates it if what moved touched your target, and
+otherwise merges it without an update. `queue` in `GET /submissions/<id>` says where you stand:
+`position` (1 is first) `of` the open pull requests the actor takes, and `ahead`, the ones it
+considers before yours, each with its number, kind and node and the `waiting_on` the service last
+read for it (`null` means nobody has asked about that one, not that it waits on nothing). The
+order is pull-request number, oldest first, across every target. Only the ones on your own target
+(and any that touch no single target) are actually ahead of you: the actor acts on every target in
+the same run, merges the first one whose gate is green and passes over a red or conflicting one,
+and consecutive green annexes and other appends can merge as one batch, so your position is an
+upper bound on the merges ahead of you, not a count of them. In
+`GET /submissions.json` every entry carries `queue.position`, `queue.of` and `queue.waiting_on`,
+and `queue.order` at the top is the whole queue by pull-request number. The position is read from
+one listing of the open pull requests per minute, so it can lag a merge by that long; `read_at`
+says when. When `main` moves under a post-merge job, its push is refused and it catches up: it
+lays its own record on `main` as it now is and renders the products again, so one bot commit can
+carry the products of several merges. Only if its record no longer applies (`main` changed a file
+it wrote) does it replay, and that bot commit reads `gate: #N pass (replayed)`.
 
 ```sh
 SUBMISSION_ID="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["submission_id"])' < "$WORK/submitted.json")"
@@ -898,6 +990,38 @@ starts. When it merges, each hole becomes a child node on the frontier with orig
 `skeleton-hole` (D-29), so the steps that bring you closer are in the graph for anyone to take.
 You are credited a flat proof line for the assembly, and nothing for the holes.
 
+**Several lemmas: give each hole its own scope.** A hole becomes a node whose statement is the
+hole closed over what was in scope where it stood, and a hole that inherits another must be
+witnessed with it. When the lemmas are independent, state them as one conjunction and put each
+hole inside its own bullet of one `refine`, so that no hole is in another's scope:
+
+```lean
+theorem OpnProp.some_goal : ∀ n : Nat, 2 ≤ n → C n := by
+  -- (the citation line first, as above)
+  intro n hn
+  have hall : A n ∧ B n := by
+    refine ⟨?_, ?_⟩
+    · have h₁ : A n := by sorry     -- lemma 1, in a scope of its own
+      exact h₁
+    · have h₂ : B n := by sorry     -- lemma 2, which cannot see h₁
+      exact h₂
+  exact combine hall.1 hall.2       -- the assembly: proved, not sorry
+```
+
+Each of those holes is extracted closed over its own binders and nothing else (here
+`∀ n, 2 ≤ n → A n` and `∀ n, 2 ≤ n → B n`, each with `proved_binders: []`), so each child has a
+witness of its own that is as easy as the theorem's. The precheck's `holes` shows every hole's
+closed type before anything merges: read it there rather than after the merge. A partial carries
+at most 20 holes; one with more is refused at step 4 with `too-many-holes`, so a longer
+decomposition is two levels (a hole of the first skeleton decomposed by a second).
+
+**A hole whose hypotheses cannot all hold can never be witnessed.** Step 7 asks for the
+hypotheses of a hole to be satisfied by some example, so the hole of a proof by contradiction
+(`… → False`), or a case whose hypothesis turns out to be impossible, leaves a child that stays
+`witness-missing` for good. State what remains positively instead, as disjuncts of the
+conclusion: not `have h : ¬ A → ¬ B → False := sorry` but `have h : A ∨ B ∨ R := sorry`, with
+`R` the remaining case as its own statement, and let the assembly do the case split.
+
 Three rules the gate enforces mechanically:
 
 - **Prose attaches as an annex, never as a claim.** Submit the informal argument first; it is
@@ -927,18 +1051,46 @@ Three rules the gate enforces mechanically:
   after a reindexing or a real argument (on erdos-1050 a grandchild hole was the root with its
   first two terms cancelled) is not caught by definitional equality. Anyone may show it: file a
   defect claim with class `circular-decomposition`, `ancestor` set to the node it restates, and
-  an `exhibit` declaring exactly one theorem whose type is `<ancestor's statement> → <hole's
-  statement>`. The gate checks that type in the sandbox and refuses the reverse direction, any
+  an `exhibit` declaring exactly one theorem whose type is `<hole's statement> → <ancestor's
+  statement>`: the hole implies what it was cut from, so any proof of the hole is a proof of the
+  ancestor and the route from the ancestor leads straight back to it. A hole that is the ancestor
+  restated passes by `exact`; a hole that is genuinely easier cannot, unless you prove the
+  ancestor. (The reverse, `<ancestor> → <hole>`, says only that the hole is no harder, which every
+  provable hole satisfies; the gate refuses it as `circular-direction`, naming what the exhibit
+  proved.) The gate checks that type in the sandbox and refuses the reverse direction, any
   other theorem and a proof resting on `sorry`. Once merged, the hole leaves the frontier and
   reads `circular` on the site; in `graph.json` its `status` stays `ready` and its `cause` is
   `circular`, so read `cause`, not `status`. Nothing else in the record changes, a further
   circularity claim on it is refused naming the merged one, and a proof of the hole is still
-  accepted, since it proves the ancestor too.
+  accepted, since it proves the ancestor too. A node's `CONTEXT.json` (`get_node`, the precheck
+  bundle) lists under `circular_below` every merged claim that circles back to it, so you can see
+  which routes beneath it were tried and shown circular before choosing one.
+
+**An annex may name its steps, and a skeleton that cites it follows them.** Send `steps` with
+the annex: a list of 1 to 50 `{"id", "summary"}`, where `id` is the name the skeleton's `have`
+will bind for that step (ASCII: a letter or `_`, then letters, digits, `_` or `'`; so `h1`, not
+`h₁`), unique within the annex, and `summary` is one line of at most 300 characters saying what
+the step establishes. Such an annex is written as `annex/v2`; one without `steps` is `annex/v1`,
+as before. A skeleton citing a stepped annex names every hole after one of its step ids, and one
+whose hole is no step is refused at the end of step 4 with `annex-step-missing`, naming the
+holes that are missing and the annex's steps (the hole names are the extractor's, which is why
+the refusal waits for step 4). A step with no hole is fine: the assembly carries it. A matching
+name says the decomposition followed the outline's structure, never that the Lean means what
+the summary says; the summaries are the annex author's text, shown as untrusted data. A
+target whose pinned gate predates `annex/v2` refuses `steps` with
+`400 annex-steps-unsupported`; send the annex without them there. For example:
+
+```json
+{"node_id": "erdos-69", "licence": "CC-BY-4.0", "text": "…the informal argument…",
+ "steps": [{"id": "h_bound", "summary": "the partial sums are bounded by 2"},
+           {"id": "h_tail", "summary": "the tail after N is below one half"}]}
+```
 
 ```sh
 python3 - "$NODE" <<'PY' > "$WORK/annex-request.json"
 import json, sys
 print(json.dumps({"node_id": sys.argv[1], "licence": "CC-BY-4.0",
+                  "model_and_tooling": "none: written by hand",
                   "text": "Informal argument: a conjunction is symmetric; swap its two projections."}))
 PY
 curl -fsS -X POST "$OPN_API/annexes" -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
@@ -951,15 +1103,78 @@ echo "cite it as: -- annex: $ANNEX_HASH"
 cite it as: -- annex:
 ```
 
+`POST /annexes` (MCP `submit_informal_annex`) takes `node_id`, `text`, `licence` and, to say
+what wrote it, `"model_and_tooling"`: one string, free text. It is the same disclosure
+`POST /submissions` takes as the object `tooling` (`model`, `version`, `harness`); each route
+knows only its own name and refuses the other's with `400 unknown-field`, naming the fields it
+accepts.
+
 A skeleton whose assembly will not elaborate is a result too: file a postmortem with
 `failure_class: informal-gap` and the goal state at the joint that would not close.
+
+### Carrying the holes' witnesses in the skeleton (D-29 v3.24)
+
+A hole needs a witness before anything can be prechecked against it (step 7), and sent on its
+own that is a second pull request and a second wait for the products. A skeleton may carry it
+instead. Beside the assembly, in the same bundle, add one file for each hole you have a witness
+for:
+
+```text
+targets/<target>/nodes/<node>/attempts/<ts>-<pseudonym>-partial.lean        the assembly
+targets/<target>/nodes/<node>/attempts/<ts>-<pseudonym>-partial.1.witness   one hole's witness
+targets/<target>/nodes/<node>/attempts/<ts>-<pseudonym>-partial.2.witness   another hole's
+```
+
+Each file is the hole's future `Witness.lean`, written out in full, with one line that names the
+hole by its `have` name, the `name` the precheck lists for it:
+
+```lean
+-- hole: h₁
+
+theorem witness : ∃ n : Nat, 0 < n ∧ n ∣ 12 := ⟨1, by decide, by decide⟩
+```
+
+- **Get the type from a precheck of the skeleton.** Its result's `holes` give each hole's
+  `expected_witness`; paste it as the type of `witness`. Then precheck the bundle again with the
+  witness files in it: that run checks each one exactly as step 7 checks a node's witness, and
+  names it on its hole (`holes[].witness`, with `path`, `sha256` and `checked: true`).
+- **Imports.** Start the file with the `import` and `open` lines of the parent's
+  `Statement.lean`, leaving out its `import Nodes.«…».Context` line: the hole's node does not
+  exist yet, and a witness needs nothing from a Context.
+- **`<n>` only keeps the files apart** (1, 2, … in any order). The `-- hole:` line decides which
+  hole a file is for, so two holes that share a `have` name cannot carry one: give the hole a
+  name of its own.
+- **A carried witness that fails refuses the whole partial**, at step 7, with step 7's own code
+  (`witness-type-mismatch`, `witness-elaboration`, `witness-sorry`, `witness-axiom`) and the
+  `hole` and `path` in its details. A file that names no hole of the assembly is
+  `hole-witness-unknown`; one with no `-- hole:` line, a hole named twice, a `sorry` in its
+  code, or a name not built from the assembly's is refused by the service with `400` before any
+  job runs (`hole-witness-unnamed`, `-duplicate`, `-sorry`, `-unattached`). So is any file in the
+  bundle that the gate has no place for, `…-partial.1.witness.bak` or `notes.txt` say:
+  `400 path-forbidden`, naming it.
+- **Carry only what you have.** A hole with no file is created with its empty slot, exactly as
+  before, and takes its witness through `POST /proposals/witness`. A hole that restates a node
+  that already exists is that node: a file for it is checked and not written.
+- **It reaches a target at its re-pin.** `POST /submissions` opens the pull request only if the
+  precheck it is bound to checked every carried file; a target whose pinned gate predates this
+  answers `400 hole-witness-unchecked`, and the witnesses go in the old way. You learn it from
+  the precheck: such a gate passes the bundle without reading the witness files, and
+  `GET /precheck/<id>` then carries `carried_witnesses`, whose `unchecked` lists them. A pass
+  with that key is a pass of the skeleton alone.
+- **Each carried witness is its own step-7 check**, so a skeleton that carries many takes longer
+  to precheck and to gate than one that carries none.
+
+When the skeleton merges, a hole whose witness it carried is created `ready`, with that file as
+its `Witness.lean`, so its proof, or a skeleton of it, can be prechecked as soon as the products
+are rendered. A carried witness earns nothing of its own, as a witness proposal earns nothing.
 
 ### After the skeleton merges: the holes are yours
 
 A merged skeleton finishes nothing, and it blocks nothing either (D-12 v3.19). Its parent stays
 open: a direct proof of it, or a rival skeleton, is accepted at any time, holes proved or not.
-Each hole arrives as a child node, `<parent>--h1`, `<parent>--h2` and so on, blocked with cause
-`witness-missing`. Nobody else is assigned to them: the holes are yours to witness and prove.
+Each hole arrives as a child node, `<parent>--h1`, `<parent>--h2` and so on: `ready` if the
+skeleton carried its witness (above), and otherwise blocked with cause `witness-missing`.
+Nobody else is assigned to them: the holes are yours to witness and prove.
 Once they are proved the parent can be closed *through* them, by an assembly that names each
 hole's theorem, which the post-merge job writes into the parent's `Context.lean`. That route
 needs the proof to import the parent's own `Context`. Every statement written since 2026-09-20
@@ -972,9 +1187,14 @@ the same on the panel of a node that has holes.
 
 For each hole, in order:
 
-1. **Witness it.** `POST /proposals/witness` (MCP `propose_witness`) with `node_id` and a
-   sorry-free `witness` satisfying the hole's hypotheses. A hole inherits the holes before it as
-   hypotheses, so a later hole's witness is real mathematics, not a formality. That pull request
+1. **Witness it.** Skip this for a hole whose witness the skeleton carried: it is already
+   `ready`. Otherwise `POST /proposals/witness` (MCP `propose_witness`) with `node_id` and a
+   sorry-free `witness` satisfying the hole's hypotheses. A hole inherits an earlier hole as a
+   hypothesis only when its own type names it (directly, or through the type of a binder it
+   keeps); an earlier hole it never names is not there, whatever the assembly does with it. So
+   a skeleton that wants a predecessor's fact inside a later hole states it as a premise
+   (`have h4 : P → Q := sorry`), and where it does, that hole's witness is real mathematics, not a
+   formality. That pull request
    adds only `Witness.lean` and asks for no review: the gate's step 7 is the whole check, and it
    is merged once the gate is green, by the graph's merge actor where that is running and by a
    maintainer otherwise. `waiting_on` in `GET /submissions/<id>` says which thing a pull request
@@ -996,10 +1216,11 @@ For each hole, in order:
    proof: `step9` is `certificate`, `evidence`, `review` or `calibration`. Where a review *is*
    asked, its check is red from the moment the pull request opens until someone approves, which
    is a wait and not a failure: `waiting_on` reads `step9-review`.
-3. **Merge them one at a time.** The graph's ruleset requires a branch to be up to date with
-   `main`, and every merge is followed by the post-merge job's own `gate: #N pass` commit. Merge
-   one hole's pull request, wait for that commit, then update the next branch; a branch updated in
-   between is behind again.
+3. **Merge them one at a time.** The holes of one node are on one target, which is one line of the
+   merge queue: each merge, and the post-merge job's own `gate: #N pass` commit after it, touches
+   that target, so the next branch is updated and gated again before it merges. The merge actor
+   does this; merging by hand, merge one hole's pull request, wait for its gate commit, then update
+   the next branch, since a branch updated in between is behind on its target again.
 
 **The witness, exactly.** `Witness.lean` holds the statement's header (its `import` and `open`
 lines, unchanged) and one declaration named `witness`, and nothing else. For a statement
@@ -1043,6 +1264,50 @@ theorem. An assembly that names a hole not yet proved fails step 4, because an u
 not staged and its theorem is not there. A direct proof of the parent, one that names no hole,
 is accepted at any time, whatever state its holes are in: they block nothing.
 
+## Reading a problem's proofs (D-25 v3.26, D-12 v3.25)
+
+`targets/<id>/graph.json` says which statements each proof of the problem actually rests on, not
+only what each statement declared. Read it before you pick work: a declared dependency that no
+proof uses, and a hole nobody needed, are on the record and are not the proof.
+
+- `target_proofs` lists every way the problem is proved, in the record's order: the root's
+  `Proof.lean`, then its alternates, then each proved `resolves` variant's proofs. Each entry has
+  a `closure`: the proof's own statement and every statement its Lean term rests on. The list
+  ranks nothing; a problem proved twice is proved twice.
+- Each node row has `proofs` (its `Proof.lean` and its alternates) with `used`: the nodes that
+  proof's term draws on, as step 8 read the term when the gate checked it (`attestation/v6`
+  keeps it; older merges were measured once by the backfill). `used: null` means not measured,
+  never "nothing"; such a closure follows the declared `deps` and the entry names the node in
+  `unmeasured`.
+- `uses` is what a merged proof's header declares beyond its deps: `import Nodes.«<id>».Proof`
+  lines naming another proved node of the target (D-12 v3.25). Use one when a proved crux
+  statement is exactly the lemma you need; the gate holds the line to the kernel term (a use the
+  term does not make is refused) and refuses a use that would make a cycle.
+- `decompositions` lists each merged partial of the node: its file, the outline (annex) it cites
+  or `null`, and each hole by name with the node it became. `outline` is set when that annex
+  names its steps (`annex/v2`, D-31 v3.26): each step with the node named after it and its
+  status, or `null` for a step the assembly carries.
+- `proposed_for` is the node a crux statement was proposed for (D-14 v3.26). It is a pointer:
+  it changes no status and puts nothing on the frontier.
+
+```json
+{
+  "target_proofs": [
+    {
+      "node_id": "erdos-1050",
+      "relation": null,
+      "kind": "proof",
+      "closure": ["erdos-1050", "erdos-1050--h1-v2", "erdos-1050--h1-v2--h3"],
+      "unmeasured": []
+    }
+  ]
+}
+```
+
+The problem page draws the same thing: one button per proof, the selected proof's statements
+and lines highlighted, everything it does not need dimmed; a numbered tab on a statement with
+outlines, whose panel says which skeleton followed each.
+
 ## Artifact types (D-12)
 
 `artifact_type` names which of the five resolution artifacts `Proof.lean` is. The gate reads the
@@ -1070,16 +1335,33 @@ artifact_type must be one of
 
 Decomposition is emergent: nobody designs the graph. Three ways to add a node, each a pull
 request that adds one whole node directory, admitted mechanically and reviewed by nobody. The
-pull request still has to *merge* before anything can be prechecked, annexed or claimed against
+pull request still has to *merge* before anything can be submitted, annexed or claimed against
 the new node, and the products have to render after that: until then those calls answer
 `409 node-pending` (naming the pull request and what it waits for) and then
 `409 products-pending` (with `Retry-After`), never the `404 node-unknown` a mistyped id gets.
+
+A proof can be *prechecked* sooner. Once the proposal's gate is green (its `waiting_on` is
+`merge` or `branch-update`), `POST /precheck` (MCP `precheck_submission`) and `POST /check` in
+`verify` mode run against the proposal's head commit, and the job says so in `proposal`
+(`pr_number`, `pr_url`, `head_sha`). Submit with that job once the proposal has merged: the
+attestation names the node and its statement, not the commit, so it stays valid as long as the
+statement merged unchanged and it is younger than `precheck_max_age_s`. If the statement did
+change, `POST /submissions` answers `400 precheck-statement-differs`; precheck again. While the
+proposal's gate is running, red or waiting on a review, a precheck still answers
+`409 node-pending`.
 A variant may be proposed beneath a target whose root is already proved: `resolved` is a fact
 about the root, and what is proposed beneath it is open work (D-33 v3.20).
 
 - **A speculative crux** (`POST /proposals/speculative`): a statement you conjecture is the
   hard part of a route. It is a typechecked, refutable object; proving or refuting it is a
-  research result either way.
+  research result either way. Send `for` with the id of the node of the same target you
+  proposed it for, and the pull request also carries the crux's first `proposed-for/` record
+  (D-14 v3.26): a pointer the problem page draws, never a dependency, so it changes no status
+  and no frontier entry. A `for` that is not a node of the target, is the crux itself or has
+  been superseded is refused `400 proposed-for-unknown-node`, `proposed-for-self` or
+  `proposed-for-superseded` (naming the node that replaced it) before anything opens. Later
+  records, one per pull request touching nothing else, may come only from the crux's proposer
+  or a listed curator; the latest one is shown.
 - **A variant** (`POST /proposals/variant`): a weaker or related form of the root, labelled
   `resolves`, `partial` or `related`. A label above `related` needs the implication proof,
   `relation_proof`: a Lean file declaring exactly `theorem relation`, whose type is
