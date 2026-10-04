@@ -58,6 +58,10 @@
 # author reaches the classifier as OPN_PR_AUTHOR rather than as a flag, so the file works on a
 # pin that predates F08 and the F08 behaviour switches on with the re-pin (F08-Q8).
 name: gate
+# F07-T58: a replay's run says which merge it replays, so a replay that is dispatched again (a merge
+# no gate commit names yet) can be told from the first in the run list. Every other run keeps the
+# host's own name: a run-name that is only whitespace falls back to it.
+run-name: "${{ github.event_name == 'workflow_dispatch' && format('gate: replay of #{0}', inputs.replay_pr) || ' ' }}"
 
 on:
   pull_request:
@@ -398,27 +402,32 @@ jobs:
 
 
           def uncredited(log):
-              """The merges since the last gate commit that was not a replay, oldest first, as
-              (number, sha, branch), less any a replay in between already credits. `log` is
-              (sha, parents, subject) along the first-parent line, newest first. None when no such gate
-              commit is within WALK_LIMIT: the run then records its own merge alone, as before.
+              """The merges in the walk window (the last WALK_LIMIT commits of `log`) that no gate
+              commit in the window credits, oldest first, as (number, sha, branch). `log` is (sha,
+              parents, subject) along the first-parent line, newest first. None when the window holds
+              no gate commit at all: the run then records its own merge alone, as before.
 
-              A replay's commit is walked past because it credits one old merge and says nothing of the
-              merges before it; any other gate commit on this line rendered a tree that held every merge
-              before it (its push is refused if main moved under it, F07-T29), so it credited them or
-              dispatched their replays."""
-              found, replayed = [], set()
-              for sha, parents, subject in log[:WALK_LIMIT]:
+              F07-T58: a merge counts as recorded only if some gate commit names it. The walk used to
+              stop at the first gate commit that was not a replay, on the ground that its tree held
+              every merge before it and so it credited them or dispatched their replays. A catch-up
+              commit (F07-T55) breaks that: it is laid on main as it is, on top of merges it does not
+              credit, and so does a single run's own commit and an append's run that left its merge to
+              a later run (T45). So every gate commit in the window is read, replays included, and
+              what none of them names is owed."""
+              window = log[:WALK_LIMIT]
+              named, found, gates = set(), [], 0
+              for sha, parents, subject in window:
                   numbers = credits(subject)
                   if numbers:
-                      if "(replayed)" in subject:
-                          replayed.update(numbers)
-                          continue
-                      return [merge for merge in reversed(found) if merge[0] not in replayed]
+                      named.update(numbers)
+                      gates += 1
+                      continue
                   merge = merge_of(subject, parents)
                   if merge:
                       found.append((merge[0], sha, merge[1]))
-              return None
+              if not gates:
+                  return None
+              return [merge for merge in reversed(found) if merge[0] not in named]
 
 
           def later_merge(log):
@@ -703,6 +712,8 @@ jobs:
             # this run records it as before. F07-T55: an append only. A building merge's record is
             # its own re-derive and signature, which a later run would only replay after it had
             # committed, so a building merge always records itself and catches up if main moved.
+            # F07-T58: the later run records this append even when a gate commit lands between the
+            # two (a catch-up credits only its own merges): a merge is owed until one names it.
             git fetch --quiet origin main
             branch="$(python3 "$helper" branch-of "$merge")"
             if [ "${branch#append/}" != "$branch" ] \
@@ -711,9 +722,9 @@ jobs:
               echo "postmerge: a later pull request merged on main after #$number; the post-merge run of that push records #$number with its own (F07-T45)"
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
-            # F07-T45 (b): every merge on main's first-parent line since the last gate commit that
-            # was not a replay. Appends pinned to one gate are recorded here together; anything
-            # else is replayed on its own after this run commits, and this merge is recorded alone.
+            # F07-T45 (b), F07-T58: every merge in the walk window that no gate commit names. Appends
+            # pinned to one gate are recorded here together; anything else is replayed on its own
+            # after this run commits, and this merge is recorded alone.
             python3 "$helper" plan "$merge" "$number" > "$RUNNER_TEMP/plan.txt"
             cat "$RUNNER_TEMP/plan.txt"
             replay="$(sed -n 's/^replay=//p' "$RUNNER_TEMP/plan.txt")"
