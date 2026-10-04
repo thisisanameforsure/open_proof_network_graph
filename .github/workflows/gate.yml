@@ -1648,3 +1648,26 @@ jobs:
           export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
           REMOTE="git@github.com:${GITHUB_REPOSITORY}.git" LIST="$RUNNER_TEMP/outlines.txt" \
             python3 "$helper" publish
+
+      # F20-T10, F20-R17: ask the network's drafter to put words to what this merge created — a
+      # gloss of each new statement, witness and relation, and an explainer of each proof whose
+      # outline is now on main. Only once the pinned gate knows outlines (a gate that old would also
+      # refuse every gloss path, so drafting before the re-pin would spend the model for pull
+      # requests that go red). The drafter skips what already has words, so a re-run drafts nothing
+      # twice. Without the dispatch token the drafter waits for its next dispatch (C7).
+      - name: Ask the network's drafter for this merge's words
+        if: always() && steps.extract.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.OPN_SITE_DEPLOY_TOKEN }}
+          TARGETS: ${{ steps.pin.outputs.targets }}
+        run: |
+          set -euo pipefail
+          if [ -z "$GH_TOKEN" ]; then
+            echo "drafter: OPN_SITE_DEPLOY_TOKEN is not set; dispatch gloss-draft.yml by hand"; exit 0
+          fi
+          for target in $TARGETS; do
+            gh workflow run gloss-draft.yml --repo thisisanameforsure/open_proof_network --ref main \
+              -f graph_ref=main -f target="$target" -f subjects=new \
+              && echo "drafter: dispatched gloss-draft for $target" \
+              || echo "::warning::gloss-draft was not dispatched for $target; dispatch it by hand (C7)"
+          done
