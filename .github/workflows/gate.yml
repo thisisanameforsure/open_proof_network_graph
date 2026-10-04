@@ -334,6 +334,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPLAY_PR: ${{ inputs.replay_pr }}
+          PUSH_BEFORE: ${{ github.event.before }}  # F07-T60: the push's range, for a re-pin
         run: |
           set -euo pipefail
           # F07-T45: which merges this run records, and the gate-commit matcher, as one program the
@@ -507,19 +508,23 @@ jobs:
               return {**ours, **theirs}
 
 
-          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay):
+          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay, render=False):
               """F07-T55: push this run's gate commit, and while main has moved under it, catch up and push
               again. The products are derived (F03-R11), so a render of a tree that no longer exists is
               thrown away and made again on main as it is; what is this run's own (its record, its ledger
               lines) is laid on that tree first. Answers `pushed`, `credited` (main records every merge
               already), `replayed` (the record does not apply, or a re-pin moved the rendering gate) or
-              `gave-up` (refused every time; replayed as well, and the step fails)."""
+              `gave-up` (refused every time; replayed as well, and the step fails).
+
+              F07-T60: `render` is render.yml's commit, which credits no merge: having nothing owed is not
+              the end of it, and it renders again on main as it is until it lands or a re-pin moves the
+              gate it renders with."""
               for attempt in range(1, attempts + 1):
                   if push():
                       return "pushed"
                   new = fetch()
                   pairs = owed(pairs, subjects_of(new))
-                  if not pairs:
+                  if not pairs and not render:
                       return "credited"
                   if pin_moved(new) or not rebuild(new, pairs):
                       replay(pairs)
@@ -625,7 +630,8 @@ jobs:
                   run(env["PRODUCTS_CMD"], COMMIT=new)
                   git("add", "-A", "--", *[p for p in STAGED if pathlib.Path(p).exists()])
                   credits = " ".join(f"#{number}" for number, _merge in owed_pairs)
-                  git("commit", "-q", "--allow-empty", "-m", f"gate: {credits} {env['SUFFIX']}")
+                  subject = env.get("SUBJECT") or f"gate: {credits} {env['SUFFIX']}"  # F07-T60: a render's
+                  git("commit", "-q", "--allow-empty", "-m", subject)
                   return True
 
               def replay(owed_pairs):
@@ -640,11 +646,14 @@ jobs:
                           print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
 
               attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
+              render = bool(env.get("RENDER"))
               outcome = publish(
                   pairs, attempts=attempts, push=push, fetch=fetch, subjects_of=subjects_at,
-                  pin_moved=pin_moved, rebuild=rebuild, replay=replay,
+                  pin_moved=pin_moved, rebuild=rebuild, replay=replay, render=render,
               )
               print(f"postmerge: publish {outcome}")
+              if render and outcome == "replayed":
+                  print("render: main was re-pinned under this render; that push dispatches a render of its own")
               if outcome == "gave-up":
                   print(f"::error::the gate commit was refused {attempts} times; its merges are replayed")
                   return 1
@@ -701,6 +710,19 @@ jobs:
             number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
             if [ -z "$number" ]; then
               echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
+              # F07-T60: a re-pin is a direct push, so no merge renders the products under the new
+              # gate; render.yml does. Any push that merged nothing and touched a pin (read over the
+              # whole push, since the owner may push several commits), never the bot's own commits.
+              from="${PUSH_BEFORE:-}"
+              if ! printf '%s' "$from" | grep -Eq '^[0-9a-f]{40}$' || ! git cat-file -e "${from}^{commit}" 2>/dev/null; then
+                from="${GITHUB_SHA}^"
+              fi
+              if [ "$(git log -1 --format=%an "$GITHUB_SHA")" != "opn-gate" ] \
+                && git diff --name-only "$from" "$GITHUB_SHA" | grep -Eq '^targets/[^/]+/gate-spec\.json$'; then
+                gh workflow run render.yml --repo "$GITHUB_REPOSITORY" --ref main \
+                  && echo "postmerge: a pin changed with no merge; dispatched render.yml (F07-T60)" \
+                  || echo "::warning::render.yml was not dispatched; dispatch it by hand so the products follow the pin"
+              fi
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
             author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"

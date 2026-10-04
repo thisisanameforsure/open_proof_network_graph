@@ -1,0 +1,149 @@
+# Render the merge products without a merge (F07-T60, audit 2026-10-04).
+#
+# The post-merge job renders the products (frontier.json, info.json, targets/index.json, every
+# graph.json and node status — F03, D-25, D-35) only for a merged pull request. A re-pin is the
+# owner's direct push of gate-spec.json (D-4): it merges no pull request, so it rendered nothing,
+# and the gate changes it carried went live while the products went on publishing the *old* gate's
+# statuses until the next merge — the 2026-09-19 re-pin needed a second, hand-made curator commit
+# for exactly this. Now the post-merge job, on a push that merged no pull request and touched a
+# gate-spec.json, dispatches this workflow, and the owner may too.
+#
+# It checks out main, takes the network commit main pins (every target agrees on one, or nothing is
+# rendered), renders the products with that gate's own `products` command and pushes them through
+# the post-merge job's own publish loop (postmerge_batch.py, read out of gate.yml so there is one
+# copy): if main moves before the push, it renders again on main as it then is. It credits nothing:
+# its commit is `gate: render <pin12>`, which no gate-commit matcher reads as a credit, and it writes
+# no ledger line and no attestation. A re-pin that lands under it ends it; that push dispatches a
+# render of its own.
+#
+# Secrets, as in the post-merge job (C8): no step before the push sees one; the write deploy key
+# exists only in the push step, and the site token only in the step that asks the site to deploy.
+name: render
+
+on:
+  workflow_dispatch: {}
+
+permissions: {}
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+env:
+  UV_VERSION: "0.12.10"
+
+jobs:
+  render:
+    name: render the merge products from main's pin (F07-T60)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    outputs:
+      pushed: ${{ steps.push.outputs.pushed }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Find the network commit main pins, and the publish loop (no secret)
+        id: pin
+        run: |
+          set -euo pipefail
+          python3 - <<'EXTRACT'
+          import json, os, pathlib, re, sys, textwrap
+          pins = {}
+          for spec in sorted(pathlib.Path("targets").glob("*/gate-spec.json")):
+              pins[spec.parent.name] = str(json.loads(spec.read_text(encoding="utf-8"))["network_commit"])
+          found = set(pins.values())
+          if len(found) != 1 or not re.fullmatch(r"[0-9a-f]{40}", next(iter(found))):
+              sys.exit(f"::error::main's targets do not agree on one network pin: {sorted(found)}")
+          # the post-merge job's helper, exactly as gate.yml writes it: one copy of the publish loop
+          lines = pathlib.Path(".github/workflows/gate.yml").read_text(encoding="utf-8").splitlines()
+          start = next(i for i, line in enumerate(lines) if line.rstrip().endswith("cat > \"$helper\" <<'PY'"))
+          end = next(i for i in range(start + 1, len(lines)) if lines[i].strip() == "PY")
+          helper = pathlib.Path(os.environ["RUNNER_TEMP"]) / "postmerge_batch.py"
+          helper.write_text(textwrap.dedent("\n".join(lines[start + 1 : end])) + "\n", encoding="utf-8")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"pin={found.pop()}\ntargets={' '.join(pins)}\n")
+          EXTRACT
+          cat "$GITHUB_OUTPUT"
+
+      - name: Check out the network commit main pins, which renders
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pin.outputs.pin }}
+          path: network-render
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Render the products from main's tree (F03; no secret)
+        env:
+          PYTHONPATH: network-render/gate
+          # F05-R10: unset or unreachable, the committed claims.json stands
+          OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network-render --quiet
+          uv run --frozen --project network-render python -m opn_gate.cli products \
+            --graph . --commit "$(git rev-parse HEAD)" \
+            ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
+
+      - name: Commit the products, crediting nothing, and push them (the deploy key's only step)
+        id: push
+        env:
+          OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
+          RENDER_PIN: ${{ steps.pin.outputs.pin }}
+          TARGETS: ${{ steps.pin.outputs.targets }}
+          PYTHONPATH: network-render/gate
+          OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
+          LEDGER_CMD: "false"
+          PRODUCTS_CMD: uv run --frozen --project network-render python -m opn_gate.cli products --graph . --commit "$COMMIT" ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
+        run: |
+          set -euo pipefail
+          umask 077
+          trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
+          git config user.name "opn-gate"
+          git config user.email "gate@openproof.network"
+          git add -A -- attestations frontier.json info.json targets
+          for product in claims.json ledger THIRD_PARTY_NOTICES.md; do
+            [ -e "$product" ] && git add -A -- "$product"
+          done
+          if git diff --cached --quiet; then
+            echo "render: the products of $(git rev-parse --short=12 HEAD) are already on main; nothing to push"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          subject="gate: render ${RENDER_PIN:0:12}"
+          git commit -q -m "$subject"
+          printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
+          export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+          status=0
+          REMOTE="git@github.com:${GITHUB_REPOSITORY}.git" RECORD="$RUNNER_TEMP/no-record.patch" \
+            NUMBERS="" MERGES="" SUBJECT="$subject" RENDER=1 \
+            python3 "$RUNNER_TEMP/postmerge_batch.py" publish || status=$?
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          exit "$status"
+
+      # F04-R12: the render commit is the bot's, so the post-merge job its push starts does not ask
+      # the site to deploy (it skips the bot's own commits); this does. Without the token, or if the
+      # dispatch fails, the site's schedule deploys and this job does not fail (C7).
+      - name: Ask the site to deploy what main now holds
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.OPN_SITE_DEPLOY_TOKEN }}
+        run: |
+          set -euo pipefail
+          git fetch -q origin main
+          commit="$(git rev-parse FETCH_HEAD)"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "site: OPN_SITE_DEPLOY_TOKEN is not set; the schedule deploys $commit"; exit 0
+          fi
+          gh workflow run site-deploy.yml --repo thisisanameforsure/open_proof_network --ref main \
+            -f graph_commit="$commit" \
+            && echo "site: dispatched site-deploy for $commit" \
+            || echo "::warning::site-deploy was not dispatched for $commit; the schedule deploys (C7)"
