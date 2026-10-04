@@ -52,6 +52,10 @@
 #   cache      F07-T57: after postmerge, for a merge that built and passed, builds and uploads the
 #              olean cache (F10-R7). It used to run inside postmerge, before the commit, on every
 #              merge: four to seven of a job's five to eight minutes.
+#   outline    F19-T4: after postmerge, for the same merges, extracts the outline of every merged
+#              proof artifact of the target that has none (F19-R1, R5, R6) in the step-3 sandbox
+#              with no secret, and pushes them as a commit of their own `outline: ...`. Nothing
+#              waits for it; a failed or lost run costs outlines the next run or the backfill makes.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
 # Every field this file reads from the classifier is read with a default, and the pull request's
@@ -1324,3 +1328,323 @@ jobs:
               --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
               || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
           done
+
+  # F19-T4 (R6; Q2, decided 2026-10-04): the outline of each merged proof artifact — its named
+  # steps, each with its claim, the goal it leaves and how it is closed — extracted by the pinned
+  # gate in the step-3 sandbox and committed beside the products as targets/<id>/outlines/<hash>.json.
+  # A job of its own after the post-merge job has pushed, as the cache is (F07-T57): the outline
+  # elaborates the artifact a second time, and in the post-merge job a memory kill there would cost a
+  # merge its record over a reading aid. Here a failure costs one outline, named in the report (R5),
+  # and nothing waits for it (F07-T55-T57). For the merges that built and passed (the cache's own
+  # condition): only they add a proof artifact.
+  #
+  # It reads main as it is when the job starts, not the commit the post-merge job pushed: an artifact
+  # is outlined only once its merge's attestation is on main (graph.proofs_of), which is true of main
+  # after the push and of anything newer, and `opn-gate outline` extracts every artifact of the target
+  # that has no outline, so a newer main is a superset — it also catches up an outline a lost run
+  # left behind. The network commit is the one main pins for the target now (F07-T33's render pin),
+  # read from that same tree. Contributor Lean runs only in the pinned image (C9): the graph checkout
+  # keeps no credential and the extraction step is granted no secret; the deploy key reaches only the
+  # step that pushes, which takes nothing from the extraction but files that are new outlines of
+  # these targets, each re-checked against main before it is pushed.
+  #
+  # The push races everything else that writes main (merges, gate commits, owners' pushes). It
+  # catches up as the post-merge job does (F07-T29, T55): a refused push fetches main and lays again
+  # on it every outline that still describes it — none already there (another run wrote it first;
+  # theirs stands), and the artifact it names still in that tree with exactly the bytes it outlines.
+  # A re-pin of the target since extraction is the record moving in a way that matters: the outlines
+  # name a gate main no longer pins, so nothing is pushed and the next run extracts with the new one.
+  # On a pin that predates `opn-gate outline`, the pinned gate's own command list has no `outline`
+  # and the job ends with a notice (F08-Q8's shape): this file is inert until the re-pin.
+  outline:
+    name: proof outlines for a merge that built (F19-R6), after its record is pushed
+    needs: postmerge
+    if: needs.postmerge.outputs.cache == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Find the network commit main pins for the merged target
+        id: pin
+        env:
+          TARGETS: ${{ needs.postmerge.outputs.targets }}
+        run: |
+          set -euo pipefail
+          base="$(git rev-parse HEAD)"
+          pin=""; targets=""
+          for target in $TARGETS; do
+            if ! printf '%s' "$target" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9._-]*$' \
+              || [ ! -f "targets/$target/gate-spec.json" ]; then
+              echo "::warning::outline: '$target' is not a target on main at ${base:0:12}; skipped"
+              continue
+            fi
+            found="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+            if ! printf '%s' "$found" | grep -Eq '^[0-9a-f]{40}$'; then
+              echo "::warning::outline: $target pins no network commit; skipped"; continue
+            fi
+            [ -z "$pin" ] && pin="$found"
+            if [ "$found" != "$pin" ]; then
+              echo "::notice::outline: $target pins another gate than ${pin:0:12}; its next merge outlines it"
+              continue
+            fi
+            targets="$targets $target"
+          done
+          if [ -z "$pin" ]; then
+            echo "outline: nothing to outline"; echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          {
+            echo "run=true"; echo "base=$base"; echo "pin=$pin"; echo "targets=${targets# }"
+          } >> "$GITHUB_OUTPUT"
+          echo "outline: main at $base; targets${targets}; network pin $pin"
+
+      - name: Check out the network commit main pins for the target (D-35, F07-T33)
+        if: steps.pin.outputs.run == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pin.outputs.pin }}
+          path: network-render
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        if: steps.pin.outputs.run == 'true'
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      # F19-R5: a failure is named in the report and writes nothing for that artifact; it is a
+      # warning here, never a red run, since the next run (or the backfill) retries what is missing.
+      - name: Extract the missing outlines in the step-3 sandbox (F19-R5, R6; no secret in this step)
+        id: extract
+        if: steps.pin.outputs.run == 'true'
+        env:
+          PYTHONPATH: network-render/gate
+          TARGETS: ${{ steps.pin.outputs.targets }}
+          PIN: ${{ steps.pin.outputs.pin }}
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network-render --quiet
+          if ! help="$(uv run --frozen --project network-render python -m opn_gate.cli --help 2>&1)"; then
+            printf '%s\n' "$help" | tail -n 20
+            echo "::warning::outline: the pinned gate ${PIN:0:12} did not start; no outline this run (C7)"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if ! printf '%s' "$help" | grep -Eq '[{,]outline[,}]'; then
+            echo "::notice::outline: the pinned network ${PIN:0:12} predates opn-gate outline (F19-T4); nothing is extracted until the re-pin"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          for target in $TARGETS; do
+            status=0
+            uv run --frozen --project network-render python -m opn_gate.cli outline \
+              --graph . --commit HEAD --target "$target" --no-build \
+              --out "$RUNNER_TEMP/outline-$target" > "$RUNNER_TEMP/outline-$target.json" || status=$?
+            cat "$RUNNER_TEMP/outline-$target.json"
+            if [ "$status" -ne 0 ]; then
+              echo "::warning::outline: $target has an artifact left without an outline (exit $status), named in the report above (F19-R5); the next run or the backfill retries it"
+            fi
+          done
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit the outlines and push them (with the write deploy key; F07-T29's catch-up)
+        if: steps.extract.outputs.run == 'true'
+        env:
+          OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
+          TARGETS: ${{ steps.pin.outputs.targets }}
+          PIN: ${{ steps.pin.outputs.pin }}
+        run: |
+          set -euo pipefail
+          umask 077
+          trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
+          helper="$RUNNER_TEMP/outline_publish.py"
+          cat > "$helper" <<'PY'
+          """F19-T4: commit the outlines this job extracted and push them, catching up while main moves.
+
+          Pure functions over git, so the network repo's tests run this file as it stands
+          (test_finding_outline_job.py). It reads the checkout and main with git and nothing else: no
+          network but the push and the fetch, no contributor code, no secret but the deploy key the
+          push already has in its environment.
+
+          `collect` takes from the extraction only what it may write: new files under
+          targets/<target>/outlines/<sha256>.json for the targets this job outlined, and no change to
+          any tracked file. `publish` pushes one commit `outline: ...`; when main has moved it fetches,
+          keeps every outline that still describes main as it now is (none there already, and the
+          artifact it names in that tree with the bytes it outlines), lays them on main and pushes
+          again. A re-pin of a target means the outlines name a gate main no longer pins: nothing is
+          pushed, and the next run extracts with the new gate."""
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+
+          OUTLINE_RE = re.compile(r"^targets/([A-Za-z0-9][A-Za-z0-9._-]*)/outlines/([0-9a-f]{64})\.json$")
+          PUBLISH_ATTEMPTS = 6
+
+
+          def git(*args, check=True):
+              return subprocess.run(["git", *args], check=check, capture_output=True, text=True)
+
+
+          def collect(targets, porcelain_targets, porcelain_tracked):
+              """(outline paths to commit, offending lines). `porcelain_targets` is `git status
+              --porcelain --untracked-files=all -- targets`, `porcelain_tracked` the same for every
+              tracked file in the checkout: the extraction may add outlines and nothing else."""
+              files, bad = [], [line for line in porcelain_tracked.splitlines() if line.strip()]
+              for line in porcelain_targets.splitlines():
+                  if not line.strip():
+                      continue
+                  status, path = line[:2], line[3:]
+                  found = OUTLINE_RE.match(path)
+                  if status == "??" and found and found.group(1) in targets:
+                      files.append(path)
+                  elif line not in bad:
+                      bad.append(line)
+              return sorted(files), bad
+
+
+          def describes(path, data, *, exists, blob):
+              """Whether the outline at `path` (bytes `data`) may be laid on a main whose files
+              `exists(path)` and `blob(path)` read: none there yet, it names its own target and
+              hash, and the artifact it names is there with exactly the bytes it outlines."""
+              found = OUTLINE_RE.match(path)
+              if not found or exists(path):
+                  return False
+              try:
+                  doc = json.loads(data)
+                  node, rel, digest = doc["node"], doc["artifact"]["path"], doc["artifact"]["hash"]
+              except (ValueError, KeyError, TypeError):
+                  return False
+              if doc.get("target") != found.group(1) or digest != found.group(2):
+                  return False
+              if not isinstance(node, str) or not isinstance(rel, str) or ".." in rel.split("/"):
+                  return False
+              artifact = blob(f"targets/{found.group(1)}/nodes/{node}/{rel}")
+              return artifact is not None and hashlib.sha256(artifact).hexdigest() == digest
+
+
+          def publish(files, *, attempts, push, fetch, pin_moved, keep, commit):
+              """Push the commit made of `files` ({path: bytes}); while main has moved under it, lay
+              again on main as it now is the outlines that still describe it. Answers `pushed`,
+              `nothing-left` (main has them all, or none still applies), `pin-moved` or `gave-up`."""
+              for attempt in range(1, attempts + 1):
+                  if push():
+                      return "pushed"
+                  new = fetch()
+                  if pin_moved(new):
+                      return "pin-moved"
+                  files = {path: data for path, data in files.items() if keep(new, path, data)}
+                  if not files:
+                      return "nothing-left"
+                  commit(new, files)
+                  print(f"outline: main moved (attempt {attempt}); caught up on {new[:12]}", flush=True)
+              return "gave-up"
+
+
+          def message(files):
+              targets = sorted({OUTLINE_RE.match(path).group(1) for path in files})
+              return f"outline: {len(files)} for {' '.join(targets)}"
+
+
+          def run_collect(env):
+              targets = set(env["TARGETS"].split())
+              files, bad = collect(
+                  targets,
+                  git("status", "--porcelain", "--untracked-files=all", "--", "targets").stdout,
+                  git("status", "--porcelain", "--untracked-files=no").stdout,
+              )
+              if bad:
+                  print("::error::outline: the extraction changed what it may not; nothing is pushed:", file=sys.stderr)
+                  for line in bad:
+                      print(f"  {line}", file=sys.stderr)
+                  return 1
+              for path in files:
+                  print(path)
+              return 0
+
+
+          def run_publish(env):
+              remote, pin = env["REMOTE"], env["PIN"]
+              with open(env["LIST"], encoding="utf-8") as listed:
+                  paths = [line for line in listed.read().split() if line]
+              files = {}
+              for path in paths:
+                  with open(path, "rb") as f:
+                      files[path] = f.read()
+
+              def commit(rev, chosen):
+                  if rev is not None:
+                      git("checkout", "-q", "-f", "--detach", rev)
+                      for path, data in chosen.items():
+                          os.makedirs(os.path.dirname(path), exist_ok=True)
+                          with open(path, "wb") as out:
+                              out.write(data)
+                  git("add", "--", *sorted(chosen))
+                  git("commit", "-q", "-m", message(chosen))
+
+              def push():
+                  return subprocess.run(["git", "push", "-q", remote, "HEAD:main"], check=False).returncode == 0
+
+              def fetch():
+                  git("fetch", "-q", remote, "main")
+                  return git("rev-parse", "FETCH_HEAD").stdout.strip()
+
+              def pin_moved(rev):
+                  for target in env["TARGETS"].split():
+                      shown = git("show", f"{rev}:targets/{target}/gate-spec.json", check=False)
+                      try:
+                          found = json.loads(shown.stdout)["network_commit"] if shown.returncode == 0 else None
+                      except (ValueError, KeyError, TypeError):
+                          found = None
+                      if found != pin:
+                          print(f"::notice::outline: main re-pinned {target} since extraction; these outlines are not this run's to push")
+                          return True
+                  return False
+
+              def keep(rev, path, data):
+                  def exists(p):
+                      return git("cat-file", "-e", f"{rev}:{p}", check=False).returncode == 0
+
+                  def blob(p):
+                      shown = subprocess.run(["git", "show", f"{rev}:{p}"], capture_output=True, check=False)
+                      return shown.stdout if shown.returncode == 0 else None
+
+                  return describes(path, data, exists=exists, blob=blob)
+
+              commit(None, files)
+              attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
+              outcome = publish(
+                  files, attempts=attempts, push=push, fetch=fetch, pin_moved=pin_moved, keep=keep,
+                  commit=commit,
+              )
+              print(f"outline: publish {outcome}")
+              if outcome == "gave-up":
+                  print(f"::warning::outline: the push was refused {attempts} times; the next run extracts what is still missing")
+              return 0
+
+
+          if __name__ == "__main__":
+              command = sys.argv[1]
+              if command == "collect":  # collect: the outline paths to commit, one per line
+                  sys.exit(run_collect(os.environ))
+              if command == "publish":  # publish: commit LIST and push it, catching up while main moves
+                  sys.exit(run_publish(os.environ))
+              sys.exit(f"unknown command {command!r}")
+          PY
+          python3 "$helper" collect > "$RUNNER_TEMP/outlines.txt"
+          if [ ! -s "$RUNNER_TEMP/outlines.txt" ]; then
+            echo "outline: no new outline to commit"; exit 0
+          fi
+          cat "$RUNNER_TEMP/outlines.txt"
+          printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
+          git config user.name "opn-gate"
+          git config user.email "gate@openproof.network"
+          export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+          REMOTE="git@github.com:${GITHUB_REPOSITORY}.git" LIST="$RUNNER_TEMP/outlines.txt" \
+            python3 "$helper" publish
