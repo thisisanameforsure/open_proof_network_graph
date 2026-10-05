@@ -149,7 +149,8 @@ jobs:
           PRODUCT_FILES = ("frontier.json", "info.json", "claims.json", "targets/index.json",
                            "THIRD_PARTY_NOTICES.md")
           PRODUCT_DIRS = ("attestations/", "ledger/")
-          TARGET_PRODUCTS = ("graph.json", ".tags-cache.json")  # targets/<id>/<name>
+          TARGET_PRODUCTS = ("graph.json", ".tags-cache.json", ".footprint-cache.json", "glosses.json")  # targets/<id>/<name>
+          TARGET_PRODUCT_DIRS = ("outlines",)  # targets/<id>/<dir>/<file>: F19-T4's outline job writes them
           NODE_PRODUCTS = ("CONTEXT.json",)  # targets/<id>/nodes/<node>/<name>
           #: How far back along main's first-parent line a pull request's staleness is read; past
           #: it, and past the host's own cap on a commit's file list, the branch is updated (C7).
@@ -296,6 +297,8 @@ jobs:
               parts = path.split("/")
               if parts[0] == "targets" and len(parts) > 2:
                   if len(parts) == 3 and parts[2] in TARGET_PRODUCTS:
+                      return False
+                  if len(parts) == 4 and parts[2] in TARGET_PRODUCT_DIRS:
                       return False
                   if len(parts) == 5 and parts[2] == "nodes" and parts[4] in NODE_PRODUCTS:
                       return False
