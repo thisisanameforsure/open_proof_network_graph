@@ -1,0 +1,1498 @@
+{
+  "artifact": {
+    "hash": "7d621b770af166ba06fb85dd8514e032db9326b88f6e6e33cc158a080219958f",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-c390279b",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ i ∈ Finset.range (n + (1 : ℕ)), (↑(f i) : ℝ) / (2 : ℝ) ^ i +\n    ∑' (i : ℕ), (↑(f (i + (n + (1 : ℕ)))) : ℝ) / (2 : ℝ) ^ (i + (n + (1 : ℕ))) =\n  ∑' (i : ℕ), (↑(f i) : ℝ) / (2 : ℝ) ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ i ∈ Finset.range (n + (1 : ℕ)), (↑(f i) : ℝ) / (2 : ℝ) ^ i +\n    ∑' (i : ℕ), (↑(f (i + (n + (1 : ℕ)))) : ℝ) / (2 : ℝ) ^ (i + (n + (1 : ℕ))) =\n  ∑' (i : ℕ), (↑(f i) : ℝ) / (2 : ℝ) ^ i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n  (2 : ℝ) ^ n * ∑' (m : ℕ), (↑(f m) : ℝ) / (2 : ℝ) ^ m -\n    (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "htail.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Summable.sum_add_tsum_nat_add",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (j : ℕ),\n  (↑(f (j + (n + (1 : ℕ)))) : ℝ) / (2 : ℝ) ^ (j + (n + (1 : ℕ))) =\n    (1 : ℝ) / (2 : ℝ) ^ n * ((↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (j : ℕ),\n  (↑(f (j + (n + (1 : ℕ)))) : ℝ) / (2 : ℝ) ^ (j + (n + (1 : ℕ))) =\n    (1 : ℝ) / (2 : ℝ) ^ n * ((↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n  (2 : ℝ) ^ n * ∑' (m : ℕ), (↑(f m) : ℝ) / (2 : ℝ) ^ m -\n    (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "htail.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 34,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "pow_add",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "i ≤ n",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hi'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "i ≤ n",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ n * ((↑(f i) : ℝ) / (2 : ℝ) ^ i) = (↑(f i) : ℝ) * (2 : ℝ) ^ (n - i)",
+                  "truncated": false
+                }
+              },
+              "id": "htail.h3.hi'",
+              "kind": "have",
+              "name": "hi'",
+              "span": {
+                "end_line": 41,
+                "start_line": 41
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.lt_succ_iff",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_range",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℝ) ^ n = (2 : ℝ) ^ (n - i) * (2 : ℝ) ^ i",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ^ n = (2 : ℝ) ^ (n - i) * (2 : ℝ) ^ i",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ n * ((↑(f i) : ℝ) / (2 : ℝ) ^ i) = (↑(f i) : ℝ) * (2 : ℝ) ^ (n - i)",
+                  "truncated": false
+                }
+              },
+              "id": "htail.h3.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 43,
+                "start_line": 42
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_add",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.sub_add_cancel",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℝ) ^ n * ∑ i ∈ Finset.range (n + (1 : ℕ)), (↑(f i) : ℝ) / (2 : ℝ) ^ i =\n  (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ n * ∑ i ∈ Finset.range (n + (1 : ℕ)), (↑(f i) : ℝ) / (2 : ℝ) ^ i =\n  (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n  (2 : ℝ) ^ n * ∑' (m : ℕ), (↑(f m) : ℝ) / (2 : ℝ) ^ m -\n    (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "htail.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 45,
+            "start_line": 36
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mul_sum",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_congr",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n    (2 : ℝ) ^ n * ∑' (m : ℕ), (↑(f m) : ℝ) / (2 : ℝ) ^ m -\n      (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "htail",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ),\n  ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n    (2 : ℝ) ^ n * ∑' (m : ℕ), (↑(f m) : ℝ) / (2 : ℝ) ^ m -\n      (↑(∑ i ∈ Finset.range (n + (1 : ℕ)), f i * (2 : ℕ) ^ (n - i)) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n →\n        N₀ ≤ n' →\n          n ≡ n' [MOD p] →\n            ∃ (z : ℤ),\n              ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) -\n                  ∑' (j : ℕ), (↑(f (n' + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n                (↑z : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "htail",
+      "kind": "have",
+      "name": "htail",
+      "span": {
+        "end_line": 47,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_congr",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_mul_left",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `left_distrib`.",
+            "name": "mul_add",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_assoc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_one_div_cancel",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "one_mul",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "NeZero q.den",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "NeZero q.den",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 51,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "A type-class version of `n ≠ 0`.",
+                "name": "NeZero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "NeZero.mk",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (x : ℕ) (y : ℕ), x ≠ y ∧ g x = g y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "y",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxy",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≠ y",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hg",
+                "type": {
+                  "printed": "reliable",
+                  "text": "g x = g y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 53,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The pigeonhole principle for infinitely many pigeons in finitely many pigeonholes.",
+                "name": "Finite.exists_ne_map_eq_of_infinite",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ y * q.num - (2 : ℤ) ^ x * q.num",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ y * q.num - (2 : ℤ) ^ x * q.num",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hkey.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 55,
+                "start_line": 55
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "ZMod.intCast_eq_intCast_iff_dvd_sub",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hkey.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 59,
+                "start_line": 57
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hkey.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 62,
+                "start_line": 60
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": "An element `a` of a semigroup with a distributive negation divides the negation of an element `b` iff `a` divides `b`.",
+                    "name": "dvd_neg",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "neg_sub",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkey",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.hkey",
+          "kind": "have",
+          "name": "hkey",
+          "span": {
+            "end_line": 62,
+            "start_line": 54
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_or_gt_of_ne",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (n₀ : ℕ) (p : ℕ), (0 : ℕ) < p ∧ (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "n₀",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.s4",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "simp"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + (0 : ℕ) * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hmul.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 67,
+                "start_line": 67
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Zero, the smallest natural number.",
+                    "name": "Nat.zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(2 : ℤ) ^ (n₀ + t + (m + (1 : ℕ)) * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num =\n  (2 : ℤ) ^ (t + m * p) * ((2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num) +\n    ((2 : ℤ) ^ (n₀ + t + m * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "e",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℤ) ^ (n₀ + t + (m + (1 : ℕ)) * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num =\n  (2 : ℤ) ^ (t + m * p) * ((2 : ℤ) ^ (n₀ + p) * q.num - (2 : ℤ) ^ n₀ * q.num) +\n    ((2 : ℤ) ^ (n₀ + t + m * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + (m + (1 : ℕ)) * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hper.hmul.s2.e",
+                  "kind": "have",
+                  "name": "e",
+                  "span": {
+                    "end_line": 74,
+                    "start_line": 69
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "pow_add",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "m",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ih",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + m * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + (m + (1 : ℕ)) * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hmul.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 76,
+                "start_line": 68
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The successor of a natural number `n`.",
+                    "name": "Nat.succ",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "dvd_add",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "dvd_mul_of_dvd_right",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (m t : ℕ), (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + m * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hmul",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (m t : ℕ), (↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + t + m * p) * q.num - (2 : ℤ) ^ (n₀ + t) * q.num",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.hmul",
+          "kind": "have",
+          "name": "hmul",
+          "span": {
+            "end_line": 76,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∣ n' - n",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "m",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hm",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n' - n = p * m",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hle.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 80,
+                "start_line": 80
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "A variant of `modEq_iff_dvd` with `Nat` divisibility",
+                    "name": "Nat.modEq_iff_dvd'",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + (n - n₀) + m * p) * q.num - (2 : ℤ) ^ (n₀ + (n - n₀)) * q.num",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ (n₀ + (n - n₀) + m * p) * q.num - (2 : ℤ) ^ (n₀ + (n - n₀)) * q.num",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hle.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 81,
+                "start_line": 81
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑q.den : ℤ) ∣ (2 : ℤ) ^ n' * q.num - (2 : ℤ) ^ n * q.num",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "w",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℤ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hw",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℤ) ^ n' * q.num - (2 : ℤ) ^ n * q.num = (↑q.den : ℤ) * w",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hle.s3",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 84,
+                "start_line": 84
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑q.den : ℝ) ≠ (0 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hden",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑q.den : ℝ) ≠ (0 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑(-w) : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hle.hden",
+              "kind": "have",
+              "name": "hden",
+              "span": {
+                "end_line": 86,
+                "start_line": 86
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℝ) ^ n' * (↑q.num : ℝ) - (2 : ℝ) ^ n * (↑q.num : ℝ) = (↑q.den : ℝ) * (↑w : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hw'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ^ n' * (↑q.num : ℝ) - (2 : ℝ) ^ n * (↑q.num : ℝ) = (↑q.den : ℝ) * (↑w : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑(-w) : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.hle.hw'",
+              "kind": "have",
+              "name": "hw'",
+              "span": {
+                "end_line": 88,
+                "start_line": 87
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (n n' : ℕ), n₀ ≤ n → n ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hle",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (n n' : ℕ), n₀ ≤ n → n ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.hle",
+          "kind": "have",
+          "name": "hle",
+          "span": {
+            "end_line": 92,
+            "start_line": 77
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_comm",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Rat.cast_def",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.s7",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 95,
+            "start_line": 95
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (z : ℤ), (2 : ℝ) ^ n' * (↑q : ℝ) - (2 : ℝ) ^ n * (↑q : ℝ) = (↑z : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "z",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℤ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hz",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ^ n' * (↑q : ℝ) - (2 : ℝ) ^ n * (↑q : ℝ) = (↑z : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hper.s8.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 96,
+                "start_line": 96
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hper.s8",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 97,
+            "start_line": 96
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hper",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n →\n        N₀ ≤ n' →\n          n ≡ n' [MOD p] →\n            ∃ (z : ℤ),\n              ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) -\n                  ∑' (j : ℕ), (↑(f (n' + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n                (↑z : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hper",
+      "kind": "have",
+      "name": "hper",
+      "span": {
+        "end_line": 97,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The integers modulo `n : ℕ`.",
+            "name": "ZMod",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_total",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "N₀",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n n' : ℕ), N₀ ≤ n → N₀ ≤ n' → n ≡ n' [MOD p] → ∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ) (N₀ : ℕ),\n  (0 : ℕ) < p ∧\n    ∀ (n n' : ℕ),\n      N₀ ≤ n →\n        N₀ ≤ n' →\n          n ≡ n' [MOD p] →\n            ∃ (z : ℤ),\n              ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) -\n                  ∑' (j : ℕ), (↑(f (n' + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n                (↑z : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 99,
+        "start_line": 99
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (z : ℤ), (2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "z",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hz",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ n * (↑q : ℝ) - (2 : ℝ) ^ n' * (↑q : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ),\n  ∑' (j : ℕ), (↑(f (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) -\n      ∑' (j : ℕ), (↑(f (n' + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n    (↑z : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 101,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-69"
+}

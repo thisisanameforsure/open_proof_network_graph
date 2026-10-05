@@ -1,0 +1,2202 @@
+{
+  "artifact": {
+    "hash": "ed5033244e498b2ec8a0f20f9295e724a2da271afbdb572bc004ba4d151d2372",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-892f5809",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑A.card : ℚ) = (9 : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h9",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑A.card : ℚ) = (9 : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "toQ.h9",
+          "kind": "have",
+          "name": "h9",
+          "span": {
+            "end_line": 14,
+            "start_line": 14
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (a b : ℕ), (9 : ℕ) * a.gcd b ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "toQ",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (a b : ℕ), (9 : ℕ) * a.gcd b ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "toQ",
+      "kind": "have",
+      "name": "toQ",
+      "span": {
+        "end_line": 16,
+        "start_line": 12
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+            "name": "le_div_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hne",
+            "type": {
+              "printed": "reliable",
+              "text": "A.Nonempty",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hne",
+      "kind": "have",
+      "name": "hne",
+      "span": {
+        "end_line": 17,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.card_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.max' hne ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hMA",
+            "type": {
+              "printed": "reliable",
+              "text": "A.max' hne ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hMA",
+      "kind": "have",
+      "name": "hMA",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.max'_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hMpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hMpos",
+      "kind": "have",
+      "name": "hMpos",
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ x ∈ A, (9 : ℕ) * (A.max' hne).gcd x ≤ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxA",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(9 : ℕ) * (A.max' hne).gcd x ≤ A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 22,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≠ A.max' hne ∧ x ∈ A",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxM",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≠ A.max' hne",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxA",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∈ A",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 28,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.mem_erase",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hxpos",
+          "kind": "have",
+          "name": "hxpos",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x < A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x < A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hxlt",
+          "kind": "have",
+          "name": "hxlt",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_of_le_of_ne",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.le_max'",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A.max' hne < (9 : ℕ) * (A.max' hne).gcd x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hbig",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.max' hne < (9 : ℕ) * (A.max' hne).gcd x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hbig",
+          "kind": "have",
+          "name": "hbig",
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.max' hne = (A.max' hne).gcd x * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.s5",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "j",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = (A.max' hne).gcd x * j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.s6",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 33,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < (A.max' hne).gcd x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < (A.max' hne).gcd x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hgpos",
+          "kind": "have",
+          "name": "hgpos",
+          "span": {
+            "end_line": 34,
+            "start_line": 34
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_pos_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * (9 : ℕ) ≤ (A.max' hne).gcd x * k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(A.max' hne).gcd x * (9 : ℕ) ≤ (A.max' hne).gcd x * k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hval.hk9.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 37,
+                "start_line": 37
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "not_lt",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "k < (9 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hk9",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k < (9 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hk9",
+          "kind": "have",
+          "name": "hk9",
+          "span": {
+            "end_line": 38,
+            "start_line": 35
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hval.hjk.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 41,
+                "start_line": 41
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "not_lt",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "j < k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hjk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "j < k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hjk",
+          "kind": "have",
+          "name": "hjk",
+          "span": {
+            "end_line": 42,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < j",
+                  "truncated": false
+                }
+              },
+              "id": "hval.hj0.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 46,
+                "start_line": 45
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < j",
+                  "truncated": false
+                }
+              },
+              "id": "hval.hj0.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 47,
+                "start_line": 47
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < j",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hj0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.hj0",
+          "kind": "have",
+          "name": "hj0",
+          "span": {
+            "end_line": 47,
+            "start_line": 43
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.eq_zero_or_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(840 : ℕ) * j / k ∈\n  [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n    (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n    (735 : ℕ)]",
+              "truncated": false
+            }
+          },
+          "id": "hval.s11",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(840 : ℕ) * x = (840 : ℕ) * j / k * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "hval.s12",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A.erase (A.max' hne),\n  ∃\n    c ∈\n      [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n        (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n        (735 : ℕ)],\n    (840 : ℕ) * x = c * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hval",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A.erase (A.max' hne),\n  ∃\n    c ∈\n      [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n        (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n        (735 : ℕ)],\n    (840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hval",
+      "kind": "have",
+      "name": "hval",
+      "span": {
+        "end_line": 50,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (cls : ℕ → List ℕ),\n  cls = fun (i : ℕ) =>\n    [[(420 : ℕ), (600 : ℕ)], [(210 : ℕ), (360 : ℕ), (672 : ℕ), (700 : ℕ)], [(120 : ℕ), (560 : ℕ), (630 : ℕ)],\n          [(105 : ℕ), (240 : ℕ), (504 : ℕ)], [(280 : ℕ), (315 : ℕ), (480 : ℕ)], [(168 : ℕ), (525 : ℕ), (720 : ℕ)],\n          [(140 : ℕ), (336 : ℕ), (735 : ℕ)]].getD\n      i []",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "cls",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → List ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hcls",
+            "type": {
+              "printed": "reliable",
+              "text": "cls = fun (i : ℕ) =>\n  [[(420 : ℕ), (600 : ℕ)], [(210 : ℕ), (360 : ℕ), (672 : ℕ), (700 : ℕ)], [(120 : ℕ), (560 : ℕ), (630 : ℕ)],\n        [(105 : ℕ), (240 : ℕ), (504 : ℕ)], [(280 : ℕ), (315 : ℕ), (480 : ℕ)], [(168 : ℕ), (525 : ℕ), (720 : ℕ)],\n        [(140 : ℕ), (336 : ℕ), (735 : ℕ)]].getD\n    i []",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s7",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 54,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Linked lists: ordered lists, in which each element has a reference to the next element.",
+            "name": "List",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (col : ℕ → ℕ),\n  col = fun (c : ℕ) =>\n    List.findIdx (fun (C : List ℕ) => C.contains c)\n      [[(420 : ℕ), (600 : ℕ)], [(210 : ℕ), (360 : ℕ), (672 : ℕ), (700 : ℕ)], [(120 : ℕ), (560 : ℕ), (630 : ℕ)],\n        [(105 : ℕ), (240 : ℕ), (504 : ℕ)], [(280 : ℕ), (315 : ℕ), (480 : ℕ)], [(168 : ℕ), (525 : ℕ), (720 : ℕ)],\n        [(140 : ℕ), (336 : ℕ), (735 : ℕ)]]",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "col",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hcol",
+            "type": {
+              "printed": "reliable",
+              "text": "col = fun (c : ℕ) =>\n  List.findIdx (fun (C : List ℕ) => C.contains c)\n    [[(420 : ℕ), (600 : ℕ)], [(210 : ℕ), (360 : ℕ), (672 : ℕ), (700 : ℕ)], [(120 : ℕ), (560 : ℕ), (630 : ℕ)],\n      [(105 : ℕ), (240 : ℕ), (504 : ℕ)], [(280 : ℕ), (315 : ℕ), (480 : ℕ)], [(168 : ℕ), (525 : ℕ), (720 : ℕ)],\n      [(140 : ℕ), (336 : ℕ), (735 : ℕ)]]",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 57,
+        "start_line": 55
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  col c < (7 : ℕ) ∧ c ∈ cls (col c)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcover",
+            "type": {
+              "printed": "reliable",
+              "text": "∀\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  col c < (7 : ℕ) ∧ c ∈ cls (col c)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcover",
+      "kind": "have",
+      "name": "hcover",
+      "span": {
+        "end_line": 61,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Linked lists: ordered lists, in which each element has a reference to the next element.",
+            "name": "List",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ i < (7 : ℕ), ∀ c ∈ cls i, ∀ d ∈ cls i, c = d ∨ (9 : ℕ) * c.gcd d ≤ c ∨ (9 : ℕ) * c.gcd d ≤ d",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgood",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ i < (7 : ℕ), ∀ c ∈ cls i, ∀ d ∈ cls i, c = d ∨ (9 : ℕ) * c.gcd d ≤ c ∨ (9 : ℕ) * c.gcd d ≤ d",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hgood",
+      "kind": "have",
+      "name": "hgood",
+      "span": {
+        "end_line": 64,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "c",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "c ∈\n  [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n    (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n    (735 : ℕ)]",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(840 : ℕ) * x = c * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "col ((840 : ℕ) * x / A.max' hne) ∈ Finset.range (7 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hmaps.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 68,
+            "start_line": 68
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A.erase (A.max' hne), col ((840 : ℕ) * x / A.max' hne) ∈ Finset.range (7 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmaps",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A.erase (A.max' hne), col ((840 : ℕ) * x / A.max' hne) ∈ Finset.range (7 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hmaps",
+      "kind": "have",
+      "name": "hmaps",
+      "span": {
+        "end_line": 70,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_div_cancel",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(Finset.range (7 : ℕ)).card < (A.erase (A.max' hne)).card",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard8",
+            "type": {
+              "printed": "reliable",
+              "text": "(Finset.range (7 : ℕ)).card < (A.erase (A.max' hne)).card",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcard8",
+      "kind": "have",
+      "name": "hcard8",
+      "span": {
+        "end_line": 73,
+        "start_line": 71
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "$\\#(s \\setminus \\{a\\}) = \\#s - 1$ if $a \\in s$.",
+            "name": "Finset.card_erase_of_mem",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.card_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ x ∈ A.erase (A.max' hne),\n  ∃ y ∈ A.erase (A.max' hne), x ≠ y ∧ col ((840 : ℕ) * x / A.max' hne) = col ((840 : ℕ) * y / A.max' hne)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "x",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hx",
+            "type": {
+              "printed": "reliable",
+              "text": "x ∈ A.erase (A.max' hne)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "y",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hy",
+            "type": {
+              "printed": "reliable",
+              "text": "y ∈ A.erase (A.max' hne)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hxy",
+            "type": {
+              "printed": "reliable",
+              "text": "x ≠ y",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hxycol",
+            "type": {
+              "printed": "reliable",
+              "text": "col ((840 : ℕ) * x / A.max' hne) = col ((840 : ℕ) * y / A.max' hne)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s13",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 74,
+        "start_line": 74
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "If there are more pigeons than pigeonholes, then there are two pigeons in the same pigeonhole.",
+            "name": "Finset.exists_ne_map_eq_of_card_lt_of_maps_to",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * x = c * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "c ∈\n  [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n    (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n    (735 : ℕ)]",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hxc",
+            "type": {
+              "printed": "reliable",
+              "text": "(840 : ℕ) * x = c * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s14",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 75,
+        "start_line": 75
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃\n  c ∈\n    [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n      (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n      (735 : ℕ)],\n  (840 : ℕ) * y = c * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "d",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hd",
+            "type": {
+              "printed": "reliable",
+              "text": "d ∈\n  [(105 : ℕ), (120 : ℕ), (140 : ℕ), (168 : ℕ), (210 : ℕ), (240 : ℕ), (280 : ℕ), (315 : ℕ), (336 : ℕ), (360 : ℕ),\n    (420 : ℕ), (480 : ℕ), (504 : ℕ), (525 : ℕ), (560 : ℕ), (600 : ℕ), (630 : ℕ), (672 : ℕ), (700 : ℕ), (720 : ℕ),\n    (735 : ℕ)]",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hyd",
+            "type": {
+              "printed": "reliable",
+              "text": "(840 : ℕ) * y = d * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s15",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 76,
+        "start_line": 76
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c ≠ d",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcd",
+            "type": {
+              "printed": "reliable",
+              "text": "c ≠ d",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcd",
+      "kind": "have",
+      "name": "hcd",
+      "span": {
+        "end_line": 80,
+        "start_line": 78
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c ∈ cls (col c)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcmem",
+            "type": {
+              "printed": "reliable",
+              "text": "c ∈ cls (col c)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcmem",
+      "kind": "have",
+      "name": "hcmem",
+      "span": {
+        "end_line": 81,
+        "start_line": 81
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "d ∈ cls (col d)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hdmem",
+            "type": {
+              "printed": "reliable",
+              "text": "d ∈ cls (col d)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hdmem",
+      "kind": "have",
+      "name": "hdmem",
+      "span": {
+        "end_line": 82,
+        "start_line": 82
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c.gcd d * A.max' hne = (840 : ℕ) * x.gcd y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hg",
+            "type": {
+              "printed": "reliable",
+              "text": "c.gcd d * A.max' hne = (840 : ℕ) * x.gcd y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hg",
+      "kind": "have",
+      "name": "hg",
+      "span": {
+        "end_line": 86,
+        "start_line": 85
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.gcd_mul_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "x ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hxA",
+            "type": {
+              "printed": "reliable",
+              "text": "x ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hxA",
+      "kind": "have",
+      "name": "hxA",
+      "span": {
+        "end_line": 87,
+        "start_line": 87
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_erase",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hyA",
+            "type": {
+              "printed": "reliable",
+              "text": "y ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hyA",
+      "kind": "have",
+      "name": "hyA",
+      "span": {
+        "end_line": 88,
+        "start_line": 88
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_erase",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s22",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 90,
+        "start_line": 90
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Anything follows from two contradictory hypotheses.",
+            "name": "absurd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(9 : ℕ) * c.gcd d * A.max' hne ≤ c * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(9 : ℕ) * c.gcd d * A.max' hne ≤ c * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(9 : ℕ) * x.gcd y ≤ x",
+              "truncated": false
+            }
+          },
+          "id": "s23.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 92,
+            "start_line": 92
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s23",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 94,
+        "start_line": 91
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_assoc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(9 : ℕ) * c.gcd d * A.max' hne ≤ d * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(9 : ℕ) * c.gcd d * A.max' hne ≤ d * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(9 : ℕ) * y.gcd x ≤ y",
+              "truncated": false
+            }
+          },
+          "id": "s24.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 96,
+            "start_line": 96
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s24",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 99,
+        "start_line": 95
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_assoc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_comm",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

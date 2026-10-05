@@ -1,0 +1,2037 @@
+{
+  "artifact": {
+    "hash": "1a95a0468248d4f4d6a8c68a10fabd161a141c5f176c8912a2f76ff768c9db26",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-7a4bb0cd",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.card",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.card",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hpos",
+      "kind": "have",
+      "name": "hpos",
+      "span": {
+        "end_line": 13,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hne",
+            "type": {
+              "printed": "reliable",
+              "text": "A.Nonempty",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hne",
+      "kind": "have",
+      "name": "hne",
+      "span": {
+        "end_line": 14,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.card_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (a b : ℕ), a.gcd b * A.card ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (a b : ℕ), a.gcd b * A.card ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 18,
+        "start_line": 15
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+            "name": "le_div_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.max' hne ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hM",
+            "type": {
+              "printed": "reliable",
+              "text": "A.max' hne ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hM",
+      "kind": "have",
+      "name": "hM",
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.max'_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hMpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hMpos",
+      "kind": "have",
+      "name": "hMpos",
+      "span": {
+        "end_line": 20,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ x ∈ A, (A.max' hne).gcd x * (11 : ℕ) ≤ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(A.max' hne).gcd x * (11 : ℕ) ≤ A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s6.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 22,
+            "start_line": 22
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 23,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hxpos",
+          "kind": "have",
+          "name": "hxpos",
+          "span": {
+            "end_line": 28,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x < A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x < A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_of_le_of_ne",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.le_max'",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A.max' hne < (A.max' hne).gcd x * (11 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hg",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.max' hne < (A.max' hne).gcd x * (11 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hg",
+          "kind": "have",
+          "name": "hg",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.max' hne = (A.max' hne).gcd x * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.s4",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "j",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = (A.max' hne).gcd x * j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.s5",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < (A.max' hne).gcd x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < (A.max' hne).gcd x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hgpos",
+          "kind": "have",
+          "name": "hgpos",
+          "span": {
+            "end_line": 33,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_pos_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * (11 : ℕ) ≤ (A.max' hne).gcd x * k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(A.max' hne).gcd x * (11 : ℕ) ≤ (A.max' hne).gcd x * k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "forms.hkN.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 37,
+                "start_line": 37
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "k < (11 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkN",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k < (11 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hkN",
+          "kind": "have",
+          "name": "hkN",
+          "span": {
+            "end_line": 38,
+            "start_line": 34
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "forms.hjk.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 42,
+                "start_line": 42
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "j < k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hjk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "j < k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hjk",
+          "kind": "have",
+          "name": "hjk",
+          "span": {
+            "end_line": 43,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ j",
+                  "truncated": false
+                }
+              },
+              "id": "forms.hj1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 47,
+                "start_line": 46
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ j",
+                  "truncated": false
+                }
+              },
+              "id": "forms.hj1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 48,
+                "start_line": 48
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) ≤ j",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hj1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.hj1",
+          "kind": "have",
+          "name": "hj1",
+          "span": {
+            "end_line": 48,
+            "start_line": 44
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.eq_zero_or_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "unreliable",
+              "text": "(2520 : ℕ) * j / k ∈\n  {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n    (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n    (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n    (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)}",
+              "truncated": false
+            }
+          },
+          "id": "forms.s10",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(2520 : ℕ) * x = (2520 : ℕ) * j / k * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.s11",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 51,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∀ x ∈ A.erase (A.max' hne),\n  ∃\n    a ∈\n      {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n        (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n        (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n        (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n    (2520 : ℕ) * x = a * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "forms",
+            "type": {
+              "printed": "unreliable",
+              "text": "∀ x ∈ A.erase (A.max' hne),\n  ∃\n    a ∈\n      {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n        (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n        (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n        (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n    (2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "forms",
+      "kind": "have",
+      "name": "forms",
+      "span": {
+        "end_line": 51,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_erase",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(A.erase (A.max' hne)).card = (10 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard",
+            "type": {
+              "printed": "reliable",
+              "text": "(A.erase (A.max' hne)).card = (10 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcard",
+      "kind": "have",
+      "name": "hcard",
+      "span": {
+        "end_line": 53,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "$\\#(s \\setminus \\{a\\}) = \\#s - 1$ if $a \\in s$.",
+            "name": "Finset.card_erase_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∀\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (fun (a : ℕ) =>\n        if a = (252 : ℕ) then (2 : ℕ)\n        else\n          if a = (280 : ℕ) then (6 : ℕ)\n          else\n            if a = (315 : ℕ) then (8 : ℕ)\n            else\n              if a = (360 : ℕ) then (7 : ℕ)\n              else\n                if a = (420 : ℕ) then (5 : ℕ)\n                else\n                  if a = (504 : ℕ) then (4 : ℕ)\n                  else\n                    if a = (560 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (630 : ℕ) then (3 : ℕ)\n                      else\n                        if a = (720 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (756 : ℕ) then (6 : ℕ)\n                          else\n                            if a = (840 : ℕ) then (1 : ℕ)\n                            else\n                              if a = (945 : ℕ) then (2 : ℕ)\n                              else\n                                if a = (1008 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1080 : ℕ) then (5 : ℕ)\n                                  else\n                                    if a = (1120 : ℕ) then (3 : ℕ)\n                                    else\n                                      if a = (1260 : ℕ) then (0 : ℕ)\n                                      else\n                                        if a = (1400 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1440 : ℕ) then (4 : ℕ)\n                                          else\n                                            if a = (15",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "decide"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS",
+            "type": {
+              "printed": "unreliable",
+              "text": "∀\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (fun (a : ℕ) =>\n        if a = (252 : ℕ) then (2 : ℕ)\n        else\n          if a = (280 : ℕ) then (6 : ℕ)\n          else\n            if a = (315 : ℕ) then (8 : ℕ)\n            else\n              if a = (360 : ℕ) then (7 : ℕ)\n              else\n                if a = (420 : ℕ) then (5 : ℕ)\n                else\n                  if a = (504 : ℕ) then (4 : ℕ)\n                  else\n                    if a = (560 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (630 : ℕ) then (3 : ℕ)\n                      else\n                        if a = (720 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (756 : ℕ) then (6 : ℕ)\n                          else\n                            if a = (840 : ℕ) then (1 : ℕ)\n                            else\n                              if a = (945 : ℕ) then (2 : ℕ)\n                              else\n                                if a = (1008 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1080 : ℕ) then (5 : ℕ)\n                                  else\n                                    if a = (1120 : ℕ) then (3 : ℕ)\n                                    else\n                                      if a = (1260 : ℕ) then (0 : ℕ)\n                                      else\n                                        if a = (1400 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1440 : ℕ) then (4 : ℕ)\n                                          else\n                                            if a = (15",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hS",
+      "kind": "have",
+      "name": "hS",
+      "span": {
+        "end_line": 54,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "unreliable",
+            "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ha",
+                "type": {
+                  "printed": "unreliable",
+                  "text": "a ∈\n  {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n    (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n    (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n    (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)}",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hax",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2520 : ℕ) * x = a * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(fun (a : ℕ) =>\n      if a = (252 : ℕ) then (2 : ℕ)\n      else\n        if a = (280 : ℕ) then (6 : ℕ)\n        else\n          if a = (315 : ℕ) then (8 : ℕ)\n          else\n            if a = (360 : ℕ) then (7 : ℕ)\n            else\n              if a = (420 : ℕ) then (5 : ℕ)\n              else\n                if a = (504 : ℕ) then (4 : ℕ)\n                else\n                  if a = (560 : ℕ) then (7 : ℕ)\n                  else\n                    if a = (630 : ℕ) then (3 : ℕ)\n                    else\n                      if a = (720 : ℕ) then (6 : ℕ)\n                      else\n                        if a = (756 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (840 : ℕ) then (1 : ℕ)\n                          else\n                            if a = (945 : ℕ) then (2 : ℕ)\n                            else\n                              if a = (1008 : ℕ) then (5 : ℕ)\n                              else\n                                if a = (1080 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1120 : ℕ) then (3 : ℕ)\n                                  else\n                                    if a = (1260 : ℕ) then (0 : ℕ)\n                                    else\n                                      if a = (1400 : ℕ) then (4 : ℕ)\n                                      else\n                                        if a = (1440 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1512 : ℕ) then (3 : ℕ)\n                                          else\n                                            if a = (1575 : ℕ) then (1 : ℕ)\n                                            else\n                                              if a = (1680 : ℕ) then (2 : ℕ)\n                                              else\n                                                if a = (1764 : ℕ) then (7 : ℕ)\n                                                else\n                ",
+              "truncated": true
+            }
+          },
+          "id": "hmaps.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 57,
+            "start_line": 57
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A.erase (A.max' hne),\n  (fun (a : ℕ) =>\n        if a = (252 : ℕ) then (2 : ℕ)\n        else\n          if a = (280 : ℕ) then (6 : ℕ)\n          else\n            if a = (315 : ℕ) then (8 : ℕ)\n            else\n              if a = (360 : ℕ) then (7 : ℕ)\n              else\n                if a = (420 : ℕ) then (5 : ℕ)\n                else\n                  if a = (504 : ℕ) then (4 : ℕ)\n                  else\n                    if a = (560 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (630 : ℕ) then (3 : ℕ)\n                      else\n                        if a = (720 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (756 : ℕ) then (6 : ℕ)\n                          else\n                            if a = (840 : ℕ) then (1 : ℕ)\n                            else\n                              if a = (945 : ℕ) then (2 : ℕ)\n                              else\n                                if a = (1008 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1080 : ℕ) then (5 : ℕ)\n                                  else\n                                    if a = (1120 : ℕ) then (3 : ℕ)\n                                    else\n                                      if a = (1260 : ℕ) then (0 : ℕ)\n                                      else\n                                        if a = (1400 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1440 : ℕ) then (4 : ℕ)\n                                          else\n                                            if a = (1512 : ℕ) then (3 : ℕ)\n                                            else\n                                              if a = (1575 : ℕ) then (1 : ℕ)\n                                              else\n                                                if a = (1680 : ℕ) then (2 : ℕ)\n                                                else\n                                  ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmaps",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A.erase (A.max' hne),\n  (fun (a : ℕ) =>\n        if a = (252 : ℕ) then (2 : ℕ)\n        else\n          if a = (280 : ℕ) then (6 : ℕ)\n          else\n            if a = (315 : ℕ) then (8 : ℕ)\n            else\n              if a = (360 : ℕ) then (7 : ℕ)\n              else\n                if a = (420 : ℕ) then (5 : ℕ)\n                else\n                  if a = (504 : ℕ) then (4 : ℕ)\n                  else\n                    if a = (560 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (630 : ℕ) then (3 : ℕ)\n                      else\n                        if a = (720 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (756 : ℕ) then (6 : ℕ)\n                          else\n                            if a = (840 : ℕ) then (1 : ℕ)\n                            else\n                              if a = (945 : ℕ) then (2 : ℕ)\n                              else\n                                if a = (1008 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1080 : ℕ) then (5 : ℕ)\n                                  else\n                                    if a = (1120 : ℕ) then (3 : ℕ)\n                                    else\n                                      if a = (1260 : ℕ) then (0 : ℕ)\n                                      else\n                                        if a = (1400 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1440 : ℕ) then (4 : ℕ)\n                                          else\n                                            if a = (1512 : ℕ) then (3 : ℕ)\n                                            else\n                                              if a = (1575 : ℕ) then (1 : ℕ)\n                                              else\n                                                if a = (1680 : ℕ) then (2 : ℕ)\n                                                else\n                                  ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hmaps",
+      "kind": "have",
+      "name": "hmaps",
+      "span": {
+        "end_line": 59,
+        "start_line": 55
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_div_cancel",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ x ∈ A.erase (A.max' hne),\n  ∃ y ∈ A.erase (A.max' hne),\n    x ≠ y ∧\n      (fun (a : ℕ) =>\n            if a = (252 : ℕ) then (2 : ℕ)\n            else\n              if a = (280 : ℕ) then (6 : ℕ)\n              else\n                if a = (315 : ℕ) then (8 : ℕ)\n                else\n                  if a = (360 : ℕ) then (7 : ℕ)\n                  else\n                    if a = (420 : ℕ) then (5 : ℕ)\n                    else\n                      if a = (504 : ℕ) then (4 : ℕ)\n                      else\n                        if a = (560 : ℕ) then (7 : ℕ)\n                        else\n                          if a = (630 : ℕ) then (3 : ℕ)\n                          else\n                            if a = (720 : ℕ) then (6 : ℕ)\n                            else\n                              if a = (756 : ℕ) then (6 : ℕ)\n                              else\n                                if a = (840 : ℕ) then (1 : ℕ)\n                                else\n                                  if a = (945 : ℕ) then (2 : ℕ)\n                                  else\n                                    if a = (1008 : ℕ) then (5 : ℕ)\n                                    else\n                                      if a = (1080 : ℕ) then (5 : ℕ)\n                                      else\n                                        if a = (1120 : ℕ) then (3 : ℕ)\n                                        else\n                                          if a = (1260 : ℕ) then (0 : ℕ)\n                                          else\n                                            if a = (1400 : ℕ) then (4 : ℕ)\n                                            else\n                                              if a = (1440 : ℕ) then (4 : ℕ)\n                                              else\n                                                if a = (1512 : ℕ) then (3 : ℕ)\n                                                else\n                                                  if a = (1575 : ℕ) then (1 : ℕ)\n               ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "x",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hx",
+            "type": {
+              "printed": "reliable",
+              "text": "x ∈ A.erase (A.max' hne)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "y",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hy",
+            "type": {
+              "printed": "reliable",
+              "text": "y ∈ A.erase (A.max' hne)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hxy",
+            "type": {
+              "printed": "reliable",
+              "text": "x ≠ y",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "(fun (a : ℕ) =>\n      if a = (252 : ℕ) then (2 : ℕ)\n      else\n        if a = (280 : ℕ) then (6 : ℕ)\n        else\n          if a = (315 : ℕ) then (8 : ℕ)\n          else\n            if a = (360 : ℕ) then (7 : ℕ)\n            else\n              if a = (420 : ℕ) then (5 : ℕ)\n              else\n                if a = (504 : ℕ) then (4 : ℕ)\n                else\n                  if a = (560 : ℕ) then (7 : ℕ)\n                  else\n                    if a = (630 : ℕ) then (3 : ℕ)\n                    else\n                      if a = (720 : ℕ) then (6 : ℕ)\n                      else\n                        if a = (756 : ℕ) then (6 : ℕ)\n                        else\n                          if a = (840 : ℕ) then (1 : ℕ)\n                          else\n                            if a = (945 : ℕ) then (2 : ℕ)\n                            else\n                              if a = (1008 : ℕ) then (5 : ℕ)\n                              else\n                                if a = (1080 : ℕ) then (5 : ℕ)\n                                else\n                                  if a = (1120 : ℕ) then (3 : ℕ)\n                                  else\n                                    if a = (1260 : ℕ) then (0 : ℕ)\n                                    else\n                                      if a = (1400 : ℕ) then (4 : ℕ)\n                                      else\n                                        if a = (1440 : ℕ) then (4 : ℕ)\n                                        else\n                                          if a = (1512 : ℕ) then (3 : ℕ)\n                                          else\n                                            if a = (1575 : ℕ) then (1 : ℕ)\n                                            else\n                                              if a = (1680 : ℕ) then (2 : ℕ)\n                                              else\n                                                if a = (1764 : ℕ) then (7 : ℕ)\n                                                else\n                ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s11",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 61,
+        "start_line": 60
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "If there are more pigeons than pigeonholes, then there are two pigeons in the same pigeonhole.",
+            "name": "Finset.exists_ne_map_eq_of_card_lt_of_maps_to",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.card_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * x = a * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "a",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ha",
+            "type": {
+              "printed": "unreliable",
+              "text": "a ∈\n  {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n    (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n    (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n    (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)}",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hax",
+            "type": {
+              "printed": "reliable",
+              "text": "(2520 : ℕ) * x = a * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s12",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 62,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∃\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  (2520 : ℕ) * y = a * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "b",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb",
+            "type": {
+              "printed": "unreliable",
+              "text": "b ∈\n  {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n    (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n    (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n    (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)}",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hby",
+            "type": {
+              "printed": "reliable",
+              "text": "(2520 : ℕ) * y = b * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s13",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 63,
+        "start_line": 63
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a ≠ b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hab",
+            "type": {
+              "printed": "reliable",
+              "text": "a ≠ b",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hab",
+      "kind": "have",
+      "name": "hab",
+      "span": {
+        "end_line": 69,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∀\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  ∀\n    b ∈\n      {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n        (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n        (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n        (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n    a ≠ b →\n      (fun (a : ℕ) =>\n              if a = (252 : ℕ) then (2 : ℕ)\n              else\n                if a = (280 : ℕ) then (6 : ℕ)\n                else\n                  if a = (315 : ℕ) then (8 : ℕ)\n                  else\n                    if a = (360 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (420 : ℕ) then (5 : ℕ)\n                      else\n                        if a = (504 : ℕ) then (4 : ℕ)\n                        else\n                          if a = (560 : ℕ) then (7 : ℕ)\n                          else\n                            if a = (630 : ℕ) then (3 : ℕ)\n                            else\n                              if a = (720 : ℕ) then (6 : ℕ)\n                              else\n                                if a = (756 : ℕ) then (6 : ℕ)\n                                else\n                                  if a = (840 : ℕ) then (1 : ℕ)\n                                  else\n                                    if a = (945 : ℕ) then (2 : ℕ)\n                                    else\n                                      if a = (1008 : ℕ) then (5 : ℕ)\n                                      else\n                                      ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "decide"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpair",
+            "type": {
+              "printed": "unreliable",
+              "text": "∀\n  a ∈\n    {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n      (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n      (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n      (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n  ∀\n    b ∈\n      {(252 : ℕ), (280 : ℕ), (315 : ℕ), (360 : ℕ), (420 : ℕ), (504 : ℕ), (560 : ℕ), (630 : ℕ), (720 : ℕ), (756 : ℕ),\n        (840 : ℕ), (945 : ℕ), (1008 : ℕ), (1080 : ℕ), (1120 : ℕ), (1260 : ℕ), (1400 : ℕ), (1440 : ℕ), (1512 : ℕ),\n        (1575 : ℕ), (1680 : ℕ), (1764 : ℕ), (1800 : ℕ), (1890 : ℕ), (1960 : ℕ), (2016 : ℕ), (2100 : ℕ), (2160 : ℕ),\n        (2205 : ℕ), (2240 : ℕ), (2268 : ℕ)},\n    a ≠ b →\n      (fun (a : ℕ) =>\n              if a = (252 : ℕ) then (2 : ℕ)\n              else\n                if a = (280 : ℕ) then (6 : ℕ)\n                else\n                  if a = (315 : ℕ) then (8 : ℕ)\n                  else\n                    if a = (360 : ℕ) then (7 : ℕ)\n                    else\n                      if a = (420 : ℕ) then (5 : ℕ)\n                      else\n                        if a = (504 : ℕ) then (4 : ℕ)\n                        else\n                          if a = (560 : ℕ) then (7 : ℕ)\n                          else\n                            if a = (630 : ℕ) then (3 : ℕ)\n                            else\n                              if a = (720 : ℕ) then (6 : ℕ)\n                              else\n                                if a = (756 : ℕ) then (6 : ℕ)\n                                else\n                                  if a = (840 : ℕ) then (1 : ℕ)\n                                  else\n                                    if a = (945 : ℕ) then (2 : ℕ)\n                                    else\n                                      if a = (1008 : ℕ) then (5 : ℕ)\n                                      else\n                                      ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hpair",
+      "kind": "have",
+      "name": "hpair",
+      "span": {
+        "end_line": 71,
+        "start_line": 70
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "((2520 : ℕ) * x).gcd ((2520 : ℕ) * y) = (2520 : ℕ) * x.gcd y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "((2520 : ℕ) * x).gcd ((2520 : ℕ) * y) = (2520 : ℕ) * x.gcd y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a.gcd b * A.max' hne = (2520 : ℕ) * x.gcd y",
+              "truncated": false
+            }
+          },
+          "id": "hgcd.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 73,
+            "start_line": 73
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Computes the greatest common divisor of two natural numbers.",
+                "name": "Nat.gcd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.gcd_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "a.gcd b * A.max' hne = (2520 : ℕ) * x.gcd y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgcd",
+            "type": {
+              "printed": "reliable",
+              "text": "a.gcd b * A.max' hne = (2520 : ℕ) * x.gcd y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hgcd",
+      "kind": "have",
+      "name": "hgcd",
+      "span": {
+        "end_line": 75,
+        "start_line": 72
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.gcd_mul_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "x ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hxA",
+            "type": {
+              "printed": "reliable",
+              "text": "x ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hxA",
+      "kind": "have",
+      "name": "hxA",
+      "span": {
+        "end_line": 76,
+        "start_line": 76
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_erase",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hyA",
+            "type": {
+              "printed": "reliable",
+              "text": "y ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hyA",
+      "kind": "have",
+      "name": "hyA",
+      "span": {
+        "end_line": 77,
+        "start_line": 77
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_erase",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(11 : ℕ) * a.gcd b * A.max' hne ≤ a * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(11 : ℕ) * a.gcd b * A.max' hne ≤ a * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x.gcd y * (11 : ℕ) ≤ x",
+              "truncated": false
+            }
+          },
+          "id": "s19.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 81,
+            "start_line": 81
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x.gcd y * (11 : ℕ) * (2520 : ℕ) ≤ x * (2520 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "nlinarith"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x.gcd y * (11 : ℕ) * (2520 : ℕ) ≤ x * (2520 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x.gcd y * (11 : ℕ) ≤ x",
+              "truncated": false
+            }
+          },
+          "id": "s19.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 82,
+            "start_line": 82
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s19",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 83,
+        "start_line": 79
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.le_of_mul_le_mul_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(11 : ℕ) * a.gcd b * A.max' hne ≤ b * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(11 : ℕ) * a.gcd b * A.max' hne ≤ b * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x.gcd y * (11 : ℕ) ≤ y",
+              "truncated": false
+            }
+          },
+          "id": "s20.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 86,
+            "start_line": 86
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x.gcd y * (11 : ℕ) * (2520 : ℕ) ≤ y * (2520 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "nlinarith"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x.gcd y * (11 : ℕ) * (2520 : ℕ) ≤ y * (2520 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x.gcd y * (11 : ℕ) ≤ y",
+              "truncated": false
+            }
+          },
+          "id": "s20.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 87,
+            "start_line": 87
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s20",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 88,
+        "start_line": 84
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_comm",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.le_of_mul_le_mul_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

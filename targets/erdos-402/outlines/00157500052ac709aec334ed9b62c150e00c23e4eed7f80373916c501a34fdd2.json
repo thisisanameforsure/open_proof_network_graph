@@ -1,0 +1,1266 @@
+{
+  "artifact": {
+    "hash": "00157500052ac709aec334ed9b62c150e00c23e4eed7f80373916c501a34fdd2",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-402--h2-v2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "x",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hx",
+            "type": {
+              "printed": "reliable",
+              "text": "x ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "x ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hx0",
+            "type": {
+              "printed": "reliable",
+              "text": "x ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hx0",
+      "kind": "have",
+      "name": "hx0",
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "ne_of_mem_of_not_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ a ∈ A, A.gcd id ∣ a",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgdvd",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ A, A.gcd id ∣ a",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hgdvd",
+      "kind": "have",
+      "name": "hgdvd",
+      "span": {
+        "end_line": 20,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.gcd_dvd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A.gcd id ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.gcd id ∣ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hg0.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 23,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.gcd id ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hg0",
+            "type": {
+              "printed": "reliable",
+              "text": "A.gcd id ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hg0",
+      "kind": "have",
+      "name": "hg0",
+      "span": {
+        "end_line": 25,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.eq_zero_of_zero_dvd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.gcd id",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.gcd id",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hgpos",
+      "kind": "have",
+      "name": "hgpos",
+      "span": {
+        "end_line": 26,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ a ∈ A, a / A.gcd id = (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ha",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hag",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a / A.gcd id = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hB0.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.mem_image",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a ≠ (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ha0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ≠ (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hB0.ha0",
+          "kind": "have",
+          "name": "ha0",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "ne_of_mem_of_not_mem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A.gcd id ∣ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a = A.gcd id * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hB0.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a / A.gcd id = k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a / A.gcd id = k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "k = (0 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hB0.hk0.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 35,
+                "start_line": 33
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The identity function.",
+                    "name": "id",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_div_cancel_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "k = (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hk0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hB0.hk0",
+          "kind": "have",
+          "name": "hk0",
+          "span": {
+            "end_line": 36,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) ∉ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) ∉ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hB0",
+      "kind": "have",
+      "name": "hB0",
+      "span": {
+        "end_line": 37,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": "Zero is a right absorbing element for multiplication",
+            "name": "MulZeroClass.mul_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card = A.card",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard",
+            "type": {
+              "printed": "reliable",
+              "text": "(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card = A.card",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hcard",
+      "kind": "have",
+      "name": "hcard",
+      "span": {
+        "end_line": 41,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.card_image_of_injOn",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.div_left_inj",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(Finset.image (fun (a : ℕ) => a / A.gcd id) A).gcd id = (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgcd",
+            "type": {
+              "printed": "reliable",
+              "text": "(Finset.image (fun (a : ℕ) => a / A.gcd id) A).gcd id = (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hgcd",
+      "kind": "have",
+      "name": "hgcd",
+      "span": {
+        "end_line": 44,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.gcd_image",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.gcd_div_id_eq_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ a ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A,\n  ∃ b ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A,\n    (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "a'",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ha'",
+            "type": {
+              "printed": "reliable",
+              "text": "a' ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "b'",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb'",
+            "type": {
+              "printed": "reliable",
+              "text": "b' ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hab",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(a'.gcd b') : ℚ) ≤ (↑a' : ℚ) / (↑(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s9",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 45,
+        "start_line": 45
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ a ∈ A, a / A.gcd id = a'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "a",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ha",
+            "type": {
+              "printed": "reliable",
+              "text": "a ∈ A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ha'",
+            "type": {
+              "printed": "reliable",
+              "text": "a / A.gcd id ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hab",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑((a / A.gcd id).gcd b') : ℚ) ≤ (↑(a / A.gcd id) : ℚ) / (↑(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s10",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 46,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_image",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ a ∈ A, a / A.gcd id = b'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "b",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb",
+            "type": {
+              "printed": "reliable",
+              "text": "b ∈ A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb'",
+            "type": {
+              "printed": "reliable",
+              "text": "b / A.gcd id ∈ Finset.image (fun (a : ℕ) => a / A.gcd id) A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hab",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑((a / A.gcd id).gcd (b / A.gcd id)) : ℚ) ≤\n  (↑(a / A.gcd id) : ℚ) / (↑(Finset.image (fun (a : ℕ) => a / A.gcd id) A).card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s11",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 47,
+        "start_line": 47
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_image",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.gcd id ∣ a",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk",
+            "type": {
+              "printed": "reliable",
+              "text": "a = A.gcd id * k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s12",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 49,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.gcd id ∣ b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "l",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hl",
+            "type": {
+              "printed": "reliable",
+              "text": "b = A.gcd id * l",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s13",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a / A.gcd id = k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e1",
+            "type": {
+              "printed": "reliable",
+              "text": "a / A.gcd id = k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "e1",
+      "kind": "have",
+      "name": "e1",
+      "span": {
+        "end_line": 53,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_div_cancel_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "b / A.gcd id = l",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e2",
+            "type": {
+              "printed": "reliable",
+              "text": "b / A.gcd id = l",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "e2",
+      "kind": "have",
+      "name": "e2",
+      "span": {
+        "end_line": 56,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_div_cancel_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a.gcd b = A.gcd id * k.gcd l",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e3",
+            "type": {
+              "printed": "reliable",
+              "text": "a.gcd b = A.gcd id * k.gcd l",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "e3",
+      "kind": "have",
+      "name": "e3",
+      "span": {
+        "end_line": 60,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑a : ℚ) = (↑(A.gcd id) : ℚ) * (↑k : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e4",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑a : ℚ) = (↑(A.gcd id) : ℚ) * (↑k : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "e4",
+      "kind": "have",
+      "name": "e4",
+      "span": {
+        "end_line": 61,
+        "start_line": 61
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

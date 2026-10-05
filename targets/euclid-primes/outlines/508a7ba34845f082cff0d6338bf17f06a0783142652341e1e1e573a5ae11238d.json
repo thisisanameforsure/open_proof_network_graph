@@ -1,0 +1,79 @@
+{
+  "artifact": {
+    "hash": "508a7ba34845f082cff0d6338bf17f06a0783142652341e1e1e573a5ae11238d",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-aceabdc4",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), max n (100 : ℕ) < p ∧ IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hlt",
+            "type": {
+              "printed": "reliable",
+              "text": "max n (100 : ℕ) < p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ (100 : ℕ) ≤ p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 11,
+        "start_line": 11
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the greater of its two arguments.",
+            "name": "Max.max",
+            "tags": []
+          }
+        ],
+        "nodes": [
+          "infinitude-of-primes"
+        ]
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

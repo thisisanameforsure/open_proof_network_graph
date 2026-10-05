@@ -1,0 +1,181 @@
+{
+  "artifact": {
+    "hash": "db65ed079add0e02d3559037738b4743aa0fe8cddb6eb253499dccdca524df6d",
+    "kind": "alternate",
+    "path": "attempts/20260923T145630Z-t0923-69-a-alternate.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-69--h2-v2--h1-v2--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < (ω : ℕ → ℕ) (M + (1 : ℕ) + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hω",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < (ω : ℕ → ℕ) (M + (1 : ℕ) + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℝ) < ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "h_x3c9",
+      "kind": "have",
+      "name": "hω",
+      "span": {
+        "end_line": 20,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "ArithmeticFunction.cardDistinctFactors_apply",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "List.length_pos_of_mem",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "List.mem_dedup",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mem_primeFactorsList",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.minFac_prime",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.minFac_dvd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (2 : ℕ) + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hT",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (2 : ℕ) + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℝ) < ∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "hT",
+      "kind": "have",
+      "name": "hT",
+      "span": {
+        "end_line": 22,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + (1 : ℕ))) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + (1 : ℕ))) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℝ) <\n  (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + (0 : ℕ))) : ℝ) / (2 : ℝ) ^ (1 : ℕ) +\n      (↑((ω : ℕ → ℕ) (M + (1 : ℕ) + (1 : ℕ))) : ℝ) / (2 : ℝ) ^ ((1 : ℕ) + (1 : ℕ)) +\n    (∑' (j : ℕ), (↑((ω : ℕ → ℕ) (M + (2 : ℕ) + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))) / (2 : ℝ) ^ (2 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 25,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-69"
+}

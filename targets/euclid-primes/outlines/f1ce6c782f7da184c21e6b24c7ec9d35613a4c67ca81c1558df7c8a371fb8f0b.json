@@ -1,0 +1,661 @@
+{
+  "artifact": {
+    "hash": "f1ce6c782f7da184c21e6b24c7ec9d35613a4c67ca81c1558df7c8a371fb8f0b",
+    "kind": "partial",
+    "path": "attempts/20260912T110722Z-thisisanameforsure-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "infinitude-of-primes",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "infinitude-of-primes--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ), (0 : ℕ) < k → k ≤ n → Divides k n.factorial",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "dvd_fact",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ), (0 : ℕ) < k → k ≤ n → Divides k n.factorial",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "dvd_fact",
+      "kind": "hole",
+      "name": "dvd_fact",
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [
+          "Opn.Divides"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "infinitude-of-primes--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (p : ℕ), IsPrime p ∧ Divides p m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "prime_divisor",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (p : ℕ), IsPrime p ∧ Divides p m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "prime_divisor",
+      "kind": "hole",
+      "name": "prime_divisor",
+      "span": {
+        "end_line": 17,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [
+          "Opn.IsPrime",
+          "Opn.Divides"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "infinitude-of-primes--h3",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (d m : ℕ), Divides d m → Divides d (m + (1 : ℕ)) → d = (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "dvd_consecutive",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (d m : ℕ), Divides d m → Divides d (m + (1 : ℕ)) → d = (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "dvd_consecutive",
+      "kind": "hole",
+      "name": "dvd_consecutive",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [
+          "Opn.Divides"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "infinitude-of-primes--h4",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ), (0 : ℕ) < k.factorial",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "fact_pos",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ), (0 : ℕ) < k.factorial",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "fact_pos",
+      "kind": "hole",
+      "name": "fact_pos",
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < n.factorial",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < n.factorial",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ n.factorial + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "two_le.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℕ) ≤ n.factorial + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "two_le",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ n.factorial + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "two_le",
+      "kind": "have",
+      "name": "two_le",
+      "span": {
+        "end_line": 22,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), IsPrime p ∧ Divides p (n.factorial + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "IsPrime p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hdiv",
+            "type": {
+              "printed": "reliable",
+              "text": "Divides p (n.factorial + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 23,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "n < p",
+          "truncated": false
+        }
+      },
+      "id": "s7",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 26,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℕ) ≤ p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) ≤ p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < p",
+                  "truncated": false
+                }
+              },
+              "id": "s8.hpos.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 28,
+                "start_line": 28
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.hpos",
+          "kind": "have",
+          "name": "hpos",
+          "span": {
+            "end_line": 28,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Divides p n.factorial",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Divides p n.factorial",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [
+              "Opn.Divides"
+            ],
+            "mathlib": [
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p = (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p = (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) ≤ p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "n < p",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 32,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

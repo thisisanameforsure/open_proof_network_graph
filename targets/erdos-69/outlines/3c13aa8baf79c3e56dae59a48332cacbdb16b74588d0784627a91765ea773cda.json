@@ -1,0 +1,1872 @@
+{
+  "artifact": {
+    "hash": "3c13aa8baf79c3e56dae59a48332cacbdb16b74588d0784627a91765ea773cda",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-e0b917d1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "ha0",
+            "type": {
+              "printed": "reliable",
+              "text": "a ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "ha0",
+      "kind": "have",
+      "name": "ha0",
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Nat.Prime p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "P < p",
+              "truncated": false
+            }
+          },
+          "id": "hbig.hpp",
+          "kind": "have",
+          "name": "hpp",
+          "span": {
+            "end_line": 20,
+            "start_line": 20
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.prime_of_mem_primeFactors",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "P < p",
+              "truncated": false
+            }
+          },
+          "id": "hbig.hpd",
+          "kind": "have",
+          "name": "hpd",
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.dvd_of_mem_primeFactors",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ primorial P",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hprim",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ primorial P",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hbig.hprim",
+          "kind": "have",
+          "name": "hprim",
+          "span": {
+            "end_line": 27,
+            "start_line": 24
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The primorial `n#` of `n` is the product of the primes less than or equal to `n`.",
+                "name": "primorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.dvd_prod_of_mem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_filter",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_range",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ primorial P * ((1 : ℕ) + j) + (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpd'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ primorial P * ((1 : ℕ) + j) + (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hbig.hpd'",
+          "kind": "have",
+          "name": "hpd'",
+          "span": {
+            "end_line": 28,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The primorial `n#` of `n` is the product of the primes less than or equal to `n`.",
+                "name": "primorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "add_comm",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hbig.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.dvd_add_right",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "dvd_mul_of_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ p ∈ a.primeFactors, P < p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbig",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ a.primeFactors, P < p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hbig",
+      "kind": "have",
+      "name": "hbig",
+      "span": {
+        "end_line": 30,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Not p`, or `¬p`, is the negation of `p`.",
+            "name": "Not",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.dvd_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑P : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hPpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑P : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hPpos",
+      "kind": "have",
+      "name": "hPpos",
+      "span": {
+        "end_line": 32,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < Real.log (↑P : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlogP",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < Real.log (↑P : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hlogP",
+      "kind": "have",
+      "name": "hlogP",
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.log_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "P ^ k ≤ ∏ p ∈ a.primeFactors, p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "P ^ k ≤ ∏ p ∈ a.primeFactors, p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑P : ℝ) ^ k ≤ (↑a : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hpow.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 38,
+            "start_line": 36
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.pow_card_le_prod",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∏ p ∈ a.primeFactors, p ≤ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∏ p ∈ a.primeFactors, p ≤ a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑P : ℝ) ^ k ≤ (↑a : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hpow.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 40,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_of_dvd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.prod_primeFactors_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑P : ℝ) ^ k ≤ (↑a : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpow",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑P : ℝ) ^ k ≤ (↑a : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hpow",
+      "kind": "have",
+      "name": "hpow",
+      "span": {
+        "end_line": 41,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "primorial P ≤ (4 : ℕ) ^ P",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "primorial P ≤ (4 : ℕ) ^ P",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ (16 : ℕ) ^ P",
+              "truncated": false
+            }
+          },
+          "id": "ha16.h4",
+          "kind": "have",
+          "name": "h4",
+          "span": {
+            "end_line": 44,
+            "start_line": 44
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The primorial `n#` of `n` is the product of the primes less than or equal to `n`.",
+                "name": "primorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "primorial_le_four_pow",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "P < (2 : ℕ) ^ P",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "P < (2 : ℕ) ^ P",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "P + (2 : ℕ) ≤ (4 : ℕ) ^ P",
+                  "truncated": false
+                }
+              },
+              "id": "ha16.h2.s1",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 46,
+                "start_line": 46
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.lt_two_pow_self",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(4 : ℕ) ^ P = (2 : ℕ) ^ P * (2 : ℕ) ^ P",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(4 : ℕ) ^ P = (2 : ℕ) ^ P * (2 : ℕ) ^ P",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "P + (2 : ℕ) ≤ (4 : ℕ) ^ P",
+                  "truncated": false
+                }
+              },
+              "id": "ha16.h2.s2",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 47,
+                "start_line": 47
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "mul_pow",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "P + (2 : ℕ) ≤ (4 : ℕ) ^ P",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "P + (2 : ℕ) ≤ (4 : ℕ) ^ P",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ (16 : ℕ) ^ P",
+              "truncated": false
+            }
+          },
+          "id": "ha16.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 48,
+            "start_line": 45
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.one_le_two_pow",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(16 : ℕ) ^ P = (4 : ℕ) ^ P * (4 : ℕ) ^ P",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h16",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(16 : ℕ) ^ P = (4 : ℕ) ^ P * (4 : ℕ) ^ P",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ (16 : ℕ) ^ P",
+              "truncated": false
+            }
+          },
+          "id": "ha16.h16",
+          "kind": "have",
+          "name": "h16",
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_pow",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "primorial P * ((1 : ℕ) + j) ≤ (4 : ℕ) ^ P * ((1 : ℕ) + P)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "primorial P * ((1 : ℕ) + j) ≤ (4 : ℕ) ^ P * ((1 : ℕ) + P)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ (16 : ℕ) ^ P",
+              "truncated": false
+            }
+          },
+          "id": "ha16.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The primorial `n#` of `n` is the product of the primes less than or equal to `n`.",
+                "name": "primorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "a ≤ (16 : ℕ) ^ P",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "ha16",
+            "type": {
+              "printed": "reliable",
+              "text": "a ≤ (16 : ℕ) ^ P",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "ha16",
+      "kind": "have",
+      "name": "ha16",
+      "span": {
+        "end_line": 51,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < (↑a : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hapos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < (↑a : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Real.log (↑a : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hloga.hapos",
+          "kind": "have",
+          "name": "hapos",
+          "span": {
+            "end_line": 54,
+            "start_line": 54
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑a : ℝ) ≤ (16 : ℝ) ^ P",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h16",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑a : ℝ) ≤ (16 : ℝ) ^ P",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Real.log (↑a : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hloga.h16",
+          "kind": "have",
+          "name": "h16",
+          "span": {
+            "end_line": 55,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(1 : ℝ) + (1 : ℝ) ≤ Real.exp (1 : ℝ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(1 : ℝ) + (1 : ℝ) ≤ Real.exp (1 : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ≤ Real.exp (1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hloga.he.h2.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 58,
+                    "start_line": 58
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Real.add_one_le_exp",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℝ) ≤ Real.exp (1 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ≤ Real.exp (1 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(16 : ℝ) ≤ Real.exp (5 : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hloga.he.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 58,
+                "start_line": 57
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Real.exp (5 : ℝ) = Real.exp (1 : ℝ) ^ (5 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Real.exp (5 : ℝ) = Real.exp (1 : ℝ) ^ (5 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(16 : ℝ) ≤ Real.exp (5 : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hloga.he.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 59,
+                "start_line": 59
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.exp_nat_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(16 : ℝ) ≤ Real.exp (5 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "he",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(16 : ℝ) ≤ Real.exp (5 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Real.log (↑a : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hloga.he",
+          "kind": "have",
+          "name": "he",
+          "span": {
+            "end_line": 61,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real exponential function, defined as the real part of the complex exponential",
+                "name": "Real.exp",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "pow_le_pow_left₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Real.log (↑a : ℝ) ≤ Real.log ((16 : ℝ) ^ P)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "hloga.s4",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 62,
+            "start_line": 62
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_le_log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "hloga.s5",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_pow",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "hloga.s6",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 66,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_le_mul_of_nonneg_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_le_iff_le_exp",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": null,
+          "id": "hloga.s7",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 67,
+            "start_line": 67
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "Real.log (↑a : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hloga",
+            "type": {
+              "printed": "reliable",
+              "text": "Real.log (↑a : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hloga",
+      "kind": "have",
+      "name": "hloga",
+      "span": {
+        "end_line": 67,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Real.log ((↑P : ℝ) ^ k) ≤ Real.log (↑a : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Real.log ((↑P : ℝ) ^ k) ≤ Real.log (↑a : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) * Real.log (↑P : ℝ) ≤ Real.log (↑a : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hklog.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 70,
+            "start_line": 70
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.log_le_log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) * Real.log (↑P : ℝ) ≤ Real.log (↑a : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hklog",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) * Real.log (↑P : ℝ) ≤ Real.log (↑a : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hklog",
+      "kind": "have",
+      "name": "hklog",
+      "span": {
+        "end_line": 71,
+        "start_line": 69
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.log_pow",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑P : ℝ) ≤ (↑p : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hp'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑P : ℝ) ≤ (↑p : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / (↑p : ℝ) ≤ (1 : ℝ) / (↑P : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hsum.this.hp'",
+              "kind": "have",
+              "name": "hp'",
+              "span": {
+                "end_line": 76,
+                "start_line": 76
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ a.primeFactors.card • ((1 : ℝ) / (↑P : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ a.primeFactors.card • ((1 : ℝ) / (↑P : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hsum.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 77,
+            "start_line": 74
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_le_card_nsmul",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "one_div_le_one_div_of_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (5 : ℝ) / Real.log (↑P : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 78,
+        "start_line": 73
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "nsmul_eq_mul",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ p ∈ a.primeFactors, (1 : ℝ) / (↑p : ℝ) ≤ (↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s10",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 79,
+        "start_line": 79
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) * Real.log (↑P : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) * Real.log (↑P : ℝ) ≤ (5 : ℝ) * (↑P : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ)) * Real.log (↑P : ℝ) ≤ (5 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s11.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 82,
+            "start_line": 82
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) * ((1 : ℝ) / (↑P : ℝ)) * Real.log (↑P : ℝ) = (↑k : ℝ) * Real.log (↑P : ℝ) / (↑P : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": null,
+          "id": "s11.s2",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 83,
+            "start_line": 83
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s11.s3",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 84,
+            "start_line": 84
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "field_simp"
+            ]
+          },
+          "goal": null,
+          "id": "s11.s4",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 85,
+            "start_line": 85
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s11",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 85,
+        "start_line": 80
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+            "name": "le_div_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-69"
+}

@@ -1,0 +1,919 @@
+{
+  "artifact": {
+    "hash": "fb2d53c7f931a2c0562e9e3cedd767b60e91434c5d64db9f42da26e66ad6d62a",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-1a5ab7c3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) ≤ n / m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ht1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ n / m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          },
+          "id": "key.ht1",
+          "kind": "have",
+          "name": "ht1",
+          "span": {
+            "end_line": 17,
+            "start_line": 17
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.one_le_div_iff",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "m * (n / m) ≤ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hle",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m * (n / m) ≤ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          },
+          "id": "key.hle",
+          "kind": "have",
+          "name": "hle",
+          "span": {
+            "end_line": 18,
+            "start_line": 18
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_div_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n < m * (n / m + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n < m * (n / m + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n < m * (n / m) + m",
+                  "truncated": false
+                }
+              },
+              "id": "key.hlt.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 20,
+                "start_line": 20
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.lt_mul_div_succ",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "n < m * (n / m) + m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < m * (n / m) + m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          },
+          "id": "key.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 22,
+            "start_line": 19
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_succ",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "m ≤ m * (n / m)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m ≤ m * (n / m)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "n / (2 : ℕ) < m * (n / m)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.hmem.s1.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 26,
+                    "start_line": 26
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.le_mul_of_pos_right",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n / (2 : ℕ) < m * (n / m)",
+                  "truncated": false
+                }
+              },
+              "id": "key.hmem.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 27,
+                "start_line": 26
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "m * (n / m) ≤ n",
+                  "truncated": false
+                }
+              },
+              "id": "key.hmem.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 28,
+                "start_line": 28
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "m * (n / m) ∈ Finset.Ioc (n / (2 : ℕ)) n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hmem",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m * (n / m) ∈ Finset.Ioc (n / (2 : ℕ)) n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          },
+          "id": "key.hmem",
+          "kind": "have",
+          "name": "hmem",
+          "span": {
+            "end_line": 28,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+                "name": "Finset.Ioc",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioc",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ((2 : ℤ) ^ m) ^ (n / m) - (1 : ℤ) ^ (n / m)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ((2 : ℤ) ^ m) ^ (n / m) - (1 : ℤ) ^ (n / m)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ (2 : ℤ) ^ (m * (n / m)) - (1 : ℤ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.h1.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 30,
+                "start_line": 30
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "sub_dvd_pow_sub_pow",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ (2 : ℤ) ^ (m * (n / m)) - (1 : ℤ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ (2 : ℤ) ^ (m * (n / m)) - (1 : ℤ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          },
+          "id": "key.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 31,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_pow",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "pow_mul",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), (1 : ℕ) ≤ m → m ≤ n → (2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), (1 : ℕ) ≤ m → m ≤ n → (2 : ℤ) ^ m - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ),\n  (↑z : ℚ) =\n    (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) *\n      ∑ j ∈ Finset.range (k + (1 : ℕ)), (↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ))",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 32,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+            "name": "Finset.Ioc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.dvd_prod_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "simp"
+        ]
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 40,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℤ) ^ (k - j) - (1 : ℤ) ∣ ∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "q",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℤ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ)) = ((2 : ℤ) ^ (k - j) - (1 : ℤ)) * q",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+              "truncated": false
+            }
+          },
+          "id": "s3.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 41,
+            "start_line": 41
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℤ) ^ (1 : ℕ) ≤ (2 : ℤ) ^ (k - j)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℤ) ^ (1 : ℕ) ≤ (2 : ℤ) ^ (k - j)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℤ) ^ (k - j) - (1 : ℤ) ≠ (0 : ℤ)",
+                  "truncated": false
+                }
+              },
+              "id": "s3.hne.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 43,
+                "start_line": 43
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_le_pow_right₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℤ) ^ (k - j) - (1 : ℤ) ≠ (0 : ℤ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hne",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℤ) ^ (k - j) - (1 : ℤ) ≠ (0 : ℤ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+              "truncated": false
+            }
+          },
+          "id": "s3.hne",
+          "kind": "have",
+          "name": "hne",
+          "span": {
+            "end_line": 44,
+            "start_line": 42
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℚ) ^ (1 : ℕ) ≤ (2 : ℚ) ^ (k - j)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℚ) ^ (1 : ℕ) ≤ (2 : ℚ) ^ (k - j)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℚ) ^ (k - j) - (1 : ℚ) ≠ (0 : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s3.hneq.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 46,
+                "start_line": 46
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_le_pow_right₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℚ) ^ (k - j) - (1 : ℚ) ≠ (0 : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hneq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℚ) ^ (k - j) - (1 : ℚ) ≠ (0 : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+              "truncated": false
+            }
+          },
+          "id": "s3.hneq",
+          "kind": "have",
+          "name": "hneq",
+          "span": {
+            "end_line": 47,
+            "start_line": 45
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑(∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) : ℚ) = (↑(((2 : ℤ) ^ (k - j) - (1 : ℤ)) * q) : ℚ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑(∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) : ℚ) = (↑(((2 : ℤ) ^ (k - j) - (1 : ℤ)) * q) : ℚ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ i - (1 : ℚ)) = ((2 : ℚ) ^ (k - j) - (1 : ℚ)) * (↑q : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s3.hP.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 49,
+                "start_line": 49
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Congruence in the function argument: if `a₁ = a₂` then `f a₁ = f a₂` for any (nondependent) function `f`.",
+                    "name": "congrArg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ i - (1 : ℚ)) = ((2 : ℚ) ^ (k - j) - (1 : ℚ)) * (↑q : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hP",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ i - (1 : ℚ)) = ((2 : ℚ) ^ (k - j) - (1 : ℚ)) * (↑q : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+              "truncated": false
+            }
+          },
+          "id": "s3.hP",
+          "kind": "have",
+          "name": "hP",
+          "span": {
+            "end_line": 51,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+                "name": "Finset.Ioc",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑(c j * ((∏ i ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℤ) ^ i - (1 : ℤ))) / ((2 : ℤ) ^ (k - j) - (1 : ℤ)))) : ℚ) =\n  (∏ m ∈ Finset.Ioc (n / (2 : ℕ)) n, ((2 : ℚ) ^ m - (1 : ℚ))) * ((↑(c j) : ℚ) / ((2 : ℚ) ^ (k - j) - (1 : ℚ)))",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 54,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Int.mul_ediv_cancel_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1050"
+}

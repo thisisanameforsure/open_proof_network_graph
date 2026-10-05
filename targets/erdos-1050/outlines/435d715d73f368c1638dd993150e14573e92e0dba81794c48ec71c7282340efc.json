@@ -1,0 +1,500 @@
+{
+  "artifact": {
+    "hash": "435d715d73f368c1638dd993150e14573e92e0dba81794c48ec71c7282340efc",
+    "kind": "partial",
+    "path": "attempts/20260921T064200Z-tester-1050-2045-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-1050--h1-v2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (n : ℕ),\n  ∃ (j : ℤ) (k : ℤ),\n    (0 : ℤ) < k ∧ k ≤ (↑(n + (1 : ℕ)) : ℤ) ∧ |(↑k : ℝ) * T - (↑j : ℝ)| ≤ (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (n : ℕ),\n  ∃ (j : ℤ) (k : ℤ),\n    (0 : ℤ) < k ∧ k ≤ (↑(n + (1 : ℕ)) : ℤ) ∧ |(↑k : ℝ) * T - (↑j : ℝ)| ≤ (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (a : ℕ → ℤ) (b : ℕ → ℤ),\n  (∀ (n : ℕ), (↑(b n) : ℝ) * T - (↑(a n) : ℝ) ≠ (0 : ℝ)) ∧\n    Filter.Tendsto (fun (n : ℕ) => (↑(b n) : ℝ) * T - (↑(a n) : ℝ)) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "approximants_of_irrational.h",
+          "kind": "have",
+          "name": "h",
+          "span": {
+            "end_line": 19,
+            "start_line": 17
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "*Dirichlet's approximation theorem:* For any real number `ξ` and positive natural `n`, there are integers `j` and `k`, with `0 < k ≤ n` and `|k*ξ - j| ≤ 1/(n+1)`.",
+                "name": "Real.exists_int_int_abs_mul_sub_le",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.succ_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑(b n) : ℝ) ≠ (0 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hbne",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑(b n) : ℝ) ≠ (0 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "approximants_of_irrational.s2.hbne",
+              "kind": "have",
+              "name": "hbne",
+              "span": {
+                "end_line": 22,
+                "start_line": 22
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑((↑(a n) : ℚ) / (↑(b n) : ℚ)) : ℝ) = T",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hq",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑((↑(a n) : ℚ) / (↑(b n) : ℚ)) : ℝ) = T",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "approximants_of_irrational.s2.hq",
+              "kind": "have",
+              "name": "hq",
+              "span": {
+                "end_line": 26,
+                "start_line": 23
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "approximants_of_irrational.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 27,
+            "start_line": 22
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "‖(↑(b n) : ℝ) * T - (↑(a n) : ℝ)‖ ≤ (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "approximants_of_irrational.s3.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 29,
+                "start_line": 29
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Real.norm_eq_abs",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑n : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑n : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "approximants_of_irrational.s3.s2.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 30,
+                    "start_line": 30
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "tendsto_one_div_add_atTop_nhds_zero_nat",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "approximants_of_irrational.s3.s2.h2",
+                  "kind": "have",
+                  "name": "h2",
+                  "span": {
+                    "end_line": 31,
+                    "start_line": 31
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Filter.tendsto_add_atTop_iff_nat",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto (fun (n : ℕ) => (1 : ℝ) / ((↑(n + (1 : ℕ)) : ℝ) + (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "approximants_of_irrational.s3.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 32,
+                "start_line": 30
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto (fun (n : ℕ) => (↑(b n) : ℝ) * T - (↑(a n) : ℝ)) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "approximants_of_irrational.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Special case of the sandwich theorem: if the norm of `f` is bounded by a real function `a` which tends to `0`, then `f` tends to `0`.",
+                "name": "squeeze_zero_norm",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (T : ℝ),\n  Irrational T →\n    ∃ (a : ℕ → ℤ) (b : ℕ → ℤ),\n      (∀ (n : ℕ), (↑(b n) : ℝ) * T - (↑(a n) : ℝ) ≠ (0 : ℝ)) ∧\n        Filter.Tendsto (fun (n : ℕ) => (↑(b n) : ℝ) * T - (↑(a n) : ℝ)) Filter.atTop (nhds (0 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "approximants_of_irrational",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (T : ℝ),\n  Irrational T →\n    ∃ (a : ℕ → ℤ) (b : ℕ → ℤ),\n      (∀ (n : ℕ), (↑(b n) : ℝ) * T - (↑(a n) : ℝ) ≠ (0 : ℝ)) ∧\n        Filter.Tendsto (fun (n : ℕ) => (↑(b n) : ℝ) * T - (↑(a n) : ℝ)) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (a : ℕ → ℤ) (b : ℕ → ℤ),\n  (∀ (n : ℕ), (↑(b n) : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)) - (↑(a n) : ℝ) ≠ (0 : ℝ)) ∧\n    Filter.Tendsto\n      (fun (n : ℕ) => (↑(b n) : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)) - (↑(a n) : ℝ))\n      Filter.atTop (nhds (0 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "approximants_of_irrational",
+      "kind": "have",
+      "name": "approximants_of_irrational",
+      "span": {
+        "end_line": 32,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A real number is irrational if it is not equal to any rational number.",
+            "name": "Irrational",
+            "tags": []
+          },
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1050--h1-v2--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hT",
+            "type": {
+              "printed": "reliable",
+              "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (a : ℕ → ℤ) (b : ℕ → ℤ),\n  (∀ (n : ℕ), (↑(b n) : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)) - (↑(a n) : ℝ) ≠ (0 : ℝ)) ∧\n    Filter.Tendsto\n      (fun (n : ℕ) => (↑(b n) : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (3 : ℕ)) - (3 : ℝ)) - (↑(a n) : ℝ))\n      Filter.atTop (nhds (0 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "hT",
+      "kind": "hole",
+      "name": "hT",
+      "span": {
+        "end_line": 35,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A real number is irrational if it is not equal to any rational number.",
+            "name": "Irrational",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1050"
+}

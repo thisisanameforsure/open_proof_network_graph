@@ -1,0 +1,604 @@
+{
+  "artifact": {
+    "hash": "f20bdf24f9aa6a241135b6e8b0be5944ab2766dc140ef0a13dfcb97497f58b8c",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-13f68833",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "‖(1 / 2 : ℝ)‖ < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "norm_num"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hr",
+            "type": {
+              "printed": "reliable",
+              "text": "‖(1 / 2 : ℝ)‖ < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hr",
+      "kind": "have",
+      "name": "hr",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "HasSum (fun (n : ℕ) => (↑n : ℝ) * (1 / 2 : ℝ) ^ n) ((1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "HasSum (fun (n : ℕ) => (↑n : ℝ) * (1 / 2 : ℝ) ^ n) ((1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "HasSum (fun (j : ℕ) => ((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))) (2 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hS.h0",
+          "kind": "have",
+          "name": "h0",
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If `‖r‖ < 1`, then `∑' n : ℕ, n * r ^ n = r / (1 - r) ^ 2`, `HasSum` version.",
+                "name": "hasSum_coe_mul_geometric_of_norm_lt_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "HasSum (fun (n : ℕ) => (↑(n + (1 : ℕ)) : ℝ) * (1 / 2 : ℝ) ^ (n + (1 : ℕ)))\n  ((1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ) - ∑ i ∈ Finset.range (1 : ℕ), (↑i : ℝ) * (1 / 2 : ℝ) ^ i)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "HasSum (fun (n : ℕ) => (↑(n + (1 : ℕ)) : ℝ) * (1 / 2 : ℝ) ^ (n + (1 : ℕ)))\n  ((1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ) - ∑ i ∈ Finset.range (1 : ℕ), (↑i : ℝ) * (1 / 2 : ℝ) ^ i)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "HasSum (fun (j : ℕ) => ((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))) (2 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hS.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 22,
+            "start_line": 22
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "hasSum_nat_add_iff'",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ) - ∑ i ∈ Finset.range (1 : ℕ), (↑i : ℝ) * (1 / 2 : ℝ) ^ i = (2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 / 2 : ℝ) / ((1 : ℝ) - (1 / 2 : ℝ)) ^ (2 : ℕ) - ∑ i ∈ Finset.range (1 : ℕ), (↑i : ℝ) * (1 / 2 : ℝ) ^ i = (2 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "HasSum (fun (j : ℕ) => ((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))) (2 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hS.e",
+          "kind": "have",
+          "name": "e",
+          "span": {
+            "end_line": 24,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "HasSum (fun (j : ℕ) => ((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))) (2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS",
+            "type": {
+              "printed": "reliable",
+              "text": "HasSum (fun (j : ℕ) => ((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))) (2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hS",
+      "kind": "have",
+      "name": "hS",
+      "span": {
+        "end_line": 26,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`HasSum f a L` means that the (potentially infinite) sum of the `f b` for `b : β` converges to `a` along the SummationFilter `L`.",
+            "name": "HasSum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.cast_add",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.cast_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "HasSum (fun (j : ℕ) => C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))) (C * (2 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hg",
+            "type": {
+              "printed": "reliable",
+              "text": "HasSum (fun (j : ℕ) => C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))) (C * (2 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hg",
+      "kind": "have",
+      "name": "hg",
+      "span": {
+        "end_line": 28,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`HasSum f a L` means that the (potentially infinite) sum of the `f b` for `b : β` converges to `a` along the SummationFilter `L`.",
+            "name": "HasSum",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (1 / 2 : ℝ) ^ (j + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "positivity"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (1 / 2 : ℝ) ^ (j + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤\n  C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          "id": "hfg.hp",
+          "kind": "have",
+          "name": "hp",
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n  (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) =\n  (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) * (1 / 2 : ℝ) ^ (j + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤\n  C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          "id": "hfg.e",
+          "kind": "have",
+          "name": "e",
+          "span": {
+            "end_line": 34,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_div_pow",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "div_eq_mul_one_div",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (j : ℕ),\n  (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤\n    C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfg",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ),\n  (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤\n    C * (((↑j : ℝ) + (1 : ℝ)) * (1 / 2 : ℝ) ^ (j + (1 : ℕ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hfg",
+      "kind": "have",
+      "name": "hfg",
+      "span": {
+        "end_line": 36,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "mul_assoc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_le_mul_of_nonneg_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (j : ℕ), (0 : ℝ) ≤ (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hf0",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ), (0 : ℝ) ≤ (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hf0",
+      "kind": "have",
+      "name": "hf0",
+      "span": {
+        "end_line": 37,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (j : ℕ) => (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hf",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (j : ℕ) => (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "hf",
+      "kind": "have",
+      "name": "hf",
+      "span": {
+        "end_line": 39,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": "Comparison test of convergence of series of non-negative real numbers.",
+            "name": "Summable.of_nonneg_of_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (b : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + b)) : ℝ) / (2 : ℝ) ^ (b + (1 : ℕ)) ≤ C * (2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (b : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + b)) : ℝ) / (2 : ℝ) ^ (b + (1 : ℕ)) ≤ C * (2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (j : ℕ), (↑((ω : ℕ → ℕ) (n + (1 : ℕ) + j)) : ℝ) / (2 : ℝ) ^ (j + (1 : ℕ)) ≤ (2 : ℝ) * C",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 40,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "hasSum_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-69"
+}

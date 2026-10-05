@@ -1,0 +1,589 @@
+{
+  "artifact": {
+    "hash": "f29fe25ebbc4f7bb8218924109e079e899fc7092317187d261f10291b32b7043",
+    "kind": "partial",
+    "path": "attempts/20260916T080157Z-agent-sigma-4f1d-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-412",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ),\n  (3 : ℕ) ≤ m →\n    (¬∃ (x : ℕ), (2 : ℕ) ≤ x ∧ x < m ∧ ∃ (k : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[k] x = m) →\n      ∃ (m' : ℕ),\n        (2 : ℕ) ≤ m' ∧ m' < m ∧ ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] m'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "descent",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ),\n  (3 : ℕ) ≤ m →\n    (¬∃ (x : ℕ), (2 : ℕ) ≤ x ∧ x < m ∧ ∃ (k : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[k] x = m) →\n      ∃ (m' : ℕ),\n        (2 : ℕ) ≤ m' ∧ m' < m ∧ ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] m'",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ m ≥ (2 : ℕ), ∀ n ≥ (2 : ℕ), ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] n",
+          "truncated": false
+        }
+      },
+      "id": "descent",
+      "kind": "hole",
+      "name": "descent",
+      "span": {
+        "end_line": 32,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x y : ℕ),\n  (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] y) →\n    ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] y = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "symm",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x y : ℕ),\n  (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] y) →\n    ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] y = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ m ≥ (2 : ℕ), ∀ n ≥ (2 : ℕ), ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] n",
+          "truncated": false
+        }
+      },
+      "id": "symm",
+      "kind": "have",
+      "name": "symm",
+      "span": {
+        "end_line": 39,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x y z : ℕ),\n  (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] y) →\n    (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] y = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] z) →\n      ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] z",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "trans",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x y z : ℕ),\n  (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] y) →\n    (∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] y = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] z) →\n      ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] x = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] z",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ m ≥ (2 : ℕ), ∀ n ≥ (2 : ℕ), ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] n",
+          "truncated": false
+        }
+      },
+      "id": "trans",
+      "kind": "have",
+      "name": "trans",
+      "span": {
+        "end_line": 45,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Function.iterate_add_apply",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.add_comm",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "m = (2 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hm2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m = (2 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "up.s1.s1.hm2",
+                  "kind": "have",
+                  "name": "hm2",
+                  "span": {
+                    "end_line": 56,
+                    "start_line": 56
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "up.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 58,
+                "start_line": 56
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                    "name": "rfl",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "∃ (x : ℕ), (2 : ℕ) ≤ x ∧ x < m ∧ ∃ (k : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[k] x = m",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "x",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "ℕ",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hx2",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "(2 : ℕ) ≤ x",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hxm",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "x < m",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "k",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "ℕ",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hxeq",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "(⇑(σ (1 : ℕ)) : ℕ → ℕ)^[k] x = m",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "up.s1.s2.s1.s1",
+                      "kind": "obtain",
+                      "name": null,
+                      "span": {
+                        "end_line": 60,
+                        "start_line": 60
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "up.s1.s2.s1",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 62,
+                    "start_line": 60
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "Existential introduction.",
+                        "name": "Exists.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Function.iterate_zero_apply",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "∃ (m' : ℕ), (2 : ℕ) ≤ m' ∧ m' < m ∧ ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] m'",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "m'",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "ℕ",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hm'2",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "(2 : ℕ) ≤ m'",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hm'lt",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "m' < m",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hmerge",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] m'",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "up.s1.s2.s2.s1",
+                      "kind": "obtain",
+                      "name": null,
+                      "span": {
+                        "end_line": 63,
+                        "start_line": 63
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "up.s1.s2.s2",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 64,
+                    "start_line": 63
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "up.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 64,
+                "start_line": 59
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ m_1 < m, (2 : ℕ) ≤ m_1 → ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m_1 = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ m → ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "up.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 64,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_or_ge",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "up",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ m ≥ (2 : ℕ), ∀ n ≥ (2 : ℕ), ∃ (i : ℕ) (j : ℕ), (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[i] m = (⇑(σ (1 : ℕ)) : ℕ → ℕ)^[j] n",
+          "truncated": false
+        }
+      },
+      "id": "up",
+      "kind": "have",
+      "name": "up",
+      "span": {
+        "end_line": 64,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.strong_induction_on",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-412"
+}

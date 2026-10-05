@@ -1,0 +1,718 @@
+{
+  "artifact": {
+    "hash": "ca9775523b30308b3d7a9b21c95d03db0937db274ad9f6bdd229a5281b1f72d6",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-402--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "ha0",
+            "type": {
+              "printed": "reliable",
+              "text": "a ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "ha0",
+      "kind": "have",
+      "name": "ha0",
+      "span": {
+        "end_line": 13,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "ne_of_mem_of_not_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "b ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hb0",
+            "type": {
+              "printed": "reliable",
+              "text": "b ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "hb0",
+      "kind": "have",
+      "name": "hb0",
+      "span": {
+        "end_line": 14,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "ne_of_mem_of_not_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < a.gcd b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hd",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < a.gcd b",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "hd",
+      "kind": "have",
+      "name": "hd",
+      "span": {
+        "end_line": 15,
+        "start_line": 15
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.gcd_pos_of_pos_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a.gcd b ∣ a",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "u",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hu",
+            "type": {
+              "printed": "reliable",
+              "text": "a = a.gcd b * u",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "a.gcd b ∣ b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "v",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hv",
+            "type": {
+              "printed": "reliable",
+              "text": "b = a.gcd b * v",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 17,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℕ) < u",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 22,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          },
+          {
+            "doc": "Zero is a right absorbing element for multiplication",
+            "name": "MulZeroClass.mul_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a.gcd b * u ≤ a.gcd b * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a.gcd b * u ≤ a.gcd b * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "u ≤ m",
+              "truncated": false
+            }
+          },
+          "id": "s7.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 25,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_comm",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "u ≤ m",
+          "truncated": false
+        }
+      },
+      "id": "s7",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 26,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_of_mul_le_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℕ) < v",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 30,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          },
+          {
+            "doc": "Zero is a right absorbing element for multiplication",
+            "name": "MulZeroClass.mul_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a.gcd b * v ≤ a.gcd b * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a.gcd b * v ≤ a.gcd b * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "v ≤ m",
+              "truncated": false
+            }
+          },
+          "id": "s9.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 33,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_comm",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.gcd_comm",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "v ≤ m",
+          "truncated": false
+        }
+      },
+      "id": "s9",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 34,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_of_mul_le_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a.gcd b * u.gcd v = a.gcd b * (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a.gcd b * u.gcd v = a.gcd b * (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "u.Coprime v",
+              "truncated": false
+            }
+          },
+          "id": "s10.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 36,
+            "start_line": 35
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_mul_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "mul_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "u.Coprime v",
+          "truncated": false
+        }
+      },
+      "id": "s10",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 37,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.eq_of_mul_eq_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a * v = a.gcd b * u * v",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s11.s1",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 38,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": null,
+          "id": "s11.s2",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 39,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s11.s3",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 40,
+            "start_line": 40
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "a * v = b * u",
+          "truncated": false
+        }
+      },
+      "id": "s11",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 40,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

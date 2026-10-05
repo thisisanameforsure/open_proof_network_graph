@@ -1,0 +1,1510 @@
+{
+  "artifact": {
+    "hash": "5fbf6a9866db982f42e7a2478c7068a4f7fc4a7e4f8d89d273701272a8946ce8",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-dea95969",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Divides d p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "c",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hc",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p = d * c",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "d ∣ p",
+                  "truncated": false
+                }
+              },
+              "id": "bridge.hd'.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 14,
+                "start_line": 14
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "d ∣ p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hd'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "d ∣ p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "d = (1 : ℕ) ∨ d = p",
+              "truncated": false
+            }
+          },
+          "id": "bridge.hd'",
+          "kind": "have",
+          "name": "hd'",
+          "span": {
+            "end_line": 15,
+            "start_line": 13
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p : ℕ), Nat.Prime p → IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "bridge",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ), Nat.Prime p → IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p ∧ p % (4 : ℕ) = (3 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "bridge",
+      "kind": "have",
+      "name": "bridge",
+      "span": {
+        "end_line": 16,
+        "start_line": 9
+      },
+      "uses": {
+        "defs": [
+          "Opn.IsPrime"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.dvd_prime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 23,
+                "start_line": 23
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "dvd_rfl",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(2 : ℕ) ≤ m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) ≤ m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.h2",
+                  "kind": "have",
+                  "name": "h2",
+                  "span": {
+                    "end_line": 24,
+                    "start_line": 24
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (m_1 : ℕ), m_1 ∣ m ∧ (2 : ℕ) ≤ m_1 ∧ m_1 < m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "a",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "ha",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "a ∣ m",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "ha2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) ≤ a",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "ham",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "a < m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.s2",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 25,
+                    "start_line": 25
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.exists_dvd_of_not_prime2",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "a ∣ m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "b",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hb",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m = a * b",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.s3",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 26,
+                    "start_line": 26
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": null,
+                      "closed_by": {
+                        "kind": "steps",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < b",
+                          "truncated": false
+                        }
+                      },
+                      "id": "key.s1.s2.hbpos.s1",
+                      "kind": "case",
+                      "name": null,
+                      "span": {
+                        "end_line": 29,
+                        "start_line": 29
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    },
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": null,
+                      "closed_by": {
+                        "kind": "steps",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < b",
+                          "truncated": false
+                        }
+                      },
+                      "id": "key.s1.s2.hbpos.s2",
+                      "kind": "case",
+                      "name": null,
+                      "span": {
+                        "end_line": 30,
+                        "start_line": 30
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < b",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hbpos",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < b",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.hbpos",
+                  "kind": "have",
+                  "name": "hbpos",
+                  "span": {
+                    "end_line": 30,
+                    "start_line": 27
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.eq_zero_or_pos",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "b < m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hbm",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "b < m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.hbm",
+                  "kind": "have",
+                  "name": "hbm",
+                  "span": {
+                    "end_line": 32,
+                    "start_line": 31
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "a * b % (4 : ℕ) = a % (4 : ℕ) * (b % (4 : ℕ)) % (4 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hmod",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "a * b % (4 : ℕ) = a % (4 : ℕ) * (b % (4 : ℕ)) % (4 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.hmod",
+                  "kind": "have",
+                  "name": "hmod",
+                  "span": {
+                    "end_line": 33,
+                    "start_line": 33
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_mod",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "a % (4 : ℕ) = (3 : ℕ) ∨ b % (4 : ℕ) = (3 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hcases",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "a % (4 : ℕ) = (3 : ℕ) ∨ b % (4 : ℕ) = (3 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.hcases",
+                  "kind": "have",
+                  "name": "hcases",
+                  "span": {
+                    "end_line": 38,
+                    "start_line": 35
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ a ∧ p % (4 : ℕ) = (3 : ℕ)",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "p",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "ℕ",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp1",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "Nat.Prime p",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp2",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "p ∣ a",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp3",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "p % (4 : ℕ) = (3 : ℕ)",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "key.s1.s2.s8.s1",
+                      "kind": "obtain",
+                      "name": null,
+                      "span": {
+                        "end_line": 40,
+                        "start_line": 40
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.s8",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 41,
+                    "start_line": 40
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "Existential introduction.",
+                        "name": "Exists.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "dvd_trans",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ b ∧ p % (4 : ℕ) = (3 : ℕ)",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "p",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "ℕ",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp1",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "Nat.Prime p",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp2",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "p ∣ b",
+                              "truncated": false
+                            }
+                          },
+                          {
+                            "name": "hp3",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "p % (4 : ℕ) = (3 : ℕ)",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "key.s1.s2.s9.s1",
+                      "kind": "obtain",
+                      "name": null,
+                      "span": {
+                        "end_line": 42,
+                        "start_line": 42
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s1.s2.s9",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 43,
+                    "start_line": 42
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "Existential introduction.",
+                        "name": "Exists.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "dvd_trans",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_comm",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 43,
+                "start_line": 24
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ m_1 < m, m_1 % (4 : ℕ) = (3 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ∣ m_1 ∧ p % (4 : ℕ) = (3 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m % (4 : ℕ) = (3 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "key.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 43,
+            "start_line": 20
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                "name": "Nat.Prime",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), m % (4 : ℕ) = (3 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), m % (4 : ℕ) = (3 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ∣ m ∧ p % (4 : ℕ) = (3 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p ∧ p % (4 : ℕ) = (3 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 43,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.strong_induction_on",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < n.factorial",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfact",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < n.factorial",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p ∧ p % (4 : ℕ) = (3 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hfact",
+      "kind": "have",
+      "name": "hfact",
+      "span": {
+        "end_line": 44,
+        "start_line": 44
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.factorial_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), Nat.Prime p ∧ p ∣ (4 : ℕ) * n.factorial - (1 : ℕ) ∧ p % (4 : ℕ) = (3 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hpd",
+            "type": {
+              "printed": "reliable",
+              "text": "p ∣ (4 : ℕ) * n.factorial - (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp3",
+            "type": {
+              "printed": "reliable",
+              "text": "p % (4 : ℕ) = (3 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ IsPrime p ∧ p % (4 : ℕ) = (3 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 45,
+        "start_line": 45
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "n < p",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 48,
+        "start_line": 48
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ n.factorial",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ n.factorial",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s6.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.dvd_factorial",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ (4 : ℕ) * n.factorial",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ (4 : ℕ) * n.factorial",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s6.h4",
+          "kind": "have",
+          "name": "h4",
+          "span": {
+            "end_line": 51,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              },
+              {
+                "doc": "**Alias** of `dvd_mul_of_dvd_right`.",
+                "name": "Dvd.dvd.mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∣ (4 : ℕ) * n.factorial - ((4 : ℕ) * n.factorial - (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ (4 : ℕ) * n.factorial - ((4 : ℕ) * n.factorial - (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∣ (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s6.hone.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 53,
+                "start_line": 53
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.dvd_sub",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(4 : ℕ) * n.factorial - ((4 : ℕ) * n.factorial - (1 : ℕ)) = (1 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(4 : ℕ) * n.factorial - ((4 : ℕ) * n.factorial - (1 : ℕ)) = (1 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∣ (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s6.hone.e",
+              "kind": "have",
+              "name": "e",
+              "span": {
+                "end_line": 54,
+                "start_line": 54
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`Nat.factorial n` is the factorial of `n`.",
+                    "name": "Nat.factorial",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hone",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s6.hone",
+          "kind": "have",
+          "name": "hone",
+          "span": {
+            "end_line": 55,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ≤ (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ≤ (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s6.s4",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_of_dvd",
+                "tags": []
+              },
+              {
+                "doc": "Alias for `Nat.zero_lt_one`.",
+                "name": "Nat.one_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) ≤ p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s6.s5",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 57,
+            "start_line": 57
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "n < p",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 58,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

@@ -1,0 +1,5550 @@
+{
+  "artifact": {
+    "hash": "05474fb6a3e3f910f371567aac5fd1e1a4ea7baaad906fb48206b48f984a1ccc",
+    "kind": "partial",
+    "path": "attempts/20261001T115500Z-t1001-402a-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-402--h3-v2--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-402--h3-v2--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                (∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)) ∨\n                  ∃ (p : ℕ), Nat.Prime p ∧ B.card ≤ (2 : ℕ) * p ∧ ∃ a ∈ B, p ∣ a",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsmooth",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                (∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)) ∨\n                  ∃ (p : ℕ), Nat.Prime p ∧ B.card ≤ (2 : ℕ) * p ∧ ∃ a ∈ B, p ∣ a",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hsmooth",
+      "kind": "hole",
+      "name": "hsmooth",
+      "span": {
+        "end_line": 26,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "S ⊆ Finset.Ioo (0 : ℕ) S.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsub",
+                "type": {
+                  "printed": "reliable",
+                  "text": "S ⊆ Finset.Ioo (0 : ℕ) S.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "big.hsub",
+          "kind": "have",
+          "name": "hsub",
+          "span": {
+            "end_line": 33,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                "name": "Finset.Ioo",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioo",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "S.card ≤ (Finset.Ioo (0 : ℕ) S.card).card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "S.card ≤ (Finset.Ioo (0 : ℕ) S.card).card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "big.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 34,
+            "start_line": 34
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_le_card",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < S.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < S.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "big.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 36,
+            "start_line": 36
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (S : Finset ℕ), (∀ x ∈ S, (0 : ℕ) < x) → S.Nonempty → ∃ x ∈ S, S.card ≤ x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "big",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (S : Finset ℕ), (∀ x ∈ S, (0 : ℕ) < x) → S.Nonempty → ∃ x ∈ S, S.card ≤ x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "big",
+      "kind": "have",
+      "name": "big",
+      "span": {
+        "end_line": 37,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`Not p`, or `¬p`, is the negation of `p`.",
+            "name": "Not",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.card_Ioo",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "T.Nonempty",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "t",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ht",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "t ∈ T",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < x",
+                  "truncated": false
+                }
+              },
+              "id": "key.hXpos.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 44,
+                "start_line": 44
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < x * t",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < x * t",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < x",
+                  "truncated": false
+                }
+              },
+              "id": "key.hXpos.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 45,
+                "start_line": 45
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ x ∈ X, (0 : ℕ) < x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hXpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ x ∈ X, (0 : ℕ) < x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.hXpos",
+          "kind": "have",
+          "name": "hXpos",
+          "span": {
+            "end_line": 46,
+            "start_line": 42
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "X.Nonempty",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "x",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x ∈ X",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < t",
+                  "truncated": false
+                }
+              },
+              "id": "key.hTpos.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 49,
+                "start_line": 49
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < x * t",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < x * t",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < t",
+                  "truncated": false
+                }
+              },
+              "id": "key.hTpos.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 50,
+                "start_line": 50
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ t ∈ T, (0 : ℕ) < t",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hTpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ t ∈ T, (0 : ℕ) < t",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.hTpos",
+          "kind": "have",
+          "name": "hTpos",
+          "span": {
+            "end_line": 51,
+            "start_line": 47
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ x ∈ X, X.card ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x0 ∈ X",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx0c",
+                "type": {
+                  "printed": "reliable",
+                  "text": "X.card ≤ x0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 52,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ x ∈ T, T.card ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "t0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ht0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "t0 ∈ T",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ht0c",
+                "type": {
+                  "printed": "reliable",
+                  "text": "T.card ≤ t0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.s4",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 53,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x0 * t0 < n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x0 * t0 < n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 54,
+            "start_line": 54
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "X.card * T.card ≤ x0 * t0",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "X.card * T.card ≤ x0 * t0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 55,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < X.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hu",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < X.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.hu",
+          "kind": "have",
+          "name": "hu",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < T.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hv",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < T.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.hv",
+          "kind": "have",
+          "name": "hv",
+          "span": {
+            "end_line": 57,
+            "start_line": 57
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "((Finset.Ioo (0 : ℕ) n).erase p).card = n - (2 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "((Finset.Ioo (0 : ℕ) n).erase p).card = n - (2 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.hc2",
+          "kind": "have",
+          "name": "hc2",
+          "span": {
+            "end_line": 60,
+            "start_line": 58
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                "name": "Finset.Ioo",
+                "tags": []
+              },
+              {
+                "doc": "$\\#(s \\setminus \\{a\\}) = \\#s - 1$ if $a \\in s$.",
+                "name": "Finset.card_erase_of_mem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioo",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.card_Ioo",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℕ) ≤ X.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h4",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) ≤ X.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.h3.h4",
+              "kind": "have",
+              "name": "h4",
+              "span": {
+                "end_line": 64,
+                "start_line": 64
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℕ) ≤ T.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h5",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) ≤ T.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.h3.h5",
+              "kind": "have",
+              "name": "h5",
+              "span": {
+                "end_line": 65,
+                "start_line": 65
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "X.card = (1 : ℕ) ∨ T.card = (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "X.card = (1 : ℕ) ∨ T.card = (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 66,
+            "start_line": 61
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Not p`, or `¬p`, is the negation of `p`.",
+                "name": "Not",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ a ∈ T, x0 * a = y",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "t",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "ht",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "t ∈ T",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hy",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "x0 * t ∈ Finset.image (fun (t : ℕ) => x0 * t) T",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "x0 * t ∈ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s11.hsub.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 70,
+                    "start_line": 70
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Finset.mem_image",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < x0 * t ∧ x0 * t < n ∧ ¬p ∣ x0 * t",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < x0 * t ∧ x0 * t < n ∧ ¬p ∣ x0 * t",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "x0 * t ∈ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s11.hsub.h",
+                  "kind": "have",
+                  "name": "h",
+                  "span": {
+                    "end_line": 71,
+                    "start_line": 71
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "Finset.image (fun (t : ℕ) => x0 * t) T ⊆ (Finset.Ioo (0 : ℕ) n).erase p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hsub",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Finset.image (fun (t : ℕ) => x0 * t) T ⊆ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s11.hsub",
+              "kind": "have",
+              "name": "hsub",
+              "span": {
+                "end_line": 73,
+                "start_line": 68
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                    "name": "Finset.Ioo",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_erase",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_Ioo",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                    "name": "And.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "dvd_of_eq",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(Finset.image (fun (t : ℕ) => x0 * t) T).card = T.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hc1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(Finset.image (fun (t : ℕ) => x0 * t) T).card = T.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s11.hc1",
+              "kind": "have",
+              "name": "hc1",
+              "span": {
+                "end_line": 75,
+                "start_line": 74
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.card_image_of_injective",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.eq_of_mul_eq_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(Finset.image (fun (t : ℕ) => x0 * t) T).card ≤ ((Finset.Ioo (0 : ℕ) n).erase p).card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h6",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(Finset.image (fun (t : ℕ) => x0 * t) T).card ≤ ((Finset.Ioo (0 : ℕ) n).erase p).card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s11.h6",
+              "kind": "have",
+              "name": "h6",
+              "span": {
+                "end_line": 76,
+                "start_line": 76
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.card_le_card",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.s11",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 77,
+            "start_line": 68
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ a ∈ X, a * t0 = y",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "x",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hx",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "x ∈ X",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hy",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "x * t0 ∈ Finset.image (fun (x : ℕ) => x * t0) X",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "x * t0 ∈ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s12.hsub.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 80,
+                    "start_line": 80
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Finset.mem_image",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < x * t0 ∧ x * t0 < n ∧ ¬p ∣ x * t0",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < x * t0 ∧ x * t0 < n ∧ ¬p ∣ x * t0",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "x * t0 ∈ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s12.hsub.h",
+                  "kind": "have",
+                  "name": "h",
+                  "span": {
+                    "end_line": 81,
+                    "start_line": 81
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "Finset.image (fun (x : ℕ) => x * t0) X ⊆ (Finset.Ioo (0 : ℕ) n).erase p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hsub",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Finset.image (fun (x : ℕ) => x * t0) X ⊆ (Finset.Ioo (0 : ℕ) n).erase p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s12.hsub",
+              "kind": "have",
+              "name": "hsub",
+              "span": {
+                "end_line": 83,
+                "start_line": 78
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                    "name": "Finset.Ioo",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_erase",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_Ioo",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                    "name": "And.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "dvd_of_eq",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(Finset.image (fun (x : ℕ) => x * t0) X).card = X.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hc1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(Finset.image (fun (x : ℕ) => x * t0) X).card = X.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s12.hc1",
+              "kind": "have",
+              "name": "hc1",
+              "span": {
+                "end_line": 85,
+                "start_line": 84
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.card_image_of_injective",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.eq_of_mul_eq_mul_right",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(Finset.image (fun (x : ℕ) => x * t0) X).card ≤ ((Finset.Ioo (0 : ℕ) n).erase p).card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h6",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(Finset.image (fun (x : ℕ) => x * t0) X).card ≤ ((Finset.Ioo (0 : ℕ) n).erase p).card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "key.s12.h6",
+              "kind": "have",
+              "name": "h6",
+              "span": {
+                "end_line": 86,
+                "start_line": 86
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.card_le_card",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "key.s12",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 87,
+            "start_line": 78
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n p : ℕ) (X T : Finset ℕ),\n  (0 : ℕ) < p →\n    p < n →\n      (∀ x ∈ X, ∀ t ∈ T, (0 : ℕ) < x * t ∧ x * t < n ∧ ¬p ∣ x * t) →\n        X.Nonempty → T.Nonempty → n ≤ X.card + T.card → False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n p : ℕ) (X T : Finset ℕ),\n  (0 : ℕ) < p →\n    p < n →\n      (∀ x ∈ X, ∀ t ∈ T, (0 : ℕ) < x * t ∧ x * t < n ∧ ¬p ∣ x * t) →\n        X.Nonempty → T.Nonempty → n ≤ X.card + T.card → False",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 87,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`False` is the empty proposition.",
+            "name": "False",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ a ∈ B, p ∣ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ha0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a0 ∈ B",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hpa0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ a0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 94,
+            "start_line": 94
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ b ∈ B, ¬p ∣ b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hb0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "b0 ∈ B",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hpb0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬p ∣ b0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 95,
+            "start_line": 95
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "{b ∈ B | ¬p ∣ b}.gcd id ∣ id b0",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "{b ∈ B | ¬p ∣ b}.gcd id ∣ id b0",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hG0.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 99,
+                "start_line": 98
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The identity function.",
+                    "name": "id",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.gcd_dvd",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                    "name": "And.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "{b ∈ B | ¬p ∣ b}.gcd id ≠ (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hG0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{b ∈ B | ¬p ∣ b}.gcd id ≠ (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hG0",
+          "kind": "have",
+          "name": "hG0",
+          "span": {
+            "end_line": 101,
+            "start_line": 96
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.eq_zero_of_zero_dvd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "dvd_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ b ∈ B, ¬p ∣ b → {b ∈ B | ¬p ∣ b}.gcd id ∣ b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hGb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ b ∈ B, ¬p ∣ b → {b ∈ B | ¬p ∣ b}.gcd id ∣ b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hGb",
+          "kind": "have",
+          "name": "hGb",
+          "span": {
+            "end_line": 104,
+            "start_line": 102
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.gcd_dvd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_filter",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b' ∈ B ∧ ¬p ∣ b'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hb'B",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b' ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpb'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬p ∣ b'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a.gcd b ∣ id b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hdG.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 110,
+                "start_line": 110
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a = p * a.gcd b",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a = p * a.gcd b",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a.gcd b ∣ id b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hdG.e1",
+              "kind": "have",
+              "name": "e1",
+              "span": {
+                "end_line": 111,
+                "start_line": 111
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a = p * a.gcd b'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a = p * a.gcd b'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a.gcd b ∣ id b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hdG.e2",
+              "kind": "have",
+              "name": "e2",
+              "span": {
+                "end_line": 112,
+                "start_line": 112
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a.gcd b = a.gcd b'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e3",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a.gcd b = a.gcd b'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a.gcd b ∣ id b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hdG.e3",
+              "kind": "have",
+              "name": "e3",
+              "span": {
+                "end_line": 113,
+                "start_line": 113
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.eq_of_mul_eq_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a.gcd b ∣ {b ∈ B | ¬p ∣ b}.gcd id",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hdG",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a.gcd b ∣ {b ∈ B | ¬p ∣ b}.gcd id",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hdG",
+          "kind": "have",
+          "name": "hdG",
+          "span": {
+            "end_line": 115,
+            "start_line": 105
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.dvd_gcd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a.gcd b ∣ G",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "he",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "G = a.gcd b * e",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 123,
+                "start_line": 123
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "G ∣ b",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "s",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hs",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b = G * s",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.s2",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 124,
+                "start_line": 124
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a = p * a.gcd b",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "ea",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a = p * a.gcd b",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.ea",
+              "kind": "have",
+              "name": "ea",
+              "span": {
+                "end_line": 125,
+                "start_line": 125
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "ha0'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.ha0'",
+              "kind": "have",
+              "name": "ha0'",
+              "span": {
+                "end_line": 126,
+                "start_line": 126
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.pos_of_ne_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b ≠ (0 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hb0'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b ≠ (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.hb0'",
+              "kind": "have",
+              "name": "hb0'",
+              "span": {
+                "end_line": 127,
+                "start_line": 127
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "G * p = a.gcd b * e * p",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hGp.s1",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 129,
+                    "start_line": 129
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "ring"
+                    ]
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hGp.s2",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 130,
+                    "start_line": 130
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hGp.s3",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 131,
+                    "start_line": 131
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "G * p = e * a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hGp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "G * p = e * a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.hGp",
+              "kind": "have",
+              "name": "hGp",
+              "span": {
+                "end_line": 131,
+                "start_line": 128
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "G * p / a = e",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "G * p / a = e",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.hx",
+              "kind": "have",
+              "name": "hx",
+              "span": {
+                "end_line": 132,
+                "start_line": 132
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.div_eq_of_eq_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b / G = s",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "ht",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b / G = s",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < G * p / a * (b / G) ∧ G * p / a * (b / G) < B.card ∧ ¬p ∣ G * p / a * (b / G) ∧ a * (G * p / a) = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.ht",
+              "kind": "have",
+              "name": "ht",
+              "span": {
+                "end_line": 135,
+                "start_line": 133
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_div_cancel_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.pos_of_ne_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "b = G * s",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hb2.s1",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 138,
+                    "start_line": 138
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hb2.s2",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 139,
+                    "start_line": 139
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "ring"
+                    ]
+                  },
+                  "goal": null,
+                  "id": "hlarge.hprod.hb2.s3",
+                  "kind": "calc",
+                  "name": null,
+                  "span": {
+                    "end_line": 140,
+                    "start_line": 140
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "b = a.gcd b * (e * s)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hb2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b = a.gcd b * (e * s)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < e * s ∧ e * s < B.card ∧ ¬p ∣ e * s ∧ a * e = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.hb2",
+              "kind": "have",
+              "name": "hb2",
+              "span": {
+                "end_line": 140,
+                "start_line": 137
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "e * s ≠ (0 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hes",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "e * s ≠ (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < e * s ∧ e * s < B.card ∧ ¬p ∣ e * s ∧ a * e = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.hes",
+              "kind": "have",
+              "name": "hes",
+              "span": {
+                "end_line": 144,
+                "start_line": 141
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "b < B.card * b.gcd a",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "b < B.card * b.gcd a",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "e * s < B.card",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hlarge.hprod.s11.h1",
+                  "kind": "have",
+                  "name": "h1",
+                  "span": {
+                    "end_line": 146,
+                    "start_line": 146
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "a.gcd b * (e * s) < a.gcd b * B.card",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "a.gcd b * (e * s) < a.gcd b * B.card",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "e * s < B.card",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hlarge.hprod.s11.h2",
+                  "kind": "have",
+                  "name": "h2",
+                  "span": {
+                    "end_line": 149,
+                    "start_line": 148
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_comm",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "e * s < B.card",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.s11",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 150,
+                "start_line": 146
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.gcd_comm",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.lt_of_mul_lt_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "¬p ∣ e * s",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.s12",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 152,
+                "start_line": 151
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "**Alias** of `dvd_mul_of_dvd_right`.",
+                    "name": "Dvd.dvd.mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a * e = G * p",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hprod.s13",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 153,
+                "start_line": 153
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ a ∈ B,\n  p ∣ a →\n    ∀ b ∈ B,\n      ¬p ∣ b →\n        (0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n          {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n            ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n              a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hprod",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ a ∈ B,\n  p ∣ a →\n    ∀ b ∈ B,\n      ¬p ∣ b →\n        (0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n          {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n            ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n              a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hprod",
+          "kind": "have",
+          "name": "hprod",
+          "span": {
+            "end_line": 153,
+            "start_line": 116
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "{a ∈ B | p ∣ a}.card + {b ∈ B | ¬p ∣ b}.card = B.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hcardsum",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{a ∈ B | p ∣ a}.card + {b ∈ B | ¬p ∣ b}.card = B.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hcardsum",
+          "kind": "have",
+          "name": "hcardsum",
+          "span": {
+            "end_line": 156,
+            "start_line": 154
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "**Alias** of the reverse direction of `Finset.card_union_eq_card_add_card`.",
+                "name": "Finset.card_union_of_disjoint",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.disjoint_filter_filter_not",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.filter_union_filter_not_eq",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a ∈ B ∧ p ∣ a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "haB",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpa",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a = a'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjX.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 160,
+                "start_line": 160
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a' ∈ B ∧ p ∣ a'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "haB'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a' ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpa'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ a'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a = a'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjX.s2",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 161,
+                "start_line": 161
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n      a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n      a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a = a'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjX.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 162,
+                "start_line": 162
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a' * ({b ∈ B | ¬p ∣ b}.gcd id * p / a') = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a' * ({b ∈ B | ¬p ∣ b}.gcd id * p / a') = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a = a'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjX.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 163,
+                "start_line": 163
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b0 / {b ∈ B | ¬p ∣ b}.gcd id)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hlarge.hinjX.hq.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 169,
+                    "start_line": 169
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hq",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a = a'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjX.hq",
+              "kind": "have",
+              "name": "hq",
+              "span": {
+                "end_line": 171,
+                "start_line": 166
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The identity function.",
+                    "name": "id",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.pos_of_ne_zero",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.zero_mul",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "lt_irrefl",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "Set.InjOn (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) (↑({a ∈ B | p ∣ a}) : Set ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hinjX",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Set.InjOn (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) (↑({a ∈ B | p ∣ a}) : Set ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hinjX",
+          "kind": "have",
+          "name": "hinjX",
+          "span": {
+            "end_line": 172,
+            "start_line": 157
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`f` is injective on `s` if the restriction of `f` to `s` is injective.",
+                "name": "Set.InjOn",
+                "tags": []
+              },
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.eq_of_mul_eq_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b ∈ B ∧ ¬p ∣ b",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hbB",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpb",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬p ∣ b",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "b = b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjT.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 176,
+                "start_line": 176
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b' ∈ B ∧ ¬p ∣ b'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hbB'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b' ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpb'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬p ∣ b'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "b = b'",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.hinjT.s2",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 177,
+                "start_line": 177
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "Set.InjOn (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) (↑({b ∈ B | ¬p ∣ b}) : Set ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hinjT",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Set.InjOn (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) (↑({b ∈ B | ¬p ∣ b}) : Set ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.hinjT",
+          "kind": "have",
+          "name": "hinjT",
+          "span": {
+            "end_line": 179,
+            "start_line": 173
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`f` is injective on `s` if the restriction of `f` to `s` is injective.",
+                "name": "Set.InjOn",
+                "tags": []
+              },
+              {
+                "doc": "The identity function.",
+                "name": "id",
+                "tags": []
+              },
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.div_mul_cancel",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ a ∈ {a ∈ B | p ∣ a}, {b ∈ B | ¬p ∣ b}.gcd id * p / a = x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ha",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a ∈ {a ∈ B | p ∣ a}",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "{b ∈ B | ¬p ∣ b}.gcd id * p / a ∈ Finset.image (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) ({a ∈ B | p ∣ a})",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * t ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * t < B.card ∧ ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * t",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.s10.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 185,
+                "start_line": 185
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_image",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ a ∈ {b ∈ B | ¬p ∣ b}, a / {b ∈ B | ¬p ∣ b}.gcd id = t",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "b",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hb",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b ∈ {b ∈ B | ¬p ∣ b}",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ht",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b / {b ∈ B | ¬p ∣ b}.gcd id ∈ Finset.image (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) ({b ∈ B | ¬p ∣ b})",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id)",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.s10.s2",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 186,
+                "start_line": 186
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_image",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a ∈ B ∧ p ∣ a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "haB",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpa",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id)",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.s10.s3",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 187,
+                "start_line": 187
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "b ∈ B ∧ ¬p ∣ b",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hbB",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "b ∈ B",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpb",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬p ∣ b",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id)",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.s10.s4",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 188,
+                "start_line": 188
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_filter",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n      a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n      a * ({b ∈ B | ¬p ∣ b}.gcd id * p / a) = {b ∈ B | ¬p ∣ b}.gcd id * p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) ∧\n  {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id) < B.card ∧\n    ¬p ∣ {b ∈ B | ¬p ∣ b}.gcd id * p / a * (b / {b ∈ B | ¬p ∣ b}.gcd id)",
+                  "truncated": false
+                }
+              },
+              "id": "hlarge.s10.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 189,
+                "start_line": 189
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ x ∈ Finset.image (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) ({a ∈ B | p ∣ a}),\n  ∀ t ∈ Finset.image (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) ({b ∈ B | ¬p ∣ b}),\n    (0 : ℕ) < x * t ∧ x * t < B.card ∧ ¬p ∣ x * t",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s10",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 190,
+            "start_line": 184
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(Finset.image (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) ({a ∈ B | p ∣ a})).Nonempty",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s11",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 191,
+            "start_line": 191
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_image_of_mem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_filter",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(Finset.image (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) ({b ∈ B | ¬p ∣ b})).Nonempty",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s12",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 192,
+            "start_line": 192
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_image_of_mem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_filter",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "B.card ≤\n  (Finset.image (fun (a : ℕ) => {b ∈ B | ¬p ∣ b}.gcd id * p / a) ({a ∈ B | p ∣ a})).card +\n    (Finset.image (fun (b : ℕ) => b / {b ∈ B | ¬p ∣ b}.gcd id) ({b ∈ B | ¬p ∣ b})).card",
+              "truncated": false
+            }
+          },
+          "id": "hlarge.s13",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 193,
+            "start_line": 193
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_image_of_injOn",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    (∀ a ∈ B, ∀ b ∈ B, a < B.card * a.gcd b) →\n      ∀ (p : ℕ),\n        Nat.Prime p →\n          p < B.card →\n            (∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a = p * a.gcd b) → (∃ a ∈ B, p ∣ a) → (∃ b ∈ B, ¬p ∣ b) → False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlarge",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    (∀ a ∈ B, ∀ b ∈ B, a < B.card * a.gcd b) →\n      ∀ (p : ℕ),\n        Nat.Prime p →\n          p < B.card →\n            (∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a = p * a.gcd b) → (∃ a ∈ B, p ∣ a) → (∃ b ∈ B, ¬p ∣ b) → False",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (B : Finset ℕ),\n  (0 : ℕ) ∉ B →\n    B.Nonempty →\n      B.gcd id = (1 : ℕ) →\n        ¬Nat.Prime B.card →\n          (∀ (q : ℕ), Nat.Prime q → B.card ≠ q + (1 : ℕ)) →\n            (∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b) →\n              (∀ a ∈ B, ∀ (p k : ℕ), Nat.Prime p → p ^ k ∣ a → p ^ k < B.card) →\n                ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hlarge",
+      "kind": "have",
+      "name": "hlarge",
+      "span": {
+        "end_line": 193,
+        "start_line": 88
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`False` is the empty proposition.",
+            "name": "False",
+            "tags": []
+          },
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < B.card",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hn",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < B.card",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hn",
+      "kind": "have",
+      "name": "hn",
+      "span": {
+        "end_line": 196,
+        "start_line": 196
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℚ) < (↑B.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnq",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℚ) < (↑B.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hnq",
+      "kind": "have",
+      "name": "hnq",
+      "span": {
+        "end_line": 197,
+        "start_line": 197
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "a < B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hlt.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 201,
+            "start_line": 201
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a.gcd b * B.card ≤ a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a.gcd b * B.card ≤ a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑(a.gcd b) : ℚ) * (↑B.card : ℚ) ≤ (↑a : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "hlt.s2.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 206,
+                "start_line": 206
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_comm",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "a < B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hlt.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 207,
+            "start_line": 202
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+                "name": "le_div_iff₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ a ∈ B, ∀ b ∈ B, a < B.card * a.gcd b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlt",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ B, ∀ b ∈ B, a < B.card * a.gcd b",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hlt",
+      "kind": "have",
+      "name": "hlt",
+      "span": {
+        "end_line": 207,
+        "start_line": 198
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a ≠ (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ha0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ≠ (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.ha0",
+          "kind": "have",
+          "name": "ha0",
+          "span": {
+            "end_line": 211,
+            "start_line": 211
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < a.gcd b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hg0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < a.gcd b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.hg0",
+          "kind": "have",
+          "name": "hg0",
+          "span": {
+            "end_line": 212,
+            "start_line": 212
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_pos_of_pos_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a.gcd b ∣ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a = a.gcd b * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 213,
+            "start_line": 213
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "¬p ∣ a.gcd b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpg",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬p ∣ a.gcd b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.hpg",
+          "kind": "have",
+          "name": "hpg",
+          "span": {
+            "end_line": 214,
+            "start_line": 214
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∣ a.gcd b * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ a.gcd b * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∣ x",
+                  "truncated": false
+                }
+              },
+              "id": "hA.hpx.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 216,
+                "start_line": 216
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.hpx",
+          "kind": "have",
+          "name": "hpx",
+          "span": {
+            "end_line": 217,
+            "start_line": 215
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "t",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ht",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = p * t",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.s6",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 218,
+            "start_line": 218
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a < B.card * a.gcd b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a < B.card * a.gcd b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.hlt'",
+          "kind": "have",
+          "name": "hlt'",
+          "span": {
+            "end_line": 219,
+            "start_line": 219
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "a.gcd b * x < a.gcd b * B.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h3",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a.gcd b * x < a.gcd b * B.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x < B.card",
+                  "truncated": false
+                }
+              },
+              "id": "hA.hxn.h3",
+              "kind": "have",
+              "name": "h3",
+              "span": {
+                "end_line": 222,
+                "start_line": 221
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_comm",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x < B.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x < B.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.hxn",
+          "kind": "have",
+          "name": "hxn",
+          "span": {
+            "end_line": 223,
+            "start_line": 220
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_of_mul_lt_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "x ≠ (0 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hx0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x ≠ (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "t = (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hA.ht1.hx0",
+              "kind": "have",
+              "name": "hx0",
+              "span": {
+                "end_line": 228,
+                "start_line": 225
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "t ≠ (0 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "ht0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "t ≠ (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "t = (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hA.ht1.ht0",
+              "kind": "have",
+              "name": "ht0",
+              "span": {
+                "end_line": 232,
+                "start_line": 229
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℕ) ≤ t",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "ht2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) ≤ t",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hA.ht1.ht2",
+              "kind": "have",
+              "name": "ht2",
+              "span": {
+                "end_line": 234,
+                "start_line": 234
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p * (2 : ℕ) ≤ p * t",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h4",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p * (2 : ℕ) ≤ p * t",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hA.ht1.h4",
+              "kind": "have",
+              "name": "h4",
+              "span": {
+                "end_line": 235,
+                "start_line": 235
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "t = (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ht1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "t = (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a = p * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hA.ht1",
+          "kind": "have",
+          "name": "ht1",
+          "span": {
+            "end_line": 236,
+            "start_line": 224
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a = a.gcd b * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "hA.s10",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 237,
+            "start_line": 237
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "hA.s11",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 238,
+            "start_line": 238
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p : ℕ), Nat.Prime p → B.card ≤ (2 : ℕ) * p → ∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a = p * a.gcd b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ), Nat.Prime p → B.card ≤ (2 : ℕ) * p → ∀ a ∈ B, p ∣ a → ∀ b ∈ B, ¬p ∣ b → a = p * a.gcd b",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hA",
+      "kind": "have",
+      "name": "hA",
+      "span": {
+        "end_line": 238,
+        "start_line": 208
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s9",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 240,
+        "start_line": 240
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ^ (1 : ℕ) < B.card",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ^ (1 : ℕ) < B.card",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p < B.card",
+                  "truncated": false
+                }
+              },
+              "id": "s10.hpn.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 242,
+                "start_line": 242
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_one",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "p < B.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p < B.card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s10.hpn",
+          "kind": "have",
+          "name": "hpn",
+          "span": {
+            "end_line": 243,
+            "start_line": 241
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "pow_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∣ B.gcd id",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ B.gcd id",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "s10.hexb.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 247,
+                "start_line": 247
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The identity function.",
+                    "name": "id",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.dvd_gcd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ b ∈ B, ¬p ∣ b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hexb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ b ∈ B, ¬p ∣ b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s10.hexb",
+          "kind": "have",
+          "name": "hexb",
+          "span": {
+            "end_line": 249,
+            "start_line": 244
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Not p`, or `¬p`, is the negation of `p`.",
+                "name": "Not",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.dvd_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s10",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 250,
+        "start_line": 241
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

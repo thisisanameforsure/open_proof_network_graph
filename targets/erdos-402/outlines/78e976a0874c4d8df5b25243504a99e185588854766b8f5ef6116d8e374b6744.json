@@ -1,0 +1,2856 @@
+{
+  "artifact": {
+    "hash": "78e976a0874c4d8df5b25243504a99e185588854766b8f5ef6116d8e374b6744",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-bc28297c",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.card",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.card",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hpos",
+      "kind": "have",
+      "name": "hpos",
+      "span": {
+        "end_line": 11,
+        "start_line": 11
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hne",
+            "type": {
+              "printed": "reliable",
+              "text": "A.Nonempty",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hne",
+      "kind": "have",
+      "name": "hne",
+      "span": {
+        "end_line": 12,
+        "start_line": 12
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.card_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (a b : ℕ), a.gcd b * A.card ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (a b : ℕ), a.gcd b * A.card ≤ a → (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 16,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+            "name": "le_div_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A.max' hne ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hM",
+            "type": {
+              "printed": "reliable",
+              "text": "A.max' hne ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hM",
+      "kind": "have",
+      "name": "hM",
+      "span": {
+        "end_line": 17,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.max'_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hMpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hMpos",
+      "kind": "have",
+      "name": "hMpos",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.hxpos",
+          "kind": "have",
+          "name": "hxpos",
+          "span": {
+            "end_line": 23,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.max' hne = (A.max' hne).gcd x * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 24,
+            "start_line": 24
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.max' hne).gcd x ∣ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "j",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = (A.max' hne).gcd x * j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < (A.max' hne).gcd x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < (A.max' hne).gcd x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.hgpos",
+          "kind": "have",
+          "name": "hgpos",
+          "span": {
+            "end_line": 26,
+            "start_line": 26
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_pos_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ (A.max' hne).gcd x * k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "aux.s5.s1",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 29,
+                "start_line": 29
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(A.max' hne).gcd x * k = A.max' hne",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "aux.s5.s2",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 30,
+                "start_line": 30
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 30,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(A.max' hne).gcd x * k ≤ (A.max' hne).gcd x * j",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.hjk.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 35,
+                    "start_line": 35
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_le_mul_left",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "j < k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hjk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "j < k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.hjk",
+              "kind": "have",
+              "name": "hjk",
+              "span": {
+                "end_line": 36,
+                "start_line": 32
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(1 : ℕ) ≤ j",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.hj1.s1",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 40,
+                    "start_line": 39
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(1 : ℕ) ≤ j",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.hj1.s2",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 41,
+                    "start_line": 41
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℕ) ≤ j",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hj1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℕ) ≤ j",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.hj1",
+              "kind": "have",
+              "name": "hj1",
+              "span": {
+                "end_line": 41,
+                "start_line": 37
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.eq_zero_or_pos",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "k = (2 : ℕ) ∨ k = (3 : ℕ) ∨ k = (4 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hk'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "k = (2 : ℕ) ∨ k = (3 : ℕ) ∨ k = (4 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.hk'",
+              "kind": "have",
+              "name": "hk'",
+              "span": {
+                "end_line": 42,
+                "start_line": 42
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "j = (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "j = (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.s4.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 44,
+                    "start_line": 44
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.s4",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 46,
+                "start_line": 44
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "j = (1 : ℕ) ∨ j = (2 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "j = (1 : ℕ) ∨ j = (2 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.s5.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 47,
+                    "start_line": 47
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.s5",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 48,
+                "start_line": 47
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "j = (1 : ℕ) ∨ j = (2 : ℕ) ∨ j = (3 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "j = (1 : ℕ) ∨ j = (2 : ℕ) ∨ j = (3 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                      "truncated": false
+                    }
+                  },
+                  "id": "aux.s6.s6.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 49,
+                    "start_line": 49
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              },
+              "id": "aux.s6.s6",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 50,
+                "start_line": 49
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n  (2 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "aux.s6",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 50,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A,\n  x < A.max' hne →\n    (A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n      (2 : ℕ) * x = A.max' hne ∨\n        (3 : ℕ) * x = A.max' hne ∨\n          (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "aux",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A,\n  x < A.max' hne →\n    (A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne ∨\n      (2 : ℕ) * x = A.max' hne ∨\n        (3 : ℕ) * x = A.max' hne ∨\n          (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "aux",
+      "kind": "have",
+      "name": "aux",
+      "span": {
+        "end_line": 50,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A, x ≠ A.max' hne → x < A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A, x ≠ A.max' hne → x < A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "hle",
+      "kind": "have",
+      "name": "hle",
+      "span": {
+        "end_line": 52,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_ne",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.le_max'",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(A.erase (A.max' hne)).card = (4 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "he",
+            "type": {
+              "printed": "reliable",
+              "text": "(A.erase (A.max' hne)).card = (4 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "he",
+      "kind": "have",
+      "name": "he",
+      "span": {
+        "end_line": 54,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "$\\#(s \\setminus \\{a\\}) = \\#s - 1$ if $a \\in s$.",
+            "name": "Finset.card_erase_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ x ∈ A, x < A.max' hne ∧ (A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(A.max' hne).gcd x * (5 : ℕ) ≤ A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s9.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s9",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 57,
+        "start_line": 56
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Anything follows from two contradictory hypotheses.",
+                "name": "absurd",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) * x = A.max' hne ∨\n  (3 : ℕ) * x = A.max' hne ∨\n    (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          },
+          "id": "forms.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 64,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ A,\n  x ≠ A.max' hne →\n    (2 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = A.max' hne ∨\n        (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "forms",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ A,\n  x ≠ A.max' hne →\n    (2 : ℕ) * x = A.max' hne ∨\n      (3 : ℕ) * x = A.max' hne ∨\n        (3 : ℕ) * x = (2 : ℕ) * A.max' hne ∨ (4 : ℕ) * x = A.max' hne ∨ (4 : ℕ) * x = (3 : ℕ) * A.max' hne",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "forms",
+      "kind": "have",
+      "name": "forms",
+      "span": {
+        "end_line": 64,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (u v c d : ℕ), u.gcd v ∣ c * v - d * u",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "gdvd",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (u v c d : ℕ), u.gcd v ∣ c * v - d * u",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "gdvd",
+      "kind": "have",
+      "name": "gdvd",
+      "span": {
+        "end_line": 67,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.dvd_sub",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `dvd_mul_of_dvd_right`.",
+            "name": "Dvd.dvd.mul_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (u v c d : ℕ), u.gcd v ∣ d * u - c * v",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "gdvd'",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (u v c d : ℕ), u.gcd v ∣ d * u - c * v",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "gdvd'",
+      "kind": "have",
+      "name": "gdvd'",
+      "span": {
+        "end_line": 70,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.dvd_sub",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `dvd_mul_of_dvd_right`.",
+            "name": "Dvd.dvd.mul_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.gcd_dvd_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A.erase (A.max' hne) ⊆ {p, q, r}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hs",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A.erase (A.max' hne) ⊆ {p, q, r}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "sub3.hs",
+          "kind": "have",
+          "name": "hs",
+          "span": {
+            "end_line": 77,
+            "start_line": 73
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.mem_erase",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_insert",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_singleton",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(A.erase (A.max' hne)).card ≤ (3 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(A.erase (A.max' hne)).card ≤ (3 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "sub3.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 78,
+            "start_line": 78
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_le_card",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.card_le_three",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p q r : ℕ), (∀ x ∈ A, x ≠ A.max' hne → x = p ∨ x = q ∨ x = r) → False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "sub3",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p q r : ℕ), (∀ x ∈ A, x ≠ A.max' hne → x = p ∨ x = q ∨ x = r) → False",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "sub3",
+      "kind": "have",
+      "name": "sub3",
+      "span": {
+        "end_line": 79,
+        "start_line": 71
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`False` is the empty proposition.",
+            "name": "False",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ u ∈ A, (4 : ℕ) * u = (3 : ℕ) * A.max' hne",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "u",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hu",
+                "type": {
+                  "printed": "reliable",
+                  "text": "u ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hu'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(4 : ℕ) * u = (3 : ℕ) * A.max' hne",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 81,
+            "start_line": 81
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ v ∈ A, (3 : ℕ) * v = A.max' hne",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "v",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hv",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "v ∈ A",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hv'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(3 : ℕ) * v = A.max' hne",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s14.s2.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 83,
+                "start_line": 83
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "u.gcd v ≤ (1 : ℕ) * u - (2 : ℕ) * v",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "u.gcd v ≤ (1 : ℕ) * u - (2 : ℕ) * v",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "u.gcd v * A.card ≤ u",
+                  "truncated": false
+                }
+              },
+              "id": "s14.s2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 85,
+                "start_line": 85
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.le_of_dvd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 87,
+            "start_line": 83
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ v ∈ A, (3 : ℕ) * v = (2 : ℕ) * A.max' hne",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "v",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hv",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "v ∈ A",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hv'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(3 : ℕ) * v = (2 : ℕ) * A.max' hne",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s14.s3.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 89,
+                "start_line": 89
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "u.gcd v ≤ (1 : ℕ) * u - (1 : ℕ) * v",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "u.gcd v ≤ (1 : ℕ) * u - (1 : ℕ) * v",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "u.gcd v * A.card ≤ u",
+                  "truncated": false
+                }
+              },
+              "id": "s14.s3.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 91,
+                "start_line": 91
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.le_of_dvd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 93,
+            "start_line": 89
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (4 : ℕ) ∨ x = (3 : ℕ) * A.max' hne / (4 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 98,
+            "start_line": 98
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (4 : ℕ) ∨ x = (3 : ℕ) * A.max' hne / (4 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 99,
+            "start_line": 99
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Anything follows from two contradictory hypotheses.",
+                "name": "absurd",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (4 : ℕ) ∨ x = (3 : ℕ) * A.max' hne / (4 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s6",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 100,
+            "start_line": 100
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Anything follows from two contradictory hypotheses.",
+                "name": "absurd",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (4 : ℕ) ∨ x = (3 : ℕ) * A.max' hne / (4 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s7",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 101,
+            "start_line": 101
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (4 : ℕ) ∨ x = (3 : ℕ) * A.max' hne / (4 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s14.s8",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 102,
+            "start_line": 102
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s14",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 102,
+        "start_line": 81
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ u ∈ A, (3 : ℕ) * u = (2 : ℕ) * A.max' hne",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "u",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hu",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "u ∈ A",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hu'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(3 : ℕ) * u = (2 : ℕ) * A.max' hne",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 104,
+                "start_line": 104
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ v ∈ A, (4 : ℕ) * v = A.max' hne",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "v",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hv",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "v ∈ A",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hv'",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(4 : ℕ) * v = A.max' hne",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s15.s1.s2.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 106,
+                    "start_line": 106
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "u.gcd v ≤ (3 : ℕ) * v - (1 : ℕ) * u",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "u.gcd v ≤ (3 : ℕ) * v - (1 : ℕ) * u",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "u.gcd v * A.card ≤ u",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s15.s1.s2.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 108,
+                    "start_line": 108
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.le_of_dvd",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 110,
+                "start_line": 106
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = (2 : ℕ) * A.max' hne / (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 115,
+                "start_line": 115
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = (2 : ℕ) * A.max' hne / (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s4",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 116,
+                "start_line": 116
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = (2 : ℕ) * A.max' hne / (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s5",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 117,
+                "start_line": 117
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = (2 : ℕ) * A.max' hne / (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s6",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 118,
+                "start_line": 118
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = (2 : ℕ) * A.max' hne / (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s1.s7",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 119,
+                "start_line": 119
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s15.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 119,
+            "start_line": 104
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = A.max' hne / (4 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s2.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 124,
+                "start_line": 124
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = A.max' hne / (4 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 125,
+                "start_line": 125
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = A.max' hne / (4 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s2.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 126,
+                "start_line": 126
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = A.max' hne / (4 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s2.s4",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 127,
+                "start_line": 127
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = A.max' hne / (2 : ℕ) ∨ x = A.max' hne / (3 : ℕ) ∨ x = A.max' hne / (4 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s15.s2.s5",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 128,
+                "start_line": 128
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "s15.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 128,
+            "start_line": 120
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "s15",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 128,
+        "start_line": 103
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

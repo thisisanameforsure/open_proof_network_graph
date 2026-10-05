@@ -1,0 +1,951 @@
+{
+  "artifact": {
+    "hash": "7eeed60bace9b0d7d292c7c161f6a1935fff75a55942596144053287a209f4f7",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-440db0f9",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℚ) < (2 : ℚ) ^ (j + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℚ) < (2 : ℚ) ^ (j + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ) ≠ (0 : ℚ)",
+              "truncated": false
+            }
+          },
+          "id": "hD.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 12,
+            "start_line": 12
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_lt_pow₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (j : ℕ), (2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ) ≠ (0 : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hD",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ), (2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ) ≠ (0 : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+          "truncated": false
+        }
+      },
+      "id": "hD",
+      "kind": "have",
+      "name": "hD",
+      "span": {
+        "end_line": 13,
+        "start_line": 10
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "ne_of_gt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "sub_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ), ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) ≠ (0 : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hDk",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ), ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) ≠ (0 : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+          "truncated": false
+        }
+      },
+      "id": "hDk",
+      "kind": "have",
+      "name": "hDk",
+      "span": {
+        "end_line": 16,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.prod_ne_zero_iff",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (i : ℕ), m + (1 : ℕ) - (i + (1 : ℕ)) = m - i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hshift",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (i : ℕ), m + (1 : ℕ) - (i + (1 : ℕ)) = m - i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(∏ k ∈ Finset.range j, ((2 : ℚ) ^ (m + (1 : ℕ) - (k + (1 : ℕ))) - (1 : ℚ))) *\n      ((2 : ℚ) ^ (m + (1 : ℕ) - (0 : ℕ)) - (1 : ℚ)) /\n    ∏ x ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m - x) - (1 : ℚ))) /\n        ∏ x ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)))",
+              "truncated": false
+            }
+          },
+          "id": "key.hshift",
+          "kind": "have",
+          "name": "hshift",
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∏ i ∈ Finset.range j, ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) ≠ (0 : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hDj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∏ i ∈ Finset.range j, ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) ≠ (0 : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+              "truncated": false
+            }
+          },
+          "id": "key.hDj",
+          "kind": "have",
+          "name": "hDj",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ) ≠ (0 : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ) ≠ (0 : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+              "truncated": false
+            }
+          },
+          "id": "key.hj",
+          "kind": "have",
+          "name": "hj",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℚ) ^ (m + (1 : ℕ)) = (2 : ℚ) ^ (m - j) * (2 : ℚ) ^ (j + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℚ) ^ (m + (1 : ℕ)) = (2 : ℚ) ^ (m - j) * (2 : ℚ) ^ (j + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+                  "truncated": false
+                }
+              },
+              "id": "key.s4.e",
+              "kind": "have",
+              "name": "e",
+              "span": {
+                "end_line": 35,
+                "start_line": 32
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_add",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+              "truncated": false
+            }
+          },
+          "id": "key.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 38,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) = (0 : ℚ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hz",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) = (0 : ℚ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+                  "truncated": false
+                }
+              },
+              "id": "key.s5.hz",
+              "kind": "have",
+              "name": "hz",
+              "span": {
+                "end_line": 40,
+                "start_line": 39
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`range n` is the set of natural numbers less than `n`.",
+                    "name": "Finset.range",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.prod_eq_zero",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_range",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m + (1 : ℕ)) - (1 : ℚ)) /\n    ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))) =\n  (∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) / ∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ)) +\n    (2 : ℚ) ^ (j + (1 : ℕ)) *\n      ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (m - x) - (1 : ℚ))) * ((2 : ℚ) ^ (m - j) - (1 : ℚ)) /\n        ((∏ x ∈ Finset.range j, ((2 : ℚ) ^ (x + (1 : ℕ)) - (1 : ℚ))) * ((2 : ℚ) ^ (j + (1 : ℕ)) - (1 : ℚ))))",
+              "truncated": false
+            }
+          },
+          "id": "key.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 42,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m j : ℕ),\n  ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) =\n    ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) +\n      (2 : ℚ) ^ (j + (1 : ℕ)) *\n        ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m j : ℕ),\n  ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) =\n    ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)) +\n      (2 : ℚ) ^ (j + (1 : ℕ)) *\n        ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 42,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.prod_div_distrib",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.prod_range_succ'",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.sub_zero",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.prod_range_succ",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ),\n  (↑z : ℚ) = ∏ i ∈ Finset.range (0 : ℕ), ((2 : ℚ) ^ ((0 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                  "truncated": false
+                }
+              },
+              "id": "main.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 50,
+                "start_line": 50
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Zero, the smallest natural number.",
+                    "name": "Nat.zero",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "j",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ),\n  (↑z : ℚ) = ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ ((0 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                  "truncated": false
+                }
+              },
+              "id": "main.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 54,
+                "start_line": 51
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The successor of a natural number `n`.",
+                    "name": "Nat.succ",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.prod_eq_zero",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ),\n  ∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ ((0 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+              "truncated": false
+            }
+          },
+          "id": "main.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 54,
+            "start_line": 47
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Zero, the smallest natural number.",
+                "name": "Nat.zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ),\n  (↑z : ℚ) = ∏ i ∈ Finset.range (0 : ℕ), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                  "truncated": false
+                }
+              },
+              "id": "main.s2.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 58,
+                "start_line": 58
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Zero, the smallest natural number.",
+                    "name": "Nat.zero",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "a",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℤ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "ha",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑a : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (z : ℤ),\n  (↑z : ℚ) =\n    ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "main.s2.s2.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 60,
+                    "start_line": 60
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (z : ℤ),\n  (↑z : ℚ) = ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "b",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℤ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hb",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑b : ℚ) = ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (z : ℤ),\n  (↑z : ℚ) =\n    ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "main.s2.s2.s2",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 61,
+                    "start_line": 61
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "j",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (z : ℤ),\n  (↑z : ℚ) =\n    ∏ i ∈ Finset.range (j + (1 : ℕ)), ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                  "truncated": false
+                }
+              },
+              "id": "main.s2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 65,
+                "start_line": 59
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The successor of a natural number `n`.",
+                    "name": "Nat.succ",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (j : ℕ),\n  ∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ),\n  ∃ (z : ℤ),\n    (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m + (1 : ℕ) - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+              "truncated": false
+            }
+          },
+          "id": "main.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 65,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The successor of a natural number `n`.",
+                "name": "Nat.succ",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m j : ℕ),\n  ∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "main",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m j : ℕ),\n  ∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range j, ((2 : ℚ) ^ (m - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (z : ℤ), (↑z : ℚ) = ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))",
+          "truncated": false
+        }
+      },
+      "id": "main",
+      "kind": "have",
+      "name": "main",
+      "span": {
+        "end_line": 65,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1050"
+}

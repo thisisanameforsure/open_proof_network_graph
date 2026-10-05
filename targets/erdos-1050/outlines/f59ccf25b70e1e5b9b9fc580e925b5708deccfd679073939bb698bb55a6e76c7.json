@@ -1,0 +1,297 @@
+{
+  "artifact": {
+    "hash": "f59ccf25b70e1e5b9b9fc580e925b5708deccfd679073939bb698bb55a6e76c7",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "spec-eb1219eb",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "simp",
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(1338545055613790115 : ℤ) : ℚ) =\n  (↑(13403586560 : ℕ) : ℚ) *\n    (fun (n : ℕ) =>\n        ∑ k ∈ Finset.range (n + (1 : ℕ)),\n          (fun (n k : ℕ) =>\n                ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                    ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                  ∏ i ∈ Finset.range n,\n                    ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n              n k *\n            ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n      (5 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s1.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_range_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "simp",
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(1380067124193819576 : ℤ) : ℚ) =\n  (↑(13403586560 : ℕ) : ℚ) *\n    (fun (n : ℕ) =>\n        ∑ k ∈ Finset.range (n + (1 : ℕ)),\n            (∑ j ∈ Finset.range (k + (1 : ℕ)),\n                (fun (n k : ℕ) =>\n                      ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                          ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                        ∏ i ∈ Finset.range n,\n                          ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                    n j /\n                  ((2 : ℚ) ^ (k - j) - (1 : ℚ))) *\n              ((3 : ℚ) / (2 : ℚ) ^ n) ^ k +\n          (fun (n : ℕ) =>\n                ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                  (fun (n k : ℕ) =>\n                        ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                            ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                          ∏ i ∈ Finset.range n,\n                            ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                      n k *\n                    ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n              n *\n            ∑ j ∈ Finset.range n, (3 : ℚ) / ((2 : ℚ) ^ (j + (1 : ℕ)) - (3 : ℚ)))\n      (5 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s1.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 34,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_range_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (d : ℕ),\n  (0 : ℕ) < d ∧\n    (↑d : ℝ) ^ (2 : ℕ) ≤ (2 : ℝ) ^ ((3 : ℕ) * (5 : ℕ) * (5 : ℕ)) ∧\n      (∃ (z : ℤ),\n          (↑z : ℚ) =\n            (↑d : ℚ) *\n              (fun (n : ℕ) =>\n                  ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                    (fun (n k : ℕ) =>\n                          ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                              ∏ i ∈ Finset.range k,\n                                ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                            ∏ i ∈ Finset.range n,\n                              ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                        n k *\n                      ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n                (5 : ℕ)) ∧\n        ∃ (z : ℤ),\n          (↑z : ℚ) =\n            (↑d : ℚ) *\n              (fun (n : ℕ) =>\n                  ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                      (∑ j ∈ Finset.range (k + (1 : ℕ)),\n                          (fun (n k : ℕ) =>\n                                ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                                    ∏ i ∈ Finset.range k,\n                                      ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                                  ∏ i ∈ Finset.range n,\n                                    ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                              n j /\n                            ((2 : ℚ) ^ (k - j) - (1 : ℚ))) *\n                        ((3 : ℚ) / (2 : ℚ) ^ n) ^ k +\n                    (fun (n : ℕ) =>\n                          ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                            (fun (n k : ℕ) =>\n                                  ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                                      ∏ i ∈ Finset.range k,\n                                        ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 ",
+          "truncated": true
+        }
+      },
+      "id": "s1",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 34,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "simp",
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(653756503247821948956012109840125 : ℤ) : ℚ) =\n  (↑(348621924990976000 : ℕ) : ℚ) *\n    (fun (n : ℕ) =>\n        ∑ k ∈ Finset.range (n + (1 : ℕ)),\n          (fun (n k : ℕ) =>\n                ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                    ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                  ∏ i ∈ Finset.range n,\n                    ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n              n k *\n            ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n      (7 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s2.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 38,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_range_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "simp",
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(674036225808261890798679141926088 : ℤ) : ℚ) =\n  (↑(348621924990976000 : ℕ) : ℚ) *\n    (fun (n : ℕ) =>\n        ∑ k ∈ Finset.range (n + (1 : ℕ)),\n            (∑ j ∈ Finset.range (k + (1 : ℕ)),\n                (fun (n k : ℕ) =>\n                      ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                          ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                        ∏ i ∈ Finset.range n,\n                          ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                    n j /\n                  ((2 : ℚ) ^ (k - j) - (1 : ℚ))) *\n              ((3 : ℚ) / (2 : ℚ) ^ n) ^ k +\n          (fun (n : ℕ) =>\n                ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                  (fun (n k : ℕ) =>\n                        ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                            ∏ i ∈ Finset.range k, ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                          ∏ i ∈ Finset.range n,\n                            ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                      n k *\n                    ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n              n *\n            ∑ j ∈ Finset.range n, (3 : ℚ) / ((2 : ℚ) ^ (j + (1 : ℕ)) - (3 : ℚ)))\n      (7 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s2.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 40,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_succ",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_range_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.prod_range_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (d : ℕ),\n  (0 : ℕ) < d ∧\n    (↑d : ℝ) ^ (2 : ℕ) ≤ (2 : ℝ) ^ ((3 : ℕ) * (7 : ℕ) * (7 : ℕ)) ∧\n      (∃ (z : ℤ),\n          (↑z : ℚ) =\n            (↑d : ℚ) *\n              (fun (n : ℕ) =>\n                  ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                    (fun (n k : ℕ) =>\n                          ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                              ∏ i ∈ Finset.range k,\n                                ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                            ∏ i ∈ Finset.range n,\n                              ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                        n k *\n                      ((3 : ℚ) / (2 : ℚ) ^ n) ^ k)\n                (7 : ℕ)) ∧\n        ∃ (z : ℤ),\n          (↑z : ℚ) =\n            (↑d : ℚ) *\n              (fun (n : ℕ) =>\n                  ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                      (∑ j ∈ Finset.range (k + (1 : ℕ)),\n                          (fun (n k : ℕ) =>\n                                ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                                    ∏ i ∈ Finset.range k,\n                                      ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ))) *\n                                  ∏ i ∈ Finset.range n,\n                                    ((2 : ℚ) ^ ((2 : ℕ) * n - k - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 : ℕ)) - (1 : ℚ)))\n                              n j /\n                            ((2 : ℚ) ^ (k - j) - (1 : ℚ))) *\n                        ((3 : ℚ) / (2 : ℚ) ^ n) ^ k +\n                    (fun (n : ℕ) =>\n                          ∑ k ∈ Finset.range (n + (1 : ℕ)),\n                            (fun (n k : ℕ) =>\n                                  ((-1 : ℚ) ^ k * (2 : ℚ) ^ (k * (k - (1 : ℕ)) / (2 : ℕ)) *\n                                      ∏ i ∈ Finset.range k,\n                                        ((2 : ℚ) ^ (n - i) - (1 : ℚ)) / ((2 : ℚ) ^ (i + (1 ",
+          "truncated": true
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 40,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1050"
+}

@@ -1,0 +1,1191 @@
+{
+  "artifact": {
+    "hash": "fa323391271fdf2483776b16bd702ecd05d47142a7f8b79e5f424eaecccbffdc",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-4cb87a03",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                  "truncated": false
+                }
+              },
+              "id": "prime_divisor.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 16,
+                "start_line": 16
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (d : ℕ), Divides d m ∧ d ≠ (1 : ℕ) ∧ d ≠ m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hex",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "∃ (d : ℕ), Divides d m ∧ d ≠ (1 : ℕ) ∧ d ≠ m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.hex",
+                  "kind": "have",
+                  "name": "hex",
+                  "span": {
+                    "end_line": 22,
+                    "start_line": 17
+                  },
+                  "uses": {
+                    "defs": [
+                      "Opn.Divides"
+                    ],
+                    "mathlib": [
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": "Existential introduction.",
+                        "name": "Exists.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+                        "name": "Or.inl",
+                        "tags": []
+                      },
+                      {
+                        "doc": "`Or.inr` is \"right injection\" into an `Or`.",
+                        "name": "Or.inr",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (d : ℕ), Divides d m ∧ d ≠ (1 : ℕ) ∧ d ≠ m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "d",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "c",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hc",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m = d * c",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hd1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ≠ (1 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hdm",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ≠ m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.s2",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 23,
+                    "start_line": 23
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "d ≠ (0 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hd0",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ≠ (0 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.hd0",
+                  "kind": "have",
+                  "name": "hd0",
+                  "span": {
+                    "end_line": 27,
+                    "start_line": 24
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "c ≠ (0 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hc0",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "c ≠ (0 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.hc0",
+                  "kind": "have",
+                  "name": "hc0",
+                  "span": {
+                    "end_line": 31,
+                    "start_line": 28
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "c ≠ (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hc1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "c ≠ (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.hc1",
+                  "kind": "have",
+                  "name": "hc1",
+                  "span": {
+                    "end_line": 35,
+                    "start_line": 32
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "d * (2 : ℕ) ≤ d * c",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "h2",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "d * (2 : ℕ) ≤ d * c",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "d < m",
+                          "truncated": false
+                        }
+                      },
+                      "id": "prime_divisor.s1.s2.hdlt.h2",
+                      "kind": "have",
+                      "name": "h2",
+                      "span": {
+                        "end_line": 37,
+                        "start_line": 37
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [
+                          {
+                            "doc": null,
+                            "name": "Nat.mul_le_mul_left",
+                            "tags": []
+                          }
+                        ],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "d < m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdlt",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d < m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.hdlt",
+                  "kind": "have",
+                  "name": "hdlt",
+                  "span": {
+                    "end_line": 38,
+                    "start_line": 36
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∃ (p : ℕ), IsPrime p ∧ Divides p d",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "p",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hp'",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "IsPrime p",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "q",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "ℕ",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hq",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d = p * q",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "prime_divisor.s1.s2.s7",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 39,
+                    "start_line": 39
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), IsPrime p ∧ Divides p m",
+                  "truncated": false
+                }
+              },
+              "id": "prime_divisor.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 40,
+                "start_line": 17
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_assoc",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ m_1 < m, (2 : ℕ) ≤ m_1 → ∃ (p : ℕ), IsPrime p ∧ Divides p m_1",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ m → ∃ (p : ℕ), IsPrime p ∧ Divides p m",
+              "truncated": false
+            }
+          },
+          "id": "prime_divisor.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 40,
+            "start_line": 13
+          },
+          "uses": {
+            "defs": [
+              "Opn.IsPrime"
+            ],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (p : ℕ), IsPrime p ∧ Divides p m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "prime_divisor",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), (2 : ℕ) ≤ m → ∃ (p : ℕ), IsPrime p ∧ Divides p m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ p ≤ n.factorial + (1 : ℕ) ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "prime_divisor",
+      "kind": "have",
+      "name": "prime_divisor",
+      "span": {
+        "end_line": 40,
+        "start_line": 10
+      },
+      "uses": {
+        "defs": [
+          "Opn.IsPrime",
+          "Opn.Divides"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.strong_induction_on",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < n.factorial",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < n.factorial",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ p ≤ n.factorial + (1 : ℕ) ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "hpos",
+      "kind": "have",
+      "name": "hpos",
+      "span": {
+        "end_line": 41,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.factorial_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), IsPrime p ∧ Divides p (n.factorial + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "IsPrime p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "n.factorial + (1 : ℕ) = p * c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ p ≤ n.factorial + (1 : ℕ) ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c ≠ (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc0",
+            "type": {
+              "printed": "reliable",
+              "text": "c ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ p ≤ n.factorial + (1 : ℕ) ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "hc0",
+      "kind": "have",
+      "name": "hc0",
+      "span": {
+        "end_line": 45,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p ≤ n.factorial + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hple",
+            "type": {
+              "printed": "reliable",
+              "text": "p ≤ n.factorial + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), n < p ∧ p ≤ n.factorial + (1 : ℕ) ∧ IsPrime p",
+          "truncated": false
+        }
+      },
+      "id": "hple",
+      "kind": "have",
+      "name": "hple",
+      "span": {
+        "end_line": 48,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.le_mul_of_pos_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p ≤ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpn",
+            "type": {
+              "printed": "reliable",
+              "text": "p ≤ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hpn",
+      "kind": "have",
+      "name": "hpn",
+      "span": {
+        "end_line": 51,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℕ) ≤ p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hp2",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hp2",
+      "kind": "have",
+      "name": "hp2",
+      "span": {
+        "end_line": 52,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p ∣ n.factorial",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "he",
+            "type": {
+              "printed": "reliable",
+              "text": "n.factorial = p * e",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 53,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.dvd_factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p * c ≤ p * e",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p * c ≤ p * e",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hec.h'",
+          "kind": "have",
+          "name": "h'",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "e < c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hec",
+            "type": {
+              "printed": "reliable",
+              "text": "e < c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hec",
+      "kind": "have",
+      "name": "hec",
+      "span": {
+        "end_line": 57,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k : ℕ), c = e + k + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "n.factorial + (1 : ℕ) = p * (e + k + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc0",
+            "type": {
+              "printed": "reliable",
+              "text": "e + k + (1 : ℕ) ≠ (0 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hec",
+            "type": {
+              "printed": "reliable",
+              "text": "e < e + k + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s10",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 58,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.exists_eq_add_of_lt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p * (e + k + (1 : ℕ)) = p * e + p * k + p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "ring"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hexp",
+            "type": {
+              "printed": "reliable",
+              "text": "p * (e + k + (1 : ℕ)) = p * e + p * k + p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hexp",
+      "kind": "have",
+      "name": "hexp",
+      "span": {
+        "end_line": 59,
+        "start_line": 59
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

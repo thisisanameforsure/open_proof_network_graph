@@ -1,0 +1,644 @@
+{
+  "artifact": {
+    "hash": "570f0a5ab393cec24508c679f14887af65b52f4f2975b0625edfdabeba090b7a",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-2a7919a9",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ l, x ≤ l.sum",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "bound",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ l, x ≤ l.sum",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "bound",
+      "kind": "have",
+      "name": "bound",
+      "span": {
+        "end_line": 12,
+        "start_line": 10
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "See also `List.le_sum_of_mem`.",
+            "name": "List.single_le_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.zero_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < (n + (1 : ℕ)).factorial",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < (n + (1 : ℕ)).factorial",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(n + (1 : ℕ)).factorial + (1 : ℕ) ≠ (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "euclid.f1.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 16,
+                "start_line": 16
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.factorial_pos",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n + (1 : ℕ)).factorial + (1 : ℕ) ≠ (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "f1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n + (1 : ℕ)).factorial + (1 : ℕ) ≠ (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+              "truncated": false
+            }
+          },
+          "id": "euclid.f1",
+          "kind": "have",
+          "name": "f1",
+          "span": {
+            "end_line": 17,
+            "start_line": 15
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Nat.Prime ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "pp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), n < p ∧ IsPrime p",
+              "truncated": false
+            }
+          },
+          "id": "euclid.pp",
+          "kind": "have",
+          "name": "pp",
+          "span": {
+            "end_line": 18,
+            "start_line": 18
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                "name": "Nat.Prime",
+                "tags": []
+              },
+              {
+                "doc": "Returns the smallest prime factor of `n ≠ 1`.",
+                "name": "Nat.minFac",
+                "tags": []
+              },
+              {
+                "doc": "`Nat.factorial n` is the factorial of `n`.",
+                "name": "Nat.factorial",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.minFac_prime",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac ∣ (n + (1 : ℕ)).factorial",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h₁",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac ∣ (n + (1 : ℕ)).factorial",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "euclid.s3.h1",
+              "kind": "have",
+              "name": "h₁",
+              "span": {
+                "end_line": 22,
+                "start_line": 21
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the smallest prime factor of `n ≠ 1`.",
+                    "name": "Nat.minFac",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`Nat.factorial n` is the factorial of `n`.",
+                    "name": "Nat.factorial",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.dvd_factorial",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.minFac_pos",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac ∣ (1 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h₂",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac ∣ (1 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "euclid.s3.h2",
+              "kind": "have",
+              "name": "h₂",
+              "span": {
+                "end_line": 24,
+                "start_line": 23
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the smallest prime factor of `n ≠ 1`.",
+                    "name": "Nat.minFac",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`Nat.factorial n` is the factorial of `n`.",
+                    "name": "Nat.factorial",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.dvd_add_iff_right",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.minFac_dvd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "n < ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+              "truncated": false
+            }
+          },
+          "id": "euclid.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 25,
+            "start_line": 20
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Divides d ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "c",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hc",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac = d * c",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "d = (1 : ℕ) ∨ d = ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+                  "truncated": false
+                }
+              },
+              "id": "euclid.s4.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 27,
+                "start_line": 27
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (d : ℕ),\n  Divides d ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac → d = (1 : ℕ) ∨ d = ((n + (1 : ℕ)).factorial + (1 : ℕ)).minFac",
+              "truncated": false
+            }
+          },
+          "id": "euclid.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 28,
+            "start_line": 26
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.dvd_prime",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), ∃ (p : ℕ), n < p ∧ IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "euclid",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), ∃ (p : ℕ), n < p ∧ IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "euclid",
+      "kind": "have",
+      "name": "euclid",
+      "span": {
+        "end_line": 28,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [
+          "Opn.IsPrime"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "Returns the smallest prime factor of `n ≠ 1`.",
+            "name": "Nat.minFac",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), l.sum < p ∧ IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hlt",
+            "type": {
+              "printed": "reliable",
+              "text": "l.sum < p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 29,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p ≤ l.sum",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "p ≤ l.sum",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 31,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

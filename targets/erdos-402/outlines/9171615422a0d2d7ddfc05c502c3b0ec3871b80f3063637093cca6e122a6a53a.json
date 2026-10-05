@@ -1,0 +1,6351 @@
+{
+  "artifact": {
+    "hash": "9171615422a0d2d7ddfc05c502c3b0ec3871b80f3063637093cca6e122a6a53a",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-402--h3-v2--h1--h1--h1--h2--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Nat.Prime p.minFac",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p.minFac",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "lvl.hq",
+          "kind": "have",
+          "name": "hq",
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.minFac_prime",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p.minFac ^ (2 : ℕ) ≤ p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.minFac ^ (2 : ℕ) ≤ p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "lvl.hsq",
+          "kind": "have",
+          "name": "hsq",
+          "span": {
+            "end_line": 26,
+            "start_line": 26
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The square of the smallest prime factor of a composite number `n` is at most `n`.",
+                "name": "Nat.minFac_sq_le_self",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p.minFac < B",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "nlinarith"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.minFac < B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "lvl.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 27,
+            "start_line": 27
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p.minFac.gcd Q ∣ p.gcd Q",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.minFac.gcd Q ∣ p.gcd Q",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "p.minFac.gcd Q = (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "lvl.hd",
+          "kind": "have",
+          "name": "hd",
+          "span": {
+            "end_line": 29,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_gcd_of_dvd_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.minFac_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (B Q : ℕ),\n  (∀ q < B, (2 : ℕ) ≤ q → q.gcd Q ≠ (1 : ℕ)) → ∀ (p : ℕ), (1 : ℕ) < p → p < B * B → p.gcd Q = (1 : ℕ) → Nat.Prime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "lvl",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (B Q : ℕ),\n  (∀ q < B, (2 : ℕ) ≤ q → q.gcd Q ≠ (1 : ℕ)) → ∀ (p : ℕ), (1 : ℕ) < p → p < B * B → p.gcd Q = (1 : ℕ) → Nat.Prime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "lvl",
+      "kind": "have",
+      "name": "lvl",
+      "span": {
+        "end_line": 31,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Computes the greatest common divisor of two natural numbers.",
+            "name": "Nat.gcd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.eq_one_of_dvd_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) < p ∧\n  ((p < (49 : ℕ) ∧ p.gcd (30 : ℕ) = (1 : ℕ) ∨ p < (900 : ℕ) ∧ p.gcd (6469693230 : ℕ) = (1 : ℕ)) ∨\n    p < (401956 : ℕ) ∧\n      p.gcd\n          (1702638442551072365617326631534342245041465988544372563961893321511809758012320472936554398121035062403896046404654753749168137340872368042807946221263167725872661266685741122100016726950864909508767802965271369340352229248204502328104750019252611639587225304330 :\n            ℕ) =\n        (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) < p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p < (49 : ℕ)",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.gcd (30 : ℕ) = (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          "id": "hP.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 35,
+            "start_line": 35
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          "id": "hP.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 36,
+            "start_line": 36
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+                "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          "id": "hP.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 37,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+                "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          "id": "hP.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 38,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+                "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p : ℕ),\n  (decide ((1 : ℕ) < p) &&\n        (decide (p < (49 : ℕ)) && decide (p.gcd (30 : ℕ) = (1 : ℕ)) ||\n            decide (p < (900 : ℕ)) && decide (p.gcd (6469693230 : ℕ) = (1 : ℕ)) ||\n          decide (p < (401956 : ℕ)) &&\n            decide\n              (p.gcd\n                  (1702638442551072365617326631534342245041465988544372563961893321511809758012320472936554398121035062403896046404654753749168137340872368042807946221263167725872661266685741122100016726950864909508767802965271369340352229248204502328104750019252611639587225304330 :\n                    ℕ) =\n                (1 : ℕ)))) =\n      true →\n    Nat.Prime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hP",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ),\n  (decide ((1 : ℕ) < p) &&\n        (decide (p < (49 : ℕ)) && decide (p.gcd (30 : ℕ) = (1 : ℕ)) ||\n            decide (p < (900 : ℕ)) && decide (p.gcd (6469693230 : ℕ) = (1 : ℕ)) ||\n          decide (p < (401956 : ℕ)) &&\n            decide\n              (p.gcd\n                  (1702638442551072365617326631534342245041465988544372563961893321511809758012320472936554398121035062403896046404654753749168137340872368042807946221263167725872661266685741122100016726950864909508767802965271369340352229248204502328104750019252611639587225304330 :\n                    ℕ) =\n                (1 : ℕ)))) =\n      true →\n    Nat.Prime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "hP",
+      "kind": "have",
+      "name": "hP",
+      "span": {
+        "end_line": 38,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Converts a decidable proposition into a `Bool`.",
+            "name": "Decidable.decide",
+            "tags": []
+          },
+          {
+            "doc": "Computes the greatest common divisor of two natural numbers.",
+            "name": "Nat.gcd",
+            "tags": []
+          },
+          {
+            "doc": "The Boolean value `true`, not to be confused with the proposition `True`.",
+            "name": "Bool.true",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Bool.and_eq_true",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Bool.or_eq_true",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "decide_eq_true_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (a : ℕ),\n  List.foldr\n        (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n          t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n              decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n            f (x.2 + (1 : ℕ)))\n        (fun (lo : ℕ) => decide (b < lo)) [] a =\n      true →\n    ∀ (n : ℕ),\n      a ≤ n → n ≤ b → ∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+              "truncated": false
+            }
+          },
+          "id": "key.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 51,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The empty list, usually written `[]`.",
+                "name": "List.nil",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "List.foldr_nil",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "decide_eq_true_eq",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(((t x.1 = true ∧ x.2 < x.1) ∧ x.1 < (2 : ℕ) * a) ∧ ((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ a) ∧\n  List.foldr\n      (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n        t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n            decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n          f (x.2 + (1 : ℕ)))\n      (fun (lo : ℕ) => decide (b < lo)) L (x.2 + (1 : ℕ)) =\n    true",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "c7",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "List.foldr\n    (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n      t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n          decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n        f (x.2 + (1 : ℕ)))\n    (fun (lo : ℕ) => decide (b < lo)) L (x.2 + (1 : ℕ)) =\n  true",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "c6",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ a",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "c5",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x.1 < (2 : ℕ) * a",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "c1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "t x.1 = true",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "c4",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x.2 < x.1",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 55,
+                "start_line": 55
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(2 : ℕ) * n - x.1 ≤ (2 : ℕ) * x.2 - x.1",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h3",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) * n - x.1 ≤ (2 : ℕ) * x.2 - x.1",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "((2 : ℕ) * n - x.1) * ((2 : ℕ) * n - x.1) ≤ n",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s2.h3",
+                  "kind": "have",
+                  "name": "h3",
+                  "span": {
+                    "end_line": 58,
+                    "start_line": 58
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 59,
+                "start_line": 57
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The relation `≤` on a preorder is transitive.",
+                    "name": "le_trans",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 60,
+                "start_line": 60
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ × ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "L",
+                "type": {
+                  "printed": "reliable",
+                  "text": "List (ℕ × ℕ)",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (a : ℕ),\n  List.foldr\n        (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n          t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n              decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n            f (x.2 + (1 : ℕ)))\n        (fun (lo : ℕ) => decide (b < lo)) L a =\n      true →\n    ∀ (n : ℕ),\n      a ≤ n → n ≤ b → ∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (a : ℕ),\n  List.foldr\n        (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n          t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n              decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n            f (x.2 + (1 : ℕ)))\n        (fun (lo : ℕ) => decide (b < lo)) (x :: L) a =\n      true →\n    ∀ (n : ℕ),\n      a ≤ n → n ≤ b → ∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+              "truncated": false
+            }
+          },
+          "id": "key.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 60,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The list whose first element is `head`, where `tail` is the rest of the list.",
+                "name": "List.cons",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "List.foldr_cons",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Bool.and_eq_true",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "decide_eq_true_eq",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (t : ℕ → Bool),\n  (∀ (p : ℕ), t p = true → Nat.Prime p) →\n    ∀ (b : ℕ) (L : List (ℕ × ℕ)) (a : ℕ),\n      List.foldr\n            (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n              t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n                  decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n                f (x.2 + (1 : ℕ)))\n            (fun (lo : ℕ) => decide (b < lo)) L a =\n          true →\n        ∀ (n : ℕ),\n          a ≤ n → n ≤ b → ∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (t : ℕ → Bool),\n  (∀ (p : ℕ), t p = true → Nat.Prime p) →\n    ∀ (b : ℕ) (L : List (ℕ × ℕ)) (a : ℕ),\n      List.foldr\n            (fun (x : ℕ × ℕ) (f : ℕ → Bool) (lo : ℕ) =>\n              t x.1 && decide (x.2 < x.1) && decide (x.1 < (2 : ℕ) * lo) &&\n                  decide (((2 : ℕ) * x.2 - x.1) * ((2 : ℕ) * x.2 - x.1) ≤ lo) &&\n                f (x.2 + (1 : ℕ)))\n            (fun (lo : ℕ) => decide (b < lo)) L a =\n          true →\n        ∀ (n : ℕ),\n          a ≤ n → n ≤ b → ∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 60,
+        "start_line": 39
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The Boolean values, `true` and `false`.",
+            "name": "Bool",
+            "tags": []
+          },
+          {
+            "doc": "The Boolean value `true`, not to be confused with the proposition `True`.",
+            "name": "Bool.true",
+            "tags": []
+          },
+          {
+            "doc": "Linked lists: ordered lists, in which each element has a reference to the next element.",
+            "name": "List",
+            "tags": []
+          },
+          {
+            "doc": "Folds a function over a list from the right, accumulating a value starting with `init`.",
+            "name": "List.foldr",
+            "tags": []
+          },
+          {
+            "doc": "Converts a decidable proposition into a `Bool`.",
+            "name": "Decidable.decide",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * k ≤ n + (2 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 70,
+                "start_line": 70
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(3 : ℕ) * k ≤ k * k",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(3 : ℕ) * k ≤ k * k",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) * k ≤ n + (2 : ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "r5b_bridge.s1.s2.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 71,
+                    "start_line": 71
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_le_mul_right",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * k ≤ n + (2 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 72,
+                "start_line": 71
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) * k ≤ n + (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "r5b_bridge.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 72,
+            "start_line": 69
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_or_ge",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "α * y < n * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α * y < n * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 77,
+                "start_line": 77
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < α",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "α0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < α",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2._x3b10",
+              "kind": "have",
+              "name": "α0",
+              "span": {
+                "end_line": 78,
+                "start_line": 78
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "x * y ≤ α",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x * y ≤ α",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.hx",
+              "kind": "have",
+              "name": "hx",
+              "span": {
+                "end_line": 79,
+                "start_line": 79
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.le_of_dvd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (s : ℕ), n = α + s",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "s",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α + s < p",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p < (2 : ℕ) * (α + s)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℕ) * (α + s) - p = k",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h3",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "k * k ≤ α + s",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hα1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α < α + s",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hα2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p < α + (α + s)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hc",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬(α + s) * x ≤ α * y",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α * y < (α + s) * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.s4",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 80,
+                "start_line": 80
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "s < k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hs",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "s < k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.hs",
+              "kind": "have",
+              "name": "hs",
+              "span": {
+                "end_line": 81,
+                "start_line": 81
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a1",
+              "kind": "have",
+              "name": "a1",
+              "span": {
+                "end_line": 82,
+                "start_line": 82
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "α < s * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "nlinarith"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "α < s * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a2",
+              "kind": "have",
+              "name": "a2",
+              "span": {
+                "end_line": 83,
+                "start_line": 83
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a3",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a3",
+              "kind": "have",
+              "name": "a3",
+              "span": {
+                "end_line": 84,
+                "start_line": 84
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "s * x ≤ (x + (1 : ℕ)) * x",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "s * x ≤ (x + (1 : ℕ)) * x",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "r5b_bridge.s2.a4.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 87,
+                    "start_line": 87
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_le_mul_right",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "x + (1 : ℕ) < s",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a4",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x + (1 : ℕ) < s",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a4",
+              "kind": "have",
+              "name": "a4",
+              "span": {
+                "end_line": 88,
+                "start_line": 85
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(s + (1 : ℕ)) * (s + (1 : ℕ)) ≤ k * k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a5",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(s + (1 : ℕ)) * (s + (1 : ℕ)) ≤ k * k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a5",
+              "kind": "have",
+              "name": "a5",
+              "span": {
+                "end_line": 89,
+                "start_line": 89
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "s * x ≤ s * s",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a6",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "s * x ≤ s * s",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_bridge.s2.a6",
+              "kind": "have",
+              "name": "a6",
+              "span": {
+                "end_line": 90,
+                "start_line": 90
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ α < n,\n  p < α + n →\n    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨ ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_bridge.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 91,
+            "start_line": 73
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n p : ℕ),\n  n < p →\n    p < (2 : ℕ) * n →\n      ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n →\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_bridge",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n p : ℕ),\n  n < p →\n    p < (2 : ℕ) * n →\n      ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n →\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_bridge",
+      "kind": "have",
+      "name": "r5b_bridge",
+      "span": {
+        "end_line": 91,
+        "start_line": 61
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "b",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p < (2 : ℕ) * n",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "c",
+                "type": {
+                  "printed": "reliable",
+                  "text": "((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "fin.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 98,
+            "start_line": 98
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n  ∀ α < n,\n    p < α + n →\n      (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨ ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "br",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n  ∀ α < n,\n    p < α + n →\n      (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨ ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "fin.br",
+          "kind": "have",
+          "name": "br",
+          "span": {
+            "end_line": 99,
+            "start_line": 99
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  (∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n) →\n    ∃ (p : ℕ),\n      Nat.Prime p ∧\n        n < p ∧\n          p < (2 : ℕ) * n ∧\n            (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n              ∀ α < n,\n                p < α + n →\n                  (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                    ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "fin",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ),\n  (∃ (p : ℕ), Nat.Prime p ∧ n < p ∧ p < (2 : ℕ) * n ∧ ((2 : ℕ) * n - p) * ((2 : ℕ) * n - p) ≤ n) →\n    ∃ (p : ℕ),\n      Nat.Prime p ∧\n        n < p ∧\n          p < (2 : ℕ) * n ∧\n            (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n              ∀ α < n,\n                p < α + n →\n                  (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                    ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "fin",
+      "kind": "have",
+      "name": "fin",
+      "span": {
+        "end_line": 100,
+        "start_line": 92
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ∣ α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α = x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(270 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 109,
+            "start_line": 109
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * y < (270 : ℕ) * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * y < (270 : ℕ) * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 111,
+            "start_line": 111
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.m0",
+          "kind": "have",
+          "name": "m0",
+          "span": {
+            "end_line": 112,
+            "start_line": 112
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(254 : ℕ) * x ≤ α * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(254 : ℕ) * x ≤ α * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b1",
+          "kind": "have",
+          "name": "b1",
+          "span": {
+            "end_line": 113,
+            "start_line": 113
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b2",
+          "kind": "have",
+          "name": "b2",
+          "span": {
+            "end_line": 114,
+            "start_line": 114
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) = α * x + α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) = α * x + α",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b2'",
+          "kind": "have",
+          "name": "b2'",
+          "span": {
+            "end_line": 115,
+            "start_line": 115
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(254 : ℕ) * y ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(254 : ℕ) * y ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b3",
+          "kind": "have",
+          "name": "b3",
+          "span": {
+            "end_line": 116,
+            "start_line": 116
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) ≤ x * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b4",
+          "kind": "have",
+          "name": "b4",
+          "span": {
+            "end_line": 117,
+            "start_line": 117
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) = x * x + x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) = x * x + x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b4'",
+          "kind": "have",
+          "name": "b4'",
+          "span": {
+            "end_line": 118,
+            "start_line": 118
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ≤ x * y * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b5",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * y ≤ x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.b5",
+          "kind": "have",
+          "name": "b5",
+          "span": {
+            "end_line": 119,
+            "start_line": 119
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(16 : ℕ) ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(16 : ℕ) ≤ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 120,
+            "start_line": 120
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(16 : ℕ) * (16 : ℕ) ≤ x * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(16 : ℕ) * (16 : ℕ) ≤ x * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_270.x2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 123,
+                "start_line": 123
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≤ (15 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≤ (15 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_270.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 124,
+            "start_line": 121
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (270 : ℕ) < p ∧\n      p < (2 : ℕ) * (270 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (270 : ℕ) - p) ≤ (270 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (270 : ℕ),\n            p < α + (270 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (270 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (270 : ℕ) * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_cert_270",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (270 : ℕ) < p ∧\n      p < (2 : ℕ) * (270 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (270 : ℕ) - p) ≤ (270 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (270 : ℕ),\n            p < α + (270 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (270 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (270 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_cert_270",
+      "kind": "have",
+      "name": "r5b_cert_270",
+      "span": {
+        "end_line": 125,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ∣ α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α = x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(677 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 134,
+            "start_line": 134
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * y < (677 : ℕ) * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * y < (677 : ℕ) * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 136,
+            "start_line": 136
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.m0",
+          "kind": "have",
+          "name": "m0",
+          "span": {
+            "end_line": 137,
+            "start_line": 137
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(651 : ℕ) * x ≤ α * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(651 : ℕ) * x ≤ α * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b1",
+          "kind": "have",
+          "name": "b1",
+          "span": {
+            "end_line": 138,
+            "start_line": 138
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b2",
+          "kind": "have",
+          "name": "b2",
+          "span": {
+            "end_line": 139,
+            "start_line": 139
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) = α * x + α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) = α * x + α",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b2'",
+          "kind": "have",
+          "name": "b2'",
+          "span": {
+            "end_line": 140,
+            "start_line": 140
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(651 : ℕ) * y ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(651 : ℕ) * y ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b3",
+          "kind": "have",
+          "name": "b3",
+          "span": {
+            "end_line": 141,
+            "start_line": 141
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) ≤ x * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b4",
+          "kind": "have",
+          "name": "b4",
+          "span": {
+            "end_line": 142,
+            "start_line": 142
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) = x * x + x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) = x * x + x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b4'",
+          "kind": "have",
+          "name": "b4'",
+          "span": {
+            "end_line": 143,
+            "start_line": 143
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ≤ x * y * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b5",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * y ≤ x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.b5",
+          "kind": "have",
+          "name": "b5",
+          "span": {
+            "end_line": 144,
+            "start_line": 144
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(26 : ℕ) ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(26 : ℕ) ≤ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 145,
+            "start_line": 145
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_677.x2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 148,
+                "start_line": 148
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≤ (25 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≤ (25 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_677.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 149,
+            "start_line": 146
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (677 : ℕ) < p ∧\n      p < (2 : ℕ) * (677 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (677 : ℕ) - p) ≤ (677 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (677 : ℕ),\n            p < α + (677 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (677 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (677 : ℕ) * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_cert_677",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (677 : ℕ) < p ∧\n      p < (2 : ℕ) * (677 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (677 : ℕ) - p) ≤ (677 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (677 : ℕ),\n            p < α + (677 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (677 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (677 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_cert_677",
+      "kind": "have",
+      "name": "r5b_cert_677",
+      "span": {
+        "end_line": 150,
+        "start_line": 126
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∃ (q : ℕ), Nat.Prime q ∧ (678 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * ((1327 : ℕ) - α)) ∨\n  ∀ (x y : ℕ), x < y → x * y ∣ α → (678 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 159,
+            "start_line": 158
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ∣ α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α = x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(678 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 162,
+            "start_line": 162
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * y < (678 : ℕ) * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * y < (678 : ℕ) * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 164,
+            "start_line": 164
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.m0",
+          "kind": "have",
+          "name": "m0",
+          "span": {
+            "end_line": 165,
+            "start_line": 165
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(650 : ℕ) * x ≤ α * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(650 : ℕ) * x ≤ α * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b1",
+          "kind": "have",
+          "name": "b1",
+          "span": {
+            "end_line": 166,
+            "start_line": 166
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b2",
+          "kind": "have",
+          "name": "b2",
+          "span": {
+            "end_line": 167,
+            "start_line": 167
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) = α * x + α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) = α * x + α",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b2'",
+          "kind": "have",
+          "name": "b2'",
+          "span": {
+            "end_line": 168,
+            "start_line": 168
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(650 : ℕ) * y ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(650 : ℕ) * y ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b3",
+          "kind": "have",
+          "name": "b3",
+          "span": {
+            "end_line": 169,
+            "start_line": 169
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) ≤ x * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b4",
+          "kind": "have",
+          "name": "b4",
+          "span": {
+            "end_line": 170,
+            "start_line": 170
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) = x * x + x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) = x * x + x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b4'",
+          "kind": "have",
+          "name": "b4'",
+          "span": {
+            "end_line": 171,
+            "start_line": 171
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ≤ x * y * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b5",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * y ≤ x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.b5",
+          "kind": "have",
+          "name": "b5",
+          "span": {
+            "end_line": 172,
+            "start_line": 172
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(24 : ℕ) ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(24 : ℕ) ≤ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 173,
+            "start_line": 173
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_678.x2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 176,
+                "start_line": 176
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≤ (25 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≤ (25 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 177,
+            "start_line": 174
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (25 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (25 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_678.s14.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 179,
+                "start_line": 179
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.s14",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 180,
+            "start_line": 179
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (26 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (26 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_678.s15.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 181,
+                "start_line": 181
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_678.s15",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 182,
+            "start_line": 181
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (678 : ℕ) < p ∧\n      p < (2 : ℕ) * (678 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (678 : ℕ) - p) ≤ (678 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (678 : ℕ),\n            p < α + (678 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (678 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (678 : ℕ) * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_cert_678",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (678 : ℕ) < p ∧\n      p < (2 : ℕ) * (678 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (678 : ℕ) - p) ≤ (678 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (678 : ℕ),\n            p < α + (678 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (678 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (678 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_cert_678",
+      "kind": "have",
+      "name": "r5b_cert_678",
+      "span": {
+        "end_line": 182,
+        "start_line": 151
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∃ (q : ℕ), Nat.Prime q ∧ (679 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * ((1327 : ℕ) - α)) ∨\n  ∀ (x y : ℕ), x < y → x * y ∣ α → (679 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 191,
+            "start_line": 190
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ∣ α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α = x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(679 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 194,
+            "start_line": 194
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * y < (679 : ℕ) * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * y < (679 : ℕ) * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 196,
+            "start_line": 196
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.m0",
+          "kind": "have",
+          "name": "m0",
+          "span": {
+            "end_line": 197,
+            "start_line": 197
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(649 : ℕ) * x ≤ α * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(649 : ℕ) * x ≤ α * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b1",
+          "kind": "have",
+          "name": "b1",
+          "span": {
+            "end_line": 198,
+            "start_line": 198
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b2",
+          "kind": "have",
+          "name": "b2",
+          "span": {
+            "end_line": 199,
+            "start_line": 199
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) = α * x + α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) = α * x + α",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b2'",
+          "kind": "have",
+          "name": "b2'",
+          "span": {
+            "end_line": 200,
+            "start_line": 200
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(649 : ℕ) * y ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(649 : ℕ) * y ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b3",
+          "kind": "have",
+          "name": "b3",
+          "span": {
+            "end_line": 201,
+            "start_line": 201
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) ≤ x * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b4",
+          "kind": "have",
+          "name": "b4",
+          "span": {
+            "end_line": 202,
+            "start_line": 202
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) = x * x + x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) = x * x + x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b4'",
+          "kind": "have",
+          "name": "b4'",
+          "span": {
+            "end_line": 203,
+            "start_line": 203
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ≤ x * y * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b5",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * y ≤ x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.b5",
+          "kind": "have",
+          "name": "b5",
+          "span": {
+            "end_line": 204,
+            "start_line": 204
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(22 : ℕ) ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(22 : ℕ) ≤ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 205,
+            "start_line": 205
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_679.x2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 208,
+                "start_line": 208
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≤ (25 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≤ (25 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 209,
+            "start_line": 206
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (23 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (23 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_679.s14.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 211,
+                "start_line": 211
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s14",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 212,
+            "start_line": 211
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (24 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (24 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_679.s15.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 213,
+                "start_line": 213
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s15",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 214,
+            "start_line": 213
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (25 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (25 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_679.s16.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 215,
+                "start_line": 215
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s16",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 216,
+            "start_line": 215
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (26 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (26 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_679.s17.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 217,
+                "start_line": 217
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_679.s17",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 218,
+            "start_line": 217
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (679 : ℕ) < p ∧\n      p < (2 : ℕ) * (679 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (679 : ℕ) - p) ≤ (679 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (679 : ℕ),\n            p < α + (679 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (679 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (679 : ℕ) * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_cert_679",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (679 : ℕ) < p ∧\n      p < (2 : ℕ) * (679 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (679 : ℕ) - p) ≤ (679 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (679 : ℕ),\n            p < α + (679 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (679 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (679 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_cert_679",
+      "kind": "have",
+      "name": "r5b_cert_679",
+      "span": {
+        "end_line": 218,
+        "start_line": 183
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∃ (q : ℕ), Nat.Prime q ∧ (680 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * ((1327 : ℕ) - α)) ∨\n  ∀ (x y : ℕ), x < y → x * y ∣ α → (680 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 227,
+            "start_line": 226
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ∣ α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α = x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(680 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 230,
+            "start_line": 230
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * y < (680 : ℕ) * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * y < (680 : ℕ) * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 232,
+            "start_line": 232
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "m0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.m0",
+          "kind": "have",
+          "name": "m0",
+          "span": {
+            "end_line": 233,
+            "start_line": 233
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.pos_of_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(648 : ℕ) * x ≤ α * x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(648 : ℕ) * x ≤ α * x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b1",
+          "kind": "have",
+          "name": "b1",
+          "span": {
+            "end_line": 234,
+            "start_line": 234
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b2",
+          "kind": "have",
+          "name": "b2",
+          "span": {
+            "end_line": 235,
+            "start_line": 235
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "α * (x + (1 : ℕ)) = α * x + α",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "α * (x + (1 : ℕ)) = α * x + α",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b2'",
+          "kind": "have",
+          "name": "b2'",
+          "span": {
+            "end_line": 236,
+            "start_line": 236
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(648 : ℕ) * y ≤ α * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(648 : ℕ) * y ≤ α * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b3",
+          "kind": "have",
+          "name": "b3",
+          "span": {
+            "end_line": 237,
+            "start_line": 237
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) ≤ x * y",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) ≤ x * y",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b4",
+          "kind": "have",
+          "name": "b4",
+          "span": {
+            "end_line": 238,
+            "start_line": 238
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * (x + (1 : ℕ)) = x * x + x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b4'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * (x + (1 : ℕ)) = x * x + x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b4'",
+          "kind": "have",
+          "name": "b4'",
+          "span": {
+            "end_line": 239,
+            "start_line": 239
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x * y ≤ x * y * m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b5",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x * y ≤ x * y * m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.b5",
+          "kind": "have",
+          "name": "b5",
+          "span": {
+            "end_line": 240,
+            "start_line": 240
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(21 : ℕ) ≤ x",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(21 : ℕ) ≤ x",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 241,
+            "start_line": 241
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(26 : ℕ) * (26 : ℕ) ≤ x * x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.x2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 244,
+                "start_line": 244
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.mul_le_mul",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ≤ (25 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ≤ (25 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 245,
+            "start_line": 242
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (22 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (22 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.s14.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 247,
+                "start_line": 247
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s14",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 248,
+            "start_line": 247
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (23 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (23 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.s15.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 249,
+                "start_line": 249
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s15",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 250,
+            "start_line": 249
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (24 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (24 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.s16.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 251,
+                "start_line": 251
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s16",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 252,
+            "start_line": 251
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (25 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (25 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.s17.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 253,
+                "start_line": 253
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s17",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 254,
+            "start_line": 253
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "y ≤ (26 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "y2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y ≤ (26 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "r5b_cert_680.s18.y2",
+              "kind": "have",
+              "name": "y2",
+              "span": {
+                "end_line": 255,
+                "start_line": 255
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "r5b_cert_680.s18",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 256,
+            "start_line": 255
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (680 : ℕ) < p ∧\n      p < (2 : ℕ) * (680 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (680 : ℕ) - p) ≤ (680 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (680 : ℕ),\n            p < α + (680 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (680 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (680 : ℕ) * x ≤ α * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r5b_cert_680",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (680 : ℕ) < p ∧\n      p < (2 : ℕ) * (680 : ℕ) ∧\n        (2 : ℕ) * ((2 : ℕ) * (680 : ℕ) - p) ≤ (680 : ℕ) + (2 : ℕ) ∧\n          ∀ α < (680 : ℕ),\n            p < α + (680 : ℕ) →\n              (∃ (q : ℕ), Nat.Prime q ∧ (680 : ℕ) ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → (680 : ℕ) * x ≤ α * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (229 : ℕ) ≤ n →\n    n ≤ (200014 : ℕ) →\n      ∃ (p : ℕ),\n        Nat.Prime p ∧\n          n < p ∧\n            p < (2 : ℕ) * n ∧\n              (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n                ∀ α < n,\n                  p < α + n →\n                    (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                      ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "r5b_cert_680",
+      "kind": "have",
+      "name": "r5b_cert_680",
+      "span": {
+        "end_line": 256,
+        "start_line": 219
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s11",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 260,
+        "start_line": 259
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s12",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 263,
+        "start_line": 262
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s13",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 266,
+        "start_line": 265
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s14",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 269,
+        "start_line": 268
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s15",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 272,
+        "start_line": 271
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s16",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 274,
+        "start_line": 274
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Converts a decidable proposition into a `Bool`.",
+            "name": "Decidable.decide",
+            "tags": []
+          },
+          {
+            "doc": "Computes the greatest common divisor of two natural numbers.",
+            "name": "Nat.gcd",
+            "tags": []
+          },
+          {
+            "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+            "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s17",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 276,
+        "start_line": 276
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Converts a decidable proposition into a `Bool`.",
+            "name": "Decidable.decide",
+            "tags": []
+          },
+          {
+            "doc": "Computes the greatest common divisor of two natural numbers.",
+            "name": "Nat.gcd",
+            "tags": []
+          },
+          {
+            "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+            "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    n < p ∧\n      p < (2 : ℕ) * n ∧\n        (2 : ℕ) * ((2 : ℕ) * n - p) ≤ n + (2 : ℕ) ∧\n          ∀ α < n,\n            p < α + n →\n              (∃ (q : ℕ), Nat.Prime q ∧ n ≤ (3 : ℕ) * q ∧ q ∣ α * (p - α)) ∨\n                ∀ (x y : ℕ), x < y → x * y ∣ α → n * x ≤ α * y",
+          "truncated": false
+        }
+      },
+      "id": "s18",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 278,
+        "start_line": 278
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Converts a decidable proposition into a `Bool`.",
+            "name": "Decidable.decide",
+            "tags": []
+          },
+          {
+            "doc": "Computes the greatest common divisor of two natural numbers.",
+            "name": "Nat.gcd",
+            "tags": []
+          },
+          {
+            "doc": "If true (default: false), then use only kernel reduction when reducing the `Decidable` instance.",
+            "name": "Lean.Parser.Tactic.DecideConfig.kernel",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}

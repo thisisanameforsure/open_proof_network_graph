@@ -1,0 +1,211 @@
+{
+  "artifact": {
+    "hash": "8e5e204d1864a61272e73202b67e8a3d576e6dc4802851bc4c81fb9798bbb5c8",
+    "kind": "partial",
+    "path": "attempts/20260919T185907Z-euclid-list-61d1ea-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "variant-2a7919a9",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-2a7919a9--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ x ∈ l, x ≤ l.sum",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "bound",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ x ∈ l, x ≤ l.sum",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "bound",
+      "kind": "hole",
+      "name": "bound",
+      "span": {
+        "end_line": 11,
+        "start_line": 11
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "variant-2a7919a9--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), l.sum < p ∧ IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "euclid",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), l.sum < p ∧ IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "euclid",
+      "kind": "hole",
+      "name": "euclid",
+      "span": {
+        "end_line": 12,
+        "start_line": 12
+      },
+      "uses": {
+        "defs": [
+          "Opn.IsPrime"
+        ],
+        "mathlib": [
+          {
+            "doc": "The natural numbers, starting at zero.",
+            "name": "Nat",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), l.sum < p ∧ IsPrime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hlt",
+            "type": {
+              "printed": "reliable",
+              "text": "l.sum < p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "IsPrime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), IsPrime p ∧ p ∉ l",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 13,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "p ≤ l.sum",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "p ≤ l.sum",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 15,
+        "start_line": 15
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "euclid-primes"
+}

@@ -1,0 +1,522 @@
+{
+  "artifact": {
+    "hash": "7dd62d20fd297d29c6e79b8256fb1d55777c651d90401d5ae09d0b9565d16984",
+    "kind": "partial",
+    "path": "attempts/20260917T141927Z-calib-402-f480-partial.lean"
+  },
+  "gate": "82834c4684b8e4130e5c23ad9d6afc6dad4dc1bb",
+  "node": "erdos-402",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-402--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Finset ℕ) (m : ℕ),\n  (0 : ℕ) ∉ A →\n    (∀ a ∈ A, ∀ b ∈ A, a ≤ m * a.gcd b) →\n      ∀ a ∈ A, ∀ b ∈ A, ∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Finset ℕ) (m : ℕ),\n  (0 : ℕ) ∉ A →\n    (∀ a ∈ A, ∀ b ∈ A, a ≤ m * a.gcd b) →\n      ∀ a ∈ A, ∀ b ∈ A, ∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ m ∧ (0 : ℕ) < v ∧ v ≤ m ∧ u.Coprime v ∧ a * v = b * u",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (A : Finset ℕ), (0 : ℕ) ∉ A → A.Nonempty → ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 30,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-402--h2-v2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Finset ℕ),\n  (0 : ℕ) ∉ A →\n    A.Nonempty →\n      (∀ (B : Finset ℕ),\n          (0 : ℕ) ∉ B →\n            B.card = A.card → B.gcd id = (1 : ℕ) → ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)) →\n        ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Finset ℕ),\n  (0 : ℕ) ∉ A →\n    A.Nonempty →\n      (∀ (B : Finset ℕ),\n          (0 : ℕ) ∉ B →\n            B.card = A.card → B.gcd id = (1 : ℕ) → ∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)) →\n        ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (A : Finset ℕ), (0 : ℕ) ∉ A → A.Nonempty → ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "hole",
+      "name": "h2",
+      "span": {
+        "end_line": 36,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-402--h3-v2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Finset ℕ),\n  (0 : ℕ) ∉ A →\n    A.Nonempty →\n      A.gcd id = (1 : ℕ) →\n        (∀ a ∈ A,\n            ∀ b ∈ A,\n              ∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ A.card ∧ (0 : ℕ) < v ∧ v ≤ A.card ∧ u.Coprime v ∧ a * v = b * u) →\n          ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Finset ℕ),\n  (0 : ℕ) ∉ A →\n    A.Nonempty →\n      A.gcd id = (1 : ℕ) →\n        (∀ a ∈ A,\n            ∀ b ∈ A,\n              ∃ (u : ℕ) (v : ℕ), (0 : ℕ) < u ∧ u ≤ A.card ∧ (0 : ℕ) < v ∧ v ≤ A.card ∧ u.Coprime v ∧ a * v = b * u) →\n          ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (A : Finset ℕ), (0 : ℕ) ∉ A → A.Nonempty → ∃ a ∈ A, ∃ b ∈ A, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑A.card : ℚ)",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "hole",
+      "name": "h3",
+      "span": {
+        "end_line": 43,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "The identity function.",
+            "name": "id",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "B.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hBne",
+            "type": {
+              "printed": "reliable",
+              "text": "B.Nonempty",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hBne",
+      "kind": "have",
+      "name": "hBne",
+      "span": {
+        "end_line": 54,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.card_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑a : ℚ) / (↑B.card : ℚ) < (↑(a.gcd b) : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑a : ℚ) / (↑B.card : ℚ) < (↑(a.gcd b) : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hbound.h",
+          "kind": "have",
+          "name": "h",
+          "span": {
+            "end_line": 57,
+            "start_line": 57
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℚ) < (↑B.card : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℚ) < (↑B.card : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hbound.hpos",
+          "kind": "have",
+          "name": "hpos",
+          "span": {
+            "end_line": 58,
+            "start_line": 58
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑a : ℚ) < (↑(a.gcd b) : ℚ) * (↑B.card : ℚ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑a : ℚ) < (↑(a.gcd b) : ℚ) * (↑B.card : ℚ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hbound.h'",
+          "kind": "have",
+          "name": "h'",
+          "span": {
+            "end_line": 62,
+            "start_line": 59
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "See `div_lt_iff₀'` for a version with multiplication on the other side.",
+                "name": "div_lt_iff₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a < B.card * a.gcd b",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h''",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a < B.card * a.gcd b",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ≤ B.card * a.gcd b",
+              "truncated": false
+            }
+          },
+          "id": "hbound.h''",
+          "kind": "have",
+          "name": "h''",
+          "span": {
+            "end_line": 64,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbound",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ B, ∀ b ∈ B, a ≤ B.card * a.gcd b",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hbound",
+      "kind": "have",
+      "name": "hbound",
+      "span": {
+        "end_line": 65,
+        "start_line": 55
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "mul_comm",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ a ∈ B, ∃ b ∈ B, (↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "a",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ha",
+            "type": {
+              "printed": "reliable",
+              "text": "a ∈ B",
+              "truncated": false
+            }
+          },
+          {
+            "name": "b",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb",
+            "type": {
+              "printed": "reliable",
+              "text": "b ∈ B",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(a.gcd b) : ℚ) ≤ (↑a : ℚ) / (↑B.card : ℚ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 66,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-402"
+}
