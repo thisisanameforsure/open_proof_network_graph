@@ -52,12 +52,20 @@
 #   cache      F07-T57: after postmerge, for a merge that built and passed, builds and uploads the
 #              olean cache (F10-R7). It used to run inside postmerge, before the commit, on every
 #              merge: four to seven of a job's five to eight minutes.
+#   outline    F19-T4: after postmerge, for the same merges, extracts the outline of every merged
+#              proof artifact of the target that has none (F19-R1, R5, R6) in the step-3 sandbox
+#              with no secret, and pushes them as a commit of their own `outline: ...`. Nothing
+#              waits for it; a failed or lost run costs outlines the next run or the backfill makes.
 #
 # The pinned `network` commit is read from targets/<target>/gate-spec.json (network_commit).
 # Every field this file reads from the classifier is read with a default, and the pull request's
 # author reaches the classifier as OPN_PR_AUTHOR rather than as a flag, so the file works on a
 # pin that predates F08 and the F08 behaviour switches on with the re-pin (F08-Q8).
 name: gate
+# F07-T58: a replay's run says which merge it replays, so a replay that is dispatched again (a merge
+# no gate commit names yet) can be told from the first in the run list. Every other run keeps the
+# host's own name: a run-name that is only whitespace falls back to it.
+run-name: "${{ github.event_name == 'workflow_dispatch' && format('gate: replay of #{0}', inputs.replay_pr) || ' ' }}"
 
 on:
   pull_request:
@@ -93,7 +101,7 @@ jobs:
       reviewers: ${{ steps.classify.outputs.reviewers }}
     steps:
       - name: Check out the graph at the pull request's merge commit
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/merge
           fetch-depth: 0
@@ -103,6 +111,8 @@ jobs:
       # What the diff *is* (F07-R3) is decided by that pinned gate, one step below.
       - name: Find the target this pull request touches and the network commit it pins
         id: pin
+        env:
+          OPN_PR_AUTHOR: ${{ github.event.pull_request.user.login }}  # F07-T61: never interpolated
         run: |
           set -euo pipefail
           # The diff base is the first parent of the merge ref checked out above, which GitHub
@@ -113,39 +123,79 @@ jobs:
           base="$(git rev-parse HEAD^1)"
           echo "base=$base" >> "$GITHUB_OUTPUT"
           echo "gate: diffing from HEAD^1 $base (the base branch tip this merge ref carries)"
-          git diff --name-only "$base...HEAD" > changed.txt
+          git diff --name-only --no-renames "$base...HEAD" > changed.txt
           target="$(sed -n 's#^targets/\([^/]*\)/.*#\1#p' changed.txt | sort -u)"
+          # F07-T61: fail closed. A submission changes files under targets/<id>/ and nothing else
+          # (policy.json, F15-R3, is classified by the pinned gate below). Anything else — a
+          # workflow, curators.json, a key, a schema, a product — is not a submission: the check
+          # fails, unless the author is a curator listed in curators.json *as the base has it* (a
+          # pull request cannot list itself), whose such pull request is review only, as before.
+          outside="$(grep -Ev '^(targets/[^/]+/.+|policy\.json)$' changed.txt || true)"
+          if [ -n "$outside" ]; then
+            if git show "$base:curators.json" 2>/dev/null | python3 -c '
+          import json, sys
+          author = sys.argv[1]
+          listed = {i.get("github_login") for i in json.load(sys.stdin).get("identities") or []}
+          sys.exit(0 if author and author in listed else 1)' "${OPN_PR_AUTHOR:-}"; then
+              curator=true
+            else
+              curator=false
+            fi
+            if [ "$curator" != "true" ]; then
+              echo "::error::not a submission: this pull request changes files outside targets/<id>/ and policy.json, and its author is not a curator listed on the base (F07-T61):"
+              printf '%s\n' "$outside"
+              exit 1
+            fi
+            if [ -z "$target" ]; then
+              echo "gate: a listed curator's pull request touches no target; nothing to gate (review only)"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          fi
           # F15-R3 (Q2): policy.json is the steward rule's switch, a curator's pull request that
           # touches no target. It is gated all the same — classified as a curator record by the
-          # pinned gate — so its pin is read from any target's gate-spec.json (every target agrees
-          # on one, or the pin step of a target's own pull request would already have refused).
+          # pinned gate — so its pin is taken from any target's on the base (every target agrees on
+          # one, or the pin step of a target's own pull request would already have refused).
           if [ -z "$target" ] && grep -qx 'policy.json' changed.txt; then
-            target="$(ls -d targets/*/ 2>/dev/null | head -n 1 | xargs -r basename)"
-            echo "gate: policy.json changed; taking the network pin from targets/$target"
+            target="$(git ls-tree --name-only "$base" targets/ | sed -n 's#^targets/##p' | while read -r t; do
+              git cat-file -e "$base:targets/$t/gate-spec.json" 2>/dev/null && { echo "$t"; break; }; done || true)"
+            echo "gate: policy.json changed; taking the network pin from targets/$target on the base"
           fi
           if [ -z "$target" ]; then
-            echo "gate: nothing under targets/ changed; nothing to gate (maintenance PR, review only)"
+            echo "gate: nothing under targets/ changed; nothing to gate"
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ "$(printf '%s\n' "$target" | wc -l)" -ne 1 ]; then
             echo "gate: a submission touches exactly one target (D-2, D-3); found:"; cat changed.txt; exit 1
           fi
-          pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+          # F07-T61: the pin is the base's, never the pull request's own: a submission that rewrites
+          # its target's gate-spec.json does not choose the gate that judges it (D-4). A new target
+          # has no gate-spec.json on the base, and is gated by the pin the base's targets carry.
+          spec="$base:targets/$target/gate-spec.json"
+          if ! git cat-file -e "$spec" 2>/dev/null; then
+            other="$(git ls-tree --name-only "$base" targets/ | sed -n 's#^targets/##p' | while read -r t; do
+              git cat-file -e "$base:targets/$t/gate-spec.json" 2>/dev/null && { echo "$t"; break; }; done || true)"
+            if [ -z "$other" ]; then
+              echo "::error::targets/$target is new and the base carries no target's pin to gate it with"; exit 1
+            fi
+            echo "gate: targets/$target is new; taking the network pin from targets/$other on the base"
+            spec="$base:targets/$other/gate-spec.json"
+          fi
+          pin="$(git show "$spec" | python3 -c "import json,sys; print(json.load(sys.stdin)['network_commit'])")"
           echo "run=true" >> "$GITHUB_OUTPUT"
           echo "target=$target" >> "$GITHUB_OUTPUT"
           echo "pin=$pin" >> "$GITHUB_OUTPUT"
-          echo "gate: target $target; network pin $pin"
+          echo "gate: target $target; network pin $pin (from the base)"
 
       - name: Check out the pinned network commit
         if: steps.pin.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pin.outputs.pin }}
           path: network
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         if: steps.pin.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
@@ -188,6 +238,28 @@ jobs:
             tutorial=true
           fi
           echo "tutorial=$tutorial" >> "$GITHUB_OUTPUT"
+
+      # F07-T63: the submission block the attestation records (submitter, declared model and tooling,
+      # the precheck consumed) is the body this run saw, not whatever the body says when the pull
+      # request merges. It comes from this run's own event payload, through the environment, and is
+      # kept as an artifact named for the head it was gated at; the post-merge job reads it back.
+      - name: Keep the pull request's body as this run saw it (F07-T63; no secret)
+        if: steps.pin.outputs.run == 'true'
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/submission"
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/submission/pr-body.md"
+
+      - name: Upload it, named for the pull request and the head it was gated at
+        if: steps.pin.outputs.run == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: submission-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/submission/pr-body.md
+          if-no-files-found: error
+          overwrite: true  # a re-run of this job on the same head saw the same event
 
       # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
       # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
@@ -257,7 +329,7 @@ jobs:
 
       - name: Keep the verdict and attestation
         if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true' || steps.classify.outputs.needs_qa_rerun == 'true')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
           path: |
@@ -321,7 +393,7 @@ jobs:
       targets: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
       render_pin: ${{ steps.pr.outputs.render_pin }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -330,6 +402,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPLAY_PR: ${{ inputs.replay_pr }}
+          PUSH_BEFORE: ${{ github.event.before }}  # F07-T60: the push's range, for a re-pin
         run: |
           set -euo pipefail
           # F07-T45: which merges this run records, and the gate-commit matcher, as one program the
@@ -398,27 +471,32 @@ jobs:
 
 
           def uncredited(log):
-              """The merges since the last gate commit that was not a replay, oldest first, as
-              (number, sha, branch), less any a replay in between already credits. `log` is
-              (sha, parents, subject) along the first-parent line, newest first. None when no such gate
-              commit is within WALK_LIMIT: the run then records its own merge alone, as before.
+              """The merges in the walk window (the last WALK_LIMIT commits of `log`) that no gate
+              commit in the window credits, oldest first, as (number, sha, branch). `log` is (sha,
+              parents, subject) along the first-parent line, newest first. None when the window holds
+              no gate commit at all: the run then records its own merge alone, as before.
 
-              A replay's commit is walked past because it credits one old merge and says nothing of the
-              merges before it; any other gate commit on this line rendered a tree that held every merge
-              before it (its push is refused if main moved under it, F07-T29), so it credited them or
-              dispatched their replays."""
-              found, replayed = [], set()
-              for sha, parents, subject in log[:WALK_LIMIT]:
+              F07-T58: a merge counts as recorded only if some gate commit names it. The walk used to
+              stop at the first gate commit that was not a replay, on the ground that its tree held
+              every merge before it and so it credited them or dispatched their replays. A catch-up
+              commit (F07-T55) breaks that: it is laid on main as it is, on top of merges it does not
+              credit, and so does a single run's own commit and an append's run that left its merge to
+              a later run (T45). So every gate commit in the window is read, replays included, and
+              what none of them names is owed."""
+              window = log[:WALK_LIMIT]
+              named, found, gates = set(), [], 0
+              for sha, parents, subject in window:
                   numbers = credits(subject)
                   if numbers:
-                      if "(replayed)" in subject:
-                          replayed.update(numbers)
-                          continue
-                      return [merge for merge in reversed(found) if merge[0] not in replayed]
+                      named.update(numbers)
+                      gates += 1
+                      continue
                   merge = merge_of(subject, parents)
                   if merge:
                       found.append((merge[0], sha, merge[1]))
-              return None
+              if not gates:
+                  return None
+              return [merge for merge in reversed(found) if merge[0] not in named]
 
 
           def later_merge(log):
@@ -498,19 +576,23 @@ jobs:
               return {**ours, **theirs}
 
 
-          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay):
+          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay, render=False):
               """F07-T55: push this run's gate commit, and while main has moved under it, catch up and push
               again. The products are derived (F03-R11), so a render of a tree that no longer exists is
               thrown away and made again on main as it is; what is this run's own (its record, its ledger
               lines) is laid on that tree first. Answers `pushed`, `credited` (main records every merge
               already), `replayed` (the record does not apply, or a re-pin moved the rendering gate) or
-              `gave-up` (refused every time; replayed as well, and the step fails)."""
+              `gave-up` (refused every time; replayed as well, and the step fails).
+
+              F07-T60: `render` is render.yml's commit, which credits no merge: having nothing owed is not
+              the end of it, and it renders again on main as it is until it lands or a re-pin moves the
+              gate it renders with."""
               for attempt in range(1, attempts + 1):
                   if push():
                       return "pushed"
                   new = fetch()
                   pairs = owed(pairs, subjects_of(new))
-                  if not pairs:
+                  if not pairs and not render:
                       return "credited"
                   if pin_moved(new) or not rebuild(new, pairs):
                       replay(pairs)
@@ -616,7 +698,8 @@ jobs:
                   run(env["PRODUCTS_CMD"], COMMIT=new)
                   git("add", "-A", "--", *[p for p in STAGED if pathlib.Path(p).exists()])
                   credits = " ".join(f"#{number}" for number, _merge in owed_pairs)
-                  git("commit", "-q", "--allow-empty", "-m", f"gate: {credits} {env['SUFFIX']}")
+                  subject = env.get("SUBJECT") or f"gate: {credits} {env['SUFFIX']}"  # F07-T60: a render's
+                  git("commit", "-q", "--allow-empty", "-m", subject)
                   return True
 
               def replay(owed_pairs):
@@ -631,11 +714,14 @@ jobs:
                           print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
 
               attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
+              render = bool(env.get("RENDER"))
               outcome = publish(
                   pairs, attempts=attempts, push=push, fetch=fetch, subjects_of=subjects_at,
-                  pin_moved=pin_moved, rebuild=rebuild, replay=replay,
+                  pin_moved=pin_moved, rebuild=rebuild, replay=replay, render=render,
               )
               print(f"postmerge: publish {outcome}")
+              if render and outcome == "replayed":
+                  print("render: main was re-pinned under this render; that push dispatches a render of its own")
               if outcome == "gave-up":
                   print(f"::error::the gate commit was refused {attempts} times; its merges are replayed")
                   return 1
@@ -692,6 +778,19 @@ jobs:
             number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
             if [ -z "$number" ]; then
               echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
+              # F07-T60: a re-pin is a direct push, so no merge renders the products under the new
+              # gate; render.yml does. Any push that merged nothing and touched a pin (read over the
+              # whole push, since the owner may push several commits), never the bot's own commits.
+              from="${PUSH_BEFORE:-}"
+              if ! printf '%s' "$from" | grep -Eq '^[0-9a-f]{40}$' || ! git cat-file -e "${from}^{commit}" 2>/dev/null; then
+                from="${GITHUB_SHA}^"
+              fi
+              if [ "$(git log -1 --format=%an "$GITHUB_SHA")" != "opn-gate" ] \
+                && git diff --name-only "$from" "$GITHUB_SHA" | grep -Eq '^targets/[^/]+/gate-spec\.json$'; then
+                gh workflow run render.yml --repo "$GITHUB_REPOSITORY" --ref main \
+                  && echo "postmerge: a pin changed with no merge; dispatched render.yml (F07-T60)" \
+                  || echo "::warning::render.yml was not dispatched; dispatch it by hand so the products follow the pin"
+              fi
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
             author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
@@ -703,6 +802,8 @@ jobs:
             # this run records it as before. F07-T55: an append only. A building merge's record is
             # its own re-derive and signature, which a later run would only replay after it had
             # committed, so a building merge always records itself and catches up if main moved.
+            # F07-T58: the later run records this append even when a gate commit lands between the
+            # two (a catch-up credits only its own merges): a merge is owed until one names it.
             git fetch --quiet origin main
             branch="$(python3 "$helper" branch-of "$merge")"
             if [ "${branch#append/}" != "$branch" ] \
@@ -711,9 +812,9 @@ jobs:
               echo "postmerge: a later pull request merged on main after #$number; the post-merge run of that push records #$number with its own (F07-T45)"
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
-            # F07-T45 (b): every merge on main's first-parent line since the last gate commit that
-            # was not a replay. Appends pinned to one gate are recorded here together; anything
-            # else is replayed on its own after this run commits, and this merge is recorded alone.
+            # F07-T45 (b), F07-T58: every merge in the walk window that no gate commit names. Appends
+            # pinned to one gate are recorded here together; anything else is replayed on its own
+            # after this run commits, and this merge is recorded alone.
             python3 "$helper" plan "$merge" "$number" > "$RUNNER_TEMP/plan.txt"
             cat "$RUNNER_TEMP/plan.txt"
             replay="$(sed -n 's/^replay=//p' "$RUNNER_TEMP/plan.txt")"
@@ -764,7 +865,7 @@ jobs:
 
       - name: Check out the pinned network commit
         if: steps.pr.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pr.outputs.pin }}
@@ -773,14 +874,14 @@ jobs:
 
       - name: Check out the network commit main pins now, which renders (F07-T33)
         if: steps.pr.outputs.run == 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ steps.pr.outputs.render_pin }}
           path: network-render
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         if: steps.pr.outputs.run == 'true'
         with:
           version: ${{ env.UV_VERSION }}
@@ -930,14 +1031,35 @@ jobs:
       # merged partial's holes become child nodes, written into this checkout for the bot commit
       # below to carry, and the assembly is filed under attempts/ for the pseudonym the block names.
       # Only a partial is handed --apply-partial — an older pin never merged a partial (F08-Q8).
-      - name: Fetch the merged pull request's body (the submission block names the proposer)
+      # F07-T63: the body the gate job kept for the head that merged (the newest gate run on it, an
+      # expired artifact never), and the body as it reads now only when there is none — a merge gated
+      # before this change, or an artifact past its retention — with a warning that says so.
+      - name: Fetch the merged pull request's body as the gate saw it (the submission block names the proposer)
         if: steps.pr.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.pr.outputs.number }}
         run: |
           set -euo pipefail
-          gh api "repos/${GITHUB_REPOSITORY}/pulls/${{ steps.pr.outputs.number }}" --jq '.body // ""' \
-            > "$RUNNER_TEMP/pr-body.md"
+          pr="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}")"
+          head="$(printf '%s' "$pr" | python3 -c "import json,sys; print(json.load(sys.stdin)['head']['sha'])")"
+          name="submission-${NUMBER}-${head}"
+          run_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${name}&per_page=100" | python3 -c "
+          import json, sys
+          kept = [a for a in json.load(sys.stdin).get('artifacts') or [] if not a.get('expired')]
+          kept.sort(key=lambda a: a.get('created_at') or '')
+          print(kept[-1]['workflow_run']['id'] if kept else '')" || true)"
+          dir="$RUNNER_TEMP/submission"
+          rm -rf "$dir"
+          if [ -n "$run_id" ] && gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name "$name" --dir "$dir" \
+            && [ -f "$dir/pr-body.md" ]; then
+            cp "$dir/pr-body.md" "$RUNNER_TEMP/pr-body.md"
+            echo "postmerge: PR #$NUMBER's submission block as the gate saw it at ${head:0:12} (run $run_id)"
+          else
+            echo "::warning::PR #$NUMBER: the gate kept no body for ${head:0:12} (gated before F07-T63, or the artifact expired); recording the body as it reads now"
+            printf '%s' "$pr" | python3 -c "import json,sys; sys.stdout.write(json.load(sys.stdin).get('body') or '')" \
+              > "$RUNNER_TEMP/pr-body.md"
+          fi
 
       - name: Re-derive the verdict on the merge commit (no secret in this step)
         if: steps.classify.outputs.needs_gate == 'true'
@@ -1170,24 +1292,24 @@ jobs:
       contents: read
       id-token: write  # the upload assumes a role through OIDC (C8 item 4)
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ needs.postmerge.outputs.merge }}
 
       - name: Check out the network commit main pins now, which builds the cache (F07-T33)
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: thisisanameforsure/open_proof_network
           ref: ${{ needs.postmerge.outputs.render_pin }}
           path: network-render
           persist-credentials: false
 
-      - uses: astral-sh/setup-uv@v10.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: ${{ env.UV_VERSION }}
 
       - name: Assume the cache upload role (OIDC, no stored key)
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
         with:
           role-to-assume: ${{ vars.OPN_CACHE_UPLOAD_ROLE_ARN }}
           aws-region: ${{ vars.OPN_AWS_REGION }}
@@ -1205,4 +1327,347 @@ jobs:
               --graph . --commit "$MERGE" --target "$target" \
               --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
               || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
+          done
+
+  # F19-T4 (R6; Q2, decided 2026-10-04): the outline of each merged proof artifact — its named
+  # steps, each with its claim, the goal it leaves and how it is closed — extracted by the pinned
+  # gate in the step-3 sandbox and committed beside the products as targets/<id>/outlines/<hash>.json.
+  # A job of its own after the post-merge job has pushed, as the cache is (F07-T57): the outline
+  # elaborates the artifact a second time, and in the post-merge job a memory kill there would cost a
+  # merge its record over a reading aid. Here a failure costs one outline, named in the report (R5),
+  # and nothing waits for it (F07-T55-T57). For the merges that built and passed (the cache's own
+  # condition): only they add a proof artifact.
+  #
+  # It reads main as it is when the job starts, not the commit the post-merge job pushed: an artifact
+  # is outlined only once its merge's attestation is on main (graph.proofs_of), which is true of main
+  # after the push and of anything newer, and `opn-gate outline` extracts every artifact of the target
+  # that has no outline, so a newer main is a superset — it also catches up an outline a lost run
+  # left behind. The network commit is the one main pins for the target now (F07-T33's render pin),
+  # read from that same tree. Contributor Lean runs only in the pinned image (C9): the graph checkout
+  # keeps no credential and the extraction step is granted no secret; the deploy key reaches only the
+  # step that pushes, which takes nothing from the extraction but files that are new outlines of
+  # these targets, each re-checked against main before it is pushed.
+  #
+  # The push races everything else that writes main (merges, gate commits, owners' pushes). It
+  # catches up as the post-merge job does (F07-T29, T55): a refused push fetches main and lays again
+  # on it every outline that still describes it — none already there (another run wrote it first;
+  # theirs stands), and the artifact it names still in that tree with exactly the bytes it outlines.
+  # A re-pin of the target since extraction is the record moving in a way that matters: the outlines
+  # name a gate main no longer pins, so nothing is pushed and the next run extracts with the new one.
+  # On a pin that predates `opn-gate outline`, the pinned gate's own command list has no `outline`
+  # and the job ends with a notice (F08-Q8's shape): this file is inert until the re-pin.
+  outline:
+    name: proof outlines for a merge that built (F19-R6), after its record is pushed
+    needs: postmerge
+    if: needs.postmerge.outputs.cache == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Find the network commit main pins for the merged target
+        id: pin
+        env:
+          TARGETS: ${{ needs.postmerge.outputs.targets }}
+        run: |
+          set -euo pipefail
+          base="$(git rev-parse HEAD)"
+          pin=""; targets=""
+          for target in $TARGETS; do
+            if ! printf '%s' "$target" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9._-]*$' \
+              || [ ! -f "targets/$target/gate-spec.json" ]; then
+              echo "::warning::outline: '$target' is not a target on main at ${base:0:12}; skipped"
+              continue
+            fi
+            found="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
+            if ! printf '%s' "$found" | grep -Eq '^[0-9a-f]{40}$'; then
+              echo "::warning::outline: $target pins no network commit; skipped"; continue
+            fi
+            [ -z "$pin" ] && pin="$found"
+            if [ "$found" != "$pin" ]; then
+              echo "::notice::outline: $target pins another gate than ${pin:0:12}; its next merge outlines it"
+              continue
+            fi
+            targets="$targets $target"
+          done
+          if [ -z "$pin" ]; then
+            echo "outline: nothing to outline"; echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          {
+            echo "run=true"; echo "base=$base"; echo "pin=$pin"; echo "targets=${targets# }"
+          } >> "$GITHUB_OUTPUT"
+          echo "outline: main at $base; targets${targets}; network pin $pin"
+
+      - name: Check out the network commit main pins for the target (D-35, F07-T33)
+        if: steps.pin.outputs.run == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: thisisanameforsure/open_proof_network
+          ref: ${{ steps.pin.outputs.pin }}
+          path: network-render
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        if: steps.pin.outputs.run == 'true'
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      # F19-R5: a failure is named in the report and writes nothing for that artifact; it is a
+      # warning here, never a red run, since the next run (or the backfill) retries what is missing.
+      - name: Extract the missing outlines in the step-3 sandbox (F19-R5, R6; no secret in this step)
+        id: extract
+        if: steps.pin.outputs.run == 'true'
+        env:
+          PYTHONPATH: network-render/gate
+          TARGETS: ${{ steps.pin.outputs.targets }}
+          PIN: ${{ steps.pin.outputs.pin }}
+        run: |
+          set -euo pipefail
+          uv sync --frozen --project network-render --quiet
+          if ! help="$(uv run --frozen --project network-render python -m opn_gate.cli --help 2>&1)"; then
+            printf '%s\n' "$help" | tail -n 20
+            echo "::warning::outline: the pinned gate ${PIN:0:12} did not start; no outline this run (C7)"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if ! printf '%s' "$help" | grep -Eq '[{,]outline[,}]'; then
+            echo "::notice::outline: the pinned network ${PIN:0:12} predates opn-gate outline (F19-T4); nothing is extracted until the re-pin"
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          for target in $TARGETS; do
+            status=0
+            uv run --frozen --project network-render python -m opn_gate.cli outline \
+              --graph . --commit HEAD --target "$target" --no-build \
+              --out "$RUNNER_TEMP/outline-$target" > "$RUNNER_TEMP/outline-$target.json" || status=$?
+            cat "$RUNNER_TEMP/outline-$target.json"
+            if [ "$status" -ne 0 ]; then
+              echo "::warning::outline: $target has an artifact left without an outline (exit $status), named in the report above (F19-R5); the next run or the backfill retries it"
+            fi
+          done
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit the outlines and push them (with the write deploy key; F07-T29's catch-up)
+        if: steps.extract.outputs.run == 'true'
+        env:
+          OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
+          TARGETS: ${{ steps.pin.outputs.targets }}
+          PIN: ${{ steps.pin.outputs.pin }}
+        run: |
+          set -euo pipefail
+          umask 077
+          trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
+          helper="$RUNNER_TEMP/outline_publish.py"
+          cat > "$helper" <<'PY'
+          """F19-T4: commit the outlines this job extracted and push them, catching up while main moves.
+
+          Pure functions over git, so the network repo's tests run this file as it stands
+          (test_finding_outline_job.py). It reads the checkout and main with git and nothing else: no
+          network but the push and the fetch, no contributor code, no secret but the deploy key the
+          push already has in its environment.
+
+          `collect` takes from the extraction only what it may write: new files under
+          targets/<target>/outlines/<sha256>.json for the targets this job outlined, and no change to
+          any tracked file. `publish` pushes one commit `outline: ...`; when main has moved it fetches,
+          keeps every outline that still describes main as it now is (none there already, and the
+          artifact it names in that tree with the bytes it outlines), lays them on main and pushes
+          again. A re-pin of a target means the outlines name a gate main no longer pins: nothing is
+          pushed, and the next run extracts with the new gate."""
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+
+          OUTLINE_RE = re.compile(r"^targets/([A-Za-z0-9][A-Za-z0-9._-]*)/outlines/([0-9a-f]{64})\.json$")
+          PUBLISH_ATTEMPTS = 6
+
+
+          def git(*args, check=True):
+              return subprocess.run(["git", *args], check=check, capture_output=True, text=True)
+
+
+          def collect(targets, porcelain_targets, porcelain_tracked):
+              """(outline paths to commit, offending lines). `porcelain_targets` is `git status
+              --porcelain --untracked-files=all -- targets`, `porcelain_tracked` the same for every
+              tracked file in the checkout: the extraction may add outlines and nothing else."""
+              files, bad = [], [line for line in porcelain_tracked.splitlines() if line.strip()]
+              for line in porcelain_targets.splitlines():
+                  if not line.strip():
+                      continue
+                  status, path = line[:2], line[3:]
+                  found = OUTLINE_RE.match(path)
+                  if status == "??" and found and found.group(1) in targets:
+                      files.append(path)
+                  elif line not in bad:
+                      bad.append(line)
+              return sorted(files), bad
+
+
+          def describes(path, data, *, exists, blob):
+              """Whether the outline at `path` (bytes `data`) may be laid on a main whose files
+              `exists(path)` and `blob(path)` read: none there yet, it names its own target and
+              hash, and the artifact it names is there with exactly the bytes it outlines."""
+              found = OUTLINE_RE.match(path)
+              if not found or exists(path):
+                  return False
+              try:
+                  doc = json.loads(data)
+                  node, rel, digest = doc["node"], doc["artifact"]["path"], doc["artifact"]["hash"]
+              except (ValueError, KeyError, TypeError):
+                  return False
+              if doc.get("target") != found.group(1) or digest != found.group(2):
+                  return False
+              if not isinstance(node, str) or not isinstance(rel, str) or ".." in rel.split("/"):
+                  return False
+              artifact = blob(f"targets/{found.group(1)}/nodes/{node}/{rel}")
+              return artifact is not None and hashlib.sha256(artifact).hexdigest() == digest
+
+
+          def publish(files, *, attempts, push, fetch, pin_moved, keep, commit):
+              """Push the commit made of `files` ({path: bytes}); while main has moved under it, lay
+              again on main as it now is the outlines that still describe it. Answers `pushed`,
+              `nothing-left` (main has them all, or none still applies), `pin-moved` or `gave-up`."""
+              for attempt in range(1, attempts + 1):
+                  if push():
+                      return "pushed"
+                  new = fetch()
+                  if pin_moved(new):
+                      return "pin-moved"
+                  files = {path: data for path, data in files.items() if keep(new, path, data)}
+                  if not files:
+                      return "nothing-left"
+                  commit(new, files)
+                  print(f"outline: main moved (attempt {attempt}); caught up on {new[:12]}", flush=True)
+              return "gave-up"
+
+
+          def message(files):
+              targets = sorted({OUTLINE_RE.match(path).group(1) for path in files})
+              return f"outline: {len(files)} for {' '.join(targets)}"
+
+
+          def run_collect(env):
+              targets = set(env["TARGETS"].split())
+              files, bad = collect(
+                  targets,
+                  git("status", "--porcelain", "--untracked-files=all", "--", "targets").stdout,
+                  git("status", "--porcelain", "--untracked-files=no").stdout,
+              )
+              if bad:
+                  print("::error::outline: the extraction changed what it may not; nothing is pushed:", file=sys.stderr)
+                  for line in bad:
+                      print(f"  {line}", file=sys.stderr)
+                  return 1
+              for path in files:
+                  print(path)
+              return 0
+
+
+          def run_publish(env):
+              remote, pin = env["REMOTE"], env["PIN"]
+              with open(env["LIST"], encoding="utf-8") as listed:
+                  paths = [line for line in listed.read().split() if line]
+              files = {}
+              for path in paths:
+                  with open(path, "rb") as f:
+                      files[path] = f.read()
+
+              def commit(rev, chosen):
+                  if rev is not None:
+                      git("checkout", "-q", "-f", "--detach", rev)
+                      for path, data in chosen.items():
+                          os.makedirs(os.path.dirname(path), exist_ok=True)
+                          with open(path, "wb") as out:
+                              out.write(data)
+                  git("add", "--", *sorted(chosen))
+                  git("commit", "-q", "-m", message(chosen))
+
+              def push():
+                  return subprocess.run(["git", "push", "-q", remote, "HEAD:main"], check=False).returncode == 0
+
+              def fetch():
+                  git("fetch", "-q", remote, "main")
+                  return git("rev-parse", "FETCH_HEAD").stdout.strip()
+
+              def pin_moved(rev):
+                  for target in env["TARGETS"].split():
+                      shown = git("show", f"{rev}:targets/{target}/gate-spec.json", check=False)
+                      try:
+                          found = json.loads(shown.stdout)["network_commit"] if shown.returncode == 0 else None
+                      except (ValueError, KeyError, TypeError):
+                          found = None
+                      if found != pin:
+                          print(f"::notice::outline: main re-pinned {target} since extraction; these outlines are not this run's to push")
+                          return True
+                  return False
+
+              def keep(rev, path, data):
+                  def exists(p):
+                      return git("cat-file", "-e", f"{rev}:{p}", check=False).returncode == 0
+
+                  def blob(p):
+                      shown = subprocess.run(["git", "show", f"{rev}:{p}"], capture_output=True, check=False)
+                      return shown.stdout if shown.returncode == 0 else None
+
+                  return describes(path, data, exists=exists, blob=blob)
+
+              commit(None, files)
+              attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
+              outcome = publish(
+                  files, attempts=attempts, push=push, fetch=fetch, pin_moved=pin_moved, keep=keep,
+                  commit=commit,
+              )
+              print(f"outline: publish {outcome}")
+              if outcome == "gave-up":
+                  print(f"::warning::outline: the push was refused {attempts} times; the next run extracts what is still missing")
+              return 0
+
+
+          if __name__ == "__main__":
+              command = sys.argv[1]
+              if command == "collect":  # collect: the outline paths to commit, one per line
+                  sys.exit(run_collect(os.environ))
+              if command == "publish":  # publish: commit LIST and push it, catching up while main moves
+                  sys.exit(run_publish(os.environ))
+              sys.exit(f"unknown command {command!r}")
+          PY
+          python3 "$helper" collect > "$RUNNER_TEMP/outlines.txt"
+          if [ ! -s "$RUNNER_TEMP/outlines.txt" ]; then
+            echo "outline: no new outline to commit"; exit 0
+          fi
+          cat "$RUNNER_TEMP/outlines.txt"
+          printf '%s\n' "$OPN_GRAPH_DEPLOY_KEY" > "$RUNNER_TEMP/deploy_key"
+          git config user.name "opn-gate"
+          git config user.email "gate@openproof.network"
+          export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+          REMOTE="git@github.com:${GITHUB_REPOSITORY}.git" LIST="$RUNNER_TEMP/outlines.txt" \
+            python3 "$helper" publish
+
+      # F20-T10, F20-R17: ask the network's drafter to put words to what this merge created — a
+      # gloss of each new statement, witness and relation, and an explainer of each proof whose
+      # outline is now on main. Only once the pinned gate knows outlines (a gate that old would also
+      # refuse every gloss path, so drafting before the re-pin would spend the model for pull
+      # requests that go red). The drafter skips what already has words, so a re-run drafts nothing
+      # twice. Without the dispatch token the drafter waits for its next dispatch (C7).
+      - name: Ask the network's drafter for this merge's words
+        if: always() && steps.extract.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.OPN_SITE_DEPLOY_TOKEN }}
+          TARGETS: ${{ steps.pin.outputs.targets }}
+        run: |
+          set -euo pipefail
+          if [ -z "$GH_TOKEN" ]; then
+            echo "drafter: OPN_SITE_DEPLOY_TOKEN is not set; dispatch gloss-draft.yml by hand"; exit 0
+          fi
+          for target in $TARGETS; do
+            gh workflow run gloss-draft.yml --repo thisisanameforsure/open_proof_network --ref main \
+              -f graph_ref=main -f target="$target" -f subjects=new \
+              && echo "drafter: dispatched gloss-draft for $target" \
+              || echo "::warning::gloss-draft was not dispatched for $target; dispatch it by hand (C7)"
           done
