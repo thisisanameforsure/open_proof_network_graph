@@ -261,6 +261,18 @@ jobs:
           if-no-files-found: error
           overwrite: true  # a re-run of this job on the same head saw the same event
 
+      # F22-T24: the classification, warnings included, for every pull request this job classified;
+      # a words pull request builds nothing, so without this the service had nothing to show a
+      # writer but the log. Its own name, so the service still reads a refusal from gate-<pr>-.
+      - name: Keep the classification (F22-T24)
+        if: always() && steps.classify.outcome != 'skipped'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: classify-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
+          path: classification.json
+          if-no-files-found: ignore
+          overwrite: true  # a re-run of this job on the same head saw the same event
+
       # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
       # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
       # inside the step-3 sandbox, because a statement elaborates arbitrary code too (C9).
@@ -409,6 +421,15 @@ jobs:
           # network repo's tests run as it stands (test_finding_postmerge_batch.py).
           helper="$RUNNER_TEMP/postmerge_batch.py"
           replay=""
+          gh_api() {  # F22-T20: under a burst of merges the host has answered with an empty body
+            local out attempt
+            for attempt in 1 2 3 4 5; do
+              if out="$(gh api "$@")" && [ -n "$out" ]; then printf '%s' "$out"; return 0; fi
+              echo "::warning::gh api $1 answered nothing (attempt $attempt of 5)" >&2
+              sleep "$(( ${OPN_GH_RETRY_SLEEP:-2} * attempt ))"
+            done
+            return 1
+          }
           dispatch_replays() {  # F07-T45: merges this run cannot record, each replayed on its own
             for n in $replay; do
               if python3 "$helper" credited HEAD "$n"; then continue; fi
@@ -744,6 +765,11 @@ jobs:
                   for key, value in decided.items():
                       print(f"{key}={value}")
                   sys.exit(0)
+              if command == "number-of":  # number-of <merge>: the pull request's number, or nothing
+                  (sha, parents, subject), = first_parent_log(args[0], 1)
+                  found = merge_of(subject, parents)
+                  print(found[0] if found else "")
+                  sys.exit(0)
               if command == "branch-of":  # branch-of <merge>: the pull request's branch, or nothing
                   (sha, parents, subject), = first_parent_log(args[0], 1)
                   found = merge_of(subject, parents)
@@ -760,7 +786,7 @@ jobs:
               echo "::error::replay_pr must be a pull request number, not '$REPLAY_PR'"; exit 1
             fi
             number="$REPLAY_PR"
-            pr="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}")"
+            pr="$(gh_api "repos/${GITHUB_REPOSITORY}/pulls/${number}")"
             merge="$(printf '%s' "$pr" | python3 -c "import json,sys; p=json.load(sys.stdin); print(p['merge_commit_sha'] if p.get('merged_at') else '')")"
             if [ -z "$merge" ]; then
               echo "::error::PR #$number is not merged; there is no post-merge job to replay"; exit 1
@@ -774,8 +800,14 @@ jobs:
             echo "postmerge: replaying PR #$number (merge $merge) on main at ${GITHUB_SHA}"
           else
             merge="$GITHUB_SHA"
-            pulls="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"
-            number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+            if pulls="$(gh_api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"; then
+              number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+            else
+              # F22-T20: the host never answered; the merge commit's subject names the pull request.
+              number="$(python3 "$helper" number-of "$GITHUB_SHA")"
+              pulls=""
+              [ -n "$number" ] && echo "postmerge: the host did not answer; PR #$number read from the merge subject"
+            fi
             if [ -z "$number" ]; then
               echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
               # F07-T60: a re-pin is a direct push, so no merge renders the products under the new
@@ -793,7 +825,11 @@ jobs:
               fi
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
-            author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+            if [ -n "$pulls" ]; then
+              author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+            else
+              author="$(gh_api "repos/${GITHUB_REPOSITORY}/pulls/${number}" --jq '.user.login')"
+            fi
             # F07-T45 (a): the merge actor merges appends in batches, so main may already hold a
             # later merge. That merge is a push with a post-merge run of its own, which records
             # every merge since the last gate commit, this one included (b); this run renders
@@ -810,7 +846,8 @@ jobs:
               && git merge-base --is-ancestor "$merge" origin/main \
               && python3 "$helper" later-merge "$merge" origin/main; then
               echo "postmerge: a later pull request merged on main after #$number; the post-merge run of that push records #$number with its own (F07-T45)"
-              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+              # F22-T21: this merge's products are that run's to commit; it asks the site to deploy
+              { echo "run=false"; echo "site=skip"; } >> "$GITHUB_OUTPUT"; exit 0
             fi
             # F07-T45 (b), F07-T58: every merge in the walk window that no gate commit names. Appends
             # pinned to one gate are recorded here together; anything else is replayed on its own
@@ -823,7 +860,7 @@ jobs:
               target="$(sed -n 's/^target=//p' "$RUNNER_TEMP/plan.txt")"
               authors=""
               for n in $numbers; do
-                authors="$authors $(gh api "repos/${GITHUB_REPOSITORY}/pulls/$n" --jq '.user.login')"
+                authors="$authors $(gh_api "repos/${GITHUB_REPOSITORY}/pulls/$n" --jq '.user.login')"
               done
               render_pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
               {
@@ -1238,6 +1275,8 @@ jobs:
           replay_owed FETCH_HEAD "$REPLAY"
           exit "$status"
 
+      # F22-T21: never from a run that left its merge to a later one (`site=skip`): its HEAD is a
+      # merge whose products are not yet committed, and the site showed raw words for a minute.
       # F04-R12 (F04-Q10): ask the network repo's site-deploy to render what main now holds, so a
       # merge reaches the site in seconds instead of on GitHub's best-effort schedule. Skipped for
       # the bot's own `gate: #N pass` commit, whose merge already dispatched it; a direct push to
@@ -1245,7 +1284,7 @@ jobs:
       # network repository with Actions: read and write and nothing else (C8). Without it, or if
       # the dispatch fails, the five-minute schedule deploys and this job does not fail (C7).
       - name: Ask the site to deploy this commit
-        if: github.event.head_commit.author.name != 'opn-gate'
+        if: github.event.head_commit.author.name != 'opn-gate' && steps.pr.outputs.site != 'skip'
         env:
           GH_TOKEN: ${{ secrets.OPN_SITE_DEPLOY_TOKEN }}
         run: |
