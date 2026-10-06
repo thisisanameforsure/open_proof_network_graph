@@ -312,8 +312,10 @@ jobs:
                       continue
                   conflict = conflicted(number)
                   if conflict is None:
-                      print(f"#{number}: the host is still computing whether it conflicts: the batch ends before it")
-                      break
+                      # F22-T23: an append adds one file named for its own content, so an unknown
+                      # answer is taken as none; a refused merge is updated by the acting step
+                      print(f"#{number}: the host is still computing whether it conflicts; an append: taken (F22-T23)")
+                      conflict = False
                   if conflict:
                       print(f"#{number} is green but conflicts with main: passed over")
                       continue
@@ -465,6 +467,9 @@ jobs:
                   if stale_head(number, sha, refs[number], tip_of):
                       continue
                   conflict = conflicted(number)
+                  if conflict is None and refs[number].startswith(APPEND_PREFIX):
+                      print(f"#{number} is green; the host is still computing whether it conflicts; an append: not held for (F22-T23)")
+                      conflict = False
                   if conflict is None:
                       print(f"#{number} is green; the host is still computing whether it conflicts: holding its lane")
                       decided.append((number, sha, "hold"))
