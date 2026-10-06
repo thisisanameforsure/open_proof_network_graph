@@ -1,0 +1,36 @@
+---
+schema: gloss/v2
+target: erdos-1050
+subject:
+  kind: statement
+  node: erdos-1050--h1-v2--h2
+  module: null
+  lean_hash: 92c33e6b0c638e8fe85af0cc5609d35a09d9d52d2f923202f6931e7716424773
+supersedes: 2b8f1d911680a91f02b80ccceafd4a715f7f019a2af2b7502dac185bdc63f54e
+author: t1006-w2
+drafter: null
+date: '2026-10-06'
+licence: CC-BY-4.0
+drafted_with: Claude Opus 5.5 (claude-opus-5-5) via Claude Code, as an agent
+---
+There are two sequences of integers $a(n)$ and $b(n)$, indexed by the natural numbers, such that for every $n \ge 1$
+$$b(n)\,z \;-\; a(n) \;=\; 9^n\,W(n)\,E(n),$$
+where, with $c = 8/3$ and all arithmetic in the real numbers:
+
+$z=\displaystyle\sum_{j\ge 0}\bigl(1-c\,2^{\,j+1}\bigr)^{-1}$;
+
+$W(n)=\displaystyle (n-2)!\;\prod_{k=1}^{n}\bigl(1-c\,2^{k}\bigr)\;\prod_{k=\lfloor (n+1)/2\rfloor}^{n}\bigl(1-2^{k}\bigr)$;
+
+$E(n)=\displaystyle\sum_{j\ge 0}\; -\bigl(1-c\,2^{\,2n+j}\bigr)^{-1}\prod_{k=1}^{n-1}\bigl(1-2^{\,k-n-j}\bigr)\bigl(1-c\,2^{\,k+n+j}\bigr)^{-1}$.
+
+Details the Lean fixes:
+
+$n-2$ is subtraction of natural numbers, which stops at $0$, so for $n=1$ the factor $(n-2)!$ is $0! = 1$. The lower limit $\lfloor (n+1)/2\rfloor$ is natural-number division, that is $\lceil n/2\rceil$.
+
+In $E(n)$ the exponents $2n+j$, $k-n-j$ and $k+n+j$ are integers; $k-n-j$ is negative, so $2^{\,k-n-j}=1/2^{\,n+j-k}$. For $n=1$ the product over $k$ is empty and equals $1$.
+
+Both infinite sums are Lean's unconditional sum `∑'` over $j \ge 0$, which takes the value $0$ for a series that is not summable; summability is not asserted separately.
+
+Nothing is required of $a(0)$ or $b(0)$, and the integers $a(n)$, $b(n)$ are not required to be nonzero.
+
+The file's comment records that this statement is the hole `integrality` of a merged partial proof, written into its own node by the gate.
