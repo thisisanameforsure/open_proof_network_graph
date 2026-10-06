@@ -356,6 +356,8 @@ jobs:
               now=None,
               tip_of=lambda ref: None,
               lane_of=lambda number: None,
+              words_of=lambda number: frozenset(),
+              words_moved=lambda number: False,
           ):
               """F07-T56: a list of (number, sha, action), action one of "merge", "update",
               "hold" (a lane waits for it) or "wait" (nothing waits for it, but the run reads
