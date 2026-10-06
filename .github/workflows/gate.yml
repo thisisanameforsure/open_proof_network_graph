@@ -261,6 +261,18 @@ jobs:
           if-no-files-found: error
           overwrite: true  # a re-run of this job on the same head saw the same event
 
+      # F22-T24: the classification, warnings included, for every pull request this job classified;
+      # a words pull request builds nothing, so without this the service had nothing to show a
+      # writer but the log. Its own name, so the service still reads a refusal from gate-<pr>-.
+      - name: Keep the classification (F22-T24)
+        if: always() && steps.classify.outcome != 'skipped'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: classify-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
+          path: classification.json
+          if-no-files-found: ignore
+          overwrite: true  # a re-run of this job on the same head saw the same event
+
       # F08-R2: the mechanical admission of a proposed node — F00's layout, F01's witness and
       # context, F02's hazards, F03's acyclicity and D-30's relation proof, in R1's order —
       # inside the step-3 sandbox, because a statement elaborates arbitrary code too (C9).
