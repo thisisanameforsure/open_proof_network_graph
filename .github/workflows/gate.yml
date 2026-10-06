@@ -409,6 +409,15 @@ jobs:
           # network repo's tests run as it stands (test_finding_postmerge_batch.py).
           helper="$RUNNER_TEMP/postmerge_batch.py"
           replay=""
+          gh_api() {  # F22-T20: under a burst of merges the host has answered with an empty body
+            local out attempt
+            for attempt in 1 2 3 4 5; do
+              if out="$(gh api "$@")" && [ -n "$out" ]; then printf '%s' "$out"; return 0; fi
+              echo "::warning::gh api $1 answered nothing (attempt $attempt of 5)" >&2
+              sleep "$(( ${OPN_GH_RETRY_SLEEP:-2} * attempt ))"
+            done
+            return 1
+          }
           dispatch_replays() {  # F07-T45: merges this run cannot record, each replayed on its own
             for n in $replay; do
               if python3 "$helper" credited HEAD "$n"; then continue; fi
@@ -744,6 +753,11 @@ jobs:
                   for key, value in decided.items():
                       print(f"{key}={value}")
                   sys.exit(0)
+              if command == "number-of":  # number-of <merge>: the pull request's number, or nothing
+                  (sha, parents, subject), = first_parent_log(args[0], 1)
+                  found = merge_of(subject, parents)
+                  print(found[0] if found else "")
+                  sys.exit(0)
               if command == "branch-of":  # branch-of <merge>: the pull request's branch, or nothing
                   (sha, parents, subject), = first_parent_log(args[0], 1)
                   found = merge_of(subject, parents)
@@ -760,7 +774,7 @@ jobs:
               echo "::error::replay_pr must be a pull request number, not '$REPLAY_PR'"; exit 1
             fi
             number="$REPLAY_PR"
-            pr="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${number}")"
+            pr="$(gh_api "repos/${GITHUB_REPOSITORY}/pulls/${number}")"
             merge="$(printf '%s' "$pr" | python3 -c "import json,sys; p=json.load(sys.stdin); print(p['merge_commit_sha'] if p.get('merged_at') else '')")"
             if [ -z "$merge" ]; then
               echo "::error::PR #$number is not merged; there is no post-merge job to replay"; exit 1
@@ -774,8 +788,14 @@ jobs:
             echo "postmerge: replaying PR #$number (merge $merge) on main at ${GITHUB_SHA}"
           else
             merge="$GITHUB_SHA"
-            pulls="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"
-            number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+            if pulls="$(gh_api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/pulls")"; then
+              number="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['number'] if ps else '')")"
+            else
+              # F22-T20: the host never answered; the merge commit's subject names the pull request.
+              number="$(python3 "$helper" number-of "$GITHUB_SHA")"
+              pulls=""
+              [ -n "$number" ] && echo "postmerge: the host did not answer; PR #$number read from the merge subject"
+            fi
             if [ -z "$number" ]; then
               echo "postmerge: ${GITHUB_SHA} did not merge a pull request; nothing to record"
               # F07-T60: a re-pin is a direct push, so no merge renders the products under the new
@@ -793,7 +813,11 @@ jobs:
               fi
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
-            author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+            if [ -n "$pulls" ]; then
+              author="$(printf '%s' "$pulls" | python3 -c "import json,sys; ps=[p for p in json.load(sys.stdin) if p.get('merged_at')]; print(ps[0]['user']['login'])")"
+            else
+              author="$(gh_api "repos/${GITHUB_REPOSITORY}/pulls/${number}" --jq '.user.login')"
+            fi
             # F07-T45 (a): the merge actor merges appends in batches, so main may already hold a
             # later merge. That merge is a push with a post-merge run of its own, which records
             # every merge since the last gate commit, this one included (b); this run renders
@@ -823,7 +847,7 @@ jobs:
               target="$(sed -n 's/^target=//p' "$RUNNER_TEMP/plan.txt")"
               authors=""
               for n in $numbers; do
-                authors="$authors $(gh api "repos/${GITHUB_REPOSITORY}/pulls/$n" --jq '.user.login')"
+                authors="$authors $(gh_api "repos/${GITHUB_REPOSITORY}/pulls/$n" --jq '.user.login')"
               done
               render_pin="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['network_commit'])" "targets/$target/gate-spec.json")"
               {
