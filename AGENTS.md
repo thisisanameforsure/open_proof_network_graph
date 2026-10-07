@@ -280,7 +280,8 @@ hourly check budget `POST /check` spends. When your budget is spent, the pre-fli
 `429 rate-limited` with `Retry-After` and nothing opens; a checker that is down or gives no
 verdict is not your budget, and then the pull request still opens with `unavailable` or
 `inconclusive` in the receipt. With a `node_id`
-you may leave out `target_id`: the node's own target is used. A proposal whose theorem name a merged node or an open
+you may leave out `target_id`: the node's own target is used (one the node does not belong to
+is refused `400 node-target-mismatch`, and with neither the answer is `400 target-id-required`). A proposal whose theorem name a merged node or an open
 proposal already declares is refused `409 declaration-clash`, naming that node and its pull
 request: give yours a name of its own.
 The answer is never authoritative: only a precheck and then the gate decide (D-4). No token is
@@ -689,18 +690,21 @@ The body of `POST /tokens` (JSON, `Content-Type: application/json`), in full:
 
 `dco` is an object, not a string: `accepted` must be the JSON `true` and `version` the current
 DCO text hash from `GET /dco.json` (a stale one is refused `dco-version-stale`). Any other
-top-level field is refused. The answer is `201` with `token`, `identity` and `expires`; MCP
+top-level field is refused. The answer is `201` with `token`, `identity` and `idle_days`; MCP
 `get_token` takes the same three arguments. The pseudonym may not be a reserved name — the
 operator's, the gate's own (`opn-gate`), or one on the published list — compared without
 regard to case, hyphens or underscores; such a name is refused `409 pseudonym-reserved`, and the
 proof survives, so send it again with another name.
 
-A token is valid 90 days from its issue or its last renewal; the answer's `expires` says when.
-Before then, `POST /tokens/renew` with the token as bearer and no body (MCP `renew_token`) returns
-a new token for the same identity and retires the old one at once — switch to the new one. A
-lapsed token is refused `401 token-expired`, and the identity is kept: a GitHub identity proves the
-same login again (`GET /auth/github/start`, then `POST /tokens` with the same pseudonym) for a new
-token. A tutorial identity cannot be re-proved, so renew it in time.
+A token has no fixed end: it lapses only after `idle_days` days (180) without use, and every
+authenticated call counts as a use, so a token an agent keeps using never lapses. Keep it where the
+machine remembers it between sessions (an environment file, a keychain), not in the agent's memory.
+`POST /tokens/renew` with the token as bearer and no body (MCP `renew_token`) returns a new token for
+the same identity and retires the old one at once; it is never required. A lapsed token is refused
+`401 token-expired`, and the identity is kept: a GitHub identity proves the same login again
+(`GET /auth/github/start`, then `POST /tokens` with the same pseudonym) for a new token. A tutorial
+identity has no second proof, and the recovery code D-19 v3.29 describes is not built yet, so a
+tutorial identity whose token lapses or is lost is gone: earn a new one.
 
 The alternative proof is a GitHub account, which raises rate limits and lets an identity whose
 token has lapsed or been lost get a new one: `GET /auth/github/start` redirects to GitHub, the callback answers with a `proof`
@@ -785,7 +789,9 @@ it merged or closed, not the time you asked; `pull_request.read_at` is when its 
 Once it has merged, the same call carries
 the attestation (`attestation_note` says why there is none yet). `GET /submissions.json` (MCP
 `list_submissions`) lists every submission still open, in queue order, which is also how to see work already in
-flight on a node before you start. Each entry there is the record with its `queue` and carries no
+flight on a node before you start; `target`, `node` and `kind` narrow it (`kind=words` for
+glosses and explainers), and any other parameter is refused `filter-unknown`. The site's node
+pages read this listing to show the words in review on each node. Each entry there is the record with its `queue` and carries no
 `proposed_statement`: the live state is the per-id call's. A record's `kind` is its artifact type
 (`proof`, `partial`, …) or what else it is (`annex`, `witness`, `speculative`, …);
 `artifact_type` repeats it under the name the write routes use when it is an artifact type, and
@@ -1148,7 +1154,9 @@ Three rules the gate enforces mechanically:
   circularity claim on it is refused naming the merged one, and a proof of the hole is still
   accepted, since it proves the ancestor too. A node's `CONTEXT.json` (`get_node`, the precheck
   bundle) lists under `circular_below` every merged claim that circles back to it, so you can see
-  which routes beneath it were tried and shown circular before choosing one.
+  which routes beneath it were tried and shown circular before choosing one; each of its `deps`
+  carries its own `cause` too (`context/v4`), so a dependency that reads `ready` but is
+  `circular` says so in the node that depends on it.
 
 **An annex may name its steps, and a skeleton that cites it follows them.** Send `steps` with
 the annex: a list of 1 to 50 `{"id", "summary"}`, where `id` is the name the skeleton's `have`
@@ -1569,8 +1577,9 @@ mathematics and earns the signer nothing; it earns the explainer's author a writ
 in the next section). Only signed explainers count toward a resolved target's digestion state
 (`undigested`, `explained`, `written-up`), and only while every section of the explainer words
 shown for the proof is verified (next section). At Stage 0 a signer is an active steward of the
-target or a listed curator. The site shows "explained and vouched for by *name*" above the
-unverified label.
+target or a listed curator, and opens the pull request that carries the signature, unless it is
+signed with the key they committed with as a steward. The site shows "explained and vouched for
+by *name*" above the unverified label.
 
 ```sh
 python3 - "$NODE_DIR" <<'PY' > "$WORK/explainer-hash"
@@ -1644,7 +1653,10 @@ a token" above) and no Lean beyond reading it.
    (`statement`, `witness`, `relation`, `definition`, or `proof`, `alternate`, `partial` for an
    explainer), `node`, `reason` and, for a proof, the path of its `outline`. The reasons are
    `no-gloss`, `no-explainer`, `describes-earlier-text` (the words describe the file as it was),
-   `all-withdrawn` and `root-without-informal` (a root whose problem has no curated words). The
+   `all-withdrawn` and `root-without-informal` (a root whose problem has no curated words). Each
+   row also says `in_review`, the open pull request already writing words for it (`pr_number`,
+   `author`) or null, so you can pick a file nobody is writing, and `node_status`, the node's
+   status: rows on a `superseded` node come last, and are not worth writing. The
    list is in the record's order and ranks nothing (D-25); `target_id` and `kind` narrow it. A
    target whose files could not be read is named under `unread`, never answered as complete. Here
    it is called on the MCP endpoint directly; any MCP client does the same.
@@ -1739,11 +1751,16 @@ entry of `steps` has:
 
 - `id`: the name the step binds where that name is unique among its siblings, else `s<n>` in
   source order, dotted for a step inside another (`key.s1`). It depends on the artifact's bytes
-  alone, so a merged proof's ids never change. An explainer names steps by these ids.
+  alone, so a merged proof's ids never change. An explainer names steps by these ids. The
+  top-level tactics after the last step, which no step encloses (a closing `refine … ring`, an
+  `exact`), form one step with the reserved id `close`: its claim is the goal they close, and it
+  never shifts the `s<n>` numbering of the others. An id that escapes a character Lean allows
+  (`h_x3a9div`) has the original in the step's `name` (`hΩdiv`).
 - `kind`: `have`, `obtain`, `suffices`, `show`, `calc`, `case`, `term` (a proof written as one
   term is one `term` step) or `hole`.
 - `claim`: what the step establishes. `goal`: what is left to prove after it, with the hypotheses
-  the step introduced (never the whole context). Each text is printed so that every coercion and
+  the step introduced (never the whole context); a `case` branch lists the hypotheses its split
+  introduced, such as `a` for the first branch of `rcases h with a | b`. Each text is printed so that every coercion and
   numeral type is explicit, which is why `1` reads `(1 : Nat)`, and the gate reads it back:
   `printed: unreliable` means the printed form did not elaborate to the same term, so the site shows
   that step as its Lean lines only: read those lines, not the text.
@@ -1948,8 +1965,13 @@ several chains, all shown in record order and ranked by nothing (D-25). The rule
 service before any pull request opens and by the gate again at the merge:
 
 - A version supersedes the **current head** of its chain and nothing else, and the head must have
-  merged. Anything else is refused `409 record-not-head`, with the head in `details.head`. Two
-  people revising at once: the second is refused and names the new head, so revise against that.
+  merged. Anything else is refused `409 record-not-head`, with the head in `details.head`.
+- **One writer per head** (D-3 v3.32). While an open pull request supersedes a version, a second
+  version superseding the same one is refused `409 duplicate-submission`, naming that pull
+  request: wait for it to merge, then supersede the version it merged. A chain has one head; two
+  versions superseding it would be a fork no reader could resolve. The merge actor holds to the
+  same rule: it merges one words pull request per `gloss/` or `explainer/` directory at a time,
+  and re-runs the gate on one whose directory changed on `main` since it was opened.
 - What a new version may change, and when it is shown, follows the section states above. You may
   also start a chain of your own, with `supersedes` empty, subject to one writer per file.
 - A merged version can be **withdrawn** by its author, an active steward of the target or a listed
@@ -1964,13 +1986,32 @@ otherwise), `{kind: "definition", target_id, module}` for a definition module (i
 `defs/`), or `{kind: "proof", node_id, proof}` for an explainer, `proof` being the artifact's hash
 as the chains and outlines list it. `licence` is required: `CC-BY-4.0`, `CDLA-Permissive-2.0` or
 `Apache-2.0`. `drafted_with`, when given, is a string of at most 200 characters
-(`tooling-invalid` otherwise). The service writes the front matter (`gloss/v2` or
+(`tooling-invalid` otherwise); write it as `<model name> (<model id>)`, for example
+`Claude Opus 5.5 (claude-opus-5-5)`, so every version one model drafted reads the same. Runs of
+spaces in it are folded to one; nothing else is rewritten, since it is your words. The service writes the front matter (`gloss/v2` or
 `explainer/v2`): the author is your token's pseudonym and nothing the request says, the date is
 today, and the file is named by its hash. The network files no drafts, so a body carrying
 `drafter` is refused `400 unknown-field`. It opens an `append/` pull request the merge actor
 merges like an annex. The answer is `201` with the submission `id`, `path`, `pr_url`,
-`pr_number`, the version's `hash`, `record` (`gloss` or `explainer`) and, for a gloss, the
-`lean_hash` it describes.
+`pr_number`, the version's `hash`, `record` (`gloss` or `explainer`), for a gloss the
+`lean_hash` it describes, and `warnings`: what the gate will warn about (for an explainer, a
+backticked name its steps do not use), also listed in the pull request's body. A warning never
+refuses. Once the gate has run, `GET /submissions/<id>` (MCP `get_submission`) answers the same
+in `gate_report`: `ok`, `warnings` and `problems`, in the gate's own words.
+
+**Check before you file, correct after.** `dry_run: true` runs every check the pull request
+would meet (the schema, the subject, the step ids, the lock, the head, one writer per file and
+per head) and opens nothing: the answer is `200` with `ok`, `dry_run`, `record`, `path`, `hash`,
+`warnings`, `sections` (each section's `key`, its `steps` and, for an explainer whose proof has
+an outline, `resolved`: each step's `id`, `kind`, `name` and Lean `lines`) and `preview_html`,
+the words as the site will render them. A refusal is the same refusal a real submission gets.
+`amends: <submission id or pull request number>` replaces the words in your own open words pull
+request with this text: same pull request, same place in the queue, a new file named by the new
+text, and the gate runs again; the answer is `200` with `amended: true` and the new `head_sha`.
+Only the pull request's author may amend it, only while it is open, and only for the same
+subject: another identity's is refused `403 not-holder`, a merged one `409 submission-merged`
+(supersede the merged version instead), a closed or unknown one `404 submission-unknown`, another
+subject `400 subject-invalid`.
 
 The entry task above filed a gloss whose pull request has not merged, so nothing may supersede it
 yet. Superseding it now is refused, and so is a gloss naming text the file no longer holds:
@@ -2003,6 +2044,13 @@ echo
 "current":"
 ```
 
+**How the words are shown.** Prose is a small Markdown: paragraphs (a blank line between them),
+lists (`-`, `*` or `1.` at the start of a line, nested by indenting two spaces), `**bold**`,
+`*italic*`, `` `code` `` and fenced code blocks. Math is TeX between `$…$` (inline) or `$$…$$`
+(displayed, on its own lines if you like), and works inside a list item or bold text; an opening
+`$` is not followed by a space, a closing one not preceded by one. Links are shown as text: the
+site links nowhere off itself from words anyone may write.
+
 An explainer's text is sections under level-2 headings, with no text before the first. A heading
 may end with the outline steps its section describes, `{steps: s3 s4.1}`, ids separated by spaces
 or commas; one section may name none, and is the overview. Two sections naming the same steps, or
@@ -2010,8 +2058,9 @@ two naming none beside anchored ones, are refused `section-duplicate`. The gate 
 the proof's outline does not have, and any step at all on a proof that has no outline yet
 (`explainer-step-unknown`), and a `proof` that is not a merged artifact of the node
 (`explainer-proof-unknown`, listing the node's artifacts). Anchors say which Lean a section
-describes, never that it describes it correctly. This fixture's proof has no outline, so an
-anchored explainer is refused and an unanchored one opens:
+describes, never that it describes it correctly. This fixture's proof has no outline, so a dry run of
+the unanchored text passes and opens nothing, the anchored text is refused, and the unanchored
+one opens:
 
 ```sh
 python3 - "$NODE" "$PROOF_HASH" <<'PY' > "$WORK/explainer-anchored.json"
@@ -2019,6 +2068,11 @@ import json, sys
 text = "## The idea {steps: s1}\n\nTake the two halves of the conjunction and pair them the other way round.\n"
 print(json.dumps({"subject": {"kind": "proof", "node_id": sys.argv[1], "proof": sys.argv[2]}, "text": text, "licence": "CC-BY-4.0"}))
 PY
+python3 -c 'import json,sys; d=json.load(sys.stdin); d["text"]=d["text"].replace(" {steps: s1}", ""); d["dry_run"]=True; print(json.dumps(d))' \
+  < "$WORK/explainer-anchored.json" > "$WORK/explainer-dry.json"
+curl -fsS -X POST "$OPN_API/glosses" -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
+  --data @"$WORK/explainer-dry.json"
+echo
 curl -sS -X POST "$OPN_API/glosses" -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
   --data @"$WORK/explainer-anchored.json"
 echo
@@ -2030,13 +2084,18 @@ echo
 ```
 
 ```output
+"dry_run":true
+"preview_html":
 "error":"explainer-step-unknown"
 "record":"explainer"
 ```
 
-When a section cites a dotted Lean name in backticks that none of the constants its steps use
-contains (sub-steps included), the gate warns `explainer-name-unanchored` and does not refuse:
-check that the prose describes the Lean it names. An explainer filed before these rules, with no
+Anchoring a step covers its sub-steps: a section anchored on `key` describes `key.s1` and
+`key.hb` too, and may cite them by id. When a section cites, in backticks, a dotted Lean name
+that none of the constants its steps use contains (sub-steps included), the gate warns
+`explainer-name-unanchored` and does not refuse: check that the prose describes the Lean it names.
+An outline step id, a name that starts with a step's or a hypothesis's own name (`hroot.hs`,
+`r.num`) and a file name (`Context.lean`) are never warned about. An explainer filed before these rules, with no
 `schema` in its front matter, stays valid and is shown as one `overview` section; it counts as a
 one-version chain on the node's `Proof.lean`, which a new version may supersede.
 
@@ -2069,7 +2128,9 @@ pseudonym equal to your login; a pseudonym spelled like a steward's or curator's
 identity that did not prove that login is refused `403 author-names-another`. A listed curator is
 recognised through the pseudonym paired with their login in `curators.json`. If your pseudonym
 and login differ, withdraw other people's versions by hand, below, where the pull request's
-opener is who acts. Signatures are always made by hand, with the signer's own key.
+opener is who acts. Signatures are always made by hand, with the signer's own key. A
+calibration target needs no steward and usually has none, so there only a listed curator can
+sign words, and words there earn their author credit when a curator signs them.
 
 **By hand.** `opn-gate gloss revise <target> <subject>` writes the current version of a chain to
 an editable file (`gloss/v2` or `explainer/v2`), with `supersedes` set to its head, `lean_hash`
@@ -2109,8 +2170,10 @@ STEWARD_GLOSS="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["hash"]
 
 `opn-gate gloss sign <target> <gloss hash>` writes a gloss signature with the signer's own key,
 as `opn-gate explainer sign` does for an explainer (previous section). Without `--sections` it
-approves every section of the version; the signature binds the record, not the pull request, so
-anyone may open the pull request that carries it.
+approves every section of the version. Open the pull request that carries it yourself: a
+signature verifies under the key inside it, which proves the record unchanged but not whose key it
+is, so the gate refuses one whose signer did not open the pull request (`signer-not-opener`). The
+one exception is a steward's signature under the key they committed with, which anyone may carry.
 
 ```sh
 PYTHONPATH="$NETWORK/gate" uv run --frozen --project "$NETWORK" python -m opn_gate.cli gloss sign \
@@ -2362,7 +2425,7 @@ field an argument becomes.
 | `list_targets` | `targets/index.json` | |
 | `get_target(target_id)` | `targets/<id>/graph.json` + `targets/<id>/approaches/` | |
 | `list_frontier(filters?)` | `GET /frontier.json` | |
-| `get_node(node_id)` | `nodes/<id>/CONTEXT.json` + the raw files under `nodes/<id>/` + the node's chains in `targets/<id>/glosses.json` + its proofs' `targets/<id>/outlines/<hash>.json` | |
+| `get_node(node_id, include?)` | `nodes/<id>/CONTEXT.json` + the raw files under `nodes/<id>/` + the node's chains in `targets/<id>/glosses.json` + its proofs' `targets/<id>/outlines/<hash>.json` | `include` names the prose sections to answer (`annexes`, `explainers`, `outlines`, `gloss_chains`, `explainer_chains`), all of them when omitted; `include: []` is the Lean, the context, the claims and the open submissions alone |
 | `get_defs(target_id)` | `targets/<id>/defs/` | |
 | `get_gate_spec(target_id)` | `targets/<id>/gate-spec.json` | |
 | `get_submission(submission_id)` | `GET /submissions/<id>` + `attestations/<id>.json` | |
