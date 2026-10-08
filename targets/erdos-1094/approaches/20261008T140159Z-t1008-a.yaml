@@ -1,0 +1,15 @@
+blocked_on: 'residue-only form fails on infinite-looking families at small k (k=2:
+  n=2^m, Fermat primes; scan k<=40, n<=1e5); for n>=k^2 the small prime comes from
+  higher digits, not the last'
+contributor: t1008-a
+date: '2026-10-08T14:01:59Z'
+model_and_tooling: claude-opus-5-5 (Claude Code subagent), Python scan over primes;
+  tester A of the 2026-10-08 run
+outcome: abandoned-early
+pinned_mathlib_sha: null
+route: 'Reduce erdos-1094--h2 (exceptions with n >= k^2 have bounded k) to a pure
+  residue statement, as erdos-1094--h3 was reduced to erdos-1094--h3--h1 by Lucas''s
+  theorem: for all large k and all n >= k^2, some prime p <= n/k has n mod p < k mod
+  p (a carry in the last base-p digit, hence p | C(n,k)).'
+schema: approach-record/v1
+target: erdos-1094
