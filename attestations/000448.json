@@ -1,0 +1,121 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "cf450ef2c1d1e231a8914bbf606a2c853421cc5aa53d31740a534931d994aede",
+  "graph_commit": "68f75c7ed2f0012c0be485770f914c71cab608d4",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "68f75c7ed2f0012c0be485770f914c71cab608d4",
+  "model_and_tooling": "claude-opus-5-5 Claude Code subagent, MCP over curl JSON-RPC, AXLE fast check",
+  "network_commit": "2bc5605b33c56332b40cc997c905e140b74961d8",
+  "node_id": "erdos-1094--h3",
+  "precheck_attestation": {
+    "hash": "246e3d96dd384781cc2fd4a53d530cb6e66b35403b4d96a828f347006823a821",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v6",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-08T13:41:46Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHtXXkLhfVDnQw+qL4JlaQIAK4xBFGv/KBLVt2/X2XVeDLk3Ol\nN9Ar0u3PI4ILsBYuSzJHirh+YQaW7YubucSgQ=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "ea8c2bd908e4a56d2b703223b839ff4664882ab9c1fbd85e71ed4eb05e2da99b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261008T133001Z-t1008-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261008T133001Z-t1008-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_sieve"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h3 declares ∃ K, ∀ (n k : ℕ), 0 < k → 2 * k ≤ n → n < k * k → (n.choose k).minFac > k → k ≤ K; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_sieve",
+              "path": "attempts/20261008T133001Z-t1008-a-partial.1.witness",
+              "sha256": "ddabc19524911c820ba64685cea3dcf25d3f3407ef5633f9234db3dcba9746b3"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1008-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code subagent, MCP over curl JSON-RPC, AXLE fast check",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
