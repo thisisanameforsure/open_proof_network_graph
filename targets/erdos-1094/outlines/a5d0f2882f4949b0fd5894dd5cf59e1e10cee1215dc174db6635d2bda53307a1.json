@@ -1,0 +1,863 @@
+{
+  "artifact": {
+    "hash": "a5d0f2882f4949b0fd5894dd5cf59e1e10cee1215dc174db6635d2bda53307a1",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "2bc5605b33c56332b40cc997c905e140b74961d8",
+  "node": "erdos-1094--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k * k ≤ n ∧ (n.choose k).minFac > n / k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkn",
+            "type": {
+              "printed": "reliable",
+              "text": "k * k ≤ n",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hmin",
+            "type": {
+              "printed": "reliable",
+              "text": "(n.choose k).minFac > n / k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 14,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k ≤ n / k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkt",
+            "type": {
+              "printed": "reliable",
+              "text": "k ≤ n / k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hkt",
+      "kind": "have",
+      "name": "hkt",
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_div_iff_mul_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < n / k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "htpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < n / k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "htpos",
+      "kind": "have",
+      "name": "htpos",
+      "span": {
+        "end_line": 17,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_lt_of_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k * (n / k) ≤ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hm_le",
+            "type": {
+              "printed": "reliable",
+              "text": "k * (n / k) ≤ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hm_le",
+      "kind": "have",
+      "name": "hm_le",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.mul_div_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n < k * (n / k + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < k * (n / k + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "n < k * (n / k) + k",
+              "truncated": false
+            }
+          },
+          "id": "hm_gt.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 20,
+            "start_line": 20
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_mul_div_succ",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "n < k * (n / k) + k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hm_gt",
+            "type": {
+              "printed": "reliable",
+              "text": "n < k * (n / k) + k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hm_gt",
+      "kind": "have",
+      "name": "hm_gt",
+      "span": {
+        "end_line": 21,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n.choose k).minFac ≤ p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n.choose k).minFac ≤ p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hnd.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.minFac_le_of_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p : ℕ), Nat.Prime p → p ≤ n / k → ¬p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnd",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ), Nat.Prime p → p ≤ n / k → ¬p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hnd",
+      "kind": "have",
+      "name": "hnd",
+      "span": {
+        "end_line": 26,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hcop.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.le_of_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ n / k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hcop.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 33,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_of_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(k * (n / k)).Coprime (n.choose k)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcop",
+            "type": {
+              "printed": "reliable",
+              "text": "(k * (n / k)).Coprime (n.choose k)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hcop",
+      "kind": "have",
+      "name": "hcop",
+      "span": {
+        "end_line": 33,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.coprime_of_dvd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.Prime.dvd_mul",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n - k * (n / k) ∈ Finset.range k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n - k * (n / k) ∈ Finset.range k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k * (n / k) ∣ ∏ i ∈ Finset.range k, (n - i)",
+              "truncated": false
+            }
+          },
+          "id": "hm_dvd.hj",
+          "kind": "have",
+          "name": "hj",
+          "span": {
+            "end_line": 37,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_range",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n - (n - k * (n / k)) ∣ ∏ i ∈ Finset.range k, (n - i)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n - (n - k * (n / k)) ∣ ∏ i ∈ Finset.range k, (n - i)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k * (n / k) ∣ ∏ i ∈ Finset.range k, (n - i)",
+              "truncated": false
+            }
+          },
+          "id": "hm_dvd.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 38,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.dvd_prod_of_mem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n - (n - k * (n / k)) = k * (n / k)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n - (n - k * (n / k)) = k * (n / k)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k * (n / k) ∣ ∏ i ∈ Finset.range k, (n - i)",
+              "truncated": false
+            }
+          },
+          "id": "hm_dvd.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 39,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "k * (n / k) ∣ k ! * n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hm_dvd",
+            "type": {
+              "printed": "reliable",
+              "text": "k * (n / k) ∣ k ! * n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hm_dvd",
+      "kind": "have",
+      "name": "hm_dvd",
+      "span": {
+        "end_line": 40,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.descFactorial_eq_factorial_mul_choose",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.descFactorial_eq_prod_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k * (n / k) ∣ k !",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hm_fact",
+            "type": {
+              "printed": "reliable",
+              "text": "k * (n / k) ∣ k !",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hm_fact",
+      "kind": "have",
+      "name": "hm_fact",
+      "span": {
+        "end_line": 41,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k * (n / k) ≤ k !",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "k * (n / k) ≤ k !",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n < k ! + k",
+          "truncated": false
+        }
+      },
+      "id": "hle",
+      "kind": "have",
+      "name": "hle",
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_of_dvd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.factorial_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "n < k ! + k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
