@@ -13,9 +13,46 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1/attempts/20261009T125312Z-t1009-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "primes in short intervals: for every eps > 0 and all large x, a prime in (x, (1 + eps) x]"
+            ]
+          },
+          "contributor": "t1009-a",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1/attempts/20261009T125312Z-t1009-a.yaml",
+            "text": "For p in (k/2, k], k mod p = k - p, and n mod p < k - p holds exactly when some multiple m*p lies in (n - (k - p), n]. For fixed m that needs a prime in ((n - k)/(m - 1), n/m], whose endpoint ratio (m - 1) n / (m (n - k)) is below 2 for every n >= 2k, so Bertrand's postulate (the prime-in-interval theorem the pinned Mathlib has) settles no interval of n on its own. Numerically the large primes alone fail sporadically across the whole range (k = 75: from n ~ 12.5k to n ~ 0.97k^2; k = 150: one fa…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h3--h1",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1/attempts/20261009T125312Z-t1009-a.yaml",
+            "text": "split the range 2k <= n < k^2 into intervals of n, each settled by a prime p in (k/2, k] with a multiple m*p in (n - (k - p), n], found by Bertrand's postulate",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1/attempts/20261009T125312Z-t1009-a.yaml",
+            "text": "K n k : ℕ\nhk : K < k\nh2k : 2 * k ≤ n\nhnk : n < k * k\n⊢ ∃ p, Nat.Prime p ∧ p ≤ k ∧ n % p < k % p\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -63,7 +100,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "05639690f2500384a2eccbfc39a1a936abaeb176",
+  "rendered_from": "eba3936948ec0b34402ca5b99f0e239b71d97d24",
   "schema": "context/v5",
   "statement": {
     "decl": "erdos_1094__h3__h1",
