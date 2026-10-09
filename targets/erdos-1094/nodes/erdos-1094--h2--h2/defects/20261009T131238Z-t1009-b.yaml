@@ -1,0 +1,12 @@
+ancestor: erdos-1094--h2
+class: circular-decomposition
+contributor: t1009-b
+date: '2026-10-09'
+exhibit: "import Mathlib\n\nopen scoped Nat\n\ntheorem rev_exhibit :\n    (∃ (K :\
+  \ ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → k * k ≤ n → (n.choose k).minFac > n / k → k ≤ K)\
+  \ →\n    (∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → k * k * k ≤ n → (n.choose k).minFac\
+  \ > n / k → k ≤ K) := by\n  rintro ⟨K, h⟩\n  exact ⟨K, fun n k hk hn hex => h n\
+  \ k hk (le_trans (Nat.le_mul_of_pos_right _ hk) hn) hex⟩\n"
+line: 9
+schema: defect-claim/v3
+stmt_ref: erdos-1094--h2--h2
