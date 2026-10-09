@@ -1,0 +1,143 @@
+{
+  "artifact_hash": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "29324429716c23877d36ce4405f2a1a8bfeb58aa679112fbd4312f597ae0fe00",
+  "graph_commit": "ffd800f4f9922369643f55fcc6a5899f21752d66",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "ffd800f4f9922369643f55fcc6a5899f21752d66",
+  "model_and_tooling": "claude-fable-5-1",
+  "network_commit": "b4e4817959d52854966c4d1c23eaa4afaec782da",
+  "node_id": "erdos-1094--h2--h1",
+  "precheck_attestation": {
+    "hash": "c2eec7b96ed1a1040421043924d25e336aba4405400da8dd7bd745c8f0bb4b49",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v6",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-09T14:45:50Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQKBrYqqrjXuVDRrIpPC/qEXSb5KH7uF9V4f0IddnZbVBSgPL08\nZpbN5Z2bOLqgTA5tK1YfXBQtYk4mg9uIFRCgk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "c926a7c69c19de8b32ba63d9172cb76be6b13d1e08e887166170b716e49992c4",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261009T143300Z-t1009-c-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261009T143300Z-t1009-c-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_good_below_cube"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h2__h1 declares ∃ K, ∀ (n k : ℕ), 0 < k → k * k ≤ n → n < k * k * k → (n.choose k).minFac > n / k → k ≤ K; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "n / k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at n / k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_good_below_cube",
+              "path": "attempts/20261009T143300Z-t1009-c-partial.1.witness",
+              "sha256": "e73e75b6b44140cc2cb43f7c1e984f1898fd18d0a2a2466be3b3d34e0451da50"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1009-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": null,
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
