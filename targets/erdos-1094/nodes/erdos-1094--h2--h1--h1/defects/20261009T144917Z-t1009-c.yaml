@@ -1,0 +1,15 @@
+ancestor: erdos-1094--h2--h1
+class: circular-decomposition
+contributor: t1009-c
+date: '2026-10-09'
+exhibit: "import Mathlib\n\nopen scoped Nat\n\ntheorem circular : (∃ (K : ℕ), ∀ (n\
+  \ k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k * k → (n.choose k).minFac >\
+  \ k → k ≤ K) → (∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → k * k ≤ n → n < k * k * k\
+  \ → (n.choose k).minFac > n / k → k ≤ K) := by\n  rintro ⟨K, hK⟩\n  refine ⟨max\
+  \ K 1, fun n k hk hsq hcube hmin => ?_⟩\n  rcases Nat.lt_or_ge k 2 with h1 | h2\n\
+  \  · exact le_trans (by omega) (le_max_right K 1)\n  · have hkd : k ≤ n / k := (Nat.le_div_iff_mul_le\
+  \ hk).2 hsq\n    have h2k : 2 * k ≤ n := le_trans (by nlinarith) hsq\n    exact\
+  \ le_trans (hK n k hk h2k hcube (lt_of_le_of_lt hkd hmin)) (le_max_left K 1)\n"
+line: 9
+schema: defect-claim/v3
+stmt_ref: erdos-1094--h2--h1--h1
