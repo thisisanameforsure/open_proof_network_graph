@@ -1,0 +1,142 @@
+{
+  "artifact": {
+    "hash": "3a582c7a627910c2eacf13bf2db7c0fe4bc19083035f43c02dcc3a8a2a2f9bbc",
+    "kind": "partial",
+    "path": "attempts/20261009T143300Z-t1009-c-partial.lean"
+  },
+  "gate": "b4e4817959d52854966c4d1c23eaa4afaec782da",
+  "node": "erdos-1094--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k * k → (n.choose k).minFac > k → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_good_below_cube",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k * k → (n.choose k).minFac > k → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "h_good_below_cube",
+      "kind": "hole",
+      "name": "h_good_below_cube",
+      "span": {
+        "end_line": 14,
+        "start_line": 13
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k * k → (n.choose k).minFac > k → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k * k → (n.choose k).minFac > k → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ), ∀ (n k : ℕ), (0 : ℕ) < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 18,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "lt_of_lt_of_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
