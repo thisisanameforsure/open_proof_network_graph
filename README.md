@@ -11,6 +11,10 @@ and nothing else.
 - `.github/workflows/gate.yml` — the gate (D-4): runs the pinned `network` tooling on every
   pull request; a separate post-merge job signs and commits the attestation.
 
+The code here is Apache-2.0 (`LICENSE`) and the non-code record — attestations, prose and every
+other record — is CDLA-Permissive-2.0 (`NOTICE`), as decision D-23 names them; every contribution
+is signed off under the Developer Certificate of Origin the service serves at `/dco.json`.
+
 The protocol is `docs/architecture_decisions.html` in the `network` repository
 (https://github.com/thisisanameforsure/open_proof_network), whose `gate/pregate.sh` runs the same
 checks locally before you open a pull request.
