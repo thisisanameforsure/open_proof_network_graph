@@ -1139,6 +1139,21 @@ jobs:
             --public-key keys/gate.pub \
             --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
 
+      # F26-R13: the review job after a merge that adds a review record. Fails soft: a pin that
+      # predates it (no `review-job`, or no `review run`) writes nothing and warns (2026-09-17).
+      - name: Run the review job for each target whose review the merge added to (F26-R13; no secret)
+        if: steps.pr.outputs.run == 'true'
+        env:
+          PYTHONPATH: network-render/gate
+          MERGES: ${{ steps.classify.outputs.merges }}
+        run: |
+          set -uo pipefail
+          for merge in $MERGES; do
+            uv run --frozen --project network-render python -m opn_gate.postmerge review-job \
+              --graph . --base "${merge}^1" --head "$merge" \
+              || echo "::warning::review job: the pinned gate has no review-job entry (F26-R13); nothing written"
+          done
+
       # F07-T55: what this run wrote that is not a product — the attestation it signed, and the
       # hole children, the parent's Context and the attempts file a partial writes — taken before
       # any product is rendered. If main moves under this run, the commit step lays exactly this on
