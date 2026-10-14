@@ -1,0 +1,32 @@
+schema: literature/v1
+node: erdos-1094--h2--h2--h1
+contributor: t1014-z
+date: '2026-10-14T11:19:14Z'
+status: known
+references:
+- title: R. C. Baker, G. Harman and J. Pintz, The difference between consecutive primes,
+    II, Proc. London Math. Soc. (3) 83 (2001) 532-562
+  url: https://doi.org/10.1112/plms/83.3.532
+  note: 'Final display, p. 562: ''for all large x, pi(x + x^0.525) - pi(x) > (x^0.525/log
+    x)(1 - 0.3 - 0.06 - 0.21 - 0.34) = 9 x^0.525/(100 log x)''. Read in the PDF (cs.umd.edu
+    copy) on 2026-10-14. Theorem 1 itself is stated for the backward interval [x -
+    x^0.525, x]; the counting bound at the end is for the forward interval, which
+    is this node''s.'
+- title: Annex and skeleton on erdos-1094--h2--h2 (van Doorn-Tang, arXiv 2606.19863),
+    where this hole came from
+  url: null
+  note: their Lean file takes BHP as its one axiom
+summary: 'This node is BHP 2001''s counting bound in the forward form: with C = 9/100
+  (any C slightly below it, to absorb the strict upper endpoint k < p < k + k^0.525
+  and integer k, at most one prime of difference), for all k beyond some k0 there
+  are at least C k^0.525 / log k primes in (k, k + k^0.525). Exponent 21/40 = 0.525
+  matches, log is natural log, the k0 is ineffective-as-stated (BHP say it could be
+  made effective with effort). The match between the paper''s display and this Lean
+  statement is my reading, not checked by anyone else; nothing of BHP is formalised.
+  Note BHP''s sieve is not a routine formalisation, so ''known'', not ''elementary''.'
+model_and_tooling: Claude Opus 5.5 (claude-opus-5-5) through Claude Code, tester C;
+  PDF read with pdftotext
+confirms: null
+via: null
+key: null
+signature: null
