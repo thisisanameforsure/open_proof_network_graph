@@ -1,0 +1,4475 @@
+{
+  "artifact": {
+    "hash": "3a5411abdc31872d72047e6f87d1592515be0beb21dc27ed0e670a0a24fa210e",
+    "kind": "partial",
+    "path": "attempts/20261014T181000Z-t1014-r-partial.lean"
+  },
+  "gate": "15d1d4647b94f4499ff4d7c811bf0733d35cc410",
+  "node": "erdos-1094--h2--h2--h2--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h2--h2--h2--h2--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n                (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_count",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n                (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "h_count",
+      "kind": "hole",
+      "name": "h_count",
+      "span": {
+        "end_line": 38,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+            "name": "Finset.Ioo",
+            "tags": []
+          },
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB0",
+            "type": {
+              "printed": "reliable",
+              "text": "¬∃ (C : ℝ),\n    (0 : ℝ) < C ∧\n      ∃ (k₀ : ℕ),\n        ∀ (k : ℕ),\n          k₀ ≤ k →\n            C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n              (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                      (0 : ℤ) < p ∧\n                        Nat.Prime p.natAbs ∧\n                          (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 51,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < theta",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "theta_pos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < theta",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "theta_pos",
+      "kind": "have",
+      "name": "theta_pos",
+      "span": {
+        "end_line": 59,
+        "start_line": 57
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "theta < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "theta_lt_one",
+            "type": {
+              "printed": "reliable",
+              "text": "theta < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "theta_lt_one",
+      "kind": "have",
+      "name": "theta_lt_one",
+      "span": {
+        "end_line": 62,
+        "start_line": 60
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ) (n p : ℤ), ∀ i ∈ Finset.Icc (1 : ℕ) k, p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "dvd_Pprod_of_factor",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ) (n p : ℤ), ∀ i ∈ Finset.Icc (1 : ℕ) k, p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "dvd_Pprod_of_factor",
+      "kind": "have",
+      "name": "dvd_Pprod_of_factor",
+      "span": {
+        "end_line": 67,
+        "start_line": 63
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.dvd_prod_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑j : ℤ) = i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑j : ℤ) = i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "dvd_from_far.hj",
+          "kind": "have",
+          "name": "hj",
+          "span": {
+            "end_line": 75,
+            "start_line": 74
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Int.toNat_of_nonneg",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Int.emod_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "Int.fract ((↑n : ℝ) / (↑p : ℝ)) = (↑i : ℝ) / (↑p : ℝ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h_frac",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "Int.fract ((↑n : ℝ) / (↑p : ℝ)) = (↑i : ℝ) / (↑p : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "|(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| = min ((↑i : ℝ) / (↑p : ℝ)) ((1 : ℝ) - (↑i : ℝ) / (↑p : ℝ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "dvd_from_far.h_frac.h_frac.h_frac",
+                  "kind": "have",
+                  "name": "h_frac",
+                  "span": {
+                    "end_line": 83,
+                    "start_line": 79
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+                        "name": "Int.fract",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Int.fract_eq_iff",
+                        "tags": []
+                      },
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Int.emod_nonneg",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Int.emod_lt_of_pos",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Int.emod_add_mul_ediv",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "|(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| = min ((↑i : ℝ) / (↑p : ℝ)) ((1 : ℝ) - (↑i : ℝ) / (↑p : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_frac",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "|(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| = min ((↑i : ℝ) / (↑p : ℝ)) ((1 : ℝ) - (↑i : ℝ) / (↑p : ℝ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_frac.h_frac",
+              "kind": "have",
+              "name": "h_frac",
+              "span": {
+                "end_line": 84,
+                "start_line": 78
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+                    "name": "round",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Returns the lesser of its two arguments.",
+                    "name": "Min.min",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "abs_sub_round_eq_min",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℝ) < (↑p : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hp'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℝ) < (↑p : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_frac.hp'",
+              "kind": "have",
+              "name": "hp'",
+              "span": {
+                "end_line": 85,
+                "start_line": 85
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) * ((1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)) ≤\n  (↑p : ℝ) * |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) * ((1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)) ≤\n  (↑p : ℝ) * |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_frac.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 86,
+                "start_line": 86
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) * ((↑i : ℝ) / (↑p : ℝ)) = (↑i : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "field_simp"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) * ((↑i : ℝ) / (↑p : ℝ)) = (↑i : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_frac.e1",
+              "kind": "have",
+              "name": "e1",
+              "span": {
+                "end_line": 88,
+                "start_line": 88
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) * ((1 : ℝ) - (↑i : ℝ) / (↑p : ℝ)) = (↑p : ℝ) - (↑i : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "field_simp"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "e2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) * ((1 : ℝ) - (↑i : ℝ) / (↑p : ℝ)) = (↑p : ℝ) - (↑i : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_frac.e2",
+              "kind": "have",
+              "name": "e2",
+              "span": {
+                "end_line": 89,
+                "start_line": 89
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) = (↑p : ℝ) * ((1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "ring"
+                ]
+              },
+              "goal": null,
+              "id": "dvd_from_far.h_frac.s6",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 91,
+                "start_line": 91
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) * ((1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "dvd_from_far.h_frac.s7",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 92,
+                "start_line": 92
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h_frac",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ min (↑i : ℝ) ((↑p : ℝ) - (↑i : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "dvd_from_far.h_frac",
+          "kind": "have",
+          "name": "h_frac",
+          "span": {
+            "end_line": 92,
+            "start_line": 77
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "mul_min_of_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "theta_pos",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "True",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "theta_lt_one",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "True",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "dvd_Pprod_of_factor",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "∀ (k : ℕ) (n p : ℤ) (i : ℕ), (1 : ℕ) ≤ i → i ≤ k → p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hkp",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "k < p",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hpk",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hfar",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "((↑k : ℝ) ^ (19 / 40 : ℝ))⁻¹ ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "h_frac",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑i : ℝ) ∧ (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑p : ℝ) - (↑i : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(↑k : ℝ) ^ (21 / 40 : ℝ) * (↑k : ℝ) ^ (19 / 40 : ℝ) < (↑p : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "dvd_from_far.h_i_bounds.h_i_bounds.s1",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 98,
+                    "start_line": 97
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Real.rpow_add",
+                        "tags": []
+                      },
+                      {
+                        "doc": "If `extAll` is `true`, `grind` uses any extensionality theorems available in the environment.",
+                        "name": "Lean.Grind.Config.extAll",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "positivity"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "theta_pos",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "True",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "theta_lt_one",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "True",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "dvd_Pprod_of_factor",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "∀ (k : ℕ) (n p : ℤ) (i : ℕ), (1 : ℕ) ≤ i → i ≤ k → p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hkp",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "k < p",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hpk",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hfar",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "((↑k : ℝ) ^ (19 / 40 : ℝ))⁻¹ ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "h_frac",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑i : ℝ) ∧ (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑p : ℝ) - (↑i : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(0 : ℝ) < (↑k : ℝ) ^ (19 / 40 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "dvd_from_far.h_i_bounds.h_i_bounds.s2",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 99,
+                    "start_line": 99
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) > (↑k : ℝ) ^ theta",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_i_bounds",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) > (↑k : ℝ) ^ theta",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℤ) ≤ i ∧ i ≤ (↑k : ℤ)",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_i_bounds.h_i_bounds",
+              "kind": "have",
+              "name": "h_i_bounds",
+              "span": {
+                "end_line": 99,
+                "start_line": 95
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "gt_iff_lt",
+                    "tags": []
+                  },
+                  {
+                    "doc": "See `lt_div_iff₀'` for a version with multiplication on the other side.",
+                    "name": "lt_div_iff₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "theta_pos",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "True",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "theta_lt_one",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "True",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "dvd_Pprod_of_factor",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (k : ℕ) (n p : ℤ) (i : ℕ), (1 : ℕ) ≤ i → i ≤ k → p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hkp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "k < p",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hfar",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((↑k : ℝ) ^ (19 / 40 : ℝ))⁻¹ ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h_frac",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑i : ℝ) ∧ (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑p : ℝ) - (↑i : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h_i_bounds",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑k : ℝ) ^ (21 / 40 : ℝ) < (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℤ) ≤ i",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_i_bounds.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 101,
+                "start_line": 101
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Int.le_of_lt_add_one",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Int.cast_lt",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.one_le_rpow",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "div_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "theta_pos",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "True",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "theta_lt_one",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "True",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "dvd_Pprod_of_factor",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (k : ℕ) (n p : ℤ) (i : ℕ), (1 : ℕ) ≤ i → i ≤ k → p ∣ n - (↑i : ℤ) → p ∣ Pprod k n",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hkp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "k < p",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hfar",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "((↑k : ℝ) ^ (19 / 40 : ℝ))⁻¹ ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)|",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h_frac",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑i : ℝ) ∧ (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ) ≤ (↑p : ℝ) - (↑i : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "h_i_bounds",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑k : ℝ) ^ (21 / 40 : ℝ) < (↑p : ℝ) / (↑k : ℝ) ^ (19 / 40 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "i ≤ (↑k : ℤ)",
+                  "truncated": false
+                }
+              },
+              "id": "dvd_from_far.h_i_bounds.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 102,
+                "start_line": 102
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Int.le_of_lt_add_one",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Int.cast_lt",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℤ) ≤ i ∧ i ≤ (↑k : ℤ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h_i_bounds",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℤ) ≤ i ∧ i ≤ (↑k : ℤ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "dvd_from_far.h_i_bounds",
+          "kind": "have",
+          "name": "h_i_bounds",
+          "span": {
+            "end_line": 102,
+            "start_line": 94
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "j ∈ Finset.Icc (1 : ℕ) k",
+              "truncated": false
+            }
+          },
+          "id": "dvd_from_far.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 104,
+            "start_line": 104
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑p : ℤ) ∣ n - (↑j : ℤ)",
+              "truncated": false
+            }
+          },
+          "id": "dvd_from_far.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 105,
+            "start_line": 105
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Int.emod_add_mul_ediv",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ) (n : ℤ) (p : ℕ),\n  (1 : ℕ) ≤ k →\n    (0 : ℕ) < p →\n      (↑k : ℝ) < (↑p : ℝ) →\n        (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta →\n          (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| →\n            (↑p : ℤ) ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "dvd_from_far",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ) (n : ℤ) (p : ℕ),\n  (1 : ℕ) ≤ k →\n    (0 : ℕ) < p →\n      (↑k : ℝ) < (↑p : ℝ) →\n        (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta →\n          (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta) ≤ |(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| →\n            (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "dvd_from_far",
+      "kind": "have",
+      "name": "dvd_from_far",
+      "span": {
+        "end_line": 105,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ ∧\n  (0 : ℤ) < p ∧ Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hpI",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hp0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℤ) < p",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpr",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Nat.Prime p.natAbs",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hkp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑k : ℝ) < (↑p : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hpb",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∈ badSet k n",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 117,
+                "start_line": 117
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p.natAbs : ℤ) = p",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hq",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p.natAbs : ℤ) = p",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∈ badSet k n",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.hq",
+              "kind": "have",
+              "name": "hq",
+              "span": {
+                "end_line": 118,
+                "start_line": 118
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Int.natAbs_of_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑p.natAbs : ℝ) = (↑p : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hqR",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑p.natAbs : ℝ) = (↑p : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∈ badSet k n",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.hqR",
+              "kind": "have",
+              "name": "hqR",
+              "span": {
+                "end_line": 119,
+                "start_line": 119
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Int.cast_natCast",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℤ) < p",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.s4",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 122,
+                "start_line": 122
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "p < ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "p < ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "p < (↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "exists_far_prime.hsub.s5.h1",
+                  "kind": "have",
+                  "name": "h1",
+                  "span": {
+                    "end_line": 123,
+                    "start_line": 123
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Finset.mem_Ioo",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ ≤ (↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (1 : ℤ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ ≤ (↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (1 : ℤ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "p < (↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "exists_far_prime.hsub.s5.h2",
+                  "kind": "have",
+                  "name": "h2",
+                  "span": {
+                    "end_line": 126,
+                    "start_line": 124
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Int.ceil_le",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Int.lt_floor_add_one",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p < (↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.s5",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 127,
+                "start_line": 123
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "|(↑n : ℝ) / (↑p : ℝ) - (↑(round ((↑n : ℝ) / (↑p : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)",
+                  "truncated": false
+                }
+              },
+              "id": "exists_far_prime.hsub.s6",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 131,
+                "start_line": 128
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ |\n    (0 : ℤ) < p ∧ Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta} ⊆\n  badSet k n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsub",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ |\n    (0 : ℤ) < p ∧ Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta} ⊆\n  badSet k n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "exists_far_prime.hsub",
+          "kind": "have",
+          "name": "hsub",
+          "span": {
+            "end_line": 131,
+            "start_line": 114
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                "name": "Finset.Ioo",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_filter",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioo",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ |\n      (0 : ℤ) < p ∧ Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta}.card ≤\n  (badSet k n).card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ theta⌉ |\n      (0 : ℤ) < p ∧ Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta}.card ≤\n  (badSet k n).card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "exists_far_prime.hc",
+          "kind": "have",
+          "name": "hc",
+          "span": {
+            "end_line": 132,
+            "start_line": 132
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_le_card",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta) ≤ (badSet k n).card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta) ≤ (badSet k n).card",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "exists_far_prime.hc2",
+          "kind": "have",
+          "name": "hc2",
+          "span": {
+            "end_line": 133,
+            "start_line": 133
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) ≤ (↑(badSet k n).card : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) ≤ (↑(badSet k n).card : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "exists_far_prime.hc'",
+          "kind": "have",
+          "name": "hc'",
+          "span": {
+            "end_line": 134,
+            "start_line": 134
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ) (n : ℤ),\n  (1 : ℕ) ≤ k →\n    (↑(badSet k n).card : ℝ) < (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) →\n      ∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "exists_far_prime",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ) (n : ℤ),\n  (1 : ℕ) ≤ k →\n    (↑(badSet k n).card : ℝ) < (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) →\n      ∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "exists_far_prime",
+      "kind": "have",
+      "name": "exists_far_prime",
+      "span": {
+        "end_line": 135,
+        "start_line": 109
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(fun (x : ℝ) => Real.log x ^ b) =o[Filter.atTop] fun (x : ℝ) => x ^ c",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h_log",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(fun (x : ℝ) => Real.log x ^ b) =o[Filter.atTop] fun (x : ℝ) => x ^ c",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto (fun (x : ℝ) => Real.log x ^ b * x ^ (-c)) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "tendsto_log_rpow_mul_rpow_neg.h_log",
+          "kind": "have",
+          "name": "h_log",
+          "span": {
+            "end_line": 141,
+            "start_line": 140
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+                "name": "Filter.atTop",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "isLittleO_log_rpow_rpow_atTop",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (b c : ℝ), (0 : ℝ) < c → Filter.Tendsto (fun (x : ℝ) => Real.log x ^ b * x ^ (-c)) Filter.atTop (nhds (0 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "tendsto_log_rpow_mul_rpow_neg",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (b c : ℝ), (0 : ℝ) < c → Filter.Tendsto (fun (x : ℝ) => Real.log x ^ b * x ^ (-c)) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "tendsto_log_rpow_mul_rpow_neg",
+      "kind": "have",
+      "name": "tendsto_log_rpow_mul_rpow_neg",
+      "span": {
+        "end_line": 143,
+        "start_line": 136
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Filter.eventually_gt_atTop",
+            "tags": []
+          },
+          {
+            "doc": "Dividing by an element is the same as multiplying by its inverse.",
+            "name": "div_eq_mul_inv",
+            "tags": []
+          },
+          {
+            "doc": "See also `rpow_neg_eq_inv_rpow` for a version with `x⁻¹ ^ y` in the RHS.",
+            "name": "Real.rpow_neg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Filter.Tendsto (fun (k : ℕ) => A * Real.log (↑k : ℝ) ^ (β + (1 : ℝ)) * (↑k : ℝ) ^ (α - tt)) Filter.atTop (nhds (0 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto (fun (k : ℕ) => A * Real.log (↑k : ℝ) ^ (β + (1 : ℝ)) * (↑k : ℝ) ^ (α - tt)) Filter.atTop (nhds (0 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "poly_log_lt.h_lim.h_simp",
+              "kind": "suffices",
+              "name": "h_simp",
+              "span": {
+                "end_line": 154,
+                "start_line": 151
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+                    "name": "Filter.Tendsto",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                    "name": "Real.log",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+                    "name": "Filter.atTop",
+                    "tags": []
+                  },
+                  {
+                    "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+                    "name": "nhds",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Filter.eventually_gt_atTop",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.rpow_sub",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.rpow_add",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.log_pos",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.one_lt_cast",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Real.rpow_one",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Filter.Tendsto (fun (x : ℝ) => Real.log x ^ (β + (1 : ℝ)) * x ^ (-(tt - α))) Filter.atTop (nhds (0 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Filter.Tendsto (fun (x : ℝ) => Real.log x ^ (β + (1 : ℝ)) * x ^ (-(tt - α))) Filter.atTop (nhds (0 : ℝ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto (fun (k : ℕ) => A * Real.log (↑k : ℝ) ^ (β + (1 : ℝ)) * (↑k : ℝ) ^ (α - tt)) Filter.atTop (nhds (0 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "poly_log_lt.h_lim.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 155,
+                "start_line": 155
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Filter.Tendsto (fun (x : ℝ) => Real.log x ^ (β + (1 : ℝ)) * x ^ (-(tt - α))) Filter.atTop (nhds (0 : ℝ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto (fun (k : ℕ) => A * Real.log (↑k : ℝ) ^ (β + (1 : ℝ)) * (↑k : ℝ) ^ (α - tt)) Filter.atTop (nhds (0 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "poly_log_lt.h_lim.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 156,
+                "start_line": 156
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Filter.Tendsto.comp",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "tendsto_natCast_atTop_atTop",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "linarith"
+                ]
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < tt - α",
+                  "truncated": false
+                }
+              },
+              "id": "poly_log_lt.h_lim.s4",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 157,
+                "start_line": 157
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "Filter.Tendsto (fun (k : ℕ) => A * (↑k : ℝ) ^ α * Real.log (↑k : ℝ) ^ β / ((↑k : ℝ) ^ tt / Real.log (↑k : ℝ)))\n  Filter.atTop (nhds (0 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h_lim",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto (fun (k : ℕ) => A * (↑k : ℝ) ^ α * Real.log (↑k : ℝ) ^ β / ((↑k : ℝ) ^ tt / Real.log (↑k : ℝ)))\n  Filter.atTop (nhds (0 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ α * Real.log (↑k : ℝ) ^ β ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "poly_log_lt.h_lim",
+          "kind": "have",
+          "name": "h_lim",
+          "span": {
+            "end_line": 157,
+            "start_line": 149
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+                "name": "Filter.Tendsto",
+                "tags": []
+              },
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+                "name": "Filter.atTop",
+                "tags": []
+              },
+              {
+                "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+                "name": "nhds",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A α β tt : ℝ),\n  α < tt →\n    ∀ (C : ℝ),\n      (0 : ℝ) < C →\n        ∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ α * Real.log (↑k : ℝ) ^ β ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "poly_log_lt",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A α β tt : ℝ),\n  α < tt →\n    ∀ (C : ℝ),\n      (0 : ℝ) < C →\n        ∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ α * Real.log (↑k : ℝ) ^ β ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "poly_log_lt",
+      "kind": "have",
+      "name": "poly_log_lt",
+      "span": {
+        "end_line": 159,
+        "start_line": 144
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "gt_mem_nhds",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Filter.eventually_gt_atTop",
+            "tags": []
+          },
+          {
+            "doc": "See `div_lt_iff₀'` for a version with multiplication on the other side.",
+            "name": "div_lt_iff₀",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_pos",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.rpow_pos_of_pos",
+            "tags": []
+          },
+          {
+            "doc": "Specialisation of `Nat.cast_pos'`, which seems to be easier for Lean to use.",
+            "name": "Nat.cast_pos",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.log_pos",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.one_lt_cast",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ᶠ (k : ℕ) in Filter.atTop, A ≤ C * Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h_log_bound",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ᶠ (k : ℕ) in Filter.atTop, A ≤ C * Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ tt * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "poly_log_lt_eq.h_log_bound",
+          "kind": "have",
+          "name": "h_log_bound",
+          "span": {
+            "end_line": 166,
+            "start_line": 165
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+                "name": "Filter.atTop",
+                "tags": []
+              },
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Filter.eventually_atTop",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": "The real exponential function, defined as the real part of the complex exponential",
+                "name": "Real.exp",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.le_ceil",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_exp",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_le_log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_of_lt",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.lt_of_ceil_lt",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "mul_div_cancel₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hl",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A * (↑k : ℝ) ^ tt * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "poly_log_lt_eq.hl",
+          "kind": "have",
+          "name": "hl",
+          "span": {
+            "end_line": 168,
+            "start_line": 168
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (↑k : ℝ) ^ tt",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (↑k : ℝ) ^ tt",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A * (↑k : ℝ) ^ tt * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "poly_log_lt_eq.hp",
+          "kind": "have",
+          "name": "hp",
+          "span": {
+            "end_line": 169,
+            "start_line": 169
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.rpow_nonneg",
+                "tags": []
+              },
+              {
+                "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                "name": "Nat.cast_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "A * (↑k : ℝ) ^ tt * (Real.log (↑k : ℝ) ^ (2 : ℕ))⁻¹ = A * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ) / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "field_simp"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e",
+                "type": {
+                  "printed": "reliable",
+                  "text": "A * (↑k : ℝ) ^ tt * (Real.log (↑k : ℝ) ^ (2 : ℕ))⁻¹ = A * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ) / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A * (↑k : ℝ) ^ tt * (Real.log (↑k : ℝ) ^ (2 : ℕ))⁻¹ ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "poly_log_lt_eq.e",
+          "kind": "have",
+          "name": "e",
+          "span": {
+            "end_line": 172,
+            "start_line": 171
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A tt C : ℝ),\n  (0 : ℝ) < C →\n    ∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ tt * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "poly_log_lt_eq",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A tt C : ℝ),\n  (0 : ℝ) < C →\n    ∀ᶠ (k : ℕ) in Filter.atTop, A * (↑k : ℝ) ^ tt * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C * (↑k : ℝ) ^ tt / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "poly_log_lt_eq",
+      "kind": "have",
+      "name": "poly_log_lt_eq",
+      "span": {
+        "end_line": 174,
+        "start_line": 160
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Filter.eventually_gt_atTop",
+            "tags": []
+          },
+          {
+            "doc": "See also `rpow_neg_eq_inv_rpow` for a version with `x⁻¹ ^ y` in the RHS.",
+            "name": "Real.rpow_neg",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.rpow_two",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_le_div_iff_of_pos_right",
+            "tags": []
+          },
+          {
+            "doc": "See `div_le_iff₀'` for a version with multiplication on the other side.",
+            "name": "div_le_iff₀",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_le_mul_of_nonneg_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hpk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) < (↑p : ℝ)",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hpb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hdvd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑p : ℤ) ∣ Pprod k n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "konyagin_finish.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 180,
+            "start_line": 180
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_of_lt_of_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (↑k : ℝ) ^ theta",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (↑k : ℝ) ^ theta",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta",
+              "truncated": false
+            }
+          },
+          "id": "konyagin_finish.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 182,
+            "start_line": 182
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.rpow_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ) (n : ℤ),\n  (1 : ℕ) ≤ k →\n    ∀ (C : ℝ),\n      C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) →\n        (↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) →\n          ∃ (p : ℕ),\n            Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "konyagin_finish",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ) (n : ℤ),\n  (1 : ℕ) ≤ k →\n    ∀ (C : ℝ),\n      C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ) →\n        (↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) →\n          ∃ (p : ℕ),\n            Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "konyagin_finish",
+      "kind": "have",
+      "name": "konyagin_finish",
+      "span": {
+        "end_line": 183,
+        "start_line": 175
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ᶠ (k : ℕ) in Filter.atTop,\n  (3 : ℝ) * (↑k : ℝ) ^ (0 : ℝ) * Real.log (↑k : ℝ) ^ (0 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ᶠ (k : ℕ) in Filter.atTop,\n  (3 : ℝ) * (↑k : ℝ) ^ (0 : ℝ) * Real.log (↑k : ℝ) ^ (0 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → (3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "med_rhs_le.h1.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 190,
+                "start_line": 190
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → (3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → (3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 190,
+            "start_line": 189
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 193,
+            "start_line": 191
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Filter.eventually_atTop",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.h3",
+          "kind": "have",
+          "name": "h3",
+          "span": {
+            "end_line": 196,
+            "start_line": 194
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Filter.eventually_atTop",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → (3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h1'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ), a1 ≤ k → (3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.s4",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 197,
+            "start_line": 197
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h2'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ),\n  a2 ≤ k → (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.s5",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 198,
+            "start_line": 198
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k → (↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h3'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ), a3 ≤ k → (↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.s6",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 199,
+            "start_line": 199
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(3 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.x1",
+          "kind": "have",
+          "name": "x1",
+          "span": {
+            "end_line": 201,
+            "start_line": 201
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.x2",
+          "kind": "have",
+          "name": "x2",
+          "span": {
+            "end_line": 202,
+            "start_line": 202
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤ C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.x3",
+          "kind": "have",
+          "name": "x3",
+          "span": {
+            "end_line": 203,
+            "start_line": 203
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) = (3 : ℝ) * (C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "ring"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e",
+                "type": {
+                  "printed": "reliable",
+                  "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) = (3 : ℝ) * (C / (3 : ℝ) * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * theta - (1 : ℝ)) + (↑k : ℝ) ^ theta * Real.log (↑k : ℝ) ^ (-2 : ℝ) ≤\n  C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "med_rhs_le.e",
+          "kind": "have",
+          "name": "e",
+          "span": {
+            "end_line": 205,
+            "start_line": 205
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (C : ℝ), (0 : ℝ) < C → ∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "med_rhs_le",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (C : ℝ), (0 : ℝ) < C → ∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "med_rhs_le",
+      "kind": "have",
+      "name": "med_rhs_le",
+      "span": {
+        "end_line": 206,
+        "start_line": 185
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "Returns the greater of its two arguments.",
+            "name": "Max.max",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n                (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k₀",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk₀",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ),\n  k₀ ≤ k →\n    ∀ (n : ℤ),\n      (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n          (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                    (↑k : ℤ) < m ∧\n                      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                          (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n              ℝ) <\n            (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n              (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          },
+          "id": "med_card_bound.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 210,
+            "start_line": 210
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n    (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n    (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          },
+          "id": "med_card_bound.hc",
+          "kind": "have",
+          "name": "hc",
+          "span": {
+            "end_line": 212,
+            "start_line": 212
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "badSet k n =\n  {m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e",
+                "type": {
+                  "printed": "reliable",
+                  "text": "badSet k n =\n  {m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          },
+          "id": "med_card_bound.e",
+          "kind": "have",
+          "name": "e",
+          "span": {
+            "end_line": 220,
+            "start_line": 213
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+                "name": "Finset.Ioo",
+                "tags": []
+              },
+              {
+                "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+                "name": "round",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.filter_congr",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioo",
+                "tags": []
+              },
+              {
+                "doc": "If `a → b` and `b → a` then `a` and `b` are equivalent.",
+                "name": "Iff.intro",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "med_card_bound",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "med_card_bound",
+      "kind": "have",
+      "name": "med_card_bound",
+      "span": {
+        "end_line": 222,
+        "start_line": 209
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "BHP",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "C",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℝ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hC",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < C",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "kb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ), kb ≤ k → C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 230,
+            "start_line": 230
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk1card",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ),\n  k1 ≤ k →\n    ∀ (n : ℤ),\n      (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 231,
+            "start_line": 231
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hk2rhs",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (k : ℕ), k2 ≤ k → g_med k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 232,
+            "start_line": 232
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "kb ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "kb ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hkb",
+          "kind": "have",
+          "name": "hkb",
+          "span": {
+            "end_line": 235,
+            "start_line": 235
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k1 ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hki1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k1 ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hki1",
+          "kind": "have",
+          "name": "hki1",
+          "span": {
+            "end_line": 236,
+            "start_line": 236
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_right",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k2 ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hki2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k2 ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hki2",
+          "kind": "have",
+          "name": "hki2",
+          "span": {
+            "end_line": 237,
+            "start_line": 237
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hk2le",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hk2le",
+          "kind": "have",
+          "name": "hk2le",
+          "span": {
+            "end_line": 238,
+            "start_line": 238
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_max_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hk1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hk1",
+          "kind": "have",
+          "name": "hk1",
+          "span": {
+            "end_line": 239,
+            "start_line": 239
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hbhp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hbhp",
+          "kind": "have",
+          "name": "hbhp",
+          "span": {
+            "end_line": 242,
+            "start_line": 240
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hcard",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          },
+          "id": "case_medium.hcard",
+          "kind": "have",
+          "name": "hcard",
+          "span": {
+            "end_line": 244,
+            "start_line": 243
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "lt_of_lt_of_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "BHP →\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "case_medium",
+            "type": {
+              "printed": "reliable",
+              "text": "BHP →\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "case_medium",
+      "kind": "have",
+      "name": "case_medium",
+      "span": {
+        "end_line": 245,
+        "start_line": 223
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "Returns the greater of its two arguments.",
+            "name": "Max.max",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k₀",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk₀",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  k₀ ≤ k →\n    ∀ (n : ℤ),\n      (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n          ∃ (p : ℕ),\n            Nat.Prime p ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ theta ∧ (↑p : ℤ) ∣ Pprod k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s15",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 247,
+        "start_line": 247
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 248,
+        "start_line": 248
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
