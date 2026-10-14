@@ -1,0 +1,1697 @@
+{
+  "artifact": {
+    "hash": "06c303b5aaeea277aae3c9bbc9f6caedc8c48995c495ba7b1343402d9a3950ec",
+    "kind": "partial",
+    "path": "attempts/20261014T111449Z-t1014-y-partial.lean"
+  },
+  "gate": "f97b6921b55b47a4841be94f7b6e7facf74ff2ed",
+  "node": "erdos-1094--h2--h2--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / n.gcd k)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hn0",
+          "kind": "have",
+          "name": "hn0",
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_of_lt_of_le",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.mul_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k ≤ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k ≤ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / n.gcd k)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hkn",
+          "kind": "have",
+          "name": "hkn",
+          "span": {
+            "end_line": 22,
+            "start_line": 22
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is transitive.",
+                "name": "le_trans",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.le_mul_of_pos_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k ≤ n / k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k ≤ n / k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / n.gcd k)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hkm",
+          "kind": "have",
+          "name": "hkm",
+          "span": {
+            "end_line": 23,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_div_iff_mul_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < g",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hg0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < g",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hg0",
+          "kind": "have",
+          "name": "hg0",
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_pos_of_pos_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "g ∣ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "g ∣ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hgn",
+          "kind": "have",
+          "name": "hgn",
+          "span": {
+            "end_line": 26,
+            "start_line": 26
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "g ∣ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "g ∣ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hgk",
+          "kind": "have",
+          "name": "hgk",
+          "span": {
+            "end_line": 27,
+            "start_line": 27
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.gcd_dvd_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(n - (1 : ℕ) + (1 : ℕ)) * (n - (1 : ℕ)).choose (k - (1 : ℕ)) =\n  (n - (1 : ℕ) + (1 : ℕ)).choose (k - (1 : ℕ) + (1 : ℕ)) * (k - (1 : ℕ) + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(n - (1 : ℕ) + (1 : ℕ)) * (n - (1 : ℕ)).choose (k - (1 : ℕ)) =\n  (n - (1 : ℕ) + (1 : ℕ)).choose (k - (1 : ℕ) + (1 : ℕ)) * (k - (1 : ℕ) + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n * (n - (1 : ℕ)).choose (k - (1 : ℕ)) = n.choose k * k",
+                  "truncated": false
+                }
+              },
+              "id": "h_gcd_prime.hid.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 30,
+                "start_line": 30
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.add_one_mul_choose_eq",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "n * (n - (1 : ℕ)).choose (k - (1 : ℕ)) = n.choose k * k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hid",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n * (n - (1 : ℕ)).choose (k - (1 : ℕ)) = n.choose k * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hid",
+          "kind": "have",
+          "name": "hid",
+          "span": {
+            "end_line": 31,
+            "start_line": 29
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.sub_add_cancel",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n / g).Coprime (k / g)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hcop",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n / g).Coprime (k / g)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hcop",
+          "kind": "have",
+          "name": "hcop",
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+                "name": "Nat.Coprime",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.coprime_div_gcd_div_gcd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n = n / g * g",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "e1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n = n / g * g",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "n.choose k * (k / g) = n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.hdvd.h1.e1",
+                  "kind": "have",
+                  "name": "e1",
+                  "span": {
+                    "end_line": 36,
+                    "start_line": 36
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.div_mul_cancel",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "k = k / g * g",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "e2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "k = k / g * g",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "n.choose k * (k / g) = n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.hdvd.h1.e2",
+                  "kind": "have",
+                  "name": "e2",
+                  "span": {
+                    "end_line": 37,
+                    "start_line": 37
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.div_mul_cancel",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n / g * g * (n - (1 : ℕ)).choose (k - (1 : ℕ)) = n.choose k * (k / g * g)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n / g * g * (n - (1 : ℕ)).choose (k - (1 : ℕ)) = n.choose k * (k / g * g)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "n.choose k * (k / g) = n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.hdvd.h1.s3",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 39,
+                    "start_line": 38
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ)) * g = n.choose k * (k / g) * g",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ)) * g = n.choose k * (k / g) * g",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "n.choose k * (k / g) = n / g * (n - (1 : ℕ)).choose (k - (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.hdvd.h1.s4",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 41,
+                    "start_line": 40
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "n / g ∣ n.choose k * (k / g)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n / g ∣ n.choose k * (k / g)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n / g ∣ n.choose k",
+                  "truncated": false
+                }
+              },
+              "id": "h_gcd_prime.hdvd.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 42,
+                "start_line": 34
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.eq_of_mul_eq_mul_right",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "n / g ∣ n.choose k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hdvd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n / g ∣ n.choose k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hdvd",
+          "kind": "have",
+          "name": "hdvd",
+          "span": {
+            "end_line": 43,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < n.choose k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hCpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < n.choose k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hCpos",
+          "kind": "have",
+          "name": "hCpos",
+          "span": {
+            "end_line": 44,
+            "start_line": 44
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.choose_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n / k ≤ n / g",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hng",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n / k ≤ n / g",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Nat.Prime (n / g)",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hng",
+          "kind": "have",
+          "name": "hng",
+          "span": {
+            "end_line": 46,
+            "start_line": 46
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.div_le_div_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.le_of_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "k ≤ (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hk1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "k ≤ (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.h2.s1.hk1",
+                  "kind": "have",
+                  "name": "hk1",
+                  "span": {
+                    "end_line": 52,
+                    "start_line": 52
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "k = (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hk1'",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "k = (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.h2.s1.hk1'",
+                  "kind": "have",
+                  "name": "hk1'",
+                  "span": {
+                    "end_line": 53,
+                    "start_line": 53
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n ≤ (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n ≤ (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.h2.s1.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 55,
+                    "start_line": 55
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n = (1 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "automation",
+                    "tactics": [
+                      "omega"
+                    ]
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hn1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n = (1 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "False",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_gcd_prime.h2.s1.hn1",
+                  "kind": "have",
+                  "name": "hn1",
+                  "span": {
+                    "end_line": 56,
+                    "start_line": 56
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n / g < (2 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ n / g",
+                  "truncated": false
+                }
+              },
+              "id": "h_gcd_prime.h2.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 58,
+                "start_line": 50
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n / g ≥ (2 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ n / g",
+                  "truncated": false
+                }
+              },
+              "id": "h_gcd_prime.h2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 59,
+                "start_line": 59
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) ≤ n / g",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ n / g",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 59,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_or_ge",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) ≤ (n / g).minFac",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hq2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) ≤ (n / g).minFac",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hq2",
+          "kind": "have",
+          "name": "hq2",
+          "span": {
+            "end_line": 61,
+            "start_line": 61
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.minFac_prime",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n.choose k).minFac ≤ (n / g).minFac",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hqC",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n.choose k).minFac ≤ (n / g).minFac",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hqC",
+          "kind": "have",
+          "name": "hqC",
+          "span": {
+            "end_line": 63,
+            "start_line": 62
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.minFac_le_of_dvd",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.minFac_dvd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n / g).minFac ^ (2 : ℕ) ≤ n / g",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n / g).minFac ^ (2 : ℕ) ≤ n / g",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hsq",
+          "kind": "have",
+          "name": "hsq",
+          "span": {
+            "end_line": 64,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The square of the smallest prime factor of a composite number `n` is at most `n`.",
+                "name": "Nat.minFac_sq_le_self",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n / k + (1 : ℕ) ≤ (n / g).minFac",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hq",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n / k + (1 : ℕ) ≤ (n / g).minFac",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hq",
+          "kind": "have",
+          "name": "hq",
+          "span": {
+            "end_line": 65,
+            "start_line": 65
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n / g ≤ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hng'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n / g ≤ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hng'",
+          "kind": "have",
+          "name": "hng'",
+          "span": {
+            "end_line": 66,
+            "start_line": 66
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.div_le_self",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n < k * (n / k + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n < k * (n / k + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n < (n / k + (1 : ℕ)) * k",
+                  "truncated": false
+                }
+              },
+              "id": "h_gcd_prime.hlt.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 68,
+                "start_line": 68
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Nat.lt_mul_div_succ",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "n < (n / k + (1 : ℕ)) * k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < (n / k + (1 : ℕ)) * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 69,
+            "start_line": 67
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(n / k + (1 : ℕ)) * k ≤ (n / k + (1 : ℕ)) * (n / k + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(n / k + (1 : ℕ)) * k ≤ (n / k + (1 : ℕ)) * (n / k + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_gcd_prime.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 70,
+            "start_line": 70
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mul_le_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k : ℕ), (0 : ℕ) < k → k * k ≤ n → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_gcd_prime",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ), (0 : ℕ) < k → k * k ≤ n → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "h_gcd_prime",
+      "kind": "have",
+      "name": "h_gcd_prime",
+      "span": {
+        "end_line": 71,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h2--h2--h3--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_gp",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "h_gp",
+      "kind": "hole",
+      "name": "h_gp",
+      "span": {
+        "end_line": 79,
+        "start_line": 73
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k * k * k ≤ n →\n      Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n        k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 80,
+        "start_line": 80
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! → (n.choose k).minFac > n / k → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 82,
+        "start_line": 81
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
