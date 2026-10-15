@@ -1,0 +1,238 @@
+{
+  "artifact": {
+    "hash": "14be2b09d461638be49e1245d407dec826480aa05310ce3162240e4875b3addb",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "7e153a12f0cef18386e0c783dfa76674adbbc32b",
+  "node": "erdos-1094--h2--h2--h2--h2--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k₀",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk₀",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  k₀ ≤ k →\n    ∀ (n : ℤ),\n      (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - theta) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) → (↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) - (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n                (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 225,
+        "start_line": 225
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑(badSet k n).card : ℝ) < g_med k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) < g_med k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n    (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h",
+      "kind": "have",
+      "name": "h",
+      "span": {
+        "end_line": 227,
+        "start_line": 227
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℤ) < m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℤ) < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℤ) < m ∧\n    (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n      |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ)) ↔\n  (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n    |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hset.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 235,
+            "start_line": 235
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.mem_Ioo",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))} =\n  badSet k n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hset",
+            "type": {
+              "printed": "reliable",
+              "text": "{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))} =\n  badSet k n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n    (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hset",
+      "kind": "have",
+      "name": "hset",
+      "span": {
+        "end_line": 236,
+        "start_line": 228
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+            "name": "Finset.Ioo",
+            "tags": []
+          },
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.filter_congr",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  (3 : ℝ) + (56 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) * (21 / 40 : ℝ) - (1 : ℝ)) +\n    (↑k : ℝ) ^ (21 / 40 : ℝ) * Real.log (↑k : ℝ) ^ (-2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 238,
+        "start_line": 237
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
