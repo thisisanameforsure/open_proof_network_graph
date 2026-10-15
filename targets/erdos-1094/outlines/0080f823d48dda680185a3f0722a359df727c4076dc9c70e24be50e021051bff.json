@@ -1,0 +1,810 @@
+{
+  "artifact": {
+    "hash": "0080f823d48dda680185a3f0722a359df727c4076dc9c70e24be50e021051bff",
+    "kind": "partial",
+    "path": "attempts/20261015T132800Z-t1015b-h-partial.lean"
+  },
+  "gate": "fa0a13ba270d7b399ed9c075cb531bdaeb2776fe",
+  "node": "erdos-1094--h3--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h2--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K₂ : ℕ), ∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_ees",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K₂ : ℕ), ∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "h_ees",
+      "kind": "hole",
+      "name": "h_ees",
+      "span": {
+        "end_line": 19,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h3--h2--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (c : ℝ),\n  (0 : ℝ) < c →\n    ∃ (K₃ : ℕ),\n      ∀ (n k : ℕ),\n        K₃ < k →\n          (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ) →\n            (↑n : ℝ) < (↑k : ℝ) ^ (7 / 4 : ℝ) → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_caseB",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (c : ℝ),\n  (0 : ℝ) < c →\n    ∃ (K₃ : ℕ),\n      ∀ (n k : ℕ),\n        K₃ < k →\n          (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ) →\n            (↑n : ℝ) < (↑k : ℝ) ^ (7 / 4 : ℝ) → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "h_caseB",
+      "kind": "hole",
+      "name": "h_caseB",
+      "span": {
+        "end_line": 27,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h3--h2--h3",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℕ) (K₄ : ℕ),\n  ∀ (n k : ℕ),\n    K₄ < k →\n      (↑k : ℝ) ^ (7 / 4 : ℝ) ≤ (↑n : ℝ) →\n        C * (n * Nat.log (2 : ℕ) k) < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_caseA",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (C : ℕ) (K₄ : ℕ),\n  ∀ (n k : ℕ),\n    K₄ < k →\n      (↑k : ℝ) ^ (7 / 4 : ℝ) ≤ (↑n : ℝ) →\n        C * (n * Nat.log (2 : ℕ) k) < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "h_caseA",
+      "kind": "hole",
+      "name": "h_caseA",
+      "span": {
+        "end_line": 34,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`log b n`, is the logarithm of natural number `n` in base `b`.",
+            "name": "Nat.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K₂ : ℕ), ∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < c",
+              "truncated": false
+            }
+          },
+          {
+            "name": "K₂",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hE",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 37,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K₃ : ℕ),\n  ∀ (n k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ) →\n        (↑n : ℝ) < (↑k : ℝ) ^ (7 / 4 : ℝ) → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K₃",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  K₃ < k →\n    (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ) →\n      (↑n : ℝ) < (↑k : ℝ) ^ (7 / 4 : ℝ) → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 38,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℕ) (K₄ : ℕ),\n  ∀ (n k : ℕ),\n    K₄ < k →\n      (↑k : ℝ) ^ (7 / 4 : ℝ) ≤ (↑n : ℝ) →\n        C * (n * Nat.log (2 : ℕ) k) < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "C",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "K₄",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  K₄ < k →\n    (↑k : ℝ) ^ (7 / 4 : ℝ) ≤ (↑n : ℝ) →\n      C * (n * Nat.log (2 : ℕ) k) < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ) (K₁ : ℕ),\n  ∀ (n k : ℕ), K₁ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 39,
+        "start_line": 39
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K₂ < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk2",
+            "type": {
+              "printed": "reliable",
+              "text": "K₂ < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "hk2",
+      "kind": "have",
+      "name": "hk2",
+      "span": {
+        "end_line": 41,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K₃ < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk3",
+            "type": {
+              "printed": "reliable",
+              "text": "K₃ < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "hk3",
+      "kind": "have",
+      "name": "hk3",
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          },
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K₄ < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk4",
+            "type": {
+              "printed": "reliable",
+              "text": "K₄ < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "k * k ≤ C * (n * Nat.log (2 : ℕ) k)",
+          "truncated": false
+        }
+      },
+      "id": "hk4",
+      "kind": "have",
+      "name": "hk4",
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          },
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "he",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "he",
+      "kind": "have",
+      "name": "he",
+      "span": {
+        "end_line": 46,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑n : ℝ) < (↑k : ℝ) ^ (7 / 4 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          },
+          "id": "key.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) ^ (7 / 4 : ℝ) ≤ (↑n : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          },
+          "id": "key.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 50,
+        "start_line": 47
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_or_ge",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ p < k ∧ p ∣ n.choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.Prime p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "left✝",
+            "type": {
+              "printed": "reliable",
+              "text": "k < (2 : ℕ) * p",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hpk",
+            "type": {
+              "printed": "reliable",
+              "text": "p < k",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hd",
+            "type": {
+              "printed": "reliable",
+              "text": "p ∣ n.choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s12",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 51,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(n.choose k).minFac ≤ p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "(n.choose k).minFac ≤ p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hle",
+      "kind": "have",
+      "name": "hle",
+      "span": {
+        "end_line": 52,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.minFac_le_of_dvd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 53,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
