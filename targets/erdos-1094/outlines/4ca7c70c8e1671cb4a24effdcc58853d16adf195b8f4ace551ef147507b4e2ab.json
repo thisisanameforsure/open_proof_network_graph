@@ -1,0 +1,159 @@
+{
+  "artifact": {
+    "hash": "4ca7c70c8e1671cb4a24effdcc58853d16adf195b8f4ace551ef147507b4e2ab",
+    "kind": "partial",
+    "path": "attempts/20261015T023100Z-t1015-q-partial.lean"
+  },
+  "gate": "7e153a12f0cef18386e0c783dfa76674adbbc32b",
+  "node": "erdos-1094--h2--h2--h2--h4",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h2--h2--h2--h3--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (lam : ℝ),\n  (1 : ℝ) ≤ lam →\n    ∀ (n : ℤ) (k r : ℕ),\n      (↑k : ℤ) < n →\n        (2 : ℕ) ≤ r →\n          (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ)) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (65536 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) *\n                  (((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r / (↑k : ℝ) ^ (r + (1 : ℕ))) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n                      ((↑k : ℝ) ^ ((↑r : ℝ) + (21 / 40 : ℝ)) / ((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r)) ^\n                        ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n                    (((↑r : ℝ) + (1 : ℝ)) * lam / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                (2 : ℝ) * (↑r : ℝ) * lam",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_kon",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (lam : ℝ),\n  (1 : ℝ) ≤ lam →\n    ∀ (n : ℤ) (k r : ℕ),\n      (↑k : ℤ) < n →\n        (2 : ℕ) ≤ r →\n          (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ)) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (65536 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) *\n                  (((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r / (↑k : ℝ) ^ (r + (1 : ℕ))) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n                      ((↑k : ℝ) ^ ((↑r : ℝ) + (21 / 40 : ℝ)) / ((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r)) ^\n                        ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n                    (((↑r : ℝ) + (1 : ℝ)) * lam / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                (2 : ℝ) * (↑r : ℝ) * lam",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "h_kon",
+      "kind": "hole",
+      "name": "h_kon",
+      "span": {
+        "end_line": 637,
+        "start_line": 627
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+            "name": "Finset.Ioo",
+            "tags": []
+          },
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "BHP",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 639,
+        "start_line": 639
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inr` is \"right injection\" into an `Or`.",
+            "name": "Or.inr",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "¬BHP",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 640,
+        "start_line": 640
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
