@@ -1,0 +1,36 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 493 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; not machine-checked):
+
+  - Most hypotheses follow from the least-prime-factor condition; what remains is
+  the n >= k^2 case of #1094 on a short window. The known exception is C(62, 6).
+
+  - No elementary route gives a contradiction for large k: the claim needs the Kummer/Lucas
+  digit condition at essentially every prime <= k at once. That is research-level
+  sieve or short-interval prime distribution (the exponent 21/40 is Baker–Harman–Pintz''s),
+  and the pinned Mathlib has only Bertrand/Chebyshev-level bounds and a Selberg sieve
+  setup.
+
+  - Numerics outside Lean, k < 150: the only solution meeting every hypothesis is
+  (n, k) = (62, 6), so K = 6 would likely work. Dropping the primality and factorial-divisibility
+  hypotheses adds no large solutions; testing the binomial condition only at primes
+  dividing k * floor(n / k) leaves many, for every k up to 400.
+
+  '
+failure_class: route-dead-ends
+node: erdos-1094--h2--h1--h4--h1
+outcome: exhausted
+route: 'Elementary routes on the window k^2 <= n < k^2 + 3k^1.525: the smooth parts
+  of the window multiply to k!, Lucas digit conditions, n = gcd(n, k) * p, and the
+  window element k * floor(n / k).'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k\
+  \ ≤ n →\n        (↑n : ℝ) < (↑k : ℝ) * ((↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40\
+  \ : ℝ)) →\n          k * (n / k) ∣ k.factorial → (n.choose k).minFac > n / k → Nat.Prime\
+  \ (n / n.gcd k) → k ≤ K\n"
