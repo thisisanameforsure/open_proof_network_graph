@@ -1,0 +1,181 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "opn-prove/aristotle; one line ported to Lean 4.33.1 and the hole's witness by Claude Code",
+    "method": "agent",
+    "models": [
+      "Aristotle (Harmonic, leanprover/lean4:v4.28.0)",
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "d1ba804785bd7d0b3d74c2692b423f5bd464b297123cbc64f6f128dd181178bd",
+  "graph_commit": "56c054dd06468f3f98a604f53ce7f15c886ef7f1",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "56c054dd06468f3f98a604f53ce7f15c886ef7f1",
+  "model_and_tooling": "Aristotle (Harmonic, leanprover/lean4:v4.28.0) aristotlelib 2.1.0 opn-prove/aristotle (F17)",
+  "network_commit": "7e153a12f0cef18386e0c783dfa76674adbbc32b",
+  "node_id": "erdos-1094--h2--h2--h2--h3--h1--h1",
+  "precheck_attestation": {
+    "hash": "c55a7938b93c6a981eca2c90bb902c9c055be29877c9a4c396ad568deb02639e",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-15T06:46:12Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMdXOCITYZZQPx5CaZSqy+d0SsrfJqMTIchiFlyD2FoU1DJ1j1\nQRz3QpYCmOBzTEnEvAP0HV/PLk9T05vg68NQk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "d204fab277af14bd4b0e46f5f8b52ff08650af62b3ef74ca553b2b21b9a6a329",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261015T063320Z-opn-prove-aristotle-1015-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261015T063320Z-opn-prove-aristotle-1015-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "core"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h2__h2__h2__h3__h1__h1 declares ∀ (r : ℕ),\n  2 ≤ r →\n    ∀ (N : ℝ),\n      0 < N →\n        ∀ (W : ℝ),\n          1 ≤ W →\n            ∀ (δ : ℝ),\n              0 < δ →\n                ∀ (lam : ℝ),\n                  1 ≤ lam →\n                    ∀ (D_r : ℝ),\n                      0 < D_r →\n                        ∀ (D_r1 : ℝ),\n                          0 < D_r1 →\n                            ∀ (f : ℝ → ℝ),\n                              ContDiff ℝ (↑↑(r + 1)) f →\n                                (∀ x ∈ Set.Icc 0 N, D_r / 2 ≤ |iteratedDeriv r f x|) →\n                                  (∀ x ∈ Set.Icc 0 N, |iteratedDeriv r f x| ≤ D_r) →\n                                    (∀ x ∈ Set.Icc 0 N, |iteratedDeriv (r + 1) f x| ≤ D_r1) →\n                                      ∀ (S : Finset ℤ),\n                                        (∀ u ∈ S, 0 ≤ u ∧ u ≤ ⌊N⌋) →\n                                          (∀ u ∈ S, ∃ v w, 0 < w ∧ ↑w ≤ W ∧ |f ↑u - ↑v / ↑w| < δ) →\n                                            ↑S.card <\n                                              65536 * N *\n                                                  ((D_r * lam ^ r * W ^ 2) ^ (2 * ↑r - 1)⁻¹ +\n                                                      (δ * W ^ 2 / (D_r * lam ^ r)) ^ (↑r - 1)⁻¹ +\n                                                    (D_r1 * lam * W ^ 2 / D_r) ^ (2 * ↑r)⁻¹) +\n                                                2 * ↑r * lam; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "D_r1 * lam * W ^ 2 / D_r",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "δ * W ^ 2 / (D_r * lam ^ r)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "↑v / ↑w",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ W",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ lam",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ r",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Set.Icc 0 N",
+              "message": "Set.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "7 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at D_r1 * lam * W ^ 2 / D_r: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "core",
+              "path": "attempts/20261015T063320Z-opn-prove-aristotle-1015-partial.1.witness",
+              "sha256": "81ecdb36c879b41bd1ffa76e37dc6aba990482a7def49fa99664fc47a9e8ec2e"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "opn-prove-aristotle-1015",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "opn-prove/aristotle (F17)",
+    "model": "Aristotle (Harmonic, leanprover/lean4:v4.28.0)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

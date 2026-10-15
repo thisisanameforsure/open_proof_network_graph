@@ -1,0 +1,45 @@
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (r : ℕ) (N : ℝ) (W : ℝ) (δ : ℝ) (lam : ℝ) (D_r : ℝ) (D_r1 : ℝ) (f : ℝ → ℝ) (S : Finset ℤ),
+  (2 : ℕ) ≤ r ∧
+    (0 : ℝ) < N ∧
+      (1 : ℝ) ≤ W ∧
+        (0 : ℝ) < δ ∧
+          (1 : ℝ) ≤ lam ∧
+            (0 : ℝ) < D_r ∧
+              (0 : ℝ) < D_r1 ∧
+                ContDiff ℝ (↑(↑(r + (1 : ℕ)) : ℕ∞) : WithTop ℕ∞) f ∧
+                  (∀ x ∈ Set.Icc (0 : ℝ) N, D_r / (2 : ℝ) ≤ |iteratedDeriv r f x|) ∧
+                    (∀ x ∈ Set.Icc (0 : ℝ) N, |iteratedDeriv r f x| ≤ D_r) ∧
+                      (∀ x ∈ Set.Icc (0 : ℝ) N, |iteratedDeriv (r + (1 : ℕ)) f x| ≤ D_r1) ∧
+                        (∀ u ∈ S, (0 : ℤ) ≤ u ∧ u ≤ ⌊N⌋) ∧
+                          ∀ u ∈ S,
+                            ∃ (v : ℤ) (w : ℕ), (0 : ℕ) < w ∧ (↑w : ℝ) ≤ W ∧ |f (↑u : ℝ) - (↑v : ℝ) / (↑w : ℝ)| < δ := by
+  -- r = 2, f x = x ^ 2 (second derivative 2, third 0), every scale 1 except D_r = 2, S empty
+  have h1 : deriv (fun x : ℝ => x ^ 2) = fun x => 2 * x := by
+    funext x
+    simp
+  have h2 : iteratedDeriv 2 (fun x : ℝ => x ^ 2) = fun _ => 2 := by
+    rw [iteratedDeriv_succ, iteratedDeriv_one, h1]
+    funext x
+    simp
+  have h3 : iteratedDeriv 3 (fun x : ℝ => x ^ 2) = fun _ => 0 := by
+    rw [iteratedDeriv_succ, h2]
+    funext x
+    simp
+  refine ⟨2, 1, 1, 1, 1, 2, 1, fun x => x ^ 2, ∅, le_refl _, one_pos, le_refl _, one_pos,
+    le_refl _, two_pos, one_pos, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · fun_prop
+  · intro x _
+    rw [h2]
+    norm_num
+  · intro x _
+    rw [h2]
+    norm_num
+  · intro x _
+    rw [show (2 : ℕ) + 1 = 3 from rfl, h3]
+    norm_num
+  · simp
+  · simp
