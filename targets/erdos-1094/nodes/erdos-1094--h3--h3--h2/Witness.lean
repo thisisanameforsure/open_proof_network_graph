@@ -1,0 +1,5 @@
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (C : ℕ) (ε : ℝ), (0 : ℝ) < ε := ⟨0, 1, one_pos⟩
