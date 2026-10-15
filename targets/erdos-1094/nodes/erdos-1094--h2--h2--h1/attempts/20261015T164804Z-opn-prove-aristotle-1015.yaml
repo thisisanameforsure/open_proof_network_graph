@@ -1,0 +1,30 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 247 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; the Lean compiled at v4.28.0
+  only):
+
+  - The node is Baker–Harman–Pintz. It needs zero-density estimates for zeta and a
+  sieve; Mathlib has Bertrand and Chebyshev bounds but not the prime number theorem.
+
+  - Proved, with no gaps: h_bhp implies the node exactly (C = c, k0 = ceil(x0), the
+  floor and ceiling bounds, p.natAbs prime). So BHP in its standard form is the node''s
+  only content.
+
+  '
+failure_class: missing-library
+node: erdos-1094--h2--h2--h1
+outcome: blocked
+route: State Baker–Harman–Pintz (primes in (x, x + x^(21/40)), at least c x^(21/40)
+  / log x of them) as one have, and derive the node from it by mapping natural primes
+  injectively into the node's integer set.
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "have h_bhp : ∃ c : ℝ, 0 < c ∧ ∃ x₀ : ℝ, ∀ x : ℝ, x₀ ≤ x →\n\
+  \    c * x ^ (21 / 40 : ℝ) / Real.log x ≤\n      (((Finset.range ⌈x + x ^ (21 /\
+  \ 40 : ℝ)⌉₊).filter\n        (fun p : ℕ => p.Prime ∧ x < (p : ℝ) ∧ (p : ℝ) < x +\
+  \ x ^ (21 / 40 : ℝ))).card : ℝ)\n"
