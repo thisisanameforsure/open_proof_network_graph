@@ -1,0 +1,144 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "e918f6412c9f8c090dc8a2388e7c284699d6751aadd3dff85697c7e45d8657e2",
+  "graph_commit": "5ffb3af9f6080d9cb630ea1bd14be7aa6017fe5a",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "5ffb3af9f6080d9cb630ea1bd14be7aa6017fe5a",
+  "model_and_tooling": "undeclared",
+  "network_commit": "067497e74a8b7bcc9569581586df742db8246174",
+  "node_id": "erdos-1094--h2--h1--h4--h1",
+  "precheck_attestation": {
+    "hash": "a4b89bad7efd1273ec943826e0f7b4968e6f8624b74b34e217f16a8d2225445f",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-15T16:07:16Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQC2LsvKOgLFOqTm8NV6vah0mRIYEhyrA1MbXCAxxr+bvVImq9X\nhXBSk/cIevcVsOlwcm9MXyOvPlv2IpNxdqAwY=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "631d324b5e234f0675e51ac2dc45075f4fc341c695e8807f76b280e4d5eb9acc",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261015T145300Z-t1015c-a06-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261015T145300Z-t1015c-a06-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_cop",
+            "h_div"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h2__h1__h4__h1 declares ∃ K,\n  ∀ (n k : ℕ),\n    0 < k →\n      k * k ≤ n →\n        ↑n < ↑k * (↑k + 3 * ↑k ^ (21 / 40)) →\n          k * (n / k) ∣ k.factorial → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K; 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "n / k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "n / n.gcd k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at n / k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1015c-a06",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": null,
+    "model": null
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
