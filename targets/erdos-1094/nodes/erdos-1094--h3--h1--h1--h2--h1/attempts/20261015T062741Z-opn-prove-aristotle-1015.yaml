@@ -1,0 +1,30 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: "Run: opn-prove's aristotle preset, 2026-10-15, 281 s, task COMPLETE_WITH_ERRORS;\
+  \ the file came\nback unchanged, sorry in place. Aristotle declined to hide the\
+  \ sorry in a have.\n\nWhat the run found (Aristotle's summary, paraphrased; not\
+  \ machine-checked):\n- No prime p <= k with a last-digit carry means: for every\
+  \ p <= k, (n - k, n] holds exactly\n  floor(k / p) multiples of p. The hypotheses\
+  \ mod 3, 5, 7, 11, 13 only shrink the set of n; they\n  do not change the obstacles\
+  \ below.\n- For p in (k/2, k], a carry means placing a prime in a union of bounded-length\
+  \ intervals near\n  k / j for n/k < j < 2n/k; no known prime-distribution result\
+  \ gives that.\n- Counting by size: with no carries, C(n, k) <= n^π(√n) times the\
+  \ primes p in (k, n] with\n  n mod p < k. Even with Brun–Titchmarsh bounds this\
+  \ exceeds C(n, k) >= (n/k)^k only by a constant\n  factor in the exponent, so the\
+  \ count does not close.\n- Numerics, outside Lean: without the extra hypotheses,\
+  \ the last (k, n) with no such prime for\n  k < 300 is (58, 1579), so K₃ = 58 is\
+  \ a plausible choice (matches the annex on\n  erdos-1094--h3--h1).\n\nOn the record:\
+  \ Aristotle called the n < k^2 range open. The annex on erdos-1094--h3--h1\n(t1008-c)\
+  \ reads it as plausibly Granville–Ramaré / Konyagin, unverified against the papers.\n"
+failure_class: route-dead-ends
+node: erdos-1094--h3--h1--h1--h2--h1
+outcome: exhausted
+route: 'Automated search by Aristotle (Harmonic): a carry from a prime in (k/2, k]
+  via primes in short intervals near k/j, and a size count of C(n, k) with Brun–Titchmarsh
+  bounds, on the k-even class with the residues mod 3 to 13 ruled out.'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∃ K₃, ∀ (n k : ℕ), K₃ < k → 2 * k ≤ n → n < k * k → k % 2\
+  \ = 0 → 0 < k % 3 →\n    k % 3 ≤ n % 3 → k % 5 ≤ n % 5 → k % 7 ≤ n % 7 → k % 11\
+  \ ≤ n % 11 → k % 13 ≤ n % 13 →\n    ∃ p, Nat.Prime p ∧ p ≤ k ∧ n % p < k % p\n"
