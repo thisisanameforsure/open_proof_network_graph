@@ -1,0 +1,33 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 1605 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; the Lean compiled at v4.28.0
+  only):
+
+  - Proved, assuming key: |S''| <= 2r * m with m < N''/L + 1 for L = 2r / (65536 X''),
+  hence the bound. The hypotheses on f, S, the first condition on X and lam'' < 2
+  are not used.
+
+  - key is the core: rational points with denominators <= W near a curve whose r-th
+  derivative is roughly constant. Aristotle has an informal argument for r = 2 (a
+  lattice-determinant step, then a prime-divisibility count) that does not extend
+  to larger r, so it did not split key further.
+
+  - opn-prove''s import refused the returned file as signature-changed; this postmortem
+  records the route, not the file.
+
+  '
+failure_class: route-dead-ends
+node: erdos-1094--h2--h2--h2--h3--h1--h1--h1
+outcome: exhausted
+route: 'Block counting: if any 2r + 1 good points span more than 2r / (65536 X''),
+  cutting [0, N''] into blocks of that width bounds |S''| by 2r times the number of
+  blocks.'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: "have key : ∀ F ⊆ S', 2 * r + 1 ≤ F.card →\n    ∃ x ∈ F, ∃ y\
+  \ ∈ F, (2 * r : ℝ) < 65536 * Y * ((y : ℝ) - (x : ℝ))\n"

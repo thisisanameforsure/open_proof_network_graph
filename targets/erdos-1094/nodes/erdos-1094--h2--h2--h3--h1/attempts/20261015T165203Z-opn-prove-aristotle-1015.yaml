@@ -1,0 +1,32 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 1104 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; the Lean compiled at v4.28.0
+  only):
+
+  - Proved: core implies the node, using C(n, k) != 1 since n/k >= 1. The exp lower
+  bound, k * (n / k) | k! and the primality of n / gcd(n, k) are not needed for that
+  step; on paper, minFac > n/k alone implies the factorial divisibility.
+
+  - core is Ecklund''s theorem (n >= k^2: a prime factor <= n/k except C(62, 6)),
+  cited from memory and not formalised in Mathlib, so this node is essentially the
+  whole of it.
+
+  - Why no short proof: the conditions modulo primes up to k can all be met; every
+  candidate fails only because some prime between k and n/k divides one of n, n-1,
+  ..., n-k+1. Scripts for k < 40 found no counterexample.
+
+  '
+failure_class: missing-library
+node: erdos-1094--h2--h2--h3--h1
+outcome: blocked
+route: 'Reduce minFac C(n, k) > n/k to no prime q <= n/k dividing C(n, k), leaving
+  core: for n >= k^3 some prime <= n/k divides C(n, k) (Ecklund''s theorem).'
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "have core : ∃ K : ℕ, ∀ n k : ℕ, 0 < k → k * k * k ≤ n →\n  \
+  \  (∀ q : ℕ, q.Prime → q ≤ n / k → ¬ q ∣ n.choose k) → k ≤ K\n"

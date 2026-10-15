@@ -8,9 +8,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h2--h3--h1--h1--h1/attempts/20261015T130229Z-t1015b-s-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h2--h3--h1--h1--h1/attempts/20261015T164812Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h2--h3--h1--h1--h1/attempts/20261015T164812Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 1605 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; the Lean compiled at v4.28.0 only):\n- Proved, assuming key: |S'| <= 2r * m with m < N'/L + 1 for L = 2r / (65536 X'), hence the bound. The hypotheses on f, S, the first condition on X and lam' < 2 are not used.\n- key is the core: rational points with denominators <= W …",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-1094--h2--h2--h2--h3--h1--h1--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h2--h3--h1--h1--h1/attempts/20261015T164812Z-opn-prove-aristotle-1015.yaml",
+            "text": "Block counting: if any 2r + 1 good points span more than 2r / (65536 X'), cutting [0, N'] into blocks of that width bounds |S'| by 2r times the number of blocks.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h2--h3--h1--h1--h1/attempts/20261015T164812Z-opn-prove-aristotle-1015.yaml",
+            "text": "have key : ∀ F ⊆ S', 2 * r + 1 ≤ F.card →\n    ∃ x ∈ F, ∃ y ∈ F, (2 * r : ℝ) < 65536 * Y * ((y : ℝ) - (x : ℝ))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -62,7 +97,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "9c4bcf1e54efe2264a66ad72f9f5b3eb852351d7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {

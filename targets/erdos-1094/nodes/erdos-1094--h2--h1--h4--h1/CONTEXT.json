@@ -8,9 +8,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h4--h1/attempts/20261015T145300Z-t1015c-a06-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h4--h1/attempts/20261015T164756Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h4--h1/attempts/20261015T164756Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 493 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; not machine-checked):\n- Most hypotheses follow from the least-prime-factor condition; what remains is the n >= k^2 case of #1094 on a short window. The known exception is C(62, 6).\n- No elementary route gives a contradiction for large k: the claim needs the Kummer/Lucas…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-1094--h2--h1--h4--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h4--h1/attempts/20261015T164756Z-opn-prove-aristotle-1015.yaml",
+            "text": "Elementary routes on the window k^2 <= n < k^2 + 3k^1.525: the smooth parts of the window multiply to k!, Lucas digit conditions, n = gcd(n, k) * p, and the window element k * floor(n / k).",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h4--h1/attempts/20261015T164756Z-opn-prove-aristotle-1015.yaml",
+            "text": "⊢ ∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k ≤ n →\n        (↑n : ℝ) < (↑k : ℝ) * ((↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ)) →\n          k * (n / k) ∣ k.factorial → (n.choose k).minFac > n / k → Nat.Prime (n / n.gcd k) → k ≤ K\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -69,7 +104,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "9c4bcf1e54efe2264a66ad72f9f5b3eb852351d7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {
