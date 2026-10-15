@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2/attempts/20261015T062734Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2/attempts/20261015T062734Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset, 2026-10-15, 226 s, task COMPLETE_WITH_ERRORS; the file came\nback unchanged, sorry in place.\n\nWhat the run found (Aristotle's summary, paraphrased; not machine-checked):\n- The parity and mod-3 hypotheses only rule out p = 2 and p = 3; every other prime is as in the\n  parent, so the class is no easier than erdos-1094--h3--h1.\n- Primes in (k/2, k] settle n <= c k for a fixed c, where an elementary proof looks plausible.\n- Near n = k^2 the route needs primes in ma…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-1094--h3--h1--h2--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2/attempts/20261015T062734Z-opn-prove-aristotle-1015.yaml",
+            "text": "Automated search by Aristotle (Harmonic): primes in (k/2, k] for small n/k, a bounded-interval prime search near k^2, and the large sieve, on the odd/odd, mod-3 class of the residue form.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2/attempts/20261015T062734Z-opn-prove-aristotle-1015.yaml",
+            "text": "⊢ ∃ K₂, ∀ (n k : ℕ), K₂ < k → 2 * k ≤ n → n < k * k → k % 2 = 1 → n % 2 = 1 →\n    0 < k % 3 → k % 3 ≤ n % 3 → ∃ p, Nat.Prime p ∧ p ≤ k ∧ n % p < k % p\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -48,7 +83,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "d64a3b864afabd7238848fcc6f893aa816b594d8",
+  "rendered_from": "23caee8beaabf4b2eb8d00c2a24162c5a6ae4539",
   "review": {
     "questions_waiting": [
       {
