@@ -1,0 +1,32 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 553 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; the Lean compiled at v4.28.0
+  only):
+
+  - Proved: from h_res the statement follows (Lucas via Choose.choose_modEq_choose_mod_mul_choose_div_nat,
+  then minFac <= p <= k). The hypothesis on n / gcd(n, k) is not needed.
+
+  - h_res goes past the elementary bound (Erdős–Lacampagne–Selfridge, about k^2 /
+  log k); it follows from the exponential-sum bounds of Granville–Ramaré and Konyagin,
+  which Mathlib lacks. Counting and sieve attempts did not pass that barrier.
+
+  - Numerics outside Lean: with the full divisibility condition, solutions with n
+  < k^3 exist up to k = 35 and none for 36 <= k <= 58; the weaker residue condition
+  of h_res still has solutions up to about k = 69, so h_res is stronger than the node
+  needs.
+
+  '
+failure_class: missing-library
+node: erdos-1094--h2--h1--h1--h1
+outcome: blocked
+route: 'Lucas''s theorem: a prime p <= k with n % p < k % p divides C(n, k), so minFac
+  <= k; leaves the residue form h_res for 2k <= n < k^3.'
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "have h_res : ∃ K : ℕ, ∀ n k : ℕ, 0 < k → 2 * k ≤ n → n < k *\
+  \ k * k →\n    (∀ p : ℕ, p.Prime → p ≤ k → k % p ≤ n % p) → k ≤ K\n"
