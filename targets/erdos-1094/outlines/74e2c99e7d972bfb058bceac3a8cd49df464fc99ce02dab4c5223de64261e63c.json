@@ -1,0 +1,1261 @@
+{
+  "artifact": {
+    "hash": "74e2c99e7d972bfb058bceac3a8cd49df464fc99ce02dab4c5223de64261e63c",
+    "kind": "partial",
+    "path": "attempts/20261015T145500Z-t1015c-a03-partial.lean"
+  },
+  "gate": "067497e74a8b7bcc9569581586df742db8246174",
+  "node": "erdos-1094--h3--h3--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (ε : ℝ), (0 : ℝ) < ε → ∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_pnt",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : ℝ), (0 : ℝ) < ε → ∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₃ : ℕ),\n  ∀ (k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) / (100 : ℝ) ≤\n        ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_pnt",
+      "kind": "hole",
+      "name": "h_pnt",
+      "span": {
+        "end_line": 15,
+        "start_line": 14
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ (1 / 100 : ℝ) * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "X",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hX",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ (1 / 100 : ℝ) * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₃ : ℕ),\n  ∀ (k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) / (100 : ℝ) ≤\n        ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℕ) ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk1",
+      "kind": "have",
+      "name": "hk1",
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "⌊A⌋₊ = ((11 : ℕ) * k - (1 : ℕ)) / (20 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfA",
+            "type": {
+              "printed": "reliable",
+              "text": "⌊A⌋₊ = ((11 : ℕ) * k - (1 : ℕ)) / (20 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hfA",
+      "kind": "have",
+      "name": "hfA",
+      "span": {
+        "end_line": 23,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Natural division is the floor of field division.",
+            "name": "Nat.floor_div_eq_div",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "⌊B⌋₊ = k / (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfB",
+            "type": {
+              "printed": "reliable",
+              "text": "⌊B⌋₊ = k / (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hfB",
+      "kind": "have",
+      "name": "hfB",
+      "span": {
+        "end_line": 25,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Natural division is the floor of field division.",
+            "name": "Nat.floor_div_eq_div",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Chebyshev.theta A = ∑ p ∈ TA, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hthA",
+            "type": {
+              "printed": "reliable",
+              "text": "Chebyshev.theta A = ∑ p ∈ TA, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hthA",
+      "kind": "have",
+      "name": "hthA",
+      "span": {
+        "end_line": 28,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Chebyshev.theta B = ∑ p ∈ TB, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hthB",
+            "type": {
+              "printed": "reliable",
+              "text": "Chebyshev.theta B = ∑ p ∈ TB, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hthB",
+      "kind": "have",
+      "name": "hthB",
+      "span": {
+        "end_line": 29,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Disjoint TB S",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hdisj",
+            "type": {
+              "printed": "reliable",
+              "text": "Disjoint TB S",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hdisj",
+      "kind": "have",
+      "name": "hdisj",
+      "span": {
+        "end_line": 35,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Two elements of a lattice are disjoint if their inf is the bottom element.",
+            "name": "Disjoint",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.disjoint_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_filter",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_Ioc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ≤ k / (2 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "((0 : ℕ) < p ∧ p ≤ k / (2 : ℕ)) ∧ Nat.Prime p ∨ p < k ∧ Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k",
+              "truncated": false
+            }
+          },
+          "id": "hsub.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 42,
+            "start_line": 42
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬p ≤ k / (2 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "((0 : ℕ) < p ∧ p ≤ k / (2 : ℕ)) ∧ Nat.Prime p ∨ p < k ∧ Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k",
+              "truncated": false
+            }
+          },
+          "id": "hsub.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 44,
+            "start_line": 43
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "TA ⊆ TB ∪ S",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsub",
+            "type": {
+              "printed": "reliable",
+              "text": "TA ⊆ TB ∪ S",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hsub",
+      "kind": "have",
+      "name": "hsub",
+      "span": {
+        "end_line": 44,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_filter",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_Ioc",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_union",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Chebyshev.theta A ≤ Chebyshev.theta B + ∑ p ∈ S, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "Chebyshev.theta A ≤ Chebyshev.theta B + ∑ p ∈ S, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hle",
+      "kind": "have",
+      "name": "hle",
+      "span": {
+        "end_line": 49,
+        "start_line": 45
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_union",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_le_sum_of_subset_of_nonneg",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.log_natCast_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "X ≤ (↑⌈X⌉₊ : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hXc",
+            "type": {
+              "printed": "reliable",
+              "text": "X ≤ (↑⌈X⌉₊ : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hXc",
+      "kind": "have",
+      "name": "hXc",
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_ceil",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) * (↑⌈X⌉₊ : ℝ) + (2 : ℝ) < (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkR",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) * (↑⌈X⌉₊ : ℝ) + (2 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hkR",
+      "kind": "have",
+      "name": "hkR",
+      "span": {
+        "end_line": 51,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑((11 : ℕ) * k - (1 : ℕ)) : ℝ) = (11 : ℝ) * (↑k : ℝ) - (1 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑((11 : ℕ) * k - (1 : ℕ)) : ℝ) = (11 : ℝ) * (↑k : ℝ) - (1 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "X ≤ A",
+              "truncated": false
+            }
+          },
+          "id": "hAX.s1",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 54,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.cast_sub",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "X ≤ ((11 : ℝ) * (↑k : ℝ) - (1 : ℝ)) / (20 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hAX.s2",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                "name": "Nat.cast_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "X ≤ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hAX",
+            "type": {
+              "printed": "reliable",
+              "text": "X ≤ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hAX",
+      "kind": "have",
+      "name": "hAX",
+      "span": {
+        "end_line": 57,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "X ≤ B",
+              "truncated": false
+            }
+          },
+          "id": "hBX.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 59,
+            "start_line": 59
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                "name": "Nat.cast_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "X ≤ B",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hBX",
+            "type": {
+              "printed": "reliable",
+              "text": "X ≤ B",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hBX",
+      "kind": "have",
+      "name": "hBX",
+      "span": {
+        "end_line": 60,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.theta A - A| ≤ (1 / 100 : ℝ) * A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "|Chebyshev.theta A - A| ≤ (1 / 100 : ℝ) * A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "have",
+      "name": "h1",
+      "span": {
+        "end_line": 61,
+        "start_line": 61
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.theta B - B| ≤ (1 / 100 : ℝ) * B",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "|Chebyshev.theta B - B| ≤ (1 / 100 : ℝ) * B",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "have",
+      "name": "h2",
+      "span": {
+        "end_line": 62,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "A = ((11 : ℝ) * (↑k : ℝ) - (1 : ℝ)) / (20 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hAeq",
+            "type": {
+              "printed": "reliable",
+              "text": "A = ((11 : ℝ) * (↑k : ℝ) - (1 : ℝ)) / (20 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hAeq",
+      "kind": "have",
+      "name": "hAeq",
+      "span": {
+        "end_line": 65,
+        "start_line": 64
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.cast_sub",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) ≤ (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hkpos",
+      "kind": "have",
+      "name": "hkpos",
+      "span": {
+        "end_line": 66,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (↑⌈X⌉₊ : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hk2.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 68,
+            "start_line": 68
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                "name": "Nat.cast_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) < (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk2",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk2",
+      "kind": "have",
+      "name": "hk2",
+      "span": {
+        "end_line": 69,
+        "start_line": 67
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) / (100 : ℝ) ≤ ∑ p ∈ S, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 72,
+        "start_line": 70
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
