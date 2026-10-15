@@ -1,0 +1,413 @@
+{
+  "artifact": {
+    "hash": "f28a92bf98a330a56453a622db272d97002fc40d288385cab6fe394bed534336",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "067497e74a8b7bcc9569581586df742db8246174",
+  "node": "erdos-1094--h2--h2--h2--h3--h1--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℕ),\n  (1 : ℕ) ≤ r →\n    ∀ (s : ℕ),\n      s = (2 : ℕ) * r →\n        ∀ (M : ℝ),\n          (↑s : ℝ) - (1 : ℝ) ≤ M →\n            ∀ (W : ℝ),\n              (1 : ℝ) ≤ W →\n                ∀ (u : Fin s → ℤ) (w : Fin s → ℕ),\n                  (∀ (i : Fin s), (0 : ℤ) ≤ u i ∧ (↑(u i) : ℝ) ≤ M) →\n                    StrictMono u →\n                      (∀ (i : Fin s), (0 : ℕ) < w i) →\n                        (∀ (i : Fin s), (↑(w i) : ℝ) ≤ W) →\n                          ∃ (a : Fin s → ℤ),\n                            (∀ j < r, ∑ i : Fin s, (↑(a i) : ℝ) * (↑(w i) : ℝ) * (↑(u i) : ℝ) ^ j = (0 : ℝ)) ∧\n                              ∑ i : Fin s, (↑(a i) : ℝ) * (↑(w i) : ℝ) * (↑(u i) : ℝ) ^ r ≠ (0 : ℝ) ∧\n                                ∀ (i : Fin s), |(↑(a i) : ℝ)| ≤ ((256 : ℝ) * M / (↑r : ℝ)) ^ (r - (1 : ℕ)) * W",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsilr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℕ),\n  (1 : ℕ) ≤ r →\n    ∀ (s : ℕ),\n      s = (2 : ℕ) * r →\n        ∀ (M : ℝ),\n          (↑s : ℝ) - (1 : ℝ) ≤ M →\n            ∀ (W : ℝ),\n              (1 : ℝ) ≤ W →\n                ∀ (u : Fin s → ℤ) (w : Fin s → ℕ),\n                  (∀ (i : Fin s), (0 : ℤ) ≤ u i ∧ (↑(u i) : ℝ) ≤ M) →\n                    StrictMono u →\n                      (∀ (i : Fin s), (0 : ℕ) < w i) →\n                        (∀ (i : Fin s), (↑(w i) : ℝ) ≤ W) →\n                          ∃ (a : Fin s → ℤ),\n                            (∀ j < r, ∑ i : Fin s, (↑(a i) : ℝ) * (↑(w i) : ℝ) * (↑(u i) : ℝ) ^ j = (0 : ℝ)) ∧\n                              ∑ i : Fin s, (↑(a i) : ℝ) * (↑(w i) : ℝ) * (↑(u i) : ℝ) ^ r ≠ (0 : ℝ) ∧\n                                ∀ (i : Fin s), |(↑(a i) : ℝ)| ≤ ((256 : ℝ) * M / (↑r : ℝ)) ^ (r - (1 : ℕ)) * W",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (r : ℕ),\n  (2 : ℕ) ≤ r →\n    ∀ (N : ℝ),\n      (0 : ℝ) < N →\n        ∀ (W : ℝ),\n          (1 : ℝ) ≤ W →\n            ∀ (δ : ℝ),\n              (0 : ℝ) < δ →\n                ∀ (lam : ℝ),\n                  (1 : ℝ) ≤ lam →\n                    ∀ (D_r : ℝ),\n                      (0 : ℝ) < D_r →\n                        ∀ (D_r1 : ℝ),\n                          (0 : ℝ) < D_r1 →\n                            ∀ (f : ℝ → ℝ),\n                              ContDiff ℝ (↑(↑(r + (1 : ℕ)) : ℕ∞) : WithTop ℕ∞) f →\n                                (∀ x ∈ Set.Icc (0 : ℝ) N, D_r / (2 : ℝ) ≤ |iteratedDeriv r f x|) →\n                                  (∀ x ∈ Set.Icc (0 : ℝ) N, |iteratedDeriv r f x| ≤ D_r) →\n                                    (∀ x ∈ Set.Icc (0 : ℝ) N, |iteratedDeriv (r + (1 : ℕ)) f x| ≤ D_r1) →\n                                      ∀ (S : Finset ℤ),\n                                        (∀ u ∈ S, (0 : ℤ) ≤ u ∧ u ≤ ⌊N⌋) →\n                                          (∀ u ∈ S,\n                                              ∃ (v : ℤ) (w : ℕ),\n                                                (0 : ℕ) < w ∧ (↑w : ℝ) ≤ W ∧ |f (↑u : ℝ) - (↑v : ℝ) / (↑w : ℝ)| < δ) →\n                                            let X :=\n                                              (D_r * lam ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n                                                  (δ * W ^ (2 : ℕ) / (D_r * lam ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n                                                (D_r1 * lam * W ^ (2 : ℕ) / D_r) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹;\n                                            ¬(1 : ℝ) ≤ (65536 : ℝ) * X →\n                                              ∀ (N' : ℝ),\n                                                (0 : ℝ) < N' →\n                                                  ∀ (lam' : ℝ),\n                                                    (1 : ℝ) ≤ lam' →\n                                                      lam' < (2 : ℝ) →\n                                                        ",
+          "truncated": true
+        }
+      },
+      "id": "hsilr",
+      "kind": "have",
+      "name": "hsilr",
+      "span": {
+        "end_line": 884,
+        "start_line": 884
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": [
+          "erdos-1094--h2--h2--h2--h3--h1--h1--h1--h1"
+        ]
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℤ) ≤ u ∧ u ≤ ⌊N'⌋",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℤ) ≤ u",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "b",
+                "type": {
+                  "printed": "reliable",
+                  "text": "u ≤ ⌊N'⌋",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "u ∈ intIcc N'",
+              "truncated": false
+            }
+          },
+          "id": "hS'sub.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 888,
+            "start_line": 888
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "S' ⊆ intIcc N'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS'sub",
+            "type": {
+              "printed": "reliable",
+              "text": "S' ⊆ intIcc N'",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "hS'sub",
+      "kind": "have",
+      "name": "hS'sub",
+      "span": {
+        "end_line": 890,
+        "start_line": 886
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_Icc",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑S'.card : ℝ) <\n  C₀_const * N' *\n      ((D' * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ + (δ * W ^ (2 : ℕ) / D') ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑S'.card : ℝ) <\n  C₀_const * N' *\n      ((D' * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ + (δ * W ^ (2 : ℕ) / D') ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 892,
+        "start_line": 891
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "C₀_const *\n    (((↑(1 : ℕ) : ℝ) ^ r * D' * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (δ * W ^ (2 : ℕ) / ((↑(1 : ℕ) : ℝ) ^ r * D')) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n      ((↑(1 : ℕ) : ℝ) * D1' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) ≤\n  c₆ *\n    ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n      (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcmp",
+            "type": {
+              "printed": "reliable",
+              "text": "C₀_const *\n    (((↑(1 : ℕ) : ℝ) ^ r * D' * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (δ * W ^ (2 : ℕ) / ((↑(1 : ℕ) : ℝ) ^ r * D')) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n      ((↑(1 : ℕ) : ℝ) * D1' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) ≤\n  c₆ *\n    ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n      (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "hcmp",
+      "kind": "have",
+      "name": "hcmp",
+      "span": {
+        "end_line": 894,
+        "start_line": 893
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "**Alias** of `zero_lt_one`.",
+            "name": "one_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c₆ = (65536 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc6",
+            "type": {
+              "printed": "reliable",
+              "text": "c₆ = (65536 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "hc6",
+      "kind": "have",
+      "name": "hc6",
+      "span": {
+        "end_line": 897,
+        "start_line": 896
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ (2 : ℝ) * (↑r : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "positivity"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hr0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ (2 : ℝ) * (↑r : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "hr0",
+      "kind": "have",
+      "name": "hr0",
+      "span": {
+        "end_line": 899,
+        "start_line": 899
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) * (↑r : ℝ) ≤ (2 : ℝ) * (↑r : ℝ) * lam'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "nlinarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2r",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) * (↑r : ℝ) ≤ (2 : ℝ) * (↑r : ℝ) * lam'",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+          "truncated": false
+        }
+      },
+      "id": "h2r",
+      "kind": "have",
+      "name": "h2r",
+      "span": {
+        "end_line": 900,
+        "start_line": 900
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑S'.card : ℝ) <\n  (65536 : ℝ) * N' *\n      ((D' * lam' ^ r * W ^ (2 : ℕ)) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n          (δ * W ^ (2 : ℕ) / (D' * lam' ^ r)) ^ ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n        (D1' * lam' * W ^ (2 : ℕ) / D') ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lam'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 901,
+        "start_line": 901
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "mul_le_mul_of_nonneg_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
