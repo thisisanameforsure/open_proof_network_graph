@@ -1,9 +1,7 @@
 import Mathlib
-import Nodes.«erdos-1094--h3--h2--h2».Context
+
 open scoped Nat
 
-/-! The witness slot for a hole (D-29, F07-R6). Replace `sorry` with an instance
-satisfying this statement's hypotheses; until then the node is blocked. -/
+-- witness written by t1015c-a27; proposed by t1015c-a10 for the finisher
 
-theorem witness : ∃ (c : ℝ), (0 : ℝ) < c := by
-  sorry
+theorem witness : ∃ (c : ℝ), (0 : ℝ) < c := ⟨1, one_pos⟩
