@@ -1127,17 +1127,69 @@ jobs:
             --target "${{ steps.pr.outputs.target }}" --node "${{ steps.classify.outputs.node }}" \
             --out "$RUNNER_TEMP/postmerge-out"
 
+      # F28-T9 (D-12 v3.42): close by construction. Every node of every target whose inputs are all
+      # proved is joined with them at the level of terms in the step-3 sandbox, the kernel accepts
+      # its theorem, and a closure record is written beside it; the sweep repeats until nothing more
+      # is ready, so a proof at the bottom of a chain climbs to the top in this one job. It runs with
+      # the gate main pins now (the render pin, F07-T33), after the merge's own verdict is re-derived
+      # (a partial's holes are in the tree by then), and holds no secret: composing elaborates merged
+      # contributor Lean, which runs only in the pinned image (C9). A join that fails is named here
+      # and records nothing (F28-R10). On a pin that predates the sweep the step ends with a notice.
+      - name: Join what this merge made provable (F28-T9; no secret in this step)
+        id: join
+        if: steps.pr.outputs.run == 'true'
+        env:
+          PYTHONPATH: network-render/gate
+        run: |
+          set -uo pipefail
+          uv sync --frozen --project network-render --quiet
+          if ! uv run --frozen --project network-render python -m opn_gate.cli close --help 2>/dev/null \
+            | grep -q -- '--all'; then
+            echo "::notice::close: the pinned gate predates the closure sweep (F28-T9); nothing is joined until the re-pin"
+            echo "closed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          status=0
+          uv run --frozen --project network-render python -m opn_gate.cli close \
+            --graph . --commit HEAD --all --no-build --out "$RUNNER_TEMP/close-out" \
+            > "$RUNNER_TEMP/close.json" || status=$?
+          cat "$RUNNER_TEMP/close.json"
+          if [ "$status" -ne 0 ]; then
+            echo "::warning::close: a join failed, named in the report above; nothing is recorded for it (F28-R10)"
+          fi
+          if git status --porcelain --untracked-files=all -- 'targets/*/nodes/*/closure.json' | grep -q .; then
+            echo "closed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "closed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The one step that reads the gate key (C8): this merge's attestation, and since F28-T9 each
+      # closure record the step above wrote, each signed in place, all with the merged target's pin.
       - name: Sign with the gate key (the only step that sees it)
-        if: steps.classify.outputs.needs_gate == 'true'
+        if: steps.classify.outputs.needs_gate == 'true' || steps.join.outputs.closed == 'true'
         env:
           OPN_GATE_SIGNING_KEY: ${{ secrets.OPN_GATE_SIGNING_KEY }}
-          PYTHONPATH: network/gate
+          NEEDS_GATE: ${{ steps.classify.outputs.needs_gate }}
         run: |
           set -euo pipefail
-          uv run --frozen --project network python -m opn_gate.cli sign \
-            --attestation "$RUNNER_TEMP/postmerge-out/attestation.json" \
-            --public-key keys/gate.pub \
-            --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
+          if [ "$NEEDS_GATE" = "true" ]; then
+            PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli sign \
+              --attestation "$RUNNER_TEMP/postmerge-out/attestation.json" \
+              --public-key keys/gate.pub \
+              --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
+          fi
+          # Each closure record with the merged target's pinned gate, as the attestation is (the key
+          # step runs no other gate). A pin too old to read a closure record cannot sign one: the
+          # record is dropped with a warning, the merge's own record is untouched (C7), and the next
+          # run joins it again.
+          git status --porcelain --untracked-files=all -- 'targets/*/nodes/*/closure.json' \
+            | awk '{print $2}' | while read -r record; do
+              if ! PYTHONPATH=network/gate uv run --frozen --project network \
+                python -m opn_gate.cli sign --attestation "$record" --public-key keys/gate.pub \
+                --out "$record"; then
+                echo "::warning::close: $record was not signed by the pinned gate; dropped until the next run"
+                rm -f "$record"
+              fi
+            done
 
       # F26-R13: the review job after a merge that adds a review record. Fails soft: a pin that
       # predates it (no `review-job`, or no `review run`) writes nothing and warns (2026-09-17).
@@ -1325,17 +1377,6 @@ jobs:
           gh workflow run merge.yml --repo "$GITHUB_REPOSITORY" --ref main \
             && echo "dispatched the merge actor" \
             || echo "::warning::the merge actor was not dispatched; its gate wake and cron remain"
-
-      # F28-T5: a merge may have made a node ready to close; the closer reads main and opens the
-      # closing pull requests (close.yml). Inert until close.yml exists and the pin knows the sweep.
-      - name: Wake the closer
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run close.yml --repo "$GITHUB_REPOSITORY" --ref main \
-            && echo "dispatched the closer" \
-            || echo "::warning::the closer was not dispatched; its hourly catch-up remains"
 
   # F10-R7, F07-T57: build every proved node's oleans from a merge that built something and passed,
   # inside the step-3 image, and upload them keyed by that commit, so the next pregate.sh,
