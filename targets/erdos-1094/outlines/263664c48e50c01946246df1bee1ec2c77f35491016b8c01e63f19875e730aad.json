@@ -1,0 +1,1197 @@
+{
+  "artifact": {
+    "hash": "263664c48e50c01946246df1bee1ec2c77f35491016b8c01e63f19875e730aad",
+    "kind": "partial",
+    "path": "attempts/20261015T132200Z-t1015b-g-partial.lean"
+  },
+  "gate": "fa0a13ba270d7b399ed9c075cb531bdaeb2776fe",
+  "node": "erdos-1094--h3--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h3--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K₃ : ℕ),\n  ∀ (k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) / (100 : ℝ) ≤\n        ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_cheb",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (K₃ : ℕ),\n  ∀ (k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) / (100 : ℝ) ≤\n        ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (C : ℕ),\n  ∃ (K₂ : ℕ),\n    ∀ (n k : ℕ),\n      K₂ < k →\n        k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n          n < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "h_cheb",
+      "kind": "hole",
+      "name": "h_cheb",
+      "span": {
+        "end_line": 26,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h3--h3--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (C : ℕ) (ε : ℝ),\n  (0 : ℝ) < ε →\n    ∃ (K₄ : ℕ),\n      ∀ (n k : ℕ),\n        K₄ < k →\n          k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n            n < k * k →\n              |∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n                    (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n                ε * (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_sander",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (C : ℕ) (ε : ℝ),\n  (0 : ℝ) < ε →\n    ∃ (K₄ : ℕ),\n      ∀ (n k : ℕ),\n        K₄ < k →\n          k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n            n < k * k →\n              |∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n                    (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n                ε * (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (C : ℕ),\n  ∃ (K₂ : ℕ),\n    ∀ (n k : ℕ),\n      K₂ < k →\n        k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n          n < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "h_sander",
+      "kind": "hole",
+      "name": "h_sander",
+      "span": {
+        "end_line": 36,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`log b n`, is the logarithm of natural number `n` in base `b`.",
+            "name": "Nat.log",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K₃ : ℕ),\n  ∀ (k : ℕ),\n    K₃ < k →\n      (↑k : ℝ) / (100 : ℝ) ≤\n        ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K₃",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  K₃ < k →\n    (↑k : ℝ) / (100 : ℝ) ≤\n      ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₂ : ℕ),\n  ∀ (n k : ℕ),\n    K₂ < k →\n      k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n        n < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 38,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K₄ : ℕ),\n  ∀ (n k : ℕ),\n    K₄ < k →\n      k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n        n < k * k →\n          |∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n                (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n            (1 / 1000 : ℝ) * (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K₄",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  K₄ < k →\n    k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n      n < k * k →\n        |∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n              (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n          (1 / 1000 : ℝ) * (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₂ : ℕ),\n  ∀ (n k : ℕ),\n    K₂ < k →\n      k * k ≤ C * (n * Nat.log (2 : ℕ) k) →\n        n < k * k → ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 39,
+        "start_line": 39
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K₃ < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk3",
+            "type": {
+              "printed": "reliable",
+              "text": "K₃ < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "hk3",
+      "kind": "have",
+      "name": "hk3",
+      "span": {
+        "end_line": 41,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K₄ < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk4",
+            "type": {
+              "printed": "reliable",
+              "text": "K₄ < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "hk4",
+      "kind": "have",
+      "name": "hk4",
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∈ Finset.range k ∧ Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpr",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h2p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k < (2 : ℕ) * p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h20",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(20 : ℕ) * p < (11 : ℕ) * k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k % p ≤ n % p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hmod",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k % p ≤ n % p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hmod",
+          "kind": "have",
+          "name": "hmod",
+          "span": {
+            "end_line": 50,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ≤ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ≤ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hpk",
+          "kind": "have",
+          "name": "hpk",
+          "span": {
+            "end_line": 51,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k % p = k - p",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hkp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k % p = k - p",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hkp",
+          "kind": "have",
+          "name": "hkp",
+          "span": {
+            "end_line": 53,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mod_eq_sub_mod",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.mod_eq_of_lt",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < (↑p : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hp0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < (↑p : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hp0",
+          "kind": "have",
+          "name": "hp0",
+          "span": {
+            "end_line": 54,
+            "start_line": 54
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Int.fract ((↑n : ℝ) / (↑p : ℝ)) = (↑(n % p) : ℝ) / (↑p : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hfr",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Int.fract ((↑n : ℝ) / (↑p : ℝ)) = (↑(n % p) : ℝ) / (↑p : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hfr",
+          "kind": "have",
+          "name": "hfr",
+          "span": {
+            "end_line": 55,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+                "name": "Int.fract",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Int.fract_div_natCast_eq_div_natCast_mod",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(k - p) : ℝ) ≤ (↑(n % p) : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hge",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(k - p) : ℝ) ≤ (↑(n % p) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hge",
+          "kind": "have",
+          "name": "hge",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(k - p) : ℝ) = (↑k : ℝ) - (↑p : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsub",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(k - p) : ℝ) = (↑k : ℝ) - (↑p : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hsub",
+          "kind": "have",
+          "name": "hsub",
+          "span": {
+            "end_line": 58,
+            "start_line": 57
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.cast_sub",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(20 : ℝ) * (↑p : ℝ) < (11 : ℝ) * (↑k : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h20r",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(20 : ℝ) * (↑p : ℝ) < (11 : ℝ) * (↑k : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.h20r",
+          "kind": "have",
+          "name": "h20r",
+          "span": {
+            "end_line": 59,
+            "start_line": 59
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(9 / 11 : ℝ) ≤ Int.fract ((↑n : ℝ) / (↑p : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hfrac",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(9 / 11 : ℝ) ≤ Int.fract ((↑n : ℝ) / (↑p : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hfrac",
+          "kind": "have",
+          "name": "hfrac",
+          "span": {
+            "end_line": 62,
+            "start_line": 60
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+                "name": "Int.fract",
+                "tags": []
+              },
+              {
+                "doc": "See `le_div_iff₀'` for a version with multiplication on the other side.",
+                "name": "le_div_iff₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ Real.log (↑p : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlog",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ Real.log (↑p : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hterm.hlog",
+          "kind": "have",
+          "name": "hlog",
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_natCast_nonneg",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ p ∈ S, (7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hterm",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ S, (7 / 22 : ℝ) * Real.log (↑p : ℝ) ≤ (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hterm",
+      "kind": "have",
+      "name": "hterm",
+      "span": {
+        "end_line": 64,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_filter",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(7 / 22 : ℝ) * ∑ p ∈ S, Real.log (↑p : ℝ) ≤ ∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "(7 / 22 : ℝ) * ∑ p ∈ S, Real.log (↑p : ℝ) ≤ ∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 68,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mul_sum",
+            "tags": []
+          },
+          {
+            "doc": "In an ordered additive commutative monoid, if each summand `f i` of one finite sum is less than or equal to the corresponding summand `g i` of another finite sum, then `∑ i ∈ s, f i ≤ ∑ i ∈ s, g i`.",
+            "name": "Finset.sum_le_sum",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) / (100 : ℝ) ≤\n  ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc'",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) / (100 : ℝ) ≤\n  ∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k, Real.log (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hc'",
+      "kind": "have",
+      "name": "hc'",
+      "span": {
+        "end_line": 69,
+        "start_line": 69
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n      (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n  (1 / 1000 : ℝ) * (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs'",
+            "type": {
+              "printed": "reliable",
+              "text": "|∑ p ∈ Finset.range k with Nat.Prime p ∧ k < (2 : ℕ) * p ∧ (20 : ℕ) * p < (11 : ℕ) * k,\n      (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)| ≤\n  (1 / 1000 : ℝ) * (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hs'",
+      "kind": "have",
+      "name": "hs'",
+      "span": {
+        "end_line": 70,
+        "start_line": 70
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ) ≤\n  |∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)|",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "habs",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ) ≤\n  |∑ p ∈ S, (Int.fract ((↑n : ℝ) / (↑p : ℝ)) - (1 / 2 : ℝ)) * Real.log (↑p : ℝ)|",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "habs",
+      "kind": "have",
+      "name": "habs",
+      "span": {
+        "end_line": 71,
+        "start_line": 71
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "le_abs_self",
+            "tags": []
+          },
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hkpos",
+      "kind": "have",
+      "name": "hkpos",
+      "span": {
+        "end_line": 72,
+        "start_line": 72
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 73,
+        "start_line": 73
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
