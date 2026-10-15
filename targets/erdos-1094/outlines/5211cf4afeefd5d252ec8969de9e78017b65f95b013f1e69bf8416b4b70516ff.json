@@ -1,0 +1,674 @@
+{
+  "artifact": {
+    "hash": "5211cf4afeefd5d252ec8969de9e78017b65f95b013f1e69bf8416b4b70516ff",
+    "kind": "partial",
+    "path": "attempts/20261015T021346Z-t1015-r-partial.lean"
+  },
+  "gate": "7e153a12f0cef18386e0c783dfa76674adbbc32b",
+  "node": "erdos-1094--h2--h2--h2--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h2--h2--h2--h3--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (lam : ℝ),\n  (1 : ℝ) ≤ lam →\n    ∀ (n : ℤ) (k r : ℕ),\n      (↑k : ℤ) < n →\n        (2 : ℕ) ≤ r →\n          (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ)) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (65536 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) *\n                  (((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r / (↑k : ℝ) ^ (r + (1 : ℕ))) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n                      ((↑k : ℝ) ^ ((↑r : ℝ) + (21 / 40 : ℝ)) / ((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r)) ^\n                        ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n                    (((↑r : ℝ) + (1 : ℝ)) * lam / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                (2 : ℝ) * (↑r : ℝ) * lam",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_kon",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (lam : ℝ),\n  (1 : ℝ) ≤ lam →\n    ∀ (n : ℤ) (k r : ℕ),\n      (↑k : ℤ) < n →\n        (2 : ℕ) ≤ r →\n          (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ)) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              (65536 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) *\n                  (((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r / (↑k : ℝ) ^ (r + (1 : ℕ))) ^ ((2 : ℝ) * (↑r : ℝ) - (1 : ℝ))⁻¹ +\n                      ((↑k : ℝ) ^ ((↑r : ℝ) + (21 / 40 : ℝ)) / ((↑n : ℝ) * (↑r ! : ℝ) * lam ^ r)) ^\n                        ((↑r : ℝ) - (1 : ℝ))⁻¹ +\n                    (((↑r : ℝ) + (1 : ℝ)) * lam / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                (2 : ℝ) * (↑r : ℝ) * lam",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "h_kon",
+      "kind": "hole",
+      "name": "h_kon",
+      "span": {
+        "end_line": 374,
+        "start_line": 364
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+            "name": "Finset.Ioo",
+            "tags": []
+          },
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.factorial n` is the factorial of `n`.",
+            "name": "Nat.factorial",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB0",
+            "type": {
+              "printed": "reliable",
+              "text": "¬∃ (C : ℝ),\n    (0 : ℝ) < C ∧\n      ∃ (k₀ : ℕ),\n        ∀ (k : ℕ),\n          k₀ ≤ k →\n            C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n              (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                      (0 : ℤ) < p ∧\n                        Nat.Prime p.natAbs ∧\n                          (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℤ),\n          (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n            (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) →\n              ∃ (p : ℕ),\n                Nat.Prime p ∧\n                  (↑k : ℝ) < (↑p : ℝ) ∧\n                    (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                      (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 387,
+        "start_line": 387
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℝ),\n  (0 : ℝ) < C ∧\n    ∃ (k₀ : ℕ),\n      ∀ (k : ℕ),\n        k₀ ≤ k →\n          C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n            (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                    (0 : ℤ) < p ∧\n                      Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n              ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "C",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hC",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < C",
+              "truncated": false
+            }
+          },
+          {
+            "name": "kb",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hb",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  kb ≤ k →\n    C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n      (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n              (0 : ℤ) < p ∧\n                Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n        ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 389,
+        "start_line": 389
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta) → (↑(badSet k n).card : ℝ) < g_ml k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k1",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk1card",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  k1 ≤ k →\n    ∀ (n : ℤ),\n      (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta) → (↑(badSet k n).card : ℝ) < g_ml k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 390,
+        "start_line": 390
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ), ∀ (k : ℕ), k₀ ≤ k → g_ml k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k2",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk2rhs",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ), k2 ≤ k → g_ml k ≤ C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (↑k : ℝ) ^ (2 : ℕ) / Real.log (↑k : ℝ) ^ (2 : ℕ) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) →\n            ∃ (p : ℕ),\n              Nat.Prime p ∧\n                (↑k : ℝ) < (↑p : ℝ) ∧\n                  (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                    (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 391,
+        "start_line": 391
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "kb ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkb",
+            "type": {
+              "printed": "reliable",
+              "text": "kb ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hkb",
+      "kind": "have",
+      "name": "hkb",
+      "span": {
+        "end_line": 394,
+        "start_line": 394
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k1 ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hki1",
+            "type": {
+              "printed": "reliable",
+              "text": "k1 ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hki1",
+      "kind": "have",
+      "name": "hki1",
+      "span": {
+        "end_line": 395,
+        "start_line": 395
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k2 ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hki2",
+            "type": {
+              "printed": "reliable",
+              "text": "k2 ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hki2",
+      "kind": "have",
+      "name": "hki2",
+      "span": {
+        "end_line": 396,
+        "start_line": 396
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℕ) ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk2le",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hk2le",
+      "kind": "have",
+      "name": "hk2le",
+      "span": {
+        "end_line": 397,
+        "start_line": 397
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℕ) ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hk1",
+      "kind": "have",
+      "name": "hk1",
+      "span": {
+        "end_line": 398,
+        "start_line": 398
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbhp",
+            "type": {
+              "printed": "reliable",
+              "text": "C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ) ≤ (↑(primeCard (↑k : ℝ) ((↑k : ℝ) + (↑k : ℝ) ^ theta)) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hbhp",
+      "kind": "have",
+      "name": "hbhp",
+      "span": {
+        "end_line": 400,
+        "start_line": 399
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+          "truncated": false
+        }
+      },
+      "id": "hcard",
+      "kind": "have",
+      "name": "hcard",
+      "span": {
+        "end_line": 402,
+        "start_line": 401
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "lt_of_lt_of_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ),\n  Nat.Prime p ∧\n    (↑k : ℝ) < (↑p : ℝ) ∧\n      (↑p : ℝ) < (↑k : ℝ) + (3 : ℝ) * (↑k : ℝ) ^ (21 / 40 : ℝ) ∧ (↑p : ℤ) ∣ ∏ i ∈ Finset.Icc (1 : ℕ) k, (n - (↑i : ℤ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 403,
+        "start_line": 403
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
