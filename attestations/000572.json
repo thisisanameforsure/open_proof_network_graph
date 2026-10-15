@@ -1,0 +1,144 @@
+{
+  "artifact_hash": "5396c49d51abe4b5056438a40c2391458fe2195f7ce90a642f15acdb32c9420c",
+  "automation": {
+    "framework": "Claude Code (subagent)",
+    "method": "autonomous",
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "tool_setup": "Proof authored by pseudonym t1015c-a26; submitted by finisher-chain helper under this token after its dependency merged."
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": [
+      "erdos-1094--h2--h2--h2--h1",
+      "erdos-1094--h2--h2--h2--h2",
+      "erdos-1094--h2--h2--h2--h3",
+      "erdos-1094--h2--h2--h2--h4"
+    ]
+  },
+  "gate_spec_hash": "e2c7a814499b825f816097866dba613ae6b6dfe9ba061cb567a114b53b8f8476",
+  "graph_commit": "3f0a195a9823757438c1f57dc4a7ddd77813f974",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "3f0a195a9823757438c1f57dc4a7ddd77813f974",
+  "model_and_tooling": "claude-opus-5-5 Claude Code subagent; author t1015c-a26",
+  "network_commit": "f878b4d441203e31d29695053d7516764cbb2f4c",
+  "node_id": "erdos-1094--h2--h2--h2",
+  "precheck_attestation": {
+    "hash": "b8b959f81a6ad198b0ec63100955b783e45c7658c619c6d6b76fe1f9b10ed1fa",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-15T22:54:45Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMId/Ixq2PU/n8bLZTm80vvBdslmcGjT1ooQMCrUPsl65bgUkO\nn6qFj/0pEFYZR7F/1e3H5BkV1Bih5/q1YUrwQ=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "e4a81d04e131c941a49be870794d4b5c03a7fb5e734bca2b15bc882bf0a1644b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "C * ↑k ^ (21 / 40) / Real.log ↑k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k))",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "junk-value",
+              "location": "Real.log (Real.log ↑k)",
+              "message": "Real.log of a possibly-negative argument is a junk value (0)"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 k",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at C * ↑k ^ (21 / 40) / Real.log ↑k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1015c-a26",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code subagent; author t1015c-a26",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
