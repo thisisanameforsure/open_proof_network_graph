@@ -1326,6 +1326,17 @@ jobs:
             && echo "dispatched the merge actor" \
             || echo "::warning::the merge actor was not dispatched; its gate wake and cron remain"
 
+      # F28-T5: a merge may have made a node ready to close; the closer reads main and opens the
+      # closing pull requests (close.yml). Inert until close.yml exists and the pin knows the sweep.
+      - name: Wake the closer
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run close.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            && echo "dispatched the closer" \
+            || echo "::warning::the closer was not dispatched; its hourly catch-up remains"
+
   # F10-R7, F07-T57: build every proved node's oleans from a merge that built something and passed,
   # inside the step-3 image, and upload them keyed by that commit, so the next pregate.sh,
   # devcontainer and gate run fetch instead of compiling. A job of its own, after the post-merge job
