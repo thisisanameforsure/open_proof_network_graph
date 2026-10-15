@@ -8,9 +8,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1/attempts/20261015T151456Z-t1015c-a06-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1/attempts/20261015T164745Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1/attempts/20261015T164745Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 553 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; the Lean compiled at v4.28.0 only):\n- Proved: from h_res the statement follows (Lucas via Choose.choose_modEq_choose_mod_mul_choose_div_nat, then minFac <= p <= k). The hypothesis on n / gcd(n, k) is not needed.\n- h_res goes past the elementary bound (Erdős–Lacampagne–S…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h2--h1--h1--h1",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1/attempts/20261015T164745Z-opn-prove-aristotle-1015.yaml",
+            "text": "Lucas's theorem: a prime p <= k with n % p < k % p divides C(n, k), so minFac <= k; leaves the residue form h_res for 2k <= n < k^3.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1/attempts/20261015T164745Z-opn-prove-aristotle-1015.yaml",
+            "text": "have h_res : ∃ K : ℕ, ∀ n k : ℕ, 0 < k → 2 * k ≤ n → n < k * k * k →\n    (∀ p : ℕ, p.Prime → p ≤ k → k % p ≤ n % p) → k ≤ K\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -69,7 +104,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "52dcd39070e77680b12f7b77c9dc04dc090e49c7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {

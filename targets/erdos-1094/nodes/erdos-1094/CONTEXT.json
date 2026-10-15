@@ -29,9 +29,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094/attempts/20261008T130306Z-t1008-a-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094/attempts/20261015T165344Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094/attempts/20261015T165344Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 186 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; not machine-checked):\n- The split is the one the record's own decomposition already makes; the join (case split on k*k <= n, union of two finite sets) was written but not compiled anywhere.\n- n >= k^2: Ecklund (1969) gives a prime factor <= n/k except (62, 6); settled o…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094/attempts/20261015T165344Z-opn-prove-aristotle-1015.yaml",
+            "text": "Split by k*k <= n (Ecklund's range) against 2k <= n < k*k, each a finiteness claim, joined by Set.Finite.union.",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094/attempts/20261015T165344Z-opn-prove-aristotle-1015.yaml",
+            "text": "have hLarge : {(n, k) : ℕ × ℕ | 0 < k ∧ k * k ≤ n ∧\n    (n.choose k).minFac > max (n / k) k}.Finite\nhave hSmall : {(n, k) : ℕ × ℕ | 0 < k ∧ 2 * k ≤ n ∧ n < k * k ∧\n    (n.choose k).minFac > max (n / k) k}.Finite\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -106,7 +141,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "52dcd39070e77680b12f7b77c9dc04dc090e49c7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {

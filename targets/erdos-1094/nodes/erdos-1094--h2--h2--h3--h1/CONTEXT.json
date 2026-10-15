@@ -8,9 +8,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1/attempts/20261015T144930Z-t1015c-a08-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1/attempts/20261015T165203Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1/attempts/20261015T165203Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 1104 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; the Lean compiled at v4.28.0 only):\n- Proved: core implies the node, using C(n, k) != 1 since n/k >= 1. The exp lower bound, k * (n / k) | k! and the primality of n / gcd(n, k) are not needed for that step; on paper, minFac > n/k alone implies the factorial divisibilit…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h2--h2--h3--h1",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1/attempts/20261015T165203Z-opn-prove-aristotle-1015.yaml",
+            "text": "Reduce minFac C(n, k) > n/k to no prime q <= n/k dividing C(n, k), leaving core: for n >= k^3 some prime <= n/k divides C(n, k) (Ecklund's theorem).",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1/attempts/20261015T165203Z-opn-prove-aristotle-1015.yaml",
+            "text": "have core : ∃ K : ℕ, ∀ n k : ℕ, 0 < k → k * k * k ≤ n →\n    (∀ q : ℕ, q.Prime → q ≤ n / k → ¬ q ∣ n.choose k) → k ≤ K\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -62,7 +97,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "52dcd39070e77680b12f7b77c9dc04dc090e49c7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {

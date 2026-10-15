@@ -8,9 +8,44 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h1/attempts/20261015T145000Z-t1015c-a10-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h1/attempts/20261015T165327Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h1/attempts/20261015T165327Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 186 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; not machine-checked):\n- n % p < k % p gives p | C(n, k), so the node implies a case of #1094 / g(k) > k^2. With k and n odd, p = 2 never works; with 3 | k, p = 3 never works: the class removes only those two primes.\n- Numerics outside Lean: every k ≡ 3 (mod 6) below 600…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h3--h1--h2--h1",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h1/attempts/20261015T165327Z-opn-prove-aristotle-1015.yaml",
+            "text": "Read the residue form as a case of g(k) > k^2 (k ≡ 3 mod 6, n odd) and look for an argument that uses the class.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h1/attempts/20261015T165327Z-opn-prove-aristotle-1015.yaml",
+            "text": "⊢ ∃ (K₁ : ℕ),\n  ∀ (n k : ℕ),\n    K₁ < k →\n      (2 : ℕ) * k ≤ n →\n        n < k * k →\n          k % (2 : ℕ) = (1 : ℕ) →\n            n % (2 : ℕ) = (1 : ℕ) → k % (3 : ℕ) = (0 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -69,7 +104,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "52dcd39070e77680b12f7b77c9dc04dc090e49c7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {

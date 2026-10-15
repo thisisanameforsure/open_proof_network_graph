@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h1/attempts/20261015T164804Z-opn-prove-aristotle-1015.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "opn-prove-aristotle-1015",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h1/attempts/20261015T164804Z-opn-prove-aristotle-1015.yaml",
+            "text": "Run: opn-prove's aristotle preset (F17-T10), 2026-10-15, 247 s, task COMPLETE_WITH_ERRORS; Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.\n\nWhat the run found (Aristotle's summary, paraphrased; the Lean compiled at v4.28.0 only):\n- The node is Baker–Harman–Pintz. It needs zero-density estimates for zeta and a sieve; Mathlib has Bertrand and Chebyshev bounds but not the prime number theorem.\n- Proved, with no gaps: h_bhp implies the node exactly (C = c, k0 = ce…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h2--h2--h1",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h1/attempts/20261015T164804Z-opn-prove-aristotle-1015.yaml",
+            "text": "State Baker–Harman–Pintz (primes in (x, x + x^(21/40)), at least c x^(21/40) / log x of them) as one have, and derive the node from it by mapping natural primes injectively into the node's integer set.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h1/attempts/20261015T164804Z-opn-prove-aristotle-1015.yaml",
+            "text": "have h_bhp : ∃ c : ℝ, 0 < c ∧ ∃ x₀ : ℝ, ∀ x : ℝ, x₀ ≤ x →\n    c * x ^ (21 / 40 : ℝ) / Real.log x ≤\n      (((Finset.range ⌈x + x ^ (21 / 40 : ℝ)⌉₊).filter\n        (fun p : ℕ => p.Prime ∧ x < (p : ℝ) ∧ (p : ℝ) < x + x ^ (21 / 40 : ℝ))).card : ℝ)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -52,7 +87,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "52dcd39070e77680b12f7b77c9dc04dc090e49c7",
+  "rendered_from": "dac5a1d12f06f85b74ee5a575b2a2b5d0ceadca4",
   "review": {
     "questions_waiting": [
       {
