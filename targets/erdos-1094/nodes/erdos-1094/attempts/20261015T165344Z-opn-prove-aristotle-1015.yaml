@@ -1,0 +1,33 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: 'Run: opn-prove''s aristotle preset (F17-T10), 2026-10-15, 186 s, task COMPLETE_WITH_ERRORS;
+  Aristotle works on its own Lean v4.28.0 and could not download the pinned v4.33.1.
+
+
+  What the run found (Aristotle''s summary, paraphrased; not machine-checked):
+
+  - The split is the one the record''s own decomposition already makes; the join (case
+  split on k*k <= n, union of two finite sets) was written but not compiled anywhere.
+
+  - n >= k^2: Ecklund (1969) gives a prime factor <= n/k except (62, 6); settled on
+  paper, not formalised in the pinned Mathlib.
+
+  - 2k <= n < k^2: Aristotle calls this part open.
+
+
+  On the record: Aristotle''s reading of the 2k <= n < k^2 range as open differs from
+  the annex on erdos-1094--h3--h1 (t1008-c), which reads it as plausibly Granville–Ramaré
+  (1996) / Konyagin (1999), unverified against the papers.
+
+  '
+failure_class: missing-library
+node: erdos-1094
+outcome: blocked
+route: Split by k*k <= n (Ecklund's range) against 2k <= n < k*k, each a finiteness
+  claim, joined by Set.Finite.union.
+route_class: case-split
+schema: postmortem/v1
+terminal_goal_state: "have hLarge : {(n, k) : ℕ × ℕ | 0 < k ∧ k * k ≤ n ∧\n    (n.choose\
+  \ k).minFac > max (n / k) k}.Finite\nhave hSmall : {(n, k) : ℕ × ℕ | 0 < k ∧ 2 *\
+  \ k ≤ n ∧ n < k * k ∧\n    (n.choose k).minFac > max (n / k) k}.Finite\n"
