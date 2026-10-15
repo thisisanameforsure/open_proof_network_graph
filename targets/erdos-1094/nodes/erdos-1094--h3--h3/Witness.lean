@@ -1,0 +1,5 @@
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (C : ℕ), True := ⟨0, trivial⟩

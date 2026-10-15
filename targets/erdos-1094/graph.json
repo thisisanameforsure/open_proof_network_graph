@@ -904,11 +904,27 @@
             }
           ],
           "partial": "attempts/20261009T143300Z-t1009-c-partial.lean"
+        },
+        {
+          "annex": "1df9e2016f247088c7a0bdc58643dc56fc5169dfeb1a094e1c9ce30cb42abcc2",
+          "holes": [
+            {
+              "name": "h_els",
+              "node": "erdos-1094--h3--h2"
+            },
+            {
+              "name": "h_gr",
+              "node": "erdos-1094--h3--h3"
+            }
+          ],
+          "partial": "attempts/20261015T125200Z-t1015b-g-partial.lean"
         }
       ],
       "defect_claims": [],
       "deps": [
-        "erdos-1094--h3--h1"
+        "erdos-1094--h3--h1",
+        "erdos-1094--h3--h2",
+        "erdos-1094--h3--h3"
       ],
       "lemmas": [
         {
@@ -924,7 +940,24 @@
       },
       "node_id": "erdos-1094--h3",
       "origin": "compiler-derived",
-      "outline": null,
+      "outline": {
+        "annex": "1df9e2016f247088c7a0bdc58643dc56fc5169dfeb1a094e1c9ce30cb42abcc2",
+        "partial": "attempts/20261015T125200Z-t1015b-g-partial.lean",
+        "steps": [
+          {
+            "node": "erdos-1094--h3--h2",
+            "status": "ready",
+            "step": "h_els",
+            "summary": "[ELS] 1993, cited by GR §5e p.24: minFac C(n,k) > k, 2k <= n, k large imply k^2 <= C * n * log2 k."
+          },
+          {
+            "node": "erdos-1094--h3--h3",
+            "status": "ready",
+            "step": "h_gr",
+            "summary": "GR §5e pp.24-25 via (5.1) (Sander): for every C, for k large, k^2 <= C n log2 k, n < k^2, some prime p in (k/2, 11k/20) has n mod p < k mod p."
+          }
+        ]
+      },
       "proof_commit": null,
       "proofs": [],
       "proposed_for": null,
@@ -1203,11 +1236,57 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "circular": [],
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h3--h2",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "b2cf277043bdccab7cf2197439da6f5a768d72b9a6349041eaf331c3ac18f4dd",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "circular": [],
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h3--h3",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "e26d55df4fee05d3b3358d5d47f73e19232f45e7a44ed2730d550a1768eb20e1",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "cdadf84ada5343685b5bcda1360ce11377569fb5",
+  "rendered_from": "68d071a30eae6327bd05c48a7915185ee0167931",
   "review": {
     "candidates": 1,
     "clusters": 1,
