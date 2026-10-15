@@ -1,0 +1,283 @@
+{
+  "artifact": {
+    "hash": "6c4f4b3764b58a449725ead923b4434680d589731f4a3374219a8bcc86571545",
+    "kind": "partial",
+    "path": "attempts/20261015T145000Z-t1015c-a16-partial.lean"
+  },
+  "gate": "fa0a13ba270d7b399ed9c075cb531bdaeb2776fe",
+  "node": "erdos-1094--h3--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h1--h1--h3",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    K < k →\n      (2 : ℕ) * k ≤ n →\n        n < k * k →\n          k % (2 : ℕ) = (0 : ℕ) →\n            (∀ (q : ℕ), Nat.Prime q → q ≤ k → q ∣ n → q ∣ k) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_smooth",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    K < k →\n      (2 : ℕ) * k ≤ n →\n        n < k * k →\n          k % (2 : ℕ) = (0 : ℕ) →\n            (∀ (q : ℕ), Nat.Prime q → q ≤ k → q ∣ n → q ∣ k) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₁ : ℕ),\n  ∀ (n k : ℕ),\n    K₁ < k → (2 : ℕ) * k ≤ n → n < k * k → k % (2 : ℕ) = (0 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "h_smooth",
+      "kind": "hole",
+      "name": "h_smooth",
+      "span": {
+        "end_line": 14,
+        "start_line": 12
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    K < k →\n      (2 : ℕ) * k ≤ n →\n        n < k * k →\n          k % (2 : ℕ) = (0 : ℕ) →\n            (∀ (q : ℕ), Nat.Prime q → q ≤ k → q ∣ n → q ∣ k) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  K < k →\n    (2 : ℕ) * k ≤ n →\n      n < k * k →\n        k % (2 : ℕ) = (0 : ℕ) →\n          (∀ (q : ℕ), Nat.Prime q → q ≤ k → q ∣ n → q ∣ k) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K₁ : ℕ),\n  ∀ (n k : ℕ),\n    K₁ < k → (2 : ℕ) * k ≤ n → n < k * k → k % (2 : ℕ) = (0 : ℕ) → ∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 15,
+        "start_line": 15
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (q : ℕ), Nat.Prime q ∧ q ≤ k ∧ q ∣ n ∧ ¬q ∣ k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "q",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hqp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime q",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hqk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "q ≤ k",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hqn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "q ∣ n",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hqnk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬q ∣ k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+              "truncated": false
+            }
+          },
+          "id": "s3.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 18,
+            "start_line": 18
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hq",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (q : ℕ), Nat.Prime q ∧ q ≤ k ∧ q ∣ n ∧ ¬q ∣ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 21,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mod_eq_zero_of_dvd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.pos_of_ne_zero",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.dvd_of_mod_eq_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hq",
+            "type": {
+              "printed": "reliable",
+              "text": "¬∃ (q : ℕ), Nat.Prime q ∧ q ≤ k ∧ q ∣ n ∧ ¬q ∣ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ), Nat.Prime p ∧ p ≤ k ∧ n % p < k % p",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 23,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
