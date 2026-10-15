@@ -1,0 +1,29 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-prove-aristotle-1015
+detail: "Run: opn-prove's aristotle preset, 2026-10-15, 226 s, task COMPLETE_WITH_ERRORS;\
+  \ the file came\nback unchanged, sorry in place.\n\nWhat the run found (Aristotle's\
+  \ summary, paraphrased; not machine-checked):\n- The parity and mod-3 hypotheses\
+  \ only rule out p = 2 and p = 3; every other prime is as in the\n  parent, so the\
+  \ class is no easier than erdos-1094--h3--h1.\n- Primes in (k/2, k] settle n <=\
+  \ c k for a fixed c, where an elementary proof looks plausible.\n- Near n = k^2\
+  \ the route needs primes in many intervals of bounded length, which no known\n \
+  \ prime-distribution result guarantees.\n- The large sieve gives an upper bound\
+  \ about a factor k too weak to rule out exceptions.\n- Its suggestion: restructure\
+  \ with an upper bound on n in terms of k (n <= c k) if a provable\n  piece is wanted.\n\
+  - Numerics, outside Lean: every odd k from 3 to 599. Cases with no such prime occur\
+  \ only for\n  k <= 35, the largest (k, n) = (35, 569), so K₂ = 35 would likely work\
+  \ for this class.\n\nOn the record: Aristotle called the n < k^2 range open. The\
+  \ annex on erdos-1094--h3--h1\n(t1008-c) reads it as plausibly Granville–Ramaré\
+  \ / Konyagin, unverified against the papers.\n"
+failure_class: route-dead-ends
+node: erdos-1094--h3--h1--h2--h2
+outcome: exhausted
+route: 'Automated search by Aristotle (Harmonic): primes in (k/2, k] for small n/k,
+  a bounded-interval prime search near k^2, and the large sieve, on the odd/odd, mod-3
+  class of the residue form.'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∃ K₂, ∀ (n k : ℕ), K₂ < k → 2 * k ≤ n → n < k * k → k % 2\
+  \ = 1 → n % 2 = 1 →\n    0 < k % 3 → k % 3 ≤ n % 3 → ∃ p, Nat.Prime p ∧ p ≤ k ∧\
+  \ n % p < k % p\n"
