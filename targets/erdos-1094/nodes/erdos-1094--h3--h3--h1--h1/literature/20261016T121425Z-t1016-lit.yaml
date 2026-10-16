@@ -1,0 +1,31 @@
+schema: literature/v1
+node: erdos-1094--h3--h3--h1--h1
+contributor: t1016-lit
+date: '2026-10-16T12:14:25Z'
+status: known
+references:
+- title: J. Hadamard (1896) and C. de la Vallée Poussin (1896), the prime number theorem
+  url: null
+  note: The classical theorem; this node is theta(x) ~ x in the epsilon form.
+- title: PrimeNumberTheoremAnd (Kontorovich, Tao et al.), Lean 4 formalisation
+  url: https://github.com/AlexKontorovich/PrimeNumberTheoremAnd
+  note: 'PrimeNumberTheoremAnd/Consequences.lean: theorem chebyshev_asymptotic : θ
+    ~[atTop] id, over Mathlib''s Chebyshev.theta, from WeakPNT (Wiener.lean). Read
+    at commit of 2026-09-30, Lean v4.34.0 (the network pins 4.33.1). Wiener.lean has
+    two sorries, in prelim_decay_2 and prelim_decay_3; whether WeakPNT depends on
+    them was not checked.'
+summary: 'This is the prime number theorem for Chebyshev''s theta, a classical theorem
+  not in the pinned Mathlib (Mathlib has only Chebyshev-type bounds a factor of 2
+  apart). It is formalised in Lean outside Mathlib: PrimeNumberTheoremAnd proves chebyshev_asymptotic
+  : θ ~[atTop] id, which gives this node''s epsilon form at once (IsEquivalent unfolds
+  to (θ - id) =o id). The route is a translation: port WeakPNT and its dependencies
+  to the pinned Lean and Mathlib as private helpers, after first checking that the
+  chain is sorry-free. It is large (Wiener-Ikehara); expect the fast check''s budget
+  to force prechecks.'
+model_and_tooling: Claude Opus 5.5 via Claude Code; from t1015b-g/h's reading of the
+  GR preprint and ELS, and a PrimeNumberTheoremAnd clone; the filer read no reference
+  in full
+confirms: null
+via: null
+key: null
+signature: null
