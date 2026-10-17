@@ -2,10 +2,12 @@
   "nodes": [
     {
       "cause": null,
+      "claim": "\\Bigl\\{(n,k)\\in\\mathbb{N}^2 \\;:\\; 0<k,\\ \\ 2k\\le n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\max\\bigl(\\lfloor n/k\\rfloor,\\,k\\bigr)\\Bigr\\}\\ \\text{ is finite}",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_fixed_k",
@@ -29,6 +31,8 @@
         "erdos-1094--h2",
         "erdos-1094--h3"
       ],
+      "label": "Erdős problem 1094",
+      "label_source": "target",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -48,10 +52,13 @@
     },
     {
       "cause": null,
+      "claim": "\\forall k\\ge 1:\\quad \\Bigl\\{n\\in\\mathbb{N} \\;:\\; k^2\\le n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k\\rfloor\\Bigr\\}\\ \\text{ is finite}",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_fixed_k",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -81,10 +88,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ k^2\\le n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k\\rfloor \\implies k\\le K",
       "closure": null,
       "decompositions": [
         {
           "annex": "301ade26e4fe34edb5cfb1186ec23735a245ff1d1027f281d716cb784fa2458c",
+          "approach": "Splitting the open core of Erdős #1094 at n = k³: a literature range and a sharper open range.",
           "holes": [
             {
               "name": "h_lo",
@@ -103,6 +112,8 @@
         "erdos-1094--h2--h1",
         "erdos-1094--h2--h2"
       ],
+      "label": "h_large_n",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -143,10 +154,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ k^2\\le n<k^3,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k\\rfloor \\implies k\\le K",
       "closure": null,
       "decompositions": [
         {
           "annex": "97a5239b102766886507b6fe000e0eef718bea41808d9a5b73090dd6a5b26865",
+          "approach": "Konyagin's theorem, g(k) > k^3 for all large k, in the network's \"bounded k\" shape: a binomial coefficient C(n, k) with 2k ≤ n < k^3 whose prime factors all exceed k occurs only for bounded k. This is the one literature input the h_lo range needs.",
           "holes": [
             {
               "name": "h_good_below_cube",
@@ -157,6 +170,7 @@
         },
         {
           "annex": "6c7d3be4efeecc319f87dc55a1638245a01739d8f2167e05b11ba9d9d31853b7",
+          "approach": "Baker, Harman and Pintz (2001): for large k the interval (k, k + k^(21/40)) holds at least C k^(21/40) / log k primes. Stated exactly as `axiom bhp` in van Doorn and Tang's formalisation (github.com/Woett/ChatGPT-s-note-on-Erdos451), with `primeCard` unfolded.",
           "holes": [
             {
               "name": "h_bhp",
@@ -179,6 +193,8 @@
         "erdos-1094--h2--h1--h1",
         "erdos-1094--h2--h1--h4"
       ],
+      "label": "h_lo",
+      "label_source": "hole",
       "lemmas": [
         {
           "hole": "h_bhp",
@@ -234,10 +250,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ 2k\\le n<k^3,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > k \\implies k\\le K",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Proved here (assembly): n / gcd(n,k) divides C(n,k) (from k*C(n,k) = n*C(n-1,k-1) and coprimality of n/g and k/g), and n/g ≥ n/k ≥ 2, so its least prime factor is at least minFac C(n,k) > k: every prime factor of n / gcd(n,k) exceeds k.",
           "holes": [
             {
               "name": "h_gp",
@@ -258,6 +276,8 @@
       "deps": [
         "erdos-1094--h2--h1--h1--h1"
       ],
+      "label": "h_good_below_cube",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -281,10 +301,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Split the range 2k ≤ n < k³ at n = k²: the lower band (n < k², Sylvester–Schur/Ecklund regime) and the upper band (k² ≤ n < k³). Each hole carries a stronger hypothesis.",
           "holes": [
             {
               "name": "h_low",
@@ -303,6 +325,8 @@
         "erdos-1094--h2--h1--h1--h1--h1",
         "erdos-1094--h2--h1--h1--h1--h2"
       ],
+      "label": "h_gp",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -322,10 +346,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_low",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -345,10 +372,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_high",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -368,10 +398,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\in\\mathbb N\\ \\forall n,k\\in\\mathbb N:\\ 0<k,\\ k^2\\le n,\\ n<k\\bigl(k+3k^{21/40}\\bigr),\\ k\\lfloor n/k\\rfloor \\mid k!,\\ \\operatorname{minFac}\\binom nk>\\lfloor n/k\\rfloor\\ \\Longrightarrow\\ k\\le K.",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Proved here (assembly): under k*k ≤ n and minFac C(n,k) > n/k, the number n / gcd(n,k) is prime. Reason: n/gcd(n,k) divides C(n,k) (from k*C(n,k) = n*C(n-1,k-1) and coprimality), so all its prime factors exceed n/k ≥ k; a composite would be ≥ (n/k+1)^2 > n.",
           "holes": [
             {
               "name": "h_gp",
@@ -385,6 +417,8 @@
       "deps": [
         "erdos-1094--h2--h1--h4--h1"
       ],
+      "label": "h_strip",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -408,10 +442,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_cop",
@@ -430,6 +466,8 @@
         "erdos-1094--h2--h1--h4--h1--h1",
         "erdos-1094--h2--h1--h4--h1--h2"
       ],
+      "label": "h_gp",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -449,10 +487,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_cop",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -472,10 +513,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_div",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -495,10 +539,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ k^3\\le n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k\\rfloor \\implies k\\le K",
       "closure": null,
       "decompositions": [
         {
           "annex": "f583ead924aad6b032168aa46c489604b9fff8546bc6f85de05ac8e143a5582f",
+          "approach": "Baker, Harman and Pintz (2001): for large k the interval (k, k + k^(21/40)) holds at least C k^(21/40) / log k primes. Stated exactly as `axiom bhp` in van Doorn and Tang's formalisation (github.com/Woett/ChatGPT-s-note-on-Erdos451), with `primeCard` unfolded.",
           "holes": [
             {
               "name": "h_bhp",
@@ -522,6 +568,8 @@
         "erdos-1094--h2--h2--h2",
         "erdos-1094--h2--h2--h3"
       ],
+      "label": "h_hi",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -564,10 +612,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_bhp",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -591,10 +642,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": "9fe3bccd5b4ff1910617d3e44edf386ecfedd3cbfc8d00ce61f3bd45ae1dcce3",
+          "approach": "Partial port of van Doorn–Tang (arXiv 2606.19863), `main_theorem` of github.com/Woett/ChatGPT-s-note-on-Erdos451: its four range cases, each as ¬BHP ∨ case.",
           "holes": [
             {
               "name": "h_small",
@@ -623,6 +676,8 @@
         "erdos-1094--h2--h2--h2--h3",
         "erdos-1094--h2--h2--h2--h4"
       ],
+      "label": "h_vdt",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -690,10 +745,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_small",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -723,10 +781,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_count",
@@ -740,6 +800,8 @@
       "deps": [
         "erdos-1094--h2--h2--h2--h2--h1"
       ],
+      "label": "h_medium",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -771,10 +833,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_count",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -804,10 +869,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_kon",
@@ -821,6 +888,8 @@
       "deps": [
         "erdos-1094--h2--h2--h2--h3--h1"
       ],
+      "label": "h_mediumlarge",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -852,10 +921,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_thm",
@@ -869,6 +940,8 @@
       "deps": [
         "erdos-1094--h2--h2--h2--h3--h1--h1"
       ],
+      "label": "h_kon",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -900,10 +973,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "core",
@@ -917,6 +992,8 @@
       "deps": [
         "erdos-1094--h2--h2--h2--h3--h1--h1--h1"
       ],
+      "label": "h_thm",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -948,10 +1025,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "hsilr",
@@ -965,6 +1044,8 @@
       "deps": [
         "erdos-1094--h2--h2--h2--h3--h1--h1--h1--h1"
       ],
+      "label": "core",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -996,10 +1077,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "hsilr",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1029,10 +1113,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_kon",
@@ -1044,6 +1130,8 @@
       ],
       "defect_claims": [],
       "deps": [],
+      "label": "h_large",
+      "label_source": "hole",
       "lemmas": [
         {
           "hole": "h_kon",
@@ -1080,10 +1168,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\in\\mathbb N\\ \\forall n,k\\in\\mathbb N:\\ 0<k,\\ k^3\\le n,\\ \\exp\\!\\Bigl(\\frac{(\\log k)^2}{20\\,\\log\\log k}\\Bigr)<n+1,\\ k\\lfloor n/k\\rfloor \\mid k!,\\ \\operatorname{minFac}\\binom nk>\\lfloor n/k\\rfloor\\ \\Longrightarrow\\ k\\le K.",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Proved here (assembly): under k*k ≤ n and minFac C(n,k) > n/k, the number n / gcd(n,k) is prime. Reason: n/gcd(n,k) divides C(n,k) (from k*C(n,k) = n*C(n-1,k-1) and coprimality), so all its prime factors exceed n/k ≥ k; a composite would be ≥ (n/k+1)^2 > n.",
           "holes": [
             {
               "name": "h_gp",
@@ -1097,6 +1187,8 @@
       "deps": [
         "erdos-1094--h2--h2--h3--h1"
       ],
+      "label": "h_beyond",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1116,10 +1208,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Proved here: if k ∣ n then gcd(n,k) = k, so p := n/k is prime with p ∣ k! (as p ∣ k*(n/k)), hence p ≤ k; but p = n/k ≥ k*k > k for k ≥ 2. So only k ∤ n remains open.",
           "holes": [
             {
               "name": "h_ndvd",
@@ -1133,6 +1227,8 @@
       "deps": [
         "erdos-1094--h2--h2--h3--h1--h1"
       ],
+      "label": "h_gp",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1152,10 +1248,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_ndvd",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1175,10 +1274,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ 2k\\le n<k^2,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > k \\implies k\\le K",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_sieve",
@@ -1189,6 +1290,7 @@
         },
         {
           "annex": null,
+          "approach": "Konyagin's theorem, g(k) > k^3 for all large k, in the network's \"bounded k\" shape: a binomial coefficient C(n, k) with 2k ≤ n < k^3 whose prime factors all exceed k occurs only for bounded k. The same hole closes erdos-1094--h2--h1.",
           "holes": [
             {
               "name": "h_good_below_cube",
@@ -1199,6 +1301,7 @@
         },
         {
           "annex": "1df9e2016f247088c7a0bdc58643dc56fc5169dfeb1a094e1c9ce30cb42abcc2",
+          "approach": "Skeleton of Granville–Ramaré, Mathematika 43 (1996) 73–107, Theorem 8 (preprint p. 5), proof in §5e (preprint pp. 24–25). Their n is our n − k (they write C(n+k, k)). h_els: the input GR cite and do not prove (§5e, p. 24: \"That n ≫ k²/log k has been proved in [ELS], so we may assume this\"): Erdős–L…",
           "holes": [
             {
               "name": "h_els",
@@ -1218,6 +1321,8 @@
         "erdos-1094--h3--h2",
         "erdos-1094--h3--h3"
       ],
+      "label": "h_small_n",
+      "label_source": "hole",
       "lemmas": [
         {
           "hole": "h_good_below_cube",
@@ -1263,10 +1368,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K\\ \\forall n,k\\in\\mathbb{N}:\\quad K<k,\\ \\ 2k\\le n<k^2 \\implies \\exists\\,p\\le k \\text{ prime with } n \\bmod p < k \\bmod p",
       "closure": null,
       "decompositions": [
         {
           "annex": "094494042f14ef24ecf8b5aa0d9b122ec0e066058d1cc7b4cef3be7b5e912a3c",
+          "approach": "A parity split of the residue form, and why no elementary range of n falls out of the large primes.",
           "holes": [
             {
               "name": "h_keven",
@@ -1285,6 +1392,8 @@
         "erdos-1094--h3--h1--h1",
         "erdos-1094--h3--h1--h2"
       ],
+      "label": "h_sieve",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1321,10 +1430,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K_1\\ \\forall n,k\\in\\mathbb{N}:\\quad K_1<k,\\ \\ 2k\\le n<k^2,\\ \\ k \\text{ even} \\implies \\exists\\,p\\le k \\text{ prime with } n \\bmod p < k \\bmod p",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_k6",
@@ -1339,6 +1450,7 @@
         },
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_smooth",
@@ -1354,6 +1466,8 @@
         "erdos-1094--h3--h1--h1--h2",
         "erdos-1094--h3--h1--h1--h3"
       ],
+      "label": "h_keven",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1373,10 +1487,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_k30",
@@ -1395,6 +1511,8 @@
         "erdos-1094--h3--h1--h1--h1--h1",
         "erdos-1094--h3--h1--h1--h1--h2"
       ],
+      "label": "h_k6",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1414,10 +1532,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k30",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1437,10 +1558,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k6rest",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1460,10 +1584,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_p5to13",
@@ -1477,6 +1603,8 @@
       "deps": [
         "erdos-1094--h3--h1--h1--h2--h1"
       ],
+      "label": "h_k3rest",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1496,10 +1624,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_k3one",
@@ -1518,6 +1648,8 @@
         "erdos-1094--h3--h1--h1--h2--h1--h1",
         "erdos-1094--h3--h1--h1--h2--h1--h2"
       ],
+      "label": "h_p5to13",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1537,10 +1669,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k3one",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1560,10 +1695,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k3two",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1583,10 +1721,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_smooth",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1606,10 +1747,12 @@
     },
     {
       "cause": null,
+      "claim": "\\exists K_2\\ \\forall n,k\\in\\mathbb{N}:\\quad K_2<k,\\ \\ 2k\\le n<k^2,\\ \\ k \\text{ odd},\\ \\ n \\text{ odd} \\implies \\exists\\,p\\le k \\text{ prime with } n \\bmod p < k \\bmod p",
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_odd_k3",
@@ -1628,6 +1771,8 @@
         "erdos-1094--h3--h1--h2--h1",
         "erdos-1094--h3--h1--h2--h2"
       ],
+      "label": "h_odd",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1647,10 +1792,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_k15",
@@ -1669,6 +1816,8 @@
         "erdos-1094--h3--h1--h2--h1--h1",
         "erdos-1094--h3--h1--h2--h1--h2"
       ],
+      "label": "h_odd_k3",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1688,10 +1837,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k15",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1711,10 +1863,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k3_rest5",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1734,10 +1889,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_k3_one",
@@ -1756,6 +1913,8 @@
         "erdos-1094--h3--h1--h2--h2--h1",
         "erdos-1094--h3--h1--h2--h2--h2"
       ],
+      "label": "h_odd_rest",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1775,10 +1934,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k3_one",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1798,10 +1960,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_k3_two",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1821,10 +1986,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": "Partial proof along Erdős–Lacampagne–Selfridge, \"Estimates of the least prime factor of a binomial coefficient\", Math. Comp. 61 (1993) 215–224, Theorem 1 (p. 216) and its proof (pp. 216–218). ELS write N = n + k for the top; our n is their N. Three ranges: h_ees: N ≤ k^{1+c}. ELS p. 216: \"It was sh…",
           "holes": [
             {
               "name": "h_ees",
@@ -1848,6 +2015,8 @@
         "erdos-1094--h3--h2--h2",
         "erdos-1094--h3--h2--h3"
       ],
+      "label": "h_els",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -1867,10 +2036,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_ees",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -1894,10 +2066,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_caseB",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -1921,10 +2096,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_caseA",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -1948,10 +2126,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": "88f9e9a7ddffdc9d2a479880cf6eaa066f94ea7f17936fe431b479452d6c05bd",
+          "approach": "Second level of Granville–Ramaré, Mathematika 43 (1996) 73–107, Theorem 8, §5e (preprint pp. 24–25), the analytic step. Suppose no prime p in (k/2, 11k/20) has a last-digit carry; then {n/p} ≥ k/p − 1 > 9/11 for each such p (GR read the same no-carry condition as {m/p} < 1/5 with m = n − k), so Σ (…",
           "holes": [
             {
               "name": "h_cheb",
@@ -1970,6 +2150,8 @@
         "erdos-1094--h3--h3--h1",
         "erdos-1094--h3--h3--h2"
       ],
+      "label": "h_gr",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -2006,10 +2188,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_pnt",
@@ -2023,6 +2207,8 @@
       "deps": [
         "erdos-1094--h3--h3--h1--h1"
       ],
+      "label": "h_cheb",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -2042,10 +2228,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_pnt",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -2069,10 +2258,12 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [
         {
           "annex": null,
+          "approach": null,
           "holes": [
             {
               "name": "h_l51",
@@ -2086,6 +2277,8 @@
       "deps": [
         "erdos-1094--h3--h3--h2--h1"
       ],
+      "label": "h_sander",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -2105,10 +2298,13 @@
     },
     {
       "cause": null,
+      "claim": null,
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
+      "label": "h_l51",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": {
@@ -2133,7 +2329,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "fa414903ef3c1c124c7ac1f63dcc2f5e21271748",
+  "rendered_from": "c831a19627aa7d58bb88133644a9e7a2438cdde6",
   "review": {
     "candidates": 1,
     "clusters": 1,
@@ -2149,7 +2345,7 @@
     "tracking": null
   },
   "root": "erdos-1094",
-  "schema": "graph/v11",
+  "schema": "graph/v12",
   "target_id": "erdos-1094",
   "target_proofs": []
 }
