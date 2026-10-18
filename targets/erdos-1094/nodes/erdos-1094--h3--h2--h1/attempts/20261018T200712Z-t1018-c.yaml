@@ -1,0 +1,29 @@
+artifacts:
+  missing_lemmas:
+  - 'Hoheisel: exists theta < 1, X, for all x >= X, exists prime p, x < p <= x + x^theta'
+contributor: t1018-c
+detail: 'Partial PR #762 closes the range n >= k^2 (take c'' = min c 1/2) and leaves
+  hole h_lt, the same statement with n < k*k. Aristotle (project 9e8d9ab2, 24 min)
+  reported a proof of h_lt modulo one have: Hoheisel''s theorem (exists theta<1 with
+  a prime in (x, x+x^theta] for large x; BHP gives 0.525), which is not in the pinned
+  Mathlib and cannot be avoided: the forbidden windows have length about k^(1-c),
+  so Chebyshev-strength prime counts are too weak. Its argument: t = max(theta,1/2),
+  c = (1-t)/4, j = floor(2n/k) - 1 (so j >= 3, jk+k <= 2n, 2n+k < 2jk); every prime
+  p in ((n-k)/(j-1), n/j] lies in (k/2,k] and has n mod p < k mod p = k-p, so p |
+  C(n,k) by Lucas/Kummer; if n <= k^(1+c) the window has length >= k^3/(8n^2) >= k^t,
+  so Hoheisel puts a prime in it. The proof text was lost: Aristotle''s downloaded
+  Problem.lean came back unchanged although its summary says the file was filled.
+  Next: write this as a partial on the h_lt node (or here) with one hole = Hoheisel''s
+  theorem, a clean citable leaf; the Lucas step is Choose.choose_modEq_choose_mod_mul_choose_div_nat.
+
+  '
+failure_class: missing-library
+node: erdos-1094--h3--h2--h1
+outcome: exhausted
+route: reduce EES (n > k^(1+c)) to Hoheisel primes-in-short-intervals via Lucas carries
+  for primes in (k/2,k]
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∃ (c : ℝ), (0 : ℝ) < c ∧ ∃ (K : ℕ), ∀ (n k : ℕ), K < k → (2\
+  \ : ℕ) * k ≤ n → n < k * k →\n    (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ)\
+  \ + c) < (↑n : ℝ)\n"
