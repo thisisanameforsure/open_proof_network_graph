@@ -1,0 +1,1069 @@
+{
+  "artifact": {
+    "hash": "2071ef87bf195a100058b1b6ef962af81a7fe5266cd1c089ba52ad03ebdd9cf0",
+    "kind": "partial",
+    "path": "attempts/20261018T192634Z-t1018-e-partial.lean"
+  },
+  "gate": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+  "node": "erdos-1094--h3--h3--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (ε : ℝ), (0 : ℝ) < ε → ∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.psi x - x| ≤ ε * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_psi",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : ℝ), (0 : ℝ) < ε → ∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.psi x - x| ≤ ε * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (ε : ℝ), (0 : ℝ) < ε → ∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "h_psi",
+      "kind": "hole",
+      "name": "h_psi",
+      "span": {
+        "end_line": 16,
+        "start_line": 16
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `ArithmeticFunction.vonMangoldt` over integers `n ≤ x`.",
+            "name": "Chebyshev.psi",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.psi x - x| ≤ ε / (2 : ℝ) * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "X₁",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hX₁",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℝ), X₁ ≤ x → |Chebyshev.psi x - x| ≤ ε / (2 : ℝ) * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(fun (x : ℝ) => Real.log x) =o[Filter.atTop] fun (x : ℝ) => x ^ (1 / 2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlog",
+            "type": {
+              "printed": "reliable",
+              "text": "(fun (x : ℝ) => Real.log x) =o[Filter.atTop] fun (x : ℝ) => x ^ (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hlog",
+      "kind": "have",
+      "name": "hlog",
+      "span": {
+        "end_line": 20,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "isLittleO_log_rpow_atTop",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(fun (x : ℝ) => √x * Real.log x) =o[Filter.atTop] fun (x : ℝ) => √x * x ^ (1 / 2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmul",
+            "type": {
+              "printed": "reliable",
+              "text": "(fun (x : ℝ) => √x * Real.log x) =o[Filter.atTop] fun (x : ℝ) => √x * x ^ (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hmul",
+      "kind": "have",
+      "name": "hmul",
+      "span": {
+        "end_line": 23,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Asymptotics.isBigO_refl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(fun (x : ℝ) => √x * x ^ (1 / 2 : ℝ)) =ᶠ[Filter.atTop] fun (x : ℝ) => x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "heq",
+            "type": {
+              "printed": "reliable",
+              "text": "(fun (x : ℝ) => √x * x ^ (1 / 2 : ℝ)) =ᶠ[Filter.atTop] fun (x : ℝ) => x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "heq",
+      "kind": "have",
+      "name": "heq",
+      "span": {
+        "end_line": 26,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Filter.eventually_ge_atTop",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.sqrt_eq_rpow",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.mul_self_sqrt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(fun (x : ℝ) => √x * Real.log x) =o[Filter.atTop] fun (x : ℝ) => x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmul'",
+            "type": {
+              "printed": "reliable",
+              "text": "(fun (x : ℝ) => √x * Real.log x) =o[Filter.atTop] fun (x : ℝ) => x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hmul'",
+      "kind": "have",
+      "name": "hmul'",
+      "span": {
+        "end_line": 27,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ᶠ (x : ℝ) in Filter.atTop, ‖√x * Real.log x‖ ≤ ε / (4 : ℝ) * ‖x‖",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hev",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ᶠ (x : ℝ) in Filter.atTop, ‖√x * Real.log x‖ ≤ ε / (4 : ℝ) * ‖x‖",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hev",
+      "kind": "have",
+      "name": "hev",
+      "span": {
+        "end_line": 28,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (a : ℝ), ∀ (b : ℝ), a ≤ b → ‖√b * Real.log b‖ ≤ ε / (4 : ℝ) * ‖b‖",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "X₂",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hX₂",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (b : ℝ), X₂ ≤ b → ‖√b * Real.log b‖ ≤ ε / (4 : ℝ) * ‖b‖",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (X : ℝ), ∀ (x : ℝ), X ≤ x → |Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 29,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Filter.eventually_atTop",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "X₁ ≤ x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hx1",
+            "type": {
+              "printed": "reliable",
+              "text": "X₁ ≤ x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hx1",
+      "kind": "have",
+      "name": "hx1",
+      "span": {
+        "end_line": 31,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "X₂ ≤ x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hx2",
+            "type": {
+              "printed": "reliable",
+              "text": "X₂ ≤ x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hx2",
+      "kind": "have",
+      "name": "hx2",
+      "span": {
+        "end_line": 32,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) ≤ x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hx3",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hx3",
+      "kind": "have",
+      "name": "hx3",
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.psi x - x| ≤ ε / (2 : ℝ) * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "|Chebyshev.psi x - x| ≤ ε / (2 : ℝ) * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hA",
+      "kind": "have",
+      "name": "hA",
+      "span": {
+        "end_line": 34,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "‖√x * Real.log x‖ ≤ ε / (4 : ℝ) * ‖x‖",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "‖√x * Real.log x‖ ≤ ε / (4 : ℝ) * ‖x‖",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hB",
+      "kind": "have",
+      "name": "hB",
+      "span": {
+        "end_line": 35,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.psi x - Chebyshev.theta x| ≤ (2 : ℝ) * √x * Real.log x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hC",
+            "type": {
+              "printed": "reliable",
+              "text": "|Chebyshev.psi x - Chebyshev.theta x| ≤ (2 : ℝ) * √x * Real.log x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hC",
+      "kind": "have",
+      "name": "hC",
+      "span": {
+        "end_line": 36,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`|ψ x - θ x| ≤ c √ x log x` with an explicit constant c.",
+            "name": "Chebyshev.abs_psi_sub_theta_le_sqrt_mul_log",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "linarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hx0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hx0",
+      "kind": "have",
+      "name": "hx0",
+      "span": {
+        "end_line": 37,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ Real.log x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlog0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ Real.log x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hlog0",
+      "kind": "have",
+      "name": "hlog0",
+      "span": {
+        "end_line": 38,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.log_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ √x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ √x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "|Chebyshev.theta x - x| ≤ ε * x",
+          "truncated": false
+        }
+      },
+      "id": "hs0",
+      "kind": "have",
+      "name": "hs0",
+      "span": {
+        "end_line": 39,
+        "start_line": 39
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.sqrt_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.theta x - x| = |Chebyshev.theta x - Chebyshev.psi x + (Chebyshev.psi x - x)|",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s18",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": "The sum of `ArithmeticFunction.vonMangoldt` over integers `n ≤ x`.",
+            "name": "Chebyshev.psi",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.theta x - Chebyshev.psi x + (Chebyshev.psi x - x)| ≤\n  |Chebyshev.theta x - Chebyshev.psi x| + |Chebyshev.psi x - x|",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s19",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": "The sum of `ArithmeticFunction.vonMangoldt` over integers `n ≤ x`.",
+            "name": "Chebyshev.psi",
+            "tags": []
+          },
+          {
+            "doc": "The absolute value satisfies the triangle inequality.",
+            "name": "abs_add_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s20",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 44,
+        "start_line": 44
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The sum of `ArithmeticFunction.vonMangoldt` over integers `n ≤ x`.",
+            "name": "Chebyshev.psi",
+            "tags": []
+          },
+          {
+            "doc": "The sum of `log p` over primes `p ≤ x`.",
+            "name": "Chebyshev.theta",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "abs_sub_comm",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|Chebyshev.psi x - Chebyshev.theta x| + |Chebyshev.psi x - x| ≤ (2 : ℝ) * √x * Real.log x + ε / (2 : ℝ) * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s21",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 45,
+        "start_line": 45
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "add_le_add",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "nlinarith"
+        ]
+      },
+      "goal": null,
+      "id": "s22",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 46,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
