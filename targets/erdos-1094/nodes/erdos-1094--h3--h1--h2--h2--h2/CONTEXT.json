@@ -8,20 +8,50 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2--h2/attempts/20261018T192600Z-t1018-d-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2--h2/attempts/20261018T194610Z-t1018-d.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1018-d",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2--h2/attempts/20261018T194610Z-t1018-d.yaml",
+            "text": "Aristotle project abd1d0b0-d6dd-4427-874d-55d4b449e66d (12 min) returned the file unchanged: the node is the 2k<=n<k^2 range of Ecklund-Erdos-Selfridge restricted to a residue class, and needs prime-distribution control of n/p mod 1 (exponential sums over primes, Granville-Ramare) that Mathlib lacks. Its outside-Lean brute force over k<3000 found exceptions only for k<=35 (largest (113,35),(245,35),(569,35)), so K=35 looks right but is evidence only. A residue sieve by one prime only narrows th…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-1094--h3--h1--h2--h2--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2--h2/attempts/20261018T194610Z-t1018-d.yaml",
+            "text": "whole-node attempt by Aristotle (Harmonic), then a residue sieve by the prime 5 (partial PR #761)",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h1--h2--h2--h2/attempts/20261018T194610Z-t1018-d.yaml",
+            "text": "K : ℕ\nn k : ℕ\nhk : K < k\nh2k : 2 * k ≤ n\nhnk : n < k * k\nhk2 : k % 2 = 1\nhn2 : n % 2 = 1\nhk3 : k % 3 = 2\nhn3 : n % 3 = 2\n⊢ ∃ p, Nat.Prime p ∧ p ≤ k ∧ n % p < k % p\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-18T20:25:22Z",
-        "pseudonym": "t1018-d"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -72,7 +102,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "0f2e90730f198147743dc77412bd235b7c3bc64b",
+  "rendered_from": "ab0af73d6ba86ebd2026c53b0de86cef96dfa39e",
   "review": {
     "questions_waiting": [
       {

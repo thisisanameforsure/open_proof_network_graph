@@ -2220,9 +2220,23 @@
       "cause": null,
       "claim": "\\exists c\\in\\mathbb{R},\\ c>0,\\ \\exists K_2\\in\\mathbb{N}\\ \\forall n,k\\in\\mathbb{N}:\\quad K_2<k,\\ \\ 2k\\le n,\\ \\ \\operatorname{minFac}\\tbinom{n}{k}>k \\implies k^{1+c} < n",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "n ≥ k² is immediate with c ≤ 1/2; only the range n < k² needs EES",
+          "holes": [
+            {
+              "name": "h_lt",
+              "node": "erdos-1094--h3--h2--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261018T193200Z-t1018-c-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h3--h2--h1--h1"
+      ],
       "label": "Ecklund–Erdős–Selfridge: n > k^(1+c) when lpf C(n,k) > k",
       "label_source": "gloss",
       "lemmas": [],
@@ -2242,6 +2256,32 @@
       "relevance": null,
       "statement_hash": "4e7c5ffb6e5ea75572612c41180c96d57550b146143c9898c6bb0ae6d5cef72a",
       "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": "witness-missing",
+      "claim": "\\exists c>0\\,\\exists K\\,\\forall n,k:\\ K<k,\\ 2k\\le n<k^2,\\ \\mathrm{lpf}\\binom{n}{k}>k \\Rightarrow k^{1+c}<n",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "EES bound below k squared",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h3--h2--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "a59cec8d03a9fa98bacc874281cb63835f41965ffb74224124cece4578002b35",
+      "status": "blocked",
       "trust_base": null,
       "tutorial": false,
       "uses": []
@@ -2551,7 +2591,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "0f2e90730f198147743dc77412bd235b7c3bc64b",
+  "rendered_from": "ab0af73d6ba86ebd2026c53b0de86cef96dfa39e",
   "review": {
     "candidates": 1,
     "clusters": 1,
