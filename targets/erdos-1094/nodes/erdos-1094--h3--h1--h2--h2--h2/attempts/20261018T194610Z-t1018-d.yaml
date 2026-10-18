@@ -1,0 +1,43 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1018-d
+detail: 'Aristotle project abd1d0b0-d6dd-4427-874d-55d4b449e66d (12 min) returned
+  the file unchanged: the node is the 2k<=n<k^2 range of Ecklund-Erdos-Selfridge restricted
+  to a residue class, and needs prime-distribution control of n/p mod 1 (exponential
+  sums over primes, Granville-Ramare) that Mathlib lacks. Its outside-Lean brute force
+  over k<3000 found exceptions only for k<=35 (largest (113,35),(245,35),(569,35)),
+  so K=35 looks right but is evidence only. A residue sieve by one prime only narrows
+  the class (PR #761 closes n mod 5 < k mod 5 with p=5 and leaves two holes); repeated
+  sieving never terminates because the class is never empty. Next: attack the hole
+  family by a uniform argument (two primes in (k/2, k/2+k^0.75] for n near 2k, GR
+  exponential sums for n near k^2) rather than more residue splits.
+
+  '
+failure_class: route-dead-ends
+node: erdos-1094--h3--h1--h2--h2--h2
+outcome: exhausted
+route: 'whole-node attempt by Aristotle (Harmonic), then a residue sieve by the prime
+  5 (partial PR #761)'
+route_class: case-split
+schema: postmortem/v1
+terminal_goal_state: 'K : ℕ
+
+  n k : ℕ
+
+  hk : K < k
+
+  h2k : 2 * k ≤ n
+
+  hnk : n < k * k
+
+  hk2 : k % 2 = 1
+
+  hn2 : n % 2 = 1
+
+  hk3 : k % 3 = 2
+
+  hn3 : n % 3 = 2
+
+  ⊢ ∃ p, Nat.Prime p ∧ p ≤ k ∧ n % p < k % p
+
+  '
