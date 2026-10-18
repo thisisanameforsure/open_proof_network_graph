@@ -1,0 +1,27 @@
+artifacts:
+  missing_lemmas:
+  - Wiener-Ikehara Tauberian theorem
+  - prime number theorem (psi x ~ x)
+contributor: t1018-e
+detail: 'The pinned Mathlib has Chebyshev.psi/theta, abs_psi_sub_theta_le_sqrt_mul_log,
+  riemannZeta_ne_zero_of_one_le_re, riemannZeta_residue_one and ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div,
+  but no prime number theorem and no Wiener-Ikehara Tauberian theorem. This node was
+  reduced (partial PR #759) to PNT for psi, and that in turn (second partial on --h1--h1--h1--h1--h1)
+  to two cited holes: Wiener-Ikehara in Korevaar''s continuous-boundary form, and
+  continuous extension of L(Lambda,s) - 1/(s-1) to Re s >= 1. Next: prove the extension
+  hole from ζ''s analyticity near 1 (s-1)ζ(s) and nonvanishing; for Wiener-Ikehara,
+  port from the PrimeNumberTheoremAnd project (it has a Lean proof of WI / Newman''s
+  Tauberian) rather than proving from scratch. Not attempted within the hour.
+
+  '
+failure_class: missing-library
+node: erdos-1094--h3--h3--h1--h1
+outcome: exhausted
+route: theta ~ x from psi ~ x via Mathlib's |psi - theta| <= 2 sqrt(x) log x; then
+  psi ~ x via Wiener-Ikehara applied to -zeta'/zeta
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: '⊢ ∀ (ε : ℝ), 0 < ε → ∃ X, ∀ (x : ℝ), X ≤ x → |Chebyshev.psi
+  x - x| ≤ ε * x
+
+  '
