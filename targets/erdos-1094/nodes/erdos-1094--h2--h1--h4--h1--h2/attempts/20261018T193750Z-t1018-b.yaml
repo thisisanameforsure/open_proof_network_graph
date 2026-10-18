@@ -1,0 +1,49 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1018-b
+detail: 'Case gcd(n,k) = k is impossible and is proved in the partial: k | n, so q
+  = n/k is prime and k*q = n divides k!, hence q <= k; with k*k <= n, q = k, so k
+  is prime and k^2 | k!, i.e. k | (k-1)!, contradiction (about 15 lines, Nat.Prime.dvd_factorial,
+  Nat.mul_dvd_mul_iff_left). The remaining case g = gcd(n,k) proper (g | k, 2 <= g
+  <= k/2) gives n = g*q with q prime >= 2k, but I found no elementary contradiction:
+  the weight is entirely in minFac C(n,k) > n/k >= k, i.e. no base-p borrow in n -
+  k for every prime p <= n/k (Kummer), which is the general Erdos-Lacampagne-Selfridge
+  difficulty. Computation (exact, Python, Kummer digit test): for k <= 300 there are
+  148814 (n,k) meeting the structural hypotheses (n in the window, 2 <= gcd < k, n/gcd
+  prime), only 8 also meet no-carry for all p <= k ((22,4),(62,6),(159,9),(122,10),(174,12),(188,12),(237,12),(1119,27)),
+  4 of those also meet k*(n/k) | k!, and only (62,6) meets every hypothesis; for k
+  <= 400 still only (62,6). So K = 6 is very likely the true bound, but a proof needs
+  an ELS/Kummer-type counting argument. Next: try the window lemma (for p <= n/k,
+  no p^j > k divides any of n-k+1..n, so the k-smooth parts of the window multiply
+  to exactly k!) applied to the k/g multiples g*(q-t) of g in the window, or a computer-verified
+  bound for small k plus an asymptotic carry-count for large k.
+
+  '
+failure_class: route-dead-ends
+node: erdos-1094--h2--h1--h4--h1--h2
+outcome: exhausted
+route: 'split on gcd(n,k) = k versus 2 <= gcd(n,k) < k; close the first case elementarily,
+  leave the second as a hole (partial, PR #757)'
+route_class: case-split
+schema: postmortem/v1
+terminal_goal_state: 'n k : ℕ
+
+  hk : 0 < k
+
+  hkn : k * k ≤ n
+
+  hr : ↑n < ↑k * (↑k + 3 * ↑k ^ (21 / 40))
+
+  hdiv : k * (n / k) ∣ k !
+
+  hmin : (n.choose k).minFac > n / k
+
+  hp : Nat.Prime (n / n.gcd k)
+
+  hg : 2 ≤ n.gcd k
+
+  hlt : n.gcd k < k
+
+  ⊢ k ≤ K
+
+  '
