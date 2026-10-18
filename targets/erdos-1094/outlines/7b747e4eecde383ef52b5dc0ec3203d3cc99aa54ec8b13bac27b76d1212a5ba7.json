@@ -1,0 +1,490 @@
+{
+  "artifact": {
+    "hash": "7b747e4eecde383ef52b5dc0ec3203d3cc99aa54ec8b13bac27b76d1212a5ba7",
+    "kind": "partial",
+    "path": "attempts/20261018T193200Z-t1018-c-partial.lean"
+  },
+  "gate": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+  "node": "erdos-1094--h3--h2--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h2--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K : ℕ),\n      ∀ (n k : ℕ), K < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_lt",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K : ℕ),\n      ∀ (n k : ℕ), K < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K₂ : ℕ), ∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_lt",
+      "kind": "hole",
+      "name": "h_lt",
+      "span": {
+        "end_line": 18,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K : ℕ),\n      ∀ (n k : ℕ), K < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < c",
+              "truncated": false
+            }
+          },
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ), K < k → (2 : ℕ) * k ≤ n → n < k * k → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    ∃ (K₂ : ℕ), ∀ (n k : ℕ), K₂ < k → (2 : ℕ) * k ≤ n → (n.choose k).minFac > k → (↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) < (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) < (↑n : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk1",
+      "kind": "have",
+      "name": "hk1",
+      "span": {
+        "end_line": 21,
+        "start_line": 21
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) ≤ (↑k : ℝ) ^ ((1 : ℝ) + c)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s4.s1",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 24,
+            "start_line": 23
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.rpow_le_rpow_of_exponent_le",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "min_le_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ ((1 : ℝ) + c) < (↑n : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s4.s2",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hn",
+            "type": {
+              "printed": "reliable",
+              "text": "n < k * k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) < (↑n : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 25,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) * (↑k : ℝ) ≤ (↑n : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnk",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) * (↑k : ℝ) ≤ (↑n : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) < (↑n : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.hnk",
+          "kind": "have",
+          "name": "hnk",
+          "span": {
+            "end_line": 27,
+            "start_line": 27
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) ≤ (↑k : ℝ) ^ ((1 : ℝ) + (1 / 2 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s2",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 29,
+            "start_line": 28
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.rpow_le_rpow_of_exponent_le",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "min_le_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ ((1 : ℝ) + (1 / 2 : ℝ)) < (↑k : ℝ) ^ (2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s3",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.rpow_lt_rpow_of_exponent_lt",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s4",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.rpow_two",
+                "tags": []
+              },
+              {
+                "doc": "**Alias** of `pow_two`.",
+                "name": "sq",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) * (↑k : ℝ) ≤ (↑n : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s5",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hn",
+            "type": {
+              "printed": "reliable",
+              "text": "¬n < k * k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑k : ℝ) ^ ((1 : ℝ) + min c (1 / 2 : ℝ)) < (↑n : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 32,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "not_lt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
