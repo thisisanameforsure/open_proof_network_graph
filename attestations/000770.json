@@ -1,0 +1,134 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "autonomous",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+  "graph_commit": "354268ac26507793553951e73a28fb4cb36e29cc",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "354268ac26507793553951e73a28fb4cb36e29cc",
+  "model_and_tooling": "claude-opus-5-5 Claude Code",
+  "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+  "node_id": "erdos-1094--h3--h3--h1--h1--h1",
+  "precheck_attestation": {
+    "hash": "59763678644fd7c972070fc541c0f0152763aa635169c3a5fe25f68430762733",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-18T20:45:44Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQMKmKPwKzrcLNASu6Qu+dDmWESNR+ZCAHyufZmVkaQu2OyRQGw\nUidF7fjl2ssM0462rqOrYdoJw1d2LI6hUP9ws=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "e424e4e5dec0126bc19e9caa4e9850147842054f66935eb0a31985aa75ec4a0a",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261018T200210Z-t1018-e-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261018T200210Z-t1018-e-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_wi",
+            "h_ext"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h3__h3__h1__h1__h1 declares ∀ (ε : ℝ), 0 < ε → ∃ X, ∀ (x : ℝ), X ≤ x → |Chebyshev.psi x - x| ≤ ε * x; 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_wi",
+              "path": "attempts/20261018T200210Z-t1018-e-partial.1.witness",
+              "sha256": "2fd6cf7fab97e990d716820ff9e81a152df996dbaaab40241c57789c380b414f"
+            },
+            {
+              "hole": "h_ext",
+              "path": "attempts/20261018T200210Z-t1018-e-partial.2.witness",
+              "sha256": "d600ec1902206139c70f532396233c7f5127c8ca2bc76b7906475e4ec92306fc"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1018-e",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

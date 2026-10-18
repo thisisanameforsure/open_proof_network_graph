@@ -1,0 +1,9 @@
+import Mathlib
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ) (A : ℝ), (∀ n, 0 ≤ f n) ∧
+    (∀ s : ℂ, 1 < s.re → LSeriesSummable (fun n => (f n : ℂ)) s) ∧
+    (∃ G : ℂ → ℂ, ContinuousOn G {s | 1 ≤ s.re} ∧
+      ∀ s : ℂ, 1 < s.re → G s = LSeries (fun n => (f n : ℂ)) s - A / (s - 1)) :=
+  ⟨fun _ => 0, 0, fun _ => le_rfl, fun s _ => by simp only [Complex.ofReal_zero]; exact LSeriesSummable_zero,
+    ⟨fun _ => 0, continuousOn_const, fun s _ => by simp only [Complex.ofReal_zero, zero_div, sub_zero]; exact (congrFun LSeries_zero s).symm⟩⟩
