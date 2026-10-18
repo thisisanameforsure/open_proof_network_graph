@@ -348,9 +348,28 @@
       "cause": null,
       "claim": "\\exists K\\in\\mathbb{N}\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ 2k\\le n<k^2,\\ \\ \\operatorname{minFac}\\tbinom{n}{k}>k,\\ \\ \\operatorname{minFac}\\!\\Bigl(\\frac{n}{\\gcd(n,k)}\\Bigr)>k\\ \\Longrightarrow\\ k\\le K",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "m = n/gcd(n,k) has minFac > k and m < k^2, so m is a prime q > k; split n = q (n prime) from n = g*q with 2 <= g | k",
+          "holes": [
+            {
+              "name": "h_prime",
+              "node": "erdos-1094--h2--h1--h1--h1--h1--h1"
+            },
+            {
+              "name": "h_comp",
+              "node": "erdos-1094--h2--h1--h1--h1--h1--h2"
+            }
+          ],
+          "partial": "attempts/20261018T192600Z-t1018-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h1--h1--h1--h1--h1",
+        "erdos-1094--h2--h1--h1--h1--h1--h2"
+      ],
       "label": "2k ≤ n < k² with n/gcd(n,k) free of primes ≤ k",
       "label_source": "gloss",
       "lemmas": [],
@@ -365,6 +384,58 @@
       "relation": null,
       "relevance": null,
       "statement_hash": "5afe4d106f3b591e748c6b99959e117d365c6abccf6a0a6c71f3f58a89e3724d",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists K\\ \\forall n,k:\\ 2k\\le n<k^2,\\ n \\text{ prime},\\ \\operatorname{minFac}\\binom nk>k \\Rightarrow k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "n prime in [2k, k^2)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h1--h1--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "e51efe16b2a15c20a596549d9233130420d1719a5e11607e9086a3aa7c2bfb55",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists K\\ \\forall n,k,q:\\ 2k\\le n<k^2,\\ n=\\gcd(n,k)\\,q,\\ q>k \\text{ prime},\\ \\gcd(n,k)\\ge2,\\ \\operatorname{minFac}\\binom nk>k \\Rightarrow k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "n = g q with 2 <= g | k and q > k prime",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h1--h1--h1--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "745cc901807010556becf6ab675f1da609b830ed6977bd4ccc06186d1245b5b9",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -2409,7 +2480,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "5dccb6a688e2bd5fed1132d13926be135086a2bc",
+  "rendered_from": "81da495bc84c0b3b416400710c416a58df652e03",
   "review": {
     "candidates": 1,
     "clusters": 1,
