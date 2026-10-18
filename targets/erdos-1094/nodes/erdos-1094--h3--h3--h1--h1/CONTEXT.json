@@ -8,20 +8,53 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h3--h3--h1--h1/attempts/20261018T192634Z-t1018-e-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h3--h3--h1--h1/attempts/20261018T200701Z-t1018-e.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "Wiener-Ikehara Tauberian theorem",
+              "prime number theorem (psi x ~ x)"
+            ]
+          },
+          "contributor": "t1018-e",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h3--h1--h1/attempts/20261018T200701Z-t1018-e.yaml",
+            "text": "The pinned Mathlib has Chebyshev.psi/theta, abs_psi_sub_theta_le_sqrt_mul_log, riemannZeta_ne_zero_of_one_le_re, riemannZeta_residue_one and ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div, but no prime number theorem and no Wiener-Ikehara Tauberian theorem. This node was reduced (partial PR #759) to PNT for psi, and that in turn (second partial on --h1--h1--h1--h1--h1) to two cited holes: Wiener-Ikehara in Korevaar's continuous-boundary form, and continuous extension of L(Lambd…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "erdos-1094--h3--h3--h1--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h3--h1--h1/attempts/20261018T200701Z-t1018-e.yaml",
+            "text": "theta ~ x from psi ~ x via Mathlib's |psi - theta| <= 2 sqrt(x) log x; then psi ~ x via Wiener-Ikehara applied to -zeta'/zeta",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h3--h3--h1--h1/attempts/20261018T200701Z-t1018-e.yaml",
+            "text": "⊢ ∀ (ε : ℝ), 0 < ε → ∃ X, ∀ (x : ℝ), X ≤ x → |Chebyshev.psi x - x| ≤ ε * x\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-18T20:25:15Z",
-        "pseudonym": "t1018-e"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -69,7 +102,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "81da495bc84c0b3b416400710c416a58df652e03",
+  "rendered_from": "ab0af73d6ba86ebd2026c53b0de86cef96dfa39e",
   "review": {
     "questions_waiting": [
       {

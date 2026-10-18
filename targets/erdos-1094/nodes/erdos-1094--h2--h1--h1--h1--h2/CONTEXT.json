@@ -1,21 +1,54 @@
 {
   "annexes": [],
   "attempts": {
-    "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "assemblies": [
+      {
+        "bytes": 3610,
+        "hash": "bc4da182d5f186312e2152f664c7b20b0063b2e9d1af4386aff80b272d4cc54a",
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h2/attempts/20261018T193800Z-t1018-a-partial.lean"
+      }
+    ],
+    "count": 2,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h2/attempts/20261018T194647Z-t1018-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1018-a",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h2/attempts/20261018T194647Z-t1018-a.yaml",
+            "text": "The structural step is proved (PR #763, holes h_one: n = gcd*q, h_two: n = gcd*p*q, witnesses True). Did not attack either hole: same residue obstruction as the sibling (prior postmortem on the parent: h_res needs exponential-sum bounds). Next: in h_two, n >= g*k^2 forces g < k and p*q < k^3/g, so p or q < k^(3/2); a prime that size and Kummer on primes <= k dividing (n - j) for j < k may give a short case analysis worth trying before the analytic route.",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "erdos-1094--h2--h1--h1--h1--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h2/attempts/20261018T194647Z-t1018-a.yaml",
+            "text": "m = n/gcd(n,k) has every prime factor > k and m < k^3, so m is a prime or a product of two primes > k; split (partial PR #763)",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h2/attempts/20261018T194647Z-t1018-a.yaml",
+            "text": "⊢ ∃ K, ∀ n k p q, 0 < k → k * k ≤ n → n < k * k * k → (n.choose k).minFac > k → Nat.Prime p → Nat.Prime q → k < p → k < q → n = n.gcd k * (p * q) → k ≤ K\n",
+            "untrusted": true
+          }
+        }
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-18T20:32:28Z",
-        "pseudonym": "t1018-a"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -51,7 +84,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "81da495bc84c0b3b416400710c416a58df652e03",
+  "rendered_from": "ab0af73d6ba86ebd2026c53b0de86cef96dfa39e",
   "review": {
     "questions_waiting": [
       {

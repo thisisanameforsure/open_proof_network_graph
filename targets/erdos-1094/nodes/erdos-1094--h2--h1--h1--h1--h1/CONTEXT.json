@@ -8,20 +8,50 @@
         "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h1/attempts/20261018T192600Z-t1018-a-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h1/attempts/20261018T194643Z-t1018-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1018-a",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h1/attempts/20261018T194643Z-t1018-a.yaml",
+            "text": "The structural step is proved (PR #760, holes h_prime and h_comp, witnesses True). Both remaining cases are realised by known exceptions to the ELS problem with n < k^2, e.g. (44,8) = 4*11 and (46,10) = 2*23 for h_comp, so neither hole is vacuous. Kummer at a prime p | g does not close h_comp: v_p(n) = v_p(g) <= v_p(k), so the lowest nonzero base-p digit of n is never below k's and the last-digit borrow never fires; a borrow must come from a higher digit, which is the residue (Ecklund/ELS) prob…",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "erdos-1094--h2--h1--h1--h1--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h1/attempts/20261018T194643Z-t1018-a.yaml",
+            "text": "m = n/gcd(n,k) has minFac > k and m < k^2, so m is a prime q > k; split n prime (gcd=1) from n = g*q with 2 <= g | k (partial PR #760)",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h1--h1--h1--h1/attempts/20261018T194643Z-t1018-a.yaml",
+            "text": "⊢ ∃ K, ∀ n k q, 0 < k → 2 * k ≤ n → n < k * k → (n.choose k).minFac > k → Nat.Prime q → k < q → 2 ≤ n.gcd k → n = n.gcd k * q → k ≤ K\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-18T20:25:19Z",
-        "pseudonym": "t1018-a"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -72,7 +102,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "81da495bc84c0b3b416400710c416a58df652e03",
+  "rendered_from": "ab0af73d6ba86ebd2026c53b0de86cef96dfa39e",
   "review": {
     "questions_waiting": [
       {
