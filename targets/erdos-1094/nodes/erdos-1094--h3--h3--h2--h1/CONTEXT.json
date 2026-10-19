@@ -17,10 +17,10 @@
   "deps": [],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -28,7 +28,20 @@
   "literature_proposed": {
     "contributor": "t1016-lit",
     "record": "literature/20261016T121430Z-t1016-lit.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "Lemma 5.1 (preprint p. 18) with J = 1, and the partial-summation consequence (5.1), applied in the proof of Theorem 8 (section 5e, pp. 24-25). GR quote it from Sander.",
+        "title": "A. Granville and O. Ramaré, Explicit bounds on exponential sums and the scarcity of squarefree binomial coefficients, Mathematika 43 (1996) 73-107",
+        "url": "https://dms.umontreal.ca/~andrew/PDF/ramare.pdf"
+      },
+      {
+        "note": "The source of the equidistribution bound for {x/p} over primes p <= y that GR cite as [Sa2]; proved by exponential sums over primes (Vaughan's identity). Not read.",
+        "title": "J. W. Sander, Prime power divisors of binomial coefficients, J. Reine Angew. Math. 430 (1992) 1-20",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "This node is GR's Lemma 5.1 at J = 1, weighted by log p, on primes in (k/2, 11k/20): the fractional parts n/p are equidistributed mod 1 to within delta*k once n >= k^2/(C log k). Published (Sander 1992, quoted by Granville-Ramaré 1996) and not formalised anywhere known to the filer. A translation would follow Sander: Vaughan's identity, bounds for exponential sums e(hx/p) over primes, then Erdős-Turán (or a direct count). It also needs the prime number theorem in the window, which is erdos-1094--h3--h3--h1--h1. Deep: the hardest node in the h3 subtree. The node uses x = n where GR use n - k; the bound is uniform in x."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -50,7 +63,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -89,7 +102,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h3__h3__h2__h1",
     "hash": "88d5ad0d14eb001c17513312f65673997c8416c14301ceb25abab875336c9c67",

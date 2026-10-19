@@ -49,10 +49,10 @@
   ],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -60,7 +60,25 @@
   "literature_proposed": {
     "contributor": "t1009-c",
     "record": "literature/20261009T144817Z-t1009-c.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "g(k) >= exp(c (log k)^2) for all large k, with g(k) the least n > k+1 such that C(n,k) has no prime factor <= k; exp(c (log k)^2) > k^3 once log k > 3/c, which is exactly this statement. Cited through erdosproblems.com/1095, not read in the original.",
+        "title": "S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient, Mathematika 46 (1999) 41-55",
+        "url": null
+      },
+      {
+        "note": "records Konyagin's bound as the current lower bound for g(k)",
+        "title": "Erdős problem #1095 (erdosproblems.com/1095): g(k), the least n > k+1 with every prime factor of C(n,k) above k",
+        "url": "https://www.erdosproblems.com/1095"
+      },
+      {
+        "note": "the two assemblies: this hole closes erdos-1094--h2--h1 (k^2 <= n < k^3) and erdos-1094--h3 (2k <= n < k^2)",
+        "title": "Annex 97a5239b on erdos-1094--h2--h1 (the skeleton this hole came from)",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "A published theorem, not formalised. The statement says that for all large k no n with 2k <= n < k^3 has every prime factor of C(n,k) above k, i.e. g(k) > k^3 for all large k (2k > k+1 once k >= 2). Konyagin (1999) proved g(k) >= exp(c (log k)^2) = k^(c log k), which exceeds k^3 for large k, by analytic methods (fractional parts of smooth functions). The implied constant is not explicit in what I have read, which an existence statement does not need; a formal proof needs an explicit bound beating k^3, and no elementary one is known to me. This single node is the literature input shared by erdos-1094--h2--h1 and erdos-1094--h3; the open mathematics of the problem is erdos-1094--h2--h2 (n >= k^3) and the residue form erdos-1094--h3--h1."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -82,7 +100,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -121,7 +139,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h2__h1__h1",
     "hash": "f7ea16d04f6bb7a656597b72d243ea648ad31e68639145d798f3108cba425386",

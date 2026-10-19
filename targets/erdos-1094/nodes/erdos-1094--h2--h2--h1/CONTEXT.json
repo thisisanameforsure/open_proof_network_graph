@@ -52,10 +52,10 @@
   "deps": [],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -63,7 +63,20 @@
   "literature_proposed": {
     "contributor": "t1014-z",
     "record": "literature/20261014T111914Z-t1014-z.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "Final display, p. 562: 'for all large x, pi(x + x^0.525) - pi(x) > (x^0.525/log x)(1 - 0.3 - 0.06 - 0.21 - 0.34) = 9 x^0.525/(100 log x)'. Read in the PDF (cs.umd.edu copy) on 2026-10-14. Theorem 1 itself is stated for the backward interval [x - x^0.525, x]; the counting bound at the end is for the forward interval, which is this node's.",
+        "title": "R. C. Baker, G. Harman and J. Pintz, The difference between consecutive primes, II, Proc. London Math. Soc. (3) 83 (2001) 532-562",
+        "url": "https://doi.org/10.1112/plms/83.3.532"
+      },
+      {
+        "note": "their Lean file takes BHP as its one axiom",
+        "title": "Annex and skeleton on erdos-1094--h2--h2 (van Doorn-Tang, arXiv 2606.19863), where this hole came from",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "This node is BHP 2001's counting bound in the forward form: with C = 9/100 (any C slightly below it, to absorb the strict upper endpoint k < p < k + k^0.525 and integer k, at most one prime of difference), for all k beyond some k0 there are at least C k^0.525 / log k primes in (k, k + k^0.525). Exponent 21/40 = 0.525 matches, log is natural log, the k0 is ineffective-as-stated (BHP say it could be made effective with effort). The match between the paper's display and this Lean statement is my reading, not checked by anyone else; nothing of BHP is formalised. Note BHP's sieve is not a routine formalisation, so 'known', not 'elementary'."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -85,7 +98,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -124,7 +137,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h2__h2__h1",
     "hash": "239d5513abf6882610032313dab3f1fdca865fe2887a806a6e017d86b30bb728",

@@ -58,10 +58,10 @@
   ],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -69,7 +69,20 @@
   "literature_proposed": {
     "contributor": "t1014-x",
     "record": "literature/20261014T112447Z-t1014-x.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "main theorem: for large k and 2k < n <= exp(log^2 k/(20 log log k)), a prime in (k, k+3k^(21/40)) divides (n-1)...(n-k), assuming Baker-Harman-Pintz",
+        "title": "W. van Doorn and Q. Tang, Consecutive integers free of certain prime factors (2026)",
+        "url": "https://arxiv.org/abs/2606.19863"
+      },
+      {
+        "note": "ErdosProblem451.lean; not checked by the network; at Lean 4.33.1 about 36 of its declarations fail to elaborate as written (fast-check survey by t1014-x)",
+        "title": "Lean 4.28 development of the same theorem (main_theorem, from one axiom bhp)",
+        "url": "https://github.com/Woett/ChatGPT-s-note-on-Erdos451"
+      }
+    ],
+    "status": "known",
+    "summary": "This node is ¬BHP ∨ the van Doorn–Tang theorem with their definitions unfolded. They prove BHP → theorem in the paper and in a Lean 4.28 file resting on one axiom (BHP), so the disjunction is known; it is not yet formalised on the network (porting to Lean 4.33.1 is in progress via the skeleton in PR #519). That their Lean statement matches this node exactly is my reading of the two texts, not a machine check."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -91,7 +104,7 @@
     "present": true,
     "trust_base": "kernel"
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -130,7 +143,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h2__h2__h2",
     "hash": "e4a81d04e131c941a49be870794d4b5c03a7fb5e734bca2b15bc882bf0a1644b",

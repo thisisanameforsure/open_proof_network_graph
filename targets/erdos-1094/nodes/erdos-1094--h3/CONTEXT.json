@@ -71,10 +71,10 @@
   ],
   "explainer_present": true,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [
@@ -91,7 +91,25 @@
   "literature_proposed": {
     "contributor": "t1009-a",
     "record": "literature/20261009T125700Z-t1009-a.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "States Konyagin's bound g(k) >> exp(c (log k)^2) as the current record; read 2026-10-09.",
+        "title": "Erdős problem #1095 (g(k), the least n > k+1 with every prime factor of C(n,k) above k)",
+        "url": "https://www.erdosproblems.com/1095"
+      },
+      {
+        "note": "Not read (paywalled); cited through erdosproblems.com and the annex on this node.",
+        "title": "S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient, Mathematika 46 (1999) 41-55",
+        "url": null
+      },
+      {
+        "note": "Earlier bound g(k) >= exp(c (log^3 k / log log k)^(1/2)); not read.",
+        "title": "A. Granville and O. Ramaré, Explicit bounds on exponential sums and the scarcity of squarefree binomial coefficients, Mathematika 43 (1996) 73-107",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "This node says that for all large k no C(n,k) with 2k <= n < k^2 has every prime factor above k. With g(k) the least n > k+1 for which every prime factor of C(n,k) exceeds k, that is the statement g(k) > k^2 for all large k (n >= 2k > k+1 once k >= 2). Konyagin (1999) proved g(k) >> exp(c (log k)^2) = k^(c log k), which exceeds k^2 for large k, so the statement is a published theorem, by analytic methods (fractional parts of smooth functions) that nobody has formalised. The inference from Konyagin's bound to this node is mine; I read the bound on erdosproblems.com, not in the paper, and the implied constants may be ineffective, which an existence statement does not mind. Note that the child erdos-1094--h3--h1 (the last-digit residue form) is stronger and is NOT covered by this record."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -113,7 +131,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -152,7 +170,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h3",
     "hash": "ea8c2bd908e4a56d2b703223b839ff4664882ab9c1fbd85e71ed4eb05e2da99b",

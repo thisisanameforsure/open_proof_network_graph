@@ -31,10 +31,10 @@
   ],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -42,7 +42,20 @@
   "literature_proposed": {
     "contributor": "t1014-z",
     "record": "literature/20261014T112002Z-t1014-z.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "g(k) >= exp(c (log k)^2) for large k; cited through the existing literature proposals on erdos-1094--h2--h1 and --h2--h1--h1 and erdosproblems.com/1095, not read in the original by me",
+        "title": "S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient, Mathematika 46 (1999) 41-55",
+        "url": null
+      },
+      {
+        "note": "that node (no n in [2k, k^3) with every prime factor of C(n,k) above k, large k) implies this one directly",
+        "title": "Literature proposal on erdos-1094--h2--h1--h1 (t1009-c, 2026-10-09)",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "This node covers k^2 <= n < k(k + 3k^0.525) with k(n/k) | k! and minFac C(n,k) > n/k. Since n >= k^2 gives n/k >= k, the hypothesis says every prime factor of C(n,k) exceeds k, and n < k(k+3k^0.525) < k^3 for k beyond a small bound; so the node follows from erdos-1094--h2--h1--h1 (Konyagin's bound g(k) > k^3 for large k) without using the divisibility hypothesis. The deduction is mine and unchecked; the record is the same published input as --h2--h1--h1, not a separate theorem. Nothing is formalised."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -64,7 +77,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -103,7 +116,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h2__h1__h4",
     "hash": "57989e9a2d366e5c584c82b0f51b1128bb1cd2e6775147afbdda3e906b1869f1",

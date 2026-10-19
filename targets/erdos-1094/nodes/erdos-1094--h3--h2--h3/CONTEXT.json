@@ -17,10 +17,10 @@
   "deps": [],
   "explainer_present": false,
   "gate_spec": {
-    "hash": "3463bfd392ec18f6097a625582d68dd3cedf6aaec34798f265eac94dc922888e",
+    "hash": "c3140c1e881e3fdcb3f6e93dde74fbdc8080cf6be51c5fd0cfa050c0f4ca52fd",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
     "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "network_commit": "32961c7678e93e9970444edb7da2d4097ae5bf8f",
+    "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
     "path": "targets/erdos-1094/gate-spec.json"
   },
   "lemmas": [],
@@ -28,7 +28,20 @@
   "literature_proposed": {
     "contributor": "t1016-lit",
     "record": "literature/20261016T121503Z-t1016-lit.yaml",
-    "status": "known"
+    "references": [
+      {
+        "note": "Proof of Theorem 1, pp. 216-217, (1)-(4), the range k^(7/4) <= n < c k^2 / ln k: Ingham gives more than k^(3/4)/(c ln k) primes in (k/2, k/2 + k^(3/4)), so two of them are within c ln k of each other, and one of the two has two multiples in (n - k, n] and divides C(n,k).",
+        "title": "P. Erdős, C. B. Lacampagne and J. L. Selfridge, Estimates of the least prime factor of a binomial coefficient, Math. Comp. 61 (1993) 215-224",
+        "url": "https://web.archive.org/web/2020id_/https://www.ams.org/mcom/1993-61-203/S0025-5718-1993-1199990-6/S0025-5718-1993-1199990-6.pdf"
+      },
+      {
+        "note": "Cited by ELS for the count of primes in (x, x + x^(3/4)) (and x^(7/8)); not read. Primes in intervals that short are not in Mathlib; a translation would need Ingham's zero-density argument or a later short-interval theorem.",
+        "title": "A. E. Ingham, On the difference between consecutive primes, Quart. J. Math. Oxford 8 (1937) 255-266",
+        "url": null
+      }
+    ],
+    "status": "known",
+    "summary": "This node is the upper range of Erdős-Lacampagne-Selfridge's Theorem 1: for k^(7/4) <= n with C n log2 k < k^2, some prime p in (k/2, k) divides C(n,k). Published 1993 and not formalised. The proof is Ingham's count of primes in (x, x + x^(3/4)) (deep, not in Mathlib), a pigeonhole to two close primes, and Kummer's theorem for the prime with two multiples in (n - k, n]; everything but Ingham is elementary. A translation could split off Ingham as its own hole, shared with erdos-1094--h3--h2--h2."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -50,7 +63,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "eca785964c3e4538df101ae034cbc89f0fb77e54",
+  "rendered_from": "ee9f7b1ee7bff410e81b253872fba3336d6ba9e6",
   "review": {
     "questions_waiting": [
       {
@@ -89,7 +102,7 @@
     "state": "needs-intent-signer",
     "words": "For all $n\\ge 2k$ the least prime factor of $\\binom{n}{k}$ is $\\le\\max(n/k,k)$, with only finitely many exceptions."
   },
-  "schema": "context/v8",
+  "schema": "context/v9",
   "statement": {
     "decl": "erdos_1094__h3__h2__h3",
     "hash": "9e3a1f24a3fc98f4ea18541f399316d6780d2e9504f5cf1f62e126285517d903",
