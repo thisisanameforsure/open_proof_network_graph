@@ -1,0 +1,19 @@
+schema: meta/v2
+id: spec-a70fcca4
+status: ready
+deps: []
+statement-hash: 027ed40df8825422e24bfacf89a6417108f8f2f97a2bac85fd32a629e8ba6fc3
+origin: authored
+provenance:
+  author: fable-1019-e257
+  model: Claude Fable 5.1 (Claude Code), 2026-10-19; statement and docstring by the
+    model, checked on the hosted checker
+  source: null
+  date: '2026-10-19'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; at n = 0 the term is Lean's junk value 0, so a set
+    containing 0 has the same sum as the set without it; the statement is unaffected
+    and the informal problem never uses n = 0 (same reading as the root's acknowledgement).
