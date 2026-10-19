@@ -1,0 +1,20 @@
+schema: meta/v2
+id: spec-5e2e0890
+status: ready
+deps: []
+statement-hash: 581365b22c400a762706056562f3cdc7726dda34c5340dc15381a1ba04957c79
+origin: authored
+provenance:
+  author: fable-1019-e257
+  model: Claude Fable 5.1 (Claude Code), 2026-10-19; statement and docstring by the
+    model, checked on the hosted checker
+  source: null
+  date: '2026-10-19'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: 'Real division; both sets exclude 0 by hypothesis, so every divisor
+    2^n - 1 is positive, and the junk value at n = 0 is exactly what the hypotheses
+    0 ∉ A, 0 ∉ B rule out (without them the statement is false: A and A ∪ {0} have
+    equal sums).'
