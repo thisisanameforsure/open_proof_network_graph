@@ -1,0 +1,29 @@
+schema: meta/v2
+id: spec-ddd99827
+status: ready
+deps: []
+statement-hash: cfa9f3e521fe6467241e583b537806b1d77beccccd63cd4c4e2984fadc9c30da
+origin: authored
+provenance:
+  author: fable-1019-e257
+  model: Claude Fable 5.1 (Claude Code), 2026-10-19; statement and docstring by the
+    model, checked on the hosted checker
+  source: null
+  date: '2026-10-19'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ (n + 1 + k) - 1)
+  justification: Real division; the divisor 2^m - 1 is positive for every m >= 1 and
+    the statement quantifies only over such m (n >= 1, so n+1+k >= 2); same reading
+    as the root's acknowledged division.
+- checker: div-zero
+  location: 1 / (2 ^ n - 1)
+  justification: Real division; the divisor 2^m - 1 is positive for every m >= 1 and
+    the statement quantifies only over such m (n >= 1, so n+1+k >= 2); same reading
+    as the root's acknowledged division.
+- checker: off-by-one-range
+  location: 1 ≤ n
+  justification: 'The bound 1 <= n is inclusive: the inequality holds for n = 1 as
+    well (the sum from m = 2 is below 1), and it is false for n = 0 where 1/(2^0 -
+    1) is Lean''s junk value 0.'
