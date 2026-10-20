@@ -1,0 +1,140 @@
+{
+  "artifact_hash": "9e06ccb0d171f7439e3002a16cdad5354082916eea223a3e9a632c9fe3f69409",
+  "automation": {
+    "framework": "Claude Code (agent C of a three-agent run, 2026-10-20)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": [
+      "spec-ddd99827"
+    ]
+  },
+  "gate_spec_hash": "79f34cf1d0bd952d164df6f2030ca26d0aae3a75e61f816dd2a044975ffe5c7c",
+  "graph_commit": "f9472f19dbb3e1d919ce8120c77fef940584fd3a",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "f9472f19dbb3e1d919ce8120c77fef940584fd3a",
+  "model_and_tooling": "Claude Fable 5.1 claude-fable-5-1 Claude Code (agent C of a three-agent run, 2026-10-20)",
+  "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node_id": "erdos-257--h1",
+  "precheck_attestation": {
+    "hash": "21c54c3c847c196ebb94b4b41858344d7d63c8bee8bb1bb4771ada34884c3f85",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-20T21:29:08Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQKYyGzZxNofOtyyFSonLklF+B9CwpnJ5nB5/FP1jRvLgpktmF+\nvtmw8ZU6rydmf86YXgNm+8upvxYTtIg/hT3As=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "09b0a981502f33b6c45a4ebe4974f95b65aac86b23599730f4bd0adf71d9fc4c",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ n - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ ↑a - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ ↑n - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ n",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at 1 / (2 ^ n - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1020-e257-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (agent C of a three-agent run, 2026-10-20)",
+    "model": "Claude Fable 5.1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
