@@ -1,0 +1,475 @@
+{
+  "artifact": {
+    "hash": "113f77f5b2a6745209c2e8240eee7eeeff597bbf05f3a84d6ddad713b4804a3b",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-a70fcca4--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℝ) ≤ (2 : ℝ) ^ n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) ≤ (2 : ℝ) ^ n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hnn.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 10,
+            "start_line": 10
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_le_pow₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), (0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnn",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), (0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "hnn",
+      "kind": "have",
+      "name": "hnn",
+      "span": {
+        "end_line": 11,
+        "start_line": 8
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "div_nonneg",
+            "tags": []
+          },
+          {
+            "doc": "`zero_le_one` with the type argument implicit.",
+            "name": "zero_le_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "norm_num"
+            ]
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) / ((2 : ℝ) ^ (0 : ℕ) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (0 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hle.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 15,
+            "start_line": 15
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Zero, the smallest natural number.",
+                "name": "Nat.zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℝ) ≤ (2 : ℝ) ^ k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℝ) ≤ (2 : ℝ) ^ k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hle.s2.hk",
+              "kind": "have",
+              "name": "hk",
+              "span": {
+                "end_line": 17,
+                "start_line": 17
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "one_le_pow₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℝ) < (2 : ℝ) ^ k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "positivity"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hpos",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℝ) < (2 : ℝ) ^ k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hle.s2.hpos",
+              "kind": "have",
+              "name": "hpos",
+              "span": {
+                "end_line": 18,
+                "start_line": 18
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (1 : ℝ) / (2 : ℝ) ^ k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (1 : ℝ) / (2 : ℝ) ^ k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hle.s2.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 21,
+                "start_line": 19
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "one_div_le_one_div_of_le",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "pow_succ",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℝ) / (2 : ℝ) ^ k = (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℝ) / (2 : ℝ) ^ k = (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hle.s2.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 23,
+                "start_line": 22
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "one_div_pow",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "pow_succ",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) / ((2 : ℝ) ^ (k + (1 : ℕ)) - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ (k + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          "id": "hle.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 25,
+            "start_line": 16
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The successor of a natural number `n`.",
+                "name": "Nat.succ",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hle",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤ (2 : ℝ) * (1 / 2 : ℝ) ^ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "hle",
+      "kind": "have",
+      "name": "hle",
+      "span": {
+        "end_line": 25,
+        "start_line": 12
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 26,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Comparison test of convergence of series of non-negative real numbers.",
+            "name": "Summable.of_nonneg_of_le",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "summable_geometric_two",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
