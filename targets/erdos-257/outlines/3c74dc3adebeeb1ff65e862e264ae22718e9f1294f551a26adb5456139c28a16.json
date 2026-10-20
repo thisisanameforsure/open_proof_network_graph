@@ -1,0 +1,724 @@
+{
+  "artifact": {
+    "hash": "3c74dc3adebeeb1ff65e862e264ae22718e9f1294f551a26adb5456139c28a16",
+    "kind": "partial",
+    "path": "attempts/20261020T203245Z-fable-1020-e257-a-partial.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-5e2e0890",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "spec-5e2e0890--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "A = B",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 20,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-5e2e0890--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (g : ℕ → ℝ),\n  Summable g →\n    (∀ (m : ℕ), (0 : ℝ) ≤ g m) →\n      ∀ (S T : Set ℕ),\n        ∀ n ∈ S,\n          n ∉ T →\n            (∀ m < n, m ∈ S ↔ m ∈ T) →\n              ∑' (k : ℕ), g (n + (1 : ℕ) + k) < g n →\n                ∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (g : ℕ → ℝ),\n  Summable g →\n    (∀ (m : ℕ), (0 : ℝ) ≤ g m) →\n      ∀ (S T : Set ℕ),\n        ∀ n ∈ S,\n          n ∉ T →\n            (∀ m < n, m ∈ S ↔ m ∈ T) →\n              ∑' (k : ℕ), g (n + (1 : ℕ) + k) < g n →\n                ∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "A = B",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "hole",
+      "name": "h3",
+      "span": {
+        "end_line": 26,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (n : ℕ), n ∈ A ∧ n ∉ B ∨ n ∈ B ∧ n ∉ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hex",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (n : ℕ), n ∈ A ∧ n ∉ B ∨ n ∈ B ∧ n ∉ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hex",
+      "kind": "have",
+      "name": "hex",
+      "span": {
+        "end_line": 34,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "If `a → b` and `b → a` then `a` and `b` are equivalent.",
+            "name": "Iff.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Nat.find hex ∈ A ∧ Nat.find hex ∉ B ∨ Nat.find hex ∈ B ∧ Nat.find hex ∉ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hn",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.find hex ∈ A ∧ Nat.find hex ∉ B ∨ Nat.find hex ∈ B ∧ Nat.find hex ∉ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hn",
+      "kind": "have",
+      "name": "hn",
+      "span": {
+        "end_line": 36,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.find_spec",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "¬(m ∈ A ∧ m ∉ B ∨ m ∈ B ∧ m ∉ A)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnot",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬(m ∈ A ∧ m ∉ B ∨ m ∈ B ∧ m ∉ A)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ A ↔ m ∈ B",
+              "truncated": false
+            }
+          },
+          "id": "hmin.hnot",
+          "kind": "have",
+          "name": "hnot",
+          "span": {
+            "end_line": 39,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.find_min",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ m < Nat.find hex, m ∈ A ↔ m ∈ B",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmin",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ m < Nat.find hex, m ∈ A ↔ m ∈ B",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hmin",
+      "kind": "have",
+      "name": "hmin",
+      "span": {
+        "end_line": 41,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "If `p` is a (decidable) predicate on `ℕ` and `hp : ∃ (n : ℕ), p n` is a proof that there exists some natural number satisfying `p`, then `Nat.find hp` is the smallest natural number satisfying `p`.",
+            "name": "Nat.find",
+            "tags": []
+          },
+          {
+            "doc": "If `a → b` and `b → a` then `a` and `b` are equivalent.",
+            "name": "Iff.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℝ) ≤ (2 : ℝ) ^ m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) ≤ (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ (2 : ℝ) ^ m - (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hnonneg.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 45,
+            "start_line": 45
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_le_pow₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ), (0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnonneg",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ), (0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hnonneg",
+      "kind": "have",
+      "name": "hnonneg",
+      "span": {
+        "end_line": 46,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "div_nonneg",
+            "tags": []
+          },
+          {
+            "doc": "`zero_le_one` with the type argument implicit.",
+            "name": "zero_le_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) ≤ Nat.find hex",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ Nat.find hex",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s7.hn1",
+          "kind": "have",
+          "name": "hn1",
+          "span": {
+            "end_line": 48,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If `p` is a (decidable) predicate on `ℕ` and `hp : ∃ (n : ℕ), p n` is a proof that there exists some natural number satisfying `p`, then `Nat.find hp` is the smallest natural number satisfying `p`.",
+                "name": "Nat.find",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.one_le_iff_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑' (m : (↑B : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ)) <\n  ∑' (m : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (m : (↑B : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ)) <\n  ∑' (m : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s7.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": [
+              "spec-ddd99827"
+            ]
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnA",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.find hex ∈ A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hnB",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.find hex ∉ B",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s7",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 50,
+        "start_line": 48
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Anything follows from two contradictory hypotheses.",
+            "name": "absurd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "ne_of_gt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℕ) ≤ Nat.find hex",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ Nat.find hex",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.hn1",
+          "kind": "have",
+          "name": "hn1",
+          "span": {
+            "end_line": 51,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "If `p` is a (decidable) predicate on `ℕ` and `hp : ∃ (n : ℕ), p n` is a proof that there exists some natural number satisfying `p`, then `Nat.find hp` is the smallest natural number satisfying `p`.",
+                "name": "Nat.find",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.one_le_iff_ne_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑' (m : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ)) <\n  ∑' (m : (↑B : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (m : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ)) <\n  ∑' (m : (↑B : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s8.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 53,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": [
+              "spec-ddd99827"
+            ]
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnB",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.find hex ∈ B",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hnA",
+            "type": {
+              "printed": "reliable",
+              "text": "Nat.find hex ∉ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 54,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Anything follows from two contradictory hypotheses.",
+            "name": "absurd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "ne_of_lt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
