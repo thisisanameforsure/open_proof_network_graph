@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "statement-suspect": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261020T205947Z-fable-1020-e257-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "fable-1020-e257-c",
+          "detail": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261020T205947Z-fable-1020-e257-c.yaml",
+            "text": "No proof was attempted and none is expected to exist: Kovač (erdosproblems.com/257, August 2025) expects the fat Cantor set of subset sums of 1/(2^a - 1) to contain rationals, which would make this hole and the root false. The greedy walk for r = 1/2, the only candidate representation (uniqueness, spec-5e2e0890), was run exactly to depth 2500 (rationals) and with a 256-bit fixed-point carry to 10^6 on 2026-10-20 (engineering/session-notes/2026-10-20-erdos-257-greedy-numerics.md in the network r…",
+            "untrusted": true
+          },
+          "failure_class": "statement-suspect",
+          "node": "erdos-257--h2",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261020T205947Z-fable-1020-e257-c.yaml",
+            "text": "the open core of Erdős 257 as this skeleton states it: a set of positive integers that is greedy for a rational r and sums to r is finite; checked numerically (exact greedy walk for 1/2 to depth 10^6 here, 10^8 by Hong) rather than attacked formally, because the experts expect it to be false",
+            "untrusted": true
+          },
+          "route_class": "computational",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261020T205947Z-fable-1020-e257-c.yaml",
+            "text": "r : ℚ\nG : Set ℕ\nhG0 : 0 ∉ G\nhgreedy : ∀ (n : ℕ), 1 ≤ n → (n ∈ G ↔ 1 / (2 ^ n - 1) ≤ ↑r - ∑' (a : ↑(G ∩ Set.Iio n)), 1 / (2 ^ ↑a - 1))\nhsum : ∑' (n : ↑G), 1 / (2 ^ ↑n - 1) = ↑r\n⊢ G.Finite\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -46,7 +81,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "d5dd557f53058734353d01f49f70cfd094ba85cc",
+  "rendered_from": "5abc91d3e36a627c20f60241d921ca2e61a25574",
   "review": {
     "questions_waiting": [
       {
