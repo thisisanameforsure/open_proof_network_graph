@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261020T211817Z-fable-1020-e257-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "fable-1020-e257-b",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261020T211817Z-fable-1020-e257-b.yaml",
+            "text": "This hole is the whole open content of spec-a70fcca4: the three sibling holes are bookkeeping and the assembly shows this bound is equivalent to the theorem. Nothing was attempted in Lean beyond stating it. What is known: the walk has been run to depth 10^8 (Hong 2026) and to 10^6 with exact carries (network session note 2026-10-20) without stalling; the only provable invariants found are that r m has 2-adic valuation exactly -1 and that the carry equals the ceiling of sum_j D(m+j) 2^{-j} while…",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "spec-a70fcca4--h4",
+          "outcome": "abandoned-early",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261020T211817Z-fable-1020-e257-b.yaml",
+            "text": "carry recursion: with c_m the integer carry into bit m of the partial sum, c_{m+1} = 2 c_m - d_A(m); the walk stalls iff the carry ever reaches 0; sought an invariant keeping c_m >= 1",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261020T211817Z-fable-1020-e257-b.yaml",
+            "text": "r : ℕ → ℝ\nhr0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\n⊢ r m ≤ ∑' (k : ℕ), 1 / (2 ^ (k + m) - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -46,7 +81,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "7ab18865e1e8e54e3e1a4e42984b0e855fdce913",
+  "rendered_from": "0078d3f1c99cf9bb3e51f27df936d556588583af",
   "review": {
     "questions_waiting": [
       {
