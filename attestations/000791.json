@@ -1,0 +1,124 @@
+{
+  "artifact_hash": "113f77f5b2a6745209c2e8240eee7eeeff597bbf05f3a84d6ddad713b4804a3b",
+  "automation": {
+    "framework": "Claude Code (subagent B of a three-agent tester run)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ],
+    "spend": "subscription"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "79f34cf1d0bd952d164df6f2030ca26d0aae3a75e61f816dd2a044975ffe5c7c",
+  "graph_commit": "0c2cd3de8f5430ee0cdd7070d8fe8cb8e68e38bc",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "0c2cd3de8f5430ee0cdd7070d8fe8cb8e68e38bc",
+  "model_and_tooling": "Claude Fable 5.1 (claude-fable-5-1) 2026-10-20 Claude Code, subagent B of a three-agent tester run; checked on the hosted fast check only",
+  "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node_id": "spec-a70fcca4--h3",
+  "precheck_attestation": {
+    "hash": "1c0079c4a641627f87a14c128c46e53486e95d8e62934f54f762950fbe9c1e2a",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-20T22:05:09Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBsbj81YAFVOh1CtHl76WLgDkPgMOPkCuBtyYmlR8a5MDZKigM\ngl2Pr/erG4jIAL4tx7qkFgCI4TQzAaIiBYUAY=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "fc901ef438da1b2de8ca5921fa60e70220a7b99f8f477001b3c33d2a7fdf60aa",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ n - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at 1 / (2 ^ n - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1020-e257-b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code, subagent B of a three-agent tester run; checked on the hosted fast check only",
+    "model": "Claude Fable 5.1 (claude-fable-5-1)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
