@@ -4,9 +4,28 @@
       "cause": null,
       "claim": null,
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": "91f974f5322a5af6fbb42be7d529c58fe7cd39798e06cb7ddd0cdd1f2975fbd6",
+          "approach": "greedy walk; a representation of a rational is greedy (bookkeeping), and the open core is that a greedy set summing to a rational is finite (expected false: the walk for 1/2 runs past 10^8)",
+          "holes": [
+            {
+              "name": "h_greedy",
+              "node": "erdos-257--h1"
+            },
+            {
+              "name": "h_core",
+              "node": "erdos-257--h2"
+            }
+          ],
+          "partial": "attempts/20261020T203102Z-fable-1020-e257-c-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-257--h1",
+        "erdos-257--h2"
+      ],
       "label": "Erdős problem 257",
       "label_source": "target",
       "lemmas": [],
@@ -18,13 +37,82 @@
       },
       "node_id": "erdos-257",
       "origin": "authored",
-      "outline": null,
+      "outline": {
+        "annex": "91f974f5322a5af6fbb42be7d529c58fe7cd39798e06cb7ddd0cdd1f2975fbd6",
+        "partial": "attempts/20261020T203102Z-fable-1020-e257-c-partial.lean",
+        "steps": [
+          {
+            "node": "erdos-257--h1",
+            "status": "ready",
+            "step": "h_greedy",
+            "summary": "a representation of a rational r by a set of positive integers is greedy: n is in the set iff t(n) is at most r minus the sum of the terms below n (from the gap lemma spec-ddd99827)"
+          },
+          {
+            "node": "erdos-257--h2",
+            "status": "ready",
+            "step": "h_core",
+            "summary": "the open core, expected false: a greedy set for a rational r whose sum is r is finite; refuted by a proof of spec-a70fcca4"
+          }
+        ]
+      },
       "proof_commit": null,
       "proofs": [],
       "proposed_for": null,
       "relation": null,
       "relevance": null,
       "statement_hash": "f0a2c09892da5238e3dafb205e2ad2ef99b2fc0aa75cf6ee95bb0d47a2427f65",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "0 \\notin A,\\ \\sum_{a\\in A} \\frac{1}{2^a-1} = r \\in \\mathbb{Q} \\implies \\forall n \\ge 1:\\ n \\in A \\iff \\frac{1}{2^n-1} \\le r - \\sum_{a \\in A,\\, a<n} \\frac{1}{2^a-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "a representation of a rational is greedy",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-257--h1",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "09b0a981502f33b6c45a4ebe4974f95b65aac86b23599730f4bd0adf71d9fc4c",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "0 \\notin G,\\ G \\text{ greedy for } r \\in \\mathbb{Q},\\ \\sum_{a\\in G} \\frac{1}{2^a-1} = r \\implies G \\text{ finite}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the greedy walk for a rational stalls (open core)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-257--h2",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "8009e4df9ec2f7f31a32d961edcbb7b75f0156b88e0eb4f83f0352588a45b586",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -121,7 +209,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "7754e9a3f7de29fbd4098b035621081e423f20d1",
+  "rendered_from": "379f92df0925278cecfeb2f1ac32df4158ec3674",
   "review": {
     "candidates": 1,
     "clusters": 1,
