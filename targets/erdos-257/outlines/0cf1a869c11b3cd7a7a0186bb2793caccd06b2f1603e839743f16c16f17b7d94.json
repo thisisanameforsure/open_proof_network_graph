@@ -1,0 +1,869 @@
+{
+  "artifact": {
+    "hash": "0cf1a869c11b3cd7a7a0186bb2793caccd06b2f1603e839743f16c16f17b7d94",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-a70fcca4--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ ∅, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "key.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 11,
+            "start_line": 11
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The empty finset",
+                "name": "Finset.empty",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "odd_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "p",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "q",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hq",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Odd q",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hs",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ insert a S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 13,
+                "start_line": 13
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "a = (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 17,
+                "start_line": 16
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(1 : ℕ) ≤ a",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "ha1",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(1 : ℕ) ≤ a",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s3.ha1",
+                  "kind": "have",
+                  "name": "ha1",
+                  "span": {
+                    "end_line": 18,
+                    "start_line": 18
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.one_le_iff_ne_zero",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "Odd ((2 : ℕ) ^ a - (1 : ℕ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hd",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "Odd ((2 : ℕ) ^ a - (1 : ℕ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s3.hd",
+                  "kind": "have",
+                  "name": "hd",
+                  "span": {
+                    "end_line": 20,
+                    "start_line": 19
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+                        "name": "Odd",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.Even.sub_odd",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.one_le_two_pow",
+                        "tags": []
+                      },
+                      {
+                        "doc": "If `m` and `n` are natural numbers, then the natural number `m^n` is even if and only if `m` is even and `n` is positive.",
+                        "name": "Nat.even_pow",
+                        "tags": []
+                      },
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "even_two",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "odd_one",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) = (2 : ℝ) ^ a - (1 : ℝ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdc",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) = (2 : ℝ) ^ a - (1 : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s3.hdc",
+                  "kind": "have",
+                  "name": "hdc",
+                  "span": {
+                    "end_line": 22,
+                    "start_line": 21
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_sub",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.one_le_two_pow",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_pow",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_ofNat",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_one",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(↑q : ℝ) ≠ (0 : ℝ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hqne",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑q : ℝ) ≠ (0 : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s3.hqne",
+                  "kind": "have",
+                  "name": "hqne",
+                  "span": {
+                    "end_line": 23,
+                    "start_line": 23
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_ne_zero",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) ≠ (0 : ℝ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdne",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) ≠ (0 : ℝ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "key.s2.s3.hdne",
+                  "kind": "have",
+                  "name": "hdne",
+                  "span": {
+                    "end_line": 24,
+                    "start_line": 24
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.cast_ne_zero",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬a = (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (p_1 : ℕ) (q_1 : ℕ), Odd q_1 ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + (↑p : ℝ) / (↑q : ℝ) = (↑p_1 : ℝ) / (↑q_1 : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "key.s2.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 28,
+                "start_line": 18
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "S",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Finset ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ha",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ∉ S",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ insert a S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "key.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 28,
+            "start_line": 12
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.sum_insert",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (S : Finset ℕ), ∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (S : Finset ℕ), ∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (S : Finset ℕ), ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≠ (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 28,
+        "start_line": 8
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "To prove a proposition about an arbitrary `Finset α`, it suffices to prove it for the empty `Finset`, and to show that if it holds for some `Finset α`, then it holds for the `Finset` obtained by inserting a new element.",
+            "name": "Finset.induction_on",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p : ℕ) (q : ℕ), Odd q ∧ ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "q",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hq",
+            "type": {
+              "printed": "reliable",
+              "text": "Odd q",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑p : ℝ) / (↑q : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 30,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑q : ℝ) ≠ (0 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hqne",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) ≠ (0 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hqne",
+      "kind": "have",
+      "name": "hqne",
+      "span": {
+        "end_line": 32,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.cast_ne_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑q : ℝ) = (2 : ℝ) * (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "field_simp",
+          "linarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) = (2 : ℝ) * (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "have",
+      "name": "h2",
+      "span": {
+        "end_line": 35,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "q = (2 : ℕ) * p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "q = (2 : ℕ) * p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "have",
+      "name": "h3",
+      "span": {
+        "end_line": 36,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 37,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.not_even_iff_odd",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
