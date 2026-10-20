@@ -1,0 +1,980 @@
+{
+  "artifact": {
+    "hash": "615a5d292deaaa0d8b774a044201dcfa6c0dd402ff1fe606b82b5f597c0aae08",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-5e2e0890--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (U : Set ℕ), Summable fun (m : (↑U : Type)) => g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (U : Set ℕ), Summable fun (m : (↑U : Type)) => g (↑m : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 23,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "{m : ℕ | m < n} ∩ S = {m : ℕ | m < n} ∩ T",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hL",
+            "type": {
+              "printed": "reliable",
+              "text": "{m : ℕ | m < n} ∩ S = {m : ℕ | m < n} ∩ T",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hL",
+      "kind": "have",
+      "name": "hL",
+      "span": {
+        "end_line": 27,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.mem_inter_iff",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+            "name": "Set.mem_setOf_eq",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "and_congr_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m < n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ {m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}",
+              "truncated": false
+            }
+          },
+          "id": "hT_sub.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+                "name": "Or.inl",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnS",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m ∈ S",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hnT",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m ∉ T",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hagree",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ m_1 < m, m_1 ∈ S ↔ m_1 ∈ T",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hgap",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (k : ℕ), g (m + (1 : ℕ) + k) < g m",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hL",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{m_1 : ℕ | m_1 < m} ∩ S = {m_1 : ℕ | m_1 < m} ∩ T",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ {m_1 : ℕ | m_1 < m} ∩ T ∪ {m_1 : ℕ | m < m_1}",
+              "truncated": false
+            }
+          },
+          "id": "hT_sub.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 32,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Anything follows from two contradictory hypotheses.",
+                "name": "absurd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hgt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ {m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}",
+              "truncated": false
+            }
+          },
+          "id": "hT_sub.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 33,
+            "start_line": 33
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Or.inr` is \"right injection\" into an `Or`.",
+                "name": "Or.inr",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "T ⊆ {m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hT_sub",
+            "type": {
+              "printed": "reliable",
+              "text": "T ⊆ {m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hT_sub",
+      "kind": "have",
+      "name": "hT_sub",
+      "span": {
+        "end_line": 33,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_trichotomy",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "left✝",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m ∈ {m : ℕ | m < n}",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m ∈ S",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ S",
+              "truncated": false
+            }
+          },
+          "id": "hS_sup.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 37,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "unreliable",
+                  "text": "m ∈ {n}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m ∈ S",
+              "truncated": false
+            }
+          },
+          "id": "hS_sup.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 39,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.mem_singleton_iff",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "{m : ℕ | m < n} ∩ S ∪ {n} ⊆ S",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS_sup",
+            "type": {
+              "printed": "reliable",
+              "text": "{m : ℕ | m < n} ∩ S ∪ {n} ⊆ S",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hS_sup",
+      "kind": "have",
+      "name": "hS_sup",
+      "span": {
+        "end_line": 39,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑m : ℕ) ∈ {m : ℕ | n < m}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑m : ℕ) ∈ {m : ℕ | n < m}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "unreliable",
+              "text": "(↑((fun (k : ℕ) => ⟨n + (1 : ℕ) + k, ⋯⟩) ((fun (m : (↑{m : ℕ | n < m} : Type)) => (↑m : ℕ) - (n + (1 : ℕ))) m)) : ℕ) =\n  (↑m : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "htail.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 47,
+            "start_line": 47
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (m : (↑{m : ℕ | n < m} : Type)), g (↑m : ℕ) = ∑' (k : ℕ), g (n + (1 : ℕ) + k)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "htail",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (m : (↑{m : ℕ | n < m} : Type)), g (↑m : ℕ) = ∑' (k : ℕ), g (n + (1 : ℕ) + k)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "htail",
+      "kind": "have",
+      "name": "htail",
+      "span": {
+        "end_line": 52,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Subtype.mk",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+            "name": "Set.mem_setOf_eq",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Subtype.ext",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Equiv.tsum_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (U V : Set ℕ), U ⊆ V → ∑' (m : (↑U : Type)), g (↑m : ℕ) ≤ ∑' (m : (↑V : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmono",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (U V : Set ℕ), U ⊆ V → ∑' (m : (↑U : Type)), g (↑m : ℕ) ≤ ∑' (m : (↑V : Type)), g (↑m : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hmono",
+      "kind": "have",
+      "name": "hmono",
+      "span": {
+        "end_line": 56,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Summable.tsum_le_tsum_of_inj",
+            "tags": []
+          },
+          {
+            "doc": "`inclusion` is the \"identity\" function between two subsets `s` and `t`, where `s ⊆ t`",
+            "name": "Set.inclusion",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.inclusion_injective",
+            "tags": []
+          },
+          {
+            "doc": "A version of `le_refl` where the argument is implicit",
+            "name": "le_rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Disjoint ({m : ℕ | m < n} ∩ T) {m : ℕ | n < m}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hdisj1",
+            "type": {
+              "printed": "reliable",
+              "text": "Disjoint ({m : ℕ | m < n} ∩ T) {m : ℕ | n < m}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hdisj1",
+      "kind": "have",
+      "name": "hdisj1",
+      "span": {
+        "end_line": 61,
+        "start_line": 57
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Two elements of a lattice are disjoint if their inf is the bottom element.",
+            "name": "Disjoint",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.disjoint_left",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+            "name": "Set.mem_setOf_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Disjoint ({m : ℕ | m < n} ∩ S) {n}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hdisj2",
+            "type": {
+              "printed": "reliable",
+              "text": "Disjoint ({m : ℕ | m < n} ∩ S) {n}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) < ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hdisj2",
+      "kind": "have",
+      "name": "hdisj2",
+      "span": {
+        "end_line": 67,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Two elements of a lattice are disjoint if their inf is the bottom element.",
+            "name": "Disjoint",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.disjoint_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.mem_singleton_iff",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+            "name": "Set.mem_setOf_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (m : (↑T : Type)), g (↑m : ℕ) ≤ ∑' (m : (↑({m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}) : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s9",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 68,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (m : (↑({m : ℕ | m < n} ∩ T ∪ {m : ℕ | n < m}) : Type)), g (↑m : ℕ) =\n  ∑' (m : (↑({m : ℕ | m < n} ∩ T) : Type)), g (↑m : ℕ) + ∑' (m : (↑{m : ℕ | n < m} : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s10",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 70,
+        "start_line": 69
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Summable.tsum_union_disjoint",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s11",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 71,
+        "start_line": 71
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "linarith"
+        ]
+      },
+      "goal": null,
+      "id": "s12",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 72,
+        "start_line": 72
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s13",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 74,
+        "start_line": 73
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_singleton",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "unreliable",
+        "text": "∑' (m : (↑({m : ℕ | m < n} ∩ S) : Type)), g (↑m : ℕ) + ∑' (m : (↑{n} : Type)), g (↑m : ℕ) =\n  ∑' (m : (↑({m : ℕ | m < n} ∩ S ∪ {n}) : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s14",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 76,
+        "start_line": 75
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Summable.tsum_union_disjoint",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (m : (↑({m : ℕ | m < n} ∩ S ∪ {n}) : Type)), g (↑m : ℕ) ≤ ∑' (m : (↑S : Type)), g (↑m : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "s15",
+      "kind": "calc",
+      "name": null,
+      "span": {
+        "end_line": 77,
+        "start_line": 77
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
