@@ -1,0 +1,146 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (agent C of a three-agent run, 2026-10-20)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "79f34cf1d0bd952d164df6f2030ca26d0aae3a75e61f816dd2a044975ffe5c7c",
+  "graph_commit": "3dbbb392ec95655601b5e3081890eb7ccf58c5ec",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "3dbbb392ec95655601b5e3081890eb7ccf58c5ec",
+  "model_and_tooling": "Claude Fable 5.1 claude-fable-5-1 Claude Code (agent C of a three-agent run, 2026-10-20)",
+  "network_commit": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node_id": "erdos-257",
+  "precheck_attestation": {
+    "hash": "afaf1df04cec624a70dc9308d41002b778f7e94a662e28a8f3e89092e50e6458",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-20T20:52:16Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQAL2zf57j5pV+NGQmfJNh2Kq3UHpCl1dgny4u9zZ1om54hUZhD\n+cVO+cw+5edb9xXrwek85HvwTkSjxA9cxgMQ4=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "f0a2c09892da5238e3dafb205e2ad2ef99b2fc0aa75cf6ee95bb0d47a2427f65",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261020T203102Z-fable-1020-e257-c-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261020T203102Z-fable-1020-e257-c-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_greedy",
+            "h_core"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_257 declares ∀ (A : Set ℕ), A.Infinite → Irrational (∑' (n : ↑A), 1 / (2 ^ ↑n - 1)); 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is zero only at n = 0, where Lean's junk value makes the term 0; the sum over A then equals the sum over A without 0, which is still infinite, and the informal statement never uses n = 0.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_greedy",
+              "path": "attempts/20261020T203102Z-fable-1020-e257-c-partial.1.witness",
+              "sha256": "8395fe3d2a0bc9c42dd4c2b3002feef6dbee09e5e05630633d8d61c3052cbe31"
+            },
+            {
+              "hole": "h_core",
+              "path": "attempts/20261020T203102Z-fable-1020-e257-c-partial.2.witness",
+              "sha256": "92ad6adbe7fca6bf1f2164ed36626a5a6eb906db54c1ac1d3398af91ef4fad02"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1020-e257-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (agent C of a three-agent run, 2026-10-20)",
+    "model": "Claude Fable 5.1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

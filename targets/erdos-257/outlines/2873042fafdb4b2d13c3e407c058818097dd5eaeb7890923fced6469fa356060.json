@@ -1,0 +1,631 @@
+{
+  "artifact": {
+    "hash": "2873042fafdb4b2d13c3e407c058818097dd5eaeb7890923fced6469fa356060",
+    "kind": "partial",
+    "path": "attempts/20261020T203102Z-fable-1020-e257-c-partial.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "erdos-257",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-257--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℚ) (A : Set ℕ),\n  (0 : ℕ) ∉ A →\n    ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ) →\n      ∀ (n : ℕ),\n        (1 : ℕ) ≤ n →\n          (n ∈ A ↔\n            (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n              (↑r : ℝ) - ∑' (a : (↑(A ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_greedy",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℚ) (A : Set ℕ),\n  (0 : ℕ) ∉ A →\n    ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ) →\n      ∀ (n : ℕ),\n        (1 : ℕ) ≤ n →\n          (n ∈ A ↔\n            (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n              (↑r : ℝ) - ∑' (a : (↑(A ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (A : Set ℕ), A.Infinite → Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h_greedy",
+      "kind": "hole",
+      "name": "h_greedy",
+      "span": {
+        "end_line": 35,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`Iio b` is the left-infinite right-open interval $(-∞, b)$.",
+            "name": "Set.Iio",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-257--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℚ) (G : Set ℕ),\n  (0 : ℕ) ∉ G →\n    (∀ (n : ℕ),\n        (1 : ℕ) ≤ n →\n          (n ∈ G ↔\n            (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n              (↑r : ℝ) - ∑' (a : (↑(G ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))) →\n      ∑' (n : (↑G : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ) → G.Finite",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_core",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℚ) (G : Set ℕ),\n  (0 : ℕ) ∉ G →\n    (∀ (n : ℕ),\n        (1 : ℕ) ≤ n →\n          (n ∈ G ↔\n            (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n              (↑r : ℝ) - ∑' (a : (↑(G ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))) →\n      ∑' (n : (↑G : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ) → G.Finite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (A : Set ℕ), A.Infinite → Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h_core",
+      "kind": "hole",
+      "name": "h_core",
+      "span": {
+        "end_line": 46,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`Iio b` is the left-infinite right-open interval $(-∞, b)$.",
+            "name": "Set.Iio",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "h0.e1",
+          "kind": "have",
+          "name": "e1",
+          "span": {
+            "end_line": 52,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "tsum_subtype",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "h0.e2",
+          "kind": "have",
+          "name": "e2",
+          "span": {
+            "end_line": 55,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "tsum_subtype",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x =\n  (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x",
+              "truncated": false
+            }
+          },
+          "id": "h0.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 60,
+            "start_line": 60
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Set.indicator s f a` is `f a` if `a ∈ s`, `0` otherwise.",
+                "name": "Set.indicator",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "x ∈ A \\ {(0 : ℕ)} ↔ x ∈ A",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "simp"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hmem",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x ∈ A \\ {(0 : ℕ)} ↔ x ∈ A",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x =\n  (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x",
+                  "truncated": false
+                }
+              },
+              "id": "h0.s4.hmem",
+              "kind": "have",
+              "name": "hmem",
+              "span": {
+                "end_line": 61,
+                "start_line": 61
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hxA",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x ∈ A",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x =\n  (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x",
+                  "truncated": false
+                }
+              },
+              "id": "h0.s4.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 63,
+                "start_line": 63
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_mem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hxA",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x ∉ A",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x =\n  (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x",
+                  "truncated": false
+                }
+              },
+              "id": "h0.s4.s3",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 64,
+                "start_line": 64
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_notMem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬x = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x =\n  (A \\ {(0 : ℕ)}).indicator (fun (m : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) x",
+              "truncated": false
+            }
+          },
+          "id": "h0.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 64,
+            "start_line": 61
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h0",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h0",
+      "kind": "have",
+      "name": "h0",
+      "span": {
+        "end_line": 64,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(A \\ {(0 : ℕ)}).Infinite",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA'",
+            "type": {
+              "printed": "reliable",
+              "text": "(A \\ {(0 : ℕ)}).Infinite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hA'",
+      "kind": "have",
+      "name": "hA'",
+      "span": {
+        "end_line": 65,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.finite_singleton",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑(A \\ {(0 : ℕ)}) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (↑r : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 66,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  (1 : ℕ) ≤ n →\n    (n ∈ A \\ {(0 : ℕ)} ↔\n      (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n        (↑r : ℝ) - ∑' (a : (↑(A \\ {(0 : ℕ)} ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ),\n  (1 : ℕ) ≤ n →\n    (n ∈ A \\ {(0 : ℕ)} ↔\n      (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤\n        (↑r : ℝ) - ∑' (a : (↑(A \\ {(0 : ℕ)} ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hgr",
+      "kind": "have",
+      "name": "hgr",
+      "span": {
+        "end_line": 67,
+        "start_line": 67
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 68,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
