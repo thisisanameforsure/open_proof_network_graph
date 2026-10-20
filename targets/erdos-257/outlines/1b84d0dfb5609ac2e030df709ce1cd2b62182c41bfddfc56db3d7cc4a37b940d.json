@@ -1,0 +1,1297 @@
+{
+  "artifact": {
+    "hash": "1b84d0dfb5609ac2e030df709ce1cd2b62182c41bfddfc56db3d7cc4a37b940d",
+    "kind": "partial",
+    "path": "attempts/20261020T203100Z-fable-1020-e257-b-partial.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-a70fcca4",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "spec-a70fcca4--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ),\n        (0 : ℝ) ≤ r m ∧\n          (∑ a ∈ Finset.range m,\n              if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n            (1 / 2 : ℝ) - r m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ),\n        (0 : ℝ) ≤ r m ∧\n          (∑ a ∈ Finset.range m,\n              if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n            (1 / 2 : ℝ) - r m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 28,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-a70fcca4--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (S : Finset ℕ), ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≠ (1 / 2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (S : Finset ℕ), ∑ a ∈ S, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≠ (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "hole",
+      "name": "h2",
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-a70fcca4--h3",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "hole",
+      "name": "h3",
+      "span": {
+        "end_line": 38,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-a70fcca4--h4",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ), r m ≤ ∑' (k : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (k + m) - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h4",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ), r m ≤ ∑' (k : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (k + m) - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h4",
+      "kind": "hole",
+      "name": "h4",
+      "span": {
+        "end_line": 47,
+        "start_line": 45
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) ∧\n    ∀ (m : ℕ),\n      r (m + (1 : ℕ)) = if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hex",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) ∧\n    ∀ (m : ℕ),\n      r (m + (1 : ℕ)) = if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hex",
+      "kind": "have",
+      "name": "hex",
+      "span": {
+        "end_line": 53,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.rec",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) ∧\n    ∀ (m : ℕ),\n      r (m + (1 : ℕ)) = if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hr0",
+            "type": {
+              "printed": "reliable",
+              "text": "r (0 : ℕ) = (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrs",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ),\n  r (m + (1 : ℕ)) = if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 54,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Filter.Tendsto (fun (m : ℕ) => ∑' (k : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (k + m) - (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "htail",
+            "type": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto (fun (m : ℕ) => ∑' (k : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (k + m) - (1 : ℝ))) Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "htail",
+      "kind": "have",
+      "name": "htail",
+      "span": {
+        "end_line": 59,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": "For `f : ℕ → G`, the sum `∑' k, f (k + i)` tends to zero.",
+            "name": "tendsto_sum_nat_add",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Filter.Tendsto r Filter.atTop (nhds (0 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hr",
+            "type": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto r Filter.atTop (nhds (0 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hr",
+      "kind": "have",
+      "name": "hr",
+      "span": {
+        "end_line": 61,
+        "start_line": 60
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": "**Squeeze theorem** (also known as **sandwich theorem**).",
+            "name": "tendsto_of_tendsto_of_tendsto_of_le_of_le",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tendsto_const_nhds",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℝ) ≤ (2 : ℝ) ^ a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2a",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℝ) ≤ (2 : ℝ) ^ a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "hfnn.s1.h2a",
+              "kind": "have",
+              "name": "h2a",
+              "span": {
+                "end_line": 69,
+                "start_line": 69
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "one_le_pow₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hfnn.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 70,
+            "start_line": 69
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "div_nonneg",
+                "tags": []
+              },
+              {
+                "doc": "`zero_le_one` with the type argument implicit.",
+                "name": "zero_le_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬(1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ (0 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hfnn.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 71,
+            "start_line": 71
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The relation `≤` on a preorder is reflexive.",
+                "name": "le_refl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (a : ℕ), (0 : ℝ) ≤ f a",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfnn",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (a : ℕ), (0 : ℝ) ≤ f a",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hfnn",
+      "kind": "have",
+      "name": "hfnn",
+      "span": {
+        "end_line": 71,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(fun (m : ℕ) => ∑ a ∈ Finset.range m, f a) = fun (m : ℕ) => (1 / 2 : ℝ) - r m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(fun (m : ℕ) => ∑ a ∈ Finset.range m, f a) = fun (m : ℕ) => (1 / 2 : ℝ) - r m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto (fun (m : ℕ) => ∑ a ∈ Finset.range m, f a) Filter.atTop (nhds (1 / 2 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hpart.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 74,
+            "start_line": 73
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "Filter.Tendsto (fun (m : ℕ) => ∑ a ∈ Finset.range m, f a) Filter.atTop (nhds (1 / 2 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpart",
+            "type": {
+              "printed": "reliable",
+              "text": "Filter.Tendsto (fun (m : ℕ) => ∑ a ∈ Finset.range m, f a) Filter.atTop (nhds (1 / 2 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hpart",
+      "kind": "have",
+      "name": "hpart",
+      "span": {
+        "end_line": 76,
+        "start_line": 72
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tendsto_const_nhds",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "HasSum f (1 / 2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "HasSum f (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 77,
+        "start_line": 77
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`HasSum f a L` means that the (potentially infinite) sum of the `f b` for `b : β` converges to `a` along the SummationFilter `L`.",
+            "name": "HasSum",
+            "tags": []
+          },
+          {
+            "doc": "A series of non-negative real numbers converges to `r` in the sense of `HasSum` if and only if the sequence of partial sum converges to `r`.",
+            "name": "hasSum_iff_tendsto_nat_of_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "BddAbove {a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "M",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hM",
+                "type": {
+                  "printed": "reliable",
+                  "text": "M ∈ upperBounds {a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s12.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 82,
+            "start_line": 82
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [],
+                "target": {
+                  "printed": "reliable",
+                  "text": "r (M + (1 : ℕ)) = r (M + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "s12.hconst.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 86,
+                "start_line": 86
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "a",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ha",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "M + (1 : ℕ) ≤ a",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "ih",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "r a = r (M + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "r (a + (1 : ℕ)) = r (M + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "s12.hconst.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 90,
+                "start_line": 87
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The successor of a natural number `n`.",
+                    "name": "Nat.succ",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "if_neg",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (a : ℕ), M + (1 : ℕ) ≤ a → r a = r (M + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hconst",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (a : ℕ), M + (1 : ℕ) ≤ a → r a = r (M + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s12.hconst",
+          "kind": "have",
+          "name": "hconst",
+          "span": {
+            "end_line": 90,
+            "start_line": 83
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Induction principle starting at a non-zero number.",
+                "name": "Nat.le_induction",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Filter.Tendsto r Filter.atTop (nhds (r (M + (1 : ℕ))))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Filter.Tendsto r Filter.atTop (nhds (r (M + (1 : ℕ))))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s12.hc",
+          "kind": "have",
+          "name": "hc",
+          "span": {
+            "end_line": 94,
+            "start_line": 91
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+                "name": "Filter.Tendsto",
+                "tags": []
+              },
+              {
+                "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+                "name": "Filter.atTop",
+                "tags": []
+              },
+              {
+                "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+                "name": "nhds",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "tendsto_const_nhds",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Filter.eventually_ge_atTop",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "r (M + (1 : ℕ)) = (0 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hzero",
+                "type": {
+                  "printed": "reliable",
+                  "text": "r (M + (1 : ℕ)) = (0 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s12.hzero",
+          "kind": "have",
+          "name": "hzero",
+          "span": {
+            "end_line": 95,
+            "start_line": 95
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "tendsto_nhds_unique",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(Finset.range (M + (1 : ℕ))).sum f = (1 / 2 : ℝ) - r (M + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hhalf",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(Finset.range (M + (1 : ℕ))).sum f = (1 / 2 : ℝ) - r (M + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s12.hhalf",
+          "kind": "have",
+          "name": "hhalf",
+          "span": {
+            "end_line": 96,
+            "start_line": 96
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "{a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a}.Infinite",
+          "truncated": false
+        }
+      },
+      "id": "s12",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 100,
+        "start_line": 79
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "sub_zero",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_filter",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "({a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a}.indicator fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) = f",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hind",
+                "type": {
+                  "printed": "reliable",
+                  "text": "({a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a}.indicator fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) = f",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑{a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  (1 / 2 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s13.hind",
+          "kind": "have",
+          "name": "hind",
+          "span": {
+            "end_line": 104,
+            "start_line": 102
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Set.indicator s f a` is `f a` if `a ∈ s`, `0` otherwise.",
+                "name": "Set.indicator",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Set.indicator_apply",
+                "tags": []
+              },
+              {
+                "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+                "name": "Set.mem_setOf_eq",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑{a : ℕ | (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s13",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 107,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_subtype",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
