@@ -1,0 +1,246 @@
+{
+  "artifact": {
+    "hash": "5e345b529e99a64c69b7df2742037ff9c7c665c6522626072f0b57edb6ccc8a1",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "f824b6fc425c2ce1cd0c66e158988e961f1a066f",
+  "node": "spec-a70fcca4--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "simp"
+        ]
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℝ) ≤ r (0 : ℕ) ∧\n  (∑ a ∈ Finset.range (0 : ℕ),\n      if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n    (1 / 2 : ℝ) - r (0 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 19,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Zero, the smallest natural number.",
+            "name": "Nat.zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ r m ∧\n  (∑ a ∈ Finset.range m,\n      if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n    (1 / 2 : ℝ) - r m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ihnn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ r m",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ihsum",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(∑ a ∈ Finset.range m, if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n  (1 / 2 : ℝ) - r m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ r (m + (1 : ℕ)) ∧\n  (∑ a ∈ Finset.range (m + (1 : ℕ)),\n      if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n    (1 / 2 : ℝ) - r (m + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          "id": "s2.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 21,
+            "start_line": 21
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ∧\n  (1 / 2 : ℝ) - r m + (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) = (1 / 2 : ℝ) - (r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          "id": "s2.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 24,
+            "start_line": 24
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬(1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ r m ∧ (1 / 2 : ℝ) - r m + (0 : ℝ) = (1 / 2 : ℝ) - r m",
+              "truncated": false
+            }
+          },
+          "id": "s2.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 25,
+            "start_line": 25
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "m",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "ih",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ r m ∧\n  (∑ a ∈ Finset.range m,\n      if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n    (1 / 2 : ℝ) - r m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(0 : ℝ) ≤ r (m + (1 : ℕ)) ∧\n  (∑ a ∈ Finset.range (m + (1 : ℕ)),\n      if (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a then (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) else (0 : ℝ)) =\n    (1 / 2 : ℝ) - r (m + (1 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 25,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The successor of a natural number `n`.",
+            "name": "Nat.succ",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_range_succ",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
