@@ -1,0 +1,23 @@
+schema: meta/v4
+id: spec-a70fcca4-v2
+status: ready
+deps:
+- spec-a70fcca4--h1
+- spec-a70fcca4--h2
+- spec-a70fcca4--h3
+- spec-a70fcca4--h4
+statement-hash: 19abea4750f82074ef606b64cd22e04cedc8ac2a28b7da678f3fe02f65a8fa12
+origin: variant
+provenance:
+  author: thisisanameforsure
+  model: null
+  source: null
+  date: '2026-10-21'
+tutorial: false
+supersedes: spec-a70fcca4
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; at n = 0 the term is Lean's junk value 0, so a set containing
+    0 has the same sum as the set without it; the statement is unaffected and the informal
+    problem never uses n = 0 (same reading as the root's acknowledgement).
