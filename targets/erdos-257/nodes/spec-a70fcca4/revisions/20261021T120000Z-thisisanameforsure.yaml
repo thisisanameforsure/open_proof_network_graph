@@ -1,0 +1,20 @@
+schema: revision-request/v1
+node: spec-a70fcca4
+contributor: thisisanameforsure
+defect_class: other-with-exhibit
+evidence:
+  text: 'D-8 v3.46: the statement is unchanged; the node gains its relation to the root. spec-a70fcca4
+    (1/2 is the Mersenne reciprocal sum of an infinite set) refutes erdos-257: an infinite set whose sum
+    is 1/2 is an infinite set whose sum is rational. It was proposed as a crux with no checked relation,
+    so the problem page could not show the refutation side (the owner''s reading of 2026-10-21). The revision
+    spec-a70fcca4-v2 carries the same statement and a Relation.lean labelled `refutes` proving variant
+    -> not root; the exhibit is that file, checked on the hosted checker at lean-4.33.1 (log 01M5EN6Z7R7WZ0GDX86VNCP9Y6).
+    Nothing is defective: other-with-exhibit is the route until a class names a relation (F08-Q56). Its
+    merged partial and holes are read by the revision through `supersedes` (F08-T46).'
+  exhibit: "-- relation: refutes\nimport Mathlib\n\n/-! The variant refutes the root (D-30, `refutes`):\
+    \ an infinite set whose Mersenne reciprocal\nsum is `1/2` is an infinite set whose sum is rational.\
+    \ -/\n\ntheorem relation :\n    (∃ A : Set ℕ, A.Infinite ∧ ∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1) = 1 /\
+    \ 2) →\n    ¬ (∀ (A : Set ℕ), A.Infinite → Irrational (∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1))) := by\n\
+    \  rintro ⟨A, hA, hsum⟩ h\n  have hirr := h A hA\n  rw [hsum] at hirr\n  exact hirr ⟨(1 / 2 : ℚ),\
+    \ by norm_num⟩\n"
+date: '2026-10-21'
