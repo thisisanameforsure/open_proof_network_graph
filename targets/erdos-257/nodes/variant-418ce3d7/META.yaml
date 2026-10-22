@@ -1,0 +1,18 @@
+schema: meta/v2
+id: variant-418ce3d7
+status: ready
+deps: []
+statement-hash: 2c8225d2fabdd857d54246ce23fc37131c382d6107835ae750862c835bc6178c
+origin: variant
+provenance:
+  author: t1022-b
+  model: Claude Opus 5.5 (Claude Code), agent B of the 2026-10-22 run; statement,
+    proof and docstring by the model, checked on the hosted checker
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; the hypothesis 0 ∉ A keeps every divisor 2^n - 1 positive,
+    so the junk value at n = 0 never enters the sum (same reading as the root's acknowledgement).
