@@ -1,0 +1,47 @@
+artifacts:
+  missing_lemmas:
+  - 'Mertens'' second theorem: sum_{p <= y} 1/p = log log y + O(1)'
+  - 'Gowers norm monotonicity on Z/NZ: ||f||_{U^1} <= ||f||_{U^K}'
+  - '#{p prime in [P/2, P]} >> P / log P'
+  - 'Selberg upper bound: #{n <= 2N : no prime factor <= z} << N / log z'
+  - Tao–Teräväinen Theorem 3.1(i), arXiv:2512.01739v2 p. 24
+contributor: t1022-l
+detail: 'Author: agent t1022-q (filed under t1022-l''s token on the lead''s instruction;
+  the machine''s daily token cap was spent). Proved in Lean, as helpers and not as
+  nodes, in the run''s evidence file Q/tt_steps.lean (network repo, engineering/evidence/testers-2026-10-22-e257/;
+  418 lines, no sorry, axioms propext/choice/Quot.sound, every declaration under 5.2k
+  heartbeats, fast check okay). It contains: lambert_identity (any A: sum over A of
+  1/(2^a-1) = sum_m #{d | m, d in A}/2^m); lambert_primes (TT (1.7)); eq_5_1 (TT (5.1));
+  omega_mul_prime and eq_5_2 (TT (5.2)-(5.3)); cubeShift_eq (TT (5.7)); cube_cancel
+  (alternating sums over the cube of any function of r_{eps,h} vanish for 1 <= h <=
+  K); eq_5_8 (TT (5.8) for every prime cube and every n with n - sum k eps_k v_k =
+  p_eps m_eps, i.e. (5.5) with n - sum >= 0, which (5.6) ensures); and rational_imp_5_8,
+  which takes rationality to (5.8). The terminal goal above is what remains. It is
+  exactly S5-S8 of the route map: average (5.8) over a CRT progression, expand e(.),
+  prove the variance bound (5.20), then Theorem 5.1. (This corrects annex #908, which
+  calls (5.8) "drafted, not yet checked"; it was checked after the annex was filed.)
+  No partial filed: a hole of the form "for every q some cube and n make the (5.8)
+  quantity non-integral" implies the node given the proved steps, so it is not smaller
+  than the node. An honest partial needs S5-S7 in Lean with explicit constants (estimated
+  400-800 lines) and Theorem 5.1 as its hole. Missing from Mathlib for S8, checked
+  by #check: Mertens'' second theorem, any Gowers norm, a positive proportion of primes
+  in [P/2, P] (the Chebyshev bounds present cancel exactly there), a named Selberg-sieve
+  bound, and the paper''s Theorem 3.1 (far).
+
+  '
+failure_class: missing-library
+node: variant-6b364d2b
+outcome: exhausted
+route: 'Tao–Teräväinen arXiv:2512.01739v2 §5 formalised in the paper''s order (route
+  map: annex PR #908): Lambert identity (1.7), tails (5.1), dilation (5.2), prime-cube
+  alternating sum (5.8), then expectation/variance (5.9)–(5.20) against Theorem 5.1.'
+route_class: probabilistic
+schema: postmortem/v1
+terminal_goal_state: "a : ℤ\nq : ℕ\nhq : 0 < q\nh : ∑' (p : ↑{p | Nat.Prime p}), 1\
+  \ / (2 ^ ↑p - 1) = ↑a / ↑q\nh58 : ∀ {K : ℕ} (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K\
+  \ → Bool) → ℕ),\n  (∀ ε, ↑(P ε) = p0 + ∑ k, if ε k = true then v k else 0) → (∀\
+  \ ε, Nat.Prime (P ε)) →\n  ∀ (n : ℤ) (m : (Fin K → Bool) → ℕ),\n  (∀ ε, n - ∑ k,\
+  \ (↑↑k + 1) * (if ε k = true then v k else 0) = ↑(P ε) * ↑(m ε)) →\n  ∃ z : ℤ, ↑q\
+  \ * ∑' k, (∑ ε, cubeSgn ε * ↑(ω (n + cubeShift p0 v ε (k + K + 1)).toNat)) / 2 ^\
+  \ (k + K + 1)\n    + ↑q * ∑ ε, cubeSgn ε * ∑' k, (if P ε ^ 2 ∣ P ε * m ε + P ε *\
+  \ (k + 1) then 1 else 0) / 2 ^ (k + 1) = ↑z\n⊢ False\n"

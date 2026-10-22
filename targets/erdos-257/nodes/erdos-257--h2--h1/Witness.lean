@@ -1,0 +1,18 @@
+import Mathlib
+
+/-- The greedy walk of `r = 0` takes nothing: every `1/(2^n - 1)` with `n ≥ 1` is positive. -/
+theorem witness : ∃ (r : ℚ) (G : Set ℕ),
+  (0 : ℕ) ∉ G ∧
+    ∀ (n : ℕ),
+      (1 : ℕ) ≤ n →
+        (n ∈ G ↔
+          (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)) ≤
+            (↑r : ℝ) - ∑' (a : (↑(G ∩ Set.Iio n) : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑a : ℕ) - (1 : ℝ))) := by
+  refine ⟨0, ∅, by simp, fun n hn => ?_⟩
+  have h2 : (2 : ℝ) ≤ 2 ^ n := by
+    calc (2 : ℝ) = 2 ^ 1 := by norm_num
+      _ ≤ 2 ^ n := pow_le_pow_right₀ (by norm_num) hn
+  have hpos : (0 : ℝ) < 1 / ((2 : ℝ) ^ n - 1) := by
+    apply div_pos one_pos; linarith
+  simp only [Set.mem_empty_iff_false, Set.empty_inter, false_iff, not_le]
+  simpa using hpos

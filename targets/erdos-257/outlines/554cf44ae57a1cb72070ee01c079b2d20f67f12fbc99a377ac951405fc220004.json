@@ -1,0 +1,1594 @@
+{
+  "artifact": {
+    "hash": "554cf44ae57a1cb72070ee01c079b2d20f67f12fbc99a377ac951405fc220004",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node": "variant-1629563f",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable (A.indicator fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable (A.indicator fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 90,
+        "start_line": 89
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑r : ℝ) = ∑' (n : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hrA",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) = ∑' (n : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hrA",
+      "kind": "have",
+      "name": "hrA",
+      "span": {
+        "end_line": 92,
+        "start_line": 91
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_subtype",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ m ∈ A,\n  ∃ (L : ℕ), (0 : ℕ) < L ∧ (∀ a ∈ A, a < m → (2 : ℕ) ^ a - (1 : ℕ) ∣ L) ∧ (2 : ℕ) ^ ((4 : ℕ) * q) * L ≤ (2 : ℕ) ^ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "m",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hmA",
+            "type": {
+              "printed": "reliable",
+              "text": "m ∈ A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "L",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hL0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < L",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hLdvd",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ A, a < m → (2 : ℕ) ^ a - (1 : ℕ) ∣ L",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hLm",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ^ ((4 : ℕ) * q) * L ≤ (2 : ℕ) ^ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 94,
+        "start_line": 94
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ m",
+              "truncated": false
+            }
+          },
+          "id": "hm1.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 97,
+            "start_line": 97
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Anything follows from two contradictory hypotheses.",
+                "name": "absurd",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m > (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ m",
+              "truncated": false
+            }
+          },
+          "id": "hm1.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 98,
+            "start_line": 98
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℕ) ≤ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hm1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hm1",
+      "kind": "have",
+      "name": "hm1",
+      "span": {
+        "end_line": 98,
+        "start_line": 95
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.eq_zero_or_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ i ∈ Finset.range m, A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i +\n    ∑' (i : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) (i + m) =\n  ∑' (i : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsplit",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ i ∈ Finset.range m, A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i +\n    ∑' (i : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) (i + m) =\n  ∑' (i : ℕ), A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsplit",
+      "kind": "have",
+      "name": "hsplit",
+      "span": {
+        "end_line": 100,
+        "start_line": 100
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ i ∈ Finset.range m, A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i =\n  ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfin",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ i ∈ Finset.range m, A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) i =\n  ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hfin",
+      "kind": "have",
+      "name": "hfin",
+      "span": {
+        "end_line": 104,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_filter",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_apply",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (i : ℕ) => A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) (i + m)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hTs",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (i : ℕ) => A.indicator (fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))) (i + m)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hTs",
+      "kind": "have",
+      "name": "hTs",
+      "span": {
+        "end_line": 107,
+        "start_line": 106
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "summable_nat_add_iff",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℝ) < (2 : ℝ) ^ m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) < (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hTpos.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 111,
+            "start_line": 111
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_lt_pow₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < T",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hTpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < T",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hTpos",
+      "kind": "have",
+      "name": "hTpos",
+      "span": {
+        "end_line": 112,
+        "start_line": 108
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Summable.tsum_pos",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_nonneg",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "zero_add",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_of_mem",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_pos",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `zero_lt_one`.",
+            "name": "one_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "T ≤ (4 : ℝ) * (1 / 2 : ℝ) ^ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hTle",
+            "type": {
+              "printed": "reliable",
+              "text": "T ≤ (4 : ℝ) * (1 / 2 : ℝ) ^ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hTle",
+      "kind": "have",
+      "name": "hTle",
+      "span": {
+        "end_line": 113,
+        "start_line": 113
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑r : ℝ) = ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + T",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hrT",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) = ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) + T",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hrT",
+      "kind": "have",
+      "name": "hrT",
+      "span": {
+        "end_line": 115,
+        "start_line": 114
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (N : ℤ), (↑L : ℝ) * ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "N",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hN",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑L : ℝ) * ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s11",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 118,
+        "start_line": 116
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.mem_filter",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑L : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hPpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑L : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hPpos",
+      "kind": "have",
+      "name": "hPpos",
+      "span": {
+        "end_line": 119,
+        "start_line": 119
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑r : ℝ) * (↑q : ℝ) = (↑r.num : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hqr",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) * (↑q : ℝ) = (↑r.num : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hqr",
+      "kind": "have",
+      "name": "hqr",
+      "span": {
+        "end_line": 121,
+        "start_line": 120
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Rat.mul_den_eq_num",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "T = (↑r : ℝ) - ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "linarith"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "T = (↑r : ℝ) - ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T =\n  (↑L : ℝ) * ((↑r : ℝ) * (↑q : ℝ)) - (↑q : ℝ) * ((↑L : ℝ) * ∑ a ∈ F, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          "id": "hZ.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 125,
+            "start_line": 125
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑q : ℝ) * (↑L : ℝ) * T = (↑((↑L : ℤ) * r.num - (↑q : ℤ) * N) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hZ",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T = (↑((↑L : ℤ) * r.num - (↑q : ℤ) * N) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hZ",
+      "kind": "have",
+      "name": "hZ",
+      "span": {
+        "end_line": 126,
+        "start_line": 122
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑q : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hqpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑q : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hqpos",
+      "kind": "have",
+      "name": "hqpos",
+      "span": {
+        "end_line": 128,
+        "start_line": 127
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑q : ℝ) * (↑L : ℝ) * T",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "positivity"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑q : ℝ) * (↑L : ℝ) * T",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hpos",
+      "kind": "have",
+      "name": "hpos",
+      "span": {
+        "end_line": 129,
+        "start_line": 129
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℤ) < (↑L : ℤ) * r.num - (↑q : ℤ) * N",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℤ) < (↑L : ℤ) * r.num - (↑q : ℤ) * N",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ (↑((↑L : ℤ) * r.num - (↑q : ℤ) * N) : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hge.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 132,
+            "start_line": 132
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) ≤ (↑q : ℝ) * (↑L : ℝ) * T",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hge",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ (↑q : ℝ) * (↑L : ℝ) * T",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hge",
+      "kind": "have",
+      "name": "hge",
+      "span": {
+        "end_line": 133,
+        "start_line": 130
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * (↑L : ℝ) ≤ (2 : ℝ) ^ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hLm'",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * (↑L : ℝ) ≤ (2 : ℝ) ^ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hLm'",
+      "kind": "have",
+      "name": "hLm'",
+      "span": {
+        "end_line": 134,
+        "start_line": 134
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(4 : ℕ) * q < (2 : ℕ) ^ ((4 : ℕ) * q)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(4 : ℕ) * q < (2 : ℕ) ^ ((4 : ℕ) * q)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(4 : ℝ) * (↑q : ℝ) < (2 : ℝ) ^ ((4 : ℕ) * q)",
+              "truncated": false
+            }
+          },
+          "id": "hbig.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 136,
+            "start_line": 136
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.lt_two_pow_self",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(4 : ℝ) * (↑q : ℝ) < (2 : ℝ) ^ ((4 : ℕ) * q)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbig",
+            "type": {
+              "printed": "reliable",
+              "text": "(4 : ℝ) * (↑q : ℝ) < (2 : ℝ) ^ ((4 : ℕ) * q)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hbig",
+      "kind": "have",
+      "name": "hbig",
+      "span": {
+        "end_line": 137,
+        "start_line": 135
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) ^ m * (1 / 2 : ℝ) ^ m = (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2m",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ m * (1 / 2 : ℝ) ^ m = (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h2m",
+      "kind": "have",
+      "name": "h2m",
+      "span": {
+        "end_line": 138,
+        "start_line": 138
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "mul_pow",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑q : ℝ) * (↑L : ℝ) * T ≤ (↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hA1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑q : ℝ) * (↑L : ℝ) * T ≤ (↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hupper.hA1",
+          "kind": "have",
+          "name": "hA1",
+          "span": {
+            "end_line": 141,
+            "start_line": 140
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "mul_le_mul_of_nonneg_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * (↑L : ℝ) * ((4 : ℝ) * (↑q : ℝ) * (1 / 2 : ℝ) ^ m) ≤\n  (2 : ℝ) ^ m * ((4 : ℝ) * (↑q : ℝ) * (1 / 2 : ℝ) ^ m)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * (↑L : ℝ) * ((4 : ℝ) * (↑q : ℝ) * (1 / 2 : ℝ) ^ m) ≤\n  (2 : ℝ) ^ m * ((4 : ℝ) * (↑q : ℝ) * (1 / 2 : ℝ) ^ m)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * ((↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)) ≤\n  (4 : ℝ) * (↑q : ℝ) * ((2 : ℝ) ^ m * (1 / 2 : ℝ) ^ m)",
+                  "truncated": false
+                }
+              },
+              "id": "hupper.hA2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 144,
+                "start_line": 144
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_right",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * ((↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)) ≤\n  (4 : ℝ) * (↑q : ℝ) * ((2 : ℝ) ^ m * (1 / 2 : ℝ) ^ m)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hA2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ^ ((4 : ℕ) * q) * ((↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)) ≤\n  (4 : ℝ) * (↑q : ℝ) * ((2 : ℝ) ^ m * (1 / 2 : ℝ) ^ m)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hupper.hA2",
+          "kind": "have",
+          "name": "hA2",
+          "span": {
+            "end_line": 145,
+            "start_line": 142
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < (2 : ℝ) ^ ((4 : ℕ) * q)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "positivity"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpow",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < (2 : ℝ) ^ ((4 : ℕ) * q)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hupper.hpow",
+          "kind": "have",
+          "name": "hpow",
+          "span": {
+            "end_line": 147,
+            "start_line": 147
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℝ) ≤ (↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hc2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℝ) ≤ (↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "hupper.this.hc2",
+              "kind": "have",
+              "name": "hc2",
+              "span": {
+                "end_line": 150,
+                "start_line": 150
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "not_lt",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m) < (1 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑q : ℝ) * (↑L : ℝ) * ((4 : ℝ) * (1 / 2 : ℝ) ^ m) < (1 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hupper.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 151,
+            "start_line": 148
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hupper",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) * (↑L : ℝ) * T < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hupper",
+      "kind": "have",
+      "name": "hupper",
+      "span": {
+        "end_line": 152,
+        "start_line": 139
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "mul_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
