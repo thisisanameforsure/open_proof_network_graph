@@ -1,0 +1,21 @@
+schema: meta/v2
+id: variant-f93b89d8
+status: ready
+deps: []
+statement-hash: 23659706ce4d7d097c6196a7ca2a2df7843be7a797d8cc2b133b11fe1fb93db4
+origin: variant
+provenance:
+  author: t1022-g
+  model: Claude Opus 5.5 via Claude Code
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: n ranges over powers a^k, b^k with a, b ≥ 2, all ≥ 1, so 2^n - 1
+    ≥ 1; the root uses the same expression.
+- checker: off-by-one-range
+  location: 2 ≤ a
+  justification: 'bases must be at least 2: base 1 gives the one-element set {1} and
+    base 0 gives {0,1}; 2 ≤ a is the intended inclusive bound.'

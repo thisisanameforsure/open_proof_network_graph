@@ -1,0 +1,114 @@
+{
+  "artifact_hash": "c86db925509d4cf31fe2b0954affc9b1a12d9157ae43e8b286f03890aeccd94e",
+  "automation": {
+    "framework": "Claude Code + aristotle CLI 2.1.0",
+    "method": "agent",
+    "models": [
+      "aristotle (Harmonic)",
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "06863fc54ca35cbb8580c3446050917402e84f21",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "06863fc54ca35cbb8580c3446050917402e84f21",
+  "model_and_tooling": "Aristotle (Harmonic) for the proof; claude-opus-5-5 for gate conversion aristotlelib 2.1.0, project 65ecab34-bea5-4736-bacd-87a26f77f908 Claude Code + aristotle CLI",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-7a0f5735",
+  "precheck_attestation": {
+    "hash": "1464d717ba4fd726bf377176b3f0483ed499b607ba2b4cff87a73b25cd85e40a",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-22T17:57:11Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQAujM7qJAmOudn4ANWADpHjTuxINCbTOMA3/agEFZOfXH0JyU4\n32MJc99D1h4lEvbPMtZ1Bki51JiFN8MuUmVgY=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "d53a3248b99d9bf8d9af4aaeebb90c0eeb339105b7467d37322e74f9890b6c39",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's junk value makes the term 0, so the sum is the sum over the positive elements, exactly as in the root's acknowledged division.",
+              "location": "1 / (2 ^ ↑m - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code + aristotle CLI",
+    "model": "Aristotle (Harmonic) for the proof; claude-opus-5-5 for gate conversion"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
