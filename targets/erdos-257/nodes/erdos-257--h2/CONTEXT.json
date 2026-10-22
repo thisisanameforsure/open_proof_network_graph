@@ -8,9 +8,9 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "route-dead-ends": 1,
+      "route-dead-ends": 2,
       "statement-suspect": 1
     },
     "records": [
@@ -77,17 +77,50 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261022T130016Z-t1022-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-b",
+          "detail": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261022T130016Z-t1022-b.yaml",
+            "text": "What the route proves (Lean, fast-checked, submitted as two partial variants of the root): Opn.erdos_257_liouville_criterion (if for every C some m in A has a common multiple L of the 2^a - 1, a in A, a < m, with 2^C·L <= 2^m, the sum is irrational) and Opn.erdos_257_eventually_ratio_two (from some point on any two elements n < m satisfy m >= 2n: {2^k}, {2^k - 1}, {3^k}, {k!}, divisibility chains, finite modifications of these). The greedy hypothesis plays no part; the argument sees only the si…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-257--h2",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261022T130016Z-t1022-b.yaml",
+            "text": "Liouville's denominator argument on the set G: if G sums to p/q then, for every m in G, q·L·(tail of G from m) is a positive integer, where L is any common multiple of the 2^a - 1 over a in G below m, while the tail is below 4·2^(-m); so 2^m < 4q·L at every element m of G. This closes the hole for every G that is eventually lacunary of ratio two (proved in full: variant-d144ccc1, with the criterion variant-1629563f) and for nothing denser.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/erdos-257--h2/attempts/20261022T130016Z-t1022-b.yaml",
+            "text": "r : ℚ\nG : Set ℕ\nhG0 : 0 ∉ G\nhgreedy : ∀ (n : ℕ), 1 ≤ n → (n ∈ G ↔ 1 / (2 ^ n - 1) ≤ ↑r - ∑' (a : ↑(G ∩ Set.Iio n)), 1 / (2 ^ ↑a - 1))\nhsum : ∑' (n : ↑G), 1 / (2 ^ ↑n - 1) = ↑r\n⊢ G.Finite\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [
-      "computational"
+      "computational",
+      "direct-estimate"
     ],
     "truncated": false
   },
   "cause": null,
   "claims": {
     "active": [],
-    "history_count": 0
+    "history_count": 1
   },
   "defect_claims": [],
   "deps": [],
@@ -122,7 +155,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "403218645a7f497ebf2d72c010f3ee8f58664332",
+  "rendered_from": "f7fb4c9f2027ef998d0dc4cdfe4bc13067a8e0ad",
   "review": {
     "questions_waiting": [
       {

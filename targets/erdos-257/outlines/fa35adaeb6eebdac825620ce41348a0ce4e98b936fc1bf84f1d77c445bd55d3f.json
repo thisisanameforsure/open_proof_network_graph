@@ -1,0 +1,411 @@
+{
+  "artifact": {
+    "hash": "fa35adaeb6eebdac825620ce41348a0ce4e98b936fc1bf84f1d77c445bd55d3f",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node": "variant-886b66da",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Set ℕ),\n  A.Infinite →\n    (∃ (p : ℕ) (N : ℕ), (0 : ℕ) < p ∧ ∀ (n : ℕ), N ≤ n → (n ∈ A ↔ n + p ∈ A)) →\n      Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hEP",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Set ℕ),\n  A.Infinite →\n    (∃ (p : ℕ) (N : ℕ), (0 : ℕ) < p ∧ ∀ (n : ℕ), N ≤ n → (n ∈ A ↔ n + p ∈ A)) →\n      Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (a d : ℕ),\n  (0 : ℕ) < d →\n    Irrational (∑' (m : (↑{m : ℕ | ∃ (n : ℕ), m = a + d * n} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑m : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hEP",
+      "kind": "have",
+      "name": "hEP",
+      "span": {
+        "end_line": 873,
+        "start_line": 870
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "A real number is irrational if it is not equal to any rational number.",
+            "name": "Irrational",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "d * x = d * y",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "d * x = d * y",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = y",
+                  "truncated": false
+                }
+              },
+              "id": "s2.hinj.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 878,
+                "start_line": 878
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "Function.Injective fun (n : ℕ) => a + d * n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hinj",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Function.Injective fun (n : ℕ) => a + d * n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "{m : ℕ | ∃ (n : ℕ), m = a + d * n}.Infinite",
+              "truncated": false
+            }
+          },
+          "id": "s2.hinj",
+          "kind": "have",
+          "name": "hinj",
+          "span": {
+            "end_line": 879,
+            "start_line": 876
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+                "name": "Function.Injective",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Nat.eq_of_mul_eq_mul_left",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "{m : ℕ | ∃ (n : ℕ), m = a + d * n}.Infinite",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 880,
+        "start_line": 876
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.infinite_of_injective_forall_mem",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "n ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n} → n + d ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n}",
+              "truncated": false
+            }
+          },
+          "id": "s3.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 884,
+            "start_line": 883
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "omega"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n + d = a + d * (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n}",
+                  "truncated": false
+                }
+              },
+              "id": "s3.s2.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 887,
+                "start_line": 887
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "k",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hk",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n + d = a + d * (k + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "n ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n}",
+                  "truncated": false
+                }
+              },
+              "id": "s3.s2.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 888,
+                "start_line": 888
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": "**Alias** of `left_distrib`.",
+                    "name": "mul_add",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_one",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "n + d ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n} → n ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n}",
+              "truncated": false
+            }
+          },
+          "id": "s3.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 888,
+            "start_line": 885
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (p : ℕ) (N : ℕ),\n  (0 : ℕ) < p ∧ ∀ (n : ℕ), N ≤ n → (n ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n} ↔ n + p ∈ {m : ℕ | ∃ (n : ℕ), m = a + d * n})",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 888,
+        "start_line": 881
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}

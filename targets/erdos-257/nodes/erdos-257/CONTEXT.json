@@ -1,9 +1,24 @@
 {
   "annexes": [
     {
+      "bytes": 5286,
+      "hash": "0836778d5bb1c3916b502199fd9db73089aad4293fd65365f0d980a57d97b500",
+      "path": "targets/erdos-257/nodes/erdos-257/annex/0836778d5bb1c3916b502199fd9db73089aad4293fd65365f0d980a57d97b500.md"
+    },
+    {
       "bytes": 8338,
       "hash": "0f67147d546bd8ac505c9036d7b60f02f7f25c92e1c62837be9a7177f51d7a7d",
       "path": "targets/erdos-257/nodes/erdos-257/annex/0f67147d546bd8ac505c9036d7b60f02f7f25c92e1c62837be9a7177f51d7a7d.md"
+    },
+    {
+      "bytes": 4323,
+      "hash": "2ce2d20234a5f77cac1098eba96552d8b8ff3613a6d3b43a5cd7ba9abfeec8aa",
+      "path": "targets/erdos-257/nodes/erdos-257/annex/2ce2d20234a5f77cac1098eba96552d8b8ff3613a6d3b43a5cd7ba9abfeec8aa.md"
+    },
+    {
+      "bytes": 4012,
+      "hash": "83be4da22a6e8747968b2f52d7cb00b6c63a75883934e82ab2cc2530b409d154",
+      "path": "targets/erdos-257/nodes/erdos-257/annex/83be4da22a6e8747968b2f52d7cb00b6c63a75883934e82ab2cc2530b409d154.md"
     },
     {
       "bytes": 3169,
@@ -19,9 +34,39 @@
         "path": "targets/erdos-257/nodes/erdos-257/attempts/20261020T203102Z-fable-1020-e257-c-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/erdos-257/attempts/20261022T135957Z-t1022-g.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-g",
+          "detail": {
+            "source": "targets/erdos-257/nodes/erdos-257/attempts/20261022T135957Z-t1022-g.yaml",
+            "text": "Proved in Lean (fast-checked, axioms propext, Classical.choice, Quot.sound; proposed as partial variants, waiting in the merge queue at the end of the run): r = 2 in two forms. (1) Opn.erdos_257_powers_of_two_bases (variant-f93b89d8, PR #872): for every 2 <= a < b the sum over {a^k} union {b^k} is irrational, with no independence condition. Put Z = b^(K+1) and a^J the largest power of a with a^J <= Z: either m = Z has margin >= C, or a^J lies within b^K + C of Z and then m = a^(J+1) (a >= 3) or…",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "erdos-257",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/erdos-257/attempts/20261022T135957Z-t1022-g.yaml",
+            "text": "Extend the denominator (Liouville) route of variant-1629563f from one divisibility chain to unions of several. For A a union of chains c_1, ..., c_r, the common denominator of the partial sum below m is the product of 2^(P_i(m)) - 1, where P_i(m) is the largest element of chain i below m, so the criterion applies as soon as the margin m - P_1(m) - ... - P_r(m) is unbounded along elements m of A.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1"
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -154,7 +199,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "403218645a7f497ebf2d72c010f3ee8f58664332",
+  "rendered_from": "f7fb4c9f2027ef998d0dc4cdfe4bc13067a8e0ad",
   "review": {
     "questions_waiting": [
       {
