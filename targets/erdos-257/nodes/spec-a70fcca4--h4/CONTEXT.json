@@ -1,5 +1,11 @@
 {
-  "annexes": [],
+  "annexes": [
+    {
+      "bytes": 2970,
+      "hash": "cb16e8901bfede2ddab7082f9a2c1c172d30bcedc87e4164d39b9718a55a623a",
+      "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/annex/cb16e8901bfede2ddab7082f9a2c1c172d30bcedc87e4164d39b9718a55a623a.md"
+    }
+  ],
   "attempts": {
     "assemblies": [
       {
@@ -8,9 +14,10 @@
         "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T122951Z-t1022-a-partial.lean"
       }
     ],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "budget-exhausted": 1
+      "budget-exhausted": 1,
+      "route-dead-ends": 1
     },
     "records": [
       {
@@ -44,6 +51,38 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T125421Z-t1022-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-a",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T125421Z-t1022-a.yaml",
+            "text": "What was proved (graph PR #815, partial on this node): the bound can only fail at a skipped step, and it suffices that a skipped remainder satisfies r_m <= 2^-m + 4^-m/3 (hole spec-a70fcca4--h4--h1); a second partial on that hole (prepared, submitted after #815 renders) proves it from the run statement in the goal above, via the lemma that a skipped m with r_m > 2^-m forces every n in (m, 2m] to be taken. The invariant route itself dead-ends: the identity x_m = I_m - Phi(m) is exact (checked wi…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T125421Z-t1022-a.yaml",
+            "text": "arithmetic invariant on the scaled remainder: x_m = 2^m r_m = I_m - Phi(m) with I_m an integer and Phi(m) = sum over chosen a < m of 2^(m mod a)/(2^a - 1); sought a congruence or size reason keeping Phi(m) at least ~2^-m away from integers at skipped steps",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T125421Z-t1022-a.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhm : 2 ≤ m\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [],
@@ -51,12 +90,7 @@
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-22T14:29:30Z",
-        "pseudonym": "t1022-a"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -100,7 +134,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "10fba22604b7f88c4c9ab798a999f62d514dc2a9",
+  "rendered_from": "70e605dfb451bff545d862075f73b55199daa30a",
   "review": {
     "questions_waiting": [
       {

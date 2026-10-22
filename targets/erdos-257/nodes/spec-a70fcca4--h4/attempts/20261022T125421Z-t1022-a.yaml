@@ -1,0 +1,42 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-a
+detail: 'What was proved (graph PR #815, partial on this node): the bound can only
+  fail at a skipped step, and it suffices that a skipped remainder satisfies r_m <=
+  2^-m + 4^-m/3 (hole spec-a70fcca4--h4--h1); a second partial on that hole (prepared,
+  submitted after #815 renders) proves it from the run statement in the goal above,
+  via the lemma that a skipped m with r_m > 2^-m forces every n in (m, 2m] to be taken.
+  The invariant route itself dead-ends: the identity x_m = I_m - Phi(m) is exact (checked
+  with rationals for m < 300) but Phi(m) has denominator lcm(2^a - 1) over the chosen
+  a, so no congruence keeps it from integers, and the distance needed shrinks like
+  2^-m. Agent F measured the run property over all 4368 alive p/q with q <= 120 to
+  depth 200: violations at step m occur with frequency halving in m (542, 276, 146,
+  78, 38, ... for m = 2, 3, 4, 5, 6), the same 2^-m law as stalls, so for 1/2 it is
+  a typical-point property (true to depth 20000) with no visible mechanism.
+
+  '
+failure_class: route-dead-ends
+node: spec-a70fcca4--h4
+outcome: exhausted
+route: 'arithmetic invariant on the scaled remainder: x_m = 2^m r_m = I_m - Phi(m)
+  with I_m an integer and Phi(m) = sum over chosen a < m of 2^(m mod a)/(2^a - 1);
+  sought a congruence or size reason keeping Phi(m) at least ~2^-m away from integers
+  at skipped steps'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 'r : ℕ → ℝ
+
+  h0 : r 0 = 1 / 2
+
+  hrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1)
+  else r m
+
+  m : ℕ
+
+  hm : 2 ≤ m
+
+  hlt : r m < 1 / (2 ^ m - 1)
+
+  ⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)
+
+  '
