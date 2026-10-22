@@ -1,0 +1,41 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-a
+detail: 'The reduction is proved in Lean (graph PR #860, partial on this node, one
+  hole with the goal above): the m = 0 and m = 1 cases are checked directly (r_1 =
+  1/2), and for m >= 2 the block sum over (m, 2m] of 1/(2^k - 1) is below 2^-m (termwise
+  1/(2^k-1) <= 2^-k + 2*4^-k, finite geometric sums), so a skipped m with r_m above
+  the parent''s bound would start a run over the whole block. The remaining run statement
+  is equivalent to a skipped r_m staying below sum_(k=m+1..2m) 1/(2^k-1), about 2^-m
+  - (2/3) 4^-m, i.e. again a shrinking target at scale 4^-m for one orbit. It holds
+  for 1/2 to depth 20000 (longest run 13, agent F; the lead reports 20 to 10^6), but
+  over all alive p/q with q <= 120 its violations at step m halve in m, so it is a
+  typical-point property with no mechanism found. No invariant of the walk was found
+  that bounds run lengths by anything sublinear in their starting point.
+
+  '
+failure_class: route-dead-ends
+node: spec-a70fcca4--h4--h1
+outcome: exhausted
+route: 'runs of the chosen set: while the walk takes consecutive elements the deficit
+  d_n = T_n - r_n is constant, and n is taken iff d_n <= T_(n+1); a skipped m with
+  r_m > 2^-m therefore forces a run over all of (m, 2m]; sought a reason the run after
+  a skipped m >= 2 always breaks within (m, 2m]'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 'r : ℕ → ℝ
+
+  h0 : r 0 = 1 / 2
+
+  hrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1)
+  else r m
+
+  m : ℕ
+
+  hm : 2 ≤ m
+
+  hlt : r m < 1 / (2 ^ m - 1)
+
+  ⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)
+
+  '
