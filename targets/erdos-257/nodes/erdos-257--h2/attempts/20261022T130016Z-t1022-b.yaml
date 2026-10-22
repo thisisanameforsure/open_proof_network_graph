@@ -1,0 +1,49 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-b
+detail: 'What the route proves (Lean, fast-checked, submitted as two partial variants
+  of the root): Opn.erdos_257_liouville_criterion (if for every C some m in A has
+  a common multiple L of the 2^a - 1, a in A, a < m, with 2^C·L <= 2^m, the sum is
+  irrational) and Opn.erdos_257_eventually_ratio_two (from some point on any two elements
+  n < m satisfy m >= 2n: {2^k}, {2^k - 1}, {3^k}, {k!}, divisibility chains, finite
+  modifications of these). The greedy hypothesis plays no part; the argument sees
+  only the size of the common denominator of the partial sums. Why it cannot close
+  this hole: the only G that matter are the greedy sets of rationals that never stall,
+  and these look dense (the greedy set for 1/2 has about half of the integers up to
+  10^6). For a set of positive density below m the least common multiple of the 2^a
+  - 1 contains the cyclotomic factors Phi_d(2), roughly 2^phi(d), for every d in the
+  set, so its logarithm is of order m^2, far above the m the tail allows: the necessary
+  condition 2^m < 4q·L holds trivially and says nothing. The product bound already
+  stops at lacunary ratio two: for ratio lambda < 2 the earlier elements sum to about
+  lambda m/(lambda - 1) > m, and only special arithmetic (common divisors, as in chains)
+  can bring the common denominator back below 2^m; even the union {2^k} union {3^k}
+  is not covered by the bound as far as I could see. Closing this hole needs an argument
+  that uses the digits of the sum, not only its denominators, as Erdős 1948 (A = N)
+  and Tao-Teräväinen (primes) do.
+
+  '
+failure_class: route-dead-ends
+node: erdos-257--h2
+outcome: refuted-route
+route: 'Liouville''s denominator argument on the set G: if G sums to p/q then, for
+  every m in G, q·L·(tail of G from m) is a positive integer, where L is any common
+  multiple of the 2^a - 1 over a in G below m, while the tail is below 4·2^(-m); so
+  2^m < 4q·L at every element m of G. This closes the hole for every G that is eventually
+  lacunary of ratio two (proved in full: variant-d144ccc1, with the criterion variant-1629563f)
+  and for nothing denser.'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 'r : ℚ
+
+  G : Set ℕ
+
+  hG0 : 0 ∉ G
+
+  hgreedy : ∀ (n : ℕ), 1 ≤ n → (n ∈ G ↔ 1 / (2 ^ n - 1) ≤ ↑r - ∑'' (a : ↑(G ∩ Set.Iio
+  n)), 1 / (2 ^ ↑a - 1))
+
+  hsum : ∑'' (n : ↑G), 1 / (2 ^ ↑n - 1) = ↑r
+
+  ⊢ G.Finite
+
+  '
