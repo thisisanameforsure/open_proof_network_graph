@@ -1,0 +1,22 @@
+schema: meta/v2
+id: variant-1629563f
+status: ready
+deps: []
+statement-hash: ba009314506589b9d6c5cafba9a72992844958ea85cf7b1136c308bc76c47cbc
+origin: variant
+provenance:
+  author: t1022-b
+  model: Claude Opus 5.5 (Claude Code), agent B of the 2026-10-22 run; statement,
+    proof and docstring by the model, checked on the hosted checker
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; the hypothesis 0 ∉ A keeps every divisor 2^n - 1 positive,
+    so the junk value at n = 0 never enters the sum (same reading as the root's acknowledgement).
+- checker: nat-sub
+  location: 2 ^ a - 1
+  justification: Natural subtraction 2^a - 1 never truncates, since 2^a ≥ 1 for every
+    a; it is the integer 2^a - 1, the denominator of the a-th term.
