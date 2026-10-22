@@ -1,0 +1,120 @@
+{
+  "artifact_hash": "7c2632562b0a01c2594c74cd3031ae0552ad7e285606774c399ce8cb0b4a0cb2",
+  "automation": {
+    "framework": "Claude Code + aristotle CLI 2.1.0",
+    "method": "agent",
+    "models": [
+      "aristotle (Harmonic)",
+      "claude-opus-5-5"
+    ],
+    "wall_time": "about 23 minutes on Aristotle, 5 minutes conversion"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "ddcbbe952ef9dbf6ede24a5f317bec9b45557666",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "ddcbbe952ef9dbf6ede24a5f317bec9b45557666",
+  "model_and_tooling": "Aristotle (Harmonic) for the proof; claude-opus-5-5 for the gate conversion aristotlelib 2.1.0, project 4cf90da5-f956-4d30-80a1-5015b04efdc6 Claude Code + aristotle CLI",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-c91009b9",
+  "precheck_attestation": {
+    "hash": "92cbff81096c9aee5ca71fddeac87e29d64fb2597a42c7eb3f982c1f4d40a212",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-22T17:44:24Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQAi8KmKDPYpOJQ/WsLIi1qrrnzJcz925DspAw+IkTy+WlzwgMv\na/fKn9jmaSxPhSPf99Wge7Tu5MAEh9iL2RVQI=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "72b23d263031d7abb8154ac4d76a36ca8b21200a92579f4d367f9130ebdd35ae",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's junk value makes the term 0, so the sum is the sum over the positive elements, exactly as in the root's acknowledged division.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "Real division by n; n = 0 gives the junk value 0, and a pairwise coprime infinite set may contain 0 only if it is {0, 1}, which is finite, so 0 never occurs under the hypotheses.",
+              "location": "1 / ↑↑n"
+            }
+          ]
+        },
+        "message": "2 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code + aristotle CLI",
+    "model": "Aristotle (Harmonic) for the proof; claude-opus-5-5 for the gate conversion"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

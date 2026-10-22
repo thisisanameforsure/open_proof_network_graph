@@ -1,0 +1,115 @@
+{
+  "artifact_hash": "7b26a4e38065b83a6031d81cfbb6e66bd1458faab9437d253ff26dfdb05d3173",
+  "automation": {
+    "framework": "Claude Code + aristotle CLI 2.1.0",
+    "method": "agent",
+    "models": [
+      "aristotle (Harmonic)",
+      "claude-opus-5-5"
+    ],
+    "wall_time": "about 20 minutes on Aristotle, 10 minutes merging/conversion"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "6654abbe1467f01b2f60ba9acb07d452cf674349",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "6654abbe1467f01b2f60ba9acb07d452cf674349",
+  "model_and_tooling": "Aristotle (Harmonic) for the purely periodic case; the eventually-periodic reduction is t1022-d's assembly (graph #862); claude-opus-5-5 for merging and gate conversion aristotlelib 2.1.0, project a769a72e-5c42-468b-94b3-0d93ed1dad68 Claude Code + aristotle CLI",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-5274cf38",
+  "precheck_attestation": {
+    "hash": "d67250d896f3c88e3e9a9c260218cd6f609cd1b6247c42a4ed98d34aaac9512c",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-22T16:28:03Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQFBzV4tvkFpAm5CcHFAIMzq8NfrJd5CSfLWMOEOYDn4HeZolOB\nxqFDgYOfeZhmGBjGzwtDj8Cy9/oHjTYTCumww=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "7baead79315c8f44c917ec116443c1981d47001a1b5efe9e686e089ff8b589a7",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's junk value makes the term 0, so the sum is the sum over the positive elements, exactly as in the root's acknowledged division.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code + aristotle CLI",
+    "model": "Aristotle (Harmonic) for the purely periodic case; the eventually-periodic reduction is t1022-d's assembly (graph #862); claude-opus-5-5 for merging and gate conversion"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
