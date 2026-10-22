@@ -1,0 +1,914 @@
+{
+  "artifact": {
+    "hash": "958f13fc3d55f7b36df7525b6b348627ad0b22d6657f5cea8bd22088ab16ec9d",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node": "variant-d144ccc1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "B' = A \\ {a : ℕ | a < N}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "B' = A \\ {a : ℕ | a < N}",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "B'.Infinite",
+              "truncated": false
+            }
+          },
+          "id": "hBinf.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 300,
+            "start_line": 299
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "not_lt",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "B'.Infinite",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hBinf",
+            "type": {
+              "printed": "reliable",
+              "text": "B'.Infinite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hBinf",
+      "kind": "have",
+      "name": "hBinf",
+      "span": {
+        "end_line": 302,
+        "start_line": 298
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.finite_lt_nat",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) ∉ B'",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) ∉ B'",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hB0",
+      "kind": "have",
+      "name": "hB0",
+      "span": {
+        "end_line": 303,
+        "start_line": 303
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ m ∈ B', ∀ n ∈ B', n < m → (2 : ℕ) * n ≤ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hBr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ m ∈ B', ∀ n ∈ B', n < m → (2 : ℕ) * n ≤ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hBr",
+      "kind": "have",
+      "name": "hBr",
+      "span": {
+        "end_line": 305,
+        "start_line": 304
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Irrational (∑' (n : (↑B' : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hirr",
+            "type": {
+              "printed": "reliable",
+              "text": "Irrational (∑' (n : (↑B' : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hirr",
+      "kind": "have",
+      "name": "hirr",
+      "span": {
+        "end_line": 306,
+        "start_line": 306
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable (A.indicator f)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsA",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable (A.indicator f)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hsA",
+      "kind": "have",
+      "name": "hsA",
+      "span": {
+        "end_line": 309,
+        "start_line": 309
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable (B'.indicator f)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsB",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable (B'.indicator f)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hsB",
+      "kind": "have",
+      "name": "hsB",
+      "span": {
+        "end_line": 310,
+        "start_line": 310
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n ∉ B'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n ∉ B'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+                  "truncated": false
+                }
+              },
+              "id": "hpt.s1.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 315,
+                "start_line": 315
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Anything follows from two contradictory hypotheses.",
+                    "name": "absurd",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "not_le",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnN",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < N",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+              "truncated": false
+            }
+          },
+          "id": "hpt.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 316,
+            "start_line": 315
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n ∈ B'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n ∈ B'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+                  "truncated": false
+                }
+              },
+              "id": "hpt.s2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 317,
+                "start_line": 317
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                    "name": "And.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "not_lt",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnN",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬n < N",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+              "truncated": false
+            }
+          },
+          "id": "hpt.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 318,
+            "start_line": 317
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_mem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n ∉ B'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n ∉ B'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+                  "truncated": false
+                }
+              },
+              "id": "hpt.s3.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 319,
+                "start_line": 319
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnN",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n < N",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+              "truncated": false
+            }
+          },
+          "id": "hpt.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 320,
+            "start_line": 319
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n ∉ B'",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n ∉ B'",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+                  "truncated": false
+                }
+              },
+              "id": "hpt.s4.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 321,
+                "start_line": 321
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hnN",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬n < N",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+              "truncated": false
+            }
+          },
+          "id": "hpt.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 322,
+            "start_line": 321
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpt",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), A.indicator f n = (if n ∈ F then f n else (0 : ℝ)) + B'.indicator f n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hpt",
+      "kind": "have",
+      "name": "hpt",
+      "span": {
+        "end_line": 322,
+        "start_line": 311
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Summable fun (n : ℕ) => if n ∈ F then f n else (0 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hfin",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Summable fun (n : ℕ) => if n ∈ F then f n else (0 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (x : ℕ), A.indicator f x = ∑ a ∈ F, f a + ∑' (x : ℕ), B'.indicator f x",
+              "truncated": false
+            }
+          },
+          "id": "hsplit.hfin",
+          "kind": "have",
+          "name": "hfin",
+          "span": {
+            "end_line": 327,
+            "start_line": 326
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+                "name": "Summable",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "summable_of_ne_finset_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑ a ∈ F, f a + ∑' (n : (↑B' : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsplit",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑ a ∈ F, f a + ∑' (n : (↑B' : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hsplit",
+      "kind": "have",
+      "name": "hsplit",
+      "span": {
+        "end_line": 333,
+        "start_line": 323
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_subtype",
+            "tags": []
+          },
+          {
+            "doc": "**Function extensionality.** If two functions return equal results for all possible arguments, then they are equal.",
+            "name": "funext",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Summable.tsum_add",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_eq_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_congr",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ a ∈ F, f a = (↑(∑ a ∈ F, (1 : ℚ) / ((2 : ℚ) ^ a - (1 : ℚ))) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hq",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ a ∈ F, f a = (↑(∑ a ∈ F, (1 : ℚ) / ((2 : ℚ) ^ a - (1 : ℚ))) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hq",
+      "kind": "have",
+      "name": "hq",
+      "span": {
+        "end_line": 335,
+        "start_line": 334
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}

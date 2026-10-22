@@ -1,0 +1,47 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-o
+detail: 'The split proves exactly one thing: a co-finite greedy set cannot have a
+  rational sum, since the sum over all n >= 1 would then be rational, against Erdős
+  1948 (kernel-checked in PR #910, helper o_cofinite). What remains is not smaller
+  than this node. A co-infinite greedy set always sums to r: at each skipped n the
+  remainder is below 1/(2^n - 1), the remainder never increases and never goes negative
+  (for r >= 0; for r < 0 the set is empty), so it tends to 0. Hence the hole ''the
+  greedy set of a rational is finite or co-finite'' is equivalent to this node, and
+  the split only trades the infinite-sum hypothesis for a statement about the walk
+  alone (the form in which F''s computation, postmortem 20261022T125618Z-t1022-f,
+  and A''s run lemma already study it). Any proof must say something about which rationals
+  have walks that skip infinitely often and take infinitely often; nothing about the
+  set''s shape (finite, co-finite, density) or about the denominator class of r closes
+  it (no denominator 4 <= q <= 250 is free of rationals with walks alive at depth
+  150, per F''s survey). Note on denominators (E''s correction of the spec-5e2e0890
+  docstring): a finite sum of the terms has odd denominator, so an even-denominator
+  rational in the subset-sum set has an infinite greedy set, but an odd-denominator
+  rational may too; the hole has to be shown for every rational, not just even denominators.
+
+  '
+failure_class: route-dead-ends
+node: erdos-257--h2
+outcome: refuted-route
+route: 'Case split on the shape of the greedy set G: finite (the goal), co-finite
+  (closed by Erdős 1948, the irrationality of the sum over all n, using t1022-c''s
+  Aristotle proof of variant-2f5236aa as private helpers), and infinite and co-infinite
+  (left as the hole erdos-257--h2--h1 of partial PR #910).'
+route_class: case-split
+schema: postmortem/v1
+terminal_goal_state: 'r : ℚ
+
+  G : Set ℕ
+
+  h0 : 0 ∉ G
+
+  hG : ∀ (n : ℕ), 1 ≤ n → (n ∈ G ↔ 1 / (2 ^ n - 1) ≤ ↑r - ∑'' (a : ↑(G ∩ Set.Iio n)),
+  1 / (2 ^ ↑a - 1))
+
+  hinf : G.Infinite
+
+  hcoinf : Gᶜ.Infinite
+
+  ⊢ False
+
+  '
