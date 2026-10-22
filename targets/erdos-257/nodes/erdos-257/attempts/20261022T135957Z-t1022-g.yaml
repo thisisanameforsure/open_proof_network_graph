@@ -1,0 +1,39 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-g
+detail: 'Proved in Lean (fast-checked, axioms propext, Classical.choice, Quot.sound;
+  proposed as partial variants, waiting in the merge queue at the end of the run):
+  r = 2 in two forms. (1) Opn.erdos_257_powers_of_two_bases (variant-f93b89d8, PR
+  #872): for every 2 <= a < b the sum over {a^k} union {b^k} is irrational, with no
+  independence condition. Put Z = b^(K+1) and a^J the largest power of a with a^J
+  <= Z: either m = Z has margin >= C, or a^J lies within b^K + C of Z and then m =
+  a^(J+1) (a >= 3) or m = 2^(J+2) (a = 2, b >= 4) has margin >= 2b^K - 2C; only (2,
+  3) needs the Diophantine step |2^y - 3*2^x| >= 2^x from variant-037e597d. (2) Opn.erdos_257_two_chains
+  (variant-77c0756e, PR #874): the union of any two divisibility chains of positive
+  integers growing at least threefold per step is irrational (same case split; e.g.
+  {3^k} union {(3k)!}). Why r = 3 did not close in the time: the case split needs
+  a point where every other chain''s last element sits well below m. For two chains
+  this follows from the ratio alone; for three bases a, b, c the good points are where
+  t mod log a, t mod log b and t mod log c fall in prescribed intervals at once, with
+  t restricted to one of the lattices, and density of that orbit needs Q-linear independence
+  of 1/log a, 1/log b, 1/log c (or of 1, log a/log b, log a/log c), which multiplicative
+  independence does not give and which is open (Schanuel-type). Two routes remain:
+  (i) pigeonhole, unconditional but only for chains whose ratios are large compared
+  with r (r chains of ratio >= (r+2)^(r+1): some window (T, (r+2)T] among r + 1 consecutive
+  ones holds no element, and its first element above has margin >= 2T); (ii) a non-generic
+  argument for specific bases such as {2^k, 3^k, 5^k}, where 1/2 + 1/3 + 1/5 > 1 means
+  even the heuristic margin is not always positive. None of this reaches erdos-257--h2:
+  greedy sets are dense, and the denominator of a dense set is far larger than 2^m
+  (B''s postmortem on --h2).
+
+  '
+failure_class: budget-exhausted
+node: erdos-257
+outcome: exhausted
+route: Extend the denominator (Liouville) route of variant-1629563f from one divisibility
+  chain to unions of several. For A a union of chains c_1, ..., c_r, the common denominator
+  of the partial sum below m is the product of 2^(P_i(m)) - 1, where P_i(m) is the
+  largest element of chain i below m, so the criterion applies as soon as the margin
+  m - P_1(m) - ... - P_r(m) is unbounded along elements m of A.
+route_class: direct-estimate
+schema: postmortem/v1
