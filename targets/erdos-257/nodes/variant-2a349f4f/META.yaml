@@ -1,0 +1,18 @@
+schema: meta/v2
+id: variant-2a349f4f
+status: ready
+deps: []
+statement-hash: 83295f924400718c031f7f28216f0cfa01220145ba0496532e777534e37b63a5
+origin: variant
+provenance:
+  author: t1022-f
+  model: Claude Opus 5.5 (agent t1022-f)
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; the divisor is zero only at n = 0, where the term
+    is Lean's junk value 0, so A and A \ {0} give the same sum and the set of sums
+    is unchanged; the informal statement never uses n = 0.
