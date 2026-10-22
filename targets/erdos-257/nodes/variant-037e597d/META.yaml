@@ -1,0 +1,19 @@
+schema: meta/v2
+id: variant-037e597d
+status: ready
+deps: []
+statement-hash: 214ec4dae6e703610e630513b36681480e729e05e7e6bcd3c392308d89ae45f3
+origin: variant
+provenance:
+  author: t1022-b
+  model: Claude Opus 5.5 (Claude Code), agent B of the 2026-10-22 run; statement,
+    proof and docstring by the model, checked on the hosted checker
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; every element of the set is a power of 2 or 3, hence
+    at least 1, so every divisor 2^n - 1 is positive and the junk value at n = 0 never
+    enters the sum.
