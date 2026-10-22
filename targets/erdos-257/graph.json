@@ -484,9 +484,23 @@
       "cause": null,
       "claim": "r_m < \\frac{1}{2^m-1} \\Rightarrow r_m \\le \\frac{1}{2^m} + \\frac{1}{3\\cdot 4^m}$ for every $m$, for the greedy remainder $r$ of $\\frac12",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "a skipped step m with r_m > 2^-m forces the walk to take every n in (m, 2m], because those terms sum to less than 2^-m; so the explicit bound follows from a statement about runs of the chosen set",
+          "holes": [
+            {
+              "name": "hrun",
+              "node": "spec-a70fcca4--h4--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261022T133414Z-t1022-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "spec-a70fcca4--h4--h1--h1"
+      ],
       "label": "a skipped step leaves at most 2^-m + 4^-m/3",
       "label_source": "gloss",
       "lemmas": [],
@@ -501,6 +515,32 @@
       "relation": null,
       "relevance": null,
       "statement_hash": "92ddf899f842096bc837b46a8490db9d83d1cc7ac006ff2c40b2b02f20d333dd",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "m \\ge 2 \\ \\wedge\\ r_m < \\frac{1}{2^m-1} \\ \\Longrightarrow\\ \\exists n,\\ m < n \\le 2m \\ \\wedge\\ r_n < \\frac{1}{2^n-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "after a skipped m >= 2, another skip within (m, 2m]",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "spec-a70fcca4--h4--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "e75e2ddb0895bb5c2ab0c663d28edeb534afcadcb73c7d5d50c7ef572b46b550",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1098,7 +1138,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "71b7d7900096ed55711e6fe35b3b2e239836dfd0",
+  "rendered_from": "b35951587335bdb20c84e64e0b17d4cdcc96eb9f",
   "review": {
     "candidates": 1,
     "clusters": 1,
