@@ -12,11 +12,16 @@
         "bytes": 5622,
         "hash": "61bce992dc0020de04a03072b1bba4253df5eeaf0df01977bbb4fa97c7f12e03",
         "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133414Z-t1022-a-partial.lean"
+      },
+      {
+        "bytes": 7180,
+        "hash": "b6f582bb2041f1521dd65d27ee0fb9d4d5e7906acf754ba40a6ac84281c39d58",
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T143430Z-t1022-j-partial.lean"
       }
     ],
-    "count": 2,
+    "count": 4,
     "failure_class_histogram": {
-      "route-dead-ends": 1
+      "route-dead-ends": 2
     },
     "records": [
       {
@@ -44,6 +49,38 @@
           "terminal_goal_state": {
             "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133232Z-t1022-a.yaml",
             "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhm : 2 ≤ m\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T145157Z-t1022-j.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-j",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T145157Z-t1022-j.yaml",
+            "text": "The reduction is proved in Lean (partial by t1022-j on this node): the terms over (m, 3m+2] sum to at most 2^-m + 4^-m/3, so a skip within that window after a skipped m gives the node's bound. The window is optimal up to one step: the terms over (m, 3m+3] sum to more than the bound, so the node itself forces a skip within (m, 3m+3] (both checked exactly for m <= 120, margins tending to 3/28 and 1/56 times 8^-m). So this node is a run statement and nothing weaker of that shape implies it. What d…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T145157Z-t1022-j.yaml",
+            "text": "replace the bound at a skipped step by the widest run window that implies it: after every skipped m >= 1, another skip within (m, 3m+2]; then look for a reason specific to 1/2 that bounds runs",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T145157Z-t1022-j.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhm : 1 ≤ m\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ ∃ n, m < n ∧ n ≤ 3 * m + 2 ∧ r n < 1 / (2 ^ n - 1)\n",
             "untrusted": true
           }
         },
@@ -101,7 +138,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "8965314944a1df5f46b1b3360a8fccad247cf184",
+  "rendered_from": "fe1692076a361cd95695d5009f9f1415b9a3bbf2",
   "review": {
     "questions_waiting": [
       {
