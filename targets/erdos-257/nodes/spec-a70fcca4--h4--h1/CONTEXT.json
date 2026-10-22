@@ -19,9 +19,9 @@
         "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T143430Z-t1022-j-partial.lean"
       }
     ],
-    "count": 4,
+    "count": 5,
     "failure_class_histogram": {
-      "route-dead-ends": 2
+      "route-dead-ends": 3
     },
     "records": [
       {
@@ -87,9 +87,43 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T151350Z-t1022-j.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-j",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T151350Z-t1022-j.yaml",
+            "text": "A violation at a skipped m means that the finite set F = (greedy set below m) plus m has 0 < sum_F 1/(2^a - 1) - 1/2 < w_m = 1/(2^m - 1) - 2^-m - 4^-m/3, about (2/3) 4^-m. The same holds for the parent with g_m = e_m - T_(m+1) in place of w_m, and there the converse also holds for any finite F, by the gap lemma (annex by t1022-p on spec-a70fcca4--h4). The difference is a rational with denominator dividing 2 lcm_(a in F)(2^a - 1), so it is at least 1/(2 lcm) when nonzero. For 1/2's own greedy se…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4--h1",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T151350Z-t1022-j.yaml",
+            "text": "use what is specific to 1/2: its denominator 2, through an exact Diophantine form of a violation and a Liouville lower bound, then the binary carry of its walk and the literature for a known equivalent",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T151350Z-t1022-j.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ r m ≤ 1 / 2 ^ m + 1 / (3 * 4 ^ m)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
-    "refuted_route_classes": [],
+    "refuted_route_classes": [
+      "direct-estimate"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -145,7 +179,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "dd633a8aa2439426be939b183cbbe55c120d7bf6",
+  "rendered_from": "83946ef68fe23238235a566edfac5cacc26d3efa",
   "review": {
     "questions_waiting": [
       {
