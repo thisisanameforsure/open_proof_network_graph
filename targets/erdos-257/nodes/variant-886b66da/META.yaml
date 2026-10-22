@@ -1,0 +1,19 @@
+schema: meta/v2
+id: variant-886b66da
+status: ready
+deps: []
+statement-hash: dee1a4828b82b5e485a5a3955ff29b177329d3ae2028bf358de787768766835a
+origin: variant
+provenance:
+  author: t1022-d
+  model: Claude Opus 5.5 (Claude Code), statement and docstring by the model from
+    the cited papers, checked on the hosted checker
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑m - 1)
+  justification: Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's
+    junk value makes the term 0, so the sum is the sum over the positive elements,
+    exactly as in the root's acknowledged division.
