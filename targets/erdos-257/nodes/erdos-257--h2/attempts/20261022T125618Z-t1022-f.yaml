@@ -1,0 +1,45 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-f
+detail: 'No class by denominator exists for small q: every q in 4..250 has reduced
+  p/q whose walk is alive at depth 150 (only q = 1, 3 have none); #{reduced p/q in
+  (0,S) alive or finite} = phi(q) + dev with |dev| <= 12 (exact for 75 of 250 q),
+  i.e. rationals sit in the subsum set C at the rate its Lebesgue measure (exactly
+  1, proved on this target as variant-f9c7b81b) predicts. Stall steps among 30567
+  rationals: 1..12, counts halving per step, the same 2^-m law a random point of [0,S]
+  obeys. Stalls need no preceding run of chosen elements (46/183 stalls at m=12 after
+  00111010011). Dyadics: #{odd j : j/2^k in C} = 2^(k-1) exactly for k <= 14 but 16380
+  != 16384 at k = 15, an artefact. Why computation cannot decide this hole for any
+  given rational: r_k = 1/(2^k-1) - 1/(2*4^k) skips 1..k-1 and stalls exactly at step
+  k (checked k = 1..60), so no finite depth certifies non-stalling; and 1/2''s walk
+  shows no near-stall after m = 16 to depth 20000 (min (T_{m+1}-r_m)4^m over m >=
+  17 exceeds 59294). Elementary facts found on the way: a stall at m forces every
+  later element to be chosen, so (with S irrational, Erdős 1948) this hole is equivalent
+  to ''the greedy expansion of a rational is finite or cofinite''. Scripts and outputs:
+  the tester run''s evidence folder F/ (walker.py, survey.py, exp_*.py).
+
+  '
+failure_class: route-dead-ends
+node: erdos-257--h2
+outcome: refuted-route
+route: 'Computation in service of proof: an exact (integer-interval, Fraction-checked)
+  greedy walker run over every reduced p/q in (0,S) with q<=250 (depth 150), dyadics
+  j/2^k (k<=15), and 1/2 to depth 20000, looking for a describable class of rationals
+  (by denominator or shape) whose walks provably stall, i.e. a restricted true form
+  of this hole.'
+route_class: computational
+schema: postmortem/v1
+terminal_goal_state: 'r : ℚ
+
+  G : Set ℕ
+
+  h0 : 0 ∉ G
+
+  hG : ∀ (n : ℕ), 1 ≤ n → (n ∈ G ↔ 1 / (2 ^ n - 1) ≤ ↑r - ∑'' (a : ↑(G ∩ Set.Iio n)),
+  1 / (2 ^ ↑a - 1))
+
+  hsum : ∑'' (n : ↑G), 1 / (2 ^ ↑n - 1) = ↑r
+
+  ⊢ G.Finite
+
+  '
