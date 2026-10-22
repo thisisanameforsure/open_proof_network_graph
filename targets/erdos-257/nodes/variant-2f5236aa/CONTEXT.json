@@ -36,7 +36,29 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1022-d",
+    "record": "literature/20261022T125749Z-t1022-d.yaml",
+    "references": [
+      {
+        "note": "Theorem (p. 63): f(1/t) = Σ_{n≥1} 1/(t^n − 1) is irrational for every integer |t| > 1; the proof makes long zero blocks in the base-t expansion of Σ d(n)/t^n by a Chinese-remainder choice of consecutive integers with many divisors.",
+        "title": "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. (N.S.) 12 (1948), 63–66",
+        "url": "https://users.renyi.hu/~p_erdos/1948-04.pdf"
+      },
+      {
+        "note": "§2.1.2 p. 4: 'Chowla conjectured and Erdős proved that (2.3) is an irrational number for every integer t ⩾ 2.'",
+        "title": "V. Kovač and T. Tao, On several irrationality problems for Ahmes series, arXiv:2406.17593v4; Acta Math. Hungar. 175 (2025), 572–608",
+        "url": "https://arxiv.org/abs/2406.17593"
+      },
+      {
+        "note": "States this case (as Σ d(n)/2^n, with the Lambert identity proved) as research solved; links an external, unreviewed Lean proof by W. Cook (Lean 4.29, plectis-erdos-lean).",
+        "title": "google-deepmind/formal-conjectures, ErdosProblems/257.lean, erdos_257.variants.tsum_top",
+        "url": "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/257.lean"
+      }
+    ],
+    "status": "known",
+    "summary": "Known since Erdős 1948 (the Erdős–Borwein constant 1.6067… is irrational); no proof is on this network. A Lean proof is claimed in W. Cook's unrefereed corpus (Lean/Mathlib 4.29, a large development) and is not portable as one file. Erdős's proof: choose, by the Chinese remainder theorem, a block of consecutive integers x+1, …, x+k whose divisor counts are divisible by high powers of 2; this forces long runs of zeros in the binary expansion of Σ d(n)/2^n without it terminating."
+  },
   "meta": {
     "acknowledged_hazards": [
       {
@@ -67,7 +89,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "17e310742f88e1ba4aa0b99b62c8133073909c21",
+  "rendered_from": "bf7b46e0c234c2c6ff846b7d018f2f0a9484c4ab",
   "review": {
     "questions_waiting": [
       {
