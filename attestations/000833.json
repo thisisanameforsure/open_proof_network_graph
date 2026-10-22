@@ -1,0 +1,113 @@
+{
+  "artifact_hash": "50ed465c49194db22deb1555ea082feb516b25340d644fb3452e6d4f8ed8cf5a",
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "6ceed67431756010afac747cabd868bb88edc10a",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "6ceed67431756010afac747cabd868bb88edc10a",
+  "model_and_tooling": "Claude Opus 5.5 Claude Code (agent t1022-f), hosted fast check",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-f9c7b81b",
+  "precheck_attestation": {
+    "hash": "4832501d87e15fab9ac2a688cc297671243a7a5710397388d8ce6a1131645f5a",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-22T14:06:13Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGclxEKdrilqu881omjMUa/cPoDVp0G00UgxHZ4m6xpCslPzkW\ncuWS6OcS/Oq1ql4qu/vAInGynShco+w6/Slgw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "2c5fb8c6c46090f3e58c5b7203129adffb083eb56436afe19e39ca463e34ec2c",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; the divisor is zero only at n = 0, where the term is Lean's junk value 0, so A and A \\ {0} give the same sum and the set of sums is unchanged; the informal statement never uses n = 0.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-f",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (agent t1022-f), hosted fast check",
+    "model": "Claude Opus 5.5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

@@ -1,22 +1,58 @@
 {
   "annexes": [],
   "attempts": {
-    "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "assemblies": [
+      {
+        "bytes": 5622,
+        "hash": "61bce992dc0020de04a03072b1bba4253df5eeaf0df01977bbb4fa97c7f12e03",
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133414Z-t1022-a-partial.lean"
+      }
+    ],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133232Z-t1022-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-a",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133232Z-t1022-a.yaml",
+            "text": "The reduction is proved in Lean (graph PR #860, partial on this node, one hole with the goal above): the m = 0 and m = 1 cases are checked directly (r_1 = 1/2), and for m >= 2 the block sum over (m, 2m] of 1/(2^k - 1) is below 2^-m (termwise 1/(2^k-1) <= 2^-k + 2*4^-k, finite geometric sums), so a skipped m with r_m above the parent's bound would start a run over the whole block. The remaining run statement is equivalent to a skipped r_m staying below sum_(k=m+1..2m) 1/(2^k-1), about 2^-m - (2/…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133232Z-t1022-a.yaml",
+            "text": "runs of the chosen set: while the walk takes consecutive elements the deficit d_n = T_n - r_n is constant, and n is taken iff d_n <= T_(n+1); a skipped m with r_m > 2^-m therefore forces a run over all of (m, 2m]; sought a reason the run after a skipped m >= 2 always breaks within (m, 2m]",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1/attempts/20261022T133232Z-t1022-a.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhm : 2 ≤ m\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-22T14:27:09Z",
-        "pseudonym": "t1022-a"
-      }
-    ],
-    "history_count": 1
+    "active": [],
+    "history_count": 2
   },
   "defect_claims": [],
   "deps": [],
@@ -51,7 +87,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "231d3de33b0f4424a1ebce760300562813559d03",
+  "rendered_from": "32e9577067a7237cde628aa5b633a8a516460328",
   "review": {
     "questions_waiting": [
       {
