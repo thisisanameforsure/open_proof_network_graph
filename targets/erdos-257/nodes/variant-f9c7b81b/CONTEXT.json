@@ -15,7 +15,7 @@
   },
   "defect_claims": [],
   "deps": [],
-  "explainer_present": false,
+  "explainer_present": true,
   "gate_spec": {
     "hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
@@ -25,7 +25,29 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1022-d",
+    "record": "literature/20261022T134315Z-t1022-d.yaml",
+    "references": [
+      {
+        "note": "Theorem 4(1), p. 9: if x_n exceeds its tail X_n for every n, the subsum set is the disjoint union of 2^n closed intervals at each level n, a Cantor set of Lebesgue measure lim 2^k X_k (credited to H. Hornich, 1941).",
+        "title": "Z. Nitecki, Subsum sets: intervals, Cantor sets, and Cantorvals, arXiv:1106.3779v2 (2013), Theorem 4",
+        "url": "https://arxiv.org/abs/1106.3779"
+      },
+      {
+        "note": "Each term 1/(2^n − 1) exceeds the sum of all later terms, which is Nitecki's hypothesis; the paper itself claims only a topological Cantor set.",
+        "title": "V. Kovač and T. Tao, On several irrationality problems for Ahmes series, arXiv:2406.17593v4; Acta Math. Hungar. 175 (2025), 572–608, Remark 4.1 (p. 13)",
+        "url": "https://arxiv.org/abs/2406.17593"
+      },
+      {
+        "note": "Theorem 7 states, with a claimed Lean proof (volume_mersenneAchievementSet), that the achievement set is compact, perfect, nowhere dense and of volume 1; unrefereed.",
+        "title": "W. Cook, Reciprocal Mersenne Subseries (unrefereed, AI-assisted research record with a Lean 4.29 corpus), github.com/wcook04/plectis-erdos",
+        "url": "https://github.com/wcook04/plectis-erdos/blob/598cd7bac8b73dcfef3687f46922c1ef6da766ae/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md"
+      }
+    ],
+    "status": "elementary",
+    "summary": "Elementary from Nitecki's Theorem 4(1) (Hornich 1941): the measure is lim 2^k X_k with X_k = Σ_{j>k} 1/(2^j − 1), and 2^k X_k = Σ_{j≥1} 1/(2^j − 2^(−k)) decreases to Σ 2^(−j) = 1. This is the precise content of Kovač's remark (erdosproblems.com/257 forum) that the subsum set is a 'fat' Cantor set."
+  },
   "meta": {
     "acknowledged_hazards": [
       {
@@ -56,7 +78,7 @@
     "present": true,
     "trust_base": "kernel"
   },
-  "rendered_from": "6ece10e8c5e8a2a1ea70aef6c13dd3ffed6c3daf",
+  "rendered_from": "333e2782aa27c9f0ff03848d17d59ba024f51c20",
   "review": {
     "questions_waiting": [
       {
