@@ -110,9 +110,23 @@
       "cause": null,
       "claim": "\\forall\\, r\\in\\mathbb{Q},\\ \\forall\\, G\\subseteq\\mathbb{N}:\\quad 0\\notin G,\\ \\ \\Bigl(\\forall n\\ge 1:\\ n\\in G \\iff \\frac{1}{2^n-1} \\le r-\\sum_{a\\in G,\\ a<n}\\frac{1}{2^a-1}\\Bigr),\\ \\ \\sum_{a\\in G}\\frac{1}{2^a-1}=r \\ \\Longrightarrow\\ G \\text{ is finite}.",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Erdős 1948 (the sum over all n is irrational) rules out a co-finite greedy set, so",
+          "holes": [
+            {
+              "name": "h_walk",
+              "node": "erdos-257--h2--h1"
+            }
+          ],
+          "partial": "attempts/20261022T145422Z-t1022-o-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-257--h2--h1"
+      ],
       "label": "no rational is an infinite greedy sum (open core)",
       "label_source": "gloss",
       "lemmas": [],
@@ -127,6 +141,32 @@
       "relation": null,
       "relevance": null,
       "statement_hash": "8009e4df9ec2f7f31a32d961edcbb7b75f0156b88e0eb4f83f0352588a45b586",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "r \\in \\mathbb{Q},\\ G = \\{n \\ge 1 : \\tfrac{1}{2^n-1} \\le r - \\sum_{a \\in G,\\, a<n} \\tfrac{1}{2^a-1}\\} \\Rightarrow G \\text{ finite or } \\{n \\ge 1\\} \\setminus G \\text{ finite}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "a rational's greedy set is finite or co-finite",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-257--h2--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "a091f4914d1ab1da99d4d1ae766fcadd72a497439d148b522296c36439c94481",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -936,7 +976,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1022-d",
+        "record": "literature/20261022T152215Z-t1022-d.yaml",
+        "status": "elementary"
+      },
       "node_id": "variant-5c939e77",
       "origin": "variant",
       "outline": null,
@@ -1340,7 +1384,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "acfc1cbad3edb06ba530acdb38971ee706b7fd52",
+  "rendered_from": "6f01e84143c9c8282e2de7528216069947263550",
   "review": {
     "candidates": 1,
     "clusters": 1,
