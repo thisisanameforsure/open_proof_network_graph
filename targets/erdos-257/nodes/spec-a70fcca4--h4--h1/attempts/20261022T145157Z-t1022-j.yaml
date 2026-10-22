@@ -1,0 +1,42 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-j
+detail: 'The reduction is proved in Lean (partial by t1022-j on this node): the terms
+  over (m, 3m+2] sum to at most 2^-m + 4^-m/3, so a skip within that window after
+  a skipped m gives the node''s bound. The window is optimal up to one step: the terms
+  over (m, 3m+3] sum to more than the bound, so the node itself forces a skip within
+  (m, 3m+3] (both checked exactly for m <= 120, margins tending to 3/28 and 1/56 times
+  8^-m). So this node is a run statement and nothing weaker of that shape implies
+  it. What did not close: the remaining window statement is false for a positive proportion
+  of alive rationals (q <= 250, depth 150: 595, 148, 34, 10, 4, 2 failures at m =
+  1..6, matching the coin-flip rate 2^-(2m+3)), so it needs arithmetic of 1/2 itself.
+  Written in terms of the skipped set B, a long run after a skipped m means that the
+  rational sum of B below m approximates S - 1/2 to within about 8^-m, while the denominators
+  lcm(2^k - 1, k <= m) are of size exp(c m^2): no Diophantine or congruence obstruction
+  is available, the same dead end as the Phi(m) route recorded on spec-a70fcca4--h4.
+
+  '
+failure_class: route-dead-ends
+node: spec-a70fcca4--h4--h1
+outcome: exhausted
+route: 'replace the bound at a skipped step by the widest run window that implies
+  it: after every skipped m >= 1, another skip within (m, 3m+2]; then look for a reason
+  specific to 1/2 that bounds runs'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 'r : ℕ → ℝ
+
+  h0 : r 0 = 1 / 2
+
+  hrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1)
+  else r m
+
+  m : ℕ
+
+  hm : 1 ≤ m
+
+  hlt : r m < 1 / (2 ^ m - 1)
+
+  ⊢ ∃ n, m < n ∧ n ≤ 3 * m + 2 ∧ r n < 1 / (2 ^ n - 1)
+
+  '
