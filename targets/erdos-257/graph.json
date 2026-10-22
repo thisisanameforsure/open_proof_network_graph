@@ -495,11 +495,23 @@
             }
           ],
           "partial": "attempts/20261022T133414Z-t1022-a-partial.lean"
+        },
+        {
+          "annex": null,
+          "approach": "a skipped step m whose remainder exceeds the bound forces the walk to take every n in (m, 3m+2], because those terms sum to at most 2^-m + 4^-m/3; so the bound follows from a run statement whose window is the widest that works (with (m, 3m+3] the bound would force a skip instead)",
+          "holes": [
+            {
+              "name": "hrun",
+              "node": "spec-a70fcca4--h4--h1--h2"
+            }
+          ],
+          "partial": "attempts/20261022T143430Z-t1022-j-partial.lean"
         }
       ],
       "defect_claims": [],
       "deps": [
-        "spec-a70fcca4--h4--h1--h1"
+        "spec-a70fcca4--h4--h1--h1",
+        "spec-a70fcca4--h4--h1--h2"
       ],
       "label": "a skipped step leaves at most 2^-m + 4^-m/3",
       "label_source": "gloss",
@@ -541,6 +553,32 @@
       "relation": null,
       "relevance": null,
       "statement_hash": "e75e2ddb0895bb5c2ab0c663d28edeb534afcadcb73c7d5d50c7ef572b46b550",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "m \\ge 1 \\ \\wedge\\ r_m < \\frac{1}{2^m-1} \\ \\Longrightarrow\\ \\exists n,\\ m < n \\le 3m+2 \\ \\wedge\\ r_n < \\frac{1}{2^n-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "after a skipped m >= 1, another skip within (m, 3m+2]",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "spec-a70fcca4--h4--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "statement_hash": "be7b36992e865014993696e5fdbb2d50864fbd32e3ad790d10c761067264edf4",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1282,7 +1320,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "fe1692076a361cd95695d5009f9f1415b9a3bbf2",
+  "rendered_from": "39aa2f83df315b940219b5a8b31524379f2f2d0b",
   "review": {
     "candidates": 1,
     "clusters": 1,
