@@ -8,9 +8,9 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 1,
+    "count": 2,
     "failure_class_histogram": {
-      "missing-library": 1
+      "missing-library": 2
     },
     "records": [
       {
@@ -35,6 +35,44 @@
           },
           "route_class": "reduction-to-known",
           "schema": "postmortem/v1"
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/variant-6b364d2b/attempts/20261022T151912Z-t1022-l.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "Mertens' second theorem: sum_{p <= y} 1/p = log log y + O(1)",
+              "Gowers norm monotonicity on Z/NZ: ||f||_{U^1} <= ||f||_{U^K}",
+              "#{p prime in [P/2, P]} >> P / log P",
+              "Selberg upper bound: #{n <= 2N : no prime factor <= z} << N / log z",
+              "Tao–Teräväinen Theorem 3.1(i), arXiv:2512.01739v2 p. 24"
+            ]
+          },
+          "contributor": "t1022-l",
+          "detail": {
+            "source": "targets/erdos-257/nodes/variant-6b364d2b/attempts/20261022T151912Z-t1022-l.yaml",
+            "text": "Author: agent t1022-q (filed under t1022-l's token on the lead's instruction; the machine's daily token cap was spent). Proved in Lean, as helpers and not as nodes, in the run's evidence file Q/tt_steps.lean (network repo, engineering/evidence/testers-2026-10-22-e257/; 418 lines, no sorry, axioms propext/choice/Quot.sound, every declaration under 5.2k heartbeats, fast check okay). It contains: lambert_identity (any A: sum over A of 1/(2^a-1) = sum_m #{d | m, d in A}/2^m); lambert_primes (TT (1.…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "variant-6b364d2b",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/variant-6b364d2b/attempts/20261022T151912Z-t1022-l.yaml",
+            "text": "Tao–Teräväinen arXiv:2512.01739v2 §5 formalised in the paper's order (route map: annex PR #908): Lambert identity (1.7), tails (5.1), dilation (5.2), prime-cube alternating sum (5.8), then expectation/variance (5.9)–(5.20) against Theorem 5.1.",
+            "untrusted": true
+          },
+          "route_class": "probabilistic",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/variant-6b364d2b/attempts/20261022T151912Z-t1022-l.yaml",
+            "text": "a : ℤ\nq : ℕ\nhq : 0 < q\nh : ∑' (p : ↑{p | Nat.Prime p}), 1 / (2 ^ ↑p - 1) = ↑a / ↑q\nh58 : ∀ {K : ℕ} (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n  (∀ ε, ↑(P ε) = p0 + ∑ k, if ε k = true then v k else 0) → (∀ ε, Nat.Prime (P ε)) →\n  ∀ (n : ℤ) (m : (Fin K → Bool) → ℕ),\n  (∀ ε, n - ∑ k, (↑↑k + 1) * (if ε k = true then v k else 0) = ↑(P ε) * ↑(m ε)) →\n  ∃ z : ℤ, ↑q * ∑' k, (∑ ε, cubeSgn ε * ↑(ω (n + cubeShift p0 v ε (k + K + 1)).toNat)) / 2 ^ (k + K + 1)\n    + ↑q * ∑ ε, cubeSgn ε * ∑' k, (if P ε ^ 2 ∣ P ε * m ε + P ε * (k + 1) then 1 else 0) / 2 ^ (k + 1) = ↑z\n⊢ False\n",
+            "untrusted": true
+          }
         },
         "shortened": [
           "detail"
@@ -109,7 +147,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "acfc1cbad3edb06ba530acdb38971ee706b7fd52",
+  "rendered_from": "9ac73cb883aef563d8294c0010ce8810a13be842",
   "review": {
     "questions_waiting": [
       {
