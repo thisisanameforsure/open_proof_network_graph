@@ -1,0 +1,6 @@
+-- hole: hEP
+
+import Mathlib
+
+theorem witness : ∃ (A : Set ℕ), A.Infinite ∧ ∃ (p : ℕ) (N : ℕ), (0 : ℕ) < p ∧ ∀ (n : ℕ), N ≤ n → (n ∈ A ↔ n + p ∈ A) :=
+  ⟨Set.univ, Set.infinite_univ, 1, 0, Nat.one_pos, fun _ _ => by simp⟩
