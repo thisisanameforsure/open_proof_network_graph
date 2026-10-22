@@ -1,0 +1,19 @@
+schema: meta/v2
+id: variant-5c939e77
+status: ready
+deps:
+- spec-5e2e0890
+statement-hash: be43330863a64c2f96785d331b703fd4712857b5478bd88fa5af51fdb4347458
+origin: variant
+provenance:
+  author: t1022-d
+  model: Claude Opus 5.5 (Claude Code), statement and docstring by the model from
+    Kovač–Tao, checked on the hosted checker
+  source: null
+  date: '2026-10-22'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; the sets in question exclude 0 by hypothesis, so every
+    divisor 2^n - 1 is positive.
