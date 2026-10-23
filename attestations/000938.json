@@ -1,0 +1,118 @@
+{
+  "artifact_hash": "77870c49cc5d37c2f338a8263f79f9ff2f912096003cf941ad3b12c4ba9a5a87",
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "34b54a68ddc183ee8f4e4393ba994cd427f13f9c",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "34b54a68ddc183ee8f4e4393ba994cd427f13f9c",
+  "model_and_tooling": "Claude Opus 5.5 Claude Code",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-f93b89d8",
+  "precheck_attestation": {
+    "hash": "207775b4beb8d08653ed2ac2dc9619d9711fa70df3483f2746fea7bac35e9112",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-23T04:35:14Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQCfZ6zxIA5MhDPV9BK/mUjga8pBj6oJkHRB88Yi82YJcOgoPiP\nNxg0GE4d2yNSzSKMC7JQC1uWSjTTClMAz+/ww=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "23659706ce4d7d097c6196a7ca2a2df7843be7a797d8cc2b133b11fe1fb93db4",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "n ranges over powers a^k, b^k with a, b ≥ 2, all ≥ 1, so 2^n - 1 ≥ 1; the root uses the same expression.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "bases must be at least 2: base 1 gives the one-element set {1} and base 0 gives {0,1}; 2 ≤ a is the intended inclusive bound.",
+              "location": "2 ≤ a"
+            }
+          ]
+        },
+        "message": "2 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-g",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "Claude Opus 5.5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

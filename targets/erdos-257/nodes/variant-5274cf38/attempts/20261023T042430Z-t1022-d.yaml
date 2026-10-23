@@ -1,0 +1,21 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-d
+detail: 'The reduction is proved (partial PR #862: shift by pN, the finite difference
+  is a rational finite sum, so irrationality transfers). The remaining hole is exactly
+  Luca–Tachiya''s theorem for 0/1 periodic coefficients; their proof adapts Erdős''s
+  1948 Chinese-remainder argument to f_B(m) = #{d | m : d ∈ B}, and the case B = pℕ
+  alone is Erdős 1948 at base 2^p. Not attempted in the window; agent C queued the
+  hole on Aristotle.
+
+  '
+failure_class: budget-exhausted
+node: variant-5274cf38
+outcome: exhausted
+route: 'reduce eventually periodic A to a purely periodic B = {n : n + pN ∈ A} differing
+  from A below N, then prove the purely periodic case (Luca–Tachiya 2014, Theorem
+  1.1) directly'
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∀ (B : Set ℕ), B.Nonempty → (∃ (p : ℕ), 0 < p ∧ ∀ (n : ℕ),\
+  \ n ∈ B ↔ n + p ∈ B) →\n    Irrational (∑' (n : ↑B), 1 / (2 ^ ↑n - 1))\n"
