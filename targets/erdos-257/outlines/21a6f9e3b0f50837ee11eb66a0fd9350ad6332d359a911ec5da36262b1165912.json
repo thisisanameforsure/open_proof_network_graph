@@ -1,0 +1,1524 @@
+{
+  "artifact": {
+    "hash": "21a6f9e3b0f50837ee11eb66a0fd9350ad6332d359a911ec5da36262b1165912",
+    "kind": "partial",
+    "path": "attempts/20261023T140825Z-t1023-f2-partial.lean"
+  },
+  "gate": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node": "variant-6b364d2b--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-6b364d2b--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∀ (T δ : ℝ),\n      (0 : ℝ) < δ →\n        ∀ (P0 : ℕ),\n          ∃ (Pw : ℕ) (K : ℕ) (H : ℕ),\n            P0 ≤ Pw ∧\n              (1 : ℕ) ≤ K ∧\n                (1 : ℕ) ≤ H ∧\n                  (2 : ℝ) ^ K ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n                    (↑H : ℝ) ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n                      ∀ (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n                        (∀ (ε : Fin K → Bool),\n                            Nat.Prime (P ε) ∧\n                              Pw < (2 : ℕ) * P ε ∧\n                                P ε ≤ Pw ∧ (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                          (Function.Injective fun (ε : Fin K → Bool) =>\n                              p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                            (Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n                                (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) *\n                                    (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                                  ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)) →\n                              ∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ)\n                                (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ) (η : ℝ)\n                                (w : ℕ) (R : ℕ),\n                                ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                                    (∀ (ε : Fin K → Bool) (h : ℕ),\n                                        r ε h =\n                                          p0 * (↑h : ℤ) +\n                                            ∑ k : Fin K,\n                                              ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) *\n                                                if ε k = true then v k else (0 :",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "tt_sec5_setup",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∀ (T δ : ℝ),\n      (0 : ℝ) < δ →\n        ∀ (P0 : ℕ),\n          ∃ (Pw : ℕ) (K : ℕ) (H : ℕ),\n            P0 ≤ Pw ∧\n              (1 : ℕ) ≤ K ∧\n                (1 : ℕ) ≤ H ∧\n                  (2 : ℝ) ^ K ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n                    (↑H : ℝ) ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n                      ∀ (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n                        (∀ (ε : Fin K → Bool),\n                            Nat.Prime (P ε) ∧\n                              Pw < (2 : ℕ) * P ε ∧\n                                P ε ≤ Pw ∧ (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                          (Function.Injective fun (ε : Fin K → Bool) =>\n                              p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                            (Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n                                (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) *\n                                    (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                                  ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)) →\n                              ∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ)\n                                (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ) (η : ℝ)\n                                (w : ℕ) (R : ℕ),\n                                ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                                    (∀ (ε : Fin K → Bool) (h : ℕ),\n                                        r ε h =\n                                          p0 * (↑h : ℤ) +\n                                            ∑ k : Fin K,\n                                              ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) *\n                                                if ε k = true then v k else (0 :",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∃ (c0 : ℝ),\n      (0 : ℝ) < c0 ∧\n        ∀ (δ : ℝ),\n          (0 : ℝ) < δ →\n            ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n              ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n              (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h =\n                      p0 * (↑h : ℤ) +\n                        ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        (↑q : ℝ) *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε : Fin K → Bool,\n                                sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                              (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                    (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool),\n                                    ∀ k < H,\n                                      (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                             ",
+          "truncated": true
+        }
+      },
+      "id": "tt_sec5_setup",
+      "kind": "hole",
+      "name": "tt_sec5_setup",
+      "span": {
+        "end_line": 1715,
+        "start_line": 1670
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "The Boolean values, `true` and `false`.",
+            "name": "Bool",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+            "name": "Function.Injective",
+            "tags": []
+          },
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a type `α` with addition satisfies `Even a` if `a = r + r`, for some `r : α`.",
+            "name": "Even",
+            "tags": []
+          },
+          {
+            "doc": "Two elements of a lattice are disjoint if their inf is the bottom element.",
+            "name": "Disjoint",
+            "tags": []
+          },
+          {
+            "doc": "`ω n` is the number of distinct prime factors of `n`.",
+            "name": "ArithmeticFunction.cardDistinctFactors",
+            "tags": []
+          },
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": "The number π = 3.14159265...",
+            "name": "Real.pi",
+            "tags": []
+          },
+          {
+            "doc": "Given for all `a : α` a finset `t a` of `δ a`, then one can define the finset `Fintype.piFinset t` of all functions taking values in `t a` for all `a`.",
+            "name": "Fintype.piFinset",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+            "name": "Finset.Ioc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℝ),\n  ∀ (m n : ℕ),\n    (2 : ℕ) ≤ m →\n      m ≤ n →\n        |∑ p ≤ n with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ m with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) -\n              (Real.log (Real.log (↑n : ℝ)) - Real.log (Real.log (↑m : ℝ)))| ≤\n          C / Real.log (↑m : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "C",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hC",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m n : ℕ),\n  (2 : ℕ) ≤ m →\n    m ≤ n →\n      |∑ p ≤ n with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ m with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) -\n            (Real.log (Real.log (↑n : ℝ)) - Real.log (Real.log (↑m : ℝ)))| ≤\n        C / Real.log (↑m : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∃ (c0 : ℝ),\n      (0 : ℝ) < c0 ∧\n        ∀ (δ : ℝ),\n          (0 : ℝ) < δ →\n            ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n              ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n              (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h =\n                      p0 * (↑h : ℤ) +\n                        ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        (↑q : ℝ) *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε : Fin K → Bool,\n                                sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                              (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                    (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool),\n                                    ∀ k < H,\n                                      (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                             ",
+          "truncated": true
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1716,
+        "start_line": 1716
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) ≤ C / Real.log (↑(2 : ℕ) : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) ≤ C / Real.log (↑(2 : ℕ) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ C",
+              "truncated": false
+            }
+          },
+          "id": "hC0.h",
+          "kind": "have",
+          "name": "h",
+          "span": {
+            "end_line": 1718,
+            "start_line": 1718
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "abs_nonneg",
+                "tags": []
+              },
+              {
+                "doc": "A version of `le_refl` where the argument is implicit",
+                "name": "le_rfl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < Real.log (2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hl",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < Real.log (2 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ C",
+              "truncated": false
+            }
+          },
+          "id": "hC0.hl",
+          "kind": "have",
+          "name": "hl",
+          "span": {
+            "end_line": 1719,
+            "start_line": 1719
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.log_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "C / Real.log (2 : ℝ) < (0 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "C / Real.log (2 : ℝ) < (0 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "hC0.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 1721,
+            "start_line": 1721
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                "name": "Real.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "div_neg_of_neg_of_pos",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "lt_of_not_ge",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ C",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hC0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ C",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∃ (c0 : ℝ),\n      (0 : ℝ) < c0 ∧\n        ∀ (δ : ℝ),\n          (0 : ℝ) < δ →\n            ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n              ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n              (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h =\n                      p0 * (↑h : ℤ) +\n                        ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        (↑q : ℝ) *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε : Fin K → Bool,\n                                sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                              (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                    (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool),\n                                    ∀ k < H,\n                                      (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                             ",
+          "truncated": true
+        }
+      },
+      "id": "hC0",
+      "kind": "have",
+      "name": "hC0",
+      "span": {
+        "end_line": 1722,
+        "start_line": 1717
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (P0 : ℕ),\n  ∀ (P : ℕ),\n    P0 ≤ P →\n      ∀ (K H : ℕ),\n        (2 : ℝ) ^ K ≤ Real.log (↑P : ℝ) ^ (2 / 3 : ℝ) →\n          (↑H : ℝ) ≤ Real.log (↑P : ℝ) ^ (2 / 3 : ℝ) →\n            ∃ (p0 : ℤ) (v : Fin K → ℤ),\n              (∀ (ε : Fin K → Bool),\n                  ∃ (p : ℕ),\n                    Nat.Prime p ∧\n                      P < (2 : ℕ) * p ∧ p ≤ P ∧ (↑p : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                (Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                  Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n                    (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                      ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "P0",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hP0",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (P : ℕ),\n  P0 ≤ P →\n    ∀ (K H : ℕ),\n      (2 : ℝ) ^ K ≤ Real.log (↑P : ℝ) ^ (2 / 3 : ℝ) →\n        (↑H : ℝ) ≤ Real.log (↑P : ℝ) ^ (2 / 3 : ℝ) →\n          ∃ (p0 : ℤ) (v : Fin K → ℤ),\n            (∀ (ε : Fin K → Bool),\n                ∃ (p : ℕ),\n                  Nat.Prime p ∧\n                    P < (2 : ℕ) * p ∧ p ≤ P ∧ (↑p : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n              (Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n                  (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                    ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1726,
+        "start_line": 1726
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (Pw : ℕ) (K : ℕ) (H : ℕ),\n  P0 ≤ Pw ∧\n    (1 : ℕ) ≤ K ∧\n      (1 : ℕ) ≤ H ∧\n        (2 : ℝ) ^ K ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n          (↑H : ℝ) ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n            ∀ (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n              (∀ (ε : Fin K → Bool),\n                  Nat.Prime (P ε) ∧\n                    Pw < (2 : ℕ) * P ε ∧\n                      P ε ≤ Pw ∧ (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                (Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n                  (Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n                      (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                        ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)) →\n                    ∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn :\n                      (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ) (η : ℝ) (w : ℕ) (R : ℕ),\n                      ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                          (∀ (ε : Fin K → Bool) (h : ℕ),\n                              r ε h =\n                                p0 * (↑h : ℤ) +\n                                  ∑ k : Fin K,\n                                    ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                            (∀ (p : ℕ) (n : ℤ),\n                                X p n =\n                                  (↑q : ℝ) *\n                                    ∑ k ∈ Finset.range H,\n                                      (∑ ε : Fin K → Bool,\n                                          sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                                        (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n            ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "Pw",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "H",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hPw",
+            "type": {
+              "printed": "reliable",
+              "text": "P0 ≤ Pw",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ K",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hH1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ H",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK23",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ K ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hH23",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑H : ℝ) ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrest",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n  (∀ (ε : Fin K → Bool),\n      Nat.Prime (P ε) ∧\n        Pw < (2 : ℕ) * P ε ∧ P ε ≤ Pw ∧ (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n    (Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) →\n      (Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n          (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n            ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)) →\n        ∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn :\n          (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ) (η : ℝ) (w : ℕ) (R : ℕ),\n          ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n              (∀ (ε : Fin K → Bool) (h : ℕ),\n                  r ε h =\n                    p0 * (↑h : ℤ) +\n                      ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                (∀ (p : ℕ) (n : ℤ),\n                    X p n =\n                      (↑q : ℝ) *\n                        ∑ k ∈ Finset.range H,\n                          (∑ ε : Fin K → Bool,\n                              sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                            (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                  Even M) ∧\n            (Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  ∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n              (S1 ⊆ Finset.filter Nat.Prime (Finset.rang",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1727,
+        "start_line": 1727
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (p0 : ℤ) (v : Fin K → ℤ),\n  (∀ (ε : Fin K → Bool),\n      ∃ (p : ℕ),\n        Nat.Prime p ∧ Pw < (2 : ℕ) * p ∧ p ≤ Pw ∧ (↑p : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n    (Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n      Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n        (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n          ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "p0",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "v",
+            "type": {
+              "printed": "reliable",
+              "text": "Fin K → ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hcube",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool),\n  ∃ (p : ℕ), Nat.Prime p ∧ Pw < (2 : ℕ) * p ∧ p ≤ Pw ∧ (↑p : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hinj1",
+            "type": {
+              "printed": "reliable",
+              "text": "Function.Injective fun (ε : Fin K → Bool) => p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hinj2",
+            "type": {
+              "printed": "reliable",
+              "text": "Function.Injective fun (x : (Fin K → Bool) × Fin H) =>\n  (p0 + ∑ k : Fin K, if x.1 k = true then v k else (0 : ℤ)) * (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n    ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1728,
+        "start_line": 1728
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hP",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hP",
+      "kind": "have",
+      "name": "hP",
+      "span": {
+        "end_line": 1730,
+        "start_line": 1730
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (ε : Fin K → Bool), Nat.Prime (P ε)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), Nat.Prime (P ε)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hpr",
+      "kind": "have",
+      "name": "hpr",
+      "span": {
+        "end_line": 1731,
+        "start_line": 1731
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n  (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ) (η : ℝ) (w : ℕ) (R : ℕ),\n  ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n      (∀ (ε : Fin K → Bool) (h : ℕ),\n          r ε h =\n            p0 * (↑h : ℤ) +\n              ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n        (∀ (p : ℕ) (n : ℤ),\n            X p n =\n              (↑q : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n          Even M) ∧\n    (Ns.Nonempty ∧\n        (∀ n ∈ Ns,\n            ∀ (ε : Fin K → Bool),\n              (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n          ∀ n ∈ Ns,\n            ∀ (ε : Fin K → Bool), ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n      (S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n          S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n            Disjoint S1 S2 ∧\n              (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                  p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, (↑p : ℤ) ∣ n - n') ∧\n                ∀ p ∈ S1,\n                  ∀ k1 < H,\n                    ∀ k2 < H,\n                      ∀ (ε1 ε2 : Fin K → Bool),\n                        k1 ≠ k2 ∨ ε1 ≠ ε2 → ¬(↑p : ℤ) ∣ r ε1 (k1 + K + (1 : ℕ)) - r ε2 (k2 + K + (1 : ℕ))) ∧\n        ((0 : ℝ) ≤ η ∧\n            η ≤ (1 / 4 : ℝ) ∧\n              (∀ (ε : Fin K → Bool) (a : ℕ),\n                  (↑{n ∈ Ns | P ε ∣ m n ε + a}.card : ℝ) * (↑(P ε) : ℝ) ≤ ((1 : ℝ) + η) * (↑Ns.card : ℝ)) ∧\n                ∀ p ∈ S1,\n                  ∀ (a : ℤ),\n                    |(↑{n ∈ Ns | (↑p : ℤ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "B",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "Ns",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "m",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ → (Fin K → Bool) → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "S1",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "S2",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "sgn",
+            "type": {
+              "printed": "reliable",
+              "text": "(Fin K → Bool) → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "r",
+            "type": {
+              "printed": "reliable",
+              "text": "(Fin K → Bool) → ℕ → ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "X",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℤ → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "M",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "η",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "w",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "R",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hsgn",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool) (h : ℕ),\n  r ε h = p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hX",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ) (n : ℤ),\n  X p n =\n    (↑q : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hM",
+            "type": {
+              "printed": "reliable",
+              "text": "Even M",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hNs",
+            "type": {
+              "printed": "reliable",
+              "text": "Ns.Nonempty",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hm",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ n ∈ Ns,\n  ∀ (ε : Fin K → Bool),\n    (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) = (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrange",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ n ∈ Ns, ∀ (ε : Fin K → Bool), ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS1",
+            "type": {
+              "printed": "reliable",
+              "text": "S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS2",
+            "type": {
+              "printed": "reliable",
+              "text": "S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hdisj",
+            "type": {
+              "printed": "reliable",
+              "text": "Disjoint S1 S2",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hcls",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))), p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, (↑p : ℤ) ∣ n - n'",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hcoll",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ S1,\n  ∀ k1 < H,\n    ∀ k2 < H,\n      ∀ (ε1 ε2 : Fin K → Bool), k1 ≠ k2 ∨ ε1 ≠ ε2 → ¬(↑p : ℤ) ∣ r ε1 (k1 + K + (1 : ℕ)) - r ε2 (k2 + K + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hη0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ η",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hη14",
+            "type": {
+              "printed": "reliable",
+              "text": "η ≤ (1 / 4 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hequiP",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool) (a : ℕ), (↑{n ∈ Ns | P ε ∣ m n ε + a}.card : ℝ) * (↑(P ε) : ℝ) ≤ ((1 : ℝ) + η) * (↑Ns.card : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hequi",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ S1, ∀ (a : ℤ), |(↑{n ∈ Ns | (↑p : ℤ) ∣ n + a}.card : ℝ) * (↑p : ℝ) - (↑Ns.card : ℝ)| ≤ η * (↑Ns.card : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hKq",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) / (2 : ℝ) ^ (K + (1 : ℕ)) ≤ δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk1s",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ ε : Fin K → Bool, ((1 : ℝ) + η) / (↑(P ε) : ℝ) ≤ δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk2",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      ∑' (k : ℕ),\n        (∑ ε : Fin K → Bool,\n            (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n          (2 : ℝ) ^ (k + H + K + (1 : ℕ)) ≤\n  δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk3",
+            "type": {
+              "printed": "reliable",
+              "text": "√((↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S2, X p n) ^ (2 : ℕ)) ≤ δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk4",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ j ∈ Finset.range (M + (1 : ℕ)),\n    ((2 : ℝ) * Real.pi) ^ j / (↑j.factorial : ℝ) *\n      |(↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S1, X p n) ^ j -\n          (↑(Fintype.piFinset fun (x : ↥S1) => Ns).card : ℝ)⁻¹ *\n            ∑ ω ∈ Fintype.piFinset fun (x : ↥S1) => Ns, (∑ p : ↥S1, X (↑p : ℕ) (ω p)) ^ j| ≤\n  δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk5",
+            "type": {
+              "printed": "reliable",
+              "text": "(∏ p ∈ S1, (↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, Real.exp ((2 : ℝ) * Real.pi * Real.exp (1 : ℝ) * X p n) +\n      ∏ p ∈ S1, (↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, Real.exp (-((2 : ℝ) * Real.pi * Real.exp (1 : ℝ)) * X p n)) /\n    Real.exp (1 : ℝ) ^ M ≤\n  δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hw3",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ≤ w",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hwR",
+            "type": {
+              "printed": "reliable",
+              "text": "w ≤ R",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hT",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ K * (C + (2 : ℝ)) ≤ Real.log (Real.log (↑R : ℝ)) - Real.log (Real.log (↑w : ℝ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hmiss",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ p ∈ Finset.filter Nat.Prime (Finset.Ioc w R) \\ S1, (1 : ℝ) / (↑p : ℝ) ≤ (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "s9",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1734,
+        "start_line": 1732
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "η ≤ (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "linarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hη1",
+            "type": {
+              "printed": "reliable",
+              "text": "η ≤ (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "h_x3b71",
+      "kind": "have",
+      "name": "hη1",
+      "span": {
+        "end_line": 1735,
+        "start_line": 1735
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ n ∈ Ns, ∀ (ε : Fin K → Bool), ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpos",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ n ∈ Ns, ∀ (ε : Fin K → Bool), ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hpos",
+      "kind": "have",
+      "name": "hpos",
+      "span": {
+        "end_line": 1737,
+        "start_line": 1736
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ p ∈ S1, Nat.Prime p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS1p",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ S1, Nat.Prime p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hS1p",
+      "kind": "have",
+      "name": "hS1p",
+      "span": {
+        "end_line": 1738,
+        "start_line": 1738
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_filter",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) ≤ Real.log (↑w : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlogw",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ Real.log (↑w : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hlogw",
+      "kind": "have",
+      "name": "hlogw",
+      "span": {
+        "end_line": 1740,
+        "start_line": 1740
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "|∑ p ≤ R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ w with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) -\n      (Real.log (Real.log (↑R : ℝ)) - Real.log (Real.log (↑w : ℝ)))| ≤\n  C / Real.log (↑w : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmert",
+            "type": {
+              "printed": "reliable",
+              "text": "|∑ p ≤ R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ w with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) -\n      (Real.log (Real.log (↑R : ℝ)) - Real.log (Real.log (↑w : ℝ)))| ≤\n  C / Real.log (↑w : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hmert",
+      "kind": "have",
+      "name": "hmert",
+      "span": {
+        "end_line": 1741,
+        "start_line": 1741
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "C / Real.log (↑w : ℝ) ≤ C",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hCw",
+            "type": {
+              "printed": "reliable",
+              "text": "C / Real.log (↑w : ℝ) ≤ C",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hCw",
+      "kind": "have",
+      "name": "hCw",
+      "span": {
+        "end_line": 1743,
+        "start_line": 1743
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_le_self",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ p ∈ Finset.Ioc w R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) =\n  ∑ p ≤ R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ w with Nat.Prime p, (1 : ℝ) / (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hIoc",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ p ∈ Finset.Ioc w R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) =\n  ∑ p ≤ R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - ∑ p ≤ w with Nat.Prime p, (1 : ℝ) / (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hIoc",
+      "kind": "have",
+      "name": "hIoc",
+      "span": {
+        "end_line": 1744,
+        "start_line": 1744
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑ p ∈ Finset.Ioc w R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - (1 : ℝ) ≤ ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlow",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ p ∈ Finset.Ioc w R with Nat.Prime p, (1 : ℝ) / (↑p : ℝ) - (1 : ℝ) ≤ ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hlow",
+      "kind": "have",
+      "name": "hlow",
+      "span": {
+        "end_line": 1745,
+        "start_line": 1745
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) ^ K * (C + (2 : ℝ)) - C - (1 : ℝ) ≤ ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "linarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ K * (C + (2 : ℝ)) - C - (1 : ℝ) ≤ ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hs",
+      "kind": "have",
+      "name": "hs",
+      "span": {
+        "end_line": 1747,
+        "start_line": 1746
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑q : ℝ) ^ (2 : ℕ) / (8 : ℝ) ≤\n  ((1 : ℝ) - η) * ((↑q : ℝ) ^ (2 : ℕ) / (2 : ℝ) ^ (K + (2 : ℕ))) * ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ) -\n    η ^ (2 : ℕ) * (↑q : ℝ) ^ (2 : ℕ) * ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ) ^ (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc0'",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑q : ℝ) ^ (2 : ℕ) / (8 : ℝ) ≤\n  ((1 : ℝ) - η) * ((↑q : ℝ) ^ (2 : ℕ) / (2 : ℝ) ^ (K + (2 : ℕ))) * ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ) -\n    η ^ (2 : ℕ) * (↑q : ℝ) ^ (2 : ℕ) * ∑ p ∈ S1, (1 : ℝ) / (↑p : ℝ) ^ (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+          "truncated": true
+        }
+      },
+      "id": "hc0'",
+      "kind": "have",
+      "name": "hc0'",
+      "span": {
+        "end_line": 1748,
+        "start_line": 1748
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑q : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                              (↑Ns.card : ℝ)⁻¹ *\n                                    ∑ n ∈ Ns,\n                                      ∑ ε : Fin K → Bool,\n                  ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 1754,
+        "start_line": 1749
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
