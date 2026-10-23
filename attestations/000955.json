@@ -1,0 +1,156 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "tool_setup": "Case holes restate the variants proposed and proved by t1022-b, t1022-c, t1022-d, t1022-g, t1022-i, t1022-l of the 2026-10-22 run; assembly and remainder by t1023-f1."
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "6c84a6bd13c0234dddaa3aba3495598dee31094b",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "6c84a6bd13c0234dddaa3aba3495598dee31094b",
+  "model_and_tooling": "claude-opus-5-5 Claude Code (follow-up agent F1, 2026-10-23)",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "erdos-257",
+  "precheck_attestation": {
+    "hash": "b1fb68b92b86ebfca25fd3044258249345ee17b0f6f7da4d333c2ef7c50c7c82",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-23T14:04:52Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQG+FtkN1QZlJJaRFr8q4FOMW9vfwhEvEM3+gVe9SM+JTLVDOdC\nXQ7h9B+HutlYMaSPtKTkN0FAot4JRdtoL/cAs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "f0a2c09892da5238e3dafb205e2ad2ef99b2fc0aa75cf6ee95bb0d47a2427f65",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261023T133841Z-t1023-f1-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261023T133841Z-t1023-f1-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_naturals",
+            "h_progressions",
+            "h_periodic",
+            "h_coprime",
+            "h_squarefree",
+            "h_powers",
+            "h_two_squares",
+            "h_primes",
+            "h_ratio_two",
+            "h_liouville",
+            "h_long_gaps",
+            "h_two_and_three",
+            "h_two_bases",
+            "h_two_chains",
+            "h_lacunary_union",
+            "h_rest"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_257 declares ∀ (A : Set ℕ), A.Infinite → Irrational (∑' (n : ↑A), 1 / (2 ^ ↑n - 1)); 16 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is zero only at n = 0, where Lean's junk value makes the term 0; the sum over A then equals the sum over A without 0, which is still infinite, and the informal statement never uses n = 0.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_rest",
+              "path": "attempts/20261023T133841Z-t1023-f1-partial.1.witness",
+              "sha256": "8cf904e6da3c02412e867cea094ee6e363c269e8166db03b98bd404be1c67e57"
+            }
+          ]
+        },
+        "message": "1 of 16 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1023-f1",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (follow-up agent F1, 2026-10-23)",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
