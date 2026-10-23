@@ -8,9 +8,41 @@
         "path": "targets/erdos-257/nodes/variant-5274cf38/attempts/20261022T130000Z-t1022-d-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/variant-5274cf38/attempts/20261023T042430Z-t1022-d.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-d",
+          "detail": {
+            "source": "targets/erdos-257/nodes/variant-5274cf38/attempts/20261023T042430Z-t1022-d.yaml",
+            "text": "The reduction is proved (partial PR #862: shift by pN, the finite difference is a rational finite sum, so irrationality transfers). The remaining hole is exactly Luca–Tachiya's theorem for 0/1 periodic coefficients; their proof adapts Erdős's 1948 Chinese-remainder argument to f_B(m) = #{d | m : d ∈ B}, and the case B = pℕ alone is Erdős 1948 at base 2^p. Not attempted in the window; agent C queued the hole on Aristotle.\n",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "variant-5274cf38",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/variant-5274cf38/attempts/20261023T042430Z-t1022-d.yaml",
+            "text": "reduce eventually periodic A to a purely periodic B = {n : n + pN ∈ A} differing from A below N, then prove the purely periodic case (Luca–Tachiya 2014, Theorem 1.1) directly",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/variant-5274cf38/attempts/20261023T042430Z-t1022-d.yaml",
+            "text": "⊢ ∀ (B : Set ℕ), B.Nonempty → (∃ (p : ℕ), 0 < p ∧ ∀ (n : ℕ), n ∈ B ↔ n + p ∈ B) →\n    Irrational (∑' (n : ↑B), 1 / (2 ^ ↑n - 1))\n",
+            "untrusted": true
+          }
+        }
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -87,7 +119,7 @@
     "present": true,
     "trust_base": "kernel"
   },
-  "rendered_from": "ee7954dab8906f673515ef4a23c9ae2ff61b79f8",
+  "rendered_from": "78c676efbf43ede470fd8a2ba124595482210f51",
   "review": {
     "questions_waiting": [
       {
