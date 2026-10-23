@@ -1,0 +1,197 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5",
+      "Aristotle (Harmonic)"
+    ],
+    "tool_setup": "Claude Opus 5.5 in Claude Code as t1023-f2. Builds on: t1022-w's reduction and set-up lemmas (w_*), t1022-u's Mertens (u_*), Aristotle's proof of quantitative TT Lemma 5.2 (project 34c03ce5, on t1022-s's/t1022-x's cube files; a52_*), and t1022-t's partial #948."
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "17322888f91880462730677e7f055f1eeca5798c",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "17322888f91880462730677e7f055f1eeca5798c",
+  "model_and_tooling": "Claude Opus 5.5 (claude-opus-5-5); Aristotle (Harmonic) for Lemma 5.2 Claude Code, agent t1023-f2",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-6b364d2b--h1",
+  "precheck_attestation": {
+    "hash": "9a6a9b60ed443902f89e05d8cc02c403ea9312611b6cd6699fefc47ed334c850",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-23T14:22:42Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQIGkv7BtHWR/rPYRfpqms5KJLP/ygr7e5vQaAM36Fz+olJjGyt\n04/vemku77atuiuFhsn05izBxEYgM3/Sn4egM=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "abd56738cbd99166e6c188301795581f7a34ef06309b3dc07289af371dacc686",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261023T140825Z-t1023-f2-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261023T140825Z-t1023-f2-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "tt_sec5_setup"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_6b364d2b__h1 declares ∀ (q : ℕ),\n  0 < q →\n    ∃ c0,\n      0 < c0 ∧\n        ∀ (δ : ℝ),\n          0 < δ →\n            ∃ K p0 v P H B Ns m S1 S2 sgn r X M,\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i, if ε i = true then -1 else 1) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h = p0 * ↑h + ∑ k, (↑h - (↑↑k + 1)) * if ε k = true then v k else 0) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        ↑q *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε, sgn ε * if p ∣ (n + r ε (k + K + 1)).toNat then 1 else 0) / 2 ^ (k + K + 1)) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), ↑(P ε) = p0 + ∑ k, if ε k = true then v k else 0) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k, (↑↑k + 1) * if ε k = true then v k else 0) = ↑(P ε) * ↑(m n ε)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool), ∀ k < H, 0 < n + r ε (k + K + 1) ∧ n + r ε (k + K + 1) ≤ ↑B) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + 1)) ∧\n                                  S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + 1)) ∧\n                                    Disjoint S1 S2 ∧\n                                      (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + 1)),\n                                          p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                                        (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n                                          (↑Ns.card)⁻¹ *\n                                                ∑ n ∈ Ns,\n                                                  ∑ ε,\n                                                    ∑' (k : ℕ),\n                                                      (if P ε ^ 2 ∣ P ε * m n ε + P ε * (k + 1) then 1 else 0) /\n                                                        2 ^ (k + 1) ≤\n                                              δ ∧\n                                            (↑Ns.card)⁻¹ *\n                                                  ∑ n ∈ Ns,\n                                                    ∑' (k : ℕ),\n                                                      (∑ ε,\n                                                          ↑(ArithmeticFunction.cardDistinctFactors\n                                                              (n + r ε (k + H + K + 1)).toNat)) /\n                                                        2 ^ (k + H + K + 1) ≤\n                                                δ ∧\n                                              √((↑Ns.card)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S2, X p n) ^ 2) ≤ δ ∧\n                                                ∑ j ∈ Finset.range (M + 1),\n                                                      (2 * Real.pi) ^ j / ↑j.factorial *\n                                                        |(↑Ns.card)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S1, X p n) ^ j -\n                                                            (↑(Fintype.piFinset fun x => Ns).card)⁻¹ *\n                                                              ∑ ω ∈ Fintype.piFinset fun x => Ns,\n                                                                (∑ p, X (↑p) (ω p)) ^ j| ≤\n                                                    δ ∧\n                                                  (∏ p ∈ S1,\n                                                            (↑Ns.card)⁻¹ *\n                                                              ∑ n ∈ Ns, Real.exp (2 * Real.pi * Real.exp 1 * X p n) +\n                                                          ∏ p ∈ S1,\n                                                            (↑Ns.card)⁻¹ *\n                                                              ∑ n ∈ Ns,\n                                                                Real.exp (-(2 * Real.pi * Real.exp 1) * X p n)) /\n                                                        Real.exp 1 ^ M ≤\n                                                      δ ∧\n                                                    c0 ≤\n                                                      ∑ p ∈ S1,\n                                                        ((↑Ns.card)⁻¹ * ∑ n ∈ Ns, X p n ^ 2 -\n                                                          ((↑Ns.card)⁻¹ * ∑ n ∈ Ns, X p n) ^ 2); 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "(2 * Real.pi) ^ j / ↑j.factorial",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(if P ε ^ 2 ∣ P ε * m n ε + P ε * (k + 1) then 1 else 0) / 2 ^ (k + 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(∏ p ∈ S1, (↑Ns.card)⁻¹ * ∑ n ∈ Ns, Real.exp (2 * Real.pi * Real.exp 1 * X p n) +\n    ∏ p ∈ S1, (↑Ns.card)⁻¹ * ∑ n ∈ Ns, Real.exp (-(2 * Real.pi * Real.exp 1) * X p n)) /\n  Real.exp 1 ^ M",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(∑ ε, sgn ε * if p ∣ (n + r ε (k + K + 1)).toNat then 1 else 0) / 2 ^ (k + K + 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(∑ ε, ↑(ArithmeticFunction.cardDistinctFactors (n + r ε (k + H + K + 1)).toNat)) / 2 ^ (k + H + K + 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "int-trunc",
+              "location": "(n + r ε (k + H + K + 1)).toNat",
+              "message": "Int.toNat truncates every negative integer to 0"
+            },
+            {
+              "checker": "int-trunc",
+              "location": "(n + r ε (k + K + 1)).toNat",
+              "message": "Int.toNat truncates every negative integer to 0"
+            },
+            {
+              "checker": "junk-value",
+              "location": "√((↑Ns.card)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S2, X p n) ^ 2)",
+              "message": "Real.sqrt of a possibly-negative argument is a junk value (0)"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.range (B + 1)",
+              "message": "Finset.range with a literal-adjusted bound: check whether the endpoint is included"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.range (M + 1)",
+              "message": "Finset.range with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "10 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at (2 * Real.pi) ^ j / ↑j.factorial: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "tt_sec5_setup",
+              "path": "attempts/20261023T140825Z-t1023-f2-partial.1.witness",
+              "sha256": "73bac3ff7062baa8377f5dfc373128dedd144cdb95595a62a5e1074738486f85"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1023-f2",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code, agent t1023-f2",
+    "model": "Claude Opus 5.5 (claude-opus-5-5); Aristotle (Harmonic) for Lemma 5.2"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

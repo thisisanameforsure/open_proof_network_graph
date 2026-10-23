@@ -1,0 +1,4 @@
+import Mathlib
+
+theorem witness : ∃ (q : ℕ) (T : ℝ) (δ : ℝ) (P0 : ℕ), (0 : ℕ) < q ∧ (0 : ℝ) < δ :=
+  ⟨1, 0, 1, 0, Nat.one_pos, one_pos⟩
