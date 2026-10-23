@@ -1,0 +1,141 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (agent t1022-t wrote it; filed by finisher H under t1022-l's token)",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "tool_setup": "Author: t1022-t. Built on t1022-q's Q/tt_steps.lean (Lambert identity, (5.1), (5.2), (5.8)) and t1022-l's tail_mul_den_int; hosted fast check"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "4662f8909fde0f3e718e4f7a91250d1451c4f733fedc36b8b944b7a416d48bb5",
+  "graph_commit": "f0822873b58e75952d1ff074e790daa9b5bbb4c6",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "f0822873b58e75952d1ff074e790daa9b5bbb4c6",
+  "model_and_tooling": "Claude Opus 5.5 (agent t1022-t) Claude Code; filed by finisher H under t1022-l's token",
+  "network_commit": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node_id": "variant-6b364d2b",
+  "precheck_attestation": {
+    "hash": "02a2c25162503bb38229f7901a0b9a21cb33b70e15bcbdb9cdc9cf4a90bf0959",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-23T05:00:48Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQPwb/lOPNHtJwvDiO0nYuQOc6CH/cvXyuclG7/3mUt5ZFWEYhc\n5xd6LUdZgtS1hK/VDVJt156LFgXLyvyMYt6A0=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "ce18cd51948c4a4e206aa3d3bfc3173e4277433c35a7ff7e8446c4ddc60f8550",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261022T160309Z-t1022-l-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261022T160309Z-t1022-l-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h1"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_257_primes declares Irrational (∑' (p : ↑{p | Nat.Prime p}), 1 / (2 ^ ↑p - 1)); 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's junk value makes the term 0, so the sum is the sum over the positive elements, exactly as in the root's acknowledged division.",
+              "location": "1 / (2 ^ ↑p - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h1",
+              "path": "attempts/20261022T160309Z-t1022-l-partial.1.witness",
+              "sha256": "dffa7244352dc6aa5a1dcbc1fc9d14e5b8b1ad1408bd812af057453872072a61"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1022-l",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code; filed by finisher H under t1022-l's token",
+    "model": "Claude Opus 5.5 (agent t1022-t)"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
