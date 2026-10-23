@@ -34,9 +34,10 @@
         "path": "targets/erdos-257/nodes/erdos-257/attempts/20261020T203102Z-fable-1020-e257-c-partial.lean"
       }
     ],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "budget-exhausted": 1
+      "budget-exhausted": 1,
+      "route-dead-ends": 1
     },
     "records": [
       {
@@ -65,9 +66,43 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/erdos-257/attempts/20261023T042350Z-t1022-d.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1022-d",
+          "detail": {
+            "source": "targets/erdos-257/nodes/erdos-257/attempts/20261023T042350Z-t1022-d.yaml",
+            "text": "Every published method fixes a structured A and shows the expansion Σ f_A(m)/2^m, f_A(m) = #{d | m : d ∈ A}, is not eventually periodic: CRT zero blocks need many pairwise coprime elements of A and Σ1/a < ∞ (Erdős 1968, Duverney–Tachiya), periodic coefficients need a periodic indicator (Luca–Tachiya, Borwein), and the primes need correlation estimates for ω (Tao–Teräväinen, Theorem 1.3). None controls an arbitrary sparse A whose elements share factors, and none says anything about the greedy wa…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-257",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-257/nodes/erdos-257/attempts/20261023T042350Z-t1022-d.yaml",
+            "text": "reduce the root to published irrationality theorems for special sets A (Erdős 1948, Borwein 1991, Erdős 1968, Luca–Tachiya 2014, Duverney–Tachiya 2019, Tao–Teräväinen 2025) and look for one whose method covers every infinite A",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/erdos-257/attempts/20261023T042350Z-t1022-d.yaml",
+            "text": "A : Set ℕ\nhA : A.Infinite\n⊢ Irrational (∑' (n : ↑A), 1 / (2 ^ ↑n - 1))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
-    "refuted_route_classes": [],
+    "refuted_route_classes": [
+      "reduction-to-known"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -199,7 +234,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "1d0653598acc646f20226b79110cb8ddb8b176a9",
+  "rendered_from": "78c676efbf43ede470fd8a2ba124595482210f51",
   "review": {
     "questions_waiting": [
       {
