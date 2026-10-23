@@ -1,0 +1,30 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1022-d
+detail: 'Every published method fixes a structured A and shows the expansion Σ f_A(m)/2^m,
+  f_A(m) = #{d | m : d ∈ A}, is not eventually periodic: CRT zero blocks need many
+  pairwise coprime elements of A and Σ1/a < ∞ (Erdős 1968, Duverney–Tachiya), periodic
+  coefficients need a periodic indicator (Luca–Tachiya, Borwein), and the primes need
+  correlation estimates for ω (Tao–Teräväinen, Theorem 1.3). None controls an arbitrary
+  sparse A whose elements share factors, and none says anything about the greedy walk
+  of a given rational (erdos-257--h2). Kovač–Tao (§2.1.2) call the general question
+  difficult; Kovač expects it false at base 2. The known cases are filed as partial
+  variants of the root with literature records, and the map of methods is in the root
+  annex filed by t1022-d.
+
+  '
+failure_class: route-dead-ends
+node: erdos-257
+outcome: refuted-route
+route: reduce the root to published irrationality theorems for special sets A (Erdős
+  1948, Borwein 1991, Erdős 1968, Luca–Tachiya 2014, Duverney–Tachiya 2019, Tao–Teräväinen
+  2025) and look for one whose method covers every infinite A
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: 'A : Set ℕ
+
+  hA : A.Infinite
+
+  ⊢ Irrational (∑'' (n : ↑A), 1 / (2 ^ ↑n - 1))
+
+  '
