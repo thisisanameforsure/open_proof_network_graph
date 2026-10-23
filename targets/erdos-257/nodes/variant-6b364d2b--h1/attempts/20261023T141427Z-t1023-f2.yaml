@@ -1,0 +1,130 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1023-f2
+detail: 'Partial PR #957 proves this node from one hole (tt_sec5_setup): quantitative
+  Lemma 5.2 (Aristotle), Mertens'' second theorem on S1 (t1022-u), and t1022-w''s
+  κ1, (5.19), S0 and variance steps are proved in the assembly. Not done: splitting
+  the remaining hole into separate κ2 (§5.8), κ3 (§§5.12-5.14, via Theorem 3.1(i)),
+  κ4 (§5.9), κ5 (§5.10) holes. Those estimates are about the same random n, so as
+  long as N_s is existential they cannot be separate holes; separating them needs
+  the §5.5-5.6 construction (the parameters (5.22)-(5.29) with floors chosen so the
+  Lemma 5.2 window holds for all large x, the discriminant W, W♭, N_s = n in [x/2,x]
+  with (5.5) and W♭ | n) written inline in each hole, plus a set-up hole for CRT and
+  (5.35). That is the natural next partial, on variant-6b364d2b--h1--h1. Theorem 3.1(i)
+  cannot be a hole here: only §5.14 would use it.'
+failure_class: budget-exhausted
+node: variant-6b364d2b--h1
+outcome: exhausted
+route: Tao–Teräväinen §§5.5–5.14 assembled in Lean with Lemma 5.2, Mertens and the
+  elementary κ1/(5.19)/S0/variance steps proved; κ2–κ5 left as one hole
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∀ (q : ℕ),\n    (0 : ℕ) < q →\n      ∀ (T δ : ℝ),\n      \
+  \  (0 : ℝ) < δ →\n          ∀ (P0 : ℕ),\n            ∃ (Pw : ℕ) (K : ℕ) (H : ℕ),\n\
+  \              P0 ≤ Pw ∧\n                (1 : ℕ) ≤ K ∧\n                  (1 :\
+  \ ℕ) ≤ H ∧\n                    (2 : ℝ) ^ K ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n\
+  \                      (↑H : ℝ) ≤ Real.log (↑Pw : ℝ) ^ (2 / 3 : ℝ) ∧\n         \
+  \               ∀ (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ),\n         \
+  \                 (∀ (ε : Fin K → Bool),\n                              Nat.Prime\
+  \ (P ε) ∧\n                                Pw < (2 : ℕ) * P ε ∧\n              \
+  \                    P ε ≤ Pw ∧ (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then\
+  \ v k else (0 : ℤ)) →\n                            (Function.Injective fun (ε :\
+  \ Fin K → Bool) =>\n                                p0 + ∑ k : Fin K, if ε k = true\
+  \ then v k else (0 : ℤ)) →\n                              (Function.Injective fun\
+  \ (x : (Fin K → Bool) × Fin H) =>\n                                  (p0 + ∑ k :\
+  \ Fin K, if x.1 k = true then v k else (0 : ℤ)) *\n                            \
+  \          (↑((↑x.2 : ℕ) + (1 : ℕ) + K) : ℤ) -\n                               \
+  \     ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if x.1 k = true then v k else (0\
+  \ : ℤ)) →\n                                ∃ (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin\
+  \ K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ)\n                             \
+  \     (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M\
+  \ : ℕ) (η : ℝ)\n                                  (w : ℕ) (R : ℕ),\n           \
+  \                       ((∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true\
+  \ then (-1 : ℝ) else (1 : ℝ)) ∧\n                                      (∀ (ε : Fin\
+  \ K → Bool) (h : ℕ),\n                                          r ε h =\n      \
+  \                                      p0 * (↑h : ℤ) +\n                       \
+  \                       ∑ k : Fin K,\n                                         \
+  \       ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) *\n                           \
+  \                       if ε k = true then v k else (0 : ℤ)) ∧\n               \
+  \                         (∀ (p : ℕ) (n : ℤ),\n                                \
+  \            X p n =\n                                              (↑q : ℝ) *\n\
+  \                                                ∑ k ∈ Finset.range H,\n       \
+  \                                           (∑ ε : Fin K → Bool,\n             \
+  \                                         sgn ε *\n                            \
+  \                            if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 :\
+  \ ℝ)\n                                                        else (0 : ℝ)) /\n\
+  \                                                    (2 : ℝ) ^ (k + K + (1 : ℕ)))\
+  \ ∧\n                                          Even M) ∧\n                     \
+  \               (Ns.Nonempty ∧\n                                        (∀ n ∈ Ns,\n\
+  \                                            ∀ (ε : Fin K → Bool),\n           \
+  \                                   (n -\n                                     \
+  \             ∑ k : Fin K,\n                                                   \
+  \ ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n       \
+  \                                         (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n   \
+  \                                       ∀ n ∈ Ns,\n                            \
+  \                ∀ (ε : Fin K → Bool),\n                                       \
+  \       ∀ k < H,\n                                                (0 : ℤ) < n +\
+  \ r ε (k + K + (1 : ℕ)) ∧\n                                                  n +\
+  \ r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                      (S1\
+  \ ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                   \
+  \                       S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ)))\
+  \ ∧\n                                            Disjoint S1 S2 ∧\n            \
+  \                                  (∀ p ∈ Finset.filter Nat.Prime (Finset.range\
+  \ (B + (1 : ℕ))),\n                                                  p ∉ S1 → p\
+  \ ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, (↑p : ℤ) ∣ n - n') ∧\n                           \
+  \                     ∀ p ∈ S1,\n                                              \
+  \    ∀ k1 < H,\n                                                    ∀ k2 < H,\n\
+  \                                                      ∀ (ε1 ε2 : Fin K → Bool),\n\
+  \                                                        k1 ≠ k2 ∨ ε1 ≠ ε2 →\n \
+  \                                                         ¬(↑p : ℤ) ∣ r ε1 (k1 +\
+  \ K + (1 : ℕ)) - r ε2 (k2 + K + (1 : ℕ))) ∧\n                                  \
+  \      ((0 : ℝ) ≤ η ∧\n                                            η ≤ (1 / 4 :\
+  \ ℝ) ∧\n                                              (∀ (ε : Fin K → Bool) (a :\
+  \ ℕ),\n                                                  (↑{n ∈ Ns | P ε ∣ m n ε\
+  \ + a}.card : ℝ) * (↑(P ε) : ℝ) ≤\n                                            \
+  \        ((1 : ℝ) + η) * (↑Ns.card : ℝ)) ∧\n                                   \
+  \             ∀ p ∈ S1,\n                                                  ∀ (a\
+  \ : ℤ),\n                                                    |(↑{n ∈ Ns | (↑p :\
+  \ ℤ) ∣ n + a}.card : ℝ) * (↑p : ℝ) -\n                                         \
+  \                 (↑Ns.card : ℝ)| ≤\n                                          \
+  \            η * (↑Ns.card : ℝ)) ∧\n                                          ((↑q\
+  \ : ℝ) / (2 : ℝ) ^ (K + (1 : ℕ)) ≤ δ ∧\n                                       \
+  \       ∑ ε : Fin K → Bool, ((1 : ℝ) + η) / (↑(P ε) : ℝ) ≤ δ) ∧\n              \
+  \                              ((↑Ns.card : ℝ)⁻¹ *\n                           \
+  \                         ∑ n ∈ Ns,\n                                          \
+  \            ∑' (k : ℕ),\n                                                     \
+  \   (∑ ε : Fin K → Bool,\n                                                     \
+  \       (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ)\n                  \
+  \                                                (n + r ε (k + H + K + (1 : ℕ))).toNat)\
+  \ :\n                                                              ℝ)) /\n     \
+  \                                                     (2 : ℝ) ^ (k + H + K + (1\
+  \ : ℕ)) ≤\n                                                  δ ∧\n             \
+  \                                   √((↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S2, X\
+  \ p n) ^ (2 : ℕ)) ≤ δ ∧\n                                                  ∑ j ∈\
+  \ Finset.range (M + (1 : ℕ)),\n                                                \
+  \        ((2 : ℝ) * Real.pi) ^ j / (↑j.factorial : ℝ) *\n                      \
+  \                                    |(↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S1, X\
+  \ p n) ^ j -\n                                                              (↑(Fintype.piFinset\
+  \ fun (x : ↥S1) => Ns).card : ℝ)⁻¹ *\n                                         \
+  \                       ∑ ω ∈ Fintype.piFinset fun (x : ↥S1) => Ns,\n          \
+  \                                                        (∑ p : ↥S1, X (↑p : ℕ)\
+  \ (ω p)) ^ j| ≤\n                                                      δ ∧\n   \
+  \                                                 (∏ p ∈ S1,\n                 \
+  \                                           (↑Ns.card : ℝ)⁻¹ *\n               \
+  \                                               ∑ n ∈ Ns,\n                    \
+  \                                            Real.exp ((2 : ℝ) * Real.pi * Real.exp\
+  \ (1 : ℝ) * X p n) +\n                                                         \
+  \ ∏ p ∈ S1,\n                                                            (↑Ns.card\
+  \ : ℝ)⁻¹ *\n                                                              ∑ n ∈\
+  \ Ns,\n                                                                Real.exp\n\
+  \                                                                  (-((2 : ℝ) *\
+  \ Real.pi * Real.exp (1 : ℝ)) * X p n)) /\n                                    \
+  \                    Real.exp (1 : ℝ) ^ M ≤\n                                  \
+  \                    δ) ∧\n                                              (3 : ℕ)\
+  \ ≤ w ∧\n                                                w ≤ R ∧\n             \
+  \                                     (2 : ℝ) ^ K * T ≤\n                      \
+  \                                Real.log (Real.log (↑R : ℝ)) - Real.log (Real.log\
+  \ (↑w : ℝ)) ∧\n                                                    ∑ p ∈ Finset.filter\
+  \ Nat.Prime (Finset.Ioc w R) \\ S1,\n                                          \
+  \              (1 : ℝ) / (↑p : ℝ) ≤\n                                          \
+  \            (1 : ℝ)"
