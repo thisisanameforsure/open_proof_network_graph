@@ -1,0 +1,2818 @@
+{
+  "artifact": {
+    "hash": "eeec45927fd621b81c141f5a4ff96afc725818df25c4785b65769f5b33515da9",
+    "kind": "partial",
+    "path": "attempts/20261022T160309Z-t1022-l-partial.lean"
+  },
+  "gate": "1bd7ca70c9ee0c0c1be25ebef4026bbaf95d1e15",
+  "node": "variant-6b364d2b",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-6b364d2b--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∃ (c0 : ℝ),\n      (0 : ℝ) < c0 ∧\n        ∀ (δ : ℝ),\n          (0 : ℝ) < δ →\n            ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n              ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n              (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h =\n                      p0 * (↑h : ℤ) +\n                        ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        (↑q : ℝ) *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε : Fin K → Bool,\n                                sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                              (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                    (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool),\n                                    ∀ k < H,\n                                      (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                             ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (q : ℕ),\n  (0 : ℕ) < q →\n    ∃ (c0 : ℝ),\n      (0 : ℝ) < c0 ∧\n        ∀ (δ : ℝ),\n          (0 : ℝ) < δ →\n            ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n              ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n              (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n              (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n                (∀ (ε : Fin K → Bool) (h : ℕ),\n                    r ε h =\n                      p0 * (↑h : ℤ) +\n                        ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n                  (∀ (p : ℕ) (n : ℤ),\n                      X p n =\n                        (↑q : ℝ) *\n                          ∑ k ∈ Finset.range H,\n                            (∑ ε : Fin K → Bool,\n                                sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                              (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                    Even M ∧\n                      (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                        (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                          Ns.Nonempty ∧\n                            (∀ n ∈ Ns,\n                                ∀ (ε : Fin K → Bool),\n                                  (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                    (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                              (∀ n ∈ Ns,\n                                  ∀ (ε : Fin K → Bool),\n                                    ∀ k < H,\n                                      (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                                S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                             ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (p : (↑{p : ℕ | Nat.Prime p} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑p : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 1036,
+        "start_line": 1004
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "The Boolean values, `true` and `false`.",
+            "name": "Bool",
+            "tags": []
+          },
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a type `α` with addition satisfies `Even a` if `a = r + r`, for some `r : α`.",
+            "name": "Even",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": "Two elements of a lattice are disjoint if their inf is the bottom element.",
+            "name": "Disjoint",
+            "tags": []
+          },
+          {
+            "doc": "`ω n` is the number of distinct prime factors of `n`.",
+            "name": "ArithmeticFunction.cardDistinctFactors",
+            "tags": []
+          },
+          {
+            "doc": "The square root of a real number.",
+            "name": "Real.sqrt",
+            "tags": []
+          },
+          {
+            "doc": "The number π = 3.14159265...",
+            "name": "Real.pi",
+            "tags": []
+          },
+          {
+            "doc": "Given for all `a : α` a finset `t a` of `δ a`, then one can define the finset `Fintype.piFinset t` of all functions taking values in `t a` for all `a`.",
+            "name": "Fintype.piFinset",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x : ℝ) (M : ℕ),\n  ‖Complex.exp ((↑x : ℂ) * Complex.I) - ∑ m ∈ Finset.range M, ((↑x : ℂ) * Complex.I) ^ m / (↑m.factorial : ℂ)‖ ≤\n    |x| ^ M / (↑M.factorial : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "htay",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℝ) (M : ℕ),\n  ‖Complex.exp ((↑x : ℂ) * Complex.I) - ∑ m ∈ Finset.range M, ((↑x : ℂ) * Complex.I) ^ m / (↑m.factorial : ℂ)‖ ≤\n    |x| ^ M / (↑M.factorial : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (p : (↑{p : ℕ | Nat.Prime p} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑p : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "htay",
+      "kind": "have",
+      "name": "htay",
+      "span": {
+        "end_line": 1037,
+        "start_line": 1037
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < r0.den",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hq",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < r0.den",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hq",
+      "kind": "have",
+      "name": "hq",
+      "span": {
+        "end_line": 1039,
+        "start_line": 1039
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (p : (↑{p : ℕ | Nat.Prime p} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑p : ℕ) - (1 : ℝ)) = (↑r0.num : ℝ) / (↑r0.den : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (p : (↑{p : ℕ | Nat.Prime p} : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑p : ℕ) - (1 : ℝ)) = (↑r0.num : ℝ) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 1041,
+        "start_line": 1040
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Rat.cast_def",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c0 : ℝ),\n  (0 : ℝ) < c0 ∧\n    ∀ (δ : ℝ),\n      (0 : ℝ) < δ →\n        ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n          ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r :\n          (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n          (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n            (∀ (ε : Fin K → Bool) (h : ℕ),\n                r ε h =\n                  p0 * (↑h : ℤ) +\n                    ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n              (∀ (p : ℕ) (n : ℤ),\n                  X p n =\n                    (↑r0.den : ℝ) *\n                      ∑ k ∈ Finset.range H,\n                        (∑ ε : Fin K → Bool,\n                            sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                          (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n                Even M ∧\n                  (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                    (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                      Ns.Nonempty ∧\n                        (∀ n ∈ Ns,\n                            ∀ (ε : Fin K → Bool),\n                              (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                                (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                          (∀ n ∈ Ns,\n                              ∀ (ε : Fin K → Bool),\n                                ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                            S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                              S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                                Disjoint S1 S2 ∧\n                                  (∀ p ∈ Finset.filter Nat.Prime (Finset.r",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c0",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < c0",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hall",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (δ : ℝ),\n  (0 : ℝ) < δ →\n    ∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m :\n      ℤ → (Fin K → Bool) → ℕ) (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X\n      : ℕ → ℤ → ℝ) (M : ℕ),\n      (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n        (∀ (ε : Fin K → Bool) (h : ℕ),\n            r ε h =\n              p0 * (↑h : ℤ) +\n                ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n          (∀ (p : ℕ) (n : ℤ),\n              X p n =\n                (↑r0.den : ℝ) *\n                  ∑ k ∈ Finset.range H,\n                    (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n            Even M ∧\n              (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n                (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n                  Ns.Nonempty ∧\n                    (∀ n ∈ Ns,\n                        ∀ (ε : Fin K → Bool),\n                          (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                            (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                      (∀ n ∈ Ns,\n                          ∀ (ε : Fin K → Bool),\n                            ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                        S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                          S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                            Disjoint S1 S2 ∧\n                              (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                                  p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                                (∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ δ) ∧\n ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1042,
+        "start_line": 1042
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Real.exp ((-8 : ℝ) * c0) < Real.exp (0 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Real.exp ((-8 : ℝ) * c0) < Real.exp (0 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Real.exp ((-8 : ℝ) * c0) < (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hex.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 1044,
+            "start_line": 1044
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.exp_lt_exp",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "Real.exp ((-8 : ℝ) * c0) < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hex",
+            "type": {
+              "printed": "reliable",
+              "text": "Real.exp ((-8 : ℝ) * c0) < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hex",
+      "kind": "have",
+      "name": "hex",
+      "span": {
+        "end_line": 1045,
+        "start_line": 1043
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Real.exp_zero",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hδ",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h_x3b4",
+      "kind": "have",
+      "name": "hδ",
+      "span": {
+        "end_line": 1046,
+        "start_line": 1046
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "lt_min",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) ≤ (1 / 4 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hδ1",
+            "type": {
+              "printed": "reliable",
+              "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) ≤ (1 / 4 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h_x3b41",
+      "kind": "have",
+      "name": "hδ1",
+      "span": {
+        "end_line": 1047,
+        "start_line": 1047
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "min_le_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) ≤ ((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hδ2",
+            "type": {
+              "printed": "reliable",
+              "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) ≤ ((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h_x3b42",
+      "kind": "have",
+      "name": "hδ2",
+      "span": {
+        "end_line": 1049,
+        "start_line": 1048
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "min_le_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ) (p0 : ℤ) (v : Fin K → ℤ) (P : (Fin K → Bool) → ℕ) (H : ℕ) (B : ℕ) (Ns : Finset ℤ) (m : ℤ → (Fin K → Bool) → ℕ)\n  (S1 : Finset ℕ) (S2 : Finset ℕ) (sgn : (Fin K → Bool) → ℝ) (r : (Fin K → Bool) → ℕ → ℤ) (X : ℕ → ℤ → ℝ) (M : ℕ),\n  (∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)) ∧\n    (∀ (ε : Fin K → Bool) (h : ℕ),\n        r ε h =\n          p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)) ∧\n      (∀ (p : ℕ) (n : ℤ),\n          X p n =\n            (↑r0.den : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) ∧\n        Even M ∧\n          (∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)) ∧\n            (∀ (ε : Fin K → Bool), Nat.Prime (P ε)) ∧\n              Ns.Nonempty ∧\n                (∀ n ∈ Ns,\n                    ∀ (ε : Fin K → Bool),\n                      (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) =\n                        (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)) ∧\n                  (∀ n ∈ Ns,\n                      ∀ (ε : Fin K → Bool),\n                        ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)) ∧\n                    S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                      S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧\n                        Disjoint S1 S2 ∧\n                          (∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))),\n                              p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n') ∧\n                            (∀ p ∈ S1,\n                                ∀ n ∈ Ns,\n                                  |X p n| ≤\n                                    min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "p0",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "v",
+            "type": {
+              "printed": "reliable",
+              "text": "Fin K → ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "P",
+            "type": {
+              "printed": "reliable",
+              "text": "(Fin K → Bool) → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "H",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "B",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "Ns",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "m",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ → (Fin K → Bool) → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "S1",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "S2",
+            "type": {
+              "printed": "reliable",
+              "text": "Finset ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "sgn",
+            "type": {
+              "printed": "reliable",
+              "text": "(Fin K → Bool) → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "r",
+            "type": {
+              "printed": "reliable",
+              "text": "(Fin K → Bool) → ℕ → ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "X",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℤ → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "M",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hsgn",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), sgn ε = ∏ i : Fin K, if ε i = true then (-1 : ℝ) else (1 : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool) (h : ℕ),\n  r ε h = p0 * (↑h : ℤ) + ∑ k : Fin K, ((↑h : ℤ) - ((↑(↑k : ℕ) : ℤ) + (1 : ℤ))) * if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hX",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ) (n : ℤ),\n  X p n =\n    (↑r0.den : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hMeven",
+            "type": {
+              "printed": "reliable",
+              "text": "Even M",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hP",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), (↑(P ε) : ℤ) = p0 + ∑ k : Fin K, if ε k = true then v k else (0 : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hpr",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ε : Fin K → Bool), Nat.Prime (P ε)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hNs",
+            "type": {
+              "printed": "reliable",
+              "text": "Ns.Nonempty",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hm",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ n ∈ Ns,\n  ∀ (ε : Fin K → Bool),\n    (n - ∑ k : Fin K, ((↑(↑k : ℕ) : ℤ) + (1 : ℤ)) * if ε k = true then v k else (0 : ℤ)) = (↑(P ε) : ℤ) * (↑(m n ε) : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrange",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ n ∈ Ns, ∀ (ε : Fin K → Bool), ∀ k < H, (0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS1",
+            "type": {
+              "printed": "reliable",
+              "text": "S1 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS2",
+            "type": {
+              "printed": "reliable",
+              "text": "S2 ⊆ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hdisj",
+            "type": {
+              "printed": "reliable",
+              "text": "Disjoint S1 S2",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS0",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))), p ∉ S1 → p ∉ S2 → ∀ n ∈ Ns, ∀ n' ∈ Ns, X p n = X p n'",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hXs",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ p ∈ S1, ∀ n ∈ Ns, |X p n| ≤ min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk1",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      ∑ ε : Fin K → Bool,\n        ∑' (k : ℕ),\n          (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) / (2 : ℝ) ^ (k + (1 : ℕ)) ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk2",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      ∑' (k : ℕ),\n        (∑ ε : Fin K → Bool,\n            (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n          (2 : ℝ) ^ (k + H + K + (1 : ℕ)) ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk3",
+            "type": {
+              "printed": "reliable",
+              "text": "√((↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S2, X p n) ^ (2 : ℕ)) ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk4",
+            "type": {
+              "printed": "reliable",
+              "text": "∑ j ∈ Finset.range (M + (1 : ℕ)),\n    ((2 : ℝ) * Real.pi) ^ j / (↑j.factorial : ℝ) *\n      |(↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, (∑ p ∈ S1, X p n) ^ j -\n          (↑(Fintype.piFinset fun (x : ↥S1) => Ns).card : ℝ)⁻¹ *\n            ∑ ω ∈ Fintype.piFinset fun (x : ↥S1) => Ns, (∑ p : ↥S1, X (↑p : ℕ) (ω p)) ^ j| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hk5",
+            "type": {
+              "printed": "reliable",
+              "text": "(∏ p ∈ S1, (↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, Real.exp ((2 : ℝ) * Real.pi * Real.exp (1 : ℝ) * X p n) +\n      ∏ p ∈ S1, (↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, Real.exp (-((2 : ℝ) * Real.pi * Real.exp (1 : ℝ)) * X p n)) /\n    Real.exp (1 : ℝ) ^ M ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hvar",
+            "type": {
+              "printed": "reliable",
+              "text": "c0 ≤ ∑ p ∈ S1, ((↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, X p n ^ (2 : ℕ) - ((↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, X p n) ^ (2 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s10",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1052,
+        "start_line": 1050
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) ≤ (↑r0.den : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hq1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) ≤ (↑r0.den : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hq1",
+      "kind": "have",
+      "name": "hq1",
+      "span": {
+        "end_line": 1053,
+        "start_line": 1053
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ) ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hd1",
+            "type": {
+              "printed": "reliable",
+              "text": "min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ) ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hd1",
+      "kind": "have",
+      "name": "hd1",
+      "span": {
+        "end_line": 1055,
+        "start_line": 1054
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_le_self",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)) =\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hd2",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)) =\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hd2",
+      "kind": "have",
+      "name": "hd2",
+      "span": {
+        "end_line": 1058,
+        "start_line": 1056
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_div_cancel₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "cubeSgn = sgn",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsgn'",
+            "type": {
+              "printed": "reliable",
+              "text": "cubeSgn = sgn",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsgn'",
+      "kind": "have",
+      "name": "hsgn'",
+      "span": {
+        "end_line": 1059,
+        "start_line": 1059
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "**Function extensionality.** If two functions return equal results for all possible arguments, then they are equal.",
+            "name": "funext",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "cubeShift p0 v = r",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hr'",
+            "type": {
+              "printed": "reliable",
+              "text": "cubeShift p0 v = r",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hr'",
+      "kind": "have",
+      "name": "hr'",
+      "span": {
+        "end_line": 1060,
+        "start_line": 1060
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "**Function extensionality.** If two functions return equal results for all possible arguments, then they are equal.",
+            "name": "funext",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Ns.Nonempty",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "n0",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hn0",
+            "type": {
+              "printed": "reliable",
+              "text": "n0 ∈ Ns",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s16",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 1061,
+        "start_line": 1061
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) - (8 : ℝ) * ((4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))) ≤\n  Real.exp ((-8 : ℝ) * c0)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) - (8 : ℝ) * ((4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))) ≤\n  Real.exp ((-8 : ℝ) * c0)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 1072,
+        "start_line": 1062
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "The Boolean values, `true` and `false`.",
+            "name": "Bool",
+            "tags": []
+          },
+          {
+            "doc": "`ω n` is the number of distinct prime factors of `n`.",
+            "name": "ArithmeticFunction.cardDistinctFactors",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": "Returns the lesser of its two arguments.",
+            "name": "Min.min",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "linarith"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) - (8 : ℝ) * ((4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))) ≤\n  Real.exp ((-8 : ℝ) * c0)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s18",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 1073,
+        "start_line": 1073
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (z : ℤ),\n  (↑r0.den : ℝ) *\n        ∑' (k : ℕ),\n          (∑ ε : Fin K → Bool,\n              cubeSgn ε *\n                (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + cubeShift p0 v ε (k + K + (1 : ℕ))).toNat) :\n                  ℝ)) /\n            (2 : ℝ) ^ (k + K + (1 : ℕ)) +\n      (↑r0.den : ℝ) *\n        ∑ ε : Fin K → Bool,\n          cubeSgn ε *\n            ∑' (k : ℕ),\n              (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                (2 : ℝ) ^ (k + (1 : ℕ)) =\n    (↑z : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "z",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℤ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hz",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑r0.den : ℝ) *\n      ∑' (k : ℕ),\n        (∑ ε : Fin K → Bool,\n            cubeSgn ε *\n              (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + cubeShift p0 v ε (k + K + (1 : ℕ))).toNat) :\n                ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ)) +\n    (↑r0.den : ℝ) *\n      ∑ ε : Fin K → Bool,\n        cubeSgn ε *\n          ∑' (k : ℕ),\n            (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) / (2 : ℝ) ^ (k + (1 : ℕ)) =\n  (↑z : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (z : ℤ),\n  ∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n      ((↑r0.den : ℝ) *\n            ∑ ε : Fin K → Bool,\n              sgn ε *\n                ∑' (k : ℕ),\n                  (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                    (2 : ℝ) ^ (k + (1 : ℕ)) +\n          ((↑r0.den : ℝ) *\n              ∑' (k : ℕ),\n                (∑ ε : Fin K → Bool,\n                    sgn ε *\n                      (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n            (↑r0.den : ℝ) *\n              ∑ k ∈ Finset.range H,\n                (∑ ε : Fin K → Bool,\n                    sgn ε *\n                      (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                  (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n        ∑ p ∈ S2, X p n) =\n    (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 1075,
+            "start_line": 1075
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℤ) < n + r ε (k + K + (1 : ℕ)) ∧ n + r ε (k + K + (1 : ℕ)) ≤ (↑B : ℤ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < (n + r ε (k + K + (1 : ℕ))).toNat ∧ (n + r ε (k + K + (1 : ℕ))).toNat ≤ B",
+                  "truncated": false
+                }
+              },
+              "id": "s19.hu.h",
+              "kind": "have",
+              "name": "h",
+              "span": {
+                "end_line": 1081,
+                "start_line": 1081
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ k < H, ∀ (ε : Fin K → Bool), (0 : ℕ) < (n + r ε (k + K + (1 : ℕ))).toNat ∧ (n + r ε (k + K + (1 : ℕ))).toNat ≤ B",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hu",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ k < H, ∀ (ε : Fin K → Bool), (0 : ℕ) < (n + r ε (k + K + (1 : ℕ))).toNat ∧ (n + r ε (k + K + (1 : ℕ))).toNat ≤ B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n    ((↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ)) +\n        ((↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n      ∑ p ∈ S2, X p n) =\n  (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.hu",
+          "kind": "have",
+          "name": "hu",
+          "span": {
+            "end_line": 1082,
+            "start_line": 1078
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Natural numbers less than some upper bound.",
+                "name": "Fin",
+                "tags": []
+              },
+              {
+                "doc": "The Boolean values, `true` and `false`.",
+                "name": "Bool",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑r0.den : ℝ) *\n    ∑ k ∈ Finset.range H,\n      (∑ b : Fin K → Bool,\n          sgn b * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r b (k + K + (1 : ℕ))).toNat) : ℝ)) /\n        (2 : ℝ) ^ (k + K + (1 : ℕ)) =\n  ∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p,\n    (↑r0.den : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ b : Fin K → Bool, sgn b * if p ∣ (n + r b (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsplit",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑r0.den : ℝ) *\n    ∑ k ∈ Finset.range H,\n      (∑ b : Fin K → Bool,\n          sgn b * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r b (k + K + (1 : ℕ))).toNat) : ℝ)) /\n        (2 : ℝ) ^ (k + K + (1 : ℕ)) =\n  ∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p,\n    (↑r0.den : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ b : Fin K → Bool, sgn b * if p ∣ (n + r b (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n    ((↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ)) +\n        ((↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n      ∑ p ∈ S2, X p n) =\n  (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.hsplit",
+          "kind": "have",
+          "name": "hsplit",
+          "span": {
+            "end_line": 1084,
+            "start_line": 1083
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p, X p n =\n  ∑ p ∈ S1, X p n + ∑ p ∈ S2, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hPB",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p, X p n =\n  ∑ p ∈ S1, X p n + ∑ p ∈ S2, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n    ((↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ)) +\n        ((↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n      ∑ p ∈ S2, X p n) =\n  (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.hPB",
+          "kind": "have",
+          "name": "hPB",
+          "span": {
+            "end_line": 1090,
+            "start_line": 1086
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                "name": "Nat.Prime",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_union",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_sdiff",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.union_subset",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "add_comm",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧ p ∉ S1 ∪ S2",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hp'",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) ∧ p ∉ S1 ∪ S2",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "X p n = X p n0",
+                  "truncated": false
+                }
+              },
+              "id": "s19.hC.hp'",
+              "kind": "have",
+              "name": "hp'",
+              "span": {
+                "end_line": 1094,
+                "start_line": 1094
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_sdiff",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n =\n  ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hC",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n =\n  ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n    ((↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ)) +\n        ((↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n      ∑ p ∈ S2, X p n) =\n  (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.hC",
+          "kind": "have",
+          "name": "hC",
+          "span": {
+            "end_line": 1096,
+            "start_line": 1091
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                "name": "Nat.Prime",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_congr",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_union_left",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_union_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p,\n    (↑r0.den : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ)) =\n  ∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p, X p n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hXsum",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p,\n    (↑r0.den : ℝ) *\n      ∑ k ∈ Finset.range H,\n        (∑ ε : Fin K → Bool, sgn ε * if p ∣ (n + r ε (k + K + (1 : ℕ))).toNat then (1 : ℝ) else (0 : ℝ)) /\n          (2 : ℝ) ^ (k + K + (1 : ℕ)) =\n  ∑ p ∈ Finset.range (B + (1 : ℕ)) with Nat.Prime p, X p n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ p ∈ S1, X p n + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n    ((↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ)) +\n        ((↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n      ∑ p ∈ S2, X p n) =\n  (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s19.hXsum",
+          "kind": "have",
+          "name": "hXsum",
+          "span": {
+            "end_line": 1101,
+            "start_line": 1097
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                "name": "Nat.Prime",
+                "tags": []
+              },
+              {
+                "doc": "Natural numbers less than some upper bound.",
+                "name": "Fin",
+                "tags": []
+              },
+              {
+                "doc": "The Boolean values, `true` and `false`.",
+                "name": "Bool",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_congr",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ i ∈ Ns,\n  ∃ (z : ℤ),\n    ∑ p ∈ S1, X p i + ∑ p ∈ Finset.filter Nat.Prime (Finset.range (B + (1 : ℕ))) \\ (S1 ∪ S2), X p n0 +\n        ((↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ)) +\n            ((↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n          ∑ p ∈ S2, X p i) =\n      (↑z : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s19",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 1102,
+        "start_line": 1074
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (ε : Fin K → Bool), |sgn ε| ≤ (1 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hs1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (ε : Fin K → Bool), |sgn ε| ≤ (1 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "s20.e1.hs1",
+              "kind": "have",
+              "name": "hs1",
+              "span": {
+                "end_line": 1107,
+                "start_line": 1107
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ))| ≤\n  (↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      (↑r0.den : ℝ) *\n        ∑ ε : Fin K → Bool,\n          ∑' (k : ℕ),\n            (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) / (2 : ℝ) ^ (k + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e1.s2",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1115,
+                "start_line": 1108
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Natural numbers less than some upper bound.",
+                    "name": "Fin",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The Boolean values, `true` and `false`.",
+                    "name": "Bool",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": "In an ordered additive commutative monoid, if each summand `f i` of one finite sum is less than or equal to the corresponding summand `g i` of another finite sum, then `∑ i ∈ s, f i ≤ ∑ i ∈ s, g i`.",
+                    "name": "Finset.sum_le_sum",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                    "name": "Nat.cast_nonneg",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "div_nonneg",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "inv_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e1.s3",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1118,
+                "start_line": 1116
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Natural numbers less than some upper bound.",
+                    "name": "Fin",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The Boolean values, `true` and `false`.",
+                    "name": "Bool",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mul_sum",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑r0.den : ℝ) *\n    ((↑Ns.card : ℝ)⁻¹ *\n      ∑ n ∈ Ns,\n        ∑ ε : Fin K → Bool,\n          ∑' (k : ℕ),\n            (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n              (2 : ℝ) ^ (k + (1 : ℕ))) ≤\n  (↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e1.s4",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1120,
+                "start_line": 1119
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the lesser of its two arguments.",
+                    "name": "Min.min",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                    "name": "Nat.cast_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)) =\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e1.s5",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1121,
+                "start_line": 1121
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the lesser of its two arguments.",
+                    "name": "Min.min",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n          ∑ ε : Fin K → Bool,\n            sgn ε *\n              ∑' (k : ℕ),\n                (if P ε ^ (2 : ℕ) ∣ P ε * m n ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                  (2 : ℝ) ^ (k + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ))| +\n      (↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))| +\n    (↑Ns.card : ℝ)⁻¹ * ∑ i ∈ Ns, |∑ p ∈ S2, X p i| ≤\n  (4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s20.e1",
+          "kind": "have",
+          "name": "e1",
+          "span": {
+            "end_line": 1121,
+            "start_line": 1104
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Natural numbers less than some upper bound.",
+                "name": "Fin",
+                "tags": []
+              },
+              {
+                "doc": "The Boolean values, `true` and `false`.",
+                "name": "Bool",
+                "tags": []
+              },
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": "The real exponential function, defined as the real part of the complex exponential",
+                "name": "Real.exp",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (ε : Fin K → Bool), |sgn ε| ≤ (1 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hs1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (ε : Fin K → Bool), |sgn ε| ≤ (1 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ))| +\n      (↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))| +\n    (↑Ns.card : ℝ)⁻¹ * ∑ i ∈ Ns, |∑ p ∈ S2, X p i| ≤\n  (4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s20.hs1",
+          "kind": "have",
+          "name": "hs1",
+          "span": {
+            "end_line": 1122,
+            "start_line": 1122
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "n + r ε h = (↑(P ε * m n ε + P ε * h) : ℤ)",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "steps",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "this",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "n + r ε h = (↑(P ε * m n ε + P ε * h) : ℤ)",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "(n + r ε h).toNat = P ε * m n ε + P ε * h",
+                          "truncated": false
+                        }
+                      },
+                      "id": "s20.e2.hper.hsh.this",
+                      "kind": "have",
+                      "name": "this",
+                      "span": {
+                        "end_line": 1139,
+                        "start_line": 1138
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "∀ (ε : Fin K → Bool) (h : ℕ), (n + r ε h).toNat = P ε * m n ε + P ε * h",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hsh",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "∀ (ε : Fin K → Bool) (h : ℕ), (n + r ε h).toNat = P ε * m n ε + P ε * h",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "|(↑r0.den : ℝ) *\n        ∑' (k : ℕ),\n          (∑ ε : Fin K → Bool,\n              sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n      (↑r0.den : ℝ) *\n        ∑ k ∈ Finset.range H,\n          (∑ ε : Fin K → Bool,\n              sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  (↑r0.den : ℝ) *\n    ∑' (k : ℕ),\n      (∑ ε : Fin K → Bool,\n          (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n        (2 : ℝ) ^ (k + H + K + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s20.e2.hper.hsh",
+                  "kind": "have",
+                  "name": "hsh",
+                  "span": {
+                    "end_line": 1140,
+                    "start_line": 1136
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Int.toNat_natCast",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "Summable fun (k : ℕ) =>\n  (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (P ε * m n ε + P ε * (k + K + (1 : ℕ)))) : ℝ) /\n    (2 : ℝ) ^ (k + (1 : ℕ))",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "hb",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "Summable fun (k : ℕ) =>\n  (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (P ε * m n ε + P ε * (k + K + (1 : ℕ)))) : ℝ) /\n    (2 : ℝ) ^ (k + (1 : ℕ))",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "Summable fun (k : ℕ) =>\n  (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ) /\n    (2 : ℝ) ^ (k + K + (1 : ℕ))",
+                          "truncated": false
+                        }
+                      },
+                      "id": "s20.e2.hper.hG.hb",
+                      "kind": "have",
+                      "name": "hb",
+                      "span": {
+                        "end_line": 1147,
+                        "start_line": 1146
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [
+                          {
+                            "doc": null,
+                            "name": "le_of_eq",
+                            "tags": []
+                          }
+                        ],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "Summable fun (k : ℕ) =>\n  (∑ ε : Fin K → Bool, (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n    (2 : ℝ) ^ (k + K + (1 : ℕ))",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hG",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "Summable fun (k : ℕ) =>\n  (∑ ε : Fin K → Bool, (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n    (2 : ℝ) ^ (k + K + (1 : ℕ))",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "|(↑r0.den : ℝ) *\n        ∑' (k : ℕ),\n          (∑ ε : Fin K → Bool,\n              sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n      (↑r0.den : ℝ) *\n        ∑ k ∈ Finset.range H,\n          (∑ ε : Fin K → Bool,\n              sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  (↑r0.den : ℝ) *\n    ∑' (k : ℕ),\n      (∑ ε : Fin K → Bool,\n          (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n        (2 : ℝ) ^ (k + H + K + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s20.e2.hper.hG",
+                  "kind": "have",
+                  "name": "hG",
+                  "span": {
+                    "end_line": 1151,
+                    "start_line": 1141
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+                        "name": "Summable",
+                        "tags": []
+                      },
+                      {
+                        "doc": "Natural numbers less than some upper bound.",
+                        "name": "Fin",
+                        "tags": []
+                      },
+                      {
+                        "doc": "The Boolean values, `true` and `false`.",
+                        "name": "Bool",
+                        "tags": []
+                      },
+                      {
+                        "doc": "`ω n` is the number of distinct prime factors of `n`.",
+                        "name": "ArithmeticFunction.cardDistinctFactors",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Finset.sum_div",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "summable_sum",
+                        "tags": []
+                      },
+                      {
+                        "doc": "Comparison test of convergence of series of non-negative real numbers.",
+                        "name": "Summable.of_nonneg_of_le",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "div_le_div_of_nonneg_left",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "pow_le_pow_right₀",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ n ∈ Ns,\n  |(↑r0.den : ℝ) *\n          ∑' (k : ℕ),\n            (∑ ε : Fin K → Bool,\n                sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n              (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n        (↑r0.den : ℝ) *\n          ∑ k ∈ Finset.range H,\n            (∑ ε : Fin K → Bool,\n                sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n              (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n    (↑r0.den : ℝ) *\n      ∑' (k : ℕ),\n        (∑ ε : Fin K → Bool,\n            (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n          (2 : ℝ) ^ (k + H + K + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hper",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ n ∈ Ns,\n  |(↑r0.den : ℝ) *\n          ∑' (k : ℕ),\n            (∑ ε : Fin K → Bool,\n                sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n              (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n        (↑r0.den : ℝ) *\n          ∑ k ∈ Finset.range H,\n            (∑ ε : Fin K → Bool,\n                sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n              (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n    (↑r0.den : ℝ) *\n      ∑' (k : ℕ),\n        (∑ ε : Fin K → Bool,\n            (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n          (2 : ℝ) ^ (k + H + K + (1 : ℕ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "s20.e2.hper",
+              "kind": "have",
+              "name": "hper",
+              "span": {
+                "end_line": 1154,
+                "start_line": 1128
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Natural numbers less than some upper bound.",
+                    "name": "Fin",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The Boolean values, `true` and `false`.",
+                    "name": "Bool",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`ω n` is the number of distinct prime factors of `n`.",
+                    "name": "ArithmeticFunction.cardDistinctFactors",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`range n` is the set of natural numbers less than `n`.",
+                    "name": "Finset.range",
+                    "tags": []
+                  },
+                  {
+                    "doc": "**Alias** of `mul_sub_left_distrib`.",
+                    "name": "mul_sub",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "abs_mul",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "abs_of_nonneg",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                    "name": "Nat.cast_nonneg",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ i ∈ Ns,\n      |(↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  (↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      (↑r0.den : ℝ) *\n        ∑' (k : ℕ),\n          (∑ ε : Fin K → Bool,\n              (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + H + K + (1 : ℕ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e2.s2",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1158,
+                "start_line": 1155
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Natural numbers less than some upper bound.",
+                    "name": "Fin",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The Boolean values, `true` and `false`.",
+                    "name": "Bool",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`ω n` is the number of distinct prime factors of `n`.",
+                    "name": "ArithmeticFunction.cardDistinctFactors",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": "In an ordered additive commutative monoid, if each summand `f i` of one finite sum is less than or equal to the corresponding summand `g i` of another finite sum, then `∑ i ∈ s, f i ≤ ∑ i ∈ s, g i`.",
+                    "name": "Finset.sum_le_sum",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "inv_nonneg",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                    "name": "Nat.cast_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e2.s3",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1161,
+                "start_line": 1159
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Natural numbers less than some upper bound.",
+                    "name": "Fin",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The Boolean values, `true` and `false`.",
+                    "name": "Bool",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`ω n` is the number of distinct prime factors of `n`.",
+                    "name": "ArithmeticFunction.cardDistinctFactors",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mul_sum",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑r0.den : ℝ) *\n    ((↑Ns.card : ℝ)⁻¹ *\n      ∑ n ∈ Ns,\n        ∑' (k : ℕ),\n          (∑ ε : Fin K → Bool,\n              (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + H + K + (1 : ℕ))).toNat) : ℝ)) /\n            (2 : ℝ) ^ (k + H + K + (1 : ℕ))) ≤\n  (↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e2.s4",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1163,
+                "start_line": 1162
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the lesser of its two arguments.",
+                    "name": "Min.min",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "mul_le_mul_of_nonneg_left",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Specialisation of `Nat.cast_nonneg'`, which seems to be easier for Lean to use.",
+                    "name": "Nat.cast_nonneg",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑r0.den : ℝ) * (min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ)) / (↑r0.den : ℝ)) =\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": null,
+              "id": "s20.e2.s5",
+              "kind": "calc",
+              "name": null,
+              "span": {
+                "end_line": 1164,
+                "start_line": 1164
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Returns the lesser of its two arguments.",
+                    "name": "Min.min",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ n ∈ Ns,\n      |(↑r0.den : ℝ) *\n            ∑' (k : ℕ),\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n          (↑r0.den : ℝ) *\n            ∑ k ∈ Finset.range H,\n              (∑ ε : Fin K → Bool,\n                  sgn ε * (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (n + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                (2 : ℝ) ^ (k + K + (1 : ℕ))| ≤\n  min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ))| +\n      (↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))| +\n    (↑Ns.card : ℝ)⁻¹ * ∑ i ∈ Ns, |∑ p ∈ S2, X p i| ≤\n  (4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s20.e2",
+          "kind": "have",
+          "name": "e2",
+          "span": {
+            "end_line": 1164,
+            "start_line": 1123
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Natural numbers less than some upper bound.",
+                "name": "Fin",
+                "tags": []
+              },
+              {
+                "doc": "The Boolean values, `true` and `false`.",
+                "name": "Bool",
+                "tags": []
+              },
+              {
+                "doc": "`ω n` is the number of distinct prime factors of `n`.",
+                "name": "ArithmeticFunction.cardDistinctFactors",
+                "tags": []
+              },
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": "The real exponential function, defined as the real part of the complex exponential",
+                "name": "Real.exp",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, |∑ p ∈ S2, X p n| ≤ min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "e3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑Ns.card : ℝ)⁻¹ * ∑ n ∈ Ns, |∑ p ∈ S2, X p n| ≤ min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ))| +\n      (↑Ns.card : ℝ)⁻¹ *\n        ∑ i ∈ Ns,\n          |(↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))| +\n    (↑Ns.card : ℝ)⁻¹ * ∑ i ∈ Ns, |∑ p ∈ S2, X p i| ≤\n  (4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s20.e3",
+          "kind": "have",
+          "name": "e3",
+          "span": {
+            "end_line": 1167,
+            "start_line": 1165
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Returns the lesser of its two arguments.",
+                "name": "Min.min",
+                "tags": []
+              },
+              {
+                "doc": "The real exponential function, defined as the real part of the complex exponential",
+                "name": "Real.exp",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑Ns.card : ℝ)⁻¹ *\n    ∑ i ∈ Ns,\n      |(↑r0.den : ℝ) *\n              ∑ ε : Fin K → Bool,\n                sgn ε *\n                  ∑' (k : ℕ),\n                    (if P ε ^ (2 : ℕ) ∣ P ε * m i ε + P ε * (k + (1 : ℕ)) then (1 : ℝ) else (0 : ℝ)) /\n                      (2 : ℝ) ^ (k + (1 : ℕ)) +\n            ((↑r0.den : ℝ) *\n                ∑' (k : ℕ),\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ)) -\n              (↑r0.den : ℝ) *\n                ∑ k ∈ Finset.range H,\n                  (∑ ε : Fin K → Bool,\n                      sgn ε *\n                        (↑((ArithmeticFunction.cardDistinctFactors : ℕ → ℕ) (i + r ε (k + K + (1 : ℕ))).toNat) : ℝ)) /\n                    (2 : ℝ) ^ (k + K + (1 : ℕ))) +\n          ∑ p ∈ S2, X p i| ≤\n  (4 : ℝ) * min (1 / 4 : ℝ) (((1 : ℝ) - Real.exp ((-8 : ℝ) * c0)) / (64 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "s20",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 1168,
+        "start_line": 1103
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
