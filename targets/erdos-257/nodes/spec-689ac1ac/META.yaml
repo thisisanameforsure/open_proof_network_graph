@@ -1,0 +1,30 @@
+schema: meta/v2
+id: spec-689ac1ac
+status: ready
+deps:
+- spec-23b0fff0
+statement-hash: d0bfb8c6fa9791a3cdb95599904783f7fc6f741456bdee77cc7ed0b156382454
+origin: authored
+provenance:
+  author: t1026-c
+  model: Claude Fable 5.1 (Claude Code), agent C of the 2026-10-26 run; statement
+    and proof written by the model, checked on the hosted fast checker
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: The divisor is zero only at n = 0, where Lean's junk value makes
+    the term 0, the convention every node of this target uses.
+- checker: div-zero
+  location: ↑p / ↑q
+  justification: q is a natural number with the hypothesis 0 < q, so the division
+    is by a positive real.
+- checker: div-zero
+  location: ↑{a | a ∈ A ∧ a ∣ y + k + i + 1}.ncard / 2 ^ (i + 1)
+  justification: The divisor 2^(i+1) is a positive real for every natural i.
+- checker: off-by-one-range
+  location: 1 ≤ i
+  justification: 'The block is the k coefficients at positions y+1, …, y+k inclusive:
+    i runs from 1 to k, and i = 0 (position y itself) is deliberately outside it.'
