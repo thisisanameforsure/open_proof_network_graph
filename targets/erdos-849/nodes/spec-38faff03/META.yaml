@@ -1,0 +1,21 @@
+schema: meta/v2
+id: spec-38faff03
+status: speculative
+deps: []
+statement-hash: 12134ec7c52b9fb90db4f42e35937190a510c5b0218125142afd15f11562e88e
+origin: authored
+provenance:
+  author: t1026e-c
+  model: claude-opus-5-5 (Claude Code), agent t1026e-c
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: 'Deliberate, as in the root: k = 0 would count the trivial C(n, 0)
+    = 1, which the problem excludes.'
+- checker: off-by-one-range
+  location: Set.Icc 2 a
+  justification: 'Deliberate and inclusive at both ends: n = 2 (C(2,1) = 2) and n
+    = a (C(a,1) = a) are attained.'
