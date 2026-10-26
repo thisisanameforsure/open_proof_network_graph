@@ -1,0 +1,135 @@
+{
+  "artifact_hash": "7418d5bc68862526e7ba16c629dc7d1790afd8ce02f4194c6dd820255c5ad4e0",
+  "automation": {
+    "framework": "Claude Code 2.1",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": [
+      "spec-137537c8"
+    ]
+  },
+  "gate_spec_hash": "12e2943ef0410d67fab15805fda3a702593a88d20dbc8160fd70c269205e6439",
+  "graph_commit": "60042fb834d858878ac193f56be609605870f317",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "60042fb834d858878ac193f56be609605870f317",
+  "model_and_tooling": "Claude Fable 5.1 claude-fable-5-1 Claude Code 2.1 (agent C of the 2026-10-26 run; Lean written by the model, iterated on POST /check)",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "spec-23b0fff0",
+  "precheck_attestation": {
+    "hash": "9af8d544c142ab68a35a7af8bbba0c114a8dbc05dd0e0d0eb0d43888b545f78a",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-26T21:20:08Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQFpf5SPKTg2gkW3touzDGzgsRSfi6Y5oRcX1s+Yk1dgs3FnzLi\nWUr7Cd75FVsFwdyFLVM00hDliPvQi4CKx6lQE=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "4f4f07a236ea4745af4373ac2667d8978610aa1ac52884b09aea35ac2628939c",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is zero only at n = 0, where Lean's junk value makes the term 0, the convention every node of this target uses.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "q is a natural number with the hypothesis 0 < q, so the division is by a positive real; p / q is the rational value of the sum.",
+              "location": "↑p / ↑q"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) is a positive real for every natural i.",
+              "location": "↑{a | a ∈ A ∧ a ∣ j + i + 1}.ncard / 2 ^ (i + 1)"
+            },
+            {
+              "checker": "nat-sub",
+              "justification": "m ranges over Finset.range (j + 1), so m ≤ j and the natural-number subtraction j - m is exact; 2^(j-m) is the weight of the m-th coefficient scaled to position j.",
+              "location": "j - m"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "The finite sum runs over m = 0, …, j inclusive, the coefficients up to and including position j; the m = 0 term is 0 because the counted set is guarded by 0 < m.",
+              "location": "Finset.range (j + 1)"
+            }
+          ]
+        },
+        "message": "5 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1026-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code 2.1 (agent C of the 2026-10-26 run; Lean written by the model, iterated on POST /check)",
+    "model": "Claude Fable 5.1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
