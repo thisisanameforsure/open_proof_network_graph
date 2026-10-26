@@ -1,0 +1,457 @@
+{
+  "artifact": {
+    "hash": "afddfec1ca70e2072cd896bcbd31484fac008a96bc1f7ef84a83797eddce1187",
+    "kind": "partial",
+    "path": "attempts/20261026T220654Z-t1026-a-partial.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "spec-a70fcca4--h4--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "spec-a70fcca4--h4--h1--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ),\n        (1 : ℕ) ≤ m →\n          r m < (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) →\n            ∃ (n : ℕ), m < n ∧ n ≤ (3 : ℕ) * m + (2 : ℕ) ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hwin",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ),\n        (1 : ℕ) ≤ m →\n          r m < (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) →\n            ∃ (n : ℕ), m < n ∧ n ≤ (3 : ℕ) * m + (2 : ℕ) ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (r : ℕ → ℝ),\n  r (0 : ℕ) = (1 / 2 : ℝ) →\n    (∀ (m : ℕ),\n        r (m + (1 : ℕ)) =\n          if (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) ≤ r m then r m - (1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)) else r m) →\n      ∀ (m : ℕ), ∃ (n : ℕ), m < n ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "hwin",
+      "kind": "hole",
+      "name": "hwin",
+      "span": {
+        "end_line": 27,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "r (1 : ℕ) < (1 : ℝ) / ((2 : ℝ) ^ (1 : ℕ) - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "r (1 : ℕ) < (1 : ℝ) / ((2 : ℝ) ^ (1 : ℕ) - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (m : ℕ), ∃ (n : ℕ), m < n ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "have",
+      "name": "h1",
+      "span": {
+        "end_line": 31,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (s : ℕ), (0 : ℕ) + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hchain.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 36,
+            "start_line": 36
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Zero, the smallest natural number.",
+                "name": "Nat.zero",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": "The relation `≤` on a preorder is reflexive.",
+                "name": "le_refl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (s : ℕ), k + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "s",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hks",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "k + (1 : ℕ) ≤ s",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hs1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℕ) ≤ s",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hs",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (s : ℕ), k + (1 : ℕ) + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "hchain.s2.s1",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 38,
+                "start_line": 38
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (n : ℕ), s < n ∧ n ≤ (3 : ℕ) * s + (2 : ℕ) ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "n",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hsn",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "s < n",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hn",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (s : ℕ), k + (1 : ℕ) + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+                  "truncated": false
+                }
+              },
+              "id": "hchain.s2.s2",
+              "kind": "obtain",
+              "name": null,
+              "span": {
+                "end_line": 39,
+                "start_line": 39
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "k",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ih",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∃ (s : ℕ), k + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (s : ℕ), k + (1 : ℕ) + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "hchain.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 40,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The successor of a natural number `n`.",
+                "name": "Nat.succ",
+                "tags": []
+              },
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ), ∃ (s : ℕ), k + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hchain",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ), ∃ (s : ℕ), k + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (m : ℕ), ∃ (n : ℕ), m < n ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "hchain",
+      "kind": "have",
+      "name": "hchain",
+      "span": {
+        "end_line": 40,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (s : ℕ), m + (1 : ℕ) ≤ s ∧ (1 : ℕ) ≤ s ∧ r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "s",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hms",
+            "type": {
+              "printed": "reliable",
+              "text": "m + (1 : ℕ) ≤ s",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "r s < (1 : ℝ) / ((2 : ℝ) ^ s - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (n : ℕ), m < n ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 42,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (n : ℕ), m < n ∧ r n < (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
