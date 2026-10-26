@@ -1,10 +1,16 @@
 {
-  "annexes": [],
+  "annexes": [
+    {
+      "bytes": 2972,
+      "hash": "9eb099be9fe5123047f63b21db838a04ae1b86932b247abcd8fd68016960cd25",
+      "path": "targets/erdos-849/nodes/variant-3969f1f7--h2/annex/9eb099be9fe5123047f63b21db838a04ae1b86932b247abcd8fd68016960cd25.md"
+    }
+  ],
   "attempts": {
     "assemblies": [],
-    "count": 1,
+    "count": 2,
     "failure_class_histogram": {
-      "route-dead-ends": 1
+      "route-dead-ends": 2
     },
     "records": [
       {
@@ -38,9 +44,43 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h2/attempts/20261026T230242Z-t1026e-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1026e-b",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2/attempts/20261026T230242Z-t1026e-b.yaml",
+            "text": "The search (annex 9eb099be...cd25 on this node) covers every value up to 10^37 with a row at k >= 4 and every value up to 10^28 for the (3,2) pair, and finds only the known coincidences: at most 3 middle rows (K = 1), 3 only for 3003; consistent with (K,B) = (1,3), (2,2), (5,1). But the statement quantifies over all a, and no finite search reaches it: a computation can only test candidate (K,B), never prove one. Combining the search with the completely solved pairs (k,l) (Avanesov; Pintér and d…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "variant-3969f1f7--h2",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2/attempts/20261026T230242Z-t1026e-b.yaml",
+            "text": "exact computer search for coincidences C(n,k) = C(m,j), k > j >= 2, to bound the middle-region row count",
+            "untrusted": true
+          },
+          "route_class": "computational",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2/attempts/20261026T230242Z-t1026e-b.yaml",
+            "text": "⊢ ∃ (K : ℕ) (B : ℕ),\n    ∀ (a : ℕ),\n      {n : ℕ | ∃ (k : ℕ), K < k ∧ (↑k : ℝ) < Real.exp (Real.log (↑n : ℝ) ^ (5 / 6 : ℝ)) ∧ 2 * k ≤ n ∧ n.choose k = a}.ncard ≤ B\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
-    "refuted_route_classes": [],
+    "refuted_route_classes": [
+      "computational"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -60,7 +100,29 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1026e-b",
+    "record": "literature/20261026T230048Z-t1026e-b.yaml",
+    "references": [
+      {
+        "note": "Remark 1.5: assuming de Weger's conjecture, at most one solution with 2 ≤ k ≤ exp(log^{2/3+ε} n) for large values; no unconditional bound in this region is known. Remark 1.6: Kane's arguments give O_ε(log t / (log log log t)^3) solutions for exp(log^{1/2+ε} n) ≤ k ≤ n^{5/6} — growing, so not a bound B.",
+        "title": "K. Matomäki, M. Radziwiłł, X. Shao, T. Tao, J. Teräväinen, Singmaster's conjecture in the interior of Pascal's triangle, Quart. J. Math. 73 (2022) 1137–1177",
+        "url": "https://arxiv.org/abs/2106.03335"
+      },
+      {
+        "note": "Conjecture 2.1 (de Weger 1997): no collisions beyond the known list; Theorem 2.2: none new with C(n,k) ≤ 10^60 or n ≤ 10^6. Collision equations C(n,k) = C(m,l) are completely solved for (k,l) = (2,3), (2,4), (2,5), (2,6), (2,8), (3,4), (3,6), (4,6), (4,8) (Avanesov 1966; Pintér 1995, de Weger 1996; Bugeaud–Mignotte–Siksek–Stoll–Tengely 2008; Stroeker–de Weger 1999; Mordell 1963) — finitely many fixed pairs, which cannot bound the count over all k at once.",
+        "title": "A. Blokhuis, A. E. Brouwer, B. de Weger, Binomial collisions and near collisions, Integers 17 (2017) #A64",
+        "url": "https://arxiv.org/abs/1707.06893"
+      },
+      {
+        "note": "Singmaster's conjecture (bounded multiplicity) implies this statement.",
+        "title": "D. Singmaster, How often does an integer occur as a binomial coefficient?, Amer. Math. Monthly 78(4) (1971) 385–386",
+        "url": "https://doi.org/10.1080/00029890.1971.11992769"
+      }
+    ],
+    "status": "open",
+    "summary": "Open: this is the core of Singmaster's conjecture once the interior is handled by Matomäki et al. No unconditional bound on the number of rows holding a value with K < k < exp((log n)^{5/6}) is known; it follows from de Weger's conjecture (Matomäki et al., Remark 1.5). Exact searches find at most 3 such rows (K = 1) for every value up to 10^37 (only 3003 needs 3), and Blokhuis–Brouwer–de Weger find no new collision up to 10^60."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -81,7 +143,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "1b1f017d5fe081f021366c2f426eea4cd4d4599d",
+  "rendered_from": "d3ce87edaace15ca19a3737157847a30d3d7f2e3",
   "review": {
     "questions_waiting": [
       {
