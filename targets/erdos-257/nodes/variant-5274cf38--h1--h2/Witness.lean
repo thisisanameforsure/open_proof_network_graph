@@ -1,0 +1,3 @@
+import Mathlib
+
+theorem witness : ∃ (P : ℕ) (m : ℕ), (0 : ℕ) < P ∧ (1 : ℕ) ≤ m := ⟨1, 1, Nat.one_pos, le_rfl⟩
