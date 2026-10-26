@@ -1,0 +1,230 @@
+{
+  "artifact": {
+    "hash": "9f2af1075f5c6b8e74fa8fe352f08b1dac70cc73fb5b2acb66b0725214e15909",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "spec-12191c69",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∃ (a_1 : ℕ) (b : ℕ), ((1 : ℕ) ≤ b ∧ (2 : ℕ) * b ≤ a_1 ∧ a_1.choose b = a) ∧ a_1 = n) →\n  ∃ k ≥ (1 : ℕ), (2 : ℕ) * k ≤ n ∧ n.choose k = a",
+              "truncated": false
+            }
+          },
+          "id": "himg.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "(∃ k ≥ (1 : ℕ), (2 : ℕ) * k ≤ n ∧ n.choose k = a) →\n  ∃ (a_2 : ℕ) (b : ℕ), ((1 : ℕ) ≤ b ∧ (2 : ℕ) * b ≤ a_2 ∧ a_2.choose b = a) ∧ a_2 = n",
+              "truncated": false
+            }
+          },
+          "id": "himg.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 51,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "Prod.fst '' {p : ℕ × ℕ | (1 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = a} =\n  {n : ℕ | ∃ k ≥ (1 : ℕ), (2 : ℕ) * k ≤ n ∧ n.choose k = a}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "himg",
+            "type": {
+              "printed": "reliable",
+              "text": "Prod.fst '' {p : ℕ × ℕ | (1 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = a} =\n  {n : ℕ | ∃ k ≥ (1 : ℕ), (2 : ℕ) * k ≤ n ∧ n.choose k = a}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "{n : ℕ | ∃ k ≥ (1 : ℕ), (2 : ℕ) * k ≤ n ∧ n.choose k = a}.ncard =\n  {p : ℕ × ℕ | (1 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = a}.ncard",
+          "truncated": false
+        }
+      },
+      "id": "himg",
+      "kind": "have",
+      "name": "himg",
+      "span": {
+        "end_line": 51,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The first element of a pair.",
+            "name": "Prod.fst",
+            "tags": []
+          },
+          {
+            "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+            "name": "Nat.choose",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.mem_image",
+            "tags": []
+          },
+          {
+            "doc": "**Alias** of `Set.mem_ofPred_eq`.",
+            "name": "Set.mem_setOf_eq",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Prod.exists",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k₁ = k₂",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "k₁ = k₂",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(n₁, k₁) = (n₁, k₂)",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 57,
+        "start_line": 57
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(n₁, k₁) = (n₁, k₂)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 59,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
