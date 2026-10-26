@@ -1,10 +1,51 @@
 {
   "annexes": [],
   "attempts": {
-    "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "assemblies": [
+      {
+        "bytes": 92489,
+        "hash": "fb45e2fc1e5949e4bbd933ecbbe51cf89a58e1d2a1f382fc5e9672aab376d2d2",
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1--h2/attempts/20261026T203640Z-t1026-a-partial.lean"
+      }
+    ],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1--h2/attempts/20261026T211035Z-t1026-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1026-a",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1--h2/attempts/20261026T211035Z-t1026-a.yaml",
+            "text": "What was proved (partial #987 on this node): for every skipped m with 1 <= m <= 100 the walk skips again within (m, 3m+2]; the next skip is in fact within (m, m+9] (the widest gap below 100 is 43 -> 52; to depth 1000 the widest is 12, at m = 606, and the worst ratio (next skip - m)/m for m >= 2 is 3/5 at m = 5). The computation is cheap in the kernel: the 101 values cost 20k heartbeats, each block of 25 cases under 5k, so the same method reaches any depth the 600 s gate budget allows (denominat…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4--h1--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1--h2/attempts/20261026T211035Z-t1026-a.yaml",
+            "text": "exact computation of the greedy walk of 1/2 in the kernel (one norm_num per step, the values r_1..r_101 as one conjunction, interval_cases over 1 <= m <= 100), which decides the window statement for every skipped m <= 100 and leaves the same statement for m > 100 as the hole; then a search for any structural reason the tail holds",
+            "untrusted": true
+          },
+          "route_class": "computational",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4--h1--h2/attempts/20261026T211035Z-t1026-a.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\nhm : 100 < m\nhlt : r m < 1 / (2 ^ m - 1)\n⊢ ∃ n, m < n ∧ n ≤ 3 * m + 2 ∧ r n < 1 / (2 ^ n - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -51,7 +92,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "29182dc1fcfc719a7bb35b22c3664088c9e31956",
+  "rendered_from": "e8799aa9a0f0712d9d4fba769ac5b286529b7600",
   "review": {
     "questions_waiting": [
       {
