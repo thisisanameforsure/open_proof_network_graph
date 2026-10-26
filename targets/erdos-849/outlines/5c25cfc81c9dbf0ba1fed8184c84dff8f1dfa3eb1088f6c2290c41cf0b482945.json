@@ -1,0 +1,189 @@
+{
+  "artifact": {
+    "hash": "5c25cfc81c9dbf0ba1fed8184c84dff8f1dfa3eb1088f6c2290c41cf0b482945",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "spec-38faff03",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n.choose (1 : ℕ) < n.choose k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n.choose (1 : ℕ) < n.choose k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "n ≤ n.choose k",
+              "truncated": false
+            }
+          },
+          "id": "s1.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 37,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n ≤ n.choose k",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 39,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_one_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k = (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k = (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "n ≤ n.choose k",
+              "truncated": false
+            }
+          },
+          "id": "s2.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 40,
+            "start_line": 40
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≥ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "n ≤ n.choose k",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 42,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_one_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
