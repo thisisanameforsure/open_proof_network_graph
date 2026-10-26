@@ -1,0 +1,21 @@
+schema: meta/v2
+id: spec-12191c69
+status: speculative
+deps: []
+statement-hash: 1ab7028486bbfe11c0b19ac38af985bc0adcfe48a50bc0a80d328af0b434bc00
+origin: authored
+provenance:
+  author: t1026e-c
+  model: claude-opus-5-5 (Claude Code), agent t1026e-c
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: 'Deliberate, as in the root: k = 0 would count the trivial C(n, 0)
+    = 1, which the problem excludes.'
+- checker: off-by-one-range
+  location: 1 ≤ p.2
+  justification: 'Deliberate: the same range 1 ≤ k as the root, now on the pair (n,
+    k) = (p.1, p.2).'
