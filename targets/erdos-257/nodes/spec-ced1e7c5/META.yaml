@@ -1,0 +1,31 @@
+schema: meta/v2
+id: spec-ced1e7c5
+status: speculative
+deps:
+- spec-23b0fff0
+statement-hash: aa16a83320ea403644c6f7c544b6c447d8badfebb33651869321d3a20d274a68
+origin: authored
+provenance:
+  author: t1026-c
+  model: Claude Fable 5.1 (Claude Code), agent C of the 2026-10-26 run; statement
+    and proof written by the model, checked on the hosted fast checker
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: The divisor is zero only at n = 0, where Lean's junk value makes
+    the term 0, the convention every node of this target uses.
+- checker: div-zero
+  location: ↑p / ↑q
+  justification: q is a natural number with the hypothesis 0 < q, so the division
+    is by a positive real.
+- checker: div-zero
+  location: ↑{a | a ∈ A ∧ a ∣ y + k + i + 1}.ncard / 2 ^ (i + 1)
+  justification: The divisor 2^(i+1) is a positive real for every natural i.
+- checker: nat-sub
+  location: k - (i + 1)
+  justification: i ranges over Finset.range k, so i + 1 ≤ k and the natural-number
+    subtraction is exact; 2^(k-(i+1)) is the weight of the coefficient at position
+    y+i+1 scaled to position y+k.

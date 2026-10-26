@@ -1,0 +1,3 @@
+import Mathlib
+
+theorem witness : ∃ (P : ℕ), (0 : ℕ) < P := ⟨1, Nat.one_pos⟩
