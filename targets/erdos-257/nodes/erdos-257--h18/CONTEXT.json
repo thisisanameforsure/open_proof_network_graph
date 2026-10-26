@@ -13,9 +13,44 @@
   ],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "budget-exhausted": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-257/nodes/erdos-257--h18/attempts/20261026T214056Z-t1026-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1026-c",
+          "detail": {
+            "source": "targets/erdos-257/nodes/erdos-257--h18/attempts/20261026T214056Z-t1026-c.yaml",
+            "text": "The engine is on the record (the first two nodes proved, the block lemma in the gate at the time of writing) and the annex on this node says how Erdős 1948 and 1968 instantiate it. No new class of A was attempted in the three hours. The first candidate is Erdős's own remark that coprimality can be dropped from the 1968 theorem: the proof on variant-c91009b9 completes the weighted block sum to a multiple of 2^k by adding r < 2^k elements of A that all divide y+k, which pairwise coprimality turns…",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "node": "erdos-257--h18",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/erdos-257--h18/attempts/20261026T214056Z-t1026-c.yaml",
+            "text": "the Chowla–Erdős digit method as reusable nodes (Lambert identity spec-137537c8, tail integrality spec-23b0fff0, block divisibility spec-689ac1ac / spec-ced1e7c5), then a new class of sets A supplying a position y and length k with the block sum divisible by 2^k and q*T_{y+k} < 2^k",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/erdos-257--h18/attempts/20261026T214056Z-t1026-c.yaml",
+            "text": "A : Set ℕ\nhA : A.Infinite\n⊢ A = Set.univ ∨ (∃ a d, 0 < d ∧ A = {m | ∃ n, m = a + d * n}) ∨ … ∨ Irrational (∑' (n : ↑A), 1 / (2 ^ ↑n - 1))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -57,7 +92,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "4826d9a2512e5086fd3128336d16332a2e81de98",
+  "rendered_from": "235cc555bf15822588d0fe360dc1a38ec7469952",
   "review": {
     "questions_waiting": [
       {
