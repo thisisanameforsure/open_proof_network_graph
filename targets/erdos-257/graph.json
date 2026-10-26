@@ -568,15 +568,15 @@
     },
     {
       "cause": null,
-      "claim": null,
+      "claim": "\\forall\\, A \\subseteq \\mathbb{N},\\ p \\in \\mathbb{Z},\\ q \\ge 1,\\ y, k \\ge 0:\\qquad \\sum_{a\\in A}\\frac{1}{2^a-1} = \\frac{p}{q}\\ \\ \\text{and}\\ \\ 2^k \\mid f_A(y+i)\\ \\text{for } i = 1,\\dots,k\\ \\ \\Longrightarrow\\ \\ \\exists\\, N \\in \\mathbb{Z}:\\ q\\,T_{y+k} = 2^k N,",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [
         "spec-23b0fff0"
       ],
-      "label": "spec-689ac1ac",
-      "label_source": "id",
+      "label": "coefficients divisible by 2^k ⇒ q·T is a multiple of 2^k",
+      "label_source": "gloss",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -976,6 +976,35 @@
     },
     {
       "cause": null,
+      "claim": null,
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [
+        "spec-23b0fff0"
+      ],
+      "label": "spec-ced1e7c5",
+      "label_source": "id",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "spec-ced1e7c5",
+      "origin": "authored",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": "erdos-257--h18",
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "aa16a83320ea403644c6f7c544b6c447d8badfebb33651869321d3a20d274a68",
+      "status": "speculative",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
       "claim": "\\sum_{k=0}^{\\infty} \\frac{1}{2^{\\,n+1+k}-1} \\;<\\; \\frac{1}{2^{n}-1} \\qquad \\text{for every integer } n \\ge 1 .",
       "closure": null,
       "decompositions": [],
@@ -1267,9 +1296,23 @@
       "cause": null,
       "claim": "\\forall B \\subseteq \\mathbb{N},\\ \\bigl(B \\neq \\emptyset \\wedge \\exists p \\ge 1\\ \\forall n,\\ (n \\in B \\iff n + p \\in B)\\bigr) \\Rightarrow \\sum_{n \\in B} \\frac{1}{2^n - 1} \\notin \\mathbb{Q}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Erdős 1948 for A = ℕ with f_B(m) = #{d | m : d ∈ B} for d(m): Lambert identity, primes ≡ 1 mod the period placed by CRT force 2^m | f_B on windows along a progression, the divisor average bounds the tails; needs m² such primes in (2^m, 2^(m+m²)], a quantitative Dirichlet",
+          "holes": [
+            {
+              "name": "hprimes",
+              "node": "variant-5274cf38--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261026T205203Z-t1026-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-5274cf38--h1--h1"
+      ],
       "label": "purely periodic sets (Luca–Tachiya)",
       "label_source": "gloss",
       "lemmas": [],
@@ -1289,6 +1332,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "19463bafb6295d1c8e13e07f0f6838d308bccd200a52d72342747ff9a0c25093",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall P \\ge 1\\ \\exists m_0\\ \\forall m \\ge m_0\\ \\exists S \\subseteq \\mathbb{P},\\ |S| = m^2,\\ \\forall p \\in S:\\ p \\equiv 1 \\pmod P,\\ 2^m < p \\le 2^{m + m^2}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "m² primes ≡ 1 mod P between 2^m and 2^(m+m²)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-5274cf38--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "6c7d31eeb6c491f3918197dec16d8caf9ce35faaa232abe77fb8c33b5ae049f5",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1857,7 +1927,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "1cbd0d75f255eac5cb928f160e59ceeb33ecc33d",
+  "rendered_from": "e8799aa9a0f0712d9d4fba769ac5b286529b7600",
   "review": {
     "candidates": 1,
     "clusters": 1,
