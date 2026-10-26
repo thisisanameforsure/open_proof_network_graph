@@ -1,0 +1,23 @@
+schema: meta/v2
+id: spec-137537c8
+status: ready
+deps: []
+statement-hash: b486e09042f3fc9c2aea3b1155c999edc902339a269d0d7220d284a4bfeb1cf1
+origin: authored
+provenance:
+  author: t1026-c
+  model: Claude Fable 5.1 (Claude Code), agent C of the 2026-10-26 run; statement
+    and proof written by the model, checked on the hosted fast checker
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: The divisor is zero only at n = 0, where Lean's junk value makes
+    the term 0; the identity holds with that convention, which is why no hypothesis
+    on A is needed.
+- checker: div-zero
+  location: ↑{a | a ∈ A ∧ 0 < m ∧ a ∣ m}.ncard / 2 ^ m
+  justification: The divisor 2^m is a positive real for every natural m; the guard
+    0 < m is on the set being counted, not on the divisor.
