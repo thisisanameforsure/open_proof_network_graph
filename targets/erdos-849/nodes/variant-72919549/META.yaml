@@ -1,0 +1,21 @@
+schema: meta/v2
+id: variant-72919549
+status: ready
+deps: []
+statement-hash: 40b71074e468fdec56ab37fa6ef6f86802565eaa03cc6202d08cec0e97b36f4a
+origin: variant
+provenance:
+  author: t1026e-a
+  model: claude-opus-5-5 (Claude Code, agent t1026e-a)
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: 'Deliberate, as in the root: k = 0 would count the trivial binomial
+    C(n, 0) = 1, which the problem excludes.'
+- checker: off-by-one-range
+  location: 3 ≤ {n | ∃ k ≥ 1, 2 * k ≤ n ∧ n.choose k = a}.ncard
+  justification: 'Deliberate: the statement is ''at least three rows'', inclusive;
+    three is the multiplicity the Fibonacci family attains in the k <= n/2 count.'

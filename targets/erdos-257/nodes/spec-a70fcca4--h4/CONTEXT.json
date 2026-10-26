@@ -17,12 +17,17 @@
         "bytes": 5256,
         "hash": "ace582e92b0f2973baeee6846e51a4c705d0027a850b522a8c4eba6c628c9c91",
         "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261022T122951Z-t1022-a-partial.lean"
+      },
+      {
+        "bytes": 3613,
+        "hash": "1ab6a436e7e28a0459a396a766ebdc5926350a854749a24dafbb880cfedfc556",
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261026T211624Z-t1026-a-partial.lean"
       }
     ],
-    "count": 3,
+    "count": 5,
     "failure_class_histogram": {
       "budget-exhausted": 1,
-      "route-dead-ends": 1
+      "route-dead-ends": 2
     },
     "records": [
       {
@@ -88,6 +93,38 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261026T212731Z-t1026-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1026-a",
+          "detail": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261026T212731Z-t1026-a.yaml",
+            "text": "What was proved (partial PR #1003 on this node, hole spec-a70fcca4--h4--h2): the run lemma in Lean, with the tail's summability and the identity T_m = e_m + T_(m+1); so this node follows from W(infinity), \"after every m the walk skips again\", with no window, no bound and no analysis left. The converse holds given that every tail is irrational (variant-2f5236aa gives the full series; a tail is the series minus a finite sum), so the hole is the node itself in the form the problem page can state i…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "spec-a70fcca4--h4",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261026T212731Z-t1026-a.yaml",
+            "text": "replace the window ladder by its weakest rung: prove the bound r_m <= T_m from \"the walk skips infinitely often\" by the run lemma (once r_m > T_m every later step is taken and the remainder stays above the tail), then look for a reason the greedy set of 1/2 is not co-finite",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-257/nodes/spec-a70fcca4--h4/attempts/20261026T212731Z-t1026-a.yaml",
+            "text": "r : ℕ → ℝ\nh0 : r 0 = 1 / 2\nhrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1) else r m\nm : ℕ\n⊢ ∃ n, m < n ∧ r n < 1 / (2 ^ n - 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [],
@@ -95,8 +132,13 @@
   },
   "cause": null,
   "claims": {
-    "active": [],
-    "history_count": 1
+    "active": [
+      {
+        "expires": "2026-10-26T23:13:10Z",
+        "pseudonym": "t1026-a"
+      }
+    ],
+    "history_count": 2
   },
   "defect_claims": [],
   "deps": [
@@ -157,7 +199,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "a6a848e08e5d449d763c0a0ceb417fefec8b8845",
+  "rendered_from": "87fbc0ca48752d0187cb07f4e0c4cb5b3665ec23",
   "review": {
     "questions_waiting": [
       {
