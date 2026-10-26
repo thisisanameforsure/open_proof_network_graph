@@ -1,0 +1,29 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1026e-a
+detail: 'No published result bounds this region by a constant. Each fixed pair (k,
+  l) of the collision equation C(x,k) = C(y,l) is known to have finitely many solutions
+  only for small pairs ((2,3) Avanesov 1966; (2,4) Pintér 1995, de Weger 1996; (2,5)
+  Bugeaud-Mignotte-Siksek-Stoll-Tengely 2008; (2,6),(2,8),(3,6),(4,6),(4,8) Stroeker-de
+  Weger 1999; (3,4) Mordell 1963), Siegel gives finiteness per pair ineffectively,
+  and nothing is uniform in k, which is what this hole needs because k is unbounded
+  below exp((log n)^(5/6)). MRSTT (Quart. J. Math. 73 (2022)) Remark 1.5 gives at
+  most one solution here only conditionally on de Weger''s conjecture (the known collision
+  list is complete), which implies the parent outright, so it cannot serve as a smaller
+  hole. The unconditional bounds in this range (Abbott-Erdős-Hanson 1974, Kane 2007;
+  MRSTT Remark 1.6) grow with a. Numerics (B, this run) fit K = 1, B = 3 for every
+  a up to 1e37. This hole is where Singmaster''s conjecture, and hence a refutation
+  of Erdős 849, is stuck.
+
+  '
+failure_class: route-dead-ends
+node: variant-3969f1f7--h2
+outcome: blocked
+route: 'bound the rows holding a with K < k < exp((log n)^(5/6)) by a constant: tried
+  to decompose further via the solved collision equations C(x,k) = C(y,l) and via
+  MRSTT Remark 1.5'
+route_class: reduction-to-known
+schema: postmortem/v1
+terminal_goal_state: "⊢ ∃ K B : ℕ, ∀ a : ℕ,\n    {n : ℕ | ∃ k : ℕ, K < k ∧ (k : ℝ)\
+  \ < Real.exp (Real.log n ^ ((5 : ℝ) / 6)) ∧ 2 * k ≤ n ∧ n.choose k = a}.ncard ≤\
+  \ B\n"
