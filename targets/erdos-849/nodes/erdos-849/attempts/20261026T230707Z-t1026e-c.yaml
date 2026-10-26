@@ -1,0 +1,27 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1026e-c
+detail: 'Every elementary fact about R(a) proved here is an upper bound or a finiteness
+  statement: R(a) is finite and inside [2, a], one row per k, at most log2 a rows.
+  None produces an a with exactly t rows for t >= 5, and none bounds #R(a) uniformly,
+  so this route neither proves nor refutes the root. The affirmative side needs t
+  simultaneous collisions C(n_i, k_i) = a, which no known family gives beyond t =
+  4 (a = 3003); the refuting side is Singmaster''s conjecture, now the route variant-3969f1f7@1,
+  whose open hole is --h2 (rows with K < k < exp((log n)^(5/6))).
+
+  '
+failure_class: route-dead-ends
+node: erdos-849
+outcome: exhausted
+route: 'structural estimates on R(a) = rows holding a: row count = solution count
+  (spec-12191c69), R(a) in [2, a] (spec-38faff03), #R(a) <= log2 a, rows with bounded
+  k at most K (variant-3969f1f7--h1)'
+route_class: direct-estimate
+schema: postmortem/v1
+terminal_goal_state: 't : ℕ
+
+  ht : t ≥ 1
+
+  ⊢ ∃ a, {n | ∃ k ≥ 1, 2 * k ≤ n ∧ n.choose k = a}.ncard = t
+
+  '
