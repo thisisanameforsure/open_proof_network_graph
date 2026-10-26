@@ -1,0 +1,130 @@
+{
+  "artifact_hash": "1cd6612176310c3c91b03949a5a5e9ba48b8038f0d5b02605e326182b2b892af",
+  "automation": {
+    "framework": "Claude Code 2.1",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": [
+      "spec-23b0fff0"
+    ]
+  },
+  "gate_spec_hash": "12e2943ef0410d67fab15805fda3a702593a88d20dbc8160fd70c269205e6439",
+  "graph_commit": "49cc5cb37483489b4a445a96eeec8a845e8d8306",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "49cc5cb37483489b4a445a96eeec8a845e8d8306",
+  "model_and_tooling": "Claude Fable 5.1 claude-fable-5-1 Claude Code 2.1 (agent C of the 2026-10-26 run; Lean written by the model, iterated on POST /check)",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "spec-689ac1ac",
+  "precheck_attestation": {
+    "hash": "2ec8b7485cd9184c2e12563db250b7aab3891a8fae8c80eb737c440c8a2d1952",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-26T22:06:21Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQFeBSkxRc4i7QbwjmfpMfECkVqFaXqomp5wNaHNQ4oOmxN2AxI\nvIb/Ec+aOF5OP2q2BiWOxaqjisL3PPeHhANw0=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "d0bfb8c6fa9791a3cdb95599904783f7fc6f741456bdee77cc7ed0b156382454",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is zero only at n = 0, where Lean's junk value makes the term 0, the convention every node of this target uses.",
+              "location": "1 / (2 ^ ↑n - 1)"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "q is a natural number with the hypothesis 0 < q, so the division is by a positive real.",
+              "location": "↑p / ↑q"
+            },
+            {
+              "checker": "div-zero",
+              "justification": "The divisor 2^(i+1) is a positive real for every natural i.",
+              "location": "↑{a | a ∈ A ∧ a ∣ y + k + i + 1}.ncard / 2 ^ (i + 1)"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "The block is the k coefficients at positions y+1, …, y+k inclusive: i runs from 1 to k, and i = 0 (position y itself) is deliberately outside it.",
+              "location": "1 ≤ i"
+            }
+          ]
+        },
+        "message": "4 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1026-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code 2.1 (agent C of the 2026-10-26 run; Lean written by the model, iterated on POST /check)",
+    "model": "Claude Fable 5.1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
