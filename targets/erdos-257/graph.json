@@ -394,15 +394,27 @@
       "node_id": "spec-23b0fff0",
       "origin": "authored",
       "outline": null,
-      "proof_commit": null,
-      "proofs": [],
+      "proof_commit": "60042fb834d858878ac193f56be609605870f317",
+      "proofs": [
+        {
+          "artifact_hash": "7418d5bc68862526e7ba16c629dc7d1790afd8ce02f4194c6dd820255c5ad4e0",
+          "attestation": "000980.json",
+          "kind": "proof",
+          "merge_commit": "60042fb834d858878ac193f56be609605870f317",
+          "path": "Proof.lean",
+          "submitter": "t1026-c",
+          "used": [
+            "spec-137537c8"
+          ]
+        }
+      ],
       "proposed_for": "erdos-257--h18",
       "relation": null,
       "relevance": null,
       "shelved": null,
       "statement_hash": "4f4f07a236ea4745af4373ac2667d8978610aa1ac52884b09aea35ac2628939c",
-      "status": "speculative",
-      "trust_base": null,
+      "status": "proved",
+      "trust_base": "kernel",
       "tutorial": false,
       "uses": []
     },
@@ -1255,9 +1267,23 @@
       "cause": null,
       "claim": "\\forall B \\subseteq \\mathbb{N},\\ \\bigl(B \\neq \\emptyset \\wedge \\exists p \\ge 1\\ \\forall n,\\ (n \\in B \\iff n + p \\in B)\\bigr) \\Rightarrow \\sum_{n \\in B} \\frac{1}{2^n - 1} \\notin \\mathbb{Q}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Erdős 1948 for A = ℕ with f_B(m) = #{d | m : d ∈ B} for d(m): Lambert identity, primes ≡ 1 mod the period placed by CRT force 2^m | f_B on windows along a progression, the divisor average bounds the tails; needs m² such primes in (2^m, 2^(m+m²)], a quantitative Dirichlet",
+          "holes": [
+            {
+              "name": "hprimes",
+              "node": "variant-5274cf38--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261026T205203Z-t1026-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-5274cf38--h1--h1"
+      ],
       "label": "purely periodic sets (Luca–Tachiya)",
       "label_source": "gloss",
       "lemmas": [],
@@ -1277,6 +1303,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "19463bafb6295d1c8e13e07f0f6838d308bccd200a52d72342747ff9a0c25093",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall P \\ge 1\\ \\exists m_0\\ \\forall m \\ge m_0\\ \\exists S \\subseteq \\mathbb{P},\\ |S| = m^2,\\ \\forall p \\in S:\\ p \\equiv 1 \\pmod P,\\ 2^m < p \\le 2^{m + m^2}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "m² primes ≡ 1 mod P between 2^m and 2^(m+m²)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-5274cf38--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "6c7d31eeb6c491f3918197dec16d8caf9ce35faaa232abe77fb8c33b5ae049f5",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1845,7 +1898,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "f0c84d6adcfdb750e1034c817750b1edb4e6b3d8",
+  "rendered_from": "0c1da39dcfcf8f0e4c567a922b940e1af4e5ae28",
   "review": {
     "candidates": 1,
     "clusters": 1,
