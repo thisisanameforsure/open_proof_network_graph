@@ -1,0 +1,36 @@
+schema: meta/v2
+id: spec-23b0fff0
+status: ready
+deps:
+- spec-137537c8
+statement-hash: 4f4f07a236ea4745af4373ac2667d8978610aa1ac52884b09aea35ac2628939c
+origin: authored
+provenance:
+  author: t1026-c
+  model: Claude Fable 5.1 (Claude Code), agent C of the 2026-10-26 run; statement
+    and proof written by the model, checked on the hosted fast checker
+  source: null
+  date: '2026-10-26'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: The divisor is zero only at n = 0, where Lean's junk value makes
+    the term 0, the convention every node of this target uses.
+- checker: div-zero
+  location: ↑p / ↑q
+  justification: q is a natural number with the hypothesis 0 < q, so the division
+    is by a positive real; p / q is the rational value of the sum.
+- checker: div-zero
+  location: ↑{a | a ∈ A ∧ a ∣ j + i + 1}.ncard / 2 ^ (i + 1)
+  justification: The divisor 2^(i+1) is a positive real for every natural i.
+- checker: nat-sub
+  location: j - m
+  justification: m ranges over Finset.range (j + 1), so m ≤ j and the natural-number
+    subtraction j - m is exact; 2^(j-m) is the weight of the m-th coefficient scaled
+    to position j.
+- checker: off-by-one-range
+  location: Finset.range (j + 1)
+  justification: The finite sum runs over m = 0, …, j inclusive, the coefficients
+    up to and including position j; the m = 0 term is 0 because the counted set is
+    guarded by 0 < m.
