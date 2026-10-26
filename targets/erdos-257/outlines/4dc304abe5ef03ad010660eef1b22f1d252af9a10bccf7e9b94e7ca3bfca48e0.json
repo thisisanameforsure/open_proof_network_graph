@@ -1,0 +1,2489 @@
+{
+  "artifact": {
+    "hash": "4dc304abe5ef03ad010660eef1b22f1d252af9a10bccf7e9b94e7ca3bfca48e0",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "spec-137537c8",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) ∉ B",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h0B",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) ∉ B",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "h0B",
+      "kind": "have",
+      "name": "h0B",
+      "span": {
+        "end_line": 54,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_irrefl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (p : ℕ × ℕ), (0 : ℝ) ≤ g p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hg_nonneg",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (p : ℕ × ℕ), (0 : ℝ) ≤ g p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hg_nonneg",
+      "kind": "have",
+      "name": "hg_nonneg",
+      "span": {
+        "end_line": 56,
+        "start_line": 56
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.indicator_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < n",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hn0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < n",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (j : ℕ), g (n, j) = B.indicator e n",
+                  "truncated": false
+                }
+              },
+              "id": "hrow.s1.hn0",
+              "kind": "have",
+              "name": "hn0",
+              "span": {
+                "end_line": 61,
+                "start_line": 61
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∈ B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (j : ℕ), g (n, j) = B.indicator e n",
+              "truncated": false
+            }
+          },
+          "id": "hrow.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 61
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_mem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "simp"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∉ B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (j : ℕ), g (n, j) = B.indicator e n",
+              "truncated": false
+            }
+          },
+          "id": "hrow.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 64,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "tsum_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), ∑' (j : ℕ), g (n, j) = B.indicator e n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hrow",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), ∑' (j : ℕ), g (n, j) = B.indicator e n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hrow",
+      "kind": "have",
+      "name": "hrow",
+      "span": {
+        "end_line": 64,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℕ) < n",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hn0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℕ) < n",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Summable fun (j : ℕ) => g (n, j)",
+                  "truncated": false
+                }
+              },
+              "id": "hrow_summable.s1.hn0",
+              "kind": "have",
+              "name": "hn0",
+              "span": {
+                "end_line": 68,
+                "start_line": 68
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(0 : ℝ) ≤ (1 / 2 : ℝ) ^ n",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "automation",
+                "tactics": [
+                  "positivity"
+                ]
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hr0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(0 : ℝ) ≤ (1 / 2 : ℝ) ^ n",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Summable fun (j : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (j + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hrow_summable.s1.hr0",
+              "kind": "have",
+              "name": "hr0",
+              "span": {
+                "end_line": 70,
+                "start_line": 70
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 / 2 : ℝ) ^ n < (1 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hr1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 / 2 : ℝ) ^ n < (1 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "Summable fun (j : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (j + (1 : ℕ))",
+                  "truncated": false
+                }
+              },
+              "id": "hrow_summable.s1.hr1",
+              "kind": "have",
+              "name": "hr1",
+              "span": {
+                "end_line": 71,
+                "start_line": 71
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "pow_lt_one₀",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∈ B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Summable fun (j : ℕ) => g (n, j)",
+              "truncated": false
+            }
+          },
+          "id": "hrow_summable.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 72,
+            "start_line": 68
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_mem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "summable_nat_add_iff",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "summable_geometric_of_lt_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∉ B",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Summable fun (j : ℕ) => g (n, j)",
+              "truncated": false
+            }
+          },
+          "id": "hrow_summable.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 74,
+            "start_line": 73
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "summable_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), Summable fun (j : ℕ) => g (n, j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hrow_summable",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), Summable fun (j : ℕ) => g (n, j)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hrow_summable",
+      "kind": "have",
+      "name": "hrow_summable",
+      "span": {
+        "end_line": 74,
+        "start_line": 65
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable e",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "he_summable",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable e",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "he_summable",
+      "kind": "have",
+      "name": "he_summable",
+      "span": {
+        "end_line": 75,
+        "start_line": 75
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable g",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hg_summable",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable g",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hg_summable",
+      "kind": "have",
+      "name": "hg_summable",
+      "span": {
+        "end_line": 80,
+        "start_line": 76
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "summable_prod_of_nonneg",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hn0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n = (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator e n = B.indicator e n",
+                  "truncated": false
+                }
+              },
+              "id": "hL.s1.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 90,
+                "start_line": 88
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_notMem",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_mem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n ∈ B",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hnB",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n ∈ B",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "A.indicator e n = B.indicator e n",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hL.s1.s2.hnB",
+                  "kind": "have",
+                  "name": "hnB",
+                  "span": {
+                    "end_line": 91,
+                    "start_line": 91
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.pos_of_ne_zero",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hn0",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬n = (0 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator e n = B.indicator e n",
+                  "truncated": false
+                }
+              },
+              "id": "hL.s1.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 92,
+                "start_line": 91
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_mem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∈ A",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator e n = B.indicator e n",
+              "truncated": false
+            }
+          },
+          "id": "hL.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 92,
+            "start_line": 87
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "n ∉ B",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hnB",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "n ∉ B",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "A.indicator e n = B.indicator e n",
+                  "truncated": false
+                }
+              },
+              "id": "hL.s2.hnB",
+              "kind": "have",
+              "name": "hnB",
+              "span": {
+                "end_line": 93,
+                "start_line": 93
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hn",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n ∉ A",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "A.indicator e n = B.indicator e n",
+              "truncated": false
+            }
+          },
+          "id": "hL.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 94,
+            "start_line": 93
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.indicator_of_notMem",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), e (↑n : ℕ) = ∑' (n : ℕ), B.indicator e n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hL",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), e (↑n : ℕ) = ∑' (n : ℕ), B.indicator e n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hL",
+      "kind": "have",
+      "name": "hL",
+      "span": {
+        "end_line": 94,
+        "start_line": 82
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_subtype",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_congr",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : ℕ), B.indicator e n = ∑' (p : ℕ × ℕ), g p",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmid",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : ℕ), B.indicator e n = ∑' (p : ℕ × ℕ), g p",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hmid",
+      "kind": "have",
+      "name": "hmid",
+      "span": {
+        "end_line": 98,
+        "start_line": 96
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "HasSum (fun (m : ℕ) => ∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ)) (∑' (p : ℕ × ℕ), g p)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfib",
+            "type": {
+              "printed": "reliable",
+              "text": "HasSum (fun (m : ℕ) => ∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ)) (∑' (p : ℕ × ℕ), g p)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hfib",
+      "kind": "have",
+      "name": "hfib",
+      "span": {
+        "end_line": 102,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`HasSum f a L` means that the (potentially infinite) sum of the `f b` for `b : β` converges to `a` along the SummationFilter `L`.",
+            "name": "HasSum",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n * (j + (1 : ℕ)) = (0 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hp'",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n * (j + (1 : ℕ)) = (0 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "unreliable",
+                      "text": "g (↑⟨(n, j), hp⟩ : ℕ × ℕ) = (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s1.h1.hp'",
+                  "kind": "have",
+                  "name": "hp'",
+                  "span": {
+                    "end_line": 113,
+                    "start_line": 112
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n = (0 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hn",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n = (0 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "unreliable",
+                      "text": "g (↑⟨(n, j), hp⟩ : ℕ × ℕ) = (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s1.h1.hn",
+                  "kind": "have",
+                  "name": "hn",
+                  "span": {
+                    "end_line": 114,
+                    "start_line": 114
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "If `α` has no zero divisors, then the product of two elements equals zero iff one of them equals zero.",
+                        "name": "mul_eq_zero",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.succ_ne_zero",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (p : (↑(φ ⁻¹' {(0 : ℕ)}) : Type)), g (↑p : ℕ × ℕ) = (0 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (p : (↑(φ ⁻¹' {(0 : ℕ)}) : Type)), g (↑p : ℕ × ℕ) = (0 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (p : (↑(φ ⁻¹' {(0 : ℕ)}) : Type)), g (↑p : ℕ × ℕ) =\n  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < (0 : ℕ) ∧ a ∣ (0 : ℕ)}.ncard : ℝ) / (2 : ℝ) ^ (0 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s1.h1",
+              "kind": "have",
+              "name": "h1",
+              "span": {
+                "end_line": 117,
+                "start_line": 110
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_notMem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "{a : ℕ | a ∈ A ∧ (0 : ℕ) < (0 : ℕ) ∧ a ∣ (0 : ℕ)} = ∅",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "{a : ℕ | a ∈ A ∧ (0 : ℕ) < (0 : ℕ) ∧ a ∣ (0 : ℕ)} = ∅",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (p : (↑(φ ⁻¹' {(0 : ℕ)}) : Type)), g (↑p : ℕ × ℕ) =\n  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < (0 : ℕ) ∧ a ∣ (0 : ℕ)}.ncard : ℝ) / (2 : ℝ) ^ (0 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s1.h2",
+              "kind": "have",
+              "name": "h2",
+              "span": {
+                "end_line": 120,
+                "start_line": 118
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (p : (↑(φ ⁻¹' {(0 : ℕ)}) : Type)), g (↑p : ℕ × ℕ) =\n  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < (0 : ℕ) ∧ a ∣ (0 : ℕ)}.ncard : ℝ) / (2 : ℝ) ^ (0 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hR.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 122,
+            "start_line": 109
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "tsum_congr",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "tsum_zero",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Set.ncard_empty",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(n, j) ∈ φ ⁻¹' {m}",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hmem",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(n, j) ∈ φ ⁻¹' {m}",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.hmem",
+                  "kind": "have",
+                  "name": "hmem",
+                  "span": {
+                    "end_line": 131,
+                    "start_line": 129
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Set.indicator_of_notMem",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n * (j + (1 : ℕ)) = m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hφm",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n * (j + (1 : ℕ)) = m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.h_x3c6m",
+                  "kind": "have",
+                  "name": "hφm",
+                  "span": {
+                    "end_line": 132,
+                    "start_line": 132
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n ∈ B",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hnB",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n ∈ B",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.hnB",
+                  "kind": "have",
+                  "name": "hnB",
+                  "span": {
+                    "end_line": 136,
+                    "start_line": 134
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Set.indicator_of_notMem",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < n",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hn0",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < n",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.hn0",
+                  "kind": "have",
+                  "name": "hn0",
+                  "span": {
+                    "end_line": 137,
+                    "start_line": 137
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "n ∣ m",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdiv",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "n ∣ m",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.hdiv",
+                  "kind": "have",
+                  "name": "hdiv",
+                  "span": {
+                    "end_line": 138,
+                    "start_line": 138
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "Existential introduction.",
+                        "name": "Exists.intro",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "m / n - (1 : ℕ) = j",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hj",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m / n - (1 : ℕ) = j",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(n, j) ∈ T",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hsupp.hj",
+                  "kind": "have",
+                  "name": "hj",
+                  "span": {
+                    "end_line": 141,
+                    "start_line": 139
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_div_cancel_left",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ p ∉ T, (φ ⁻¹' {m}).indicator g p = (0 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hsupp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ p ∉ T, (φ ⁻¹' {m}).indicator g p = (0 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ) = (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s2.hsupp",
+              "kind": "have",
+              "name": "hsupp",
+              "span": {
+                "end_line": 143,
+                "start_line": 125
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_mem",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.mem_image",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.mem_divisors",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                    "name": "And.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "Set.InjOn (fun (d : ℕ) => (d, m / d - (1 : ℕ))) (↑m.divisors : Set ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hinj",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "Set.InjOn (fun (d : ℕ) => (d, m / d - (1 : ℕ))) (↑m.divisors : Set ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ) = (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s2.hinj",
+              "kind": "have",
+              "name": "hinj",
+              "span": {
+                "end_line": 145,
+                "start_line": 144
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`f` is injective on `s` if the restriction of `f` to `s` is injective.",
+                    "name": "Set.InjOn",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`divisors n` is the `Finset` of divisors of `n`.",
+                    "name": "Nat.divisors",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Prod.mk.inj",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m → (a ∣ m ∧ m ≠ (0 : ℕ)) ∧ a ∈ A",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hS.s1",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 151,
+                    "start_line": 150
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(a ∣ m ∧ m ≠ (0 : ℕ)) ∧ a ∈ A → a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hS.s2",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 153,
+                    "start_line": 152
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                        "name": "And.intro",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m} = (↑({a ∈ m.divisors | a ∈ A}) : Set ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hS",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m} = (↑({a ∈ m.divisors | a ∈ A}) : Set ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ) = (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s2.hS",
+              "kind": "have",
+              "name": "hS",
+              "span": {
+                "end_line": 153,
+                "start_line": 146
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`divisors n` is the `Finset` of divisors of `n`.",
+                    "name": "Nat.divisors",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Set.mem_ofPred_eq",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Finset.coe_filter",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Nat.mem_divisors",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "d ∣ m ∧ m ≠ (0 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hd'",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ∣ m ∧ m ≠ (0 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.hd'",
+                  "kind": "have",
+                  "name": "hd'",
+                  "span": {
+                    "end_line": 158,
+                    "start_line": 158
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.mem_divisors",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(0 : ℕ) < d",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hd0",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(0 : ℕ) < d",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.hd0",
+                  "kind": "have",
+                  "name": "hd0",
+                  "span": {
+                    "end_line": 159,
+                    "start_line": 159
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.pos_of_mem_divisors",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(1 : ℕ) ≤ m / d",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hq",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(1 : ℕ) ≤ m / d",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.hq",
+                  "kind": "have",
+                  "name": "hq",
+                  "span": {
+                    "end_line": 160,
+                    "start_line": 160
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.div_pos",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.le_of_dvd",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "(d, m / d - (1 : ℕ)) ∈ φ ⁻¹' {m}",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hφd",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(d, m / d - (1 : ℕ)) ∈ φ ⁻¹' {m}",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.h_x3c6d",
+                  "kind": "have",
+                  "name": "hφd",
+                  "span": {
+                    "end_line": 163,
+                    "start_line": 161
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.sub_add_cancel",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_div_cancel'",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "d ∈ B",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "hdB",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "d ∈ B",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "B.indicator (fun (n : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (m / d - (1 : ℕ) + (1 : ℕ))) d =\n  if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "hR.s2.hterm.s5.hdB",
+                      "kind": "have",
+                      "name": "hdB",
+                      "span": {
+                        "end_line": 167,
+                        "start_line": 167
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [
+                          {
+                            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                            "name": "And.intro",
+                            "tags": []
+                          }
+                        ],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdA",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ∈ A",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "B.indicator (fun (n : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (m / d - (1 : ℕ) + (1 : ℕ))) d =\n  if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.s5",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 169,
+                    "start_line": 167
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Set.indicator_of_mem",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "if_pos",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "pow_mul",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.sub_add_cancel",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "Nat.mul_div_cancel'",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [
+                    {
+                      "child_node": null,
+                      "children": [],
+                      "claim": {
+                        "printed": "reliable",
+                        "text": "d ∉ B",
+                        "truncated": false
+                      },
+                      "closed_by": {
+                        "kind": "term",
+                        "tactics": []
+                      },
+                      "goal": {
+                        "hypotheses": [
+                          {
+                            "name": "hdB",
+                            "type": {
+                              "printed": "reliable",
+                              "text": "d ∉ B",
+                              "truncated": false
+                            }
+                          }
+                        ],
+                        "target": {
+                          "printed": "reliable",
+                          "text": "B.indicator (fun (n : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (m / d - (1 : ℕ) + (1 : ℕ))) d =\n  if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                          "truncated": false
+                        }
+                      },
+                      "id": "hR.s2.hterm.s6.hdB",
+                      "kind": "have",
+                      "name": "hdB",
+                      "span": {
+                        "end_line": 170,
+                        "start_line": 170
+                      },
+                      "uses": {
+                        "defs": [],
+                        "mathlib": [],
+                        "nodes": []
+                      }
+                    }
+                  ],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hdA",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "d ∉ A",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "B.indicator (fun (n : ℕ) => ((1 / 2 : ℝ) ^ n) ^ (m / d - (1 : ℕ) + (1 : ℕ))) d =\n  if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "hR.s2.hterm.s6",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 171,
+                    "start_line": 170
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Set.indicator_of_notMem",
+                        "tags": []
+                      },
+                      {
+                        "doc": null,
+                        "name": "if_neg",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ d ∈ m.divisors, (φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hterm",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ d ∈ m.divisors, (φ ⁻¹' {m}).indicator g (d, m / d - (1 : ℕ)) = if d ∈ A then (1 / 2 : ℝ) ^ m else (0 : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∑ x ∈ m.divisors, (φ ⁻¹' {m}).indicator g (x, m / x - (1 : ℕ)) =\n  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+                  "truncated": false
+                }
+              },
+              "id": "hR.s2.hterm",
+              "kind": "have",
+              "name": "hterm",
+              "span": {
+                "end_line": 171,
+                "start_line": 155
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`divisors n` is the `Finset` of divisors of `n`.",
+                    "name": "Nat.divisors",
+                    "tags": []
+                  },
+                  {
+                    "doc": null,
+                    "name": "Set.indicator_of_mem",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hm",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m > (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑' (p : (↑(φ ⁻¹' {m}) : Type)), g (↑p : ℕ × ℕ) = (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+              "truncated": false
+            }
+          },
+          "id": "hR.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 174,
+            "start_line": 123
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": "`divisors n` is the `Finset` of divisors of `n`.",
+                "name": "Nat.divisors",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "tsum_subtype",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "tsum_eq_sum",
+                "tags": []
+              },
+              {
+                "doc": "If a function is injective on a finset, sums over the original finset or its image coincide.",
+                "name": "Finset.sum_image",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_congr",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_filter",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.sum_const",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "nsmul_eq_mul",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Set.ncard_coe_finset",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "one_div_pow",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (p : ℕ × ℕ), g p = ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hR",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (p : ℕ × ℕ), g p = ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+          "truncated": false
+        }
+      },
+      "id": "hR",
+      "kind": "have",
+      "name": "hR",
+      "span": {
+        "end_line": 174,
+        "start_line": 103
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The cardinality of `s : Set α` .",
+            "name": "Set.ncard",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_congr",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.eq_zero_or_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
