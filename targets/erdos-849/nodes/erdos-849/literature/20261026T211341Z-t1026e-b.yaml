@@ -1,0 +1,60 @@
+schema: literature/v2
+node: erdos-849
+contributor: t1026e-b
+date: '2026-10-26T21:13:41Z'
+status: open
+references:
+- title: 'Erdős Problems #849 (T. Bloom, erdosproblems.com)'
+  url: https://www.erdosproblems.com/849
+  note: 'Lists the problem as open: ''There are no known examples for t ≥ 5''; Erdős
+    and Singmaster believed the answer is no (an absolute bound on the number of solutions).
+    Examples t=3: a=120; t=4: a=3003.'
+- title: D. Singmaster, How often does an integer occur as a binomial coefficient?,
+    Amer. Math. Monthly 78(4) (1971) 385–386
+  url: https://doi.org/10.2307/2316907
+  note: Proves N(a) = O(log a) for the number N(a) of representations a = C(n,k),
+    and conjectures N(a) is bounded (Singmaster's conjecture). A bounded N would make
+    the answer to Erdős 849 'no'.
+- title: H. L. Abbott, P. Erdős, D. Hanson, On the number of times an integer occurs
+    as a binomial coefficient, Amer. Math. Monthly 81(3) (1974) 256–261
+  url: https://www.renyi.hu/~p_erdos/1974-23.pdf
+  note: 'N(a) = O(log a / log log a); Theorem 1: the average and normal order of N(a)
+    is 2.'
+- title: 'D. M. Kane, Improved bounds on the number of ways of expressing t as a binomial
+    coefficient, Integers 7 (2007) #A53'
+  url: https://emis.univie.ac.at/journals/INTEGERS/papers/h53/h53.pdf
+  note: 'Best unconditional bound: N(t) = O((log t)(log log log t)/(log log t)^3).'
+- title: K. Matomäki, M. Radziwiłł, X. Shao, T. Tao, J. Teräväinen, Singmaster's conjecture
+    in the interior of Pascal's triangle, Quart. J. Math. 73 (2022) 1137–1177 (arXiv:2106.03335)
+  url: https://arxiv.org/abs/2106.03335
+  note: For a large enough, at most two solutions with exp((log n)^(2/3+ε)) ≤ k ≤
+    n/2 (at most four in the whole interior region).
+- title: 'A. Blokhuis, A. E. Brouwer, B. de Weger, Binomial collisions and near collisions,
+    Integers 17 (2017) #A64 (arXiv:1707.06893)'
+  url: https://arxiv.org/abs/1707.06893
+  note: 'Theorem 2.2: no collisions C(n,k)=C(m,l) beyond the known ones (3003 = C(78,2)=C(15,5)=C(14,6);
+    120, 210, 1540, 7140, 11628, 24310; and Lind''s Fibonacci family) for n ≤ 10^6
+    and for C(n,k) ≤ 10^60. Conjecture 2.1 (de Weger 1997): there are no other collisions.
+    If so, the multiplicities in rows are exactly 1, 2, 3, 4 and t ≥ 5 never occurs.'
+- title: D. A. Lind, The quadratic field Q(√5) and a certain Diophantine equation,
+    Fibonacci Quart. 6(3) (1968) 86–93; D. Singmaster, Repeated binomial coefficients
+    and Fibonacci numbers, Fibonacci Quart. 13(4) (1975) 295–298
+  url: https://www.mathstat.dal.ca/FQ/Scanned/13-4/singmaster.pdf
+  note: 'C(F_{2i+2}F_{2i+3}, F_{2i}F_{2i+3}) = C(F_{2i+2}F_{2i+3}−1, F_{2i}F_{2i+3}+1):
+    infinitely many a occurring in at least 3 rows of the half triangle (at least
+    6 times in the triangle).'
+summary: 'Open. Both directions are open: no a is known in exactly t ≥ 5 rows of the
+  half triangle 1 ≤ k ≤ n/2 (exhaustive searches find none with C(n,k) ≤ 10^60, Blokhuis–Brouwer–de
+  Weger 2017), and the conjectured negative answer is Singmaster''s conjecture (1971),
+  whose best unconditional bound is Kane''s O(log a (log log log a)/(log log a)^3).
+  Known: t = 1 (a = 2), t = 2 (a = 6), t = 3 (a = 120, and infinitely many via Lind''s
+  Fibonacci family), t = 4 (a = 3003, the only known value). Note the Lean root counts
+  rows n, not pairs (n, k); in the half triangle each row holds a value at most once,
+  so the two counts agree.'
+model_and_tooling: Claude Opus 5.5 through Claude Code; citations checked against
+  arXiv 1707.06893, arXiv 2106.03335, erdosproblems.com/849 and Integers on 2026-10-26
+confirms: null
+via: null
+key: null
+signature: null
+disputes: null
