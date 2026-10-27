@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261027T115222Z-t1027e-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1027e-a",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261027T115222Z-t1027e-a.yaml",
+            "text": "Not decomposed, by choice. Prop 1.12 is a named statement and could be a hole, but the §3 argument from it to Prop 1.9 is the body of that section (exponential sums over primes of a phase built from the two solutions, with the parameter P between exp(log^{2/3+ε/2} n') and twice that) and has no stated intermediate results of its own, so any hole for it would be invented rather than cited. Mathlib has no exponential sums over primes, no Vaughan identity and no Vinogradov bound; the nearest forma…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "variant-3969f1f7--h3--h1--h1",
+          "outcome": "abandoned-early",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261027T115222Z-t1027e-a.yaml",
+            "text": "Decompose Prop 1.9 (distance estimate) along MRSTT §3: the equidistribution estimate Prop 1.12 (sums over primes p of e(N/p + M/p^j) against their integral, §4: Vaughan's identity and a Vinogradov-type bound) and the §3 argument that turns it into the bound on m' − m and n' − n.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261027T115222Z-t1027e-a.yaml",
+            "text": "⊢ ∃ C, 0 ≤ C ∧ ∃ a₁, ∀ a ≥ a₁, ∀ (n k n' k' : ℕ), [left-half solution (n,k) of a] → [left-half solution (n',k') of a] → |↑k - ↑k'| ≤ C * Real.exp (Real.log (↑n + ↑n') ^ (43 / 60)) ∧ (… ≤ ↑k → … ≤ ↑k' → |↑n - ↑n'| ≤ C * Real.exp (Real.log (↑n + ↑n') ^ (43 / 60)))",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -25,7 +60,19 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1027e-d",
+    "record": "literature/20261027T115113Z-t1027e-d.yaml",
+    "references": [
+      {
+        "note": "Proposition 1.9 (distance estimate): for ε > 0 and two solutions (n,m), (n',m') of C(n,m) = t in the left half, m' − m ≪_ε exp(log^{2/3+ε}(n+n')); and if m, m' ≥ exp(log^{2/3+ε}(n+n')) then also n' − n ≪_ε exp(log^{2/3+ε}(n+n')). Proved in Section 3 from the equidistribution estimate Proposition 1.12 (Section 4); DOI 10.1093/qmath/haac006.",
+        "title": "K. Matomäki, M. Radziwiłł, X. Shao, T. Tao, J. Teräväinen, Singmaster's conjecture in the interior of Pascal's triangle, Quart. J. Math. 73 (2022) 1137–1177",
+        "url": "https://arxiv.org/abs/2106.03335"
+      }
+    ],
+    "status": "known",
+    "summary": "Known (2022), not formalised. This hole is Proposition 1.9 of Matomäki–Radziwiłł–Shao–Tao–Teräväinen with ε = 1/20 (exponent 2/3 + 1/20 = 43/60), the implied constant written as an explicit C ≥ 0, and weakened to values a above a threshold a_1 (the proposition holds for every t); the paper's signed differences m' − m and n' − n are stated as absolute values, which is the same by swapping the two solutions. It is the paper's main work: a non-Archimedean argument counting solutions through the distribution of the fractional parts of n/p and m/p over random primes p (their Proposition 1.12, equidistribution), with the Taylor-expansion step kept for Proposition 1.10. Nothing of it is in Mathlib."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -46,7 +93,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "c8c6d207df3ce8e937961e48b34389de7992b4ba",
+  "rendered_from": "258a2539acd1ef9038da8dcaa92bd4541133594f",
   "review": {
     "questions_waiting": [
       {

@@ -378,7 +378,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l,\\ (k,l) \\in \\{(2,3),(2,4),(2,5),(2,6),(2,8),(3,4),(3,6),(4,6),(4,8)\\} \\Rightarrow (n,k,m,l) \\in \\{(78,2,15,5), (78,2,14,6), (16,2,10,3), (21,2,10,4), (56,2,22,3), (120,2,36,3), (153,2,19,5), (221,2,17,8)\\}",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to (k, l) \\in P \\to (n, k, m, l) \\in S",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -387,7 +387,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T120648Z-t1027e-b.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h1",
       "origin": "compiler-derived",
       "outline": null,
@@ -405,7 +409,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{n-1}{k+1}$ with $2 \\le k \\le n/2,\\ 2(k+1) \\le n-1 \\Rightarrow (n,k) = (F_{2i+2}F_{2i+3},\\ F_{2i}F_{2i+3})$ for some $i \\ge 1",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to m + 1 = n \\to l = k + 1 \\to \\exists i \\ge 1:\\ n = F_{2i+2}F_{2i+3}\\ \\wedge\\ k = F_{2i}F_{2i+3}\\ \\wedge\\ m + 1 = n\\ \\wedge\\ l = k + 1",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -414,7 +418,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T120730Z-t1027e-b.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h2",
       "origin": "compiler-derived",
       "outline": null,
@@ -432,7 +440,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l,\\ n \\le 10^6 \\Rightarrow (n,k,m,l) \\in \\{(78,2,15,5), (78,2,14,6), (16,2,10,3), (21,2,10,4), (56,2,22,3), (120,2,36,3), (153,2,19,5), (221,2,17,8)\\} \\text{ or } (n,k,m,l) = (F_{2i+2}F_{2i+3},\\ F_{2i}F_{2i+3},\\ F_{2i+2}F_{2i+3}-1,\\ F_{2i}F_{2i+3}+1),\\ i \\ge 1",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to n \\le 10^6 \\to (n, k, m, l) \\in S\\ \\vee\\ \\exists i \\ge 1:\\ n = F_{2i+2}F_{2i+3}\\ \\wedge\\ k = F_{2i}F_{2i+3}\\ \\wedge\\ m + 1 = n\\ \\wedge\\ l = k + 1",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -441,7 +449,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T120759Z-t1027e-b.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h3",
       "origin": "compiler-derived",
       "outline": null,
@@ -459,7 +471,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (k,l) \\in \\{(2,3),(2,4),(2,5),(2,6),(2,8),(3,4),(3,6),(4,6),(4,8)\\} \\text{ or } (m,l) = (n-1,\\ k+1) \\text{ or } n \\le 10^6",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to (k, l) \\in P\\ \\vee\\ (m + 1 = n \\wedge l = k + 1)\\ \\vee\\ n \\le 10^6",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -468,7 +480,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T120826Z-t1027e-b.yaml",
+        "status": "open"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h4",
       "origin": "compiler-derived",
       "outline": null,
@@ -591,7 +607,7 @@
     },
     {
       "cause": null,
-      "claim": "\\exists C \\ge 0\\ \\exists a_1\\ \\forall a \\ge a_1$: two solutions $(n,k),(n',k')$ of $\\binom{n}{k}=a$ in the left half satisfy $|k-k'| \\le C e^{(\\log(n+n'))^{43/60}}$, and $|n-n'| \\le C e^{(\\log(n+n'))^{43/60}}$ when both $k, k' \\ge e^{(\\log(n+n'))^{43/60}}",
+      "claim": "\\exists C \\ge 0\\ \\ \\exists a_1 \\in \\mathbb{N}\\ \\ \\forall a \\ge a_1\\ \\ \\forall n, k, n', k' \\in \\mathbb{N}:\\quad \\Bigl(1 \\le k,\\ 2k \\le n,\\ \\tbinom{n}{k} = a\\Bigr) \\to \\Bigl(1 \\le k',\\ 2k' \\le n',\\ \\tbinom{n'}{k'} = a\\Bigr) \\to \\Bigl[\\ |k - k'| \\le C\\, e^{(\\log(n + n'))^{43/60}}\\ \\ \\wedge\\ \\ \\Bigl(e^{(\\log(n + n'))^{43/60}} \\le k \\to e^{(\\log(n + n'))^{43/60}} \\le k' \\to |n - n'| \\le C\\, e^{(\\log(n + n'))^{43/60}}\\Bigr)\\ \\Bigr]",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -600,7 +616,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-d",
+        "record": "literature/20261027T115113Z-t1027e-d.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h3--h1--h1",
       "origin": "compiler-derived",
       "outline": null,
@@ -618,7 +638,7 @@
     },
     {
       "cause": null,
-      "claim": "\\log a \\le k \\log n,\\quad 3 \\le k \\Rightarrow k \\le 2\\log a,\\quad e^{(\\log n)^{5/6}} \\le k \\Rightarrow (k \\ge 3 \\wedge \\log n \\le (\\log k)^{6/5})$ for a left-half solution $(n,k)$ of $\\binom{n}{k}=a",
+      "claim": "\\forall a, n, k \\in \\mathbb{N}:\\quad 1 \\le k \\to 2k \\le n \\to \\tbinom{n}{k} = a \\to \\Bigl(\\log a \\le k \\log n\\Bigr) \\wedge \\Bigl(3 \\le k \\to k \\le 2\\log a\\Bigr) \\wedge \\Bigl(e^{(\\log n)^{5/6}} \\le k \\to 3 \\le k \\wedge \\log n \\le (\\log k)^{6/5}\\Bigr)",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -645,7 +665,7 @@
     },
     {
       "cause": null,
-      "claim": "\\forall C\\ \\exists X_0\\ \\forall X \\ge X_0$: $(1+(X+1)^{6/5})^{43/60} \\le X - \\tfrac{6}{5}\\log(X+1)$ and $C\\,e^{(1+(X+1)^{6/5})^{43/60}} \\le e^{X^{9/10}}",
+      "claim": "\\forall C \\in \\mathbb{R}\\ \\ \\exists X_0 \\in \\mathbb{R}\\ \\ \\forall X \\ge X_0:\\quad \\bigl(1 + (X+1)^{6/5}\\bigr)^{43/60} \\le X - \\tfrac{6}{5}\\log(X+1)\\ \\ \\wedge\\ \\ C \\cdot e^{(1 + (X+1)^{6/5})^{43/60}} \\le e^{X^{9/10}}",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -882,7 +902,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "c8c6d207df3ce8e937961e48b34389de7992b4ba",
+  "rendered_from": "258a2539acd1ef9038da8dcaa92bd4541133594f",
   "review": {
     "candidates": 2,
     "clusters": 2,
