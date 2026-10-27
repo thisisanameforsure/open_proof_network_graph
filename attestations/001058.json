@@ -1,0 +1,161 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code 2.1",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
+  "graph_commit": "017c1ba8fb3fcb68620dc71a3372154d4accb02d",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "017c1ba8fb3fcb68620dc71a3372154d4accb02d",
+  "model_and_tooling": "claude-fable-5-1 Claude Code 2.1",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "variant-3969f1f7--h3",
+  "precheck_attestation": {
+    "hash": "931185b0bb30cfb843bf666005a69ca355b4ebf4e00b50c9094b844445e06d88",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-27T11:17:46Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQOJUY2XyKOMgQpX6kLp7BEeFazA7lMKvsE+peXHnCx7SuUqYBa\nWHa9hQ6WTZEQohLnNsAkxS46ssk649B7dw7wo=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "8ffad0192af33519f74f07f44662975382543d42943a0e15e9d7e8266fe120be",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261027T105728Z-t1027e-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261027T105728Z-t1027e-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_dist",
+            "h_kane"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h3 declares ∃ a₀, ∀ a ≥ a₀, {n | ∃ k, 1 ≤ k ∧ Real.exp (Real.log ↑n ^ (5 / 6)) ≤ ↑k ∧ 2 * k ≤ n ∧ n.choose k = a}.ncard ≤ 2; 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "1 ≤ k",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "{n | ∃ k, 1 ≤ k ∧ Real.exp (Real.log ↑n ^ (5 / 6)) ≤ ↑k ∧ 2 * k ≤ n ∧ n.choose k = a}.ncard ≤ 2",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 1 ≤ k: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_dist",
+              "path": "attempts/20261027T105728Z-t1027e-a-partial.1.witness",
+              "sha256": "febc9ce2edc09cb27396f312840fc86683d447121fb4092fc8692c0ff0bc99f7"
+            },
+            {
+              "hole": "h_kane",
+              "path": "attempts/20261027T105728Z-t1027e-a-partial.2.witness",
+              "sha256": "e3b657fdd3f490a117a2a09e6621f23413e562f0504baf41303e639bde981714"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1027e-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code 2.1",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
