@@ -1,0 +1,582 @@
+{
+  "artifact": {
+    "hash": "4bad66df389c79b45d0e3bae606cec5d9a652841393ad30709bfd3431b9c7994",
+    "kind": "partial",
+    "path": "attempts/20261027T113033Z-t1027e-b-partial.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "variant-3969f1f7--h2--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-3969f1f7--h2--h1--h1",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_pairs",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s1.h_pairs",
+              "kind": "hole",
+              "name": "h_pairs",
+              "span": {
+                "end_line": 70,
+                "start_line": 63
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 71,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-3969f1f7--h2--h1--h2",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              m + (1 : ℕ) = n →\n                l = k + (1 : ℕ) →\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_adjacent",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              m + (1 : ℕ) = n →\n                l = k + (1 : ℕ) →\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              m + (1 : ℕ) = n →\n                l = k + (1 : ℕ) →\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s2.h_adjacent",
+              "kind": "hole",
+              "name": "h_adjacent",
+              "span": {
+                "end_line": 82,
+                "start_line": 78
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Implementation of the Fibonacci sequence satisfying `fib 0 = 0, fib 1 = 1, fib (n + 2) = fib n + fib (n + 1)`.",
+                    "name": "Nat.fib",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              m + (1 : ℕ) = n →\n                l = k + (1 : ℕ) →\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 83,
+            "start_line": 72
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-3969f1f7--h2--h1--h3",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              n ≤ (1000000 : ℕ) →\n                (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_small",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              n ≤ (1000000 : ℕ) →\n                (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              n ≤ (1000000 : ℕ) →\n                (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s3.h_small",
+              "kind": "hole",
+              "name": "h_small",
+              "span": {
+                "end_line": 98,
+                "start_line": 90
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  },
+                  {
+                    "doc": "Implementation of the Fibonacci sequence satisfying `fib 0 = 0, fib 1 = 1, fib (n + 2) = fib n + fib (n + 1)`.",
+                    "name": "Nat.fib",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              n ≤ (1000000 : ℕ) →\n                (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 99,
+            "start_line": 84
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-3969f1f7--h2--h1--h4",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨ n ≤ (1000000 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_open",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨ n ≤ (1000000 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨ n ≤ (1000000 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s4.h_open",
+              "kind": "hole",
+              "name": "h_open",
+              "span": {
+                "end_line": 112,
+                "start_line": 108
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨ n ≤ (1000000 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 113,
+            "start_line": 100
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (n k m l : ℕ),\n    (2 : ℕ) ≤ k →\n      (2 : ℕ) * k ≤ n →\n        (2 : ℕ) ≤ l →\n          (2 : ℕ) * l ≤ m →\n            k < l →\n              n.choose k = m.choose l →\n                k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∧\n  (∀ (n k m l : ℕ),\n      (2 : ℕ) ≤ k →\n        (2 : ℕ) * k ≤ n →\n          (2 : ℕ) ≤ l →\n            (2 : ℕ) * l ≤ m →\n              k < l →\n                n.choose k = m.choose l →\n                  m + (1 : ℕ) = n →\n                    l = k + (1 : ℕ) →\n                      ∃ (i : ℕ),\n                        (1 : ℕ) ≤ i ∧\n                          n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                            k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)) ∧\n    (∀ (n k m l : ℕ),\n        (2 : ℕ) ≤ k →\n          (2 : ℕ) * k ≤ n →\n            (2 : ℕ) ≤ l →\n              (2 : ℕ) * l ≤ m →\n                k < l →\n                  n.choose k = m.choose l →\n        ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hall",
+            "type": {
+              "printed": "reliable",
+              "text": "(∀ (n k m l : ℕ),\n    (2 : ℕ) ≤ k →\n      (2 : ℕ) * k ≤ n →\n        (2 : ℕ) ≤ l →\n          (2 : ℕ) * l ≤ m →\n            k < l →\n              n.choose k = m.choose l →\n                k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∧\n  (∀ (n k m l : ℕ),\n      (2 : ℕ) ≤ k →\n        (2 : ℕ) * k ≤ n →\n          (2 : ℕ) ≤ l →\n            (2 : ℕ) * l ≤ m →\n              k < l →\n                n.choose k = m.choose l →\n                  m + (1 : ℕ) = n →\n                    l = k + (1 : ℕ) →\n                      ∃ (i : ℕ),\n                        (1 : ℕ) ≤ i ∧\n                          n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                            k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)) ∧\n    (∀ (n k m l : ℕ),\n        (2 : ℕ) ≤ k →\n          (2 : ℕ) * k ≤ n →\n            (2 : ℕ) ≤ l →\n              (2 : ℕ) * l ≤ m →\n                k < l →\n                  n.choose k = m.choose l →\n        ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                ∃ (i : ℕ),\n                  (1 : ℕ) ≤ i ∧\n                    n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                      k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hall",
+      "kind": "have",
+      "name": "hall",
+      "span": {
+        "end_line": 113,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+            "name": "Nat.choose",
+            "tags": []
+          },
+          {
+            "doc": "Implementation of the Fibonacci sequence satisfying `fib 0 = 0, fib 1 = 1, fib (n + 2) = fib n + fib (n + 1)`.",
+            "name": "Nat.fib",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (n k m l : ℕ),\n    (2 : ℕ) ≤ k →\n      (2 : ℕ) * k ≤ n →\n        (2 : ℕ) ≤ l →\n          (2 : ℕ) * l ≤ m →\n            k < l →\n              n.choose k = m.choose l →\n                k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∧\n  (∀ (n k m l : ℕ),\n      (2 : ℕ) ≤ k →\n        (2 : ℕ) * k ≤ n →\n          (2 : ℕ) ≤ l →\n            (2 : ℕ) * l ≤ m →\n              k < l →\n                n.choose k = m.choose l →\n                  m + (1 : ℕ) = n →\n                    l = k + (1 : ℕ) →\n                      ∃ (i : ℕ),\n                        (1 : ℕ) ≤ i ∧\n                          n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                            k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)) ∧\n    (∀ (n k m l : ℕ),\n        (2 : ℕ) ≤ k →\n          (2 : ℕ) * k ≤ n →\n            (2 : ℕ) ≤ l →\n              (2 : ℕ) * l ≤ m →\n                k < l →\n                  n.choose k = m.choose l →\n        ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_pairs",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ) →\n                n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h_adjacent",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              m + (1 : ℕ) = n →\n                l = k + (1 : ℕ) →\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h_small",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              n ≤ (1000000 : ℕ) →\n                (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  ∃ (i : ℕ),\n                    (1 : ℕ) ≤ i ∧\n                      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h_open",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨ n ≤ (1000000 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                ∃ (i : ℕ),\n                  (1 : ℕ) ≤ i ∧\n                    n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                      k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 114,
+        "start_line": 114
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hp",
+            "type": {
+              "printed": "reliable",
+              "text": "k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨ k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n  ∃ (i : ℕ),\n    (1 : ℕ) ≤ i ∧\n      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 117,
+        "start_line": 117
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "m + (1 : ℕ) = n",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n  ∃ (i : ℕ),\n    (1 : ℕ) ≤ i ∧\n      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 118,
+        "start_line": 118
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "n ≤ (1000000 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n    n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n      n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n        n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n          n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n            n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n              n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n  ∃ (i : ℕ),\n    (1 : ℕ) ≤ i ∧\n      n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n        k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 119,
+        "start_line": 119
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
