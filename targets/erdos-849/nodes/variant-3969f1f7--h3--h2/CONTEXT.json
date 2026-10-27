@@ -2,9 +2,44 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "needs-new-definition": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h3--h2/attempts/20261027T113401Z-t1027e-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1027e-a",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h2/attempts/20261027T113401Z-t1027e-a.yaml",
+            "text": "Not decomposed, by choice. Cor 2.3 is a named statement and could be a hole, but the only named inputs beyond it are about f_t, the real function with C(f_t(m), m) = t (the binomial coefficient continued to real n through the Gamma function): Prop 2.1 bounds f_t, f_t' and f_t''. Stating those faithfully needs that definition on the record first, and the step from the nearby-solution hypothesis to m ≥ n^{9/10} is a lemma extracted from the proof of Prop 1.10, not a stated result, so a hole for i…",
+            "untrusted": true
+          },
+          "failure_class": "needs-new-definition",
+          "node": "variant-3969f1f7--h3--h2",
+          "outcome": "abandoned-early",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h2/attempts/20261027T113401Z-t1027e-a.yaml",
+            "text": "Decompose Prop 1.10 (Kane-type estimate) along its proof in MRSTT §2: derivative estimates for f_t (Prop 2.1), Lemma 2.2 on integer values of a function with small second derivative, Corollary 2.3 (at most one other solution with m' ∈ [m - m^{ε/10}, m] when m ≥ n^{1/2+ε}), and the step that turns the nearby-solution hypothesis into m ≥ n^{9/10}.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h2/attempts/20261027T113401Z-t1027e-a.yaml",
+            "text": "⊢ ∃ a₂, ∀ a ≥ a₂, ∀ (n k : ℕ), [interior solution (n,k) of a] → {n' | ∃ k', 1 ≤ k' ∧ k' < k ∧ n < n' ∧ 2 * k' ≤ n' ∧ n'.choose k' = a ∧ |↑n - ↑n'| + |↑k - ↑k'| ≤ Real.exp (Real.log (Real.log ↑a) ^ (9 / 10))}.ncard ≤ 1",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -25,7 +60,19 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1027e-d",
+    "record": "literature/20261027T113138Z-t1027e-d.yaml",
+    "references": [
+      {
+        "note": "Proposition 1.10 (Kane-type estimate): for ε > 0 and (n,m) a solution of C(n,m) = t in the left half, there is at most one other solution (n',m') with m' < m, n' > n and |m − m'| + |n − n'| ≪ exp((log log t)^{1−ε}). Proved in §2 by Kane's Taylor-expansion method, viewing n as an analytic function of m at fixed t (two derivatives).",
+        "title": "K. Matomäki, M. Radziwiłł, X. Shao, T. Tao, J. Teräväinen, Singmaster's conjecture in the interior of Pascal's triangle, Quart. J. Math. 73 (2022) 1137–1177",
+        "url": "https://arxiv.org/abs/2106.03335"
+      }
+    ],
+    "status": "known",
+    "summary": "Known (2022), not formalised. This hole is Proposition 1.10 of Matomäki–Radziwiłł–Shao–Tao–Teräväinen with ε = 1/10, restricted to a solution in the region exp((log n)^{5/6}) ≤ k ≤ n/2, with the radius exp((log log a)^{9/10}) taken without the implied constant (a smaller radius, so a weaker statement), and counted as rows n' rather than solutions (n', k'): a row of the half triangle holds a at most one column, so rows ≤ solutions ≤ 1. The paper's proof (its Section 2) is real analysis of the binomial coefficient as a function of its lower index; nothing of it is in Mathlib."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -46,7 +93,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "d0c307506acd860399836c7590440f1a515b94e4",
+  "rendered_from": "f1bc8357b93ab86d896b94fe1eedc369731fb0f5",
   "review": {
     "questions_waiting": [
       {

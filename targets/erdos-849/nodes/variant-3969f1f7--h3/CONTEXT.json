@@ -8,9 +8,44 @@
         "path": "targets/erdos-849/nodes/variant-3969f1f7--h3/attempts/20261027T105728Z-t1027e-a-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h3/attempts/20261027T113357Z-t1027e-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1027e-a",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3/attempts/20261027T113357Z-t1027e-a.yaml",
+            "text": "The interior theorem rests on two published inputs with no Lean counterpart. The distance estimate (Prop 1.9) comes from the equidistribution estimate Prop 1.12: sums over primes p in [P,2P] of e(N/p + M/p^j) match their integral up to O(P log^{-A} P), proved with Vaughan's identity and a Vinogradov-type exponential-sum bound (their §4). The Kane-type estimate (Prop 1.10) comes from derivative estimates for the function f_t with C(f_t(m), m) = t (Prop 2.1, via the digamma function and Stirling)…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "node": "variant-3969f1f7--h3",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3/attempts/20261027T113357Z-t1027e-a.yaml",
+            "text": "Decompose along MRSTT 2022 §1.2 (Thm 1.3 strategy): maximal-k interior solution; every other interior solution within exp((log log a)^(9/10)) of it (Prop 1.9 with (1.5), (1.7)); Kane-type estimate Prop 1.10 allows at most one such neighbour. Assembly proved (PR #1058); the two holes are the paper's propositions.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3/attempts/20261027T113357Z-t1027e-a.yaml",
+            "text": "⊢ ∃ a₁, ∀ a ≥ a₁, ∀ (n k n' k' : ℕ), [interior solution (n,k) of a] → [interior solution (n',k') of a] → |↑n - ↑n'| + |↑k - ↑k'| ≤ Real.exp (Real.log (Real.log ↑a) ^ (9 / 10))\n⊢ ∃ a₂, ∀ a ≥ a₂, ∀ (n k : ℕ), [interior solution (n,k) of a] → {n' | ∃ k', 1 ≤ k' ∧ k' < k ∧ n < n' ∧ 2 * k' ≤ n' ∧ n'.choose k' = a ∧ |↑n - ↑n'| + |↑k - ↑k'| ≤ Real.exp (Real.log (Real.log ↑a) ^ (9 / 10))}.ncard ≤ 1",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -43,7 +78,7 @@
       "status": "ready"
     }
   ],
-  "explainer_present": false,
+  "explainer_present": true,
   "gate_spec": {
     "hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
@@ -86,7 +121,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "d0c307506acd860399836c7590440f1a515b94e4",
+  "rendered_from": "f1bc8357b93ab86d896b94fe1eedc369731fb0f5",
   "review": {
     "questions_waiting": [
       {
