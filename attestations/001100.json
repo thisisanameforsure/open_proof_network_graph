@@ -1,0 +1,172 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (subagent), MCP client",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
+  "graph_commit": "3a41fb2298dcf7edb3c4c9b2e0f2fe174d530a25",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "3a41fb2298dcf7edb3c4c9b2e0f2fe174d530a25",
+  "model_and_tooling": "claude-fable-5-1 Claude Code subagent via MCP (JSON-RPC client)",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2",
+  "precheck_attestation": {
+    "hash": "49a9d4c72efca8cd4a3b3afbbcbe0a57ae225b6eae99fd42b9c59cbe6917f502",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-27T13:04:18Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHKE6vUc5pb0XQt2tFqkuI7GaypGQDf71NKoUMlcRLGwBiUvft\nFgaOEViCQq9bOkfQqWNkpHJMrJ6NtqdbCxlAk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "52ff9b056c7bd52178356ebc4188781a3321b94c1a4a33625259e0a1dcecb6e4",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261027T124922Z-t1027e-b-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261027T124922Z-t1027e-b-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_shape12",
+            "h_shape21",
+            "h_core"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h2__h1__h4__h2 declares ∀ (n k m l : ℕ),\n  2 ≤ k →\n    2 * k ≤ n →\n      2 ≤ l →\n        2 * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = 2 ∧ l = 3 ∨\n                  k = 2 ∧ l = 4 ∨\n                    k = 2 ∧ l = 5 ∨\n                      k = 2 ∧ l = 6 ∨ k = 2 ∧ l = 8 ∨ k = 3 ∧ l = 4 ∨ k = 3 ∧ l = 6 ∨ k = 4 ∧ l = 6 ∨ k = 4 ∧ l = 8) ∨\n                m + 1 = n ∧ l = k + 1 ∨ n ≤ 1000000 ∨ n.choose k ≤ 10 ^ 60; 3 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ k",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ l",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "n ≤ 1000000",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "3 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 2 ≤ k: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_shape12",
+              "path": "attempts/20261027T124922Z-t1027e-b-partial.1.witness",
+              "sha256": "0cab8ee8a8e54f8f56d746f3d6b0c2f3f4f8e700aa38e64b215a46370691f3ab"
+            },
+            {
+              "hole": "h_shape21",
+              "path": "attempts/20261027T124922Z-t1027e-b-partial.2.witness",
+              "sha256": "95b07f4f91264b4f503a79043eeec64dd371a72070c3d6a23735689ca5981aa1"
+            },
+            {
+              "hole": "h_core",
+              "path": "attempts/20261027T124922Z-t1027e-b-partial.3.witness",
+              "sha256": "4a2afd05fe9c122e7b7a31e9781e5036901b89eaa81e4ceacea0febddc00e768"
+            }
+          ]
+        },
+        "message": "3 of 3 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1027e-b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code subagent via MCP (JSON-RPC client)",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
