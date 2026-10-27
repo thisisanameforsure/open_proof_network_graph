@@ -483,9 +483,28 @@
       "cause": null,
       "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to (k, l) \\in P\\ \\vee\\ (m + 1 = n \\wedge l = k + 1)\\ \\vee\\ n \\le 10^6",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "peel the last proved piece of Blokhuis–Brouwer–de Weger's Theorem 2.2 (every collision with C(n,k) ≤ 10^60 is known) off the open remainder; the assembly is the case split",
+          "holes": [
+            {
+              "name": "h_value",
+              "node": "variant-3969f1f7--h2--h1--h4--h1"
+            },
+            {
+              "name": "h_core",
+              "node": "variant-3969f1f7--h2--h1--h4--h2"
+            }
+          ],
+          "partial": "attempts/20261027T120248Z-t1027e-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h4--h1",
+        "variant-3969f1f7--h2--h1--h4--h2"
+      ],
       "label": "the open core: no other collisions",
       "label_source": "gloss",
       "lemmas": [],
@@ -505,6 +524,60 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "a76e21e8dc4c1438148e41a4a5abb500e543d3e90ad6a4c18aae51fde66fabcc",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\binom{n}{k} = \\binom{m}{l} \\le 10^{60},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (n,k,m,l) \\in \\{(78,2,15,5), (78,2,14,6), (16,2,10,3), (21,2,10,4), (56,2,22,3), (120,2,36,3), (153,2,19,5), (221,2,17,8)\\} \\text{ or } (n,k,m,l) = (F_{2i+2}F_{2i+3},\\ F_{2i}F_{2i+3},\\ F_{2i+2}F_{2i+3}-1,\\ F_{2i}F_{2i+3}+1),\\ i \\ge 1",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "values up to 10^60",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "00f8b8799edfc64bc48634d2547b5f537d0a01521fa1fd09d3efde69c326cbb4",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (k,l) \\in \\{(2,3),(2,4),(2,5),(2,6),(2,8),(3,4),(3,6),(4,6),(4,8)\\} \\text{ or } (m,l) = (n-1,\\ k+1) \\text{ or } n \\le 10^6 \\text{ or } \\binom{n}{k} \\le 10^{60}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the open core: no other collisions",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "52ff9b056c7bd52178356ebc4188781a3321b94c1a4a33625259e0a1dcecb6e4",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -932,7 +1005,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "1b836f80f174ca124a8f228185f8c46938cf8c61",
+  "rendered_from": "4de422cf2c26737cfcc7cb3e203d01821dcf1bd0",
   "review": {
     "candidates": 2,
     "clusters": 2,
