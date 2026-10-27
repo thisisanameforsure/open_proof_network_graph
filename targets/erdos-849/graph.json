@@ -531,7 +531,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l} \\le 10^{60},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (n,k,m,l) \\in \\{(78,2,15,5), (78,2,14,6), (16,2,10,3), (21,2,10,4), (56,2,22,3), (120,2,36,3), (153,2,19,5), (221,2,17,8)\\} \\text{ or } (n,k,m,l) = (F_{2i+2}F_{2i+3},\\ F_{2i}F_{2i+3},\\ F_{2i+2}F_{2i+3}-1,\\ F_{2i}F_{2i+3}+1),\\ i \\ge 1",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to \\tbinom{n}{k} \\le 10^{60} \\to (n, k, m, l) \\in S\\ \\vee\\ \\exists i \\ge 1:\\ n = F_{2i+2}F_{2i+3}\\ \\wedge\\ k = F_{2i}F_{2i+3}\\ \\wedge\\ m + 1 = n\\ \\wedge\\ l = k + 1",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -540,7 +540,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T124413Z-t1027e-b.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h4--h1",
       "origin": "compiler-derived",
       "outline": null,
@@ -558,7 +562,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (k,l) \\in \\{(2,3),(2,4),(2,5),(2,6),(2,8),(3,4),(3,6),(4,6),(4,8)\\} \\text{ or } (m,l) = (n-1,\\ k+1) \\text{ or } n \\le 10^6 \\text{ or } \\binom{n}{k} \\le 10^{60}",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to (k, l) \\in P\\ \\vee\\ (m + 1 = n \\wedge l = k + 1)\\ \\vee\\ n \\le 10^6\\ \\vee\\ \\tbinom{n}{k} \\le 10^{60}",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -567,7 +571,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T124456Z-t1027e-b.yaml",
+        "status": "open"
+      },
       "node_id": "variant-3969f1f7--h2--h1--h4--h2",
       "origin": "compiler-derived",
       "outline": null,
@@ -1005,7 +1013,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "4de422cf2c26737cfcc7cb3e203d01821dcf1bd0",
+  "rendered_from": "7da604588218ec3ea75bf6741060e295a939d972",
   "review": {
     "candidates": 2,
     "clusters": 2,
