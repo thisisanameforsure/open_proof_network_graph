@@ -1,0 +1,123 @@
+{
+  "artifact_hash": "cf3520dbfff827c84a1aea3ef445841083dcc908fac462fc258e6d01e9179952",
+  "automation": {
+    "framework": "Claude Code (Agent SDK), curl JSON-RPC to the MCP",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
+  "graph_commit": "c8c6d207df3ce8e937961e48b34389de7992b4ba",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "c8c6d207df3ce8e937961e48b34389de7992b4ba",
+  "model_and_tooling": "claude-fable-5-1 Claude Code (Agent SDK)",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "variant-3969f1f7--h3--h1--h3",
+  "precheck_attestation": {
+    "hash": "de8ecf57db76b6c493397dd197d1861fdb4641f5c387f2d0471a801c8f77f1c4",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-27T12:16:43Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQKg89riidMrTkk0zh2hELjf43QXsz7ZFgM3ZwI68G8sstZ3WW+\n0R5qRDxukSlMTPegc7W4lTibIzPiiWbWpQng0=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "d3d48f9786013f621f8d8b1298b44e957285ba40a9b02a75e436c4ab30262f4b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "junk-value",
+              "location": "Real.log (X + 1)",
+              "message": "Real.log of a possibly-negative argument is a junk value (0)"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: junk-value at Real.log (X + 1): Real.log of a possibly-negative argument is a junk value (0)"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1027e-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Agent SDK)",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
