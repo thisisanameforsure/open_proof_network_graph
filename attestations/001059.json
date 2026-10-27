@@ -1,0 +1,128 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (subagent), MCP client",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
+  "graph_commit": "9b452e436f659c27d3906a903eaeb18492f10d69",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "9b452e436f659c27d3906a903eaeb18492f10d69",
+  "model_and_tooling": "claude-fable-5-1 Claude Code subagent via MCP (JSON-RPC client)",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "variant-3969f1f7--h2",
+  "precheck_attestation": {
+    "hash": "a93980aad9c07ceefb3f4a1a7e80af6b9c899485184b62b10effc53dc056432b",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-27T11:24:34Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGYmfh4z7SWRuAi5enCgFQFXE8kreODVGb1+Gb30rJYDE8AMmO\nrTj+6dxHd0qeb4jSvpaxtn6DuNgwIi+/9kPAs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "9713cf77e8701d2032908283cd9e575dd8f57dd54a1136140117b5477e06116e",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261027T110214Z-t1027e-b-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261027T110214Z-t1027e-b-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_dw"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h2 declares ∃ K B, ∀ (a : ℕ), {n | ∃ k, K < k ∧ ↑k < Real.exp (Real.log ↑n ^ (5 / 6)) ∧ 2 * k ≤ n ∧ n.choose k = a}.ncard ≤ B; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_dw",
+              "path": "attempts/20261027T110214Z-t1027e-b-partial.1.witness",
+              "sha256": "5bdf62f689ecd58da6bdf2d4880106485b8573152c886fb29d9c3e6338d04dd7"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1027e-b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code subagent via MCP (JSON-RPC client)",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
