@@ -318,7 +318,7 @@
     },
     {
       "cause": null,
-      "claim": "\\binom{n}{k} = \\binom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\Rightarrow (n,k,m,l) \\in \\{(78,2,15,5), (78,2,14,6), (16,2,10,3), (21,2,10,4), (56,2,22,3), (120,2,36,3), (153,2,19,5), (221,2,17,8)\\}$ or $(n,k,m,l) = (F_{2i+2}F_{2i+3},\\ F_{2i}F_{2i+3},\\ F_{2i+2}F_{2i+3}-1,\\ F_{2i}F_{2i+3}+1)$ for some $i \\ge 1",
+      "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to \\Bigl((n,k,m,l) \\in S\\Bigr) \\vee \\Bigl(\\exists i \\ge 1:\\ n = F_{2i+2}F_{2i+3},\\ k = F_{2i}F_{2i+3},\\ m + 1 = n,\\ l = k + 1\\Bigr)",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -327,7 +327,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-b",
+        "record": "literature/20261027T113016Z-t1027e-b.yaml",
+        "status": "open"
+      },
       "node_id": "variant-3969f1f7--h2--h1",
       "origin": "compiler-derived",
       "outline": null,
@@ -395,7 +399,7 @@
     },
     {
       "cause": null,
-      "claim": "\\exists a_1\\ \\forall a \\ge a_1$: any two solutions $(n,k), (n',k')$ of $\\binom{n}{k} = a$ with $e^{(\\log n)^{5/6}} \\le k \\le n/2$ satisfy $|n-n'| + |k-k'| \\le \\exp\\big((\\log\\log a)^{9/10}\\big)",
+      "claim": "\\exists a_1 \\in \\mathbb{N}\\ \\ \\forall a \\ge a_1\\ \\ \\forall n, k, n', k' \\in \\mathbb{N}:\\quad \\Bigl(1 \\le k,\\ e^{(\\log n)^{5/6}} \\le k,\\ 2k \\le n,\\ \\tbinom{n}{k} = a\\Bigr) \\to \\Bigl(1 \\le k',\\ e^{(\\log n')^{5/6}} \\le k',\\ 2k' \\le n',\\ \\tbinom{n'}{k'} = a\\Bigr) \\to |n - n'| + |k - k'| \\le e^{(\\log \\log a)^{9/10}}",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -404,7 +408,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-d",
+        "record": "literature/20261027T113138Z-t1027e-d.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h3--h1",
       "origin": "compiler-derived",
       "outline": null,
@@ -422,7 +430,7 @@
     },
     {
       "cause": null,
-      "claim": "\\exists a_2\\ \\forall a \\ge a_2$: for a solution $(n,k)$ of $\\binom{n}{k} = a$ with $e^{(\\log n)^{5/6}} \\le k \\le n/2$, $\\#\\{n' > n : \\binom{n'}{k'} = a,\\ 1 \\le k' < k,\\ 2k' \\le n',\\ |n-n'| + |k-k'| \\le \\exp((\\log\\log a)^{9/10})\\} \\le 1",
+      "claim": "\\exists a_2 \\in \\mathbb{N}\\ \\ \\forall a \\ge a_2\\ \\ \\forall n, k \\in \\mathbb{N}:\\quad \\Bigl(1 \\le k,\\ e^{(\\log n)^{5/6}} \\le k,\\ 2k \\le n,\\ \\tbinom{n}{k} = a\\Bigr) \\to \\#\\Bigl\\{\\, n' \\in \\mathbb{N} \\;:\\; \\exists k',\\ 1 \\le k',\\ k' < k,\\ n < n',\\ 2k' \\le n',\\ \\tbinom{n'}{k'} = a,\\ |n - n'| + |k - k'| \\le e^{(\\log \\log a)^{9/10}} \\Bigr\\} \\le 1",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
@@ -431,7 +439,11 @@
       "label_source": "gloss",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1027e-d",
+        "record": "literature/20261027T113138Z-t1027e-d.yaml",
+        "status": "known"
+      },
       "node_id": "variant-3969f1f7--h3--h2",
       "origin": "compiler-derived",
       "outline": null,
@@ -628,7 +640,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "d0c307506acd860399836c7590440f1a515b94e4",
+  "rendered_from": "0fd06ede6d99a815ebe65b16f2291c4abdb1014a",
   "review": {
     "candidates": 2,
     "clusters": 2,
