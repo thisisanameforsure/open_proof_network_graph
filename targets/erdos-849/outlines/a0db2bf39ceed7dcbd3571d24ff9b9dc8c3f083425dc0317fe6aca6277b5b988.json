@@ -1,0 +1,1519 @@
+{
+  "artifact": {
+    "hash": "a0db2bf39ceed7dcbd3571d24ff9b9dc8c3f083425dc0317fe6aca6277b5b988",
+    "kind": "partial",
+    "path": "attempts/20261027T110214Z-t1027e-b-partial.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "variant-3969f1f7--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-3969f1f7--h2--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                ∃ (i : ℕ),\n                  (1 : ℕ) ≤ i ∧\n                    n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                      k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_dw",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (15 : ℕ) ∧ l = (5 : ℕ) ∨\n                  n = (78 : ℕ) ∧ k = (2 : ℕ) ∧ m = (14 : ℕ) ∧ l = (6 : ℕ) ∨\n                    n = (16 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (3 : ℕ) ∨\n                      n = (21 : ℕ) ∧ k = (2 : ℕ) ∧ m = (10 : ℕ) ∧ l = (4 : ℕ) ∨\n                        n = (56 : ℕ) ∧ k = (2 : ℕ) ∧ m = (22 : ℕ) ∧ l = (3 : ℕ) ∨\n                          n = (120 : ℕ) ∧ k = (2 : ℕ) ∧ m = (36 : ℕ) ∧ l = (3 : ℕ) ∨\n                            n = (153 : ℕ) ∧ k = (2 : ℕ) ∧ m = (19 : ℕ) ∧ l = (5 : ℕ) ∨\n                              n = (221 : ℕ) ∧ k = (2 : ℕ) ∧ m = (17 : ℕ) ∧ l = (8 : ℕ)) ∨\n                ∃ (i : ℕ),\n                  (1 : ℕ) ≤ i ∧\n                    n = fib ((2 : ℕ) * i + (2 : ℕ)) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧\n                      k = fib ((2 : ℕ) * i) * fib ((2 : ℕ) * i + (3 : ℕ)) ∧ m + (1 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ) (B : ℕ),\n  ∀ (a : ℕ),\n    {n : ℕ |\n          ∃ (k : ℕ),\n            K < k ∧ (↑k : ℝ) < Real.exp (Real.log (↑n : ℝ) ^ (5 / 6 : ℝ)) ∧ (2 : ℕ) * k ≤ n ∧ n.choose k = a}.ncard ≤\n      B",
+          "truncated": false
+        }
+      },
+      "id": "h_dw",
+      "kind": "hole",
+      "name": "h_dw",
+      "span": {
+        "end_line": 59,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+            "name": "Nat.choose",
+            "tags": []
+          },
+          {
+            "doc": "Implementation of the Fibonacci sequence satisfying `fib 0 = 0, fib 1 = 1, fib (n + 2) = fib n + fib (n + 1)`.",
+            "name": "Nat.fib",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "S.card ≤ (14 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hScard",
+            "type": {
+              "printed": "reliable",
+              "text": "S.card ≤ (14 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "M.ncard ≤ (17 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "hScard",
+      "kind": "have",
+      "name": "hScard",
+      "span": {
+        "end_line": 66,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ∈ M",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "kx",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hkx1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) < kx",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hkx2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * kx ≤ x",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hkx3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x.choose kx = a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          },
+          "id": "pair.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 70,
+            "start_line": 70
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "y ∈ M",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ky",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hky1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) < ky",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hky2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * ky ≤ y",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hky3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "y.choose ky = a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          },
+          "id": "pair.s2",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 71,
+            "start_line": 71
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "kx ≠ ky",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hne",
+                "type": {
+                  "printed": "reliable",
+                  "text": "kx ≠ ky",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          },
+          "id": "pair.hne",
+          "kind": "have",
+          "name": "hne",
+          "span": {
+            "end_line": 75,
+            "start_line": 72
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "x = (78 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (15 : ℕ) ∧ ky = (5 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hkx2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) * kx ≤ (78 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hkx3",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "choose (78 : ℕ) kx = a",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hky2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) * ky ≤ (15 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hky3",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "choose (15 : ℕ) ky = a",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hxy",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(78 : ℕ) ≠ (15 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(78 : ℕ) ∈ S ∧ (15 : ℕ) ∈ S",
+                      "truncated": false
+                    }
+                  },
+                  "id": "pair.s4.s1.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 79,
+                    "start_line": 79
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hsp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x = (78 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (15 : ℕ) ∧ ky = (5 : ℕ) ∨\n  x = (78 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (14 : ℕ) ∧ ky = (6 : ℕ) ∨\n    x = (16 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (10 : ℕ) ∧ ky = (3 : ℕ) ∨\n      x = (21 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (10 : ℕ) ∧ ky = (4 : ℕ) ∨\n        x = (56 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (22 : ℕ) ∧ ky = (3 : ℕ) ∨\n          x = (120 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (36 : ℕ) ∧ ky = (3 : ℕ) ∨\n            x = (153 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (19 : ℕ) ∧ ky = (5 : ℕ) ∨\n              x = (221 : ℕ) ∧ kx = (2 : ℕ) ∧ y = (17 : ℕ) ∧ ky = (8 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+                  "truncated": false
+                }
+              },
+              "id": "pair.s4.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 79,
+                "start_line": 78
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "i",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hm",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y + (1 : ℕ) = x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+                  "truncated": false
+                }
+              },
+              "id": "pair.s4.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 80,
+                "start_line": 80
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "kx < ky",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          },
+          "id": "pair.s4",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 80,
+            "start_line": 77
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "y = (78 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (15 : ℕ) ∧ kx = (5 : ℕ)",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hky2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) * ky ≤ (78 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hky3",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "choose (78 : ℕ) ky = a",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hkx2",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(2 : ℕ) * kx ≤ (15 : ℕ)",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hkx3",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "choose (15 : ℕ) kx = a",
+                          "truncated": false
+                        }
+                      },
+                      {
+                        "name": "hxy",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "(15 : ℕ) ≠ (78 : ℕ)",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "(15 : ℕ) ∈ S ∧ (78 : ℕ) ∈ S",
+                      "truncated": false
+                    }
+                  },
+                  "id": "pair.s5.s1.s1",
+                  "kind": "obtain",
+                  "name": null,
+                  "span": {
+                    "end_line": 83,
+                    "start_line": 83
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hsp",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y = (78 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (15 : ℕ) ∧ kx = (5 : ℕ) ∨\n  y = (78 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (14 : ℕ) ∧ kx = (6 : ℕ) ∨\n    y = (16 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (10 : ℕ) ∧ kx = (3 : ℕ) ∨\n      y = (21 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (10 : ℕ) ∧ kx = (4 : ℕ) ∨\n        y = (56 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (22 : ℕ) ∧ kx = (3 : ℕ) ∨\n          y = (120 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (36 : ℕ) ∧ kx = (3 : ℕ) ∨\n            y = (153 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (19 : ℕ) ∧ kx = (5 : ℕ) ∨\n              y = (221 : ℕ) ∧ ky = (2 : ℕ) ∧ x = (17 : ℕ) ∧ kx = (8 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+                  "truncated": false
+                }
+              },
+              "id": "pair.s5.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 83,
+                "start_line": 82
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "i",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "ℕ",
+                      "truncated": false
+                    }
+                  },
+                  {
+                    "name": "hm",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "x + (1 : ℕ) = y",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+                  "truncated": false
+                }
+              },
+              "id": "pair.s5.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 84,
+                "start_line": 84
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ky < kx",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          },
+          "id": "pair.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 84,
+            "start_line": 81
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x y : ℕ), x ∈ M → y ∈ M → x ≠ y → x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "pair",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x y : ℕ), x ∈ M → y ∈ M → x ≠ y → x ∈ S ∧ y ∈ S ∨ y + (1 : ℕ) = x ∨ x + (1 : ℕ) = y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "M.ncard ≤ (17 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "pair",
+      "kind": "have",
+      "name": "pair",
+      "span": {
+        "end_line": 84,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_or_gt_of_ne",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "M.ncard ≤ (↑S : Set ℕ).ncard",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s4.s1",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 86,
+            "start_line": 86
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "A set is a collection of elements of some type `α`.",
+                "name": "Set",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Set.ncard_le_ncard",
+                "tags": []
+              },
+              {
+                "doc": "Gives a `Set.Finite` for the `Finset` coerced to a `Set`.",
+                "name": "Finset.finite_toSet",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑S : Set ℕ).ncard = S.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s4.s2",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 87,
+            "start_line": 87
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.ncard_coe_finset",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": null,
+          "id": "s4.s3",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 88,
+            "start_line": 88
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsub",
+            "type": {
+              "printed": "reliable",
+              "text": "M ⊆ (↑S : Set ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "M.ncard ≤ (17 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 88,
+        "start_line": 86
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ a ∈ M, a ∉ (↑S : Set ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "x",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxM",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∈ M",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxS",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∉ (↑S : Set ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "M.ncard ≤ (17 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 89,
+            "start_line": 89
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.not_subset",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "x ∉ S",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hxS'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x ∉ S",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "M.ncard ≤ (17 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.hxS'",
+          "kind": "have",
+          "name": "hxS'",
+          "span": {
+            "end_line": 90,
+            "start_line": 90
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "unreliable",
+                "text": "{x, x + (1 : ℕ)}.card ≤ {x + (1 : ℕ)}.card + (1 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "unreliable",
+                      "text": "{x, x + (1 : ℕ)}.card ≤ {x + (1 : ℕ)}.card + (1 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "unreliable",
+                  "text": "{x, x + (1 : ℕ)}.card + (1 : ℕ) ≤ (3 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s5.hTcard.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 95,
+                "start_line": 95
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Finset.card_insert_le",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                    "name": "Finset",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "T.card ≤ (3 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hTcard",
+                "type": {
+                  "printed": "reliable",
+                  "text": "T.card ≤ (3 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "M.ncard ≤ (17 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.hTcard",
+          "kind": "have",
+          "name": "hTcard",
+          "span": {
+            "end_line": 97,
+            "start_line": 92
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_insert_le",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.card_singleton",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hyx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "y = x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "y ∈ (↑S : Set ℕ) ∪ (↑T : Set ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s5.hsub'.s1",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 102,
+                "start_line": 102
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "hxs",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "x ∈ S",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "y ∈ (↑S : Set ℕ) ∪ (↑T : Set ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s5.hsub'.s2.s1",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 104,
+                    "start_line": 104
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": "Anything follows from two contradictory hypotheses.",
+                        "name": "absurd",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "y + (1 : ℕ) = x",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "y ∈ (↑S : Set ℕ) ∪ (↑T : Set ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s5.hsub'.s2.s2",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 105,
+                    "start_line": 105
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                },
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": null,
+                  "closed_by": {
+                    "kind": "steps",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "h",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "x + (1 : ℕ) = y",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "y ∈ (↑S : Set ℕ) ∪ (↑T : Set ℕ)",
+                      "truncated": false
+                    }
+                  },
+                  "id": "s5.hsub'.s2.s3",
+                  "kind": "case",
+                  "name": null,
+                  "span": {
+                    "end_line": 106,
+                    "start_line": 106
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": null,
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hyx",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬y = x",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "y ∈ (↑S : Set ℕ) ∪ (↑T : Set ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "s5.hsub'.s2",
+              "kind": "case",
+              "name": null,
+              "span": {
+                "end_line": 106,
+                "start_line": 103
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "Ne.symm",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "M ⊆ (↑(S ∪ T) : Set ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsub'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "M ⊆ (↑(S ∪ T) : Set ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "M.ncard ≤ (17 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "s5.hsub'",
+          "kind": "have",
+          "name": "hsub'",
+          "span": {
+            "end_line": 106,
+            "start_line": 98
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": "A set is a collection of elements of some type `α`.",
+                "name": "Set",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.coe_union",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "M.ncard ≤ (↑(S ∪ T) : Set ℕ).ncard",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s5",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 107,
+            "start_line": 107
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": "A set is a collection of elements of some type `α`.",
+                "name": "Set",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Set.ncard_le_ncard",
+                "tags": []
+              },
+              {
+                "doc": "Gives a `Set.Finite` for the `Finset` coerced to a `Set`.",
+                "name": "Finset.finite_toSet",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(S ∪ T) : Set ℕ).ncard = (S ∪ T).card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s6",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 108,
+            "start_line": 108
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.ncard_coe_finset",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(S ∪ T).card ≤ S.card + T.card",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "s5.s7",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 109,
+            "start_line": 109
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Finset.card_union_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": null,
+          "id": "s5.s8",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 110,
+            "start_line": 110
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsub",
+            "type": {
+              "printed": "reliable",
+              "text": "¬M ⊆ (↑S : Set ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "M.ncard ≤ (17 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 110,
+        "start_line": 89
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
