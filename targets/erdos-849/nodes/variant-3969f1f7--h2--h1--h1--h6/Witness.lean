@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ (n : ℕ) (m : ℕ), (6 : ℕ) ≤ n ∧ (8 : ℕ) ≤ m :=
+  ⟨6, 8, by norm_num, by norm_num⟩

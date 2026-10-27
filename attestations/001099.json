@@ -1,0 +1,203 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code 2.1",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "495437a79c3801b92fdbebca257cb6f5245e1de393c9f27a4c7ebee9af08d7f3",
+  "graph_commit": "c79bd819715788ee9e21c7f800c8560dc1431603",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "c79bd819715788ee9e21c7f800c8560dc1431603",
+  "model_and_tooling": "claude-fable-5-1 Claude Code 2.1",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "variant-3969f1f7--h2--h1--h1",
+  "precheck_attestation": {
+    "hash": "37cfc93a1266cc56ef1c3ebbdaf82ee4486d1269fb530084dcef494d9d69075e",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-27T13:00:59Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHSXamJlTN749pE/pCK5/tlsDnuxx3N2U2e3ghkFcn7uHHEIx6\nnutco2SskyE1KtnpwWjkyiDOEC00GngxQq1Qc=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "1bbbdf3c688d79bb8c3f1de7554b3f095917b6d3c69692dc6e16cebe09468111",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261027T122901Z-t1027e-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261027T122901Z-t1027e-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_23",
+            "h_24",
+            "h_25",
+            "h_26",
+            "h_28",
+            "h_34",
+            "h_36",
+            "h_46",
+            "h_48"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h2__h1__h1 declares ∀ (n k m l : ℕ),\n  2 ≤ k →\n    2 * k ≤ n →\n      2 ≤ l →\n        2 * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              k = 2 ∧ l = 3 ∨\n                  k = 2 ∧ l = 4 ∨\n                    k = 2 ∧ l = 5 ∨\n                      k = 2 ∧ l = 6 ∨ k = 2 ∧ l = 8 ∨ k = 3 ∧ l = 4 ∨ k = 3 ∧ l = 6 ∨ k = 4 ∧ l = 6 ∨ k = 4 ∧ l = 8 →\n                n = 78 ∧ k = 2 ∧ m = 15 ∧ l = 5 ∨\n                  n = 78 ∧ k = 2 ∧ m = 14 ∧ l = 6 ∨\n                    n = 16 ∧ k = 2 ∧ m = 10 ∧ l = 3 ∨\n                      n = 21 ∧ k = 2 ∧ m = 10 ∧ l = 4 ∨\n                        n = 56 ∧ k = 2 ∧ m = 22 ∧ l = 3 ∨\n                          n = 120 ∧ k = 2 ∧ m = 36 ∧ l = 3 ∨\n                            n = 153 ∧ k = 2 ∧ m = 19 ∧ l = 5 ∨ n = 221 ∧ k = 2 ∧ m = 17 ∧ l = 8; 9 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ k",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ l",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 2 ≤ k: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_23",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.1.witness",
+              "sha256": "4c00fbd947392eab20640a0e6d949d882859aabbe17e99bf41965609954e6301"
+            },
+            {
+              "hole": "h_24",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.2.witness",
+              "sha256": "ef55c89a6e66da26391b36f131d5be43e609fbebae90faa7cfd183335d8f427f"
+            },
+            {
+              "hole": "h_25",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.3.witness",
+              "sha256": "ca79afac4ca095e5dfaf6f1db28aefd2e87f05c33e4b9cb4968de8b0d712c70d"
+            },
+            {
+              "hole": "h_26",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.4.witness",
+              "sha256": "1d0767f7b7dce66c57945cec93eaa61a780643600158b4a398b0adc3e03ceb6c"
+            },
+            {
+              "hole": "h_28",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.5.witness",
+              "sha256": "6ebd2a8dad15ad17ac34d16bab6458468d2f403d259e7f6c686753c12a0b5c4d"
+            },
+            {
+              "hole": "h_34",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.6.witness",
+              "sha256": "86379c0946d04fa9b52ad143ecdca7fae3a7adcbfdcc8c76b6d63a8d64eefa4b"
+            },
+            {
+              "hole": "h_36",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.7.witness",
+              "sha256": "0d7ca2a05c85360cbb10bd7616f964f15065b7edb607bbecc97edbdd59a11b95"
+            },
+            {
+              "hole": "h_46",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.8.witness",
+              "sha256": "03e58ce27288c2c53e5e1268b85d23a434557dd9442e1fb6a8371b17f3b41f94"
+            },
+            {
+              "hole": "h_48",
+              "path": "attempts/20261027T122901Z-t1027e-a-partial.9.witness",
+              "sha256": "2eecd124f4b45fd77475a8e2a97484a0dea3c842ae9df09a24479d7ec2f780f9"
+            }
+          ]
+        },
+        "message": "9 of 9 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1027e-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code 2.1",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
