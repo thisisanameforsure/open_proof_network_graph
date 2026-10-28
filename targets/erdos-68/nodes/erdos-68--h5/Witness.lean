@@ -1,0 +1,3 @@
+import Mathlib
+
+theorem witness : ∃ (N : ℕ), (4 : ℕ) ≤ N := ⟨4, le_rfl⟩

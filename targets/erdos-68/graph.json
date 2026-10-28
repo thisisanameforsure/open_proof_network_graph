@@ -23,13 +23,34 @@
             }
           ],
           "partial": "attempts/20261028T132200Z-t1028-a-partial.lean"
+        },
+        {
+          "annex": null,
+          "approach": "route 1 (erdos-68@1) with the tail of N!·S pinned between 1/(N+1) and 1/N, so the window the finite part's fractional part must avoid shrinks from width 2/N to 1/(N(N+1)) and the open core is strictly weaker",
+          "holes": [
+            {
+              "name": "h1",
+              "node": null
+            },
+            {
+              "name": "h2",
+              "node": "erdos-68--h5"
+            },
+            {
+              "name": "h3",
+              "node": "erdos-68--h6"
+            }
+          ],
+          "partial": "attempts/20261028T145000Z-t1028-a-partial.lean"
         }
       ],
       "defect_claims": [],
       "deps": [
         "erdos-68--h1",
         "erdos-68--h2",
-        "erdos-68--h3"
+        "erdos-68--h3",
+        "erdos-68--h5",
+        "erdos-68--h6"
       ],
       "label": "the sum of 1/(n!-1) is irrational",
       "label_source": "gloss",
@@ -178,11 +199,65 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall N\\ge 4\\ \\exists c:\\ \\tfrac{1}{N+1}<c<\\tfrac{1}{N}\\ \\text{and}\\ N!\\sum_{n\\ge 2}\\frac{1}{n!-1}=\\sum_{n=2}^{N}\\frac{N!}{n!-1}+c",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "N!·S = F_N + c with 1/(N+1) < c < 1/N for N ≥ 4",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h5",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "7f2ee7e53893c60853e188892eec9db06319753f59f6da059351649d828e0882",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall M\\ \\exists N\\ge M:\\ \\{F_N\\}\\le 1-\\tfrac{1}{N}\\ \\text{or}\\ \\{F_N\\}\\ge 1-\\tfrac{1}{N+1},\\ \\text{where}\\ F_N=\\sum_{n=2}^{N}\\frac{N!}{n!-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "fract(F_N) avoids the window (1-1/N, 1-1/(N+1))",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h6",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "d2d20bad8566d5ca2b209979f2824f14ff8445c86e8cb57de90da73f76d864ac",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "d9763c3ae7821e7338cd9c7f9a9be67730af2dc4",
+  "rendered_from": "8f9501e990eda1adf85402cac99be87a31c80c0b",
   "review": {
     "candidates": 1,
     "clusters": 1,
