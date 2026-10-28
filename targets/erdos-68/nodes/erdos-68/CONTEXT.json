@@ -19,9 +19,41 @@
         "path": "targets/erdos-68/nodes/erdos-68/attempts/20261028T145000Z-t1028-a-partial.lean"
       }
     ],
-    "count": 2,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 3,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-68/nodes/erdos-68/attempts/20261028T150823Z-t1028-a.yaml",
+        "record": {
+          "contributor": "t1028-a",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68/attempts/20261028T150823Z-t1028-a.yaml",
+            "text": "Everything elementary on this route is proved: the criterion (erdos-68--h1) and the tail split with 0 < c_N <= 2/N (erdos-68--h2); the sharper tail 1/(N+1) < c_N < 1/N for N >= 4 (erdos-68--h5) is an elementary hole.\nWhat is left is the fractional part of the finite sum F_N, and nothing known bears on it.\n- Route 1's open hole erdos-68--h3 (frac(F_N) < 1 - 2/N infinitely often) is strictly stronger than the root.\n- Route 2's open hole erdos-68--h6 (frac(F_N) outside (1 - 1/N, 1 - 1/(N+1)) infin…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-68",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68/attempts/20261028T150823Z-t1028-a.yaml",
+            "text": "Factorial multiplier, as for e: N!·S = F_N + c_N with F_N = sum_{n=2}^N N!/(n!-1) finite and c_N the tail; S irrational iff N!·S is not an integer for arbitrarily large N. Two decompositions merged (erdos-68@1 #1134, erdos-68@2 #1154).",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68/attempts/20261028T150823Z-t1028-a.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ (N : ℕ), M ≤ N ∧ Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) < (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -118,7 +150,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "8f9501e990eda1adf85402cac99be87a31c80c0b",
+  "rendered_from": "66149bd68ce54dd88afaeb2bf006194625aa91e4",
   "review": {
     "questions_waiting": [
       {

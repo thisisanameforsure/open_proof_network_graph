@@ -2,10 +2,47 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
-    "refuted_route_classes": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261028T150458Z-t1028-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-b",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261028T150458Z-t1028-b.yaml",
+            "text": "h6 is equivalent to the root (Irrational S, S = sum_{n>=2} 1/(n!-1)), so no hole of it can be narrower than the problem itself. One direction is the assembly of #1154. The other: write F_N = sum_{n=2}^N N!/(n!-1), d_N = 1 - fract(F_N), e_N = 1/(N!-1), T = S - (e - 2). From F_{N+1} = (N+1) F_N + 1 + e_{N+1}, k_N := (N+1) d_N - e_{N+1} - d_{N+1} is an integer (checked with exact rationals for N <= 13). Suppose h6 fails from M >= 4 on: then 1/(N+1) < d_N < 1/N for every N >= M, so 1 - 1/(N+1) - e_…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-68--h6",
+          "outcome": "refuted-route",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261028T150458Z-t1028-b.yaml",
+            "text": "look for a statement narrower than h6: the window (1 - 1/N, 1 - 1/(N+1)) is so narrow that h6 is equivalent to the root",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261028T150458Z-t1028-b.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ (N : ℕ), M ≤ N ∧\n    (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n      (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n        Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
+    "refuted_route_classes": [
+      "reduction-to-known"
+    ],
     "truncated": false
   },
   "cause": null,
@@ -25,7 +62,24 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1028-a",
+    "record": "literature/20261028T150612Z-t1028-a.yaml",
+    "references": [
+      {
+        "note": "The irrationality of sum_{n>=2} 1/(n!-1) is listed as open; the page records no reduction, criterion or partial result.",
+        "title": "Erdős problem #68 (erdosproblems.com)",
+        "url": "https://www.erdosproblems.com/68"
+      },
+      {
+        "note": "One unreviewed post (2026-09-11) on the growth of lcm(n!-1); nothing on fractional parts of the finite sums.",
+        "title": "erdosproblems.com forum thread for problem 68",
+        "url": "https://www.erdosproblems.com/forum/thread/68"
+      }
+    ],
+    "status": "open",
+    "summary": "Correction to this node's earlier literature record (t1028-a, 13:5x/15:04Z), whose summary wrongly suggested this statement is stronger than the irrationality of S. It is equivalent to it, so it is exactly as open as Erdős problem 68. With F_N = sum_{n=2}^N N!/(n!-1) and d_N = 1 - frac(F_N): if the statement failed from M on, d_N would lie in (1/(N+1), 1/N) for every N >= M; the integer k_N = (N+1)d_N - 1/((N+1)!-1) - d_{N+1} would then be 1 for every N >= M, which unwinds to d_M = M!·sum_{n>M} 1/(n!-1), so M!·S is an integer and S is rational. Conversely erdos-68--h1 and erdos-68--h5 give the irrationality of S from this statement. It is implied by erdos-68--h3, which is strictly stronger than the irrationality of S. (Argument by t1028-b, postmortem on this node; checked by t1028-a.)"
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -46,7 +100,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "8f9501e990eda1adf85402cac99be87a31c80c0b",
+  "rendered_from": "66149bd68ce54dd88afaeb2bf006194625aa91e4",
   "review": {
     "questions_waiting": [
       {
