@@ -1,0 +1,152 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "6b29cdb11e3efd03eaccc998d73f6a2982d707b600d6ecdef92ffd653233e98a",
+  "graph_commit": "1936413ac0a1d9f29adfabd08b4df15b6e6798ca",
+  "graph_id": "erdos-68",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "1936413ac0a1d9f29adfabd08b4df15b6e6798ca",
+  "model_and_tooling": "claude-opus-5-5 Claude Code",
+  "network_commit": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node_id": "erdos-68",
+  "precheck_attestation": {
+    "hash": "9bbbdf02da5a0adec9eefeadc4c20e9f90334693953d853772f6c4b40d973584",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-28T13:48:53Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQFiwq8WOQUS1V99C/2YdUW9B26Jy8M7C6sZuDeI+PdrLE5t2UQ\n8wUko2oEwa2wHpxqUu163yCVHgjhXtA5dhDQw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "abc6fbf1e2ebedbce8bba7d0e497cffd34ffff17ef3138faeb76b6a6e5be17be",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261028T132200Z-t1028-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261028T132200Z-t1028-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_68 declares Irrational (∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)); 3 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "The divisor is (n+2)! - 1 ≥ 1 for every natural n, so the real division is never at 0; the summand is the registry's own expression for Erdős problem 68 (the sum of 1/((n+2)!-1)) and the total division is not exercised at the junk value.",
+              "location": "1 / (↑(n + 2).factorial - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h1",
+              "path": "attempts/20261028T132200Z-t1028-a-partial.1.witness",
+              "sha256": "b2cc0b98ac76ea4abd912bd87712fd3506d8a4d9afc608690077b4d370c1335a"
+            },
+            {
+              "hole": "h2",
+              "path": "attempts/20261028T132200Z-t1028-a-partial.2.witness",
+              "sha256": "b98b38b545b55c1507a0a50a00618acbe8f91016ebe4cc6e004e9a2735896f09"
+            },
+            {
+              "hole": "h3",
+              "path": "attempts/20261028T132200Z-t1028-a-partial.3.witness",
+              "sha256": "5003860310bf67062ecc62716cc072dfce4d9655515646cb19ad0000bbc1861c"
+            }
+          ]
+        },
+        "message": "3 of 3 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1028-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

@@ -4,9 +4,33 @@
       "cause": null,
       "claim": null,
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": "60c3f96117863c5f8df64b6be6d5178d8de0e3ff7996bca4be9a4628810cb206",
+          "approach": "as in the proof that e is irrational: multiply by N!; a rational sum makes N!·S an integer for large N, and the finite part's fractional part must then sit in a window of width at most 2/N",
+          "holes": [
+            {
+              "name": "h1",
+              "node": "erdos-68--h1"
+            },
+            {
+              "name": "h2",
+              "node": "erdos-68--h2"
+            },
+            {
+              "name": "h3",
+              "node": "erdos-68--h3"
+            }
+          ],
+          "partial": "attempts/20261028T132200Z-t1028-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-68--h1",
+        "erdos-68--h2",
+        "erdos-68--h3"
+      ],
       "label": "Erdős problem 68: irrationality of the sum of 1/(n!-1)",
       "label_source": "target",
       "lemmas": [],
@@ -14,7 +38,30 @@
       "literature_proposed": null,
       "node_id": "erdos-68",
       "origin": "authored",
-      "outline": null,
+      "outline": {
+        "annex": "60c3f96117863c5f8df64b6be6d5178d8de0e3ff7996bca4be9a4628810cb206",
+        "partial": "attempts/20261028T132200Z-t1028-a-partial.lean",
+        "steps": [
+          {
+            "node": "erdos-68--h1",
+            "status": "ready",
+            "step": "h1",
+            "summary": "criterion: if N!·x is not an integer for arbitrarily large N, then x is irrational"
+          },
+          {
+            "node": "erdos-68--h2",
+            "status": "ready",
+            "step": "h2",
+            "summary": "for N >= 2, N!·S = F_N + c with F_N = sum_{n=2}^N N!/(n!-1) and 0 < c <= 2/N"
+          },
+          {
+            "node": "erdos-68--h3",
+            "status": "ready",
+            "step": "h3",
+            "summary": "open core: for arbitrarily large N, frac(F_N) < 1 - 2/N"
+          }
+        ]
+      },
       "proof_commit": null,
       "proofs": [],
       "proposed_for": null,
@@ -26,11 +73,92 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall x\\in\\mathbb{R}:\\ \\big(\\forall M\\ \\exists N\\ge M\\ \\forall m\\in\\mathbb{Z},\\ N!\\,x\\ne m\\big)\\Rightarrow x\\notin\\mathbb{Q}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "factorial-multiplier criterion for irrationality",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h1",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "65161a635cb5fddbb95d5a5601bf191d9c6dc2a6b674cce6660ecc63b15ce462",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall N\\ge 2\\ \\exists c,\\ 0<c\\le \\tfrac{2}{N}\\ \\text{and}\\ N!\\sum_{n\\ge 2}\\frac{1}{n!-1}=\\sum_{n=2}^{N}\\frac{N!}{n!-1}+c",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "N!·S splits as a finite sum plus a tail in (0, 2/N]",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h2",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "4c75bef4336d6753fe2309f1d302c0902fe01b36f6dc48154f50988940fbec86",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall M\\ \\exists N\\ge M:\\ \\operatorname{frac}\\Big(\\sum_{n=2}^{N}\\frac{N!}{n!-1}\\Big)<1-\\frac{2}{N}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the finite sum's fractional part avoids [1-2/N, 1)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h3",
+      "origin": "skeleton-hole",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "991863eb9c07fa469ca7235173924c1a6480fbb7f428889ad73e9ee6bb74e19c",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "2dae73264653776dfdf8cc6713e7624d4388fb1a",
+  "rendered_from": "1936413ac0a1d9f29adfabd08b4df15b6e6798ca",
   "review": {
     "candidates": 1,
     "clusters": 1,
