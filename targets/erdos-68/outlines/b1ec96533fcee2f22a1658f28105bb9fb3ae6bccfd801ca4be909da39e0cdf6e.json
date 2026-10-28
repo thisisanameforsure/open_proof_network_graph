@@ -1,0 +1,344 @@
+{
+  "artifact": {
+    "hash": "b1ec96533fcee2f22a1658f28105bb9fb3ae6bccfd801ca4be909da39e0cdf6e",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "erdos-68--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ)) ∧\n  (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ)) ≤\n    ((↑N : ℝ) + (1 : ℝ)) / (↑N : ℝ) ^ (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ)) ≤\n  ((↑N : ℝ) + (1 : ℝ)) / (↑N : ℝ) ^ (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    c ≤ (2 : ℝ) / (↑N : ℝ) ∧\n      (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n        ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 106,
+        "start_line": 106
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℝ) ≤ (↑N : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hN'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) ≤ (↑N : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "((↑N : ℝ) + (1 : ℝ)) / (↑N : ℝ) ^ (2 : ℕ) ≤ (2 : ℝ) / (↑N : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "s2.hN'",
+          "kind": "have",
+          "name": "hN'",
+          "span": {
+            "end_line": 108,
+            "start_line": 108
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "((↑N : ℝ) + (1 : ℝ)) / (↑N : ℝ) ^ (2 : ℕ) ≤ (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 110,
+        "start_line": 108
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "div_le_div_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∑ i ∈ Finset.range (N - (1 : ℕ)), (1 : ℝ) / ((↑(i + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) +\n    ∑' (i : ℕ), (1 : ℝ) / ((↑(i + (N - (1 : ℕ)) + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑' (i : ℕ), (1 : ℝ) / ((↑(i + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsplit",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑ i ∈ Finset.range (N - (1 : ℕ)), (1 : ℝ) / ((↑(i + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) +\n    ∑' (i : ℕ), (1 : ℝ) / ((↑(i + (N - (1 : ℕ)) + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑' (i : ℕ), (1 : ℝ) / ((↑(i + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) +\n    (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s3.hsplit",
+          "kind": "have",
+          "name": "hsplit",
+          "span": {
+            "end_line": 111,
+            "start_line": 111
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∀ (i : ℕ), i + (N - (1 : ℕ)) + (2 : ℕ) = i + N + (1 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "he",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∀ (i : ℕ), i + (N - (1 : ℕ)) + (2 : ℕ) = i + N + (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) +\n    (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s3.he",
+          "kind": "have",
+          "name": "he",
+          "span": {
+            "end_line": 112,
+            "start_line": 112
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Finset.Icc (2 : ℕ) N = Finset.Ico (2 : ℕ) (N + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hI",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Finset.Icc (2 : ℕ) N = Finset.Ico (2 : ℕ) (N + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∑ i ∈ Finset.range (N - (1 : ℕ)), (↑N.factorial : ℝ) * ((1 : ℝ) / ((↑(i + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))",
+              "truncated": false
+            }
+          },
+          "id": "s3.hI",
+          "kind": "have",
+          "name": "hI",
+          "span": {
+            "end_line": 116,
+            "start_line": 116
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+                "name": "Finset.Icc",
+                "tags": []
+              },
+              {
+                "doc": "The finset $[a, b)$ of elements `x` such that `a ≤ x` and `x < b`.",
+                "name": "Finset.Ico",
+                "tags": []
+              },
+              {
+                "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+                "name": "rfl",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) +\n    (↑N.factorial : ℝ) * ∑' (j : ℕ), (1 : ℝ) / ((↑(j + N + (1 : ℕ)).factorial : ℝ) - (1 : ℝ))",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 119,
+        "start_line": 111
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "**Alias** of `left_distrib`.",
+            "name": "mul_add",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mul_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_Ico_eq_sum_range",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_congr",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_one_div",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-68"
+}
