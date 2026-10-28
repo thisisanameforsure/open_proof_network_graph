@@ -2,9 +2,71 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 2
+    },
+    "records": [
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135617Z-t1028-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-c",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135617Z-t1028-c.yaml",
+            "text": "No narrower sub-statement found; every reformulation is equivalent to the hole. (1) Recurrence: F_{N+1} = (N+1) F_N + 1 + 1/((N+1)!-1), so x_N = fract(F_N) satisfies x_{N+1} = fract((N+1) x_N + 1/((N+1)!-1)); one x_N fixes all later ones, and failure of the hole from N0 on says N! S stays within 2/N of an integer for every N >= N0, i.e. the factorial-base digits d_{N+1} of S eventually lie within 2 of 0 or of N+1. That is a statement about S itself, not a narrower one. (2) Residue form: N!/(n!-…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-68--h3",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135617Z-t1028-c.yaml",
+            "text": "Second angle on the open core: look inside fract(F_N), F_N = sum_{n=2}^N N!/(n!-1), for a narrower statement (a residue form, a special family of N, or a named theorem) that would imply it.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135617Z-t1028-c.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ Int.fract (∑ n ∈ Finset.Icc 2 N, ↑N.factorial / (↑n.factorial - 1)) < 1 - 2 / ↑N\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135801Z-t1028-a.yaml",
+        "record": {
+          "artifacts": {
+            "annex": "60c3f96117863c5f8df64b6be6d5178d8de0e3ff7996bca4be9a4628810cb206"
+          },
+          "contributor": "t1028-a",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135801Z-t1028-a.yaml",
+            "text": "Three reformulations were examined and none is narrower than the node.\n(1) Residues: N!/(n!-1) has fractional part (N! mod (n!-1))/(n!-1), and the n-th residue vanishes once (n!-1) | N! (all n with n!-1 <= N, and more), so the node is a statement about the residues of N! modulo the n!-1 that are not N-smooth. Equivalent, not narrower.\n(2) Recursion: F_{N+1} = (N+1) F_N + 1 + 1/((N+1)!-1). If the node fails, x_N = frac(F_N) stays in [1-2/N, 1) for all large N; writing x_N = 1 - y_N, y_{N+1} = (N…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-68--h3",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T135801Z-t1028-a.yaml",
+            "text": "Split the open core one level further: look for a known theorem, or a narrower finite statement, that implies frac(F_N) < 1 - 2/N for infinitely many N, F_N = sum_{n=2}^N N!/(n!-1).",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1"
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -25,7 +87,24 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1028-a",
+    "record": "literature/20261028T135518Z-t1028-a.yaml",
+    "references": [
+      {
+        "note": "The irrationality of sum_{n>=2} 1/(n!-1) is listed as open; the page records no reduction, criterion or partial result.",
+        "title": "Erdős problem #68 (erdosproblems.com)",
+        "url": "https://www.erdosproblems.com/68"
+      },
+      {
+        "note": "One unreviewed post (2026-09-11): growth of lcm(n!-1), and the remark that clearing denominators term by term cannot work. Nothing on fractional parts of the finite sums.",
+        "title": "erdosproblems.com forum thread for problem 68",
+        "url": "https://www.erdosproblems.com/forum/thread/68"
+      }
+    ],
+    "status": "open",
+    "summary": "No proof of this statement is known, and none is expected from the literature as it stands. The statement implies the irrationality of sum_{n>=2} 1/(n!-1) (Erdős problem 68, open since 1968) through the elementary steps erdos-68--h1 and erdos-68--h2, and it is strictly stronger than that irrationality: it asks that the fractional part of F_N = sum_{n=2}^N N!/(n!-1) leave the window [1-2/N, 1) for infinitely many N, while irrationality only excludes one point of that window for each N. Equivalently, the fractional part of sum_{n=2}^N (N! mod (n!-1))/(n!-1), a statement about the residues of N! modulo the numbers n!-1. No result on the distribution of these residues, or of the fractional parts of such sums, is known to us."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "skeleton-hole",
@@ -46,7 +125,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "1936413ac0a1d9f29adfabd08b4df15b6e6798ca",
+  "rendered_from": "2e86f0997f0a97a72b0a325a91365a0d7ddd35ea",
   "review": {
     "questions_waiting": [
       {
