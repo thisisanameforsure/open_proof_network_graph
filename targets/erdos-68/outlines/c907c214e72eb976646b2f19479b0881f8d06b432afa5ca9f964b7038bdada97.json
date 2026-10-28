@@ -1,0 +1,921 @@
+{
+  "artifact": {
+    "hash": "c907c214e72eb976646b2f19479b0881f8d06b432afa5ca9f964b7038bdada97",
+    "kind": "partial",
+    "path": "attempts/20261028T145000Z-t1028-a-partial.lean"
+  },
+  "gate": "be99b4fba02b10159f1ba4054a09c6d7e4b5cbc2",
+  "node": "erdos-68",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x : ℝ), (∀ (M : ℕ), ∃ (N : ℕ), M ≤ N ∧ ∀ (m : ℤ), (↑N.factorial : ℝ) * x ≠ (↑m : ℝ)) → Irrational x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℝ), (∀ (M : ℕ), ∃ (N : ℕ), M ≤ N ∧ ∀ (m : ℤ), (↑N.factorial : ℝ) * x ≠ (↑m : ℝ)) → Irrational x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 32,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A real number is irrational if it is not equal to any rational number.",
+            "name": "Irrational",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-68--h5",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (N : ℕ),\n  (4 : ℕ) ≤ N →\n    ∃ (c : ℝ),\n      (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) < c ∧\n        c < (1 : ℝ) / (↑N : ℝ) ∧\n          (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n            ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (N : ℕ),\n  (4 : ℕ) ≤ N →\n    ∃ (c : ℝ),\n      (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) < c ∧\n        c < (1 : ℝ) / (↑N : ℝ) ∧\n          (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n            ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "hole",
+      "name": "h2",
+      "span": {
+        "end_line": 37,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-68--h6",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n          (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n        (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n          Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n          (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n        (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n          Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "hole",
+      "name": "h3",
+      "span": {
+        "end_line": 43,
+        "start_line": 40
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (N : ℕ),\n  max M (4 : ℕ) ≤ N ∧\n    (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n      (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n        Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "N",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hMN",
+            "type": {
+              "printed": "reliable",
+              "text": "max M (4 : ℕ) ≤ N",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hfr",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n    (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n  (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (N : ℕ),\n  M ≤ N ∧ ∀ (m : ℤ), (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) ≠ (↑m : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 46,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the greater of its two arguments.",
+            "name": "Max.max",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(4 : ℕ) ≤ N",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hN4",
+            "type": {
+              "printed": "reliable",
+              "text": "(4 : ℕ) ≤ N",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hN4",
+      "kind": "have",
+      "name": "hN4",
+      "span": {
+        "end_line": 49,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) < c ∧\n    c < (1 : ℝ) / (↑N : ℝ) ∧\n      (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n        ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc0",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) < c",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc1",
+            "type": {
+              "printed": "reliable",
+              "text": "c < (1 : ℝ) / (↑N : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s6",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hNpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hNpos",
+      "kind": "have",
+      "name": "hNpos",
+      "span": {
+        "end_line": 52,
+        "start_line": 52
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "F + c = (↑m : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hF",
+            "type": {
+              "printed": "reliable",
+              "text": "F + c = (↑m : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hF",
+      "kind": "have",
+      "name": "hF",
+      "span": {
+        "end_line": 53,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) ≤ Int.fract F",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) ≤ Int.fract F",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h0",
+      "kind": "have",
+      "name": "h0",
+      "span": {
+        "end_line": 54,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Int.fract_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Int.fract F < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1'",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract F < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h1'",
+      "kind": "have",
+      "name": "h1'",
+      "span": {
+        "end_line": 55,
+        "start_line": 55
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Int.fract_lt_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Int.fract F + c = (↑(m - ⌊F⌋) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract F + c = (↑(m - ⌊F⌋) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 57,
+        "start_line": 56
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hcpos",
+      "kind": "have",
+      "name": "hcpos",
+      "span": {
+        "end_line": 58,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_trans",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c < (1 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc1'",
+            "type": {
+              "printed": "reliable",
+              "text": "c < (1 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hc1'",
+      "kind": "have",
+      "name": "hc1'",
+      "span": {
+        "end_line": 59,
+        "start_line": 59
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_lt_of_le",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "div_le_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑(m - ⌊F⌋) : ℝ) < (2 : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(m - ⌊F⌋) : ℝ) < (2 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m - ⌊F⌋ = (1 : ℤ)",
+              "truncated": false
+            }
+          },
+          "id": "hk.a",
+          "kind": "have",
+          "name": "a",
+          "span": {
+            "end_line": 61,
+            "start_line": 61
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < (↑(m - ⌊F⌋) : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < (↑(m - ⌊F⌋) : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m - ⌊F⌋ = (1 : ℤ)",
+              "truncated": false
+            }
+          },
+          "id": "hk.b",
+          "kind": "have",
+          "name": "b",
+          "span": {
+            "end_line": 62,
+            "start_line": 62
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "m - ⌊F⌋ < (2 : ℤ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m - ⌊F⌋ < (2 : ℤ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m - ⌊F⌋ = (1 : ℤ)",
+              "truncated": false
+            }
+          },
+          "id": "hk.a'",
+          "kind": "have",
+          "name": "a'",
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℤ) < m - ⌊F⌋",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "b'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℤ) < m - ⌊F⌋",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "m - ⌊F⌋ = (1 : ℤ)",
+              "truncated": false
+            }
+          },
+          "id": "hk.b'",
+          "kind": "have",
+          "name": "b'",
+          "span": {
+            "end_line": 64,
+            "start_line": 64
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "m - ⌊F⌋ = (1 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk",
+            "type": {
+              "printed": "reliable",
+              "text": "m - ⌊F⌋ = (1 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hk",
+      "kind": "have",
+      "name": "hk",
+      "span": {
+        "end_line": 65,
+        "start_line": 60
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 68,
+        "start_line": 66
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-68"
+}
