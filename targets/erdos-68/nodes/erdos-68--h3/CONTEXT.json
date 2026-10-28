@@ -2,9 +2,9 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "route-dead-ends": 2
+      "route-dead-ends": 3
     },
     "records": [
       {
@@ -61,6 +61,38 @@
           },
           "route_class": "reduction-to-known",
           "schema": "postmortem/v1"
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T142958Z-t1028-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-b",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T142958Z-t1028-b.yaml",
+            "text": "Write F_N = sum_{n=2}^N N!/(n!-1) and T = sum_{n>=2} 1/(n!(n!-1)), so S = (e - 2) + T. (1) N!/(n!-1) = N!/n! + N!/(n!(n!-1)) and N!/n! is an integer for n <= N, so fract(F_N) = fract(N! T_N) with T_N the N-th partial sum of T (checked in Lean on the network fast check; exact rationals agree for N <= 13). (2) Put d_N = 1 - fract(F_N) and e_N = 1/(N!-1). From F_{N+1} = (N+1)F_N + 1 + e_{N+1}, k_N := (N+1) d_N - e_{N+1} - d_{N+1} is an integer for every N. (3) If h3 failed from some M >= 2 on, the…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "node": "erdos-68--h3",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T142958Z-t1028-b.yaml",
+            "text": "digit dynamics: rewrite the failure of h3 as a statement about T = S - (e - 2) and factorial series with digits in {0,1,2}",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v1",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261028T142958Z-t1028-b.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ (N : ℕ), M ≤ N ∧\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n      (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)\n",
+            "untrusted": true
+          }
         },
         "shortened": [
           "detail"
@@ -125,7 +157,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "9f1f77d0d8b82e089cf1b7e29550ebac6cdef79e",
+  "rendered_from": "44ac77fef74087ba339bf29a2801ac27a628809e",
   "review": {
     "questions_waiting": [
       {
