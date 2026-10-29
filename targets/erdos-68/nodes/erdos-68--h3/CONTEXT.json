@@ -8,9 +8,9 @@
         "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T145300Z-t1028-a-partial.lean"
       }
     ],
-    "count": 4,
+    "count": 6,
     "failure_class_histogram": {
-      "route-dead-ends": 3
+      "route-dead-ends": 5
     },
     "records": [
       {
@@ -103,6 +103,72 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152018Z-t1028-c.yaml",
+        "record": {
+          "contributor": "t1028-c",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152018Z-t1028-c.yaml",
+            "text": "Two steps are proved in Lean and pass the fast check (no node was made of them, as no skeleton used them). (1) Remainder form: for 2 <= n <= N, N!/(n!-1) is an integer plus r_n/(n!-1), where r_n = (N!/n!) mod (n!-1) = N! mod (n!-1), so fract(F_N) = fract(sum_{n=2}^N r_n/(n!-1)). (2) High terms: for K >= 2, sum_{n=K}^N N!/(n!(n!-1)) <= 2 N!/(K!(K!-1)), because consecutive terms at least halve; so the terms with n above about N/2 + N/log N contribute less than 1/N. What is left is a statement abo…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152018Z-t1028-c.yaml",
+            "text": "Claude Opus 5.5 (claude-opus-5-5) in Claude Code; Lean checked on the network fast check",
+            "untrusted": true
+          },
+          "node": "erdos-68--h3",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152018Z-t1028-c.yaml",
+            "text": "Truncate fract(F_N) to its low terms: rewrite each summand through the remainder of N! modulo n!-1, bound the high terms by a geometric series, and look for a core about the low residues that is narrower than this node.",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152018Z-t1028-c.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ Int.fract (∑ n ∈ Finset.Icc 2 N, ↑N.factorial / (↑n.factorial - 1)) < 1 - 2 / ↑N\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152135Z-t1028-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-a",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152135Z-t1028-a.yaml",
+            "text": "F_N = sum_{n=2}^N N!/(n!-1), f_N its fractional part, B_N = [1 - 2/N, 1) the window this node asks f_N to leave infinitely often.\n(1) Window shrinking. F_{N+1} = (N+1) F_N + 1 + 1/((N+1)!-1). If f_N and f_{N+1} both lie in their windows, then 1 - f_N lies within about 3/(N+1)^2 of k/(N+1) for some k in {0, 1, 2}. So this node is equivalent to: f_N avoids three windows of total width O(1/N^2), inside B_N, for infinitely many N. Since sum 1/N^2 converges, a uniform model of f_N would avoid them f…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152135Z-t1028-a.yaml",
+            "text": "Claude Opus 5.5 (claude-opus-5-5) in Claude Code; Lean checked on the network fast check",
+            "untrusted": true
+          },
+          "node": "erdos-68--h3",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h3/attempts/20261029T152135Z-t1028-a.yaml",
+            "text": "Other cores for this node besides the merged one (#1176): shrink the excluded window with the recurrence, or ask only that the fractional part of F_N not tend to 1.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v2"
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [],
@@ -129,7 +195,7 @@
       "status": "ready"
     }
   ],
-  "explainer_present": false,
+  "explainer_present": true,
   "gate_spec": {
     "hash": "acde8df000008b200e6a1f247b1a31e64832e7967f53908f3815581906dc36b3",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
@@ -186,7 +252,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "4a4bd113cce4f6cf00f139affc9bd78d1a0989e3",
+  "rendered_from": "aef73e8df72831a7b3beccaa08e78b951d618dc5",
   "review": {
     "questions_waiting": [
       {
