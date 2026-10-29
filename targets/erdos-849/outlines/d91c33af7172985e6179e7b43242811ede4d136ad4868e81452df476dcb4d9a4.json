@@ -1,0 +1,590 @@
+{
+  "artifact": {
+    "hash": "d91c33af7172985e6179e7b43242811ede4d136ad4868e81452df476dcb4d9a4",
+    "kind": "partial",
+    "path": "attempts/20261029T150500Z-t1029e-a-partial.lean"
+  },
+  "gate": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ∣ (k + (n - k)).choose k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ∣ (k + (n - k)).choose k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "p ∣ n.choose k",
+                  "truncated": false
+                }
+              },
+              "id": "h_sep.h1.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 36,
+                "start_line": 36
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "p ∣ n.choose k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p ∣ n.choose k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_sep.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 37,
+            "start_line": 35
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.add_sub_cancel'",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [
+                {
+                  "child_node": null,
+                  "children": [],
+                  "claim": {
+                    "printed": "reliable",
+                    "text": "m.choose l * l ! * (m - l)! = m !",
+                    "truncated": false
+                  },
+                  "closed_by": {
+                    "kind": "term",
+                    "tactics": []
+                  },
+                  "goal": {
+                    "hypotheses": [
+                      {
+                        "name": "this",
+                        "type": {
+                          "printed": "reliable",
+                          "text": "m.choose l * l ! * (m - l)! = m !",
+                          "truncated": false
+                        }
+                      }
+                    ],
+                    "target": {
+                      "printed": "reliable",
+                      "text": "m.choose l ∣ m !",
+                      "truncated": false
+                    }
+                  },
+                  "id": "h_sep.h2.hf.this",
+                  "kind": "have",
+                  "name": "this",
+                  "span": {
+                    "end_line": 41,
+                    "start_line": 41
+                  },
+                  "uses": {
+                    "defs": [],
+                    "mathlib": [
+                      {
+                        "doc": null,
+                        "name": "Nat.choose_mul_factorial_mul_factorial",
+                        "tags": []
+                      }
+                    ],
+                    "nodes": []
+                  }
+                }
+              ],
+              "claim": {
+                "printed": "reliable",
+                "text": "m.choose l ∣ m !",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "hf",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "m.choose l ∣ m !",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "h_sep.h2.hf",
+              "kind": "have",
+              "name": "hf",
+              "span": {
+                "end_line": 42,
+                "start_line": 40
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "Existential introduction.",
+                    "name": "Exists.intro",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            },
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "p ≤ m",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "p ≤ m",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "False",
+                  "truncated": false
+                }
+              },
+              "id": "h_sep.h2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 43,
+                "start_line": 43
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": null,
+                    "name": "dvd_trans",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "¬p ∣ m.choose l",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬p ∣ m.choose l",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "h_sep.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 44,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k m l p : ℕ), (2 : ℕ) * k ≤ n → (2 : ℕ) * l ≤ m → Nat.Prime p → m < p → n - k < p → p ≤ n → n.choose k ≠ m.choose l",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_sep",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l p : ℕ), (2 : ℕ) * k ≤ n → (2 : ℕ) * l ≤ m → Nat.Prime p → m < p → n - k < p → p ≤ n → n.choose k ≠ m.choose l",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              ((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                    n ≤ (1000000 : ℕ) ∨\n                      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                        m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                  m / (2 : ℕ) < (2 : ℕ) * k ∧\n                    (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "h_sep",
+      "kind": "have",
+      "name": "h_sep",
+      "span": {
+        "end_line": 45,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (x : ℕ), (25 : ℕ) ≤ x → ∃ (p : ℕ), Nat.Prime p ∧ x < p ∧ (5 : ℕ) * p < (6 : ℕ) * x",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_nagura",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℕ), (25 : ℕ) ≤ x → ∃ (p : ℕ), Nat.Prime p ∧ x < p ∧ (5 : ℕ) * p < (6 : ℕ) * x",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              ((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                    n ≤ (1000000 : ℕ) ∨\n                      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                        m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                  m / (2 : ℕ) < (2 : ℕ) * k ∧\n                    (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "h_nagura",
+      "kind": "hole",
+      "name": "h_nagura",
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                      n ≤ (1000000 : ℕ) ∨\n                        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                          m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                    m / (2 : ℕ) < (2 : ℕ) * k ∧\n                      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧\n                        m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))) ∨\n                (1000000 : ℕ) < n ∧ (6 : ℕ) * m ≤ (5 : ℕ) * n ∧ n ≤ (6 : ℕ) * k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_rest2",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                      n ≤ (1000000 : ℕ) ∨\n                        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                          m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                    m / (2 : ℕ) < (2 : ℕ) * k ∧\n                      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧\n                        m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))) ∨\n                (1000000 : ℕ) < n ∧ (6 : ℕ) * m ≤ (5 : ℕ) * n ∧ n ≤ (6 : ℕ) * k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              ((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                    n ≤ (1000000 : ℕ) ∨\n                      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                        m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                  m / (2 : ℕ) < (2 : ℕ) * k ∧\n                    (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "h_rest2",
+      "kind": "hole",
+      "name": "h_rest2",
+      "span": {
+        "end_line": 59,
+        "start_line": 56
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hD",
+            "type": {
+              "printed": "reliable",
+              "text": "((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n      n ≤ (1000000 : ℕ) ∨\n        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n    m / (2 : ℕ) < (2 : ℕ) * k ∧\n      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n      n ≤ (1000000 : ℕ) ∨\n        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n    m / (2 : ℕ) < (2 : ℕ) * k ∧\n      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 62,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (p : ℕ), Nat.Prime p ∧ max m (n - k) < p ∧ (5 : ℕ) * p < (6 : ℕ) * max m (n - k)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.Prime p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hxp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "max m (n - k) < p",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp6",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(5 : ℕ) * p < (6 : ℕ) * max m (n - k)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n      n ≤ (1000000 : ℕ) ∨\n        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n    m / (2 : ℕ) < (2 : ℕ) * k ∧\n      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+              "truncated": false
+            }
+          },
+          "id": "s5.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 63
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Returns the greater of its two arguments.",
+                "name": "Max.max",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1000000 : ℕ) < n",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "(6 : ℕ) * m ≤ (5 : ℕ) * n",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "n ≤ (6 : ℕ) * k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n            k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n    m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n      n ≤ (1000000 : ℕ) ∨\n        n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n  (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n    m / (2 : ℕ) < (2 : ℕ) * k ∧\n      (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 64,
+        "start_line": 63
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Anything follows from two contradictory hypotheses.",
+            "name": "absurd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
