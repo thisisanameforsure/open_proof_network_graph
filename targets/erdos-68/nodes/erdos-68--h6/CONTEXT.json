@@ -8,9 +8,9 @@
         "path": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T144921Z-t1028-b-partial.lean"
       }
     ],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "route-dead-ends": 1
+      "route-dead-ends": 2
     },
     "records": [
       {
@@ -44,6 +44,43 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T154318Z-t1028-b.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-b",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T154318Z-t1028-b.yaml",
+            "text": "Two levels merged: #1177 (this node keeps only its lower disjunct, child --h6--h1: fract(F_N) <= 1 - 1/N infinitely often) and #1207 (that child from S's digits, with --h5 as a lemma: child --h6--h1--h2, 2/(N+1) <= fract(N! S) < 1 - 1/(N+1) infinitely often). Write S = sum_m a_m/m! with 0 <= a_m <= m-1, so fract(N! S) = (a_{N+1} + fract((N+1)! S))/(N+1). The root says the digits a_m are not eventually 0 (nor eventually m-1); this node says the same (it is equivalent to the root). --h6--h1 is im…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T154318Z-t1028-b.yaml",
+            "text": "claude-opus-5-5 via Claude Code (agent t1028-b)",
+            "untrusted": true
+          },
+          "node": "erdos-68--h6",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T154318Z-t1028-b.yaml",
+            "text": "look for an open core between the root and --h3 on route 2: drop the upper disjunct (fract(F_N) >= 1 - 1/(N+1)), then pass from F_N to S's own factorial digits",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6/attempts/20261029T154318Z-t1028-b.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [
@@ -53,12 +90,7 @@
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-29T16:49:53Z",
-        "pseudonym": "t1028-b"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -120,7 +152,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "6e2159ca00aac7953cf61601f862e39f0e52eefb",
+  "rendered_from": "2008b6d4da4e891061f98b5d362bcb392c4ed4f2",
   "review": {
     "questions_waiting": [
       {

@@ -8,20 +8,51 @@
         "path": "targets/erdos-68/nodes/erdos-68--h6--h1/attempts/20261029T151822Z-t1028-b-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h6--h1/attempts/20261029T154431Z-t1027e-d.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1027e-d",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1/attempts/20261029T154431Z-t1027e-d.yaml",
+            "text": "The reverse implications fail for every real number with S's tail c_N, so they cannot be derived from the tail bounds alone. (1) From the root: take X = e - 2 + 1/3. N!X is never an integer, so the root's conclusion holds for X, but fract(N!X - c_N) = 1 - N! sum_{m>N} 1/(m!(m!-1)) > 1 - 1/N for every N >= 4 (exact rationals, N <= 39). So the root implies this node only if T = S - (e - 2) = sum_{n>=2} 1/(n!(n!-1)) is irrational, which is not known. The same X defeats erdos-68--h3, erdos-68--h3--…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": null,
+          "node": "erdos-68--h6--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1/attempts/20261029T154431Z-t1027e-d.yaml",
+            "text": "Derive this node from what is above it: from erdos-68--h6 (equivalent to the root) or from the root, using only the shape N!S = F_N + c_N with the proved tail bounds.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1/attempts/20261029T154431Z-t1027e-d.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ Int.fract (∑ n ∈ Finset.Icc 2 N, ↑N.factorial / (↑n.factorial - 1)) ≤ 1 - 1 / ↑N\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-29T17:18:54Z",
-        "pseudonym": "t1028-b"
-      }
-    ],
+    "active": [],
     "history_count": 1
   },
   "defect_claims": [],
@@ -87,7 +118,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "6e2159ca00aac7953cf61601f862e39f0e52eefb",
+  "rendered_from": "2008b6d4da4e891061f98b5d362bcb392c4ed4f2",
   "review": {
     "questions_waiting": [
       {
