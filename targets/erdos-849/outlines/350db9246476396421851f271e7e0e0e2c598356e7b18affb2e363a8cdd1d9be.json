@@ -1,0 +1,777 @@
+{
+  "artifact": {
+    "hash": "350db9246476396421851f271e7e0e0e2c598356e7b18affb2e363a8cdd1d9be",
+    "kind": "partial",
+    "path": "attempts/20261029T131800Z-t1029e-a-partial.lean"
+  },
+  "gate": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node": "variant-3969f1f7--h2--h1--h4--h2--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-3969f1f7--h2--h1--h4--h2--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (u v : ℤ),\n  u ^ (3 : ℕ) - (2 : ℤ) * u ^ (2 : ℕ) * v + (3 : ℤ) * u * v ^ (2 : ℕ) - v ^ (3 : ℕ) + (3 : ℤ) * u ^ (2 : ℕ) -\n            (3 : ℤ) * u * v +\n          (3 : ℤ) * v ^ (2 : ℕ) +\n        (2 : ℤ) * u =\n      (0 : ℤ) →\n    u = (-2 : ℤ) ∧ v = (-2 : ℤ) ∨\n      u = (-2 : ℤ) ∧ v = (-1 : ℤ) ∨\n        u = (-2 : ℤ) ∧ v = (0 : ℤ) ∨\n          u = (-1 : ℤ) ∧ v = (-1 : ℤ) ∨\n            u = (-1 : ℤ) ∧ v = (0 : ℤ) ∨\n              u = (-1 : ℤ) ∧ v = (1 : ℤ) ∨ u = (0 : ℤ) ∧ v = (0 : ℤ) ∨ u = (0 : ℤ) ∧ v = (3 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_sdw3",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (u v : ℤ),\n  u ^ (3 : ℕ) - (2 : ℤ) * u ^ (2 : ℕ) * v + (3 : ℤ) * u * v ^ (2 : ℕ) - v ^ (3 : ℕ) + (3 : ℤ) * u ^ (2 : ℕ) -\n            (3 : ℤ) * u * v +\n          (3 : ℤ) * v ^ (2 : ℕ) +\n        (2 : ℤ) * u =\n      (0 : ℤ) →\n    u = (-2 : ℤ) ∧ v = (-2 : ℤ) ∨\n      u = (-2 : ℤ) ∧ v = (-1 : ℤ) ∨\n        u = (-2 : ℤ) ∧ v = (0 : ℤ) ∨\n          u = (-1 : ℤ) ∧ v = (-1 : ℤ) ∨\n            u = (-1 : ℤ) ∧ v = (0 : ℤ) ∨\n              u = (-1 : ℤ) ∧ v = (1 : ℤ) ∨ u = (0 : ℤ) ∧ v = (0 : ℤ) ∨ u = (0 : ℤ) ∧ v = (3 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k : ℕ), (2 : ℕ) ≤ k → (2 : ℕ) * (k + (2 : ℕ)) + (1 : ℕ) ≤ n → n.choose k ≠ (n - (1 : ℕ)).choose (k + (2 : ℕ))",
+          "truncated": false
+        }
+      },
+      "id": "h_sdw3",
+      "kind": "hole",
+      "name": "h_sdw3",
+      "span": {
+        "end_line": 21,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (y : ℕ), n = y + k + (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "y",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hn",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) * (k + (2 : ℕ)) + (1 : ℕ) ≤ y + k + (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "heq",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (2 : ℕ)).choose k = (y + k + (2 : ℕ) - (1 : ℕ)).choose (k + (2 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 23,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y + k + (2 : ℕ) - (1 : ℕ) = y + k + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hN",
+            "type": {
+              "printed": "reliable",
+              "text": "y + k + (2 : ℕ) - (1 : ℕ) = y + k + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hN",
+      "kind": "have",
+      "name": "hN",
+      "span": {
+        "end_line": 24,
+        "start_line": 24
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(y + k + (1 : ℕ)).choose k * (y + k + (1 : ℕ) + (1 : ℕ)) =\n  (y + k + (1 : ℕ) + (1 : ℕ)).choose k * (y + k + (1 : ℕ) + (1 : ℕ) - k)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (1 : ℕ)).choose k * (y + k + (1 : ℕ) + (1 : ℕ)) =\n  (y + k + (1 : ℕ) + (1 : ℕ)).choose k * (y + k + (1 : ℕ) + (1 : ℕ) - k)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "have",
+      "name": "h1",
+      "span": {
+        "end_line": 26,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_mul_succ_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(y + k + (1 : ℕ)).choose (k + (1 : ℕ)) * (k + (1 : ℕ)) = (y + k + (1 : ℕ)).choose k * (y + k + (1 : ℕ) - k)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (1 : ℕ)).choose (k + (1 : ℕ)) * (k + (1 : ℕ)) = (y + k + (1 : ℕ)).choose k * (y + k + (1 : ℕ) - k)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "have",
+      "name": "h2",
+      "span": {
+        "end_line": 27,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_succ_right_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(y + k + (1 : ℕ)).choose (k + (1 : ℕ) + (1 : ℕ)) * (k + (1 : ℕ) + (1 : ℕ)) =\n  (y + k + (1 : ℕ)).choose (k + (1 : ℕ)) * (y + k + (1 : ℕ) - (k + (1 : ℕ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (1 : ℕ)).choose (k + (1 : ℕ) + (1 : ℕ)) * (k + (1 : ℕ) + (1 : ℕ)) =\n  (y + k + (1 : ℕ)).choose (k + (1 : ℕ)) * (y + k + (1 : ℕ) - (k + (1 : ℕ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "h3",
+      "kind": "have",
+      "name": "h3",
+      "span": {
+        "end_line": 28,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_succ_right_eq",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y + k + (1 : ℕ) + (1 : ℕ) - k = y + (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e1",
+            "type": {
+              "printed": "reliable",
+              "text": "y + k + (1 : ℕ) + (1 : ℕ) - k = y + (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "e1",
+      "kind": "have",
+      "name": "e1",
+      "span": {
+        "end_line": 29,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y + k + (1 : ℕ) - k = y + (1 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e2",
+            "type": {
+              "printed": "reliable",
+              "text": "y + k + (1 : ℕ) - k = y + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "e2",
+      "kind": "have",
+      "name": "e2",
+      "span": {
+        "end_line": 30,
+        "start_line": 30
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y + k + (1 : ℕ) - (k + (1 : ℕ)) = y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e3",
+            "type": {
+              "printed": "reliable",
+              "text": "y + k + (1 : ℕ) - (k + (1 : ℕ)) = y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "e3",
+      "kind": "have",
+      "name": "e3",
+      "span": {
+        "end_line": 31,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "y + k + (1 : ℕ) + (1 : ℕ) = y + k + (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e4",
+            "type": {
+              "printed": "reliable",
+              "text": "y + k + (1 : ℕ) + (1 : ℕ) = y + k + (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "e4",
+      "kind": "have",
+      "name": "e4",
+      "span": {
+        "end_line": 32,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k + (1 : ℕ) + (1 : ℕ) = k + (2 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e5",
+            "type": {
+              "printed": "reliable",
+              "text": "k + (1 : ℕ) + (1 : ℕ) = k + (2 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "e5",
+      "kind": "have",
+      "name": "e5",
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℕ) < (y + k + (1 : ℕ)).choose k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℕ) < (y + k + (1 : ℕ)).choose k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hc",
+      "kind": "have",
+      "name": "hc",
+      "span": {
+        "end_line": 37,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.choose_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(y + k + (1 : ℕ)).choose k * ((y + k + (2 : ℕ)) * (k + (1 : ℕ)) * (k + (2 : ℕ))) =\n  (y + k + (1 : ℕ)).choose k * ((y + (2 : ℕ)) * (y + (1 : ℕ)) * y)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (1 : ℕ)).choose k * ((y + k + (2 : ℕ)) * (k + (1 : ℕ)) * (k + (2 : ℕ))) =\n  (y + k + (1 : ℕ)).choose k * ((y + (2 : ℕ)) * (y + (1 : ℕ)) * y)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 42,
+        "start_line": 38
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(y + k + (2 : ℕ)) * (k + (1 : ℕ)) * (k + (2 : ℕ)) = (y + (2 : ℕ)) * (y + (1 : ℕ)) * y",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hpoly",
+            "type": {
+              "printed": "reliable",
+              "text": "(y + k + (2 : ℕ)) * (k + (1 : ℕ)) * (k + (2 : ℕ)) = (y + (2 : ℕ)) * (y + (1 : ℕ)) * y",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hpoly",
+      "kind": "have",
+      "name": "hpoly",
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.eq_of_mul_eq_mul_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "((↑y : ℤ) + (↑k : ℤ) + (2 : ℤ)) * ((↑k : ℤ) + (1 : ℤ)) * ((↑k : ℤ) + (2 : ℤ)) =\n  ((↑y : ℤ) + (2 : ℤ)) * ((↑y : ℤ) + (1 : ℤ)) * (↑y : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hz",
+            "type": {
+              "printed": "reliable",
+              "text": "((↑y : ℤ) + (↑k : ℤ) + (2 : ℤ)) * ((↑k : ℤ) + (1 : ℤ)) * ((↑k : ℤ) + (2 : ℤ)) =\n  ((↑y : ℤ) + (2 : ℤ)) * ((↑y : ℤ) + (1 : ℤ)) * (↑y : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hz",
+      "kind": "have",
+      "name": "hz",
+      "span": {
+        "end_line": 45,
+        "start_line": 44
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-2 : ℤ) ∨\n  (↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-1 : ℤ) ∨\n    (↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n      (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-1 : ℤ) ∨\n        (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n          (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (1 : ℤ) ∨\n            (↑k : ℤ) = (0 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n              (↑k : ℤ) = (0 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (3 : ℤ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-2 : ℤ) ∨\n  (↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-1 : ℤ) ∨\n    (↑k : ℤ) = (-2 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n      (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (-1 : ℤ) ∨\n        (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n          (↑k : ℤ) = (-1 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (1 : ℤ) ∨\n            (↑k : ℤ) = (0 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (0 : ℤ) ∨\n              (↑k : ℤ) = (0 : ℤ) ∧ (↑y : ℤ) + (↑k : ℤ) + (2 : ℤ) = (3 : ℤ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hs",
+      "kind": "have",
+      "name": "hs",
+      "span": {
+        "end_line": 46,
+        "start_line": 46
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 47,
+        "start_line": 47
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}
