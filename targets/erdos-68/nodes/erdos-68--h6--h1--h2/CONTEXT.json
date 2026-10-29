@@ -140,17 +140,37 @@
   "lemmas": [],
   "literature": null,
   "literature_proposed": {
-    "contributor": "t1027e-d",
-    "record": "literature/20261029T154426Z-t1027e-d.yaml",
+    "contributor": "t1028-c",
+    "record": "literature/20261029T174954Z-t1028-c.yaml",
     "references": [
       {
-        "note": "The irrationality of S = sum_{n>=2} 1/(n!-1) is listed as open. The page records nothing on the factorial-base digits of S or on N!S modulo 1.",
-        "title": "Erdős problem #68 (erdosproblems.com)",
+        "note": "The root problem, listed with no proof; the page records nothing on the factorial-base digits of S or on N!·S modulo 1, which is what this hole is about.",
+        "title": "Erdős problem #68 (erdosproblems.com): is sum_{n>=2} 1/(n!-1) irrational?",
         "url": "https://www.erdosproblems.com/68"
+      },
+      {
+        "note": "Lists Erdős's conjecture that 2!, 3!, ..., (p-1)! are never all distinct mod p (p > 5) and the conjecture that n! mod p takes about (1-1/e)p distinct values; both are open, so the distribution of N! mod p is not known.",
+        "title": "R. K. Guy, Unsolved Problems in Number Theory, Springer, New York, 1994 (problem F11)",
+        "url": null
+      },
+      {
+        "note": "The modern starting point on the residues of 1!, 2!, ..., p! modulo a large prime; supports the (1-1/e)p conjecture by a random-permutation model, proves nothing about an individual N! mod p.",
+        "title": "C. Cobeli, M. Vâjâitu, A. Zaharescu, The sequence n! (mod p), J. Ramanujan Math. Soc. 15 (2000), no. 2, 135–154",
+        "url": null
+      },
+      {
+        "note": "Character-sum bounds for n! on average and individually; the best tools known give only that few residue classes are missed in aggregate (products of 3 factorials are uniformly distributed), nothing on where a single N! mod p lies.",
+        "title": "M. Z. Garaev, F. Luca, I. E. Shparlinski, Character sums and congruences with n!, Trans. Amer. Math. Soc. 356 (2004), no. 12, 5089–5102",
+        "url": "https://arxiv.org/abs/math/0403422"
+      },
+      {
+        "note": "State of the art (2024): at least (sqrt 2 + o(1)) sqrt p distinct residues among 1!, 2!, ...; their introduction records that Erdős's conjecture 'remains widely open' and that |A(p)| ~ (1-1/e)p is conjectural (Guy F11).",
+        "title": "A. Grebennikov, A. Sagdeev, A. Semchankau, A. Vasilevskii, On the sequence n! mod p, Rev. Mat. Iberoam. 40 (2024), no. 2, 637–648",
+        "url": "https://arxiv.org/abs/2204.01153"
       }
     ],
     "status": "open",
-    "summary": "No proof is known. The statement says that for infinitely many N, 2/(N+1) <= {N!S} < 1 - 1/(N+1), where S = sum_{n>=2} 1/(n!-1) and {.} is the fractional part. Exactly equivalently, the digit a_{N+1} = floor((N+1){N!S}) of S in the factorial number system lies in [2, N-1] for infinitely many N, since (N+1){N!S} = a_{N+1} + {(N+1)!S}. Its position on the record: erdos-68--h3--h2 (some delta > 0 with delta <= {N!S} <= 1 - delta infinitely often) implies it, and with the proved tail bound erdos-68--h5 it implies erdos-68--h6--h1, hence the irrationality of S. Neither reverse is known, and its relation to erdos-68--h3 goes neither way by shape alone. Like every open core on this target except erdos-68--h6, it would fail if T = S - (e - 2) = sum_{n>=2} 1/(n!(n!-1)) were rational (then a_{N+1} = 1 for all large N), so a proof of it also proves T irrational."
+    "summary": "No proof is known, and the step every recorded attack dies at is a named open problem. The statement: with S = sum_{n>=2} 1/(n!-1), for infinitely many N, 2/(N+1) <= {N!·S} < 1 - 1/(N+1); equivalently (#1212, exact) the digit a_{N+1} = floor((N+1){N!·S}) of S in the factorial number system lies in [2, N-1] infinitely often. Since e-2 has every such digit 1, this is the statement (up to two edges of width < 1/N; #1227) that T = S - (e-2) = sum_{n>=2} 1/(n!(n!-1)) has infinitely often a factorial digit that is neither 0 nor one of the two top values; so a proof also shows S - e is irrational, strictly more than Erdős 68 asks. Where it reduces to (#1227, #1233): {N!·S} = {sum_{m<=n*(N)} r_m/(m!-1)} + O(1/N) with r_m = (m+1)(m+2)···N mod (m!-1) and n*(N) ~ N/2 + N/log N; the terms above n*(N) sum to < 1/N, r_m = 0 whenever N >= m!-1, and the near-N terms are exact. So the hole is: the sum of about N/2 fractions r_m/(m!-1) with unknown numerators is infinitely often not within 2/N of an integer. Why that is open: for p = m!-1 prime, r_m ≡ N!/m! (mod p), so r_m is N! mod p up to a unit, and even the one-term question of where N! lies modulo a prime is unsolved: Erdős's conjecture that 2!,...,(p-1)! are never all distinct mod p is open (verified to 10^9), the number of distinct values of n! mod p is conjectured to be ~(1-1/e)p (Guy F11) with only a c·sqrt(p) lower bound proved (Grebennikov et al. 2024), and the character-sum methods (Garaev–Luca–Shparlinski 2004) control averages, never one residue. The hole needs ~N/2 such residues, to different moduli, jointly at precision 1/N. For the next contributor: a sub-core that says anything about the r_m is a statement about N! mod (m!-1) whose one-term case is open; a sub-core that avoids the r_m is the hole up to an edge. The record's evidence (#1227) has it true at density ~0.9 in N for N <= 70. Related: erdos-68--h3--h2 implies this node; with erdos-68--h5 (proved) it implies erdos-68--h6--h1 and so the root."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -172,7 +192,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "c638ec019bab30e02e0ca0ae53d907a73e24f241",
+  "rendered_from": "2ee9f4ef243af7e4823639dd3119570fc2546108",
   "review": {
     "questions_waiting": [
       {
