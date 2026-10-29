@@ -1,0 +1,58 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1028-c
+detail: 'Adds to the earlier postmortem on this node (recurrence, prime subsequence,
+  residues). Every line here uses the shape of 1/(n!-1), which the barrier X = e-2+1/3
+  (N!X is never an integer, yet this statement fails for X at every N) says any proof
+  must. (a) Regrouping 1/(n!-1) = sum_{k>=1} (n!)^{-k} by m = nk gives S = sum_{m>=2}
+  D(m)/m! with D(m) = sum_{n|m, n>=2} m!/(n!)^{m/n} (multinomials; D(p) = 1 at a prime,
+  D(4) = 7, D(6) = 111; the identity checked exactly for nk <= 60) and fract(N!S)
+  = fract(sum_{m>N} D(m) N!/m!) exactly. This is the factorial-base analogue of Erdős''s
+  sum d(m)/2^m for sum 1/(2^n-1). It dies at once: d(m) <= m^eps makes the binary
+  tail a digit stream that the choice of N steers, but D(m) >= m!/2^{m/2} for even
+  m, so already D(N+2) N!/((N+1)(N+2)) is about N!/2^{N/2+1}, and every term of the
+  tail carries its own fractional part. The stream is not a digit stream; it only
+  re-sorts the residues (N! mod (n!-1))/(n!-1). (b) By Wilson, (q-2)! = 1 (mod q)
+  for every prime q >= 3 (fast-checked in Lean), so every prime q that divides some
+  n!-1 also divides (q-2)!-1, and for N >= q the power of q in N!/(n!-1) is reduced
+  by v_q(N!) >= floor(N/q). So a prime q <= N survives in the denominator of F_N =
+  sum_{n<=N} N!/(n!-1) only if q^{v_q(N!)+1} divides some n!-1 with n <= N. If this
+  statement failed from N0 on, then ||F_N|| < 2/N for all N >= N0 (fract(N!S) within
+  2/(N+1) of an integer, c_N in (1/(N+1), 1/N)); nothing contradicts that, since 1/v_N
+  is far below 2/N for any plausible denominator v_N, and F_N in Z is not excluded
+  by the arithmetic either. The gcd structure controls denominators, never size: the
+  Wilson subsequence of the earlier record again, now for the whole denominator. (c)
+  Since e-2 has every factorial digit 1, (N+1) fract(N!S) = (N+1) fract(F_N) + 1 +
+  theta_N with theta_N = (N+1) c_N - 1 in (0, 1/N) when fract(F_N) + c_N < 1 (c_N
+  from erdos-68--h5). Exactly: the statement holds at N iff b_{N+1} := floor((N+1)
+  fract(F_N)) = floor((N+1) fract(N!T)) lies in [1, N-2] (checked exactly for N =
+  4..25; a wrap means b_{N+1} = N and the statement fails). So the node says: the
+  factorial digits of T = sum_{n>=2} 1/(n!(n!-1)) alone are infinitely often neither
+  0 nor one of the two top values. That is the digit form of the earlier record with
+  e''s constant digit removed, not a narrowing; T = 1/3 (the barrier) has digits eventually
+  0. At N = 2p-1 the (n,k) = (p,2) term of N!T is C(2p-1,p)/p, whose fractional part
+  is exactly 1/p by Wolstenholme, but the (p+1,2) term and every k >= 3 term add uncontrolled
+  fractional parts: a lever on one term only. Conclusion: no honest sub-core strictly
+  narrower than this node was found. Each candidate is this node up to an edge of
+  width theta_N < 1/N (b_{N+1} in [1, N-2], or in [0, N-2]), or is stronger with no
+  mechanism (the symmetric form ||N!S|| >= 2/(N+1) i.o., which drops only the digit
+  N-1; a prime subsequence). Not refuted: by the barrier, a proof must use the shape;
+  what is recorded is that the three obvious ways of using it give no size bound.
+
+  '
+failure_class: route-dead-ends
+model_and_tooling: claude-fable-5-1 via Claude Code (agent t1028-c)
+node: erdos-68--h6--h1--h2
+outcome: exhausted
+route: 'use the shape of 1/(n!-1) rather than N!S not in Z: (a) Erdős''s divisor-sum
+  representation S = sum_m D(m)/m!, D(m) = sum_{n|m, n>=2} m!/(n!)^{m/n}, the factorial-base
+  analogue of sum d(m)/2^m for sum 1/(2^n-1); (b) the gcd/Wilson structure of the
+  denominators n!-1 across n; (c) the node read as a statement about T = S-(e-2) =
+  sum 1/(n!(n!-1)) alone, with Wolstenholme at N = 2p-1'
+route_class: reduction-to-known
+schema: postmortem/v2
+terminal_goal_state: '⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial
+  * ∑'' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑'' (n
+  : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)
+
+  '
