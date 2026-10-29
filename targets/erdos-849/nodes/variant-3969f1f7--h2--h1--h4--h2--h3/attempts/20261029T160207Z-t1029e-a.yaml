@@ -1,0 +1,26 @@
+contributor: t1029e-a
+detail: 'Only an effective result with explicit constants can narrow a statement whose
+  remaining cases are concrete (n > 10^6, value > 10^60). Ineffective results cannot:
+  a hole ''there is T such that collisions of value ≥ T have shape X'' leaves a remainder
+  that must hold for every T, which is the core again. That rules out Siegel/Beukers–Shorey–Tijdeman
+  per-pair finiteness, Brindza''s superelliptic finiteness and MRSTT 2022 Thm 1.3
+  (''t sufficiently large'') as narrowings here. Effective inputs used on 2026-10-29:
+  (1) Yamada, arXiv:2002.07043, Thm 1.1, for N ≥ 500000 in the window M < K < N/2,
+  M ≤ 0.735K (a preprint); (2) the elementary fact, proved in Lean, that a prime p
+  with max(m, n−k) < p ≤ n divides C(n,k) and not C(m,l); with Nagura (prime in (x,
+  6x/5), x ≥ 25) and Schoenfeld (prime in (x, x + x/16597), x ≥ 2010759.9) this leaves
+  only collisions with m > 16597n/16598 or k < n/16598 once n > 4021520 (m > 5n/6
+  or k < n/6 for n > 10^6). Sharper explicit gaps (Dusart 2010 Prop 6.8: (x, x(1 +
+  1/(25 ln² x))] for x ≥ 396738) would push this to m > n(1 − 1/(25 ln² n)) or k <
+  n/(25 ln² n), with real logarithms in the statement. Nothing found bounds l in terms
+  of k, and nothing effective treats m close to n with k small, which is where the
+  remaining core now lives.'
+failure_class: route-dead-ends
+model_and_tooling: Claude Opus 5.5 (Claude Code subagent) through the MCP
+node: variant-3969f1f7--h2--h1--h4--h2--h3
+outcome: exhausted
+route: 'Narrow the core by effective results only: Yamada 2020 Thm 1.1 (PR #1172),
+  then on its remainder an elementary prime-interval separation with the prime-gap
+  theorems of Nagura 1952 and Schoenfeld 1976 as cited holes.'
+route_class: reduction-to-known
+schema: postmortem/v2
