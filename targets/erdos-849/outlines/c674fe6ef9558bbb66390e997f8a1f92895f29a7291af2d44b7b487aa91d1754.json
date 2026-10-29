@@ -1,0 +1,424 @@
+{
+  "artifact": {
+    "hash": "c674fe6ef9558bbb66390e997f8a1f92895f29a7291af2d44b7b487aa91d1754",
+    "kind": "partial",
+    "path": "attempts/20261029T132500Z-t1029e-a-partial.lean"
+  },
+  "gate": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node": "variant-3969f1f7--h2--h1--h4--h2--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "variant-3969f1f7--h2--h1--h4--h2--h3--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (N δ M K L : ℕ),\n  (500000 : ℕ) ≤ N →\n    δ ≤ (1 : ℕ) →\n      M < K →\n        (2 : ℕ) * K < N →\n          (1000 : ℕ) * M ≤ (735 : ℕ) * K →\n            δ < L → L ≤ N → ((2 : ℕ) * N + δ).choose (N - M) ≠ ((2 : ℕ) * N + L).choose (N - K)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_yamada",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (N δ M K L : ℕ),\n  (500000 : ℕ) ≤ N →\n    δ ≤ (1 : ℕ) →\n      M < K →\n        (2 : ℕ) * K < N →\n          (1000 : ℕ) * M ≤ (735 : ℕ) * K →\n            δ < L → L ≤ N → ((2 : ℕ) * N + δ).choose (N - M) ≠ ((2 : ℕ) * N + L).choose (N - K)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                  n ≤ (1000000 : ℕ) ∨\n                    n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                      m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "h_yamada",
+      "kind": "hole",
+      "name": "h_yamada",
+      "span": {
+        "end_line": 36,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              ((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                    n ≤ (1000000 : ℕ) ∨\n                      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                        m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                  m / (2 : ℕ) < (2 : ℕ) * k ∧\n                    (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_rest",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              ((k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                    n ≤ (1000000 : ℕ) ∨\n                      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                        m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)) ∨\n                (500000 : ℕ) ≤ m / (2 : ℕ) ∧\n                  m / (2 : ℕ) < (2 : ℕ) * k ∧\n                    (1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k) ∧ m < n ∧ n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n k m l : ℕ),\n  (2 : ℕ) ≤ k →\n    (2 : ℕ) * k ≤ n →\n      (2 : ℕ) ≤ l →\n        (2 : ℕ) * l ≤ m →\n          k < l →\n            n.choose k = m.choose l →\n              (k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n                  k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n                    k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n                      k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n                        k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n                          k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n                            k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n                m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n                  n ≤ (1000000 : ℕ) ∨\n                    n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨\n                      m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "h_rest",
+      "kind": "hole",
+      "name": "h_rest",
+      "span": {
+        "end_line": 46,
+        "start_line": 42
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hD",
+            "type": {
+              "printed": "reliable",
+              "text": "(k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n    n ≤ (1000000 : ℕ) ∨\n      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n    n ≤ (1000000 : ℕ) ∨\n      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 49,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "((2 : ℕ) * (m / (2 : ℕ)) + m % (2 : ℕ)).choose (m / (2 : ℕ) - (m / (2 : ℕ) - l)) ≠\n  ((2 : ℕ) * (m / (2 : ℕ)) + (n - (2 : ℕ) * (m / (2 : ℕ)))).choose (m / (2 : ℕ) - (m / (2 : ℕ) - k))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hy",
+                "type": {
+                  "printed": "reliable",
+                  "text": "((2 : ℕ) * (m / (2 : ℕ)) + m % (2 : ℕ)).choose (m / (2 : ℕ) - (m / (2 : ℕ) - l)) ≠\n  ((2 : ℕ) * (m / (2 : ℕ)) + (n - (2 : ℕ) * (m / (2 : ℕ)))).choose (m / (2 : ℕ) - (m / (2 : ℕ) - k))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s4.hy",
+          "kind": "have",
+          "name": "hy",
+          "span": {
+            "end_line": 52,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) * (m / (2 : ℕ)) + m % (2 : ℕ) = m",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * (m / (2 : ℕ)) + m % (2 : ℕ) = m",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s4.a1",
+          "kind": "have",
+          "name": "a1",
+          "span": {
+            "end_line": 53,
+            "start_line": 53
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "m / (2 : ℕ) - (m / (2 : ℕ) - l) = l",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m / (2 : ℕ) - (m / (2 : ℕ) - l) = l",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s4.a2",
+          "kind": "have",
+          "name": "a2",
+          "span": {
+            "end_line": 54,
+            "start_line": 54
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℕ) * (m / (2 : ℕ)) + (n - (2 : ℕ) * (m / (2 : ℕ))) = n",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a3",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℕ) * (m / (2 : ℕ)) + (n - (2 : ℕ) * (m / (2 : ℕ))) = n",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s4.a3",
+          "kind": "have",
+          "name": "a3",
+          "span": {
+            "end_line": 55,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "m / (2 : ℕ) - (m / (2 : ℕ) - k) = k",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a4",
+                "type": {
+                  "printed": "reliable",
+                  "text": "m / (2 : ℕ) - (m / (2 : ℕ) - k) = k",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "False",
+              "truncated": false
+            }
+          },
+          "id": "s4.a4",
+          "kind": "have",
+          "name": "a4",
+          "span": {
+            "end_line": 56,
+            "start_line": 56
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "(500000 : ℕ) ≤ m / (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "m / (2 : ℕ) < (2 : ℕ) * k",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "(1000 : ℕ) * (m / (2 : ℕ) - l) ≤ (735 : ℕ) * (m / (2 : ℕ) - k)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h4",
+            "type": {
+              "printed": "reliable",
+              "text": "m < n",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h5",
+            "type": {
+              "printed": "reliable",
+              "text": "n ≤ (3 : ℕ) * (m / (2 : ℕ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(k = (2 : ℕ) ∧ l = (3 : ℕ) ∨\n    k = (2 : ℕ) ∧ l = (4 : ℕ) ∨\n      k = (2 : ℕ) ∧ l = (5 : ℕ) ∨\n        k = (2 : ℕ) ∧ l = (6 : ℕ) ∨\n          k = (2 : ℕ) ∧ l = (8 : ℕ) ∨\n            k = (3 : ℕ) ∧ l = (4 : ℕ) ∨\n              k = (3 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (6 : ℕ) ∨ k = (4 : ℕ) ∧ l = (8 : ℕ)) ∨\n  m + (1 : ℕ) = n ∧ l = k + (1 : ℕ) ∨\n    n ≤ (1000000 : ℕ) ∨\n      n.choose k ≤ (10 : ℕ) ^ (60 : ℕ) ∨ m + (1 : ℕ) = n ∧ l = k + (2 : ℕ) ∨ m + (2 : ℕ) = n ∧ l = k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 58,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-849"
+}

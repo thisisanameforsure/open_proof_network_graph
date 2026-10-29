@@ -173,12 +173,35 @@
       "cause": null,
       "claim": "\\forall M\\in\\mathbb{N}\\ \\exists N\\in\\mathbb{N}:\\quad N\\ge M\\ \\ \\text{and}\\ \\ \\Big\\{\\sum_{n=2}^{N}\\frac{N!}{n!-1}\\Big\\}<1-\\frac{2}{N}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "strengthen to a statement about one real number: N!·S stays a fixed distance from the integers for infinitely many N; with the tail split, the finite sum's fractional part is then below 1 - 2/N",
+          "holes": [
+            {
+              "name": "ht",
+              "node": "erdos-68--h2"
+            },
+            {
+              "name": "hcore",
+              "node": "erdos-68--h3--h2"
+            }
+          ],
+          "partial": "attempts/20261029T145300Z-t1028-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-68--h3--h2"
+      ],
       "label": "the finite sum's fractional part avoids [1-2/N, 1)",
       "label_source": "gloss",
-      "lemmas": [],
+      "lemmas": [
+        {
+          "hole": "ht",
+          "node": "erdos-68--h2"
+        }
+      ],
       "literature": null,
       "literature_proposed": {
         "contributor": "t1028-a",
@@ -195,6 +218,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "991863eb9c07fa469ca7235173924c1a6480fbb7f428889ad73e9ee6bb74e19c",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists \\delta>0\\ \\forall M\\ \\exists N\\ge M:\\ \\delta\\le\\operatorname{frac}\\Big(N!\\sum_{n\\ge 2}\\frac{1}{n!-1}\\Big)\\le 1-\\delta",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "N!·S keeps away from the integers infinitely often",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h3--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "091358f867455ed835937003bfbde9039b20493a7bd74b1d5f00cabc3dafa37e",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -271,7 +321,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "003aa574dafd65743e8d829de66916f5753f7338",
+  "rendered_from": "904bc9d9b7a8710909061d033fd0f975ce5281b6",
   "review": {
     "candidates": 1,
     "clusters": 1,
