@@ -10,6 +10,7 @@
     ],
     "count": 2,
     "failure_class_histogram": {
+      "budget-exhausted": 1,
       "missing-library": 1
     },
     "records": [
@@ -38,6 +39,47 @@
           "terminal_goal_state": {
             "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261027T115222Z-t1027e-a.yaml",
             "text": "⊢ ∃ C, 0 ≤ C ∧ ∃ a₁, ∀ a ≥ a₁, ∀ (n k n' k' : ℕ), [left-half solution (n,k) of a] → [left-half solution (n',k') of a] → |↑k - ↑k'| ≤ C * Real.exp (Real.log (↑n + ↑n') ^ (43 / 60)) ∧ (… ≤ ↑k → … ≤ ↑k' → |↑n - ↑n'| ≤ C * Real.exp (Real.log (↑n + ↑n') ^ (43 / 60)))",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261029T151843Z-t1029e-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": [
+              "Legendre's formula for v_p(C(n,m)) as a sum of fractional parts",
+              "MRSTT Proposition 1.12 (equidistribution of {N/p}, {M/p^j} over primes)"
+            ],
+            "partial_proof": "attempts/20261029T144021Z-t1029e-c-partial.lean"
+          },
+          "contributor": "t1029e-c",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261029T151843Z-t1029e-c.yaml",
+            "text": "Merged as partial #1173 with three holes: --h3--h1--h1--h1 (Lemma 3.1), --h2 (Proposition 3.2), --h3 (the §3 case analysis). Corrects the 2026-10-27 postmortem on this node, which said §3 has no stated intermediate results: it has Lemma 3.1 and Proposition 3.2. What is left, and why it was not taken further in the run: Lemma 3.1 (--h1) and the case analysis (--h3) are elementary but long. --h1 needs a counting argument over powers of two P in [exp(log^{83/120} n'), exp(2 log^{83/120} n')]: (i) …",
+            "untrusted": true
+          },
+          "failure_class": "budget-exhausted",
+          "model_and_tooling": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261029T151843Z-t1029e-c.yaml",
+            "text": "Claude Opus 5.5 (claude-opus-5-5) through Claude Code; paper read from the arXiv 2106.03335 TeX source",
+            "untrusted": true
+          },
+          "node": "variant-3969f1f7--h3--h1--h1",
+          "outcome": "abandoned-early",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261029T151843Z-t1029e-c.yaml",
+            "text": "Decompose Proposition 1.9 of MRSTT (2022) along its §3: Lemma 3.1 (selection of scale), Proposition 3.2 (covariance estimates over a random prime, the one place Proposition 1.12 enters), and the case analysis that closes §3; assembly proved, merged as #1173.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h3--h1--h1/attempts/20261029T151843Z-t1029e-c.yaml",
+            "text": "three holes, each a closed statement: h_scale (Lemma 3.1, ε = 1/20), h_covar (Proposition 3.2), h_deduce (§3 case analysis); the assembly from them to the node's statement is proved with C = 1",
             "untrusted": true
           }
         },
@@ -86,7 +128,7 @@
       "status": "ready"
     }
   ],
-  "explainer_present": false,
+  "explainer_present": true,
   "gate_spec": {
     "hash": "e38f6799bb22ab44ae339d3f99abe7c26ed17194f2c21cc389d1e7995b870b1c",
     "lean_toolchain": "leanprover/lean4:v4.33.1",
@@ -129,7 +171,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "2008b6d4da4e891061f98b5d362bcb392c4ed4f2",
+  "rendered_from": "49d8d2ed6ac17626c254eb3e8730a46b64d16f0b",
   "review": {
     "questions_waiting": [
       {
