@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+
+theorem witness : ∃ x y : ℤ, y ^ 2 + y = x ^ 3 - 525 * x + 10156 := ⟨-29, 31, by norm_num⟩
