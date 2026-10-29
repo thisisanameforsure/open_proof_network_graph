@@ -291,9 +291,23 @@
       "cause": null,
       "claim": "\\forall M\\in\\mathbb{N}\\ \\exists N\\in\\mathbb{N}:\\quad N\\ge M\\ \\ \\text{and}\\ \\ \\Big(\\{F_N\\}\\le 1-\\frac{1}{N}\\ \\ \\text{or}\\ \\ 1-\\frac{1}{N+1}\\le\\{F_N\\}\\Big),\\qquad F_N=\\sum_{n=2}^{N}\\frac{N!}{n!-1}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "keep only the first disjunct: the finite part's fractional part at most 1 − 1/N infinitely often; that implies this node, and it is implied by --h3 (1 − 2/N < 1 − 1/N), so the open core sits strictly between the root and --h3",
+          "holes": [
+            {
+              "name": "h1",
+              "node": "erdos-68--h6--h1"
+            }
+          ],
+          "partial": "attempts/20261029T144921Z-t1028-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-68--h6--h1"
+      ],
       "label": "fract(F_N) avoids the window (1-1/N, 1-1/(N+1))",
       "label_source": "gloss",
       "lemmas": [],
@@ -317,11 +331,38 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall M\\in\\mathbb{N}\\ \\exists N\\ge M:\\ \\Big\\{\\sum_{n=2}^{N}\\frac{N!}{n!-1}\\Big\\}\\le 1-\\frac{1}{N}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "fract(F_N) ≤ 1 − 1/N infinitely often",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h6--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "d90b20871e155e20b8a0ea036cf67275e8531a49e42e66fbcc9aed6c3560a66f",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "4f146c1fa505f585557df9af5f98bf092a3be7d6",
+  "rendered_from": "4a4bd113cce4f6cf00f139affc9bd78d1a0989e3",
   "review": {
     "candidates": 1,
     "clusters": 1,
