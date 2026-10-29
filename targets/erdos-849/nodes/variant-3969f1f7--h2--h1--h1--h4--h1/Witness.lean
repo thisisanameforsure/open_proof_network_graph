@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+
+theorem witness : ∃ x y : ℤ, y ^ 2 + y = x ^ 3 + x ^ 2 - 58 * x + 1294 := ⟨-13, 4, by norm_num⟩
