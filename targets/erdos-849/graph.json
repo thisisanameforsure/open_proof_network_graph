@@ -1137,9 +1137,28 @@
       "cause": null,
       "claim": "\\forall n, k, m, l \\in \\mathbb{N}:\\quad 2 \\le k \\to 2k \\le n \\to 2 \\le l \\to 2l \\le m \\to k < l \\to \\tbinom{n}{k} = \\tbinom{m}{l} \\to (k, l) \\in P\\ \\vee\\ (m + 1 = n \\wedge l = k + 1)\\ \\vee\\ n \\le 10^6\\ \\vee\\ \\tbinom{n}{k} \\le 10^{60}\\ \\vee\\ (m + 1 = n \\wedge l = k + 2)\\ \\vee\\ (m + 2 = n \\wedge l = k + 1)",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "set aside the interior window where Yamada 2020 (arXiv:2002.07043, Theorem 1.1) rules collisions out; the rest of the core is left as it stands",
+          "holes": [
+            {
+              "name": "h_yamada",
+              "node": "variant-3969f1f7--h2--h1--h4--h2--h3--h1"
+            },
+            {
+              "name": "h_rest",
+              "node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2"
+            }
+          ],
+          "partial": "attempts/20261029T132500Z-t1029e-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h4--h2--h3--h1",
+        "variant-3969f1f7--h2--h1--h4--h2--h3--h2"
+      ],
       "label": "the open core: no other collisions",
       "label_source": "gloss",
       "lemmas": [],
@@ -1159,6 +1178,60 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "ae2f060bba0ae8151b9bada7d16b86f247a5422d195e24c160af0f380e7155f9",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "N \\ge 500000,\\ \\delta \\le 1,\\ M < K,\\ 2K < N,\\ 1000M \\le 735K,\\ \\delta < L \\le N \\implies \\tbinom{2N+\\delta}{N-M} \\ne \\tbinom{2N+L}{N-K}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "Yamada 2020, Theorem 1.1, case L ≤ N",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "6c1bd0326e2551335a4cd6749ea14ac611685a8b07057352bc1036fa863d17c8",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\tbinom{n}{k} = \\tbinom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\implies \\text{(the core's cases)} \\vee \\big(N \\ge 500000 \\wedge N < 2k \\wedge 1000(N - l) \\le 735(N - k) \\wedge m < n \\le 3N\\big),\\ N = \\lfloor m/2 \\rfloor",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the open core outside Yamada's window",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "0a10082e3201c0615700515532059e701b9d23bd8d1af39c31f0036379007370",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1586,7 +1659,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "23266b8b561e80e91f848412ebc6cca5fd32549d",
+  "rendered_from": "003aa574dafd65743e8d829de66916f5753f7338",
   "review": {
     "candidates": 2,
     "clusters": 2,

@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ N δ M K L : ℕ, 500000 ≤ N ∧ δ ≤ 1 ∧ M < K ∧ 2 * K < N ∧ 1000 * M ≤ 735 * K ∧ δ < L ∧ L ≤ N :=
+  ⟨500000, 0, 0, 1, 1, by norm_num⟩
