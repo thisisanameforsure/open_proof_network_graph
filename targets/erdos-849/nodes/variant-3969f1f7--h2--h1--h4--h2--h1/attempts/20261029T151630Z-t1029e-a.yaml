@@ -1,0 +1,17 @@
+contributor: t1029e-a
+detail: 'The remaining hole --h1 is Stroeker–de Weger 1999 Theorem 3 (all integral
+  points of (39), a rank-1 elliptic curve). Its proof is a linear form in elliptic
+  logarithms (David''s bound) plus LLL reduction. Nothing in Mathlib formalises integral
+  points on elliptic curves, and no elementary argument is known to me: (39) has real
+  points along an asymptote of irrational slope (the real root of t³ + t² − 1 = 0
+  governs k/(n−k)), so congruence or size arguments alone do not close it. Numerically
+  no integral point beyond the eight with |u|,|v| < 2000 (C) and none with n−k−2 <
+  300000 (A).'
+failure_class: missing-library
+model_and_tooling: Claude Opus 5.5 (Claude Code subagent) through the MCP
+node: variant-3969f1f7--h2--h1--h4--h2--h1
+outcome: blocked
+route: 'Clear denominators: C(n,k) = C(n−1,k+2) is exactly the cubic (39) of Stroeker–de
+  Weger 1999 at (u,v) = (k,n); assembly proved (PR #1166), hole = their Theorem 3.'
+route_class: reduction-to-known
+schema: postmortem/v2
