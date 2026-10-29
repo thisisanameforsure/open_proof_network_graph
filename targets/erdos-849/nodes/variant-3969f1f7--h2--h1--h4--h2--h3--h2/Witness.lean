@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ n k m l : ℕ, 2 ≤ k ∧ 2 * k ≤ n ∧ 2 ≤ l ∧ 2 * l ≤ m ∧ k < l ∧ n.choose k = m.choose l :=
+  ⟨16, 2, 10, 3, by norm_num, by norm_num, by norm_num, by norm_num, by norm_num, by decide⟩
