@@ -1,0 +1,72 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1028-c
+detail: 'Adds to the two earlier postmortems (recurrence / prime N+1 / residue splits;
+  Erdős divisor-sum analogue / gcd-Wilson denominators / T-digit form). Starting point,
+  from the residue form fract(N!S) = fract(sum_{m<=N} r_m/(m!-1) + c_N), r_m = N!
+  mod (m!-1) = (m+1)...N mod (m!-1): the terms with m above n*(N) ~ N/2 + N/log N
+  sum to less than 1/N and shift the digit a_{N+1} = floor((N+1) fract(N!S)) by at
+  most 1, so the digit is decided by the residues r_m for n_0(N) <= m <= n*(N), where
+  n_0 is the least m with m!-1 not dividing N!. Three attempts to force them. (a)
+  Vanishing is free and useless. r_m = 0 whenever N >= m!-1, since the block (m+1)...N
+  then contains m!-1 (and more generally iff m!-1 divides N!, e.g. m = 5 for N >=
+  17 as 119 = 7*17). So every term with m! <= N is exactly 0, the unknown terms are
+  the ~N/2 with n_0 <= m <= n*, none of them is small, and a condition such as N =
+  -1 mod n! forces nothing: for N >= n!-1 the term is already 0 and for N < n!-1 the
+  congruence is empty. (b) One residue can be steered to any of n+1 prescribed values.
+  Let p = n!-1 be prime and N = p-j with 1 <= j <= n+1. Then r_n = (p-j)!/n! = (p-j)!
+  = (-1)^j / (j-1)!  (mod p), from (p-1)! = -1 and (p-1)...(p-j+1) = (-1)^{j-1} (j-1)!;
+  and since (j-1)! divides n! = p+1, r_n = n!/(j-1)! for j even and p - n!/(j-1)!
+  for j odd. So the n-th term of fract(N!S) is (-1)^j/(j-1)! mod 1 up to 1/((j-1)!
+  p): 1 - 1/(N+1) at j = 1 (the earlier record''s N = n!-2), 1/p at j = 2, 1/2 - 1/(2p)
+  at j = 3, 1/6 at j = 4, and so on; every m < n vanishes once N exceeds the primes
+  of m!-1. Checked exactly at the twelve points n = 4 (p = 23, N = 21..17) and n =
+  6 (p = 719, N = 717..711): r_n = 1, 11, 4, 22, 14 and 1, 359, 120, 689, 6, 718,
+  411 as the formula says. The digits a_{N+1} at those N are 8, 18, 6, 1, 12 and 357,
+  548, 55, 84, 403, 657, 322: the pinned term (near 0, 1/2, 1/6, 5/6, 1/120, ...)
+  is invisible in the digit, which the other ~N/2 residues decide. This dies twice
+  over: steering one of ~N/2 summands to a known value shifts the digit by a known
+  amount and decides nothing unless the rest are known; and the family needs n!-1
+  prime for infinitely many n, which is open, so even a conditional "n!-1 prime infinitely
+  often implies this node" is unavailable, and by the first death it would be false
+  in spirit anyway. The earlier record''s Wilson subsequence put the prime at N+1
+  and pinned one term''s denominator; this one puts the prime at n!-1 and pins one
+  term''s value, and the verdict is the same: one term is never the digit. (c) Two-sided.
+  The negation says that from some N0 on the factorial digit b_{N+1} = floor((N+1)
+  fract(N!T)) of T = S-(e-2) = sum 1/(m!(m!-1)) lies in {0, N-1, N} (up to the edge
+  of width theta_N < 1/N), i.e. T has a signed factorial expansion with digits eventually
+  in {-2,-1,0,1}. No contradiction is available: bounded signed digits force neither
+  rationality nor anything else (every 0/1 digit sequence is some real, uncountably
+  many), the recurrence fract((N+1)!T) = fract((N+1) fract(N!T) + 1/((N+1)!-1)) is
+  satisfied by any digit sequence, and T''s own series sum_m sum_{k>=2} (m!)^{-k}
+  has no digit known. For fixed m the residues r_m(N) are the orbit r_m(N+1) = (N+1)
+  r_m(N) mod (m!-1) from r_m(m) = 1 (products of consecutive integers), so the negation
+  says ~N/2 such orbits conspire at every N to put the sum within 2/(N+1) of an integer;
+  no theorem speaks to their joint distribution at precision 1/N. Conclusion: every
+  line that uses the shape of 1/(n!-1) ends at the same step, a size bound on sum_{n_0
+  <= m <= n*(N)} r_m/(m!-1) modulo 1 for infinitely many N, with r_m = (m+1)...N mod
+  (m!-1); the structural facts available (which residues vanish, one residue''s exact
+  value on a subsequence, the surviving primes of the denominator) each concern one
+  term or the denominators, and the barrier X = e-2+1/3 shows a size fact is required.
+  No honest sub-core strictly narrower than this node was found, and no conditional
+  was filed.
+
+  '
+failure_class: route-dead-ends
+model_and_tooling: claude-fable-5-1 via Claude Code (agent t1028-c, successor run
+  F)
+node: erdos-68--h6--h1--h2
+outcome: exhausted
+route: 'attack the residue step directly: fract(N!S) is decided by r_m = (m+1)...N
+  mod (m!-1) for m between n_0(N) (m! > N) and n*(N) ~ N/2; try to force them on a
+  subsequence. (a) r_m = 0 whenever N >= m!-1, so congruences on N force nothing;
+  (b) Wilson at the prime p = n!-1 (not at N+1): for N = p-j the n-th residue is (-1)^j/(j-1)!
+  mod p, one term pinned to any of n+1 values; (c) the two-sided form (digits of T
+  = S-(e-2) eventually in {0, N-1, N}) has no checkable consequence'
+route_class: direct-estimate
+schema: postmortem/v2
+terminal_goal_state: '⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial
+  * ∑'' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑'' (n
+  : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)
+
+  '
