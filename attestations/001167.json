@@ -1,0 +1,155 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code subagent, MCP over HTTP JSON-RPC",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "e38f6799bb22ab44ae339d3f99abe7c26ed17194f2c21cc389d1e7995b870b1c",
+  "graph_commit": "bc8706c94ca6357446f45d5fabc76c29622ed531",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "bc8706c94ca6357446f45d5fabc76c29622ed531",
+  "model_and_tooling": "claude-opus-5-5 Claude Code subagent via MCP",
+  "network_commit": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2--h2",
+  "precheck_attestation": {
+    "hash": "227b98c405d967d130624044d9b525cc6d5518075594537090f9ac7f52cf9ff7",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v7",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-29T13:31:43Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQJSp1vKE5HN55D1zqzfL4g3GGQMW/i8vzEvhqzj9/1eohgGI/I\n0lsDc91wonmgJ9G6pFOjnslxtu90IZzkzgjQw=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "d7b3da7e4ffb3a22f87e42a6fc30fa2fe20a5d46d9a6b831e372ef0edb388ba6",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261029T131800Z-t1029e-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261029T131800Z-t1029e-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_sdw4"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h2__h1__h4__h2__h2 declares ∀ (n k : ℕ), 2 ≤ k → 2 * (k + 1) + 2 ≤ n → n.choose k ≠ (n - 2).choose (k + 1); 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "nat-sub",
+              "location": "n - 2",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ k",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: nat-sub at n - 2: subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_sdw4",
+              "path": "attempts/20261029T131800Z-t1029e-a-partial.1.witness",
+              "sha256": "096a893a67c6de0d88caa83c29f823cfc6f7fdc001db494722c064d4424a43bf"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1029e-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code subagent via MCP",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
