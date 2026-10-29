@@ -568,9 +568,23 @@
       "cause": null,
       "claim": "\\forall n, m \\in \\mathbb{N}:\\quad 4 \\le n \\to 10 \\le m \\to \\tbinom{n}{2} = \\tbinom{m}{5} \\to (n, m) = (78, 15) \\vee (n, m) = (153, 19)",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "clear denominators and read the answer off the integral points of the curve C(Y,2) = C(X,5), found by Bugeaud, Mignotte, Siksek, Stoll and Tengely 2008",
+          "holes": [
+            {
+              "name": "h_bmsst2",
+              "node": "variant-3969f1f7--h2--h1--h1--h3--h1"
+            }
+          ],
+          "partial": "attempts/20261029T144800Z-t1029e-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h1--h3--h1"
+      ],
       "label": "the pair (2,5): Bugeaud–Mignotte–Siksek–Stoll–Tengely 2008",
       "label_source": "gloss",
       "lemmas": [],
@@ -590,6 +604,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "b01f4419a9ce2ee80348aff99a315317c9a36bea394bcd723948da8e0c1bdc42",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "X, Y \\in \\mathbb{Z},\\ 60\\,Y(Y-1) = X(X-1)(X-2)(X-3)(X-4) \\implies (X,Y) \\in \\{(0,0),(0,1),(1,0),(1,1),(2,0),(2,1),(3,0),(3,1),(4,0),(4,1),(5,-1),(5,2),(6,-3),(6,4),(7,-6),(7,7),(15,-77),(15,78),(19,-152),(19,153)\\}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "BMSST 2008, Theorem 2",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h1--h3--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "10e16ee9e9aa01b675f790c931312d9a34b53b5cdccf8e3ffdc58ad37d2041f0",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -661,9 +702,23 @@
       "cause": null,
       "claim": "\\forall n, m \\in \\mathbb{N}:\\quad 6 \\le n \\to 8 \\le m \\to \\tbinom{n}{3} \\ne \\tbinom{m}{4}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "reduce C(n,3) = C(m,4) to integral points on the elliptic curve 37.a1, y^2 + y = x^3 - x, via x = n - 1, y = m(m-3)/2 (Mordell 1963)",
+          "holes": [
+            {
+              "name": "h_37a1",
+              "node": "variant-3969f1f7--h2--h1--h1--h6--h1"
+            }
+          ],
+          "partial": "attempts/20261029T131800Z-t1029e-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h1--h6--h1"
+      ],
       "label": "the pair (3,4): Mordell 1963",
       "label_source": "gloss",
       "lemmas": [],
@@ -683,6 +738,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "567e331835a404fa6b948b6ea2af0f000ab5db8c1516496befa349f0b6253272",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall x, y \\in \\mathbb{Z},\\ y^2 + y = x^3 - x \\Rightarrow (x, y) \\in \\{(-1,0), (-1,-1), (0,0), (0,-1), (1,0), (1,-1), (2,2), (2,-3), (6,14), (6,-15)\\}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "integral points on 37.a1",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h1--h6--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "e614be596219537237279c29a3e0272d46d017467e8ff858d236614a584b17b9",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1346,9 +1428,33 @@
       "cause": null,
       "claim": "\\exists C \\ge 0\\ \\ \\exists a_1 \\in \\mathbb{N}\\ \\ \\forall a \\ge a_1\\ \\ \\forall n, k, n', k' \\in \\mathbb{N}:\\quad \\Bigl(1 \\le k,\\ 2k \\le n,\\ \\tbinom{n}{k} = a\\Bigr) \\to \\Bigl(1 \\le k',\\ 2k' \\le n',\\ \\tbinom{n'}{k'} = a\\Bigr) \\to \\Bigl[\\ |k - k'| \\le C\\, e^{(\\log(n + n'))^{43/60}}\\ \\ \\wedge\\ \\ \\Bigl(e^{(\\log(n + n'))^{43/60}} \\le k \\to e^{(\\log(n + n'))^{43/60}} \\le k' \\to |n - n'| \\le C\\, e^{(\\log(n + n'))^{43/60}}\\Bigr)\\ \\Bigr]",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "MRSTT 2022 §3 with ε = 1/20 — the selection of scale (Lemma 3.1), the covariance estimates for fractional parts over a random prime (Proposition 3.2, the one place the equidistribution estimate Proposition 1.12 enters), and the case analysis that closes §3",
+          "holes": [
+            {
+              "name": "h_scale",
+              "node": "variant-3969f1f7--h3--h1--h1--h1"
+            },
+            {
+              "name": "h_covar",
+              "node": "variant-3969f1f7--h3--h1--h1--h2"
+            },
+            {
+              "name": "h_deduce",
+              "node": "variant-3969f1f7--h3--h1--h1--h3"
+            }
+          ],
+          "partial": "attempts/20261029T144021Z-t1029e-c-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h3--h1--h1--h1",
+        "variant-3969f1f7--h3--h1--h1--h2",
+        "variant-3969f1f7--h3--h1--h1--h3"
+      ],
       "label": "distance estimate for two solutions (MRSTT Prop 1.9)",
       "label_source": "gloss",
       "lemmas": [],
@@ -1368,6 +1474,87 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "41077a62290fae097d7c851ce7fe67dac547a67a144db743292b120cd97447dd",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall P_2\\,\\exists a_0\\,\\forall a\\ge a_0:\\ \\binom{n}{k}=\\binom{n'}{k'}=a,\\ 1\\le k'<k,\\ n<n',\\ 2k\\le n,\\ 2k'\\le n',\\ \\bigl(k-k'\\ge T\\ \\text{or}\\ k,k',n'-n\\ge T\\bigr),\\ T=e^{(\\log n')^{43/60}}\\ \\Rightarrow\\ \\exists P\\ge P_2,\\ P>1:\\ \\text{(i) }k,k',n,n'\\le e^{(\\log P)^{299/200}};\\ \\text{(ii) }\\forall x_1,x_2,y_1,y_2\\in\\mathbb{Z},\\ |x_i|,|y_i|\\le(\\log P)^{1/100},\\ \\forall j\\ge1:\\ |x_1k+x_2k'+y_1n+y_2n'|\\le\\frac{P^j}{(\\log P)^{1000}}\\ \\text{or}\\ \\ge P^j(\\log P)^{1000};\\ \\text{(iii) }k-k'\\ge P(\\log P)^{100}\\ \\text{or}\\ k,k',n'-n\\ge P(\\log P)^{100}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "selection of scale (MRSTT Lemma 3.1)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h3--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "cecd6f6efaa97ea34de45d5ed9afdd7cdb97a5ff922622346a3b8a7b5020dffa",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists C\\,\\exists P_0\\,\\forall P\\ge P_0:\\ \\text{for }(n,k,n',k')\\text{ as in Lemma 3.1 obeying (i), (ii)},\\ N,M\\in\\{k,n,n-k,k',n',n'-k'\\},\\ 1\\le j\\le(\\log P)^{1/2},\\ c=\\mathbb{E}_p\\{\\tfrac{N}{p}\\}\\{\\tfrac{M}{p^j}\\}-\\mathbb{E}_p\\{\\tfrac{N}{p}\\}\\,\\mathbb{E}_p\\{\\tfrac{M}{p^j}\\}\\ \\text{over primes }p\\in[\\lceil P\\rceil,\\lfloor P+\\tfrac{P}{(\\log P)^{100}}\\rfloor]:\\ \\text{(i) }j\\ge2\\Rightarrow|c|\\le\\tfrac{C}{(\\log P)^{10}};\\ \\text{(ii) }j=1,\\ \\min(|N|,|M|)\\le\\tfrac{P}{(\\log P)^{1000}}\\Rightarrow|c|\\le\\tfrac{C}{(\\log P)^{1000}};\\ \\text{(iii) }j=1,\\ |N|,|M|>\\tfrac{P}{(\\log P)^{1000}},\\ a\\perp b,\\ 1\\le a,b\\le(\\log P)^{1/100},\\ |aN-bM|\\le\\tfrac{P}{(\\log P)^{1000}}\\Rightarrow\\bigl|c-\\tfrac{1}{12ab}\\bigr|\\le\\tfrac{C}{(\\log P)^{1/1000}};\\ \\text{(iv) }j=1,\\ |N|,|M|>\\tfrac{P}{(\\log P)^{1000}},\\ \\text{no such }a,b\\Rightarrow|c|\\le\\tfrac{C}{(\\log P)^{1/1000}}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "covariance estimates over a random prime (MRSTT Prop 3.2)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h3--h1--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "8c342a317738eb51e28ff90a5e049868f3dffa9fe84e888eeaba3951a85d7dac",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall C\\,\\exists P_1\\,\\forall P\\ge P_1:\\ \\text{no }(n,k,n',k')\\text{ with }\\binom{n}{k}=\\binom{n'}{k'},\\ 1\\le k'<k,\\ n<n',\\ 2k\\le n,\\ 2k'\\le n'\\text{ obeys (i), (ii), (iii) of Lemma 3.1 at scale }P\\text{ and the four bounds of Proposition 3.2 with constant }C",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the case analysis closing MRSTT §3",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h3--h1--h1--h3",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "2717e22fe9a11db4ef7f72659d2cd1a7f48fc9cd291d850ff11d0c76b6a21262",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1659,7 +1846,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "904bc9d9b7a8710909061d033fd0f975ce5281b6",
+  "rendered_from": "4f146c1fa505f585557df9af5f98bf092a3be7d6",
   "review": {
     "candidates": 2,
     "clusters": 2,
