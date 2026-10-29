@@ -2,9 +2,9 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 2,
+    "count": 3,
     "failure_class_histogram": {
-      "route-dead-ends": 2
+      "route-dead-ends": 3
     },
     "records": [
       {
@@ -80,6 +80,43 @@
         "shortened": [
           "detail"
         ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T162917Z-t1028-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-c",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T162917Z-t1028-c.yaml",
+            "text": "Adds to the two earlier postmortems (recurrence / prime N+1 / residue splits; Erdős divisor-sum analogue / gcd-Wilson denominators / T-digit form). Starting point, from the residue form fract(N!S) = fract(sum_{m<=N} r_m/(m!-1) + c_N), r_m = N! mod (m!-1) = (m+1)...N mod (m!-1): the terms with m above n*(N) ~ N/2 + N/log N sum to less than 1/N and shift the digit a_{N+1} = floor((N+1) fract(N!S)) by at most 1, so the digit is decided by the residues r_m for n_0(N) <= m <= n*(N), where n_0 is the…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T162917Z-t1028-c.yaml",
+            "text": "claude-fable-5-1 via Claude Code (agent t1028-c, successor run F)",
+            "untrusted": true
+          },
+          "node": "erdos-68--h6--h1--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T162917Z-t1028-c.yaml",
+            "text": "attack the residue step directly: fract(N!S) is decided by r_m = (m+1)...N mod (m!-1) for m between n_0(N) (m! > N) and n*(N) ~ N/2; try to force them on a subsequence. (a) r_m = 0 whenever N >= m!-1, so congruences on N force nothing; (b) Wilson at the prime p = n!-1 (not at N+1): for N = p-j the n-th residue is (-1)^j/(j-1)! mod p, one term pinned to any of n+1 values; (c) the two-sided form (digits of T = S-(e-2) eventually in {0, N-1, N}) has no checkable consequence",
+            "untrusted": true
+          },
+          "route_class": "direct-estimate",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T162917Z-t1028-c.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
       }
     ],
     "refuted_route_classes": [],
@@ -87,12 +124,7 @@
   },
   "cause": null,
   "claims": {
-    "active": [
-      {
-        "expires": "2026-10-29T17:23:19Z",
-        "pseudonym": "t1028-c"
-      }
-    ],
+    "active": [],
     "history_count": 2
   },
   "defect_claims": [],
@@ -140,7 +172,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "6c7896d60696e335f9c88f4ceb92977ec21869d8",
+  "rendered_from": "c638ec019bab30e02e0ca0ae53d907a73e24f241",
   "review": {
     "questions_waiting": [
       {
