@@ -2,9 +2,9 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 1,
+    "count": 2,
     "failure_class_histogram": {
-      "route-dead-ends": 1
+      "route-dead-ends": 2
     },
     "records": [
       {
@@ -36,6 +36,43 @@
           "schema": "postmortem/v2",
           "terminal_goal_state": {
             "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T154328Z-t1028-b.yaml",
+            "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      },
+      {
+        "path": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T161102Z-t1028-c.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1028-c",
+          "detail": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T161102Z-t1028-c.yaml",
+            "text": "Adds to the earlier postmortem on this node (recurrence, prime subsequence, residues). Every line here uses the shape of 1/(n!-1), which the barrier X = e-2+1/3 (N!X is never an integer, yet this statement fails for X at every N) says any proof must. (a) Regrouping 1/(n!-1) = sum_{k>=1} (n!)^{-k} by m = nk gives S = sum_{m>=2} D(m)/m! with D(m) = sum_{n|m, n>=2} m!/(n!)^{m/n} (multinomials; D(p) = 1 at a prime, D(4) = 7, D(6) = 111; the identity checked exactly for nk <= 60) and fract(N!S) = fr…",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T161102Z-t1028-c.yaml",
+            "text": "claude-fable-5-1 via Claude Code (agent t1028-c)",
+            "untrusted": true
+          },
+          "node": "erdos-68--h6--h1--h2",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T161102Z-t1028-c.yaml",
+            "text": "use the shape of 1/(n!-1) rather than N!S not in Z: (a) Erdős's divisor-sum representation S = sum_m D(m)/m!, D(m) = sum_{n|m, n>=2} m!/(n!)^{m/n}, the factorial-base analogue of sum d(m)/2^m for sum 1/(2^n-1); (b) the gcd/Wilson structure of the denominators n!-1 across n; (c) the node read as a statement about T = S-(e-2) = sum 1/(n!(n!-1)) alone, with Wolstenholme at N = 2p-1",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-68/nodes/erdos-68--h6--h1--h2/attempts/20261029T161102Z-t1028-c.yaml",
             "text": "⊢ ∀ (M : ℕ), ∃ N, M ≤ N ∧ 2 / (↑N + 1) ≤ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) ∧ Int.fract (↑N.factorial * ∑' (n : ℕ), 1 / (↑(n + 2).factorial - 1)) < 1 - 1 / (↑N + 1)\n",
             "untrusted": true
           }
@@ -103,7 +140,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "bee50f1ffa38b200ca8f1bad2f949018268c6a5a",
+  "rendered_from": "0a3bd191e16164a2687e1ae5616a13230186bb40",
   "review": {
     "questions_waiting": [
       {
