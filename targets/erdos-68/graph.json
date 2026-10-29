@@ -340,12 +340,35 @@
       "cause": null,
       "claim": "\\forall M\\in\\mathbb{N}\\ \\exists N\\ge M:\\ \\Big\\{\\sum_{n=2}^{N}\\frac{N!}{n!-1}\\Big\\}\\le 1-\\frac{1}{N}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "pass from the finite part to S itself: if the next factorial digit of S is infinitely often neither 0, 1 nor its largest value, the tail bound places the finite part's fractional part at most 1 − 1/N",
+          "holes": [
+            {
+              "name": "ht",
+              "node": "erdos-68--h5"
+            },
+            {
+              "name": "hd",
+              "node": "erdos-68--h6--h1--h2"
+            }
+          ],
+          "partial": "attempts/20261029T151822Z-t1028-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-68--h6--h1--h2"
+      ],
       "label": "fract(F_N) ≤ 1 − 1/N infinitely often",
       "label_source": "gloss",
-      "lemmas": [],
+      "lemmas": [
+        {
+          "hole": "ht",
+          "node": "erdos-68--h5"
+        }
+      ],
       "literature": null,
       "literature_proposed": {
         "contributor": "t1027e-d",
@@ -366,11 +389,38 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall M\\ \\exists N\\ge M:\\ \\tfrac{2}{N+1}\\le\\{N!\\,S\\}<1-\\tfrac{1}{N+1},\\quad S=\\sum_{n\\ge2}\\frac{1}{n!-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "S's next factorial digit often in [2, N−1]",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-68--h6--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "c7c337a6aabcae2905f4553f012206a2f2d3efa3649559855bdd8c5bb5473825",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "cf111546c7f944d1a06a343a6dc9f48c8933baab",
+  "rendered_from": "6e2159ca00aac7953cf61601f862e39f0e52eefb",
   "review": {
     "candidates": 1,
     "clusters": 1,
