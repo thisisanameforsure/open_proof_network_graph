@@ -1402,9 +1402,28 @@
       "cause": null,
       "claim": "\\tbinom{n}{k} = \\tbinom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\implies \\text{(the core's cases)} \\vee \\big(N \\ge 500000 \\wedge N < 2k \\wedge 1000(N - l) \\le 735(N - k) \\wedge m < n \\le 3N\\big),\\ N = \\lfloor m/2 \\rfloor",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "a prime p with max(m, n − k) < p ≤ n divides C(n,k) and not C(m,l); Nagura's prime in (x, 6x/5) supplies one unless 6m > 5n or 6k < n",
+          "holes": [
+            {
+              "name": "h_nagura",
+              "node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h1"
+            },
+            {
+              "name": "h_rest2",
+              "node": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2"
+            }
+          ],
+          "partial": "attempts/20261029T150500Z-t1029e-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h1",
+        "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2"
+      ],
       "label": "the open core outside Yamada's window",
       "label_source": "gloss",
       "lemmas": [],
@@ -1420,6 +1439,60 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "0a10082e3201c0615700515532059e701b9d23bd8d1af39c31f0036379007370",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "x \\ge 25 \\implies \\exists\\, p \\text{ prime},\\ x < p < 6x/5",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "Nagura 1952, a prime between x and 6x/5",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "be4263932ed91d63f6c0ba0294d340d1c5245bbd9bc617f12df520362a7ad336",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\tbinom{n}{k} = \\tbinom{m}{l},\\ 2 \\le k \\le n/2,\\ 2 \\le l \\le m/2,\\ k < l \\implies \\text{(the parent's cases)} \\vee \\big(n > 10^6 \\wedge 6m \\le 5n \\wedge n \\le 6k\\big)",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the core outside Yamada's window, with 6m > 5n or 6k < n",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "7b909c6cb8cb8fa50804804973a89c03f90b541207de89a37d1a7743de22ec37",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1964,7 +2037,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "7bd5bb6fab517b12f07dc3a79d51c7bf4aafe585",
+  "rendered_from": "284cf083cfb5801cb69285d2bc48a6c90d830c6d",
   "review": {
     "candidates": 2,
     "clusters": 2,

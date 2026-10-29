@@ -1,0 +1,5 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ x : ℕ, 25 ≤ x := ⟨25, le_refl 25⟩
