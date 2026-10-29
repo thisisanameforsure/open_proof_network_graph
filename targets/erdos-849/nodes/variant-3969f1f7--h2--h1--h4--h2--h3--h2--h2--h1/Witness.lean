@@ -1,0 +1,5 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ x : ℕ, 2010760 ≤ x := ⟨2010760, le_refl 2010760⟩
