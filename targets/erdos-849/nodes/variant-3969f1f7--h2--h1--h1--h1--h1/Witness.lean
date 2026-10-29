@@ -1,0 +1,6 @@
+import Mathlib
+
+open Nat
+
+
+theorem witness : ∃ x y : ℤ, y ^ 2 + y = x ^ 3 - 9 * x + 20 := ⟨0, 4, by norm_num⟩

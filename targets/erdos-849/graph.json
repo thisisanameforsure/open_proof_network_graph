@@ -465,9 +465,23 @@
       "cause": null,
       "claim": "\\forall n, m \\in \\mathbb{N}:\\quad 4 \\le n \\to 6 \\le m \\to \\tbinom{n}{2} = \\tbinom{m}{3} \\to (n, m) = (16, 10) \\vee (n, m) = (56, 22) \\vee (n, m) = (120, 36)",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "reduce C(n,2) = C(m,3) to integral points on the elliptic curve 1611.a1, y^2 + y = x^3 - 9x + 20, via x = 3(m - 1), y = 9n - 5 (the curve of Avanesov 1966)",
+          "holes": [
+            {
+              "name": "h_1611a1",
+              "node": "variant-3969f1f7--h2--h1--h1--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261029T131800Z-t1029e-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h1--h1--h1"
+      ],
       "label": "the pair (2,3): Avanesov 1966",
       "label_source": "gloss",
       "lemmas": [],
@@ -487,6 +501,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "d0672d7c3e948b9e284a3da05ed870ad4dbcf24dd79800562a305472f17eed78",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall x, y \\in \\mathbb{Z},\\ y^2 + y = x^3 - 9x + 20 \\Rightarrow (x, y) \\in \\{(-3,4), (-3,-5), (-2,5), (-2,-6), (0,4), (0,-5), (1,3), (1,-4), (3,4), (3,-5), (6,13), (6,-14), (10,30), (10,-31), (12,40), (12,-41), (27,139), (27,-140), (63,499), (63,-500), (105,1075), (105,-1076)\\}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "integral points on 1611.a1",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "7ed839fd29b6f0d4ec54f84b3778962b0cf3c6816dcae4195baa6017b513a638",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1545,7 +1586,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "43868ee5edf524259a7e74a78b46068eb5df7758",
+  "rendered_from": "a56e1c00c3d1c801c56b568d9ca26ac65ce062bf",
   "review": {
     "candidates": 2,
     "clusters": 2,
