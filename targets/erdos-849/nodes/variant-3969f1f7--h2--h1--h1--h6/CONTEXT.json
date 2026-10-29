@@ -8,9 +8,46 @@
         "path": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T131800Z-t1029e-b-partial.lean"
       }
     ],
-    "count": 1,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 2,
+    "failure_class_histogram": {
+      "missing-library": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T151819Z-t1029e-b.yaml",
+        "record": {
+          "contributor": "t1029e-b",
+          "detail": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T151819Z-t1029e-b.yaml",
+            "text": "What is left is exactly the integral points of one elliptic curve, 37.a1: the LMFDB computes them from a Mordell–Weil basis with an elliptic-logarithm bound (Stroeker–Tzanakis 1994; Sage/Magma IntegralPoints). Mathlib has neither Mordell–Weil for a specific curve nor a Baker-type lower bound for linear forms in elliptic logarithms, so the hole is not formalisable today and is not split further: any split would be a restatement. The model is the LMFDB minimal one, so its integral points are exac…",
+            "untrusted": true
+          },
+          "failure_class": "missing-library",
+          "model_and_tooling": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T151819Z-t1029e-b.yaml",
+            "text": "Claude Opus 5.5 through Claude Code; LMFDB curve pages; Python for the point checks",
+            "untrusted": true
+          },
+          "node": "variant-3969f1f7--h2--h1--h1--h6",
+          "outcome": "blocked",
+          "route": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T151819Z-t1029e-b.yaml",
+            "text": "Reduce the pair equation to integral points on the minimal model of the elliptic curve 37.a1 (y^2 + y = x^3 - x) by x = n - 1, y = m(m-3)/2; partial PR #1171 proves the map and reads the binomial solutions off the curve's integral points, one hole = that list.",
+            "untrusted": true
+          },
+          "route_class": "reduction-to-known",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-849/nodes/variant-3969f1f7--h2--h1--h1--h6/attempts/20261029T151819Z-t1029e-b.yaml",
+            "text": "⊢ ∀ x y : ℤ, y^ 2 + y = x^ 3 - x → (x, y) ∈ the LMFDB integral points of 37.a1   (node variant-3969f1f7--h2--h1--h1--h6--h1)",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -83,7 +120,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "4a4bd113cce4f6cf00f139affc9bd78d1a0989e3",
+  "rendered_from": "2008b6d4da4e891061f98b5d362bcb392c4ed4f2",
   "review": {
     "questions_waiting": [
       {

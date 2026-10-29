@@ -1,0 +1,161 @@
+{
+  "artifact": {
+    "hash": "a24d40e5e26a66b69b6cd433c4617b5d53020b51c3f0647d4c5ca56734355e59",
+    "kind": "partial",
+    "path": "attempts/20261029T144921Z-t1028-b-partial.lean"
+  },
+  "gate": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node": "erdos-68--h6",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-68--h6--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n          (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n        (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n          Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "hole",
+      "name": "h1",
+      "span": {
+        "end_line": 20,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n      (1 : ℝ) - (1 : ℝ) / (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "N",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hMN",
+            "type": {
+              "printed": "reliable",
+              "text": "M ≤ N",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n  (1 : ℝ) - (1 : ℝ) / (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n      (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n        Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 22,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    (Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) ≤\n        (1 : ℝ) - (1 : ℝ) / (↑N : ℝ) ∨\n      (1 : ℝ) - (1 : ℝ) / ((↑N : ℝ) + (1 : ℝ)) ≤\n        Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 23,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-68"
+}
