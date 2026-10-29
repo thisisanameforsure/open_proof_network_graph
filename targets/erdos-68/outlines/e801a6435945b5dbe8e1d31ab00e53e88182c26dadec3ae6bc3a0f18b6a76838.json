@@ -1,0 +1,784 @@
+{
+  "artifact": {
+    "hash": "e801a6435945b5dbe8e1d31ab00e53e88182c26dadec3ae6bc3a0f18b6a76838",
+    "kind": "partial",
+    "path": "attempts/20261029T145300Z-t1028-a-partial.lean"
+  },
+  "gate": "372e6cbbeb5a9a636ab20ac6e8014fa04306e02c",
+  "node": "erdos-68--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-68--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (N : ℕ),\n  (2 : ℕ) ≤ N →\n    ∃ (c : ℝ),\n      (0 : ℝ) < c ∧\n        c ≤ (2 : ℝ) / (↑N : ℝ) ∧\n          (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n            ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "ht",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (N : ℕ),\n  (2 : ℕ) ≤ N →\n    ∃ (c : ℝ),\n      (0 : ℝ) < c ∧\n        c ≤ (2 : ℝ) / (↑N : ℝ) ∧\n          (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n            ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n        (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "ht",
+      "kind": "hole",
+      "name": "ht",
+      "span": {
+        "end_line": 19,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-68--h3--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (δ : ℝ),\n  (0 : ℝ) < δ ∧\n    ∀ (M : ℕ),\n      ∃ (N : ℕ),\n        M ≤ N ∧\n          δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ∧\n            Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤\n              (1 : ℝ) - δ",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcore",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (δ : ℝ),\n  (0 : ℝ) < δ ∧\n    ∀ (M : ℕ),\n      ∃ (N : ℕ),\n        M ≤ N ∧\n          δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ∧\n            Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤\n              (1 : ℝ) - δ",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n        (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hcore",
+      "kind": "hole",
+      "name": "hcore",
+      "span": {
+        "end_line": 25,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (δ : ℝ),\n  (0 : ℝ) < δ ∧\n    ∀ (M : ℕ),\n      ∃ (N : ℕ),\n        M ≤ N ∧\n          δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ∧\n            Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤\n              (1 : ℝ) - δ",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "δ",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hδ",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < δ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hinf",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (M : ℕ),\n  ∃ (N : ℕ),\n    M ≤ N ∧\n      δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ∧\n        Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤ (1 : ℝ) - δ",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n      (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 27,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (n : ℕ), (2 : ℝ) / δ < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) / δ < (↑K : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n      (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 28,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "exists_nat_gt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (N : ℕ),\n  max M (max K (2 : ℕ)) ≤ N ∧\n    δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ∧\n      Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤ (1 : ℝ) - δ",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "N",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hN",
+            "type": {
+              "printed": "reliable",
+              "text": "max M (max K (2 : ℕ)) ≤ N",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hlo",
+            "type": {
+              "printed": "reliable",
+              "text": "δ ≤ Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hhi",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract ((↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ))) ≤ (1 : ℝ) - δ",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (N : ℕ),\n  M ≤ N ∧\n    Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n      (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 29,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Returns the greater of its two arguments.",
+            "name": "Max.max",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℕ) ≤ N",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hN2",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ N",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hN2",
+      "kind": "have",
+      "name": "hN2",
+      "span": {
+        "end_line": 31,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "K ≤ N",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hKN",
+            "type": {
+              "printed": "reliable",
+              "text": "K ≤ N",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hKN",
+      "kind": "have",
+      "name": "hKN",
+      "span": {
+        "end_line": 32,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (c : ℝ),\n  (0 : ℝ) < c ∧\n    c ≤ (2 : ℝ) / (↑N : ℝ) ∧\n      (↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n        ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "c",
+            "type": {
+              "printed": "reliable",
+              "text": "ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < c",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc2",
+            "type": {
+              "printed": "reliable",
+              "text": "c ≤ (2 : ℝ) / (↑N : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hS",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑N.factorial : ℝ) * ∑' (n : ℕ), (1 : ℝ) / ((↑(n + (2 : ℕ)).factorial : ℝ) - (1 : ℝ)) =\n  ∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ)) + c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s8",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℝ) < (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hNpos",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℝ) < (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hNpos",
+      "kind": "have",
+      "name": "hNpos",
+      "span": {
+        "end_line": 34,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑K : ℝ) ≤ (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hKr",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑K : ℝ) ≤ (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hKr",
+      "kind": "have",
+      "name": "hKr",
+      "span": {
+        "end_line": 35,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(2 : ℝ) / δ < (↑N : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(2 : ℝ) / δ < (↑N : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) / (↑N : ℝ) < δ",
+              "truncated": false
+            }
+          },
+          "id": "h_x3b4N.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 37,
+            "start_line": 37
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "lt_of_lt_of_le",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) / (↑N : ℝ) < δ",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hδN",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) / (↑N : ℝ) < δ",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract (∑ n ∈ Finset.Icc (2 : ℕ) N, (↑N.factorial : ℝ) / ((↑n.factorial : ℝ) - (1 : ℝ))) <\n  (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_x3b4N",
+      "kind": "have",
+      "name": "hδN",
+      "span": {
+        "end_line": 40,
+        "start_line": 36
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "See `div_lt_iff₀'` for a version with multiplication on the other side.",
+            "name": "div_lt_iff₀",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "x = F + c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hxF",
+            "type": {
+              "printed": "reliable",
+              "text": "x = F + c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract F < (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hxF",
+      "kind": "have",
+      "name": "hxF",
+      "span": {
+        "end_line": 43,
+        "start_line": 43
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Int.fract F = Int.fract x - c",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "Int.fract F = Int.fract x - c",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Int.fract F < (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 48,
+        "start_line": 44
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Int.fract a` the fractional part of `a`, is `a` minus its floor.",
+            "name": "Int.fract",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Int.fract_eq_iff",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Int.fract_lt_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Int.fract F < (1 : ℝ) - (2 : ℝ) / (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 50,
+        "start_line": 49
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-68"
+}
