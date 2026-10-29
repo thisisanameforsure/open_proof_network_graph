@@ -1,0 +1,5 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ X Y : ℤ, 60 * (Y * (Y - 1)) = X * (X - 1) * (X - 2) * (X - 3) * (X - 4) := ⟨0, 0, by norm_num⟩
