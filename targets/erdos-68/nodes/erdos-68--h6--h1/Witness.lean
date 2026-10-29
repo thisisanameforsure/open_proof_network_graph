@@ -1,0 +1,3 @@
+import Mathlib
+
+theorem witness : ∃ (M : ℕ), True := ⟨0, trivial⟩
