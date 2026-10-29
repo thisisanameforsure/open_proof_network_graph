@@ -661,9 +661,23 @@
       "cause": null,
       "claim": "\\forall n, m \\in \\mathbb{N}:\\quad 6 \\le n \\to 8 \\le m \\to \\tbinom{n}{3} \\ne \\tbinom{m}{4}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "reduce C(n,3) = C(m,4) to integral points on the elliptic curve 37.a1, y^2 + y = x^3 - x, via x = n - 1, y = m(m-3)/2 (Mordell 1963)",
+          "holes": [
+            {
+              "name": "h_37a1",
+              "node": "variant-3969f1f7--h2--h1--h1--h6--h1"
+            }
+          ],
+          "partial": "attempts/20261029T131800Z-t1029e-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-3969f1f7--h2--h1--h1--h6--h1"
+      ],
       "label": "the pair (3,4): Mordell 1963",
       "label_source": "gloss",
       "lemmas": [],
@@ -683,6 +697,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "567e331835a404fa6b948b6ea2af0f000ab5db8c1516496befa349f0b6253272",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall x, y \\in \\mathbb{Z},\\ y^2 + y = x^3 - x \\Rightarrow (x, y) \\in \\{(-1,0), (-1,-1), (0,0), (0,-1), (1,0), (1,-1), (2,2), (2,-3), (6,14), (6,-15)\\}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "integral points on 37.a1",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-3969f1f7--h2--h1--h1--h6--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "e614be596219537237279c29a3e0272d46d017467e8ff858d236614a584b17b9",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1764,7 +1805,7 @@
     }
   ],
   "registrations": [],
-  "rendered_from": "c53e2363bf29543ab8262547687a66af0d56ad55",
+  "rendered_from": "3d6e362000a0caf99c40983e8794359f9c45e71b",
   "review": {
     "candidates": 2,
     "clusters": 2,
