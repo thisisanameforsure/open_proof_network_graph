@@ -1,0 +1,1 @@
+theorem witness : ∃ (p : Prop), ∃ (q : Prop), p ∧ q := ⟨True, True, trivial, trivial⟩

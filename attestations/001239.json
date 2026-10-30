@@ -1,0 +1,131 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "56329250e5f004cfc77a08ec225edd9d280492256835c0d3e001ab4e40456fbc",
+  "graph_commit": "d111aa9e7bf57637432a0b619603254bd0bb2374",
+  "graph_id": "tutorial",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": null,
+  "merge_commit": "d111aa9e7bf57637432a0b619603254bd0bb2374",
+  "model_and_tooling": "claude-opus-5-5 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "variant-93e79cb5",
+  "precheck_attestation": {
+    "hash": "3a985f7b41870c61683020ec5470470d5fcb128072d52dc8e03ff2fd49289376",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-30T13:10:44Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQGmGk6QNhm/67ployOhUmC5RG9G/SlANd34Q/SAbNwBhAC7+q+\nGSWpHp6GBP7+488ZsfQDw9JYSFwxwKcC8hfA4=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "93e79cb567cfba147d87e5a216ae47a4442faa479e7308e7596b5e1e10708f44",
+  "steps": [
+    {
+      "diagnostic": null,
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261030T130000Z-lead-f32-e364-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261030T130000Z-lead-f32-e364-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "hole-proofs",
+        "details": {
+          "holes": [
+            "h₁"
+          ],
+          "kind": "partial",
+          "proofs": [
+            {
+              "hole": "h₁",
+              "node": "variant-93e79cb5--h3",
+              "path": "attempts/20261030T130000Z-lead-f32-e364-partial.1.proof",
+              "proof_sha256": "6fe9d7f3b424996a9822f327d38e6b7286e5a956fbceb56425b0e241eaaf6794",
+              "sha256": "db6c03c927a0c59d51256fa625416b3634287e14a50508bec8ab0f107ba27b1d"
+            }
+          ]
+        },
+        "message": "partial: OpnProp.and_left_of_and_swap declares ∀ (p q : Prop), p ∧ q → p; 1 hole(s); 1 hole(s) carry a proof, each built and replayed as the node its hole becomes (F32-R3)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h₁",
+              "path": "attempts/20261030T130000Z-lead-f32-e364-partial.1.witness",
+              "sha256": "5ac34518cb6eb6c95e065f81b47acbc5a007a23776e26087ac576c276628cadd"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "lead-f32-e364",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
