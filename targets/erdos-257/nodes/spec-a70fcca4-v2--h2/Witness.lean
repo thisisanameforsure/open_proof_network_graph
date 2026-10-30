@@ -1,0 +1,9 @@
+import Mathlib
+
+theorem witness : ∃ (A : Set ℕ) (p : ℤ) (q : ℕ), 0 < q ∧
+    (∀ j : ℕ, (0 : ℤ) ≤ p * (2 : ℤ) ^ j - (q : ℤ) *
+      ∑ m ∈ Finset.range (j + 1), ((Set.ncard {a ∈ A | 0 < m ∧ a ∣ m} : ℕ) : ℤ) * (2 : ℤ) ^ (j - m)) ∧
+    (∃ C : ℤ, ∀ j : ℕ, p * (2 : ℤ) ^ j - (q : ℤ) *
+      ∑ m ∈ Finset.range (j + 1), ((Set.ncard {a ∈ A | 0 < m ∧ a ∣ m} : ℕ) : ℤ) * (2 : ℤ) ^ (j - m)
+        ≤ C * ((j : ℤ) + 1)) :=
+  ⟨∅, 0, 1, one_pos, fun j => by simp, ⟨0, fun j => by simp⟩⟩
