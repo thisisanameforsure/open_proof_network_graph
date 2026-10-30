@@ -1,0 +1,20 @@
+schema: meta/v2
+id: variant-cff52b79
+status: ready
+deps:
+- variant-2f5236aa
+- spec-a70fcca4--h3
+statement-hash: 7f8e62c1452f20461c166adec1041b690fd38514661a9a701eb747d43e1b5b28
+origin: variant
+provenance:
+  author: opus-1030-e257
+  model: Claude Opus 5.5 (Claude Code); statement, proof and docstring by the model
+    from the owner's question, checked on the hosted checker
+  source: null
+  date: '2026-10-30'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; the divisor 2^n - 1 is zero only at n = 0, where Lean's
+    junk value makes the term 0, so 0 in A or in its complement changes neither sum.
