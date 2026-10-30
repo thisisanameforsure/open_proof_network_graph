@@ -1,0 +1,181 @@
+{
+  "artifact": {
+    "hash": "d64d8bd951f78855da3a8ec2ba35bcadf4f11f552bceb883c04f6f51a47ebcde",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "f922b726421b04ce65ee665e4ff3977971bd71c3",
+  "node": "variant-cff52b79",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (n : ℕ) => (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))) ∨\n  Irrational (∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hs",
+      "kind": "have",
+      "name": "hs",
+      "span": {
+        "end_line": 18,
+        "start_line": 18
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": [
+          "spec-a70fcca4--h3"
+        ]
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) +\n    ∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "key",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) +\n    ∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  ∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))) ∨\n  Irrational (∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "key",
+      "kind": "have",
+      "name": "key",
+      "span": {
+        "end_line": 21,
+        "start_line": 19
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Summable.tsum_add_tsum_compl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hirr",
+            "type": {
+              "printed": "reliable",
+              "text": "Irrational (∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ n - (1 : ℝ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))) ∨\n  Irrational (∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+          "truncated": false
+        }
+      },
+      "id": "hirr",
+      "kind": "have",
+      "name": "hirr",
+      "span": {
+        "end_line": 22,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": [
+          "variant-2f5236aa"
+        ]
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Irrational (∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))) ∨\n  Irrational (∑' (n : (↑Aᶜ : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 24,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
