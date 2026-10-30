@@ -1162,8 +1162,10 @@ jobs:
             echo "closed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # The one step that reads the gate key (C8): this merge's attestation, and since F28-T9 each
-      # closure record the step above wrote, each signed in place, all with the merged target's pin.
+      # The one step that reads the gate key (C8): this merge's attestation, since F32-T5 each
+      # born-proved hole's (F32-R5), and since F28-T9 each closure record the step above wrote,
+      # signed in place, all with the merged target's pin. The sweep above runs before the hole
+      # records reach attestations/, so a parent they complete closes on the next sweep (F32-Q11).
       - name: Sign with the gate key (the only step that sees it)
         if: steps.classify.outputs.needs_gate == 'true' || steps.join.outputs.closed == 'true'
         env:
@@ -1172,10 +1174,23 @@ jobs:
         run: |
           set -euo pipefail
           if [ "$NEEDS_GATE" = "true" ]; then
+            number="$(printf '%06d' "${{ steps.pr.outputs.number }}")"
             PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli sign \
               --attestation "$RUNNER_TEMP/postmerge-out/attestation.json" \
               --public-key keys/gate.pub \
-              --out "attestations/$(printf '%06d' "${{ steps.pr.outputs.number }}").json"
+              --out "attestations/$number.json"
+            # F32-R5 (D-5 v3.49): each hole a partial's carried proof made proved has its own
+            # record, left unsigned by the re-derivation as hole-attestations/<hole id>.json and
+            # signed here as attestations/<NNNNNN>.<hole id>.json, beside the partial's. A pin that
+            # predates F32, or a partial carrying no proof, writes no such directory: nothing more
+            # is signed. A record the pinned gate wrote and cannot sign fails this step (C7).
+            for record in "$RUNNER_TEMP"/postmerge-out/hole-attestations/*.json; do
+              [ -e "$record" ] || continue
+              hole="$(basename "$record" .json)"
+              PYTHONPATH=network/gate uv run --frozen --project network python -m opn_gate.cli sign \
+                --attestation "$record" --public-key keys/gate.pub \
+                --out "attestations/$number.$hole.json"
+            done
           fi
           # Each closure record with the merged target's pinned gate, as the attestation is (the key
           # step runs no other gate). A pin too old to read a closure record cannot sign one: the
@@ -1207,7 +1222,8 @@ jobs:
           done
 
       # F07-T55: what this run wrote that is not a product — the attestation it signed, and the
-      # hole children, the parent's Context and the attempts file a partial writes — taken before
+      # hole children, the parent's Context and the attempts file a partial writes; since F32-T5
+      # also each born-proved hole's signed record and the Proof.lean written into its node — taken before
       # any product is rendered. If main moves under this run, the commit step lays exactly this on
       # main as it then is and renders the products afresh; nothing derived is carried over.
       - name: Keep this merge's own record, for a catch-up (F07-T55; no secret)
