@@ -404,6 +404,8 @@ jobs:
       merge: ${{ steps.pr.outputs.merge }}
       targets: ${{ steps.pr.outputs.targets || steps.pr.outputs.target }}
       render_pin: ${{ steps.pr.outputs.render_pin }}
+      # F32-T6: the commit on main the record landed in (empty if none did); the cache job builds it
+      recorded: ${{ steps.record.outputs.recorded }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -448,7 +450,8 @@ jobs:
           and leave their merges to it (`later-merge`), and the run at the head records them all (`plan`).
 
           And how a run publishes what it recorded (F07-T55, `publish`): when its push is refused because
-          main moved, it catches up on main as it now is instead of handing the merge to a replay."""
+          main moved, it catches up on main as it now is instead of handing the merge to a replay. Since
+          2026-10-30 the catch-up lays only the merge's own record and the products follow by render.yml."""
           import json
           import os
           import pathlib
@@ -597,30 +600,54 @@ jobs:
               return {**ours, **theirs}
 
 
-          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay, render=False):
+          def publish(pairs, *, attempts, push, fetch, subjects_of, pin_moved, rebuild, replay, render=False,
+                      follow=lambda: None):
               """F07-T55: push this run's gate commit, and while main has moved under it, catch up and push
-              again. The products are derived (F03-R11), so a render of a tree that no longer exists is
-              thrown away and made again on main as it is; what is this run's own (its record, its ledger
-              lines) is laid on that tree first. Answers `pushed`, `credited` (main records every merge
-              already), `replayed` (the record does not apply, or a re-pin moved the rendering gate) or
-              `gave-up` (refused every time; replayed as well, and the step fails).
+              again. The first push carries the record and the products together, rendered from the merge.
+              Answers `pushed` (that first push, or a render's), `recorded` (a catch-up landed the record),
+              `credited` (main records every merge already), `replayed` (the record does not apply, or a
+              re-pin moved the rendering gate) or `gave-up` (refused every time; replayed as well, and the
+              step fails).
 
-              F07-T60: `render` is render.yml's commit, which credits no merge: having nothing owed is not
-              the end of it, and it renders again on main as it is until it lands or a re-pin moves the
-              gate it renders with."""
+              The catch-up (the owner, 2026-10-30): the products are derived (F03-R11), so they are not
+              this run's to carry once main has moved. It lays only what is this run's own (its record,
+              its ledger lines) on main as it is and pushes that, without rendering, so each retry costs
+              seconds: on graph run 40902300897 every catch-up spent 76 s rendering and was refused within
+              a second, because main had moved again during the render, six times. Once the record has
+              landed, `follow` dispatches render.yml, which renders the products of main as it then is
+              (F03-R12's one commit holds for the first push only).
+
+              F07-T60: `render` is render.yml's commit, which credits no merge and has nothing but products:
+              having nothing owed is not the end of it, and it renders again on main as it is until it lands
+              or a re-pin moves the gate it renders with."""
+              caught_up = False
               for attempt in range(1, attempts + 1):
                   if push():
+                      if caught_up and not render:
+                          follow()
+                          return "recorded"
                       return "pushed"
                   new = fetch()
                   pairs = owed(pairs, subjects_of(new))
                   if not pairs and not render:
                       return "credited"
-                  if pin_moved(new) or not rebuild(new, pairs):
+                  if pin_moved(new) or not rebuild(new, pairs, products=render):
                       replay(pairs)
                       return "replayed"
-                  print(f"postmerge: main moved (attempt {attempt}); caught up on {new[:12]}", flush=True)
+                  caught_up = True
+                  what = "rendered again" if render else "laid this merge's record"
+                  print(f"postmerge: main moved (attempt {attempt}); caught up on {new[:12]} ({what})", flush=True)
               replay(pairs)
               return "gave-up"
+
+
+          def credited_at(log, numbers):
+              """The newest commit on main's first-parent line (`log`, newest first) that credits any of
+              `numbers`: where another run landed this run's record. None if no commit in `log` does."""
+              for sha, _parents, subject in log:
+                  if any(number in credits(subject) for number in numbers):
+                      return sha
+              return None
 
 
           def git(*args):
@@ -692,7 +719,7 @@ jobs:
               def run(command, **extra):
                   subprocess.run(["bash", "-c", command], check=True, env={**os.environ, **extra})
 
-              def rebuild(new, owed_pairs):
+              def rebuild(new, owed_pairs, *, products):
                   caches = {
                       path: json.loads(path.read_text(encoding="utf-8"))
                       for path in pathlib.Path("targets").glob(f"*/{TAGS_CACHE}")
@@ -716,7 +743,8 @@ jobs:
                           path.write_text(text, encoding="utf-8")
                   for _number, merge in owed_pairs:
                       run(env["LEDGER_CMD"], MERGE=merge)
-                  run(env["PRODUCTS_CMD"], COMMIT=new)
+                  if products:  # render.yml only: a merge's catch-up carries its record, never a render
+                      run(env["PRODUCTS_CMD"], COMMIT=new)
                   git("add", "-A", "--", *[p for p in STAGED if pathlib.Path(p).exists()])
                   credits = " ".join(f"#{number}" for number, _merge in owed_pairs)
                   subject = env.get("SUBJECT") or f"gate: {credits} {env['SUFFIX']}"  # F07-T60: a render's
@@ -734,13 +762,38 @@ jobs:
                       else:
                           print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
 
+              def follow():
+                  """The record landed without the products: render.yml renders them on main as it is.
+                  Its concurrency group keeps one run and one pending, so a burst of catch-ups costs one
+                  render after the burst, and the next merge's own run renders them as well (C7: a
+                  dispatch that fails is a warning, never a lost record)."""
+                  done = subprocess.run(
+                      ["gh", "workflow", "run", "render.yml", "--repo", env["GITHUB_REPOSITORY"], "--ref", "main"],
+                      check=False,
+                  )
+                  if done.returncode == 0:
+                      print("postmerge: the record landed without the products; dispatched render.yml to render them")
+                  else:
+                      print("::warning::render.yml was not dispatched; the products follow at the next merge, or dispatch render.yml by hand")
+
               attempts = int(env.get("PUBLISH_ATTEMPTS") or PUBLISH_ATTEMPTS)
               render = bool(env.get("RENDER"))
               outcome = publish(
                   pairs, attempts=attempts, push=push, fetch=fetch, subjects_of=subjects_at,
-                  pin_moved=pin_moved, rebuild=rebuild, replay=replay, render=render,
+                  pin_moved=pin_moved, rebuild=rebuild, replay=replay, render=render, follow=follow,
               )
               print(f"postmerge: publish {outcome}")
+              # F32-T6: the commit the record is in on main, for the cache job (a born-proved hole's
+              # files are in no merge commit). The pushed commit is HEAD; one another run landed is the
+              # newest commit crediting these merges. Nothing landed: no line, and the cache builds the merge.
+              recorded = None
+              if outcome in ("pushed", "recorded") and not render:
+                  recorded = git("rev-parse", "HEAD").strip()
+              elif outcome == "credited":
+                  recorded = credited_at(first_parent_log("FETCH_HEAD", WALK_LIMIT + 1), [n for n, _m in pairs])
+              if recorded and env.get("GITHUB_OUTPUT"):
+                  with open(env["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+                      out.write(f"recorded={recorded}\n")
               if render and outcome == "replayed":
                   print("render: main was re-pinned under this render; that push dispatches a render of its own")
               if outcome == "gave-up":
@@ -1225,7 +1278,8 @@ jobs:
       # hole children, the parent's Context and the attempts file a partial writes; since F32-T5
       # also each born-proved hole's signed record and the Proof.lean written into its node — taken before
       # any product is rendered. If main moves under this run, the commit step lays exactly this on
-      # main as it then is and renders the products afresh; nothing derived is carried over.
+      # main as it then is and pushes it without the products (2026-10-30); render.yml, dispatched
+      # once it lands, renders them. Nothing derived is carried over.
       - name: Keep this merge's own record, for a catch-up (F07-T55; no secret)
         if: steps.pr.outputs.run == 'true'
         run: |
@@ -1278,9 +1332,10 @@ jobs:
 
       - name: Commit the attestation and the products (pushed with the write deploy key, which the ruleset lets bypass)
         if: steps.pr.outputs.run == 'true'
+        id: record
         env:
           OPN_GRAPH_DEPLOY_KEY: ${{ secrets.OPN_GRAPH_DEPLOY_KEY }}
-          GH_TOKEN: ${{ github.token }}  # F07-T33: only to dispatch a replay if main moved
+          GH_TOKEN: ${{ github.token }}  # F07-T33: only to dispatch a replay, or render.yml, if main moved
           # F07-T45: the merges this commit records (one, unless a batch of appends), and the ones
           # this run could not, each replayed on its own once this run is done
           NUMBERS: ${{ steps.classify.outputs.numbers }}
@@ -1292,7 +1347,6 @@ jobs:
           PYTHONPATH: network-render/gate
           OPN_API_CLAIMS_URL: ${{ vars.OPN_API_CLAIMS_URL }}
           LEDGER_CMD: uv run --frozen --project network-render python -m opn_gate.cli ledger --graph . --commit "$MERGE"
-          PRODUCTS_CMD: uv run --frozen --project network-render python -m opn_gate.cli products --graph . --commit "$COMMIT" ${OPN_API_CLAIMS_URL:+--claims-url "$OPN_API_CLAIMS_URL"}
         run: |
           set -euo pipefail
           umask 077
@@ -1342,10 +1396,13 @@ jobs:
           # gate commit, an owner's re-pin. A refused push used to dispatch a replay (F07-T33) or
           # leave the merges to a later run (F07-T45); now the job catches up. `publish` fetches
           # main, drops whatever a gate commit there already credits, lays this merge's own record
-          # (record.patch) on main as it is, writes the ledger lines again on main's ledger, renders
-          # the products of that tree and pushes again — so one commit carries the products of
-          # every merge so far. A record that does not apply, or a re-pin of the rendering gate, is
-          # replayed on its own; a push refused every time replays too, and fails this step (C7).
+          # (record.patch) on main as it is, writes the ledger lines again on main's ledger and
+          # pushes again — without rendering, so a retry takes seconds (2026-10-30: a 76 s render
+          # was overtaken by main six times on run 40902300897, and the merge was replayed 22
+          # minutes late). Once the record lands it dispatches render.yml, which renders the
+          # products of main as it then is. A record that does not apply, or a re-pin of the
+          # rendering gate, is replayed on its own; a push refused every time replays too, and
+          # fails this step (C7). It writes `recorded=<sha>`, the commit the record is in on main.
           export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
           remote="git@github.com:${GITHUB_REPOSITORY}.git"
           status=0
@@ -1414,9 +1471,11 @@ jobs:
       contents: read
       id-token: write  # the upload assumes a role through OIDC (C8 item 4)
     steps:
+      # F32-T6: the commit the record landed in, which holds a born-proved hole's files (they are in
+      # no merge commit); the merge commit when no record landed, as before
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          ref: ${{ needs.postmerge.outputs.merge }}
+          ref: ${{ needs.postmerge.outputs.recorded || needs.postmerge.outputs.merge }}
 
       - name: Check out the network commit main pins now, which builds the cache (F07-T33)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -1439,16 +1498,16 @@ jobs:
       - name: Publish the olean cache for this merge (F10-R7; no gate secret in this job)
         env:
           PYTHONPATH: network-render/gate
-          MERGE: ${{ needs.postmerge.outputs.merge }}
+          COMMIT: ${{ needs.postmerge.outputs.recorded || needs.postmerge.outputs.merge }}
           TARGETS: ${{ needs.postmerge.outputs.targets }}
         run: |
           set -euo pipefail
           uv sync --frozen --project network-render --quiet
           for target in $TARGETS; do
             uv run --frozen --project network-render python -m opn_gate.cli cache publish \
-              --graph . --commit "$MERGE" --target "$target" \
+              --graph . --commit "$COMMIT" --target "$target" \
               --sandbox --bucket "${{ vars.OPN_CACHE_BUCKET }}" --prefix "${{ vars.OPN_CACHE_PREFIX }}" \
-              || echo "::warning::the olean cache was not published for ${MERGE} ($target); the next run builds (C7)"
+              || echo "::warning::the olean cache was not published for ${COMMIT} ($target); the next run builds (C7)"
           done
 
   # F19-T4 (R6; Q2, decided 2026-10-04): the outline of each merged proof artifact — its named
