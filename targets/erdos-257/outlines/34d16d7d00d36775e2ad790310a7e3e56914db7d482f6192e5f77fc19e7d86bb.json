@@ -1,0 +1,330 @@
+{
+  "artifact": {
+    "hash": "34d16d7d00d36775e2ad790310a7e3e56914db7d482f6192e5f77fc19e7d86bb",
+    "kind": "partial",
+    "path": "attempts/20261030T083804Z-opus-1030-e257-partial.lean"
+  },
+  "gate": "f922b726421b04ce65ee665e4ff3977971bd71c3",
+  "node": "spec-a70fcca4-v2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "spec-137537c8",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Set ℕ),\n  ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n    ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_lambert",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Set ℕ),\n  ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n    ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_lambert",
+      "kind": "hole",
+      "name": "h_lambert",
+      "span": {
+        "end_line": 23,
+        "start_line": 20
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "The cardinality of `s : Set α` .",
+            "name": "Set.ncard",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-a70fcca4-v2--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Set ℕ) (p : ℤ) (q : ℕ),\n  (0 : ℕ) < q →\n    (∀ (j : ℕ),\n        (0 : ℤ) ≤\n          p * (2 : ℤ) ^ j -\n            (↑q : ℤ) *\n              ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)) →\n      (∃ (C : ℤ),\n          ∀ (j : ℕ),\n            p * (2 : ℤ) ^ j -\n                (↑q : ℤ) *\n                  ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                    (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n              C * ((↑j : ℤ) + (1 : ℤ))) →\n        ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m = (↑p : ℝ) / (↑q : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_crit",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Set ℕ) (p : ℤ) (q : ℕ),\n  (0 : ℕ) < q →\n    (∀ (j : ℕ),\n        (0 : ℤ) ≤\n          p * (2 : ℤ) ^ j -\n            (↑q : ℤ) *\n              ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)) →\n      (∃ (C : ℤ),\n          ∀ (j : ℕ),\n            p * (2 : ℤ) ^ j -\n                (↑q : ℤ) *\n                  ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                    (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n              C * ((↑j : ℤ) + (1 : ℤ))) →\n        ∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m = (↑p : ℝ) / (↑q : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_crit",
+      "kind": "hole",
+      "name": "h_crit",
+      "span": {
+        "end_line": 36,
+        "start_line": 29
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "The cardinality of `s : Set α` .",
+            "name": "Set.ncard",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "spec-a70fcca4-v2--h3",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (A : Set ℕ),\n  A.Infinite ∧\n    (∀ (j : ℕ),\n        (0 : ℤ) ≤\n          (2 : ℤ) ^ j -\n            (2 : ℤ) *\n              ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)) ∧\n      ∃ (C : ℤ),\n        ∀ (j : ℕ),\n          (2 : ℤ) ^ j -\n              (2 : ℤ) *\n                ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n            C * ((↑j : ℤ) + (1 : ℤ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_carry",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (A : Set ℕ),\n  A.Infinite ∧\n    (∀ (j : ℕ),\n        (0 : ℤ) ≤\n          (2 : ℤ) ^ j -\n            (2 : ℤ) *\n              ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)) ∧\n      ∃ (C : ℤ),\n        ∀ (j : ℕ),\n          (2 : ℤ) ^ j -\n              (2 : ℤ) *\n                ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n            C * ((↑j : ℤ) + (1 : ℤ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "h_carry",
+      "kind": "hole",
+      "name": "h_carry",
+      "span": {
+        "end_line": 47,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "The cardinality of `s : Set α` .",
+            "name": "Set.ncard",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (A : Set ℕ),\n  A.Infinite ∧\n    (∀ (j : ℕ),\n        (0 : ℤ) ≤\n          (2 : ℤ) ^ j -\n            (2 : ℤ) *\n              ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)) ∧\n      ∃ (C : ℤ),\n        ∀ (j : ℕ),\n          (2 : ℤ) ^ j -\n              (2 : ℤ) *\n                ∑ m ∈ Finset.range (j + (1 : ℕ)),\n                  (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n            C * ((↑j : ℤ) + (1 : ℤ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "A",
+            "type": {
+              "printed": "reliable",
+              "text": "Set ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "A.Infinite",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hz",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ),\n  (0 : ℤ) ≤\n    (2 : ℤ) ^ j -\n      (2 : ℤ) * ∑ m ∈ Finset.range (j + (1 : ℕ)), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "C",
+            "type": {
+              "printed": "reliable",
+              "text": "ℤ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hC",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (j : ℕ),\n  (2 : ℤ) ^ j -\n      (2 : ℤ) *\n        ∑ m ∈ Finset.range (j + (1 : ℕ)), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℤ) * (2 : ℤ) ^ (j - m) ≤\n    C * ((↑j : ℤ) + (1 : ℤ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (A : Set ℕ), A.Infinite ∧ ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 48,
+        "start_line": 48
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m = (↑(1 : ℤ) : ℝ) / (↑(2 : ℕ) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (m : ℕ), (↑{a : ℕ | a ∈ A ∧ (0 : ℕ) < m ∧ a ∣ m}.ncard : ℝ) / (2 : ℝ) ^ m = (↑(1 : ℤ) : ℝ) / (↑(2 : ℕ) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = (1 / 2 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 52,
+        "start_line": 51
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
