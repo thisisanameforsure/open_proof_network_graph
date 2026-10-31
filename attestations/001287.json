@@ -1,0 +1,156 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "637bc93ef7a084539bcbfa68c0abcb944342c3c3ff98237fc7af173f121227c3",
+  "graph_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+  "model_and_tooling": "claude-fable-5-1 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "variant-cce9b284",
+  "precheck_attestation": {
+    "hash": "7a01d5e81cb4af52a5ed3aa5eb71248a6509079fdd544f837ef17dcea36647aa",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-31T10:41:15Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQFqRJYRcqLK2EjK+PtsFpvWRcf/+8hAIvSgq4JaAPm+X7bac6j\nSK/AwFyVdgWYt7P/gbHB1bYGi0eiqdB0ycngs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "bfa607a497e9d5d955b7e4d740dd87240c1f0e72847fdba086daeaf3ae992bbc",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261031T100812Z-fable-1031-e257-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261031T100812Z-fable-1031-e257-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "hole-proofs",
+        "details": {
+          "holes": [
+            "h_account",
+            "h_walk"
+          ],
+          "kind": "partial",
+          "proofs": [
+            {
+              "hole": "h_account",
+              "node": "variant-cce9b284--h1",
+              "path": "attempts/20261031T100812Z-fable-1031-e257-partial.1.proof",
+              "proof_sha256": "a6323a0942cc46cc8d9cc59bd37c727ee55db56243e9ac783ab6892a03d13809",
+              "sha256": "1ab357dc49c421fe27062dbb62a5c14c22fbe27375ad94d6bba9d5e251a32863"
+            }
+          ]
+        },
+        "message": "partial: Opn.erdos_257_some_infinite_sum_is_rational declares ∃ A, A.Infinite ∧ ∃ s, ∑' (n : ↑A), 1 / (2 ^ ↑n - 1) = ↑s; 2 hole(s); 1 hole(s) carry a proof, each built and replayed as the node its hole becomes (F32-R3)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; at n = 0 the term is Lean's junk value 0, so a set containing 0 has the same sum as the set without it; the statement is unaffected and the informal problem never uses n = 0 (same reading as the root's and the sibling variant's acknowledgement).",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_account",
+              "path": "attempts/20261031T100812Z-fable-1031-e257-partial.1.witness",
+              "sha256": "2dbe9eb0169d7abadfb420ae10bc556cc146735e5e7e4f9bdcb1fc7f748260be"
+            },
+            {
+              "hole": "h_walk",
+              "path": "attempts/20261031T100812Z-fable-1031-e257-partial.2.witness",
+              "sha256": "ea41b6fdf80391e0adaadd0d415725be036222be1d8061e25625e78b4ca7823e"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1031-e257",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

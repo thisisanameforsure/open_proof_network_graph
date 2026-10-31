@@ -1,0 +1,142 @@
+{
+  "artifact_hash": "a6323a0942cc46cc8d9cc59bd37c727ee55db56243e9ac783ab6892a03d13809",
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": {
+    "assembly": {
+      "artifact_hash": "66345ccae911f02464292e84c266d81dc3fc5830f02e3205634b9f4c9ce1cdb4",
+      "path": "attempts/20261031T100812Z-fable-1031-e257-partial.lean"
+    },
+    "carried": {
+      "path": "attempts/20261031T100812Z-fable-1031-e257-partial.1.proof",
+      "sha256": "1ab357dc49c421fe27062dbb62a5c14c22fbe27375ad94d6bba9d5e251a32863"
+    },
+    "node_id": "variant-cce9b284"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "637bc93ef7a084539bcbfa68c0abcb944342c3c3ff98237fc7af173f121227c3",
+  "graph_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+  "model_and_tooling": "claude-fable-5-1 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "variant-cce9b284--h1",
+  "precheck_attestation": {
+    "hash": "7a01d5e81cb4af52a5ed3aa5eb71248a6509079fdd544f837ef17dcea36647aa",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-31T10:41:15Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBJe7WkExelovUB7fHZrifNaxgm87U9IdqfsZaLboeBsPii/rZ\ncKR4pL7/7LbxgLOJthUwOneimBHUsGfxIsoAc=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "dc5897012906f6d62530133f71198d2bdd017e3bdfb8c8a21784994a50281cfb",
+  "steps": [
+    {
+      "diagnostic": null,
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ (m + 1 + j) - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ m - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ ↑n - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "r m / (1 / (2 ^ m - 1))",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at 1 / (2 ^ (m + 1 + j) - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1031-e257",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

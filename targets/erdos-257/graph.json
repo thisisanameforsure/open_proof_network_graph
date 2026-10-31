@@ -2026,9 +2026,28 @@
       "cause": null,
       "claim": null,
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "repair walk: greedy walk of a rational x in the terms 1/(2^m-1); when a chosen term leaves the remainder beyond the whole tail, subtract the next term from the target and go on; the chosen set sums to x minus the subtracted terms, a counterexample once that subtracted sum is rational",
+          "holes": [
+            {
+              "name": "h_account",
+              "node": "variant-cce9b284--h1"
+            },
+            {
+              "name": "h_walk",
+              "node": "variant-cce9b284--h2"
+            }
+          ],
+          "partial": "attempts/20261031T100812Z-fable-1031-e257-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-cce9b284--h1",
+        "variant-cce9b284--h2"
+      ],
       "label": "variant-cce9b284",
       "label_source": "id",
       "lemmas": [],
@@ -2044,6 +2063,70 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "bfa607a497e9d5d955b7e4d740dd87240c1f0e72847fdba086daeaf3ae992bbc",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\sum_{m\\in A}\\frac{1}{2^m-1}=x-\\sum_{m}\\bigl(q_m-\\mathbf 1_A(m)\\bigr)\\frac{1}{2^m-1}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the walk accounts for x",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-cce9b284--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+      "proofs": [
+        {
+          "artifact_hash": "a6323a0942cc46cc8d9cc59bd37c727ee55db56243e9ac783ab6892a03d13809",
+          "attestation": "001287.variant-cce9b284--h1.json",
+          "kind": "proof",
+          "merge_commit": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+          "path": "Proof.lean",
+          "submitter": "fable-1031-e257",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "dc5897012906f6d62530133f71198d2bdd017e3bdfb8c8a21784994a50281cfb",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists x\\in\\mathbb{Q}_{>0}:\\ A(x)\\ \\text{infinite}\\ \\wedge\\ \\sum_{m}\\bigl(q_m-\\mathbf 1_{A(x)}(m)\\bigr)\\frac{1}{2^m-1}\\in\\mathbb{Q}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "a rational whose repair sum is rational",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-cce9b284--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "c77c8f131e7d1170ae14ac28fb5223bcc5b927cd9cc738df3491bb46c408dc1b",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -2255,7 +2338,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "adbc9369e8dbae9f613b97c0bf5adaec921bb956",
+  "rendered_from": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
   "review": {
     "candidates": 1,
     "clusters": 1,
