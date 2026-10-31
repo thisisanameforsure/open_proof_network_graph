@@ -2109,12 +2109,40 @@
       "cause": null,
       "claim": "\\exists x\\in\\mathbb{Q}_{>0}:\\ A(x)\\ \\text{infinite}\\ \\wedge\\ \\sum_{m}\\bigl(q_m-\\mathbf 1_{A(x)}(m)\\bigr)\\frac{1}{2^m-1}\\in\\mathbb{Q}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "finitely many repairs: a positive rational with even denominator whose walk repairs only finitely often; the repair sum is then a finite rational sum with odd denominator, so by parity the chosen set cannot be finite",
+          "holes": [
+            {
+              "name": "h_finite",
+              "node": "variant-cce9b284--h2--h1"
+            },
+            {
+              "name": "h_account",
+              "node": "variant-cce9b284--h1"
+            },
+            {
+              "name": "h_parity",
+              "node": "variant-cce9b284--h2--h3"
+            }
+          ],
+          "partial": "attempts/20261031T104536Z-a-fable-1031-e257-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "variant-cce9b284--h2--h1",
+        "variant-cce9b284--h2--h3"
+      ],
       "label": "a rational whose repair sum is rational",
       "label_source": "gloss",
-      "lemmas": [],
+      "lemmas": [
+        {
+          "hole": "h_account",
+          "node": "variant-cce9b284--h1"
+        }
+      ],
       "literature": null,
       "literature_proposed": null,
       "node_id": "variant-cce9b284--h2",
@@ -2129,6 +2157,70 @@
       "statement_hash": "c77c8f131e7d1170ae14ac28fb5223bcc5b927cd9cc738df3491bb46c408dc1b",
       "status": "ready",
       "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists x\\in\\mathbb{Q}_{>0},\\ 2\\mid\\operatorname{den}(x):\\ \\#\\{m: q_m-\\mathbf 1_{A(x)}(m)\\ne 0\\}<\\infty",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "an even-denominator rational with finitely many repairs",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-cce9b284--h2--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "7075e08bf9bd25695e3b57223afc40ff6975ea5abe543f5effce6447ef9854ce",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\#\\{m: q_m-\\mathbf 1_A(m)\\ne 0\\}<\\infty\\ \\Rightarrow\\ 2\\nmid\\operatorname{den}(x)\\ \\text{ or }\\ \\bigl(A\\ \\text{infinite}\\wedge \\sum_m (q_m-\\mathbf 1_A(m))\\tfrac{1}{2^m-1}\\in\\mathbb{Q}\\bigr)",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "parity of a finite repair sum",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "variant-cce9b284--h2--h3",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "d49ee4571d6a83883db90f53dc9840cadad1e358",
+      "proofs": [
+        {
+          "artifact_hash": "be4c0f8af035ab1eeca35d6005a999fb38282d65a13ef174fd5a3e7470b8a117",
+          "attestation": "001288.variant-cce9b284--h2--h3.json",
+          "kind": "proof",
+          "merge_commit": "d49ee4571d6a83883db90f53dc9840cadad1e358",
+          "path": "Proof.lean",
+          "submitter": "fable-1031-e257",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "d4687294ffa9bf773a422caadf2682befdb25f20bf49ac544360b7dbf0180f10",
+      "status": "proved",
+      "trust_base": "kernel",
       "tutorial": false,
       "uses": []
     },
@@ -2338,7 +2430,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "a839ebda8bdf9969028f0ee6c1ab4e746a71b10d",
+  "rendered_from": "a6c8a06ba0aaad1bbd699e44089ab60af67939b8",
   "review": {
     "candidates": 1,
     "clusters": 1,
