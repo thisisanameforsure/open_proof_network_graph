@@ -1,0 +1,161 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "637bc93ef7a084539bcbfa68c0abcb944342c3c3ff98237fc7af173f121227c3",
+  "graph_commit": "cc1ce95addd659dad07ec8ae40b685027dc4b2c2",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "cc1ce95addd659dad07ec8ae40b685027dc4b2c2",
+  "model_and_tooling": "claude-fable-5-1 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "variant-cce9b284--h2",
+  "precheck_attestation": {
+    "hash": "2a7b141a52ce0e872327286a37652fbc7e034f523bac46dac0aab164e521bb30",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-10-31T11:14:30Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHfD4azZc75oaxS3tkQQWDK1tGJMsKyKekvUyncDt5FqP4Sn3O\nNmVhZuo9j7EfUvNKDBNOqO9dXFnl6gyYczCwM=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "c77c8f131e7d1170ae14ac28fb5223bcc5b927cd9cc738df3491bb46c408dc1b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261031T104536Z-b-fable-1031-e257-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261031T104536Z-b-fable-1031-e257-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_infinite"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_cce9b284__h2 declares ∃ x r q,\n  0 < x ∧\n    r 0 = ↑x ∧\n      (∀ (m : ℕ), q m = ⌊r m / (1 / (2 ^ m - 1))⌋₊ ∧ r (m + 1) = r m - ↑(q m) * (1 / (2 ^ m - 1))) ∧\n        {m | q m ≠ 0 ∧ r (m + 1) ≤ ∑' (j : ℕ), 1 / (2 ^ (m + 1 + j) - 1)}.Infinite ∧\n          ∃ s,\n            ∑' (m : ℕ),\n                (↑(q m) - if q m ≠ 0 ∧ r (m + 1) ≤ ∑' (j : ℕ), 1 / (2 ^ (m + 1 + j) - 1) then 1 else 0) *\n                  (1 / (2 ^ m - 1)) =\n              ↑s; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ (m + 1 + j) - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "1 / (2 ^ m - 1)",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "r m / (1 / (2 ^ m - 1))",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "3 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at 1 / (2 ^ (m + 1 + j) - 1): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_infinite",
+              "path": "attempts/20261031T104536Z-b-fable-1031-e257-partial.1.witness",
+              "sha256": "c0b790a5b1621af9452934966ffa19d93834daee2ba61bee5eb08a058b2c55ec"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1031-e257",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
