@@ -1,0 +1,73 @@
+-- hole: h_parity
+private theorem odd_den_div (z : ℤ) (m : ℕ) : Odd ((z : ℚ) / (2 ^ m - 1)).den := by
+  rcases Nat.eq_zero_or_pos m with hm | hm
+  · subst hm
+    simp
+  · have hk : ((2 : ℚ) ^ m - 1) = ((2 ^ m - 1 : ℕ) : ℤ) := by
+      push_cast [Nat.cast_sub Nat.one_le_two_pow]
+      ring
+    rw [hk, Rat.intCast_div_eq_divInt]
+    have hodd : Odd (2 ^ m - 1) :=
+      Nat.Even.sub_odd Nat.one_le_two_pow (Nat.even_pow.mpr ⟨even_two, hm.ne'⟩) odd_one
+    exact Odd.of_dvd_nat hodd (Int.natCast_dvd_natCast.mp (Rat.den_dvd _ _))
+
+private theorem odd_den_sum (S : Finset ℕ) (f : ℕ → ℚ) (h : ∀ m ∈ S, Odd (f m).den) :
+    Odd (∑ m ∈ S, f m).den := by
+  induction S using Finset.induction_on with
+  | empty => simp
+  | insert a S ha ih =>
+    rw [Finset.sum_insert ha]
+    have h1 : Odd (f a).den := h a (Finset.mem_insert_self a S)
+    have h2 : Odd (∑ m ∈ S, f m).den := ih (fun m hm => h m (Finset.mem_insert_of_mem hm))
+    exact Odd.of_dvd_nat (h1.mul h2) (Rat.add_den_dvd _ _)
+
+private theorem repair_sum_rat (e : ℕ → ℝ) (S : Finset ℕ) (hz : ∀ m, ∃ z : ℤ, e m = z)
+    (hS : ∀ m ∉ S, e m = 0) :
+    ∃ s : ℚ, Odd s.den ∧ ∑' m : ℕ, e m * ((1 : ℝ) / (2 ^ m - 1)) = s := by
+  choose z hz using hz
+  refine ⟨∑ m ∈ S, (z m : ℚ) / (2 ^ m - 1), odd_den_sum S _ (fun m _ => odd_den_div (z m) m), ?_⟩
+  rw [tsum_eq_sum (s := S) (fun m hm => by rw [hS m hm, zero_mul]), Rat.cast_sum]
+  refine Finset.sum_congr rfl (fun m _ => ?_)
+  rw [hz m]
+  push_cast
+  ring
+
+private theorem chosen_sum_rat (A : Set ℕ) (hA : A.Finite) :
+    ∃ s : ℚ, Odd s.den ∧ ∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1) = s := by
+  refine ⟨∑ m ∈ hA.toFinset, ((1 : ℤ) : ℚ) / (2 ^ m - 1),
+    odd_den_sum _ _ (fun m _ => odd_den_div 1 m), ?_⟩
+  rw [tsum_subtype A (fun n => (1 : ℝ) / (2 ^ n - 1)),
+    tsum_eq_sum (s := hA.toFinset) (fun m hm => Set.indicator_of_notMem (by
+      rwa [Set.Finite.mem_toFinset] at hm) _), Rat.cast_sum]
+  refine Finset.sum_congr rfl (fun m hm => ?_)
+  rw [Set.indicator_of_mem (hA.mem_toFinset.mp hm)]
+  push_cast
+  ring
+-- proof:
+by
+  intro x r q hx hr0 hrec hacc hfin
+  have hz : ∀ m, ∃ z : ℤ, ((q m : ℝ) -
+      if q m ≠ 0 ∧ r (m + 1) ≤ ∑' j : ℕ, (1 : ℝ) / (2 ^ (m + 1 + j) - 1) then 1 else 0) = z := by
+    intro m
+    split_ifs with h
+    · exact ⟨(q m : ℤ) - 1, by push_cast; ring⟩
+    · exact ⟨(q m : ℤ), by push_cast; ring⟩
+  have hS : ∀ m ∉ hfin.toFinset, ((q m : ℝ) -
+      if q m ≠ 0 ∧ r (m + 1) ≤ ∑' j : ℕ, (1 : ℝ) / (2 ^ (m + 1 + j) - 1) then 1 else 0) = 0 := by
+    intro m hm
+    rw [Set.Finite.mem_toFinset, Set.mem_ofPred_eq, not_not] at hm
+    exact hm
+  obtain ⟨s2, h2, hs2⟩ := repair_sum_rat (fun m => (q m : ℝ) -
+      if q m ≠ 0 ∧ r (m + 1) ≤ ∑' j : ℕ, (1 : ℝ) / (2 ^ (m + 1 + j) - 1) then 1 else 0)
+    hfin.toFinset hz hS
+  by_cases hA : {m : ℕ | q m ≠ 0 ∧ r (m + 1) ≤ ∑' j : ℕ, (1 : ℝ) / (2 ^ (m + 1 + j) - 1)}.Infinite
+  · exact Or.inr ⟨hA, s2, hs2⟩
+  · left
+    rw [Set.not_infinite] at hA
+    obtain ⟨s1, h1, hs1⟩ := chosen_sum_rat _ hA
+    rw [hs1, hs2] at hacc
+    have hx' : x = s1 + s2 := by
+      have : (x : ℝ) = ((s1 + s2 : ℚ) : ℝ) := by push_cast; linarith
+      exact_mod_cast this
+    rw [hx']
+    exact Odd.of_dvd_nat (h1.mul h2) (Rat.add_den_dvd _ _)
