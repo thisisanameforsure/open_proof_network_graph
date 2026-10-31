@@ -1,0 +1,523 @@
+{
+  "artifact": {
+    "hash": "1d2d22eb8a675e79b12c2ce113bcf79d0729a80780b4b528b94118997ec56160",
+    "kind": "partial",
+    "path": "attempts/20261031T104536Z-a-fable-1031-e257-partial.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "variant-cce9b284--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-cce9b284--h2--h1",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    Even x.den ∧\n      r (0 : ℕ) = (↑x : ℝ) ∧\n        (∀ (m : ℕ),\n            q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n              r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n          {m : ℕ |\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) ≠\n                (0 : ℝ)}.Finite",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_finite",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    Even x.den ∧\n      r (0 : ℕ) = (↑x : ℝ) ∧\n        (∀ (m : ℕ),\n            q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n              r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n          {m : ℕ |\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) ≠\n                (0 : ℝ)}.Finite",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    Even x.den ∧\n      r (0 : ℕ) = (↑x : ℝ) ∧\n        (∀ (m : ℕ),\n            q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n              r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n          {m : ℕ |\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) ≠\n                (0 : ℝ)}.Finite",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s1.h_finite",
+              "kind": "hole",
+              "name": "h_finite",
+              "span": {
+                "end_line": 69,
+                "start_line": 64
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "An element `a` of a type `α` with addition satisfies `Even a` if `a = r + r`, for some `r : α`.",
+                    "name": "Even",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    Even x.den ∧\n      r (0 : ℕ) = (↑x : ℝ) ∧\n        (∀ (m : ℕ),\n            q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n              r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n          {m : ℕ |\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) ≠\n                (0 : ℝ)}.Finite",
+              "truncated": false
+            }
+          },
+          "id": "hall.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 70,
+            "start_line": 58
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-cce9b284--h1",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n            (↑{m : ℕ |\n                  q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n              Type)),\n            (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n          (↑x : ℝ) -\n            ∑' (m : ℕ),\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) *\n                ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_account",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n            (↑{m : ℕ |\n                  q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n              Type)),\n            (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n          (↑x : ℝ) -\n            ∑' (m : ℕ),\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) *\n                ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n            (↑{m : ℕ |\n                  q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n              Type)),\n            (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n          (↑x : ℝ) -\n            ∑' (m : ℕ),\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) *\n                ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s2.h_account",
+              "kind": "hole",
+              "name": "h_account",
+              "span": {
+                "end_line": 84,
+                "start_line": 76
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n            (↑{m : ℕ |\n                  q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n              Type)),\n            (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n          (↑x : ℝ) -\n            ∑' (m : ℕ),\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) *\n                ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          "id": "hall.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 85,
+            "start_line": 71
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "variant-cce9b284--h2--h3",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n              (↑{m : ℕ |\n                    q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                Type)),\n              (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n            (↑x : ℝ) -\n              ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) →\n          {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite →\n            Odd x.den ∨\n              {m : ℕ |\n                    q m ≠ (0 : ℕ) ∧\n                      r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n                ∃ (s : ℚ),\n                  ∑' (m : ℕ),\n                      ((↑(q m) : ℝ) -\n                          if\n                              q m ≠ (0 : ℕ) ∧\n                                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                            (1 : ℝ)\n                          else (0 : ℝ)) *\n                        ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n                    (↑s : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_parity",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n              (↑{m : ℕ |\n                    q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                Type)),\n              (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n            (↑x : ℝ) -\n              ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) →\n          {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite →\n            Odd x.den ∨\n              {m : ℕ |\n                    q m ≠ (0 : ℕ) ∧\n                      r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n                ∃ (s : ℚ),\n                  ∑' (m : ℕ),\n                      ((↑(q m) : ℝ) -\n                          if\n                              q m ≠ (0 : ℕ) ∧\n                                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                            (1 : ℝ)\n                          else (0 : ℝ)) *\n                        ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n                    (↑s : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n              (↑{m : ℕ |\n                    q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                Type)),\n              (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n            (↑x : ℝ) -\n              ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) →\n          {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite →\n            Odd x.den ∨\n              {m : ℕ |\n                    q m ≠ (0 : ℕ) ∧\n                      r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n                ∃ (s : ℚ),\n                  ∑' (m : ℕ),\n                      ((↑(q m) : ℝ) -\n                          if\n                              q m ≠ (0 : ℕ) ∧\n                                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                            (1 : ℝ)\n                          else (0 : ℝ)) *\n                        ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n                    (↑s : ℝ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s3.h_parity",
+              "kind": "hole",
+              "name": "h_parity",
+              "span": {
+                "end_line": 107,
+                "start_line": 92
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+                    "name": "Odd",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n              (↑{m : ℕ |\n                    q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                Type)),\n              (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n            (↑x : ℝ) -\n              ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) →\n          {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite →\n            Odd x.den ∨\n              {m : ℕ |\n                    q m ≠ (0 : ℕ) ∧\n                      r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n                ∃ (s : ℚ),\n                  ∑' (m : ℕ),\n                      ((↑(q m) : ℝ) -\n                          if\n                              q m ≠ (0 : ℕ) ∧\n                                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                            (1 : ℝ)\n                          else (0 : ℝ)) *\n                        ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n                    (↑s : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 108,
+            "start_line": 86
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n    (0 : ℚ) < x ∧\n      Even x.den ∧\n        r (0 : ℕ) = (↑x : ℝ) ∧\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n            {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite) ∧\n  (∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                (↑{m : ℕ |\n                      q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                  Type)),\n                (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n              (↑x : ℝ) -\n                ∑' (m : ℕ),\n                  ((↑(q m) : ℝ) -\n                      if\n                          q m ≠ (0 : ℕ) ∧\n                            r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                        (1 : ℝ)\n                      else (0 : ℝ)) *\n                    ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n    ∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                  (↑{m : ℕ |\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hall",
+            "type": {
+              "printed": "reliable",
+              "text": "(∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n    (0 : ℚ) < x ∧\n      Even x.den ∧\n        r (0 : ℕ) = (↑x : ℝ) ∧\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n            {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite) ∧\n  (∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                (↑{m : ℕ |\n                      q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                  Type)),\n                (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n              (↑x : ℝ) -\n                ∑' (m : ℕ),\n                  ((↑(q m) : ℝ) -\n                      if\n                          q m ≠ (0 : ℕ) ∧\n                            r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                        (1 : ℝ)\n                      else (0 : ℝ)) *\n                    ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n    ∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                  (↑{m : ℕ |\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 ",
+              "truncated": true
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    r (0 : ℕ) = (↑x : ℝ) ∧\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n        {m : ℕ |\n              q m ≠ (0 : ℕ) ∧\n                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n          ∃ (s : ℚ),\n            ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n              (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hall",
+      "kind": "have",
+      "name": "hall",
+      "span": {
+        "end_line": 108,
+        "start_line": 28
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "An element `a` of a type `α` with addition satisfies `Even a` if `a = r + r`, for some `r : α`.",
+            "name": "Even",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n    (0 : ℚ) < x ∧\n      Even x.den ∧\n        r (0 : ℕ) = (↑x : ℝ) ∧\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n            {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite) ∧\n  (∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                (↑{m : ℕ |\n                      q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                  Type)),\n                (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n              (↑x : ℝ) -\n                ∑' (m : ℕ),\n                  ((↑(q m) : ℝ) -\n                      if\n                          q m ≠ (0 : ℕ) ∧\n                            r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                        (1 : ℝ)\n                      else (0 : ℝ)) *\n                    ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n    ∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n      (0 : ℚ) ≤ x →\n        r (0 : ℕ) = (↑x : ℝ) →\n          (∀ (m : ℕ),\n              q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n                r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n            ∑' (n :\n                  (↑{m : ℕ |\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 ",
+        "truncated": true
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "x",
+            "type": {
+              "printed": "reliable",
+              "text": "ℚ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "r",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℝ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "q",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hx",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℚ) < x",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hden",
+            "type": {
+              "printed": "reliable",
+              "text": "Even x.den",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h0",
+            "type": {
+              "printed": "reliable",
+              "text": "r (0 : ℕ) = (↑x : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrec",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ),\n  q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n    r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hfin",
+            "type": {
+              "printed": "reliable",
+              "text": "{m : ℕ |\n    ((↑(q m) : ℝ) -\n        if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n        else (0 : ℝ)) ≠\n      (0 : ℝ)}.Finite",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h_account",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n            (↑{m : ℕ |\n                  q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n              Type)),\n            (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n          (↑x : ℝ) -\n            ∑' (m : ℕ),\n              ((↑(q m) : ℝ) -\n                  if\n                      q m ≠ (0 : ℕ) ∧\n                        r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                    (1 : ℝ)\n                  else (0 : ℝ)) *\n                ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h_parity",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) ≤ x →\n    r (0 : ℕ) = (↑x : ℝ) →\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) →\n        ∑' (n :\n              (↑{m : ℕ |\n                    q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n                Type)),\n              (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n            (↑x : ℝ) -\n              ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) →\n          {m : ℕ |\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) ≠\n                  (0 : ℝ)}.Finite →\n            Odd x.den ∨\n              {m : ℕ |\n                    q m ≠ (0 : ℕ) ∧\n                      r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n                ∃ (s : ℚ),\n                  ∑' (m : ℕ),\n                      ((↑(q m) : ℝ) -\n                          if\n                              q m ≠ (0 : ℕ) ∧\n                                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                            (1 : ℝ)\n                          else (0 : ℝ)) *\n                        ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n                    (↑s : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    r (0 : ℕ) = (↑x : ℝ) ∧\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n        {m : ℕ |\n              q m ≠ (0 : ℕ) ∧\n                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n          ∃ (s : ℚ),\n            ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n              (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 109,
+        "start_line": 109
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hodd",
+            "type": {
+              "printed": "reliable",
+              "text": "Odd x.den",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    r (0 : ℕ) = (↑x : ℝ) ∧\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n        {m : ℕ |\n              q m ≠ (0 : ℕ) ∧\n                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n          ∃ (s : ℚ),\n            ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n              (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 111,
+        "start_line": 111
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Anything follows from two contradictory hypotheses.",
+            "name": "absurd",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.not_odd_iff_even",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "{m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite",
+              "truncated": false
+            }
+          },
+          {
+            "name": "s",
+            "type": {
+              "printed": "reliable",
+              "text": "ℚ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hs",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (m : ℕ),\n    ((↑(q m) : ℝ) -\n        if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n        else (0 : ℝ)) *\n      ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n  (↑s : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ),\n  (0 : ℚ) < x ∧\n    r (0 : ℕ) = (↑x : ℝ) ∧\n      (∀ (m : ℕ),\n          q m = ⌊r m / ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))⌋₊ ∧\n            r (m + (1 : ℕ)) = r m - (↑(q m) : ℝ) * ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ)))) ∧\n        {m : ℕ |\n              q m ≠ (0 : ℕ) ∧\n                r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n          ∃ (s : ℚ),\n            ∑' (m : ℕ),\n                ((↑(q m) : ℝ) -\n                    if\n                        q m ≠ (0 : ℕ) ∧\n                          r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                      (1 : ℝ)\n                    else (0 : ℝ)) *\n                  ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n              (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 112,
+        "start_line": 112
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}

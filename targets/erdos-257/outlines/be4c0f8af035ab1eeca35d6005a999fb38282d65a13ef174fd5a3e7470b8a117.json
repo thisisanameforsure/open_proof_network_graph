@@ -1,0 +1,507 @@
+{
+  "artifact": {
+    "hash": "be4c0f8af035ab1eeca35d6005a999fb38282d65a13ef174fd5a3e7470b8a117",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "variant-cce9b284--h2--h3",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (z : ℤ), (↑(q m) : ℝ) - (1 : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hz.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 99,
+            "start_line": 99
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "¬(q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (z : ℤ), (↑(q m) : ℝ) - (0 : ℝ) = (↑z : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hz.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 100,
+            "start_line": 100
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "Existential introduction.",
+                "name": "Exists.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (m : ℕ),\n  ∃ (z : ℤ),\n    ((↑(q m) : ℝ) -\n        if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n        else (0 : ℝ)) =\n      (↑z : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hz",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (m : ℕ),\n  ∃ (z : ℤ),\n    ((↑(q m) : ℝ) -\n        if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n        else (0 : ℝ)) =\n      (↑z : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Odd x.den ∨\n  {m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n    ∃ (s : ℚ),\n      ∑' (m : ℕ),\n          ((↑(q m) : ℝ) -\n              if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                (1 : ℝ)\n              else (0 : ℝ)) *\n            ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n        (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hz",
+      "kind": "have",
+      "name": "hz",
+      "span": {
+        "end_line": 100,
+        "start_line": 95
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ m ∉ hfin.toFinset,\n  ((↑(q m) : ℝ) -\n      if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n      else (0 : ℝ)) =\n    (0 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hS",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ m ∉ hfin.toFinset,\n  ((↑(q m) : ℝ) -\n      if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n      else (0 : ℝ)) =\n    (0 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Odd x.den ∨\n  {m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n    ∃ (s : ℚ),\n      ∑' (m : ℕ),\n          ((↑(q m) : ℝ) -\n              if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                (1 : ℝ)\n              else (0 : ℝ)) *\n            ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n        (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hS",
+      "kind": "have",
+      "name": "hS",
+      "span": {
+        "end_line": 105,
+        "start_line": 101
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.Finite.mem_toFinset",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.mem_ofPred_eq",
+            "tags": []
+          },
+          {
+            "doc": "The Double Negation Theorem: `¬¬P` is equivalent to `P`.",
+            "name": "Classical.not_not",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (s : ℚ),\n  Odd s.den ∧\n    ∑' (m : ℕ),\n        ((↑(q m) : ℝ) -\n            if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n              (1 : ℝ)\n            else (0 : ℝ)) *\n          ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n      (↑s : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "s2",
+            "type": {
+              "printed": "reliable",
+              "text": "ℚ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "Odd s2.den",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hs2",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (m : ℕ),\n    ((↑(q m) : ℝ) -\n        if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then (1 : ℝ)\n        else (0 : ℝ)) *\n      ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n  (↑s2 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Odd x.den ∨\n  {m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n    ∃ (s : ℚ),\n      ∑' (m : ℕ),\n          ((↑(q m) : ℝ) -\n              if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                (1 : ℝ)\n              else (0 : ℝ)) *\n            ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n        (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 108,
+        "start_line": 106
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "{m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Odd x.den ∨\n  {m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n    ∃ (s : ℚ),\n      ∑' (m : ℕ),\n          ((↑(q m) : ℝ) -\n              if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                (1 : ℝ)\n              else (0 : ℝ)) *\n            ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n        (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 110,
+        "start_line": 110
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inr` is \"right injection\" into an `Or`.",
+            "name": "Or.inr",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (s : ℚ),\n  Odd s.den ∧\n    ∑' (n :\n        (↑{m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n          Type)),\n        (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n      (↑s : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "s1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℚ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Odd s1.den",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hs1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "∑' (n :\n    (↑{m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))} :\n      Type)),\n    (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) =\n  (↑s1 : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Odd x.den",
+              "truncated": false
+            }
+          },
+          "id": "s5.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 113,
+            "start_line": 113
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(↑x : ℝ) = (↑(s1 + s2) : ℝ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "steps",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(↑x : ℝ) = (↑(s1 + s2) : ℝ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "x = s1 + s2",
+                  "truncated": false
+                }
+              },
+              "id": "s5.hx'.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 116,
+                "start_line": 116
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "x = s1 + s2",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hx'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "x = s1 + s2",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Odd x.den",
+              "truncated": false
+            }
+          },
+          "id": "s5.hx'",
+          "kind": "have",
+          "name": "hx'",
+          "span": {
+            "end_line": 117,
+            "start_line": 115
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hA",
+            "type": {
+              "printed": "reliable",
+              "text": "¬{m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Odd x.den ∨\n  {m : ℕ | q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ))}.Infinite ∧\n    ∃ (s : ℚ),\n      ∑' (m : ℕ),\n          ((↑(q m) : ℝ) -\n              if q m ≠ (0 : ℕ) ∧ r (m + (1 : ℕ)) ≤ ∑' (j : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (m + (1 : ℕ) + j) - (1 : ℝ)) then\n                (1 : ℝ)\n              else (0 : ℝ)) *\n            ((1 : ℝ) / ((2 : ℝ) ^ m - (1 : ℝ))) =\n        (↑s : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s5",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 119,
+        "start_line": 111
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Set.not_infinite",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Odd.of_dvd_nat",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Rat.add_den_dvd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
