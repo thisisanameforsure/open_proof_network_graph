@@ -1,0 +1,8 @@
+-- hole: h_account
+
+import Mathlib
+
+theorem witness : ∃ (x : ℚ) (r : ℕ → ℝ) (q : ℕ → ℕ), 0 ≤ x ∧ r 0 = x ∧
+    ∀ m : ℕ, q m = ⌊r m / ((1 : ℝ) / (2 ^ m - 1))⌋₊ ∧
+      r (m + 1) = r m - q m * ((1 : ℝ) / (2 ^ m - 1)) :=
+  ⟨0, fun _ => 0, fun _ => 0, le_rfl, by simp, fun m => by simp⟩
