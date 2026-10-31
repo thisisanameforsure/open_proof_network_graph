@@ -1,0 +1,20 @@
+schema: meta/v2
+id: variant-cce9b284
+status: ready
+deps: []
+statement-hash: bfa607a497e9d5d955b7e4d740dd87240c1f0e72847fdba086daeaf3ae992bbc
+origin: variant
+provenance:
+  author: fable-1031-e257
+  model: claude-fable-5-1 (Claude Code), statement drafted from Mike Higgins's repair-walk
+    idea
+  source: null
+  date: '2026-10-31'
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (2 ^ ↑n - 1)
+  justification: Real division; at n = 0 the term is Lean's junk value 0, so a set
+    containing 0 has the same sum as the set without it; the statement is unaffected
+    and the informal problem never uses n = 0 (same reading as the root's and the
+    sibling variant's acknowledgement).
