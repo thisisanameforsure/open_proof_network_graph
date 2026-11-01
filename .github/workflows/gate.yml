@@ -228,7 +228,7 @@ jobs:
           for key, default in (("mode", None), ("node", None), ("needs_gate", False),
                                ("needs_review", False), ("needs_admission", False), ("admit", None),
                                ("needs_exhibits", False), ("needs_qa_rerun", False),
-                               ("reviewers", None)):
+                               ("needs_pair_proof", False), ("reviewers", None)):
               value = doc.get(key, default)
               print(f"{key}={json.dumps(value) if isinstance(value, (bool, list)) else (value or '')}")
           PY
@@ -322,6 +322,25 @@ jobs:
             --graph . --base "$BASE" --head HEAD --sandbox --out "$RUNNER_TEMP/gate-out/qa-rerun" \
             | tee "$RUNNER_TEMP/qa-rerun.txt"
 
+      # F26-T17 (R8): a pair-proof record carries contributor Lean, the direction's template with
+      # its two regions filled. The pinned gate re-reads the record against the tree and judges
+      # the Lean inside the step-3 sandbox (template, regions, no sorry, the standard axioms read
+      # with initializers off, the degenerate guard), and fails the pull request naming the
+      # refusal. No secret, no write permission. Inert on a pin that predates the command:
+      # `needs_pair_proof` then reads false and the step is skipped (F08-Q8's shape). Landed by
+      # F26-T26: the pins had learned the flag before this job read it (F26-Q27).
+      - name: Judge the pair proof inside the step-3 sandbox
+        if: steps.classify.outputs.needs_pair_proof == 'true'
+        env:
+          BASE: ${{ steps.pin.outputs.base }}
+          PYTHONPATH: network/gate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gate-out"
+          uv run --frozen --project network python -m opn_gate.cli pair-proofs \
+            --graph . --base "$BASE" --head HEAD --sandbox --out "$RUNNER_TEMP/gate-out/pair-proofs" \
+            | tee "$RUNNER_TEMP/pair-proofs.txt"
+
       - name: Run the gate
         if: steps.classify.outputs.needs_gate == 'true'
         env:
@@ -340,13 +359,14 @@ jobs:
             | tee "$RUNNER_TEMP/verdict.txt"
 
       - name: Keep the verdict and attestation
-        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true' || steps.classify.outputs.needs_qa_rerun == 'true')
+        if: always() && (steps.classify.outputs.needs_gate == 'true' || steps.classify.outputs.needs_admission == 'true' || steps.classify.outputs.needs_exhibits == 'true' || steps.classify.outputs.needs_qa_rerun == 'true' || steps.classify.outputs.needs_pair_proof == 'true')
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: gate-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/gate-out/*.json
             ${{ runner.temp }}/gate-out/qa-rerun/qa-rerun.json
+            ${{ runner.temp }}/gate-out/pair-proofs/pair-proofs.json
           if-no-files-found: ignore
 
   # D-4 step 9 after steps 1-8 (F07-T8). For a proof or a partial any non-author may approve. For a
