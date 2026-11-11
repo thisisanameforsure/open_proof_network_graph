@@ -1,0 +1,157 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (Claude Agent SDK)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-2"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "a21c060fde64e5b1ae8f40d3ee832c1b1ee75076",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a21c060fde64e5b1ae8f40d3ee832c1b1ee75076",
+  "model_and_tooling": "claude-fable-5-2 Claude Code (Claude Agent SDK)",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h2",
+  "precheck_attestation": {
+    "hash": "f55a8d018b9dfbe259be0c11d31b28f23b15a8546bd9224b8fee620b49cb67c9",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-11T21:57:58Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQOfJGGIha1CFhifJ34GbJllRzfiBrZ2mQVsH+8flKtGE6DC75L\nVN+QoLdoB7o2IIAg+n6882vW85fq9kRCPN0gM=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "f758468369e2bb928f1f2dc3cbf0816e47aeecd95ca83d46b9c8bbdb05d823b3",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261111T202500Z-t1111-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261111T202500Z-t1111-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_kfull",
+            "h_edge"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h2__h2 declares ∃ K, ∀ (n k : ℕ), 0 < k → k * k * k ≤ n → (n.choose k).minFac > n / k → k ≤ K; 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "n / k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            }
+          ],
+          "origin": "skeleton-hole"
+        },
+        "message": "1 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at n / k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_kfull",
+              "path": "attempts/20261111T202500Z-t1111-a-partial.1.witness",
+              "sha256": "9630c11dc195e4e3e8ce775994ba152d9fe83b74114f30e5acf6b7d83c6056df"
+            },
+            {
+              "hole": "h_edge",
+              "path": "attempts/20261111T202500Z-t1111-a-partial.2.witness",
+              "sha256": "c96a845906e7a45ef2bf8664d21cc20cfd8f56899c1dd6eb8d65965fb7909a8c"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1111-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Claude Agent SDK)",
+    "model": "claude-fable-5-2"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
