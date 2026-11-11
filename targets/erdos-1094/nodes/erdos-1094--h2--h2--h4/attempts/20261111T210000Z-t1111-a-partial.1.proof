@@ -1,0 +1,432 @@
+-- hole: h_supply
+private theorem ks_nat (θ : ℝ) (y : ℕ) :
+    ((Finset.Ioo ⌊(y : ℝ)⌋ ⌈(y : ℝ) + (y : ℝ) ^ θ⌉).filter
+        (fun p : ℤ => 0 < p ∧ p.natAbs.Prime ∧ (y : ℝ) < (p : ℝ) ∧ (p : ℝ) < (y : ℝ) + (y : ℝ) ^ θ)).card ≤
+      ((Finset.Ioo y (y + ⌈(y : ℝ) ^ θ⌉₊)).filter
+        (fun p : ℕ => p.Prime ∧ (p : ℝ) < (y : ℝ) + (y : ℝ) ^ θ)).card := by
+  apply Finset.card_le_card_of_injOn (fun p : ℤ => p.natAbs)
+  · intro p hp
+    have hp' := (Finset.mem_filter.mp (Finset.mem_coe.mp hp)).2
+    obtain ⟨hp0, hpr, hyp, hpy⟩ := hp'
+    have hq : ((p.natAbs : ℕ) : ℤ) = p := Int.natAbs_of_nonneg hp0.le
+    have hqR : ((p.natAbs : ℕ) : ℝ) = (p : ℝ) := by rw [← Int.cast_natCast, hq]
+    simp only [Finset.coe_filter, Finset.mem_Ioo, Set.mem_ofPred_eq]
+    refine ⟨⟨?_, ?_⟩, hpr, by rw [hqR]; exact hpy⟩
+    · have : (y : ℝ) < ((p.natAbs : ℕ) : ℝ) := by rw [hqR]; exact hyp
+      exact_mod_cast this
+    · have h1 : ((p.natAbs : ℕ) : ℝ) < (y : ℝ) + (⌈(y : ℝ) ^ θ⌉₊ : ℝ) := by
+        rw [hqR]; linarith [Nat.le_ceil ((y : ℝ) ^ θ)]
+      exact_mod_cast h1
+  · intro p1 hp1 p2 hp2 h
+    have h1 := (Finset.mem_filter.mp (Finset.mem_coe.mp hp1)).2.1
+    have h2 := (Finset.mem_filter.mp (Finset.mem_coe.mp hp2)).2.1
+    simp only at h
+    omega
+
+private theorem ks_card (k Q : ℕ) (B I : ℕ → ℕ) (T : ℕ → Finset ℕ) (S : Finset ℕ)
+    (hT : ∀ q ∈ Finset.Icc 2 Q, ∀ i < I q, ∀ p ∈ T (k / q + i * B q),
+      p.Prime ∧ k / q + i * B q < p ∧ p < k / q + (i + 1) * B q)
+    (hbig : ∀ q ∈ Finset.Icc 2 Q, Q < k / q)
+    (hS : ∀ q ∈ Finset.Icc 2 Q, ∀ i < I q, ∀ p ∈ T (k / q + i * B q), q * p ∈ S) :
+    ∑ q ∈ Finset.Icc 2 Q, ∑ i ∈ Finset.range (I q), (T (k / q + i * B q)).card ≤ S.card := by
+  classical
+  let U : Finset (Σ _ : ℕ, ℕ) := (Finset.Icc 2 Q).sigma (fun q => Finset.range (I q))
+  let t : (Σ _ : ℕ, ℕ) → Finset ℕ := fun u => (T (k / u.1 + u.2 * B u.1)).image (fun p => u.1 * p)
+  have hU : ∀ u ∈ U, u.1 ∈ Finset.Icc 2 Q ∧ u.2 < I u.1 := by
+    intro u hu
+    have := Finset.mem_sigma.mp hu
+    exact ⟨this.1, Finset.mem_range.mp this.2⟩
+  have hsub : U.biUnion t ⊆ S := by
+    intro m hm
+    obtain ⟨u, hu, hmu⟩ := Finset.mem_biUnion.mp hm
+    obtain ⟨p, hp, rfl⟩ := Finset.mem_image.mp hmu
+    exact hS u.1 (hU u hu).1 u.2 (hU u hu).2 p hp
+  have hdisj : (U : Set (Σ _ : ℕ, ℕ)).PairwiseDisjoint t := by
+    intro u hu v hv huv
+    rw [Function.onFun, Finset.disjoint_left]
+    intro m hm1 hm2
+    apply huv
+    obtain ⟨p1, hp1, e1⟩ := Finset.mem_image.mp hm1
+    obtain ⟨p2, hp2, e2⟩ := Finset.mem_image.mp hm2
+    obtain ⟨hq1, hi1⟩ := hU u (Finset.mem_coe.mp hu)
+    obtain ⟨hq2, hi2⟩ := hU v (Finset.mem_coe.mp hv)
+    obtain ⟨q1, i1⟩ := u
+    obtain ⟨q2, i2⟩ := v
+    simp only at hp1 hp2 e1 e2 hq1 hq2 hi1 hi2
+    obtain ⟨hpr1, hl1, hu1⟩ := hT q1 hq1 i1 hi1 p1 hp1
+    obtain ⟨hpr2, hl2, hu2⟩ := hT q2 hq2 i2 hi2 p2 hp2
+    have hb1 := hbig q1 hq1
+    have hb2 := hbig q2 hq2
+    have hq1' := Finset.mem_Icc.mp hq1
+    have hq2' := Finset.mem_Icc.mp hq2
+    have hdvd : p1 ∣ q2 * p2 := ⟨q1, by rw [e2, ← e1]; ring⟩
+    have hpp : p1 = p2 := by
+      rcases (Nat.Prime.dvd_mul hpr1).mp hdvd with h | h
+      · have := Nat.le_of_dvd (by omega) h
+        omega
+      · exact (Nat.prime_dvd_prime_iff_eq hpr1 hpr2).mp h
+    subst hpp
+    have hqq : q1 = q2 := Nat.eq_of_mul_eq_mul_right hpr1.pos (by rw [e1, e2])
+    subst hqq
+    have hii : i1 = i2 := by
+      rcases Nat.lt_trichotomy i1 i2 with h | h | h
+      · have := Nat.mul_le_mul_right (B q1) (show i1 + 1 ≤ i2 from h)
+        omega
+      · exact h
+      · have := Nat.mul_le_mul_right (B q1) (show i2 + 1 ≤ i1 from h)
+        omega
+    subst hii
+    rfl
+  calc ∑ q ∈ Finset.Icc 2 Q, ∑ i ∈ Finset.range (I q), (T (k / q + i * B q)).card
+      = ∑ u ∈ U, (t u).card := by
+        rw [Finset.sum_sigma]
+        apply Finset.sum_congr rfl
+        intro q hq
+        apply Finset.sum_congr rfl
+        intro i _
+        have hq' := Finset.mem_Icc.mp hq
+        exact (Finset.card_image_of_injective _ (mul_right_injective₀ (by omega : q ≠ 0))).symm
+    _ = (U.biUnion t).card := (Finset.card_biUnion hdisj).symm
+    _ ≤ S.card := Finset.card_le_card hsub
+
+private theorem ks_q_mem (θ : ℝ) (hθ0 : 0 < θ) (k q Hn : ℕ) (T : ℕ → Finset ℕ)
+    (hTmem : ∀ y p, p ∈ T y → p.Prime ∧ y < p ∧ p < y + ⌈(y : ℝ) ^ θ⌉₊)
+    (_hq : 2 ≤ q) (hHk : Hn ≤ k) :
+    ∀ i < Hn / (q * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊), ∀ p ∈ T (k / q + i * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊),
+      p.Prime ∧ k / q + i * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊ < p ∧
+        p < k / q + (i + 1) * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊ ∧
+        i * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊ ≤ k / q := by
+  generalize hB : ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊ = B
+  generalize hx : k / q = x at hB
+  intro i hi p hp
+  have hiB : i * B ≤ x := by
+    have h1 : i * B ≤ (Hn / (q * B)) * B := Nat.mul_le_mul_right B hi.le
+    have h2 : Hn / (q * B) = Hn / q / B := (Nat.div_div_eq_div_mul Hn q B).symm
+    have h3 : Hn / q / B * B ≤ Hn / q := Nat.div_mul_le_self _ _
+    have h4 : Hn / q ≤ k / q := Nat.div_le_div_right hHk
+    rw [h2] at h1
+    omega
+  obtain ⟨hpr, hl, hu⟩ := hTmem _ p hp
+  have hy : (((x + i * B : ℕ)) : ℝ) ≤ 2 * (x : ℝ) := by
+    have : (x + i * B : ℕ) ≤ 2 * x := by omega
+    exact_mod_cast this
+  have hceil : ⌈(((x + i * B : ℕ)) : ℝ) ^ θ⌉₊ ≤ B := by
+    exact le_trans (Nat.ceil_le_ceil (Real.rpow_le_rpow (by positivity) hy hθ0.le)) (le_of_eq hB)
+  refine ⟨hpr, hl, ?_, hiB⟩
+  have e : x + (i + 1) * B = x + i * B + B := by ring
+  omega
+
+private theorem ks_q_sum (θ : ℝ) (hθ0 : 0 < θ) (C : ℝ) (hC : 0 < C) (kb k q Hn x B I : ℕ)
+    (T : ℕ → Finset ℕ)
+    (hBHP : ∀ y : ℕ, kb ≤ y → C * (y : ℝ) ^ θ / Real.log (y : ℝ) ≤ ((T y).card : ℝ))
+    (hq : 2 ≤ q) (hx2 : 2 ≤ x) (hxk : 2 * x ≤ k) (hkb : kb ≤ x)
+    (hB1 : (B : ℝ) ≤ 4 * (x : ℝ) ^ θ) (hBpos : 0 < B) (hI : I = Hn / (q * B))
+    (hiB : ∀ i < I, i * B ≤ x) :
+    C / Real.log (k : ℝ) * ((Hn : ℝ) / (4 * (q : ℝ)) - (k : ℝ) ^ θ) ≤
+      ∑ i ∈ Finset.range I, ((T (x + i * B)).card : ℝ) := by
+  have hx0 : (0 : ℝ) < (x : ℝ) := by exact_mod_cast (show 0 < x by omega)
+  have hx2' : (2 : ℝ) ≤ (x : ℝ) := by exact_mod_cast hx2
+  have hxk' : (2 : ℝ) * (x : ℝ) ≤ (k : ℝ) := by exact_mod_cast hxk
+  have hq0 : (0 : ℝ) < (q : ℝ) := by exact_mod_cast (show 0 < q by omega)
+  have hlogk : 0 < Real.log (k : ℝ) := Real.log_pos (by linarith)
+  have hxθ : 0 < (x : ℝ) ^ θ := Real.rpow_pos_of_pos hx0 _
+  have hxkθ : (x : ℝ) ^ θ ≤ (k : ℝ) ^ θ := Real.rpow_le_rpow hx0.le (by linarith) hθ0.le
+  have hterm : ∀ i ∈ Finset.range I, C * (x : ℝ) ^ θ / Real.log (k : ℝ) ≤ ((T (x + i * B)).card : ℝ) := by
+    intro i hi
+    have hi' := hiB i (Finset.mem_range.mp hi)
+    have hy1 : (x : ℝ) ≤ ((x + i * B : ℕ) : ℝ) := by exact_mod_cast (show x ≤ x + i * B by omega)
+    have hy2 : ((x + i * B : ℕ) : ℝ) ≤ (k : ℝ) := by exact_mod_cast (show x + i * B ≤ k by omega)
+    refine le_trans ?_ (hBHP (x + i * B) (by omega))
+    have hlogy : 0 < Real.log ((x + i * B : ℕ) : ℝ) := Real.log_pos (by linarith)
+    have hlogle : Real.log ((x + i * B : ℕ) : ℝ) ≤ Real.log (k : ℝ) := Real.log_le_log (by linarith) hy2
+    have hpow : (x : ℝ) ^ θ ≤ ((x + i * B : ℕ) : ℝ) ^ θ := Real.rpow_le_rpow hx0.le hy1 hθ0.le
+    exact div_le_div₀ (by positivity) (mul_le_mul_of_nonneg_left hpow hC.le) hlogy hlogle
+  have hsum : (I : ℝ) * (C * (x : ℝ) ^ θ / Real.log (k : ℝ)) ≤
+      ∑ i ∈ Finset.range I, ((T (x + i * B)).card : ℝ) := by
+    have := Finset.sum_le_sum hterm
+    simpa [Finset.sum_const, Finset.card_range] using this
+  refine le_trans ?_ hsum
+  have hdivN : Hn < q * B * (Hn / (q * B) + 1) := Nat.lt_mul_div_succ Hn (by positivity)
+  have hdiv : (Hn : ℝ) < (q : ℝ) * (B : ℝ) * ((I : ℝ) + 1) := by
+    rw [hI]; exact_mod_cast hdivN
+  have h1 : (q : ℝ) * (B : ℝ) * ((I : ℝ) + 1) ≤ (q : ℝ) * (4 * (x : ℝ) ^ θ) * ((I : ℝ) + 1) := by
+    apply mul_le_mul_of_nonneg_right _ (by positivity)
+    exact mul_le_mul_of_nonneg_left hB1 hq0.le
+  have h2 : (Hn : ℝ) / (4 * (q : ℝ)) < (x : ℝ) ^ θ * ((I : ℝ) + 1) := by
+    rw [div_lt_iff₀ (by positivity)]
+    calc (Hn : ℝ) < (q : ℝ) * (4 * (x : ℝ) ^ θ) * ((I : ℝ) + 1) := lt_of_lt_of_le hdiv h1
+      _ = (x : ℝ) ^ θ * ((I : ℝ) + 1) * (4 * (q : ℝ)) := by ring
+  have h3 : (Hn : ℝ) / (4 * (q : ℝ)) - (k : ℝ) ^ θ ≤ (I : ℝ) * (x : ℝ) ^ θ := by
+    have : (x : ℝ) ^ θ * ((I : ℝ) + 1) = (I : ℝ) * (x : ℝ) ^ θ + (x : ℝ) ^ θ := by ring
+    linarith
+  calc C / Real.log (k : ℝ) * ((Hn : ℝ) / (4 * (q : ℝ)) - (k : ℝ) ^ θ)
+      ≤ C / Real.log (k : ℝ) * ((I : ℝ) * (x : ℝ) ^ θ) :=
+        mul_le_mul_of_nonneg_left h3 (div_nonneg hC.le hlogk.le)
+    _ = (I : ℝ) * (C * (x : ℝ) ^ θ / Real.log (k : ℝ)) := by ring
+
+private lemma KS_harmonic (Q : ℕ) :
+    Real.log ((Q : ℝ) + 1) - 1 ≤ ∑ q ∈ Finset.Icc 2 Q, (1 / (q : ℝ)) := by
+  have h1 : Real.log ((Q : ℝ) + 1) ≤ ((harmonic Q : ℚ) : ℝ) := by
+    have := log_add_one_le_harmonic Q
+    exact_mod_cast this
+  have h2 : ((harmonic Q : ℚ) : ℝ) = ∑ q ∈ Finset.Icc 1 Q, (1 / (q : ℝ)) := by
+    rw [harmonic_eq_sum_Icc]
+    push_cast
+    apply Finset.sum_congr rfl
+    intro q _
+    simp
+  rcases Nat.eq_zero_or_pos Q with hQ | hQ
+  · subst hQ; simp
+  · have h3 : ∑ q ∈ Finset.Icc 1 Q, (1 / (q : ℝ)) = 1 + ∑ q ∈ Finset.Icc 2 Q, (1 / (q : ℝ)) := by
+      have hI : Finset.Icc 1 Q = insert 1 (Finset.Icc 2 Q) := by
+        ext x; simp only [Finset.mem_Icc, Finset.mem_insert]; omega
+      rw [hI, Finset.sum_insert (by simp)]
+      norm_num
+    linarith
+private theorem ks_iB (k q Hn B i : ℕ) (hHk : Hn ≤ k) (hi : i < Hn / (q * B)) : i * B ≤ k / q := by
+  have h1 : i * B ≤ (Hn / (q * B)) * B := Nat.mul_le_mul_right B hi.le
+  have h2 : Hn / (q * B) = Hn / q / B := (Nat.div_div_eq_div_mul Hn q B).symm
+  have h3 : Hn / q / B * B ≤ Hn / q := Nat.div_mul_le_self _ _
+  have h4 : Hn / q ≤ k / q := Nat.div_le_div_right hHk
+  rw [h2] at h1
+  omega
+
+private theorem ks_B_le (θ : ℝ) (hθ0 : 0 < θ) (hθ1 : θ ≤ 1) (x : ℕ) (hx : 1 ≤ x) :
+    0 < ⌈(2 * (x : ℝ)) ^ θ⌉₊ ∧ ((⌈(2 * (x : ℝ)) ^ θ⌉₊ : ℕ) : ℝ) ≤ 4 * (x : ℝ) ^ θ := by
+  have hx1 : (1 : ℝ) ≤ (x : ℝ) := by exact_mod_cast hx
+  have hpos : 0 < (2 * (x : ℝ)) ^ θ := Real.rpow_pos_of_pos (by linarith) _
+  refine ⟨Nat.ceil_pos.mpr hpos, ?_⟩
+  have h1 : ((⌈(2 * (x : ℝ)) ^ θ⌉₊ : ℕ) : ℝ) < (2 * (x : ℝ)) ^ θ + 1 := Nat.ceil_lt_add_one hpos.le
+  have h2 : (2 * (x : ℝ)) ^ θ = (2 : ℝ) ^ θ * (x : ℝ) ^ θ := Real.mul_rpow (by norm_num) (by linarith)
+  have h3 : (2 : ℝ) ^ θ ≤ 2 := by
+    have := Real.rpow_le_rpow_of_exponent_le (by norm_num : (1 : ℝ) ≤ 2) hθ1
+    simpa using this
+  have h4 : (1 : ℝ) ≤ (x : ℝ) ^ θ := Real.one_le_rpow hx1 hθ0.le
+  have h5 : (2 : ℝ) ^ θ * (x : ℝ) ^ θ ≤ 2 * (x : ℝ) ^ θ := mul_le_mul_of_nonneg_right h3 (by linarith)
+  linarith
+
+private theorem ks_main (θ : ℝ) (hθ0 : 0 < θ) (hθ1 : θ ≤ 1) (C : ℝ) (hC : 0 < C)
+    (kb k Q Hn : ℕ) (W Hr : ℝ) (T : ℕ → Finset ℕ)
+    (hTmem : ∀ y p, p ∈ T y → p.Prime ∧ y < p ∧ p < y + ⌈(y : ℝ) ^ θ⌉₊)
+    (hBHP : ∀ y : ℕ, kb ≤ y → C * (y : ℝ) ^ θ / Real.log (y : ℝ) ≤ ((T y).card : ℝ))
+    (hQW : (Q : ℝ) ≤ W) (hHn : (Hn : ℝ) ≤ Hr) (hHk : Hn ≤ k) (hQ2 : 2 ≤ Q)
+    (hQk : (Q + 1) * Q ≤ k) (hkb : kb * Q ≤ k) :
+    ∃ S : Finset ℕ,
+      (∀ m ∈ S, k < m ∧ (m : ℝ) ≤ (k : ℝ) + Hr ∧
+        ∃ (q : ℕ) (p : ℕ), 2 ≤ q ∧ (q : ℝ) ≤ W ∧ Nat.Prime p ∧ m = q * p) ∧
+      C / Real.log (k : ℝ) * ((Hn : ℝ) / 4 * (Real.log ((Q : ℝ) + 1) - 1) - (Q : ℝ) * (k : ℝ) ^ θ) ≤
+        (S.card : ℝ) := by
+  classical
+  refine ⟨(Finset.Ioc k (k + Hn)).filter
+    (fun m => ∃ (q : ℕ) (p : ℕ), 2 ≤ q ∧ (q : ℝ) ≤ W ∧ Nat.Prime p ∧ m = q * p), ?_, ?_⟩
+  · intro m hm
+    obtain ⟨hI, hex⟩ := Finset.mem_filter.mp hm
+    obtain ⟨h1, h2⟩ := Finset.mem_Ioc.mp hI
+    refine ⟨h1, ?_, hex⟩
+    have : (m : ℝ) ≤ ((k + Hn : ℕ) : ℝ) := by exact_mod_cast h2
+    push_cast at this
+    linarith
+  have hk4 : 4 ≤ k := by nlinarith
+  have hlogk : 0 < Real.log (k : ℝ) :=
+    Real.log_pos (by exact_mod_cast (show 1 < k by omega))
+  have hbig : ∀ q ∈ Finset.Icc 2 Q, Q < k / q := by
+    intro q hq
+    have hq' := Finset.mem_Icc.mp hq
+    have h1 : (Q + 1) * q ≤ (Q + 1) * Q := Nat.mul_le_mul_left _ hq'.2
+    exact (Nat.le_div_iff_mul_le (by omega)).2 (le_trans h1 hQk)
+  have hcard := ks_card k Q (fun q => ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)
+    (fun q => Hn / (q * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)) T
+    ((Finset.Ioc k (k + Hn)).filter
+      (fun m => ∃ (q : ℕ) (p : ℕ), 2 ≤ q ∧ (q : ℝ) ≤ W ∧ Nat.Prime p ∧ m = q * p))
+    (by
+      intro q hq i hi p hp
+      have hq' := Finset.mem_Icc.mp hq
+      obtain ⟨a, b, c, _⟩ := ks_q_mem θ hθ0 k q Hn T hTmem hq'.1 hHk i hi p hp
+      exact ⟨a, b, c⟩)
+    hbig
+    (by
+      intro q hq i hi p hp
+      have hq' := Finset.mem_Icc.mp hq
+      obtain ⟨hpr, hl, hu, _⟩ := ks_q_mem θ hθ0 k q Hn T hTmem hq'.1 hHk i hi p hp
+      have hi' : i < Hn / (q * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊) := hi
+      clear hi
+      generalize ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊ = B at hi' hl hu
+      rw [Finset.mem_filter, Finset.mem_Ioc]
+      have e1 := Nat.div_add_mod k q
+      have e2 := Nat.mod_lt k (show 0 < q by omega)
+      have e3 : q * (k / q + 1) ≤ q * p := Nat.mul_le_mul_left q (by omega)
+      have e4 : q * (k / q + 1) = q * (k / q) + q := by ring
+      have e5 : q * p ≤ q * (k / q + (i + 1) * B) := Nat.mul_le_mul_left q hu.le
+      have e6 : q * (k / q + (i + 1) * B) = q * (k / q) + (q * B) * (i + 1) := by ring
+      have e7 : (q * B) * (i + 1) ≤ (q * B) * (Hn / (q * B)) := Nat.mul_le_mul_left _ hi'
+      have e8 : (q * B) * (Hn / (q * B)) ≤ Hn := Nat.mul_div_le Hn (q * B)
+      refine ⟨⟨by omega, by omega⟩, q, p, hq'.1, ?_, hpr, rfl⟩
+      have : (q : ℝ) ≤ (Q : ℝ) := by exact_mod_cast hq'.2
+      linarith)
+  have hreal : ∑ q ∈ Finset.Icc 2 Q, (C / Real.log (k : ℝ) * ((Hn : ℝ) / (4 * (q : ℝ)) - (k : ℝ) ^ θ)) ≤
+      ∑ q ∈ Finset.Icc 2 Q, ∑ i ∈ Finset.range (Hn / (q * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)),
+        ((T (k / q + i * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)).card : ℝ) := by
+    apply Finset.sum_le_sum
+    intro q hq
+    have hq' := Finset.mem_Icc.mp hq
+    have hb := hbig q hq
+    have hxk : 2 * (k / q) ≤ k := by
+      have h1 : k / q * q ≤ k := Nat.div_mul_le_self k q
+      have h2 : k / q * 2 ≤ k / q * q := Nat.mul_le_mul_left _ hq'.1
+      omega
+    have hkbx : kb ≤ k / q := by
+      have h1 : kb * q ≤ kb * Q := Nat.mul_le_mul_left _ hq'.2
+      exact (Nat.le_div_iff_mul_le (by omega)).2 (le_trans h1 hkb)
+    obtain ⟨hBpos, hB1⟩ := ks_B_le θ hθ0 hθ1 (k / q) (by omega)
+    exact ks_q_sum θ hθ0 C hC kb k q Hn (k / q) _ _ T hBHP hq'.1 (by omega) hxk hkbx hB1 hBpos rfl
+      (fun i hi => ks_iB k q Hn _ i hHk hi)
+  have hsumq : ∑ q ∈ Finset.Icc 2 Q, (C / Real.log (k : ℝ) * ((Hn : ℝ) / (4 * (q : ℝ)) - (k : ℝ) ^ θ)) =
+      C / Real.log (k : ℝ) * ((Hn : ℝ) / 4 * ∑ q ∈ Finset.Icc 2 Q, (1 / (q : ℝ)) -
+        ((Finset.Icc 2 Q).card : ℝ) * (k : ℝ) ^ θ) := by
+    rw [← Finset.mul_sum, Finset.sum_sub_distrib, Finset.sum_const, nsmul_eq_mul, Finset.mul_sum]
+    congr 2
+    apply Finset.sum_congr rfl
+    intro q _
+    ring
+  have hharm := KS_harmonic Q
+  have hcardQ : ((Finset.Icc 2 Q).card : ℝ) ≤ (Q : ℝ) := by
+    have : (Finset.Icc 2 Q).card ≤ Q := by rw [Nat.card_Icc]; omega
+    exact_mod_cast this
+  have hkθ : 0 ≤ (k : ℝ) ^ θ := Real.rpow_nonneg (Nat.cast_nonneg _) _
+  have hHn0 : (0 : ℝ) ≤ (Hn : ℝ) / 4 := by positivity
+  have hfin : C / Real.log (k : ℝ) * ((Hn : ℝ) / 4 * (Real.log ((Q : ℝ) + 1) - 1) - (Q : ℝ) * (k : ℝ) ^ θ) ≤
+      C / Real.log (k : ℝ) * ((Hn : ℝ) / 4 * ∑ q ∈ Finset.Icc 2 Q, (1 / (q : ℝ)) -
+        ((Finset.Icc 2 Q).card : ℝ) * (k : ℝ) ^ θ) := by
+    apply mul_le_mul_of_nonneg_left _ (div_nonneg hC.le hlogk.le)
+    have a1 := mul_le_mul_of_nonneg_left hharm hHn0
+    have a2 := mul_le_mul_of_nonneg_right hcardQ hkθ
+    linarith
+  have hcast : (∑ q ∈ Finset.Icc 2 Q, ∑ i ∈ Finset.range (Hn / (q * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)),
+        ((T (k / q + i * ⌈(2 * ((k / q : ℕ) : ℝ)) ^ θ⌉₊)).card : ℝ)) ≤
+      ((((Finset.Ioc k (k + Hn)).filter
+      (fun m => ∃ (q : ℕ) (p : ℕ), 2 ≤ q ∧ (q : ℝ) ≤ W ∧ Nat.Prime p ∧ m = q * p)).card : ℕ) : ℝ) := by
+    exact_mod_cast hcard
+  linarith [hsumq ▸ hreal]
+
+private theorem ks_final_ineq (C H L Hn lQ Er : ℝ) (hC : 0 < C) (hL : 200 ≤ L) (hH : 2 ≤ H)
+    (hHn : H - 1 ≤ Hn) (hlQ : L / 100 ≤ lQ) (hE : Er ≤ H / 16) :
+    C / 3200 * H ≤ C / L * (Hn / 4 * (lQ - 1) - Er) := by
+  have hL0 : 0 < L := by linarith
+  have b1 : H / 8 ≤ Hn / 4 := by linarith
+  have b2 : L / 100 - 1 ≤ lQ - 1 := by linarith
+  have b3 : H / 8 * (L / 100 - 1) ≤ Hn / 4 * (lQ - 1) :=
+    mul_le_mul b1 b2 (by linarith) (by linarith)
+  have b4 : 0 ≤ H * (L - 200) := mul_nonneg (by linarith) (by linarith)
+  have b5 : H * L / 3200 ≤ Hn / 4 * (lQ - 1) - Er := by nlinarith
+  have b6 : C / L * (H * L / 3200) ≤ C / L * (Hn / 4 * (lQ - 1) - Er) :=
+    mul_le_mul_of_nonneg_left b5 (div_nonneg hC.le hL0.le)
+  have b7 : C / L * (H * L / 3200) = C / 3200 * H := by
+    field_simp
+  linarith
+
+private theorem ks_supply
+    (hB0 : ∃ C : ℝ, 0 < C ∧ ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+      C * (k : ℝ) ^ (21 / 40 : ℝ) / Real.log (k : ℝ) ≤
+        (((Finset.Ioo ⌊(k : ℝ)⌋ ⌈(k : ℝ) + (k : ℝ) ^ (21 / 40 : ℝ)⌉).filter
+          (fun p : ℤ => 0 < p ∧ p.natAbs.Prime ∧ (k : ℝ) < (p : ℝ) ∧
+            (p : ℝ) < (k : ℝ) + (k : ℝ) ^ (21 / 40 : ℝ))).card : ℝ)) :
+    ∃ c₁ : ℝ, 0 < c₁ ∧ ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+      ∃ S : Finset ℕ,
+        (∀ m ∈ S, k < m ∧ (m : ℝ) ≤ (k : ℝ) + (k : ℝ) ^ (3 / 5 : ℝ) ∧
+          ∃ (q : ℕ) (p : ℕ), 2 ≤ q ∧ (q : ℝ) ≤ (k : ℝ) ^ (1 / 100 : ℝ) ∧ Nat.Prime p ∧ m = q * p) ∧
+        c₁ * (k : ℝ) ^ (3 / 5 : ℝ) ≤ (S.card : ℝ) := by
+  classical
+  obtain ⟨C, hC, kb, hkb⟩ := hB0
+  refine ⟨C / 3200, by positivity, ?_⟩
+  have e1 : ∀ᶠ k : ℕ in Filter.atTop, ((max kb 2 : ℕ) : ℝ) ≤ (k : ℝ) ^ (1 / 100 : ℝ) :=
+    ((tendsto_rpow_atTop (by norm_num : (0 : ℝ) < 1 / 100)).comp
+      tendsto_natCast_atTop_atTop).eventually_ge_atTop _
+  have e2 : ∀ᶠ k : ℕ in Filter.atTop, (200 : ℝ) ≤ Real.log (k : ℝ) :=
+    (Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop).eventually_ge_atTop _
+  have e3 : ∀ᶠ k : ℕ in Filter.atTop, (16 : ℝ) ≤ (k : ℝ) ^ (13 / 200 : ℝ) :=
+    ((tendsto_rpow_atTop (by norm_num : (0 : ℝ) < 13 / 200)).comp
+      tendsto_natCast_atTop_atTop).eventually_ge_atTop _
+  have e4 : ∀ᶠ k : ℕ in Filter.atTop, (2 : ℝ) ≤ (k : ℝ) ^ (3 / 5 : ℝ) :=
+    ((tendsto_rpow_atTop (by norm_num : (0 : ℝ) < 3 / 5)).comp
+      tendsto_natCast_atTop_atTop).eventually_ge_atTop _
+  obtain ⟨k₀, hk₀⟩ := Filter.eventually_atTop.mp (e1.and (e2.and (e3.and e4)))
+  refine ⟨max k₀ 1, fun k hk => ?_⟩
+  obtain ⟨h1, h2, h3, h4⟩ := hk₀ k (le_trans (le_max_left _ _) hk)
+  have hk1 : 1 ≤ k := le_trans (le_max_right _ _) hk
+  have hk0 : (0 : ℝ) < (k : ℝ) := by exact_mod_cast hk1
+  have hk1' : (1 : ℝ) ≤ (k : ℝ) := by exact_mod_cast hk1
+  -- w = k^(1/100)
+  have hw100 : ((k : ℝ) ^ (1 / 100 : ℝ)) ^ (100 : ℕ) = (k : ℝ) := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul hk0.le]; norm_num
+  have hEk : (k : ℝ) ^ ((21 / 40 : ℝ) + 1 / 100) * (k : ℝ) ^ (13 / 200 : ℝ) = (k : ℝ) ^ (3 / 5 : ℝ) := by
+    rw [← Real.rpow_add hk0]; norm_num
+  have hEsplit : (k : ℝ) ^ ((21 / 40 : ℝ) + 1 / 100) = (k : ℝ) ^ (1 / 100 : ℝ) * (k : ℝ) ^ (21 / 40 : ℝ) := by
+    rw [← Real.rpow_add hk0]; norm_num
+  have hlogw : Real.log ((k : ℝ) ^ (1 / 100 : ℝ)) = Real.log (k : ℝ) / 100 := by
+    rw [Real.log_rpow hk0]; ring
+  have hHk : (k : ℝ) ^ (3 / 5 : ℝ) ≤ (k : ℝ) := by
+    have := Real.rpow_le_rpow_of_exponent_le hk1' (by norm_num : (3 / 5 : ℝ) ≤ 1)
+    simpa using this
+  have hθpos : 0 < (k : ℝ) ^ (21 / 40 : ℝ) := Real.rpow_pos_of_pos hk0 _
+  have hEpos : 0 < (k : ℝ) ^ ((21 / 40 : ℝ) + 1 / 100) := Real.rpow_pos_of_pos hk0 _
+  generalize hw : (k : ℝ) ^ (1 / 100 : ℝ) = w at h1 hw100 hEsplit hlogw
+  generalize hH : (k : ℝ) ^ (3 / 5 : ℝ) = H at h4 hEk hHk
+  have hmax : ((max kb 2 : ℕ) : ℝ) = max (kb : ℝ) 2 := by push_cast; rfl
+  have hwkb : (kb : ℝ) ≤ w := le_trans (le_max_left _ _) (hmax ▸ h1)
+  have hw2 : (2 : ℝ) ≤ w := le_trans (le_max_right _ _) (hmax ▸ h1)
+  have hQle : ((⌊w⌋₊ : ℕ) : ℝ) ≤ w := Nat.floor_le (by linarith)
+  have hQ2 : 2 ≤ ⌊w⌋₊ := Nat.le_floor (by exact_mod_cast hw2)
+  have hQlt : w < ((⌊w⌋₊ : ℕ) : ℝ) + 1 := Nat.lt_floor_add_one w
+  have hHnle : ((⌊H⌋₊ : ℕ) : ℝ) ≤ H := Nat.floor_le (by linarith)
+  have hHnlt : H < ((⌊H⌋₊ : ℕ) : ℝ) + 1 := Nat.lt_floor_add_one H
+  have hHnk : ⌊H⌋₊ ≤ k := Nat.floor_le_of_le hHk
+  have hw3 : w ^ 3 ≤ w ^ 100 := pow_le_pow_right₀ (by linarith) (by norm_num)
+  have hww : w * w ≤ w ^ 3 := by nlinarith [mul_nonneg (by linarith : (0:ℝ) ≤ w) (by linarith : (0:ℝ) ≤ w)]
+  have hQk : (⌊w⌋₊ + 1) * ⌊w⌋₊ ≤ k := by
+    have : (((⌊w⌋₊ + 1) * ⌊w⌋₊ : ℕ) : ℝ) ≤ (k : ℝ) := by
+      push_cast
+      have a1 : (((⌊w⌋₊ : ℕ) : ℝ) + 1) * ((⌊w⌋₊ : ℕ) : ℝ) ≤ (w + 1) * w :=
+        mul_le_mul (by linarith) hQle (by positivity) (by linarith)
+      nlinarith
+    exact_mod_cast this
+  have hkbQ : kb * ⌊w⌋₊ ≤ k := by
+    have : ((kb * ⌊w⌋₊ : ℕ) : ℝ) ≤ (k : ℝ) := by
+      push_cast
+      have a1 : (kb : ℝ) * ((⌊w⌋₊ : ℕ) : ℝ) ≤ w * w :=
+        mul_le_mul hwkb hQle (by positivity) (by linarith)
+      linarith
+    exact_mod_cast this
+  obtain ⟨S, hS, hcard⟩ := ks_main (21 / 40) (by norm_num) (by norm_num) C hC kb k ⌊w⌋₊ ⌊H⌋₊ w H
+    (fun y => (Finset.Ioo y (y + ⌈(y : ℝ) ^ (21 / 40 : ℝ)⌉₊)).filter
+      (fun p : ℕ => p.Prime ∧ (p : ℝ) < (y : ℝ) + (y : ℝ) ^ (21 / 40 : ℝ)))
+    (by
+      intro y p hp
+      obtain ⟨hI, hpr, _⟩ := Finset.mem_filter.mp hp
+      obtain ⟨a, b⟩ := Finset.mem_Ioo.mp hI
+      exact ⟨hpr, a, b⟩)
+    (fun y hy => le_trans (hkb y hy) (by exact_mod_cast ks_nat (21 / 40) y))
+    hQle hHnle hHnk hQ2 hQk hkbQ
+  refine ⟨S, hS, le_trans ?_ hcard⟩
+  apply ks_final_ineq C H (Real.log (k : ℝ)) _ _ _ hC h2 h4 (by linarith)
+  · rw [← hlogw]
+    exact Real.log_le_log (by linarith) hQlt.le
+  · have a1 : ((⌊w⌋₊ : ℕ) : ℝ) * (k : ℝ) ^ (21 / 40 : ℝ) ≤ w * (k : ℝ) ^ (21 / 40 : ℝ) :=
+      mul_le_mul_of_nonneg_right hQle hθpos.le
+    have a2 : (k : ℝ) ^ ((21 / 40 : ℝ) + 1 / 100) * 16 ≤
+        (k : ℝ) ^ ((21 / 40 : ℝ) + 1 / 100) * (k : ℝ) ^ (13 / 200 : ℝ) :=
+      mul_le_mul_of_nonneg_left h3 hEpos.le
+    linarith
+-- proof:
+by
+  by_cases hB : ∃ (C : ℝ),
+        (0 : ℝ) < C ∧
+          ∃ (k₀ : ℕ),
+            ∀ (k : ℕ),
+              k₀ ≤ k →
+                C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤
+                  (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |
+                          (0 : ℤ) < p ∧
+                            Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :
+                    ℝ)
+  · exact Or.inr (ks_supply hB)
+  · exact Or.inl hB
