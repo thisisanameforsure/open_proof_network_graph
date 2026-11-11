@@ -1,0 +1,101 @@
+{
+  "artifact": {
+    "hash": "835c4de888c9ed1b7c928c83931e8d3d22ec350f3b1b8b4c01f664c45d06857a",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h2--h1--h1--h6",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (C : ℝ),\n  (0 : ℝ) < C ∧\n    ∃ (k₀ : ℕ),\n      ∀ (k : ℕ),\n        k₀ ≤ k →\n          C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n            (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                    (0 : ℤ) < p ∧\n                      Nat.Prime p.natAbs ∧ (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n              ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℕ),\n          (2 : ℕ) * k ≤ n →\n            (↑n : ℝ) ≤ (1 / 2 : ℝ) * ((↑k : ℝ) / (2 : ℝ)) ^ ((2 : ℝ) - (21 / 40 : ℝ)) + (2 : ℝ) * (↑k : ℝ) →\n              ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ n % p + p < k",
+          "truncated": false
+        }
+      },
+      "id": "s1",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 328,
+        "start_line": 328
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inr` is \"right injection\" into an `Or`.",
+            "name": "Or.inr",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hB",
+            "type": {
+              "printed": "reliable",
+              "text": "¬∃ (C : ℝ),\n    (0 : ℝ) < C ∧\n      ∃ (k₀ : ℕ),\n        ∀ (k : ℕ),\n          k₀ ≤ k →\n            C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n              (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                      (0 : ℤ) < p ∧\n                        Nat.Prime p.natAbs ∧\n                          (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(¬∃ (C : ℝ),\n      (0 : ℝ) < C ∧\n        ∃ (k₀ : ℕ),\n          ∀ (k : ℕ),\n            k₀ ≤ k →\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ) ≤\n                (↑{p ∈ Finset.Ioo ⌊(↑k : ℝ)⌋ ⌈(↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)⌉ |\n                        (0 : ℤ) < p ∧\n                          Nat.Prime p.natAbs ∧\n                            (↑k : ℝ) < (↑p : ℝ) ∧ (↑p : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ)}.card :\n                  ℝ)) ∨\n  ∃ (k₀ : ℕ),\n    ∀ (k : ℕ),\n      k₀ ≤ k →\n        ∀ (n : ℕ),\n          (2 : ℕ) * k ≤ n →\n            (↑n : ℝ) ≤ (1 / 2 : ℝ) * ((↑k : ℝ) / (2 : ℝ)) ^ ((2 : ℝ) - (21 / 40 : ℝ)) + (2 : ℝ) * (↑k : ℝ) →\n              ∃ (p : ℕ), Nat.Prime p ∧ k < (2 : ℕ) * p ∧ n % p + p < k",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 329,
+        "start_line": 329
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
