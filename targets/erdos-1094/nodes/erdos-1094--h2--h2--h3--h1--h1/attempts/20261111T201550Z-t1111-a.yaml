@@ -1,0 +1,85 @@
+artifacts:
+  missing_lemmas: []
+contributor: t1111-a
+detail: 'Two contributors (t1111-a, t1111-d), on paper, 2026-11-11. The goal state
+  is the leaf''s own, with 0 standing for the bound K; no Lean was written beyond
+  it. Notation: B = n / k, h = n % k, A = k - 1 - h, m = k*B, W = {m - A, ..., m +
+  h}. Background and proofs: annex 473200f4ca4d on erdos-1094--h2--h2--h3, which proves
+  (D1) B | C(k-1, h), a sharpening of hfac.
+
+  Why it stops: every constraint used concerns primes up to k, and all of them hold
+  with equality at the known exception C(62,6) (B = 10 = C(5,2); there n >= k*k but
+  not n >= k*k*k). So none of them is contradictory by itself, and an argument from
+  them would have to use the size hypotheses hn and hT in an essential way; each line
+  below was carried to a formula, and each formula stops where a prime of (k, B] would
+  have to be produced. Whether the constraints are jointly contradictory for large
+  k was not decided; heuristically they are not (windows with no prime factor up to
+  k in C(n,k) are expected from about exp(c k / log k) for a constant c, the heuristic
+  size of g(k) in Sorenson-Sorenson-Webster).
+
+  1. Ends of h. (D1) gives min(h, A) >= log B / log k, about log k / (20 log log k)
+  under hT. This ties h to n (n < k*C(k-1, h) + k); it removes no range of n.
+
+  2. B a prime power: impossible, since every prime power dividing C(k-1, h) is below
+  k and B >= k*k. In general B has at least log B / log k distinct prime factors.
+  A constraint on candidates only.
+
+  3. B = C(k-1, h) exactly: this is C(62,6). For large k the neighbours of m are values
+  at k of polynomials of degree about h (m - (h+1)*C(u, h+1) is divisible by (k -
+  u) / gcd(k - u, h!) for each u > h), which must be k-smooth or (a number below k)
+  times a prime; for a single argument nothing is known that gives a prime factor
+  above k.
+
+  4. Two k-smooth elements x, x'' of W: x*x'' | k!, so (n-k)^2 < k!, weaker than (D1).
+
+  5. Carry criterion at a prime p = k - u in (k/2, k - h - 1]: an exception needs
+  ((h+1)*C(u, h+1)*D^(-1) + h) mod p >= u, where D = C(k-1, h) / B. For D = 1 and
+  (h+1)*C(u, h+1) + h < p this holds identically; otherwise it is a residue with no
+  usable structure. The count that turns such conditions into a contradiction for
+  2k <= n < k^3 (the route on erdos-1094--h2--h1--h1) is proved only up to log n of
+  order (log k)^2 / log log k, below hT.
+
+  6. In an exception an integer d in (k, B] divides a window element only if that
+  element is k-smooth, so the number of d in (k, 2k] with n % d < k equals the number
+  of pairs (x, d), x k-smooth in W, d | x. A lower bound for the left side, a divisor
+  sum over an interval of length k at height n, is not known for log n beyond about
+  (log k)^2.
+
+  One sharpening found on the way, which moves no edge: for each prime p, v_p(k*B)
+  is at most the length of the INITIAL run of levels j = 1, 2, ... with floor(k/p^j)
+  - floor(A/p^j) - floor(h/p^j) = 1. Proof: W holds floor(A/p^j) + floor(h/p^j) +
+  1 multiples of p^j when p^j | m, and exactly floor(k/p^j) in an exception, for every
+  j <= v_p(m). (D1) counts all such levels; equality holds at C(62,6).
+
+  '
+failure_class: route-dead-ends
+model_and_tooling: claude-fable-5-2 via Claude Code (agents t1111-a and t1111-d)
+node: erdos-1094--h2--h2--h3--h1--h1
+outcome: exhausted
+route: 'Cut the leaf by a sub-range of n or a family of n = k*B + h (B = n / k, h
+  = n % k) in which a prime of (k, B] is forced into n-k+1..n, using only what an
+  exception implies at primes up to k: B | C(k-1, h), the carry criterion at primes
+  in (k/2, k), and the k-smooth window elements.'
+route_class: case-split
+schema: postmortem/v2
+terminal_goal_state: 'n k : ℕ
+
+  hk : 0 < k
+
+  hn : k * k * k ≤ n
+
+  hT : Real.exp (Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k))) < ↑n + 1
+
+  hfac : k * (n / k) ∣ k !
+
+  hmin : (n.choose k).minFac > n / k
+
+  hprime : Nat.Prime (n / n.gcd k)
+
+  hndvd : ¬k ∣ n
+
+  hK : ¬k ≤ 0
+
+  ⊢ False
+
+  '
