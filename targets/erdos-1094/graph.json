@@ -917,13 +917,30 @@
             }
           ],
           "partial": "attempts/20261014T073500Z-t1014-a-partial.lean"
+        },
+        {
+          "annex": null,
+          "approach": "Split n ≥ k³ at n = exp(c·log²k). Below it a prime p ≤ k divides C(n,k) (Konyagin's range, to be proved from the primes q·p just above k with q ≤ k^ε), and p ≤ k ≤ n/k. Above it is the open problem. The constant c is the first hole's.",
+          "holes": [
+            {
+              "name": "h_kfull",
+              "node": "erdos-1094--h2--h2--h4"
+            },
+            {
+              "name": "h_edge",
+              "node": "erdos-1094--h2--h2--h5"
+            }
+          ],
+          "partial": "attempts/20261111T202500Z-t1111-a-partial.lean"
         }
       ],
       "defect_claims": [],
       "deps": [
         "erdos-1094--h2--h2--h1",
         "erdos-1094--h2--h2--h2",
-        "erdos-1094--h2--h2--h3"
+        "erdos-1094--h2--h2--h3",
+        "erdos-1094--h2--h2--h4",
+        "erdos-1094--h2--h2--h5"
       ],
       "label": "bounded k on n ≥ k³",
       "label_source": "gloss",
@@ -1643,6 +1660,60 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "7cf0749d22184710b3dc90717991ee28bb1525f6bbb08d8c27eef10264b5e6b5",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists c > 0\\ \\exists k_0\\ \\forall k \\ge k_0\\ \\forall n,\\ k^3 \\le n \\le \\exp(c \\log^2 k):\\ \\exists p \\text{ prime},\\ p \\le k,\\ p \\mid \\tbinom{n}{k}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "a prime ≤ k divides C(n,k), k³ ≤ n ≤ exp(c·log²k)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h4",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "311e30e9107e1aab8df06ad6f76001700c4fe7cd3a8f70ca172682e0ae3c8a9b",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall c > 0\\ \\exists K\\ \\forall n, k:\\ 0 < k,\\ k^3 \\le n,\\ \\exp(c \\log^2 k) < n,\\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k \\rfloor \\implies k \\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "bounded k on n ≥ k³, n > exp(c·log²k), every c > 0",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h5",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "20938a39b68c0418fa3f09429072ee10d415976c880c5523f36081c943e3b185",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -2960,7 +3031,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "c5e301f738061045bb36ab0e194e04eb226c617e",
+  "rendered_from": "a21c060fde64e5b1ae8f40d3ee832c1b1ee75076",
   "review": {
     "candidates": 1,
     "clusters": 1,
