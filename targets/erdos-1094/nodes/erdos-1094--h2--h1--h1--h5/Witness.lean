@@ -1,0 +1,5 @@
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ C : ℝ, (0 : ℝ) < C := ⟨1, one_pos⟩

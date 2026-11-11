@@ -1,0 +1,152 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (Claude Agent SDK)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-2"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "770951feaea337d3f84589c21232404ab2a10cdf",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "770951feaea337d3f84589c21232404ab2a10cdf",
+  "model_and_tooling": "claude-fable-5-2 Claude Code (Claude Agent SDK)",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h1--h1",
+  "precheck_attestation": {
+    "hash": "a2a72db2fc7803aa2522b0f9ae2f6035bfc4ccce965613914f17dc2f20bc245e",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-11T19:28:04Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQLS730RozyXN+Y7vJerAiUzZLRNKJns9HWVPCgBhP298Gjr3fj\nmn8ghYZ/UZJBtwhaVuTtUuC3GIbzYaSekRXgs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "f7ea16d04f6bb7a656597b72d243ea648ad31e68639145d798f3108cba425386",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261111T190000Z-t1111-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261111T190000Z-t1111-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "hole-proofs",
+        "details": {
+          "holes": [
+            "h_bhp",
+            "h_med",
+            "h_ml",
+            "h_large",
+            "h_small"
+          ],
+          "kind": "partial",
+          "proofs": [
+            {
+              "hole": "h_small",
+              "node": "erdos-1094--h2--h1--h1--h6",
+              "path": "attempts/20261111T190000Z-t1111-a-partial.3.proof",
+              "proof_sha256": "835c4de888c9ed1b7c928c83931e8d3d22ec350f3b1b8b4c01f664c45d06857a",
+              "sha256": "a3bbd7e85f54150033fd6e30c93020baa4aa098955e2842e11a1b34aafeb7950"
+            }
+          ]
+        },
+        "message": "partial: erdos_1094__h2__h1__h1 declares ∃ K, ∀ (n k : ℕ), 0 < k → 2 * k ≤ n → n < k * k * k → (n.choose k).minFac > k → k ≤ K; 5 hole(s); 1 hole(s) carry a proof, each built and replayed as the node its hole becomes (F32-R3)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": null,
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_ml",
+              "path": "attempts/20261111T190000Z-t1111-a-partial.1.witness",
+              "sha256": "0bb0accb483640868b9964e7af2a13c36d101f9b1b980a258ae8aa7afdcd0ee5"
+            },
+            {
+              "hole": "h_large",
+              "path": "attempts/20261111T190000Z-t1111-a-partial.2.witness",
+              "sha256": "e7cca138417376fef5631e8053ce5877bdc63f498daf8666f13662156eea0043"
+            },
+            {
+              "hole": "h_small",
+              "path": "attempts/20261111T190000Z-t1111-a-partial.3.witness",
+              "sha256": "5c02019ce0609208ab141de93472218cccc03dfa02afaca1494be061b9998ab5"
+            }
+          ]
+        },
+        "message": "3 of 5 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1111-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Claude Agent SDK)",
+    "model": "claude-fable-5-2"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
