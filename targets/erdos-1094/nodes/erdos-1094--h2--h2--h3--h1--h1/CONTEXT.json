@@ -2,9 +2,49 @@
   "annexes": [],
   "attempts": {
     "assemblies": [],
-    "count": 0,
-    "failure_class_histogram": {},
-    "records": [],
+    "count": 1,
+    "failure_class_histogram": {
+      "route-dead-ends": 1
+    },
+    "records": [
+      {
+        "path": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1--h1/attempts/20261111T201550Z-t1111-a.yaml",
+        "record": {
+          "artifacts": {
+            "missing_lemmas": []
+          },
+          "contributor": "t1111-a",
+          "detail": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1--h1/attempts/20261111T201550Z-t1111-a.yaml",
+            "text": "Two contributors (t1111-a, t1111-d), on paper, 2026-11-11. The goal state is the leaf's own, with 0 standing for the bound K; no Lean was written beyond it. Notation: B = n / k, h = n % k, A = k - 1 - h, m = k*B, W = {m - A, ..., m + h}. Background and proofs: annex 473200f4ca4d on erdos-1094--h2--h2--h3, which proves (D1) B | C(k-1, h), a sharpening of hfac.\nWhy it stops: every constraint used concerns primes up to k, and all of them hold with equality at the known exception C(62,6) (B = 10 = …",
+            "untrusted": true
+          },
+          "failure_class": "route-dead-ends",
+          "model_and_tooling": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1--h1/attempts/20261111T201550Z-t1111-a.yaml",
+            "text": "claude-fable-5-2 via Claude Code (agents t1111-a and t1111-d)",
+            "untrusted": true
+          },
+          "node": "erdos-1094--h2--h2--h3--h1--h1",
+          "outcome": "exhausted",
+          "route": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1--h1/attempts/20261111T201550Z-t1111-a.yaml",
+            "text": "Cut the leaf by a sub-range of n or a family of n = k*B + h (B = n / k, h = n % k) in which a prime of (k, B] is forced into n-k+1..n, using only what an exception implies at primes up to k: B | C(k-1, h), the carry criterion at primes in (k/2, k), and the k-smooth window elements.",
+            "untrusted": true
+          },
+          "route_class": "case-split",
+          "schema": "postmortem/v2",
+          "terminal_goal_state": {
+            "source": "targets/erdos-1094/nodes/erdos-1094--h2--h2--h3--h1--h1/attempts/20261111T201550Z-t1111-a.yaml",
+            "text": "n k : ℕ\nhk : 0 < k\nhn : k * k * k ≤ n\nhT : Real.exp (Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k))) < ↑n + 1\nhfac : k * (n / k) ∣ k !\nhmin : (n.choose k).minFac > n / k\nhprime : Nat.Prime (n / n.gcd k)\nhndvd : ¬k ∣ n\nhK : ¬k ≤ 0\n⊢ False\n",
+            "untrusted": true
+          }
+        },
+        "shortened": [
+          "detail"
+        ]
+      }
+    ],
     "refuted_route_classes": [],
     "truncated": false
   },
@@ -46,7 +86,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "ca7c4b325de09e5889d5b65dcc44bd3b1403b5c9",
+  "rendered_from": "dc12367b05a4f5f597223b2b002e794ecf51786c",
   "review": {
     "questions_waiting": [
       {
