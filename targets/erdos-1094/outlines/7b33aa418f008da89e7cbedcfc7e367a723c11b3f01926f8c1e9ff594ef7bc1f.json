@@ -1,0 +1,1133 @@
+{
+  "artifact": {
+    "hash": "7b33aa418f008da89e7cbedcfc7e367a723c11b3f01926f8c1e9ff594ef7bc1f",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h2--h1--h1--h5",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "KonHole",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "KonHole",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hK",
+      "kind": "have",
+      "name": "hK",
+      "span": {
+        "end_line": 477,
+        "start_line": 475
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": [
+          "erdos-1094--h2--h2--h2--h3--h1"
+        ]
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ) (r : ℕ),\n        (3 : ℕ) ≤ r →\n          (0 : ℤ) < n →\n            (↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ) →\n              (3 : ℝ) * (↑r : ℝ) - (2 : ℝ) < (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) →\n                (↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ)) →\n                  (↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) →\n                    (↑r : ℝ) ≤ Real.log (↑k : ℝ) →\n                      c₆ * (↑k : ℝ) ^ theta *\n                            ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n                              (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                          (2 : ℝ) * (↑r : ℝ) * lamLarge k n r ≤\n                        C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k1",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hasym",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  k1 ≤ k →\n    ∀ (n : ℤ) (r : ℕ),\n      (3 : ℕ) ≤ r →\n        (0 : ℤ) < n →\n          (↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ) →\n            (3 : ℝ) * (↑r : ℝ) - (2 : ℝ) < (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) →\n              (↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ)) →\n                (↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) →\n                  (↑r : ℝ) ≤ Real.log (↑k : ℝ) →\n                    c₆ * (↑k : ℝ) ^ theta *\n                          ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n                            (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n                        (2 : ℝ) * (↑r : ℝ) * lamLarge k n r ≤\n                      C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 478,
+        "start_line": 478
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n            ∃ (r : ℕ),\n              (3 : ℕ) ≤ r ∧\n                (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - theta) ∧\n                  (↑n : ℝ) * (↑r ! : ℝ) ≤ (↑k : ℝ) ^ ((↑r : ℝ) + theta) ∧\n                    (↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ) ∧\n                      (3 : ℝ) * (↑r : ℝ) - (2 : ℝ) <\n                          (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n                        (↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ)) ∧\n                          (↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n                            (↑r : ℝ) ≤ Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k2",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrdata",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  k2 ≤ k →\n    ∀ (n : ℤ),\n      (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta) < (↑n : ℝ) →\n        (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n          ∃ (r : ℕ),\n            (3 : ℕ) ≤ r ∧\n              (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - theta) ∧\n                (↑n : ℝ) * (↑r ! : ℝ) ≤ (↑k : ℝ) ^ ((↑r : ℝ) + theta) ∧\n                  (↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ) ∧\n                    (3 : ℝ) * (↑r : ℝ) - (2 : ℝ) <\n                        (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n                      (↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ)) ∧\n                        (↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n                          (↑r : ℝ) ≤ Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (k₀ : ℕ),\n  ∀ (k : ℕ),\n    k₀ ≤ k →\n      ∀ (n : ℤ),\n        (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + (21 / 40 : ℝ)) < (↑n : ℝ) →\n          (↑n : ℝ) ≤ Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) →\n            (↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n                      (↑k : ℤ) < m ∧\n                        (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n                          |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                            (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n                ℝ) <\n              C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 479,
+        "start_line": 479
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k1 ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hki1",
+            "type": {
+              "printed": "reliable",
+              "text": "k1 ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hki1",
+      "kind": "have",
+      "name": "hki1",
+      "span": {
+        "end_line": 482,
+        "start_line": 482
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k2 ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hki2",
+            "type": {
+              "printed": "reliable",
+              "text": "k2 ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hki2",
+      "kind": "have",
+      "name": "hki2",
+      "span": {
+        "end_line": 483,
+        "start_line": 483
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℕ) ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk2le",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk2le",
+      "kind": "have",
+      "name": "hk2le",
+      "span": {
+        "end_line": 484,
+        "start_line": 484
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "le_max_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℕ) ≤ k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk1",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) ≤ k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk1",
+      "kind": "have",
+      "name": "hk1",
+      "span": {
+        "end_line": 485,
+        "start_line": 485
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℕ) < k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "automation",
+        "tactics": [
+          "omega"
+        ]
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk1'",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℕ) < k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk1'",
+      "kind": "have",
+      "name": "hk1'",
+      "span": {
+        "end_line": 486,
+        "start_line": 486
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(1 : ℝ) < (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkR",
+            "type": {
+              "printed": "reliable",
+              "text": "(1 : ℝ) < (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hkR",
+      "kind": "have",
+      "name": "hkR",
+      "span": {
+        "end_line": 487,
+        "start_line": 487
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(2 : ℝ) ≤ (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hk2R",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ≤ (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hk2R",
+      "kind": "have",
+      "name": "hk2R",
+      "span": {
+        "end_line": 488,
+        "start_line": 488
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑k : ℝ) ^ ((2 : ℝ) + theta) = (↑k : ℝ) ^ (2 : ℕ) * (↑k : ℝ) ^ theta",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑k : ℝ) ^ ((2 : ℝ) + theta) = (↑k : ℝ) ^ (2 : ℕ) * (↑k : ℝ) ^ theta",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta)",
+              "truncated": false
+            }
+          },
+          "id": "hkpow.h1",
+          "kind": "have",
+          "name": "h1",
+          "span": {
+            "end_line": 492,
+            "start_line": 490
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.rpow_add",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Real.rpow_natCast",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℝ) ≤ (↑k : ℝ) ^ theta",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) ≤ (↑k : ℝ) ^ theta",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta)",
+              "truncated": false
+            }
+          },
+          "id": "hkpow.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 494,
+            "start_line": 493
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Real.one_le_rpow",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "le_of_lt",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkpow",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((2 : ℝ) + theta)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hkpow",
+      "kind": "have",
+      "name": "hkpow",
+      "span": {
+        "end_line": 496,
+        "start_line": 489
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "**Alias** of `Left.mul_nonneg`.",
+            "name": "mul_nonneg",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "sq_nonneg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℝ) < (↑n : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hknR",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) < (↑n : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hknR",
+      "kind": "have",
+      "name": "hknR",
+      "span": {
+        "end_line": 497,
+        "start_line": 497
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_of_le_of_lt",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑k : ℤ) < n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkn",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℤ) < n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hkn",
+      "kind": "have",
+      "name": "hkn",
+      "span": {
+        "end_line": 498,
+        "start_line": 498
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(0 : ℤ) < n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hn0",
+            "type": {
+              "printed": "reliable",
+              "text": "(0 : ℤ) < n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hn0",
+      "kind": "have",
+      "name": "hn0",
+      "span": {
+        "end_line": 499,
+        "start_line": 499
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "lt_trans",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (r : ℕ),\n  (3 : ℕ) ≤ r ∧\n    (↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - theta) ∧\n      (↑n : ℝ) * (↑r ! : ℝ) ≤ (↑k : ℝ) ^ ((↑r : ℝ) + theta) ∧\n        (↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ) ∧\n          (3 : ℝ) * (↑r : ℝ) - (2 : ℝ) < (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n            (↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ)) ∧\n              (↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ)) ∧\n                (↑r : ℝ) ≤ Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "r",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hr3",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ≤ r",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrle",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) ≤ (1 / 2 : ℝ) * (↑k : ℝ) ^ ((1 : ℝ) - theta)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hub",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑n : ℝ) * (↑r ! : ℝ) ≤ (↑k : ℝ) ^ ((↑r : ℝ) + theta)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hmin",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑k : ℝ) ^ ((↑r : ℝ) - (1 : ℝ) + theta) < (↑n : ℝ) * (↑(r - (1 : ℕ))! : ℝ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h3r2",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℝ) * (↑r : ℝ) - (2 : ℝ) < (7 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrk",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) + (1 : ℝ) ≤ (↑k : ℝ) ^ (theta / (↑r : ℝ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrconv",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) ≤ (3 : ℝ) * (1 / 20 : ℝ) * Real.log (↑k : ℝ) / Real.log (Real.log (↑k : ℝ))",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hrlog",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑r : ℝ) ≤ Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "s15",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 501,
+        "start_line": 500
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑(badSet k n).card : ℝ) <\n  c₆ * (↑k : ℝ) ^ theta *\n      ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n        (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lamLarge k n r",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hraw",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) <\n  c₆ * (↑k : ℝ) ^ theta *\n      ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n        (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lamLarge k n r",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hraw",
+      "kind": "have",
+      "name": "hraw",
+      "span": {
+        "end_line": 502,
+        "start_line": 502
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "c₆ * (↑k : ℝ) ^ theta *\n      ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n        (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lamLarge k n r ≤\n  C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbnd",
+            "type": {
+              "printed": "reliable",
+              "text": "c₆ * (↑k : ℝ) ^ theta *\n      ((2 : ℝ) * (↑k : ℝ) ^ ((theta - (1 : ℝ)) / ((3 : ℝ) * (↑r : ℝ) - (2 : ℝ))) +\n        (((↑r : ℝ) + (1 : ℝ)) * lamLarge k n r / (↑k : ℝ)) ^ ((2 : ℝ) * (↑r : ℝ))⁻¹) +\n    (2 : ℝ) * (↑r : ℝ) * lamLarge k n r ≤\n  C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hbnd",
+      "kind": "have",
+      "name": "hbnd",
+      "span": {
+        "end_line": 503,
+        "start_line": 503
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑(badSet k n).card : ℝ) < C * (↑k : ℝ) ^ theta / Real.log (↑k : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hcard",
+      "kind": "have",
+      "name": "hcard",
+      "span": {
+        "end_line": 505,
+        "start_line": 504
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "lt_of_lt_of_le",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "badSet k n =\n  {m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hbS",
+            "type": {
+              "printed": "reliable",
+              "text": "badSet k n =\n  {m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ theta⌋ + (2 : ℤ)) |\n    (↑k : ℤ) < m ∧\n      (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ theta ∧\n        |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| < (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - theta)}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hbS",
+      "kind": "have",
+      "name": "hbS",
+      "span": {
+        "end_line": 513,
+        "start_line": 506
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $(a, b)$ of elements `x` such that `a < x` and `x < b`.",
+            "name": "Finset.Ioo",
+            "tags": []
+          },
+          {
+            "doc": "`round x` rounds `x` to the nearest integer, breaking ties towards positive infinity.",
+            "name": "round",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.filter_congr",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_Ioo",
+            "tags": []
+          },
+          {
+            "doc": "If `a → b` and `b → a` then `a` and `b` are equivalent.",
+            "name": "Iff.intro",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑{m ∈ Finset.Ioo (↑k : ℤ) ((↑k : ℤ) + ⌊(↑k : ℝ) ^ (21 / 40 : ℝ)⌋ + (2 : ℤ)) |\n          (↑k : ℤ) < m ∧\n            (↑m : ℝ) < (↑k : ℝ) + (↑k : ℝ) ^ (21 / 40 : ℝ) ∧\n              |(↑n : ℝ) / (↑m : ℝ) - (↑(round ((↑n : ℝ) / (↑m : ℝ))) : ℝ)| <\n                (1 : ℝ) / (↑k : ℝ) ^ ((1 : ℝ) - (21 / 40 : ℝ))}.card :\n    ℝ) <\n  C * (↑k : ℝ) ^ (21 / 40 : ℝ) / Real.log (↑k : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 515,
+        "start_line": 514
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
