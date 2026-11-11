@@ -1,0 +1,132 @@
+{
+  "artifact_hash": "eee0dc29425d168acd84914e701254e7952e4f8c978ce12113e79c4b3e76c4e3",
+  "automation": {
+    "framework": "Claude Code (Claude Agent SDK)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-2"
+    ]
+  },
+  "carried_by": {
+    "assembly": {
+      "artifact_hash": "4a01b091949d46131c4473ac2e52a5f8664aff28a9205af374bd32a2e05f1bca",
+      "path": "attempts/20261111T210000Z-t1111-a-partial.lean"
+    },
+    "carried": {
+      "path": "attempts/20261111T210000Z-t1111-a-partial.1.proof",
+      "sha256": "011bf9d3b7e9612719d8ed94d032e10b6fd9f1f060f8a13ee6044f98c5a025b0"
+    },
+    "node_id": "erdos-1094--h2--h2--h4"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "f7c30736013c11f7df805c166f0a5edab9cf9ddf",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "f7c30736013c11f7df805c166f0a5edab9cf9ddf",
+  "model_and_tooling": "claude-fable-5-2 Claude Code (Claude Agent SDK)",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h2--h4--h2",
+  "precheck_attestation": {
+    "hash": "5c03957d8f77dbf822a2cc719e330317148667dd20268446c81d78c02128141b",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-11T22:25:50Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQKyrAPaD3lcJWD0WjcIhpjYWbv91iZzTDfUzgYF75NWKIh3OBr\nAKnbyQESO2fbjELg8+iOlgUU+veqO1BqmDogs=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "b85b924a506e0a2a6d980a59e2cd707a87e1e44ee97add81dc81f0f8e8b28f30",
+  "steps": [
+    {
+      "diagnostic": null,
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "C * ↑k ^ (21 / 40) / Real.log ↑k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "2 ≤ q",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at C * ↑k ^ (21 / 40) / Real.log ↑k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1111-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Claude Agent SDK)",
+    "model": "claude-fable-5-2"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
