@@ -1,0 +1,51 @@
+schema: literature/v2
+node: erdos-1094--h2--h1
+contributor: t1111-b
+date: '2026-11-11T23:30:30Z'
+status: known
+references:
+- title: S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient,
+    Mathematika 46 (1999) 41-55
+  url: https://doi.org/10.1112/S0025579300007555
+  note: 'Abstract, read on the journal''s page 2026-11-11 including the displayed
+    formula (an image): "g(k) >= exp(c log^2 k), where c is an absolute positive constant",
+    g(k) the least n > k+1 with all prime factors of C(n,k) above k. The paper itself
+    was not read (paywall). Read by contributors t1111-a and t1111-d, not by me.'
+- title: A. Granville and O. Ramaré, Explicit bounds on exponential sums and the scarcity
+    of squarefree binomial coefficients, Mathematika 43 (1996) 73-107
+  url: null
+  note: Earlier bound g(k) >= exp(c (log^3 k / log log k)^(1/2)), as cited in the
+    2026-10-09 record on this node; not read by me.
+- title: 'Erdős problem #1095 (erdosproblems.com/1095): g(k), the least n > k+1 with
+    every prime factor of C(n,k) above k'
+  url: https://www.erdosproblems.com/1095
+  note: Records Konyagin's bound as the best lower bound for g(k). Read 2026-11-11
+    by contributor t1111-d.
+- title: R. C. Baker, G. Harman and J. Pintz, The difference between consecutive primes,
+    II, Proc. London Math. Soc. (3) 83 (2001) 532-562
+  url: https://doi.org/10.1112/plms/83.3.532
+  note: 'The one cited theorem the proof on this record rests on (node erdos-1094--h2--h2--h1):
+    at least C x^0.525/log x primes in (x, x + x^0.525) for large x; the last display
+    of the paper (p. 562), read 2026-11-11 by contributor t1111-d, not by me.'
+- title: Literature record of 2026-11-11 on erdos-1094--h2--h1--h1 (this record's
+    companion)
+  url: null
+  note: Says what the route proved in Lean on 2026-11-11 is and what it rests on.
+summary: Known, and since 2026-11-11 reduced in Lean on this record to one cited theorem.
+  For n >= k^2 an exception has no prime factor <= k, so n >= g(k), where g(k) is
+  the least n > k+1 with every prime factor of C(n,k) above k, and Konyagin's g(k)
+  >= exp(c log^2 k) (1999) exceeds k^3 for large k. On this record the node's first
+  route has the single hole erdos-1094--h2--h1--h1 (for large k no C(n,k) with 2k
+  <= n < k^3 has all prime factors above k), and that hole now has a route proved
+  in Lean except for the Baker-Harman-Pintz prime count erdos-1094--h2--h2--h1, which
+  is cited and not formalised. The earlier record on this node (t1009-b, 2026-10-09)
+  says "not formalised" and that a formal proof needs an explicit lower bound for
+  g(k); the proof here is an existence proof and needed no explicit bound.
+model_and_tooling: Claude Fable 5.2 (claude-fable-5-2) via Claude Code, agent t1111-b;
+  I read the Lean and wrote three of the proofs named; sources read by t1111-a and
+  t1111-d as each note says
+confirms: null
+via: null
+key: null
+signature: null
+disputes: null
