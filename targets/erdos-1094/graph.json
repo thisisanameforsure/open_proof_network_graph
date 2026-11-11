@@ -1669,12 +1669,40 @@
       "cause": null,
       "claim": "\\exists c > 0\\ \\exists k_0\\ \\forall k \\ge k_0\\ \\forall n,\\ k^3 \\le n \\le \\exp(c \\log^2 k):\\ \\exists p \\text{ prime},\\ p \\le k,\\ p \\mid \\tbinom{n}{k}",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Products m = q·p just above k, q ≤ k^(1/100), p prime. If p does not divide C(n,k) then n/m is within (m-k)/m of a fraction a/q. A count of the m with n/m that close to a fraction of small denominator is a small multiple of k^(3/5); BHP gives more products than that.",
+          "holes": [
+            {
+              "name": "h_bhp",
+              "node": "erdos-1094--h2--h2--h1"
+            },
+            {
+              "name": "h_supply",
+              "node": "erdos-1094--h2--h2--h4--h2"
+            },
+            {
+              "name": "h_count",
+              "node": "erdos-1094--h2--h2--h4--h3"
+            }
+          ],
+          "partial": "attempts/20261111T210000Z-t1111-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h2--h4--h2",
+        "erdos-1094--h2--h2--h4--h3"
+      ],
       "label": "a prime ≤ k divides C(n,k), k³ ≤ n ≤ exp(c·log²k)",
       "label_source": "gloss",
-      "lemmas": [],
+      "lemmas": [
+        {
+          "hole": "h_bhp",
+          "node": "erdos-1094--h2--h2--h1"
+        }
+      ],
       "literature": null,
       "literature_proposed": null,
       "node_id": "erdos-1094--h2--h2--h4",
@@ -1687,6 +1715,70 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "311e30e9107e1aab8df06ad6f76001700c4fe7cd3a8f70ca172682e0ae3c8a9b",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\text{BHP fails, or } \\exists c_1 > 0\\ \\exists k_0\\ \\forall k \\ge k_0:\\ \\#\\{m \\in (k, k + k^{3/5}]: m = qp,\\ 2 \\le q \\le k^{1/100},\\ p \\text{ prime}\\} \\ge c_1 k^{3/5}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "many products q·p just above k, q ≤ k^(1/100)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h4--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "f7c30736013c11f7df805c166f0a5edab9cf9ddf",
+      "proofs": [
+        {
+          "artifact_hash": "eee0dc29425d168acd84914e701254e7952e4f8c978ce12113e79c4b3e76c4e3",
+          "attestation": "001309.erdos-1094--h2--h2--h4--h2.json",
+          "kind": "proof",
+          "merge_commit": "f7c30736013c11f7df805c166f0a5edab9cf9ddf",
+          "path": "Proof.lean",
+          "submitter": "t1111-a",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "b85b924a506e0a2a6d980a59e2cd707a87e1e44ee97add81dc81f0f8e8b28f30",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall \\eta > 0\\ \\exists c > 0\\ \\exists k_0\\ \\forall k \\ge k_0\\ \\forall n,\\ k^3 \\le n \\le \\exp(c \\log^2 k):\\ \\#\\{m \\in (k, k + k^{3/5}]: \\exists a \\in \\mathbb{Z},\\ 1 \\le q \\le k^{1/100},\\ |n/m - a/q| < k^{3/5}/k\\} < \\eta k^{3/5}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "few m above k with n/m near a fraction a/q, q ≤ k^(1/100)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h4--h3",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "1387a92ed4a77692237a983549b791039a97a8b4bde1e885b7df03d68ab7006a",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -3035,7 +3127,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "adf65d0bc446cc3f9c3980f20a472cfea04c3aa7",
+  "rendered_from": "65cd9afeaa74b8d83414795d3e98665f3bb3d933",
   "review": {
     "candidates": 1,
     "clusters": 1,
