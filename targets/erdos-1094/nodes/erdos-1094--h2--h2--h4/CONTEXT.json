@@ -63,7 +63,44 @@
     }
   ],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1111-b",
+    "record": "literature/20261111T233027Z-t1111-b.yaml",
+    "references": [
+      {
+        "note": "Abstract, read on the journal's page 2026-11-11 including the displayed formula (an image): \"g(k) >= exp(c log^2 k), where c is an absolute positive constant\", g(k) the least n > k+1 with all prime factors of C(n,k) above k. The paper itself was not read (paywall). Read by contributors t1111-a and t1111-d, not by me.",
+        "title": "S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient, Mathematika 46 (1999) 41-55",
+        "url": "https://doi.org/10.1112/S0025579300007555"
+      },
+      {
+        "note": "Open access. Section 4.3 (pp. 335-336) states Konyagin's theorem log g(k) >> log^2 k and sketches its proof from his 1997 preprint - primes p in (k/w, (k + k^(1-beta))/w), 2 <= w <= W = k^gamma, give integers u = wp with n/u within k^(-beta) of a fraction v/w; Baker-Harman 1996 supplies the primes; Konyagin's lattice theorem (Theorem 6 there, p. 323) bounds the count. Read 2026-11-11 by contributors t1111-a and t1111-d; I quote their reading.",
+        "title": "O. Trifonov, Integer points close to a smooth curve, Serdica Math. J. 24 (1998) 319-338",
+        "url": "https://www.math.bas.bg/serdica/1998/1998-319-338.pdf"
+      },
+      {
+        "note": "Theorem 2 \"establishes a sharp bound for the number of rational points with small denominators close to a smooth curve\" and \"is then used to give a lower bound for g(k)\"; \"log g(k) >> log^2 k\". Read 2026-11-11 by contributor t1111-a; I quote that reading.",
+        "title": "zbMATH Open, Zbl 0972.11010, review of Konyagin 1999 by O. Ramaré",
+        "url": "https://zbmath.org/?q=an:0972.11010"
+      },
+      {
+        "note": "Records Konyagin's bound as the best lower bound for g(k). Read 2026-11-11 by contributor t1111-d.",
+        "title": "Erdős problem #1095 (erdosproblems.com/1095): g(k), the least n > k+1 with every prime factor of C(n,k) above k",
+        "url": "https://www.erdosproblems.com/1095"
+      },
+      {
+        "note": "The one cited theorem the proof on this record rests on (node erdos-1094--h2--h2--h1): at least C x^0.525/log x primes in (x, x + x^0.525) for large x; the last display of the paper (p. 562), read 2026-11-11 by contributor t1111-d, not by me.",
+        "title": "R. C. Baker, G. Harman and J. Pintz, The difference between consecutive primes, II, Proc. London Math. Soc. (3) 83 (2001) 532-562",
+        "url": "https://doi.org/10.1112/plms/83.3.532"
+      },
+      {
+        "note": "Source of the counting theorems formalised on this record (nodes erdos-1094--h2--h2--h2--h3--h1--h1, --h2--h2--h2--h3--h1, --h2--h2--h2--h2--h1). Read 2026-11-11 by contributor t1111-d, not by me; I worked from the Lean.",
+        "title": "W. van Doorn and Q. Tang, Consecutive integers free of certain prime factors, arXiv:2606.19863 (2026)",
+        "url": "https://arxiv.org/abs/2606.19863"
+      }
+    ],
+    "status": "known",
+    "summary": "Known in the literature, and since 2026-11-11 reduced in Lean on this record to one cited theorem. The statement: there is c > 0 such that for all large k and every n with k^3 <= n <= exp(c log^2 k), some prime p <= k divides C(n,k). It is the range n >= k^3 of Konyagin's theorem g(k) >= exp(c log^2 k) (1999), g(k) being the least n > k+1 with every prime factor of C(n,k) above k (any smaller constant c serves here). On this record its assembly (partial merged as pull request #1309) and two of its three holes are proved: the supply of products q p just above k (erdos-1094--h2--h2--h4--h2) and the count of integers m with n/m near a fraction of small denominator (erdos-1094--h2--h2--h4--h3, from the counting theorem erdos-1094--h2--h2--h2--h3--h1--h1 that van Doorn and Tang formalised). The third hole is the Baker-Harman-Pintz count of primes in (k, k + k^(21/40)), erdos-1094--h2--h2--h1, cited and not formalised. The proof on this record follows Konyagin's own argument as Trifonov (1998) sketches it from the 1997 preprint: products wp of a small integer and a prime just above k, and a bound for the points where n/u is close to a fraction of small denominator. It differs in the exponents, in taking the primes from Baker, Harman and Pintz (2001) where he used Baker and Harman (1996), and in starting at n = k^3 where his argument starts near k^2/log k. His paper itself has not been read by anyone who worked on this record."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -84,7 +121,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "17729d66c4bcebd52672a1e7d971feeeb1f50926",
+  "rendered_from": "791ae16152fdd3a4566bc8366d3bebb83ece7f31",
   "review": {
     "questions_waiting": [
       {

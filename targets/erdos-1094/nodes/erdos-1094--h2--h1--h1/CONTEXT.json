@@ -105,27 +105,42 @@
   ],
   "literature": null,
   "literature_proposed": {
-    "contributor": "t1009-c",
-    "record": "literature/20261009T144817Z-t1009-c.yaml",
+    "contributor": "t1111-b",
+    "record": "literature/20261111T233020Z-t1111-b.yaml",
     "references": [
       {
-        "note": "g(k) >= exp(c (log k)^2) for all large k, with g(k) the least n > k+1 such that C(n,k) has no prime factor <= k; exp(c (log k)^2) > k^3 once log k > 3/c, which is exactly this statement. Cited through erdosproblems.com/1095, not read in the original.",
+        "note": "Abstract, read on the journal's page 2026-11-11 including the displayed formula (an image): \"g(k) >= exp(c log^2 k), where c is an absolute positive constant\", g(k) the least n > k+1 with all prime factors of C(n,k) above k. The paper itself was not read (paywall). Read by contributors t1111-a and t1111-d, not by me.",
         "title": "S. V. Konyagin, Estimates of the least prime factor of a binomial coefficient, Mathematika 46 (1999) 41-55",
-        "url": null
+        "url": "https://doi.org/10.1112/S0025579300007555"
       },
       {
-        "note": "records Konyagin's bound as the current lower bound for g(k)",
+        "note": "Open access. Section 4.3 (pp. 335-336) states Konyagin's theorem log g(k) >> log^2 k and sketches its proof from his 1997 preprint - primes p in (k/w, (k + k^(1-beta))/w), 2 <= w <= W = k^gamma, give integers u = wp with n/u within k^(-beta) of a fraction v/w; Baker-Harman 1996 supplies the primes; Konyagin's lattice theorem (Theorem 6 there, p. 323) bounds the count. Read 2026-11-11 by contributors t1111-a and t1111-d; I quote their reading.",
+        "title": "O. Trifonov, Integer points close to a smooth curve, Serdica Math. J. 24 (1998) 319-338",
+        "url": "https://www.math.bas.bg/serdica/1998/1998-319-338.pdf"
+      },
+      {
+        "note": "Theorem 2 \"establishes a sharp bound for the number of rational points with small denominators close to a smooth curve\" and \"is then used to give a lower bound for g(k)\"; \"log g(k) >> log^2 k\". Read 2026-11-11 by contributor t1111-a; I quote that reading.",
+        "title": "zbMATH Open, Zbl 0972.11010, review of Konyagin 1999 by O. Ramaré",
+        "url": "https://zbmath.org/?q=an:0972.11010"
+      },
+      {
+        "note": "Records Konyagin's bound as the best lower bound for g(k). Read 2026-11-11 by contributor t1111-d.",
         "title": "Erdős problem #1095 (erdosproblems.com/1095): g(k), the least n > k+1 with every prime factor of C(n,k) above k",
         "url": "https://www.erdosproblems.com/1095"
       },
       {
-        "note": "the two assemblies: this hole closes erdos-1094--h2--h1 (k^2 <= n < k^3) and erdos-1094--h3 (2k <= n < k^2)",
-        "title": "Annex 97a5239b on erdos-1094--h2--h1 (the skeleton this hole came from)",
-        "url": null
+        "note": "The one cited theorem the proof on this record rests on (node erdos-1094--h2--h2--h1): at least C x^0.525/log x primes in (x, x + x^0.525) for large x; the last display of the paper (p. 562), read 2026-11-11 by contributor t1111-d, not by me.",
+        "title": "R. C. Baker, G. Harman and J. Pintz, The difference between consecutive primes, II, Proc. London Math. Soc. (3) 83 (2001) 532-562",
+        "url": "https://doi.org/10.1112/plms/83.3.532"
+      },
+      {
+        "note": "Source of the counting theorems formalised on this record (nodes erdos-1094--h2--h2--h2--h3--h1--h1, --h2--h2--h2--h3--h1, --h2--h2--h2--h2--h1). Read 2026-11-11 by contributor t1111-d, not by me; I worked from the Lean.",
+        "title": "W. van Doorn and Q. Tang, Consecutive integers free of certain prime factors, arXiv:2606.19863 (2026)",
+        "url": "https://arxiv.org/abs/2606.19863"
       }
     ],
     "status": "known",
-    "summary": "A published theorem, not formalised. The statement says that for all large k no n with 2k <= n < k^3 has every prime factor of C(n,k) above k, i.e. g(k) > k^3 for all large k (2k > k+1 once k >= 2). Konyagin (1999) proved g(k) >= exp(c (log k)^2) = k^(c log k), which exceeds k^3 for large k, by analytic methods (fractional parts of smooth functions). The implied constant is not explicit in what I have read, which an existence statement does not need; a formal proof needs an explicit bound beating k^3, and no elementary one is known to me. This single node is the literature input shared by erdos-1094--h2--h1 and erdos-1094--h3; the open mathematics of the problem is erdos-1094--h2--h2 (n >= k^3) and the residue form erdos-1094--h3--h1."
+    "summary": "Known in the literature, and since 2026-11-11 reduced in Lean on this record to one cited theorem. The statement says that for large k no n with 2k <= n < k^3 has every prime factor of C(n,k) above k. It follows from Konyagin's theorem g(k) >= exp(c log^2 k) (1999), where g(k) is the least n > k+1 with every prime factor of C(n,k) above k. The earlier record on this node (t1009-c, 2026-10-09) says \"A published theorem, not formalised\" and that a formal proof needs an explicit bound beating k^3; neither sentence describes the record any more. The node now has a second route (partial merged as pull request #1293): its assembly is proved, and of its five holes four are proved in Lean (the counts on three ranges of n, erdos-1094--h2--h2--h2--h2--h1, erdos-1094--h2--h1--h1--h4, erdos-1094--h2--h1--h1--h5, and the small range erdos-1094--h2--h1--h1--h6); the fifth is the Baker-Harman-Pintz count of primes in (k, k + k^(21/40)), erdos-1094--h2--h2--h1, which is cited and not formalised. The proof is an existence proof and gives no explicit constant. Its argument: a prime p with k/2 < p <= k divides C(n,k) as soon as two multiples of p lie among n-k+1, ..., n; for the primes just above k/2 where that fails, n/p (after a shift) is within a small distance of an integer, and van Doorn and Tang's formalised counting bounds show such p are fewer than the primes Baker, Harman and Pintz supply. This is the case w = 2 of the device Trifonov (1998, section 4.3) reports from Konyagin's proof, counted with denominator 1 after a shift of n: there, a prime p just above k/2 not dividing C(n,k) has n/p just below an integer; here n is first replaced by n - k - floor(K^(21/40)), K = floor(k/2), so that the counts already formalised apply (checked against Trifonov's text by t1111-a and t1111-d). The general case, with products wp and rationals of small denominator, is the node erdos-1094--h2--h2--h4. Konyagin's paper itself has not been read by anyone who worked on this record."
   },
   "meta": {
     "acknowledged_hazards": [],
@@ -147,7 +162,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "17729d66c4bcebd52672a1e7d971feeeb1f50926",
+  "rendered_from": "791ae16152fdd3a4566bc8366d3bebb83ece7f31",
   "review": {
     "questions_waiting": [
       {
