@@ -1,0 +1,13 @@
+-- hole: h_sandwich
+
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (f : ℕ → ℝ) (A : ℝ), (∀ n, 0 ≤ f n) ∧
+    (∀ ψ : ℝ → ℝ, ContDiff ℝ (2 : WithTop ℕ∞) ψ → HasCompactSupport ψ →
+        Function.support ψ ⊆ Set.Ioi (0 : ℝ) →
+        Filter.Tendsto (fun X : ℝ => (∑' n : ℕ, f n * ψ ((n : ℝ) / X)) / X) Filter.atTop
+          (nhds (A * ∫ x : ℝ, ψ x))) ∧
+    ∃ C : ℝ, ∀ N : ℕ, ∑ n ∈ Finset.range N, f n ≤ C * N :=
+  ⟨fun _ => 0, 0, fun _ => le_rfl, fun ψ _ _ _ => by simp, ⟨0, fun N => by simp⟩⟩
