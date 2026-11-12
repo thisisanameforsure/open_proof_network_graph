@@ -1,0 +1,410 @@
+{
+  "artifact": {
+    "hash": "95c566909b68cb788d0c477b8943dc3844299fccbaf662d61a6c35cd68ef0c88",
+    "kind": "partial",
+    "path": "attempts/20261112T133600Z-t1112-b-partial.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h2--h2--h5--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "erdos-1094--h2--h2--h5--h2--h1",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k ≤ n →\n      (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n        ∀ (m : ℕ),\n          n - k < m →\n            m ≤ n →\n              ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_split",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k ≤ n →\n      (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n        ∀ (m : ℕ),\n          n - k < m →\n            m ≤ n →\n              ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k ≤ n →\n      (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n        ∀ (m : ℕ),\n          n - k < m →\n            m ≤ n →\n              ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s1.h_split",
+              "kind": "hole",
+              "name": "h_split",
+              "span": {
+                "end_line": 48,
+                "start_line": 43
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+                    "name": "Finset.Icc",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                    "name": "Nat.Prime",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k ≤ n →\n      (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n        ∀ (m : ℕ),\n          n - k < m →\n            m ≤ n →\n              ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k",
+              "truncated": false
+            }
+          },
+          "id": "hall.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "erdos-1094--h2--h2--h5--h2--h2",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                (∀ (m : ℕ),\n                    n - k < m →\n                      m ≤ n →\n                        ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                  k ≤ K",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h_core",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                (∀ (m : ℕ),\n                    n - k < m →\n                      m ≤ n →\n                        ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                  k ≤ K",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                (∀ (m : ℕ),\n                    n - k < m →\n                      m ≤ n →\n                        ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                  k ≤ K",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s2.h_core",
+              "kind": "hole",
+              "name": "h_core",
+              "span": {
+                "end_line": 62,
+                "start_line": 54
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "The real exponential function, defined as the real part of the complex exponential",
+                    "name": "Real.exp",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+                    "name": "Real.log",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+                    "name": "Finset.Ioc",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+                    "name": "Finset.Icc",
+                    "tags": []
+                  },
+                  {
+                    "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+                    "name": "Nat.Prime",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                (∀ (m : ℕ),\n                    n - k < m →\n                      m ≤ n →\n                        ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                  k ≤ K",
+              "truncated": false
+            }
+          },
+          "id": "hall.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 63,
+            "start_line": 50
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k ≤ n →\n        (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n          ∀ (m : ℕ),\n            n - k < m →\n              m ≤ n →\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                  ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) ∧\n  ∃ (K : ℕ),\n    ∀ (n k : ℕ),\n      (0 : ℕ) < k →\n        k * k * k ≤ n →\n          Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n            (n.choose k).minFac > n / k →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n                ∏ m ∈ Finset.Ioc (n - k) n,\n                      ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                    k ! →\n                  (∀ (m : ℕ),\n                      n - k < m →\n                        m ≤ n →\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                            ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                    k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hall",
+            "type": {
+              "printed": "reliable",
+              "text": "(∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k ≤ n →\n        (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n          ∀ (m : ℕ),\n            n - k < m →\n              m ≤ n →\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                  ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) ∧\n  ∃ (K : ℕ),\n    ∀ (n k : ℕ),\n      (0 : ℕ) < k →\n        k * k * k ≤ n →\n          Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n            (n.choose k).minFac > n / k →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n                ∏ m ∈ Finset.Ioc (n - k) n,\n                      ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                    k ! →\n                  (∀ (m : ℕ),\n                      n - k < m →\n                        m ≤ n →\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                            ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                    k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "hall",
+      "kind": "have",
+      "name": "hall",
+      "span": {
+        "end_line": 63,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          },
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "The finset $(a, b]$ of elements `x` such that `a < x` and `x ≤ b`.",
+            "name": "Finset.Ioc",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k ≤ n →\n        (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n          ∀ (m : ℕ),\n            n - k < m →\n              m ≤ n →\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                  ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) ∧\n  ∃ (K : ℕ),\n    ∀ (n k : ℕ),\n      (0 : ℕ) < k →\n        k * k * k ≤ n →\n          Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n            (n.choose k).minFac > n / k →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n                ∏ m ∈ Finset.Ioc (n - k) n,\n                      ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                    k ! →\n                  (∀ (m : ℕ),\n                      n - k < m →\n                        m ≤ n →\n                          ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                            ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                    k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_split",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k ≤ n →\n      (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n        ∀ (m : ℕ),\n          n - k < m →\n            m ≤ n →\n              ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k",
+              "truncated": false
+            }
+          },
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k * k * k ≤ n →\n      Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n        (n.choose k).minFac > n / k →\n          (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n            ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                k ! →\n              (∀ (m : ℕ),\n                  n - k < m →\n                    m ≤ n →\n                      ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p = m ∨\n                        ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p < k) →\n                k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (c * Real.log (↑k : ℝ) ^ (2 : ℕ)) < (↑n : ℝ) →\n          (n.choose k).minFac > n / k →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n              ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc (1 : ℕ) k with Nat.Prime p, p ^ (m.factorization : ℕ → ℕ) p =\n                  k ! →\n                k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 64,
+        "start_line": 64
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k ≤ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkn",
+            "type": {
+              "printed": "reliable",
+              "text": "k ≤ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "hkn",
+      "kind": "have",
+      "name": "hkn",
+      "span": {
+        "end_line": 67,
+        "start_line": 67
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.le_mul_of_pos_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.mul_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 68,
+        "start_line": 68
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
