@@ -1,0 +1,38 @@
+-- hole: h_prod
+-- proof:
+by
+  intro _c _hc n k hk hkn
+  have hne : ∀ i ∈ Finset.range k, n - i ≠ 0 := by
+    intro i hi; have := Finset.mem_range.mp hi; omega
+  have hC : n.choose k ≠ 0 := (Nat.choose_pos hkn).ne'
+  -- reindex the window n-k+1..n as n - i, i < k
+  have hre : (∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ (Finset.Icc 1 k).filter Nat.Prime, p ^ (m.factorization p)) =
+      ∏ i ∈ Finset.range k, ∏ p ∈ (Finset.Icc 1 k).filter Nat.Prime, p ^ ((n - i).factorization p) := by
+    refine Finset.prod_nbij' (fun m => n - m) (fun i => n - i) ?_ ?_ ?_ ?_ ?_
+    · intro m hm; have := Finset.mem_Ioc.mp hm; exact Finset.mem_range.mpr (by omega)
+    · intro i hi; have := Finset.mem_range.mp hi; exact Finset.mem_Ioc.mpr ⟨by omega, by omega⟩
+    · intro m hm; have := Finset.mem_Ioc.mp hm; omega
+    · intro i hi; have := Finset.mem_range.mp hi; omega
+    · intro m hm; have := Finset.mem_Ioc.mp hm
+      have h : n - (n - m) = m := by omega
+      rw [h]
+  rw [hre, Finset.prod_comm]
+  -- for each prime p ≤ k, the exponent of p in the window's product is v_p(k!) + v_p(C(n,k))
+  have step1 : ∀ p ∈ (Finset.Icc 1 k).filter Nat.Prime, ∏ i ∈ Finset.range k, p ^ ((n - i).factorization p) =
+      p ^ ((k.factorial).factorization p) * p ^ ((n.choose k).factorization p) := by
+    intro p _hpS
+    rw [Finset.prod_pow_eq_pow_sum, ← pow_add]
+    congr 1
+    have h1 : (∏ i ∈ Finset.range k, (n - i)).factorization p = ∑ i ∈ Finset.range k, (n - i).factorization p := by
+      rw [Nat.factorization_prod hne, Finsupp.coe_finsetSum, Finset.sum_apply]
+    rw [← h1, ← Nat.descFactorial_eq_prod_range, Nat.descFactorial_eq_factorial_mul_choose,
+      Nat.factorization_mul (Nat.factorial_ne_zero k) hC, Finsupp.coe_add, Pi.add_apply]
+  rw [Finset.prod_congr rfl step1, Finset.prod_mul_distrib]
+  congr 1
+  -- the primes ≤ k carry all of k!
+  have hsub : (k.factorial).factorization.support ⊆ (Finset.Icc 1 k).filter Nat.Prime := by
+    intro p hp
+    rw [Nat.support_factorization, Nat.mem_primeFactors] at hp
+    exact Finset.mem_filter.mpr ⟨Finset.mem_Icc.mpr ⟨hp.1.one_le, hp.1.dvd_factorial.mp hp.2.1⟩, hp.1⟩
+  rw [← Finsupp.prod_of_support_subset _ hsub (fun p e => p ^ e) (fun _ _ => pow_zero _)]
+  exact Nat.prod_factorization_pow_eq_self (Nat.factorial_ne_zero k)
