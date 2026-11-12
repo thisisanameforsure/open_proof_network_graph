@@ -1,0 +1,132 @@
+{
+  "artifact_hash": "b78528491a904317351f0f61b13b22a3b73d11ca0d312e9177de1a04f8636060",
+  "automation": {
+    "framework": "Claude Code (Agent SDK subagent)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": {
+    "assembly": {
+      "artifact_hash": "aa920c40c96cd55f26ee8e976b1c5cccacac1b8cf3a3465af27919de670e4a59",
+      "path": "attempts/20261112T123413Z-t1112-b-partial.lean"
+    },
+    "carried": {
+      "path": "attempts/20261112T123413Z-t1112-b-partial.1.proof",
+      "sha256": "32a3a89a5c86f905df624a3b85c97cabc27f2ec16dd493e0995345dbe3aa35f1"
+    },
+    "node_id": "erdos-1094--h2--h2--h5"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "678335d7f20023a3a4c3d55396d50e20750bad7e",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "678335d7f20023a3a4c3d55396d50e20750bad7e",
+  "model_and_tooling": "claude-fable-5-1 Fable 5.1 Claude Code (Agent SDK subagent)",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h2--h5--h1",
+  "precheck_attestation": {
+    "hash": "a3c38e3b7bb295232cd2ca128229c4dfbbce81fcc471a7dbe2079f157e5afd2d",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-12T13:25:50Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQBqe5RO8mgRiGbb5eSFpmTldxQW2yfCz/CPbjZMfPs6+05pZ10\nRwQd9ddsYmYVTknbGBJJWuFNidqE6EXA309A8=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "7941bae9af9c2722125960dd21383968cf8d5fb2bbd2331f03d915618ec9d8d5",
+  "steps": [
+    {
+      "diagnostic": null,
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "nat-sub",
+              "location": "n - k",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 k",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: nat-sub at n - k: subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1112-b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Agent SDK subagent)",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
