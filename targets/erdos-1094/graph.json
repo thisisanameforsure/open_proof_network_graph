@@ -1687,9 +1687,23 @@
       "cause": null,
       "claim": "\\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp\\bigl(\\log^2 k/(20\\log\\log k)\\bigr)<n+1,\\ k\\lfloor n/k\\rfloor\\mid k!,\\ (\\forall p\\le k\\text{ prime}:\\ p\\nmid\\tbinom nk),\\ (\\forall p\\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor:\\ k\\le n\\bmod p),\\ n/\\gcd(n,k)\\text{ prime},\\ k\\nmid n\\ \\Rightarrow\\ k\\le K",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Kummer's digit form at primes p ≤ k: p ∤ C(n,k) means adding k and n−k in base p carries nowhere, i.e. k mod p^i ≤ n mod p^i for every i; proved here from Nat.Prime.emultiplicity_choose, and the one hole is the residue form with the digit conditions in place of p ∤ C(n,k).",
+          "holes": [
+            {
+              "name": "h_digits",
+              "node": "erdos-1094--h2--h2--h3--h1--h1--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261112T131816Z-t1112-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h2--h3--h1--h1--h1--h1"
+      ],
       "label": "residue form beyond van Doorn–Tang",
       "label_source": "gloss",
       "lemmas": [],
@@ -1705,6 +1719,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "b8a22b7e0dbf47c27d7fcbb7ef28130b376c290598d8e593df1ecd7d069db88e",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp\\bigl(\\log^2 k/(20\\log\\log k)\\bigr)<n+1,\\ k\\lfloor n/k\\rfloor\\mid k!,\\ (\\forall p\\le k\\text{ prime},\\ \\forall i:\\ k\\bmod p^i\\le n\\bmod p^i),\\ (\\forall p\\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor:\\ k\\le n\\bmod p),\\ n/\\gcd(n,k)\\text{ prime},\\ k\\nmid n\\ \\Rightarrow\\ k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "digit form beyond van Doorn–Tang",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h3--h1--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "403caa6fcdf04261a5309910e125aa84a50709db429c4fb86a24bd9e905d5e82",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -1936,13 +1977,13 @@
     },
     {
       "cause": null,
-      "claim": "\\forall c>0\\ \\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp(c\\log^2 k)<n,\\ \\operatorname{lpf}\\binom nk>\\lfloor n/k\\rfloor,\\ \\bigl(\\forall p \\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor,\\ \\forall m\\in(n-k,n],\\ p\\nmid m\\bigr),\\ \\prod_{m=n-k+1}^{n}\\prod_{p\\le k \\text{ prime}} p^{v_p(m)} = k! \\Rightarrow k\\le K",
+      "claim": "\\forall c > 0\\ \\ \\exists K \\in \\mathbb{N}\\ \\ \\forall n, k \\in \\mathbb{N}:\\quad 0 < k,\\ \\ k^3 \\le n,\\ \\ \\exp(c \\log^2 k) < n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k \\rfloor,",
       "closure": null,
       "decompositions": [],
       "defect_claims": [],
       "deps": [],
-      "label": "n-k+1..n free of primes in (k, n/k], smooth parts k!",
-      "label_source": "gloss",
+      "label": "h_core",
+      "label_source": "hole",
       "lemmas": [],
       "literature": null,
       "literature_proposed": null,
@@ -3364,7 +3405,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "2409bdade7db0557cfc46ddac85950aae1a26336",
+  "rendered_from": "f9cd6f5544481d38026ba3aa14030360b640d6c2",
   "review": {
     "candidates": 1,
     "clusters": 1,
