@@ -1,0 +1,172 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "7c6e66175cc0355309443aa7886ae70ce22f882d",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "7c6e66175cc0355309443aa7886ae70ce22f882d",
+  "model_and_tooling": "claude-fable-5-1 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h3--h3--h1--h1--h1--h1--h1",
+  "precheck_attestation": {
+    "hash": "76c36edb65e9ad150c59fdb56a164f7c75c0dae6f9c58bb89cc209d9d57402fa",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-12T13:54:12Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQN0cu9OwFzwvxgT6QCAaIYdbT8QggN9k078r0l3qxX6ewnJ1kz\nvfPSTDvX45O4C8/QY96QWBLdLEeVt/A6yYdQc=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "60332903bb40c7b3a33ddd56187e2bc28cb7ad2ec66ea19db64769dac574b82c",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261112T132844Z-t1112-c-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261112T132844Z-t1112-c-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_bound",
+            "h_sandwich"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h3__h3__h1__h1__h1__h1__h1 declares ∀ (f : ℕ → ℝ) (A : ℝ),\n  (∀ (n : ℕ), 0 ≤ f n) →\n    (∀ (ψ : ℝ → ℝ),\n        ContDiff ℝ 2 ψ →\n          HasCompactSupport ψ →\n            Function.support ψ ⊆ Set.Ioi 0 →\n              Filter.Tendsto (fun X => (∑' (n : ℕ), f n * ψ (↑n / X)) / X) Filter.atTop (nhds (A * ∫ (x : ℝ), ψ x))) →\n      Filter.Tendsto (fun N => (∑ n ∈ Finset.range N, f n) / ↑N) Filter.atTop (nhds A); 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "(∑ n ∈ Finset.range N, f n) / ↑N",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "(∑' (n : ℕ), f n * ψ (↑n / X)) / X",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "↑n / X",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Set.Ioi 0",
+              "message": "Set.Ioi with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at (∑ n ∈ Finset.range N, f n) / ↑N: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_bound",
+              "path": "attempts/20261112T132844Z-t1112-c-partial.1.witness",
+              "sha256": "fe735f4dfe0583c7e8c166cd6b09f0d379ba9dd3564ab51815d383cbafc0e501"
+            },
+            {
+              "hole": "h_sandwich",
+              "path": "attempts/20261112T132844Z-t1112-c-partial.2.witness",
+              "sha256": "b48e23918f847c9cb0999936e7c9a2a1bb2ccbd3d64560f2ddc34850ecebc002"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1112-c",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

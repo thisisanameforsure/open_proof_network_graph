@@ -1,0 +1,923 @@
+{
+  "artifact": {
+    "hash": "2dd0084d2afb1492fb54e29b3de7f68cb038adfa37b87be7d3f98b8945cede2a",
+    "kind": "partial",
+    "path": "attempts/20261112T131816Z-t1112-a-partial.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h2--h2--h3--h1--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h2--h2--h3--h1--h1--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_digits",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ¬p ∣ n.choose k) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "h_digits",
+      "kind": "hole",
+      "name": "h_digits",
+      "span": {
+        "end_line": 25,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The real exponential function, defined as the real part of the complex exponential",
+            "name": "Real.exp",
+            "tags": []
+          },
+          {
+            "doc": "The real logarithm function, equal to the inverse of the exponential for `x > 0`, to `log |x|` for `x < 0`, and to `0` for `0`.",
+            "name": "Real.log",
+            "tags": []
+          },
+          {
+            "doc": "`Nat.Prime p` means that `p` is a prime number, that is, a natural number at least 2 whose only divisors are `p` and `1`.",
+            "name": "Nat.Prime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Nat.log p n < Nat.log p n + (1 : ℕ) + i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Nat.log p n < Nat.log p n + (1 : ℕ) + i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hb",
+          "kind": "have",
+          "name": "hb",
+          "span": {
+            "end_line": 30,
+            "start_line": 30
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`log b n`, is the logarithm of natural number `n` in base `b`.",
+                "name": "Nat.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "emultiplicity p (n.choose k) =\n  (↑{i ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i) | p ^ i ≤ k % p ^ i + (n - k) % p ^ i}.card : ℕ∞)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hmul",
+                "type": {
+                  "printed": "reliable",
+                  "text": "emultiplicity p (n.choose k) =\n  (↑{i ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i) | p ^ i ≤ k % p ^ i + (n - k) % p ^ i}.card : ℕ∞)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hmul",
+          "kind": "have",
+          "name": "hmul",
+          "span": {
+            "end_line": 31,
+            "start_line": 31
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The multiplicity of `p` in `choose n k` is the number of carries when `k` and `n - k` are added in base `p`.",
+                "name": "Nat.Prime.emultiplicity_choose",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "emultiplicity p (n.choose k) = (0 : ℕ∞)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h0",
+                "type": {
+                  "printed": "reliable",
+                  "text": "emultiplicity p (n.choose k) = (0 : ℕ∞)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.h0",
+          "kind": "have",
+          "name": "h0",
+          "span": {
+            "end_line": 33,
+            "start_line": 32
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "`emultiplicity a b` returns the largest natural number `n` such that `a ^ n ∣ b`, as an `ℕ∞`.",
+                "name": "emultiplicity",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "emultiplicity_eq_zero",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "{j ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i) | p ^ j ≤ k % p ^ j + (n - k) % p ^ j}.card = (0 : ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hcard",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{j ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i) | p ^ j ≤ k % p ^ j + (n - k) % p ^ j}.card = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hcard",
+          "kind": "have",
+          "name": "hcard",
+          "span": {
+            "end_line": 37,
+            "start_line": 35
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $[a, b)$ of elements `x` such that `a ≤ x` and `x < b`.",
+                "name": "Finset.Ico",
+                "tags": []
+              },
+              {
+                "doc": "`log b n`, is the logarithm of natural number `n` in base `b`.",
+                "name": "Nat.log",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hi",
+                "type": {
+                  "printed": "reliable",
+                  "text": "i = (0 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.s5",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 40,
+            "start_line": 40
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mod_one",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "i ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hmem",
+                "type": {
+                  "printed": "reliable",
+                  "text": "i ∈ Finset.Ico (1 : ℕ) (Nat.log p n + (1 : ℕ) + i)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hmem",
+          "kind": "have",
+          "name": "hmem",
+          "span": {
+            "end_line": 41,
+            "start_line": 41
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "The finset $[a, b)$ of elements `x` such that `a ≤ x` and `x < b`.",
+                "name": "Finset.Ico",
+                "tags": []
+              },
+              {
+                "doc": "`log b n`, is the logarithm of natural number `n` in base `b`.",
+                "name": "Nat.log",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_Ico",
+                "tags": []
+              },
+              {
+                "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+                "name": "And.intro",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "¬p ^ i ≤ k % p ^ i + (n - k) % p ^ i",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "¬p ^ i ≤ k % p ^ i + (n - k) % p ^ i",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "k % p ^ i + (n - k) % p ^ i < p ^ i",
+                  "truncated": false
+                }
+              },
+              "id": "kummer.hlt.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 43,
+                "start_line": 43
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "k % p ^ i + (n - k) % p ^ i < p ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hlt",
+                "type": {
+                  "printed": "reliable",
+                  "text": "k % p ^ i + (n - k) % p ^ i < p ^ i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hlt",
+          "kind": "have",
+          "name": "hlt",
+          "span": {
+            "end_line": 43,
+            "start_line": 42
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "n = k + (n - k)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "omega"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsum",
+                "type": {
+                  "printed": "reliable",
+                  "text": "n = k + (n - k)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hsum",
+          "kind": "have",
+          "name": "hsum",
+          "span": {
+            "end_line": 44,
+            "start_line": 44
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℕ) < p ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hpos",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℕ) < p ^ i",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          },
+          "id": "kummer.hpos",
+          "kind": "have",
+          "name": "hpos",
+          "span": {
+            "end_line": 45,
+            "start_line": 45
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "pow_pos",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k % p ^ i ≤ k % p ^ i + (n - k) % p ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "kummer.s10",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 46,
+            "start_line": 46
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.le_add_right",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "k % p ^ i + (n - k) % p ^ i = (k % p ^ i + (n - k) % p ^ i) % p ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "kummer.s11",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 47,
+            "start_line": 47
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.mod_eq_of_lt",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(k % p ^ i + (n - k) % p ^ i) % p ^ i = (k + (n - k)) % p ^ i",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "kummer.s12",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 48,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Nat.add_mod",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": null,
+          "id": "kummer.s13",
+          "kind": "calc",
+          "name": null,
+          "span": {
+            "end_line": 49,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n k p : ℕ), Nat.Prime p → k ≤ n → ¬p ∣ n.choose k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "kummer",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k p : ℕ), Nat.Prime p → k ≤ n → ¬p ∣ n.choose k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ¬p ∣ n.choose k) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "kummer",
+      "kind": "have",
+      "name": "kummer",
+      "span": {
+        "end_line": 49,
+        "start_line": 27
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.card_eq_zero",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.filter_eq_empty_iff",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.eq_zero_or_pos",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "K",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hK",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n k : ℕ),\n  (0 : ℕ) < k →\n    k * k * k ≤ n →\n      Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n        k * (n / k) ∣ k ! →\n          (∀ (p : ℕ), Nat.Prime p → p ≤ k → ∀ (i : ℕ), k % p ^ i ≤ n % p ^ i) →\n            (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (K : ℕ),\n  ∀ (n k : ℕ),\n    (0 : ℕ) < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log (↑k : ℝ) ^ (2 : ℕ) / ((20 : ℝ) * Real.log (Real.log (↑k : ℝ)))) < (↑n : ℝ) + (1 : ℝ) →\n          k * (n / k) ∣ k ! →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ¬p ∣ n.choose k) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 50,
+        "start_line": 50
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k ≤ n / k",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h2",
+            "type": {
+              "printed": "reliable",
+              "text": "k ≤ n / k",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (i : ℕ), k % p ^ i ≤ n % p ^ i",
+          "truncated": false
+        }
+      },
+      "id": "h2",
+      "kind": "have",
+      "name": "h2",
+      "span": {
+        "end_line": 53,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.le_div_iff_mul_le",
+            "tags": []
+          },
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.le_mul_of_pos_right",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "k ≤ n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hkn",
+            "type": {
+              "printed": "reliable",
+              "text": "k ≤ n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (i : ℕ), k % p ^ i ≤ n % p ^ i",
+          "truncated": false
+        }
+      },
+      "id": "hkn",
+      "kind": "have",
+      "name": "hkn",
+      "span": {
+        "end_line": 54,
+        "start_line": 54
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The relation `≤` on a preorder is transitive.",
+            "name": "le_trans",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.div_le_self",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ), k % p ^ i ≤ n % p ^ i",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 55,
+        "start_line": 55
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}

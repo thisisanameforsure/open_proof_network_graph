@@ -1986,7 +1986,11 @@
       "label_source": "hole",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "t1112-b",
+        "record": "literature/20261112T140131Z-t1112-b.yaml",
+        "status": "open"
+      },
       "node_id": "erdos-1094--h2--h2--h5--h2",
       "origin": "compiler-derived",
       "outline": null,
@@ -3243,9 +3247,28 @@
       "cause": null,
       "claim": "\\Bigl(\\forall \\psi \\in C_c^\\infty(0,\\infty):\\ \\tfrac{1}{X}\\sum_n f(n)\\psi(n/X) \\to A\\int\\psi\\Bigr) \\Rightarrow \\tfrac{1}{N}\\sum_{n<N} f(n) \\to A",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "unsmoothing in two steps: one bump ψ ≥ 1 on [1/4, 1] bounds every dyadic block, so the partial sums are O(N); then bumps ψ₋ ≤ 1_{[δ,1]} ≤ ψ₊ with ∫ψ± within ε of 1 sandwich S(N)/N, the part n < δN costing at most Cδ.",
+          "holes": [
+            {
+              "name": "h_bound",
+              "node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h1"
+            },
+            {
+              "name": "h_sandwich",
+              "node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h2"
+            }
+          ],
+          "partial": "attempts/20261112T132844Z-t1112-c-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h1",
+        "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h2"
+      ],
       "label": "unsmoothing with f ≥ 0",
       "label_source": "gloss",
       "lemmas": [],
@@ -3261,6 +3284,60 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "60332903bb40c7b3a33ddd56187e2bc28cb7ad2ec66ea19db64769dac574b82c",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists C,\\ \\forall N,\\ \\sum_{n<N} f(n) \\le C\\,N",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "partial sums are O(N)",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "ef4ab934a69e469d0192ade89c45e12ee42234c8aa0fc5b3460dcd9392b92824",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\bigl(\\exists C,\\ \\forall N,\\ \\sum_{n<N} f(n) \\le C N\\bigr) \\Rightarrow \\tfrac{1}{N}\\sum_{n<N} f(n) \\to A",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "sandwich by bumps",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "bcdbacae4c550f5ebf53555a99a48a982aba0fda0cf52e187d39387681e25bfe",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -3405,7 +3482,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "27b47f739fb9e9a2498a21f838be2350a10e8ed7",
+  "rendered_from": "f2d2aa6caa5c42a3b259fdf0cd156f20ffe95c3b",
   "review": {
     "candidates": 1,
     "clusters": 1,
