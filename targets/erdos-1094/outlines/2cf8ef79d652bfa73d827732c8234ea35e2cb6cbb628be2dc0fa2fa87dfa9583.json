@@ -1,0 +1,150 @@
+{
+  "artifact": {
+    "hash": "2cf8ef79d652bfa73d827732c8234ea35e2cb6cbb628be2dc0fa2fa87dfa9583",
+    "kind": "partial",
+    "path": "attempts/20261112T132844Z-t1112-c-partial.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_bound",
+            "type": {
+              "printed": "reliable",
+              "text": "∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+          "truncated": false
+        }
+      },
+      "id": "h_bound",
+      "kind": "hole",
+      "name": "h_bound",
+      "span": {
+        "end_line": 26,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)) →\n  Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_sandwich",
+            "type": {
+              "printed": "reliable",
+              "text": "(∃ (C : ℝ), ∀ (N : ℕ), ∑ n ∈ Finset.range N, f n ≤ C * (↑N : ℝ)) →\n  Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+          "truncated": false
+        }
+      },
+      "id": "h_sandwich",
+      "kind": "hole",
+      "name": "h_sandwich",
+      "span": {
+        "end_line": 34,
+        "start_line": 32
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          },
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 35,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}

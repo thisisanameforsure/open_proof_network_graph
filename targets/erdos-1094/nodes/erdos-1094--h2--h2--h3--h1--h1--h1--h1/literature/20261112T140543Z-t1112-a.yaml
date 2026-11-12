@@ -1,0 +1,41 @@
+schema: literature/v2
+node: erdos-1094--h2--h2--h3--h1--h1--h1--h1
+contributor: t1112-a
+date: '2026-11-12T14:05:43Z'
+status: open
+references:
+- title: E. E. Kummer, Über die Ergänzungssätze zu den allgemeinen Reciprocitätsgesetzen,
+    J. reine angew. Math. 44 (1852)
+  url: null
+  note: 'the digit condition at primes p ≤ k is Kummer''s theorem: v_p(C(n,k)) is
+    the number of carries adding k and n−k in base p (Mathlib: Nat.Prime.emultiplicity_choose)'
+- title: P. Erdős, C. B. Lacampagne, J. L. Selfridge, Estimates of the least prime
+    factor of a binomial coefficient, Math. Comp. 61 (1993)
+  url: null
+  note: the n/k conjecture for n ≥ k², the bound k⌊n/k⌋ ∣ k! and the residue reading
+    lpf C(n,k) > n/k ⇔ no prime ≤ n/k divides a factor of n(n−1)…(n−k+1) beyond its
+    share of k!
+- title: W. van Doorn, T. Tang, ChatGPT's note on Erdős problem 451 (arXiv 2606.19863,
+    2026)
+  url: https://arxiv.org/abs/2606.19863
+  note: proves lpf C(n,k) ≤ n/k for large k up to n ≤ exp(log²k/(20 log log k)) assuming
+    Baker–Harman–Pintz, by counting primes p just above k with n mod p ≥ k (the second
+    residue condition) via Konyagin; this node is the range beyond it
+- title: Erdős problem 1094 (erdosproblems.com)
+  url: https://www.erdosproblems.com/1094
+  note: the problem page
+summary: 'This node is the leaf beyond van Doorn–Tang''s range with lpf C(n,k) > n/k
+  written as its two residue conditions: no carry adding k and n−k in base p at every
+  prime p ≤ k (Kummer 1852), and n mod p ≥ k at every prime k < p ≤ ⌊n/k⌋ (no multiple
+  of p among the k factors of the falling factorial). Both are classical and exactly
+  equivalent to the hypothesis they replace; nothing in the literature closes them
+  uniformly in k for n ≥ exp(log²k/(20 log log k)). Van Doorn and Tang (2026) handle
+  n up to that bound, conditionally on BHP, by Konyagin''s count of the primes satisfying
+  the second condition; the first condition alone is satisfiable for every k, with
+  (62,6) meeting all of them. Status: open.'
+model_and_tooling: claude-fable-5-1 via Claude Code (black-box tester t1112-a)
+confirms: null
+via: null
+key: null
+signature: null
+disputes: null

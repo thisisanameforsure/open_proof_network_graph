@@ -1,0 +1,8 @@
+-- hole: h_split
+import Mathlib
+
+open scoped Nat
+
+theorem witness : ∃ (c : ℝ) (n : ℕ) (k : ℕ) (m : ℕ), (0 : ℝ) < c ∧ (0 : ℕ) < k ∧ k ≤ n ∧
+    (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) ∧ n - k < m ∧ m ≤ n :=
+  ⟨1, 1, 1, 1, one_pos, one_pos, le_rfl, fun _p _ h1 h2 _ _ _ _ => absurd (lt_of_lt_of_le h1 h2) (lt_irrefl _), by norm_num, le_rfl⟩

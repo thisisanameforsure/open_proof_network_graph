@@ -1,0 +1,60 @@
+-- hole: h_split
+-- proof:
+by
+  intro _c _hc n k hk hkn hfree m hm1 hm2
+  have hm0 : m ≠ 0 := by omega
+  set S := (Finset.Icc 1 k).filter Nat.Prime with hS
+  set s := ∏ p ∈ S, p ^ (m.factorization p) with hs
+  set r := ∏ p ∈ m.primeFactors.filter (fun p => k < p), p ^ (m.factorization p) with hr
+  -- m = s * r
+  have hsplit : m = s * r := by
+    have h1 : m = ∏ p ∈ m.primeFactors, p ^ (m.factorization p) := (Nat.prod_factorization_pow_eq_self hm0).symm.trans (by rw [Nat.prod_factorization_eq_prod_primeFactors])
+    have h2 : (∏ p ∈ m.primeFactors, p ^ (m.factorization p)) =
+        (∏ p ∈ m.primeFactors.filter (fun p => p ≤ k), p ^ (m.factorization p)) *
+        (∏ p ∈ m.primeFactors.filter (fun p => ¬ p ≤ k), p ^ (m.factorization p)) :=
+      (Finset.prod_filter_mul_prod_filter_not _ _ _).symm
+    have h3 : (∏ p ∈ m.primeFactors.filter (fun p => p ≤ k), p ^ (m.factorization p)) = s := by
+      rw [hs]
+      apply Finset.prod_subset
+      · intro p hp
+        rw [Finset.mem_filter, Nat.mem_primeFactors] at hp
+        exact Finset.mem_filter.mpr ⟨Finset.mem_Icc.mpr ⟨hp.1.1.one_le, hp.2⟩, hp.1.1⟩
+      · intro p hpS hpn
+        rw [Finset.mem_filter, Nat.mem_primeFactors] at hpn
+        have hp : p.Prime := (Finset.mem_filter.mp hpS).2
+        have hpk : p ≤ k := (Finset.mem_Icc.mp (Finset.mem_filter.mp hpS).1).2
+        have : ¬ p ∣ m := fun h => hpn ⟨⟨hp, h, hm0⟩, hpk⟩
+        rw [Nat.factorization_eq_zero_of_not_dvd this, pow_zero]
+    have h4 : m.primeFactors.filter (fun p => ¬ p ≤ k) = m.primeFactors.filter (fun p => k < p) := by
+      apply Finset.filter_congr; intro p _; exact not_le
+    rw [h1, h2, h3, h4]
+  -- r = 1 or r > n / k
+  have hr1 : r = 1 ∨ n / k < r := by
+    by_cases h : r = 1
+    · exact Or.inl h
+    · right
+      have hr0 : r ≠ 0 := by
+        rw [hr]; apply Finset.prod_ne_zero_iff.mpr; intro p hp
+        exact pow_ne_zero _ (Nat.mem_primeFactors.mp (Finset.mem_filter.mp hp).1).1.ne_zero
+      obtain ⟨q, hq, hqr⟩ := Nat.exists_prime_and_dvd h
+      -- q divides some factor p ^ e of r, hence q = p with k < p
+      have hqm : q ∣ m := hqr.trans (hsplit ▸ Dvd.intro_left s rfl)
+      have hkq : k < q := by
+        rw [hr] at hqr
+        obtain ⟨p, hp, hqp⟩ := (Prime.dvd_finsetProd_iff hq.prime _).mp hqr
+        have hpk : k < p := (Finset.mem_filter.mp hp).2
+        have hpp : p.Prime := (Nat.mem_primeFactors.mp (Finset.mem_filter.mp hp).1).1
+        have : q = p := (Nat.prime_dvd_prime_iff_eq hq hpp).mp (hq.dvd_of_dvd_pow hqp)
+        omega
+      have hqn : ¬ q ≤ n / k := fun hle => hfree q hq hkq hle m hm1 hm2 hqm
+      exact lt_of_lt_of_le (not_le.mp hqn) (Nat.le_of_dvd (Nat.pos_of_ne_zero hr0) hqr)
+  rcases hr1 with h | h
+  · left; rw [hsplit, h, mul_one]
+  · right
+    by_contra hcon
+    have hsk : k ≤ s := not_lt.mp hcon
+    have h5 : k * (n / k + 1) ≤ s * r := Nat.mul_le_mul hsk h
+    have h6 : n < k * (n / k + 1) := by
+      have := Nat.lt_mul_div_succ n hk
+      linarith
+    omega
