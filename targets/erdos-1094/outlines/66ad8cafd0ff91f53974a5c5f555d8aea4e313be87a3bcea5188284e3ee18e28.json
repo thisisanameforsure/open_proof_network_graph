@@ -1,0 +1,176 @@
+{
+  "artifact": {
+    "hash": "66ad8cafd0ff91f53974a5c5f555d8aea4e313be87a3bcea5188284e3ee18e28",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h3--h3--h1--h1--h1--h2",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ), ArithmeticFunction.vonMangoldt.residueClass (1 : ZMod (1 : ℕ)) n = (ArithmeticFunction.vonMangoldt : ℕ → ℝ) n",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hres",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ), ArithmeticFunction.vonMangoldt.residueClass (1 : ZMod (1 : ℕ)) n = (ArithmeticFunction.vonMangoldt : ℕ → ℝ) n",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "ArithmeticFunction.vonMangoldt.LFunctionResidueClassAux (1 : ZMod (1 : ℕ)) s =\n  LSeries (fun (n : ℕ) => (↑((ArithmeticFunction.vonMangoldt : ℕ → ℝ) n) : ℂ)) s - (1 : ℂ) / (s - (1 : ℂ))",
+          "truncated": false
+        }
+      },
+      "id": "hres",
+      "kind": "have",
+      "name": "hres",
+      "span": {
+        "end_line": 21,
+        "start_line": 17
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The von Mangoldt function restricted to the residue class `a` mod `q`.",
+            "name": "ArithmeticFunction.vonMangoldt.residueClass",
+            "tags": []
+          },
+          {
+            "doc": "The `vonMangoldt` function is the function on natural numbers that returns `log p` if the input can be expressed as `p^k` for a prime `p`.",
+            "name": "ArithmeticFunction.vonMangoldt",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_of_mem",
+            "tags": []
+          },
+          {
+            "doc": "If a type is a subsingleton, then all of its elements are equal.",
+            "name": "Subsingleton.elim",
+            "tags": []
+          },
+          {
+            "doc": "The integers modulo `n : ℕ`.",
+            "name": "ZMod",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "ArithmeticFunction.vonMangoldt.LFunctionResidueClassAux (1 : ZMod (1 : ℕ)) s =\n  (fun (s : ℂ) =>\n      LSeries (fun (n : ℕ) => (↑(ArithmeticFunction.vonMangoldt.residueClass (1 : ZMod (1 : ℕ)) n) : ℂ)) s -\n        (↑(φ (1 : ℕ)) : ℂ)⁻¹ / (s - (1 : ℂ)))\n    s",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h",
+            "type": {
+              "printed": "reliable",
+              "text": "ArithmeticFunction.vonMangoldt.LFunctionResidueClassAux (1 : ZMod (1 : ℕ)) s =\n  (fun (s : ℂ) =>\n      LSeries (fun (n : ℕ) => (↑(ArithmeticFunction.vonMangoldt.residueClass (1 : ZMod (1 : ℕ)) n) : ℂ)) s -\n        (↑(φ (1 : ℕ)) : ℂ)⁻¹ / (s - (1 : ℂ)))\n    s",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "ArithmeticFunction.vonMangoldt.LFunctionResidueClassAux (1 : ZMod (1 : ℕ)) s =\n  LSeries (fun (n : ℕ) => (↑((ArithmeticFunction.vonMangoldt : ℕ → ℝ) n) : ℂ)) s - (1 : ℂ) / (s - (1 : ℂ))",
+          "truncated": false
+        }
+      },
+      "id": "h",
+      "kind": "have",
+      "name": "h",
+      "span": {
+        "end_line": 22,
+        "start_line": 22
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The auxiliary function agrees on `re s > 1` with the L-series of the von Mangoldt function restricted to the residue class `a : ZMod q` minus the principal part `(q.totient)⁻¹/(s-1)` of its pole at `s = 1`.",
+            "name": "ArithmeticFunction.vonMangoldt.eqOn_LFunctionResidueClassAux",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "isUnit_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "ArithmeticFunction.vonMangoldt.LFunctionResidueClassAux (1 : ZMod (1 : ℕ)) s =\n  LSeries (fun (n : ℕ) => (↑((ArithmeticFunction.vonMangoldt : ℕ → ℝ) n) : ℂ)) s - (1 : ℂ) / (s - (1 : ℂ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 24,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.totient_one",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.cast_one",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "inv_one",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
