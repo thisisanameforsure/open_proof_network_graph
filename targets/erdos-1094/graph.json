@@ -1983,9 +1983,28 @@
       "cause": null,
       "claim": "\\forall c > 0\\ \\ \\exists K \\in \\mathbb{N}\\ \\ \\forall n, k \\in \\mathbb{N}:\\quad 0 < k,\\ \\ k^3 \\le n,\\ \\ \\exp(c \\log^2 k) < n,\\ \\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k \\rfloor,",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "each window integer m = s·r with s its k-smooth part and every prime of r above n/k (sieve-free), so r = 1 or r > n/k, hence m is k-smooth or s < k: k smooth parts each below k multiplying to k!. The core is that case.",
+          "holes": [
+            {
+              "name": "h_split",
+              "node": "erdos-1094--h2--h2--h5--h2--h1"
+            },
+            {
+              "name": "h_core",
+              "node": "erdos-1094--h2--h2--h5--h2--h2"
+            }
+          ],
+          "partial": "attempts/20261112T133600Z-t1112-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h2--h5--h2--h1",
+        "erdos-1094--h2--h2--h5--h2--h2"
+      ],
       "label": "h_core",
       "label_source": "hole",
       "lemmas": [],
@@ -2005,6 +2024,70 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "cffc769bc369ea5adfeea3cc74d3f47019b8decad105ea442a0c2d93d46cd52b",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall n,k:\\ 0<k\\le n,\\ \\bigl(\\forall p \\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor,\\ \\forall m\\in(n-k,n],\\ p\\nmid m\\bigr) \\Rightarrow \\forall m\\in(n-k,n]:\\ s_k(m)=m\\ \\text{ or }\\ s_k(m)<k",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "window integers are k-smooth or have k-smooth part below k",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h5--h2--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "a67a511f65b9e1505761816c6200a882c9ddaf2b",
+      "proofs": [
+        {
+          "artifact_hash": "942dc8b439e2fae62a065e92d01e8a73b204898058568bd252f2688f7874511a",
+          "attestation": "001476.erdos-1094--h2--h2--h5--h2--h1.json",
+          "kind": "proof",
+          "merge_commit": "a67a511f65b9e1505761816c6200a882c9ddaf2b",
+          "path": "Proof.lean",
+          "submitter": "t1112-b",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "ff0b4ff024c3134fe5ea81ab485e389cc63ecef3235a6d354206cab3af0b9a04",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall c>0\\ \\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp(c\\log^2 k)<n,\\ \\operatorname{lpf}\\binom nk>\\lfloor n/k\\rfloor,\\ \\bigl(\\forall p \\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor,\\ \\forall m\\in(n-k,n],\\ p\\nmid m\\bigr),\\ \\prod_{m=n-k+1}^{n} s_k(m) = k!,\\ \\bigl(\\forall m\\in(n-k,n]:\\ s_k(m)=m \\text{ or } s_k(m)<k\\bigr) \\Rightarrow k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "window smooth parts below k or whole, multiplying to k!",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h5--h2--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "4cabf3f951a44391a7bbaf7c73a32f91fb79df19fefaddafd74a4b47108bf569",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -3486,7 +3569,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "3b9adb8e59e6b4aea6afbe328ca0160bf7bffa2b",
+  "rendered_from": "427b1cdaa465a7090c8747765c31e209bbb32018",
   "review": {
     "candidates": 1,
     "clusters": 1,
