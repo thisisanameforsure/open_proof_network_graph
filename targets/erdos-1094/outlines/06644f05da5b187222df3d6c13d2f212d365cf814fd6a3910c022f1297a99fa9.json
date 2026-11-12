@@ -1,0 +1,210 @@
+{
+  "artifact": {
+    "hash": "06644f05da5b187222df3d6c13d2f212d365cf814fd6a3910c022f1297a99fa9",
+    "kind": "partial",
+    "path": "attempts/20261112T123802Z-t1112-c-partial.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "erdos-1094--h3--h3--h1--h1--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1--h1--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (ψ : ℝ → ℝ),\n    ContDiff ℝ (2 : WithTop ℕ∞) ψ →\n      HasCompactSupport ψ →\n        Function.support ψ ⊆ Set.Ioi (0 : ℝ) →\n          Filter.Tendsto (fun (X : ℝ) => (∑' (n : ℕ), f n * ψ ((↑n : ℝ) / X)) / X) Filter.atTop\n            (nhds (A * ∫ (x : ℝ), ψ x))) →\n  Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_unsmooth",
+            "type": {
+              "printed": "reliable",
+              "text": "(∀ (ψ : ℝ → ℝ),\n    ContDiff ℝ (2 : WithTop ℕ∞) ψ →\n      HasCompactSupport ψ →\n        Function.support ψ ⊆ Set.Ioi (0 : ℝ) →\n          Filter.Tendsto (fun (X : ℝ) => (∑' (n : ℕ), f n * ψ ((↑n : ℝ) / X)) / X) Filter.atTop\n            (nhds (A * ∫ (x : ℝ), ψ x))) →\n  Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(∀ (s : ℂ), (1 : ℝ) < s.re → LSeriesSummable (fun (n : ℕ) => (↑(f n) : ℂ)) s) →\n  (∃ (G : ℂ → ℂ),\n      ContinuousOn G {s : ℂ | (1 : ℝ) ≤ s.re} ∧\n        ∀ (s : ℂ), (1 : ℝ) < s.re → G s = LSeries (fun (n : ℕ) => (↑(f n) : ℂ)) s - (↑A : ℂ) / (s - (1 : ℂ))) →\n    Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+          "truncated": false
+        }
+      },
+      "id": "h_unsmooth",
+      "kind": "hole",
+      "name": "h_unsmooth",
+      "span": {
+        "end_line": 28,
+        "start_line": 23
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A function is continuously differentiable up to `n` if it admits derivatives up to order `n`, which are continuous.",
+            "name": "ContDiff",
+            "tags": []
+          },
+          {
+            "doc": "Attach `⊤` to a type.",
+            "name": "WithTop",
+            "tags": []
+          },
+          {
+            "doc": "A function `f` *has compact support* or is *compactly supported* if the closure of the support of `f` is compact.",
+            "name": "HasCompactSupport",
+            "tags": []
+          },
+          {
+            "doc": "`support` of a function is the set of points `x` such that `f x ≠ 0`.",
+            "name": "Function.support",
+            "tags": []
+          },
+          {
+            "doc": "`Ioi a` is the left-open right-infinite interval $(a, ∞)$.",
+            "name": "Set.Ioi",
+            "tags": []
+          },
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          },
+          {
+            "doc": "`range n` is the set of natural numbers less than `n`.",
+            "name": "Finset.range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-1094--h3--h3--h1--h1--h1--h1--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (ψ : ℝ → ℝ),\n  ContDiff ℝ (2 : WithTop ℕ∞) ψ →\n    HasCompactSupport ψ →\n      Function.support ψ ⊆ Set.Ioi (0 : ℝ) →\n        Filter.Tendsto (fun (X : ℝ) => (∑' (n : ℕ), f n * ψ ((↑n : ℝ) / X)) / X) Filter.atTop\n          (nhds (A * ∫ (x : ℝ), ψ x))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_smooth",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (ψ : ℝ → ℝ),\n  ContDiff ℝ (2 : WithTop ℕ∞) ψ →\n    HasCompactSupport ψ →\n      Function.support ψ ⊆ Set.Ioi (0 : ℝ) →\n        Filter.Tendsto (fun (X : ℝ) => (∑' (n : ℕ), f n * ψ ((↑n : ℝ) / X)) / X) Filter.atTop\n          (nhds (A * ∫ (x : ℝ), ψ x))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+          "truncated": false
+        }
+      },
+      "id": "h_smooth",
+      "kind": "hole",
+      "name": "h_smooth",
+      "span": {
+        "end_line": 38,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A function is continuously differentiable up to `n` if it admits derivatives up to order `n`, which are continuous.",
+            "name": "ContDiff",
+            "tags": []
+          },
+          {
+            "doc": "Attach `⊤` to a type.",
+            "name": "WithTop",
+            "tags": []
+          },
+          {
+            "doc": "A function `f` *has compact support* or is *compactly supported* if the closure of the support of `f` is compact.",
+            "name": "HasCompactSupport",
+            "tags": []
+          },
+          {
+            "doc": "`support` of a function is the set of points `x` such that `f x ≠ 0`.",
+            "name": "Function.support",
+            "tags": []
+          },
+          {
+            "doc": "`Ioi a` is the left-open right-infinite interval $(a, ∞)$.",
+            "name": "Set.Ioi",
+            "tags": []
+          },
+          {
+            "doc": "`Filter.Tendsto` is the generic \"limit of a function\" predicate.",
+            "name": "Filter.Tendsto",
+            "tags": []
+          },
+          {
+            "doc": "`atTop` is the filter representing the limit `→ ∞` on an ordered set.",
+            "name": "Filter.atTop",
+            "tags": []
+          },
+          {
+            "doc": "A set is called a neighborhood of `x` if it contains an open set around `x`.",
+            "name": "nhds",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Filter.Tendsto (fun (N : ℕ) => (∑ n ∈ Finset.range N, f n) / (↑N : ℝ)) Filter.atTop (nhds A)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 39,
+        "start_line": 39
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-1094"
+}
