@@ -1,0 +1,176 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (Agent SDK subagent)",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "a67a511f65b9e1505761816c6200a882c9ddaf2b",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a67a511f65b9e1505761816c6200a882c9ddaf2b",
+  "model_and_tooling": "claude-fable-5-1 Fable 5.1 Claude Code (Agent SDK subagent)",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h2--h5--h2",
+  "precheck_attestation": {
+    "hash": "ea6c9bf69f5eb06cfed1706a7bea31fccc4f70b00688533c34439596201b6d24",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-12T14:16:19Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQJfYcmkTLJry8rOoQ/IPxAZTMRwGXvwhJ+pioXXqG1Y1rFQCE6\nMjN9+nuzp9R3y78PDuSwjX5SGI+RcknphBGAA=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "cffc769bc369ea5adfeea3cc74d3f47019b8decad105ea442a0c2d93d46cd52b",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261112T133600Z-t1112-b-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261112T133600Z-t1112-b-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "hole-proofs",
+        "details": {
+          "holes": [
+            "h_split",
+            "h_core"
+          ],
+          "kind": "partial",
+          "proofs": [
+            {
+              "hole": "h_split",
+              "node": "erdos-1094--h2--h2--h5--h2--h1",
+              "path": "attempts/20261112T133600Z-t1112-b-partial.1.proof",
+              "proof_sha256": "942dc8b439e2fae62a065e92d01e8a73b204898058568bd252f2688f7874511a",
+              "sha256": "352594da881a6add7acad1a568a44de6977d78085177fe0af0c1b1dc077a8133"
+            }
+          ]
+        },
+        "message": "partial: erdos_1094__h2__h2__h5__h2 declares ∀ (c : ℝ),\n  0 < c →\n    ∃ K,\n      ∀ (n k : ℕ),\n        0 < k →\n          k * k * k ≤ n →\n            Real.exp (c * Real.log ↑k ^ 2) < ↑n →\n              (n.choose k).minFac > n / k →\n                (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → ∀ (m : ℕ), n - k < m → m ≤ n → ¬p ∣ m) →\n                  ∏ m ∈ Finset.Ioc (n - k) n, ∏ p ∈ Finset.Icc 1 k with Nat.Prime p, p ^ m.factorization p =\n                      k.factorial →\n                    k ≤ K; 2 hole(s); 1 hole(s) carry a proof, each built and replayed as the node its hole becomes (F32-R3)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "n / k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "nat-sub",
+              "location": "n - k",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 k",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "3 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at n / k: division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_split",
+              "path": "attempts/20261112T133600Z-t1112-b-partial.1.witness",
+              "sha256": "6ce932034522069133c9ee3516a0529f8462f18efe0402a25c1d909532b00aee"
+            },
+            {
+              "hole": "h_core",
+              "path": "attempts/20261112T133600Z-t1112-b-partial.2.witness",
+              "sha256": "7b4cdd92a4b6d1304a51e3ce14248a7b39ac4ac44dc4d4b8ca51234e045fb2b9"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1112-b",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (Agent SDK subagent)",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
