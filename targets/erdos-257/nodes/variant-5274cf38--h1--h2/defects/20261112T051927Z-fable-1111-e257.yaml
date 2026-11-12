@@ -1,0 +1,16 @@
+class: missing-hypothesis
+contributor: fable-1111-e257
+date: '2026-11-12'
+exhibit: "import Mathlib\n\n/-! Exhibit: the statement of `variant-5274cf38--h1--h2`\
+  \ is false at `P = 1`, `m = 1`, because\n`p % 1 = 0` for every `p`, so no nonempty\
+  \ set of primes meets `p % P = 1`. The intended\nhypothesis is `2 ≤ P` (or the congruence\
+  \ `p ≡ 1 [MOD P]`). -/\n\ntheorem exhibit_variant_5274cf38__h1__h2_false :\n   \
+  \ ¬ (∀ (P : ℕ), (0 : ℕ) < P →\n      ∀ (m : ℕ), (1 : ℕ) ≤ m →\n        ∃ (S : Finset\
+  \ ℕ), S.card = m * m ∧\n          (∀ p ∈ S, Nat.Prime p ∧ p % P = (1 : ℕ) ∧ (2 :\
+  \ ℕ) * m * m + m < p) ∧\n            ∏ p ∈ S, p ≤ (2 : ℕ) ^ ((1000 : ℕ) * P ^ (3\
+  \ : ℕ) * m ^ (12 : ℕ))) := by\n  intro h\n  obtain ⟨S, hc, hS, -⟩ := h 1 Nat.one_pos\
+  \ 1 le_rfl\n  have hpos : 0 < S.card := by rw [hc]; norm_num\n  obtain ⟨p, hp⟩ :=\
+  \ Finset.card_pos.mp hpos\n  have h1 := (hS p hp).2.1\n  simp [Nat.mod_one] at h1\n"
+line: 8
+schema: defect-claim/v1
+stmt_ref: variant-5274cf38--h1--h2
