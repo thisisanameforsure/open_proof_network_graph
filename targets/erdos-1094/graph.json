@@ -1642,9 +1642,23 @@
       "cause": null,
       "claim": "\\exists K\\in\\mathbb{N}\\ \\forall n,k\\in\\mathbb{N}:\\quad 0<k,\\ \\ k^3\\le n,\\ \\ \\exp\\!\\Bigl(\\frac{(\\log k)^2}{20\\log\\log k}\\Bigr)<n+1,\\ \\ k\\lfloor n/k\\rfloor\\mid k!,\\ \\ \\operatorname{minFac}\\tbinom{n}{k}>\\lfloor n/k\\rfloor,\\ \\ \\frac{n}{\\gcd(n,k)}\\text{ prime},\\ \\ k\\nmid n\\ \\Longrightarrow\\ k\\le K",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Residue form of the leaf: minFac C(n,k) > n/k means no prime p ≤ k divides C(n,k) and every prime k < p ≤ n/k has n mod p ≥ k (no multiple among n-k+1..n); both proved here, and the one hole keeps n ≥ k³, the exp bound, k·⌊n/k⌋ ∣ k!, n/gcd(n,k) prime and k ∤ n in residue form.",
+          "holes": [
+            {
+              "name": "h_residue",
+              "node": "erdos-1094--h2--h2--h3--h1--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261112T123915Z-t1112-a-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h2--h3--h1--h1--h1"
+      ],
       "label": "beyond van Doorn–Tang, n/gcd(n,k) prime, k ∤ n",
       "label_source": "gloss",
       "lemmas": [],
@@ -1664,6 +1678,33 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "7cf0749d22184710b3dc90717991ee28bb1525f6bbb08d8c27eef10264b5e6b5",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp\\bigl(\\log^2 k/(20\\log\\log k)\\bigr)<n+1,\\ k\\lfloor n/k\\rfloor\\mid k!,\\ (\\forall p\\le k\\text{ prime}:\\ p\\nmid\\tbinom nk),\\ (\\forall p\\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor:\\ k\\le n\\bmod p),\\ n/\\gcd(n,k)\\text{ prime},\\ k\\nmid n\\ \\Rightarrow\\ k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "residue form beyond van Doorn–Tang",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h3--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "b8a22b7e0dbf47c27d7fcbb7ef28130b376c290598d8e593df1ecd7d069db88e",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -3167,7 +3208,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "f3df3b052aa2df0ddea87d41dc487a7e74a88518",
+  "rendered_from": "db04220f09a82612542c7b057789bad20a0df49c",
   "review": {
     "candidates": 1,
     "clusters": 1,
