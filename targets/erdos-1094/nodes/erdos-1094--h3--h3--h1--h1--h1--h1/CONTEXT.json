@@ -10,8 +10,13 @@
   },
   "cause": null,
   "claims": {
-    "active": [],
-    "history_count": 0
+    "active": [
+      {
+        "expires": "2026-11-12T15:38:02Z",
+        "pseudonym": "t1112-c"
+      }
+    ],
+    "history_count": 1
   },
   "defect_claims": [],
   "deps": [],
@@ -25,7 +30,29 @@
   },
   "lemmas": [],
   "literature": null,
-  "literature_proposed": null,
+  "literature_proposed": {
+    "contributor": "t1112-c",
+    "record": "literature/20261112T123207Z-t1112-c.yaml",
+    "references": [
+      {
+        "note": "The original Wiener–Ikehara theorem: a Dirichlet series with non-negative coefficients whose sum minus A/(s-1) extends continuously to Re s ≥ 1 has partial sums ~ A·N.",
+        "title": "N. Wiener, Tauberian theorems, Ann. of Math. 33 (1932) 1–100; S. Ikehara, An extension of Landau's theorem in the analytic theory of numbers, J. Math. Phys. MIT 10 (1931) 1–12",
+        "url": null
+      },
+      {
+        "note": "Textbook proof (Fejér-kernel smoothing); also Newman's 1980 contour-integral proof of the weaker form used for the prime number theorem.",
+        "title": "J. Korevaar, Tauberian Theory: A Century of Developments, Springer 2004, Ch. III",
+        "url": null
+      },
+      {
+        "note": "Formalises the Wiener–Ikehara theorem in Lean 4 over Mathlib (theorem WienerIkeharaTheorem' / the statement Mathlib once carried as the Prop `WienerIkeharaTheorem`) and derives WeakPNT from it. Not in the pinned Mathlib: `#check WienerIkeharaTheorem` is an unknown identifier at the pin (checked 2026-11-12 through the network's fast check).",
+        "title": "PrimeNumberTheoremAnd (Kontorovich, Tao et al.), Lean 4 formalisation, Wiener.lean",
+        "url": "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd"
+      }
+    ],
+    "status": "known",
+    "summary": "This hole is the Wiener–Ikehara Tauberian theorem, stated exactly in the shape Mathlib's PrimesInAP file once took as a hypothesis (the Prop `WienerIkeharaTheorem`: non-negative f, L-series summable on Re s > 1, L(f, s) − A/(s−1) extending continuously to Re s ≥ 1, hence (Σ_{n<N} f n)/N → A). It is a classical theorem (Wiener 1932, Ikehara 1931) and not in the pinned Mathlib: at the pin the identifier `WienerIkeharaTheorem` does not exist, and Mathlib carries no Tauberian theorem of this strength. A Lean proof exists outside Mathlib, in PrimeNumberTheoremAnd's Wiener.lean (over a newer Mathlib, with the sorries noted on the parent's literature record); the route for this node is a port of that proof as private helpers under the pinned toolchain, which is large. Its sibling hole, the continuation of −ζ'/ζ − 1/(s−1) to Re s ≥ 1, is by contrast a one-line instance of Mathlib's vonMangoldt.LFunctionResidueClassAux at q = 1 (proved, PR #1428)."
+  },
   "meta": {
     "acknowledged_hazards": [],
     "origin": "compiler-derived",
@@ -46,7 +73,7 @@
     "present": false,
     "trust_base": null
   },
-  "rendered_from": "2344f5c9c327f4af1acc718ad5268e237008638b",
+  "rendered_from": "6248fffd7529c9831de4540f2deab32090f85f35",
   "review": {
     "questions_waiting": [
       {
