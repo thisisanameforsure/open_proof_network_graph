@@ -1851,9 +1851,28 @@
       "cause": null,
       "claim": "\\forall c > 0\\ \\exists K\\ \\forall n, k:\\ 0 < k,\\ k^3 \\le n,\\ \\exp(c \\log^2 k) < n,\\ \\operatorname{lpf}\\tbinom{n}{k} > \\lfloor n/k \\rfloor \\implies k \\le K",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "sieve step: a prime p in (k, n/k] with a multiple among n-k+1..n divides C(n,k), so those k integers carry no prime in (k, n/k]; and their k-smooth parts multiply to k! times the k-smooth part of C(n,k), which is 1 here. The core is the case with both facts in hand.",
+          "holes": [
+            {
+              "name": "h_prod",
+              "node": "erdos-1094--h2--h2--h5--h1"
+            },
+            {
+              "name": "h_core",
+              "node": "erdos-1094--h2--h2--h5--h2"
+            }
+          ],
+          "partial": "attempts/20261112T123413Z-t1112-b-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-1094--h2--h2--h5--h1",
+        "erdos-1094--h2--h2--h5--h2"
+      ],
       "label": "bounded k on n ≥ k³, n > exp(c·log²k), every c > 0",
       "label_source": "gloss",
       "lemmas": [],
@@ -1873,6 +1892,70 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "20938a39b68c0418fa3f09429072ee10d415976c880c5523f36081c943e3b185",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall n,k:\\ 0<k\\le n \\Rightarrow \\prod_{m=n-k+1}^{n}\\ \\prod_{p\\le k,\\ p \\text{ prime}} p^{v_p(m)} = k!\\cdot\\prod_{p\\le k,\\ p \\text{ prime}} p^{v_p\\binom nk}",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the k-smooth parts of n-k+1..n multiply to k! times C(n,k)'s",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h5--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "678335d7f20023a3a4c3d55396d50e20750bad7e",
+      "proofs": [
+        {
+          "artifact_hash": "b78528491a904317351f0f61b13b22a3b73d11ca0d312e9177de1a04f8636060",
+          "attestation": "001451.erdos-1094--h2--h2--h5--h1.json",
+          "kind": "proof",
+          "merge_commit": "678335d7f20023a3a4c3d55396d50e20750bad7e",
+          "path": "Proof.lean",
+          "submitter": "t1112-b",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "7941bae9af9c2722125960dd21383968cf8d5fb2bbd2331f03d915618ec9d8d5",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall c>0\\ \\exists K\\ \\forall n,k:\\ 0<k,\\ k^3\\le n,\\ \\exp(c\\log^2 k)<n,\\ \\operatorname{lpf}\\binom nk>\\lfloor n/k\\rfloor,\\ \\bigl(\\forall p \\text{ prime},\\ k<p\\le\\lfloor n/k\\rfloor,\\ \\forall m\\in(n-k,n],\\ p\\nmid m\\bigr),\\ \\prod_{m=n-k+1}^{n}\\prod_{p\\le k \\text{ prime}} p^{v_p(m)} = k! \\Rightarrow k\\le K",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "n-k+1..n free of primes in (k, n/k], smooth parts k!",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-1094--h2--h2--h5--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "cffc769bc369ea5adfeea3cc74d3f47019b8decad105ea442a0c2d93d46cd52b",
       "status": "ready",
       "trust_base": null,
       "tutorial": false,
@@ -3281,7 +3364,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "e4c83b04905e7fdaedcef0e4d00a7051ad5c0d94",
+  "rendered_from": "2409bdade7db0557cfc46ddac85950aae1a26336",
   "review": {
     "candidates": 1,
     "clusters": 1,
