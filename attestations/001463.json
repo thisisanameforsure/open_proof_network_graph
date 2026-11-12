@@ -1,0 +1,171 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (subagent), black-box tester t1112-a",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-1"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "b8a6ee840a7a0ca9c7cea0eb1331f60be814950efe4374b17dffd8942e7e5b98",
+  "graph_commit": "73e49eb1964598a06433087c162826401368b85e",
+  "graph_id": "erdos-1094",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "73e49eb1964598a06433087c162826401368b85e",
+  "model_and_tooling": "claude-fable-5-1 Claude Code",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "erdos-1094--h2--h2--h3--h1--h1--h1",
+  "precheck_attestation": {
+    "hash": "1e6881fc58f277784b506fe39eb6287b232347b68f4bfa652f2d1868e88858fb",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-12T13:44:16Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQIl3KMMkS/7AWVteQGJUEgwVUptcyw8SB5J0jtf8xeTXXUFDvs\nEOL6YzYKvZyiw0Gwu7ro7Uof7zQs2eOMHF+A0=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "b8a22b7e0dbf47c27d7fcbb7ef28130b376c290598d8e593df1ecd7d069db88e",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261112T131816Z-t1112-a-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261112T131816Z-t1112-a-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_digits"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_1094__h2__h2__h3__h1__h1__h1 declares ∃ K,\n  ∀ (n k : ℕ),\n    0 < k →\n      k * k * k ≤ n →\n        Real.exp (Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k))) < ↑n + 1 →\n          k * (n / k) ∣ k.factorial →\n            (∀ (p : ℕ), Nat.Prime p → p ≤ k → ¬p ∣ n.choose k) →\n              (∀ (p : ℕ), Nat.Prime p → k < p → p ≤ n / k → k ≤ n % p) → Nat.Prime (n / n.gcd k) → ¬k ∣ n → k ≤ K; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "div-zero",
+              "location": "Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k))",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "n % p",
+              "message": "modulo by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "n / k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "div-zero",
+              "location": "n / n.gcd k",
+              "message": "division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+            },
+            {
+              "checker": "junk-value",
+              "location": "Real.log (Real.log ↑k)",
+              "message": "Real.log of a possibly-negative argument is a junk value (0)"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "5 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: div-zero at Real.log ↑k ^ 2 / (20 * Real.log (Real.log ↑k)): division by a divisor that is not syntactically non-zero: Lean's / and % are total and give a junk value at 0"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_digits",
+              "path": "attempts/20261112T131816Z-t1112-a-partial.1.witness",
+              "sha256": "c58f28d4ccd144225ab8be80832b969fd49ed478e9a6716feaa50a4dd5f5711e"
+            }
+          ]
+        },
+        "message": "1 of 1 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1112-a",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code",
+    "model": "claude-fable-5-1"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
