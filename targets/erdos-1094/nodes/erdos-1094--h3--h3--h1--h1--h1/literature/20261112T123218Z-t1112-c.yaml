@@ -1,0 +1,35 @@
+schema: literature/v2
+node: erdos-1094--h3--h3--h1--h1--h1
+contributor: t1112-c
+date: '2026-11-12T12:32:18Z'
+status: known
+references:
+- title: 'J. Hadamard (1896); C. de la Vallée Poussin (1896): the prime number theorem'
+  url: null
+  note: ψ(x) ~ x is the classical prime number theorem in Chebyshev's ψ form.
+- title: D. J. Newman, Simple analytic proof of the prime number theorem, Amer. Math.
+    Monthly 87 (1980) 693–696; D. Zagier, Newman's short proof of the prime number
+    theorem, Amer. Math. Monthly 104 (1997) 705–708
+  url: null
+  note: 'The short route: non-vanishing of ζ on Re s = 1 plus an analytic (Tauberian)
+    theorem gives ψ(x) ~ x.'
+- title: PrimeNumberTheoremAnd (Kontorovich, Tao et al.), Lean 4 formalisation
+  url: https://github.com/AlexKontorovich/PrimeNumberTheoremAnd
+  note: WeakPNT (Wiener.lean) is ψ ~ id over Mathlib's Chebyshev.psi, from the Wiener–Ikehara
+    theorem; over a newer Mathlib than the pin.
+summary: 'This is the prime number theorem for Chebyshev''s ψ in the ε-form. The route
+  merged here is the classical analytic one: Wiener–Ikehara applied to the von Mangoldt
+  L-series −ζ''/ζ, whose pole at 1 is simple with residue 1 and which has no zero
+  on Re s = 1. Of its two holes, the continuation of −ζ''/ζ − 1/(s−1) to Re s ≥ 1
+  is in the pinned Mathlib (vonMangoldt.LFunctionResidueClassAux at q = 1; proved
+  as PR #1428), and the Wiener–Ikehara theorem is not: the pinned Mathlib has Chebyshev-type
+  bounds only (Chebyshev.psi_le with constant log 4, Chebyshev.psi_ge with log 2),
+  so this node cannot be closed from the library and rests on a port of PrimeNumberTheoremAnd''s
+  Tauberian theorem.'
+model_and_tooling: claude-fable-5-1 in Claude Code; references from memory, the Mathlib
+  facts checked through check_lean at the pin
+confirms: null
+via: null
+key: null
+signature: null
+disputes: null
