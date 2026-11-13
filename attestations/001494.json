@@ -1,0 +1,172 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude (claude.ai) with Claude Code tools",
+    "method": "agent",
+    "models": [
+      "claude-fable-5-2"
+    ],
+    "tool_setup": "general-j version of the merged calm-points skeleton; the two generalised lemmas carried with proofs adapted from the proved j=20 nodes; iterated with POST /check"
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "637bc93ef7a084539bcbfa68c0abcb944342c3c3ff98237fc7af173f121227c3",
+  "graph_commit": "a525303b6cfe6936468723aff5c91456f7c5e342",
+  "graph_id": "erdos-257",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "a525303b6cfe6936468723aff5c91456f7c5e342",
+  "model_and_tooling": "claude-fable-5-2 Claude (claude.ai) with Claude Code tools",
+  "network_commit": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node_id": "variant-cce9b284",
+  "precheck_attestation": {
+    "hash": "caae4dc72b1fd1bc5ba8f8d712cfa08dccf69a8a3353f1b28d84d0e99a9d10c8",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-13T19:51:57Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQLP/DSm8IKRiKpi+dOdd4BqVtX8rzoREBUPReMNzwp22+BTK+y\nA6b45o9TojSBanUI940kizmudFGM/BfOy/8gU=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "bfa607a497e9d5d955b7e4d740dd87240c1f0e72847fdba086daeaf3ae992bbc",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261113T193034Z-fable-1113c-e257-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "hole-proofs",
+        "details": {
+          "holes": [
+            "h_stall_forces_count",
+            "h_count_le_calm_general",
+            "h_calm_chain_some_j",
+            "h_no_stall_sums",
+            "h_finite_not_dyadic_general"
+          ],
+          "kind": "partial",
+          "proofs": [
+            {
+              "hole": "h_count_le_calm_general",
+              "node": "variant-cce9b284--h10",
+              "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.1.proof",
+              "proof_sha256": "4ac9498059102fa290461fba2e7009103cf34bb809cc10734300255e172722f4",
+              "sha256": "3b8fb1358520e0577fc9de5e5649ce061925e0a2bc11050e9ffffd6eccabe0fc"
+            },
+            {
+              "hole": "h_finite_not_dyadic_general",
+              "node": "variant-cce9b284--h13",
+              "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.2.proof",
+              "proof_sha256": "945bd415d719db0f759c713c7a173a0bbfb1c241e7a4003594b9804e91958c2d",
+              "sha256": "64d19ccd5c1619874dba7ee074180e499da3f8eb8be5976c46a411f5c15804d2"
+            }
+          ]
+        },
+        "message": "partial: Opn.erdos_257_some_infinite_sum_is_rational declares ∃ A, A.Infinite ∧ ∃ s, ∑' (n : ↑A), 1 / (2 ^ ↑n - 1) = ↑s; 5 hole(s); 2 hole(s) carry a proof, each built and replayed as the node its hole becomes (F32-R3)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "div-zero",
+              "justification": "Real division; at n = 0 the term is Lean's junk value 0, so a set containing 0 has the same sum as the set without it; the statement is unaffected and the informal problem never uses n = 0 (same reading as the root's and the sibling variant's acknowledgement).",
+              "location": "1 / (2 ^ ↑n - 1)"
+            }
+          ]
+        },
+        "message": "1 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_count_le_calm_general",
+              "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.1.witness",
+              "sha256": "637d02d7d65c854ce7199f1274223b733b652cbc8a8292148905abcbdde765c5"
+            },
+            {
+              "hole": "h_finite_not_dyadic_general",
+              "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.2.witness",
+              "sha256": "b7e63059e9e984c3b180b95b3f1f95c30e1a644b75e1a352209e5a86113df228"
+            },
+            {
+              "hole": "h_calm_chain_some_j",
+              "path": "attempts/20261113T193034Z-fable-1113c-e257-partial.3.witness",
+              "sha256": "39b3ec73475a95d03114cd4187de5461c316d15d62cbc00b32a4ea2c160da078"
+            }
+          ]
+        },
+        "message": "3 of 5 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "fable-1113c-e257",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude (claude.ai) with Claude Code tools",
+    "model": "claude-fable-5-2"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
