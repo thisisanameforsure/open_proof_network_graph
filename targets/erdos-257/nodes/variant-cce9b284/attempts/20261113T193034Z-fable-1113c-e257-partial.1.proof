@@ -1,0 +1,71 @@
+-- hole: h_count_le_calm_general
+private lemma opn_term_nonneg (k : ℕ) : (0 : ℝ) ≤ (1 : ℝ) / ((2 : ℝ) ^ k - 1) := by
+  rcases Nat.eq_zero_or_pos k with hk | hk
+  · subst hk; norm_num
+  · have h2 : (1 : ℝ) < (2 : ℝ) ^ k := one_lt_pow₀ (by norm_num) (by omega)
+    exact div_nonneg zero_le_one (by linarith)
+
+private lemma opn_walk_le (r : ℕ → ℝ)
+    (hr : ∀ (k : ℕ), r (k + 1) =
+      if (1 : ℕ) ≤ k ∧ (1 : ℝ) / ((2 : ℝ) ^ k - (1 : ℝ)) ≤ r k then r k - (1 : ℝ) / ((2 : ℝ) ^ k - (1 : ℝ))
+      else r k) : ∀ k, r k ≤ r 0 := by
+  intro k
+  induction k with
+  | zero => exact le_rfl
+  | succ k ih =>
+    rw [hr k]
+    split_ifs with h
+    · linarith [opn_term_nonneg k]
+    · exact ih
+
+private lemma opn_small_not_taken (j : ℕ) (r : ℕ → ℝ) (hr0 : r 0 = (1 : ℝ) / (2 : ℝ) ^ j)
+    (hr : ∀ (k : ℕ), r (k + 1) =
+      if (1 : ℕ) ≤ k ∧ (1 : ℝ) / ((2 : ℝ) ^ k - (1 : ℝ)) ≤ r k then r k - (1 : ℝ) / ((2 : ℝ) ^ k - (1 : ℝ))
+      else r k) (a : ℕ) (ha1 : 1 ≤ a) (ha : a ≤ j)
+    (ht : (1 : ℝ) / ((2 : ℝ) ^ a - 1) ≤ r a) : False := by
+  have hle := opn_walk_le r hr a
+  rw [hr0] at hle
+  have h2a : (1 : ℝ) < (2 : ℝ) ^ a := one_lt_pow₀ (by norm_num) (by omega)
+  have hpow : (2 : ℝ) ^ a ≤ (2 : ℝ) ^ j := pow_le_pow_right₀ (by norm_num) ha
+  have h1 : (1 : ℝ) / (2 : ℝ) ^ j < (1 : ℝ) / ((2 : ℝ) ^ a - 1) := by
+    apply one_div_lt_one_div_of_lt
+    · linarith
+    · linarith
+  linarith
+
+-- proof:
+by
+  intro j r hr0 hr n m hnm
+  have hfin : ∀ i, ({a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} : Set ℕ).Finite :=
+    fun i => (Set.finite_Iio m).subset (fun a ha => ha.2.1)
+  have hcard : ∀ i, (({a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} : Set ℕ).ncard : ℝ) ≤ m := by
+    intro i
+    have hsub' : ({a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} : Set ℕ) ⊆ ((Finset.range m : Finset ℕ) : Set ℕ) :=
+      fun a ha => Finset.mem_coe.mpr (Finset.mem_range.mpr ha.2.1)
+    have := Set.ncard_le_ncard hsub' (Finset.finite_toSet _)
+    rw [Set.ncard_coe_finset, Finset.card_range] at this
+    exact_mod_cast this
+  have hsub : ∀ i, ({a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + 1} : Set ℕ)
+      ⊆ {a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} := by
+    intro i a ha
+    obtain ⟨ha1, han, hta, hdvd⟩ := ha
+    refine ⟨?_, by omega, hdvd⟩
+    by_contra hj
+    exact opn_small_not_taken j r hr0 hr a ha1 (by omega) hta
+  have hterm : ∀ i, (1 / 2 : ℝ) ^ (i + 1) *
+      (({a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + 1} : Set ℕ).ncard : ℝ)
+      ≤ (1 / 2 : ℝ) ^ (i + 1) * (({a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} : Set ℕ).ncard : ℝ) := by
+    intro i
+    apply mul_le_mul_of_nonneg_left _ (by positivity)
+    exact_mod_cast Set.ncard_le_ncard (hsub i) (hfin i)
+  have hgeom : Summable (fun i : ℕ => (1 / 2 : ℝ) ^ (i + 1) * (m : ℝ)) := by
+    have := (summable_geometric_two.mul_right (m : ℝ)).comp_injective (add_left_injective 1)
+    exact this
+  have hR : Summable (fun i : ℕ => (1 / 2 : ℝ) ^ (i + 1) *
+      (({a : ℕ | j < a ∧ a < m ∧ a ∣ m + i + 1} : Set ℕ).ncard : ℝ)) :=
+    hgeom.of_nonneg_of_le (fun i => by positivity)
+      (fun i => mul_le_mul_of_nonneg_left (hcard i) (by positivity))
+  have hL : Summable (fun i : ℕ => (1 / 2 : ℝ) ^ (i + 1) *
+      (({a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + 1} : Set ℕ).ncard : ℝ)) :=
+    hR.of_nonneg_of_le (fun i => by positivity) hterm
+  exact Summable.tsum_le_tsum hterm hL hR

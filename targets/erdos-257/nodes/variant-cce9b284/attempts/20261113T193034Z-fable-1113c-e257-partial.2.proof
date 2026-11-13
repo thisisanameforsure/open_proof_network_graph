@@ -1,0 +1,48 @@
+-- hole: h_finite_not_dyadic_general
+private lemma opn_mersenne_odd (a : ℕ) (ha : 1 ≤ a) : Odd ((2 : ℕ) ^ a - 1) :=
+  Nat.Even.sub_odd Nat.one_le_two_pow (Nat.even_pow.mpr ⟨even_two, by omega⟩) odd_one
+
+private lemma opn_prod_odd (s : Finset ℕ) (hs : ∀ a ∈ s, 1 ≤ a) :
+    Odd (∏ a ∈ s, ((2 : ℕ) ^ a - 1)) :=
+  Finset.prod_induction _ Odd (fun _ _ => Odd.mul) odd_one (fun a ha => opn_mersenne_odd a (hs a ha))
+
+private lemma opn_cast_mersenne (a : ℕ) : (((2 : ℕ) ^ a - 1 : ℕ) : ℝ) = (2 : ℝ) ^ a - 1 := by
+  push_cast [Nat.one_le_two_pow]
+  ring
+
+-- proof:
+by
+  intro j hj A hA h1 heq
+  set s := hA.toFinset with hs_def
+  have hmem : ∀ a, a ∈ s ↔ a ∈ A := fun a => hA.mem_toFinset
+  have hsum : ∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ))
+      = ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - 1) := by
+    rw [tsum_subtype A (fun a => (1 : ℝ) / ((2 : ℝ) ^ a - 1))]
+    rw [tsum_eq_sum (s := s) (fun b hb => Set.indicator_of_notMem ((hmem b).not.mp hb) _)]
+    exact Finset.sum_congr rfl (fun a ha => Set.indicator_of_mem ((hmem a).mp ha) _)
+  rw [hsum] at heq
+  set D : ℕ := ∏ a ∈ s, ((2 : ℕ) ^ a - 1) with hD
+  have hDodd : Odd D := opn_prod_odd s (fun a ha => h1 a ((hmem a).mp ha))
+  have hdvd : ∀ a ∈ s, ((2 : ℕ) ^ a - 1) ∣ D := fun a ha => Finset.dvd_prod_of_mem _ ha
+  have hne : ∀ a ∈ s, (((2 : ℕ) ^ a - 1 : ℕ) : ℝ) ≠ 0 := by
+    intro a ha
+    rw [opn_cast_mersenne]
+    have h2 : (1 : ℝ) < (2 : ℝ) ^ a := one_lt_pow₀ (by norm_num) (by have := h1 a ((hmem a).mp ha); omega)
+    linarith
+  set N : ℕ := ∑ a ∈ s, D / ((2 : ℕ) ^ a - 1) with hN
+  have hDN : (D : ℝ) * ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - 1) = (N : ℝ) := by
+    rw [hN, Nat.cast_sum, Finset.mul_sum]
+    refine Finset.sum_congr rfl (fun a ha => ?_)
+    rw [Nat.cast_div (hdvd a ha) (hne a ha), opn_cast_mersenne]
+    ring
+  rw [heq] at hDN
+  have hnat : D = 2 ^ j * N := by
+    have h2j : (0 : ℝ) < (2 : ℝ) ^ j := by positivity
+    have h : (D : ℝ) = 2 ^ j * (N : ℝ) := by
+      rw [← hDN]
+      field_simp
+    exact_mod_cast h
+  have heven : Even D := by
+    rw [hnat]
+    exact (Nat.even_pow.mpr ⟨even_two, by omega⟩).mul_right N
+  exact (Nat.not_even_iff_odd.mpr hDodd) heven
