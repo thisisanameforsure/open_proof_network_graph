@@ -1,0 +1,650 @@
+{
+  "artifact": {
+    "hash": "945bd415d719db0f759c713c7a173a0bbfb1c241e7a4003594b9804e91958c2d",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "variant-cce9b284--h13",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (a : ℕ), a ∈ s ↔ a ∈ A",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hmem",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (a : ℕ), a ∈ s ↔ a ∈ A",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hmem",
+      "kind": "have",
+      "name": "hmem",
+      "span": {
+        "end_line": 25,
+        "start_line": 25
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsum",
+            "type": {
+              "printed": "reliable",
+              "text": "∑' (n : (↑A : Type)), (1 : ℝ) / ((2 : ℝ) ^ (↑n : ℕ) - (1 : ℝ)) = ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hsum",
+      "kind": "have",
+      "name": "hsum",
+      "span": {
+        "end_line": 30,
+        "start_line": 26
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "tsum_subtype",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "tsum_eq_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_of_notMem",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_congr",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.indicator_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Odd D",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hDodd",
+            "type": {
+              "printed": "reliable",
+              "text": "Odd D",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hDodd",
+      "kind": "have",
+      "name": "hDodd",
+      "span": {
+        "end_line": 33,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ a ∈ s, (2 : ℕ) ^ a - (1 : ℕ) ∣ D",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hdvd",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ s, (2 : ℕ) ^ a - (1 : ℕ) ∣ D",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hdvd",
+      "kind": "have",
+      "name": "hdvd",
+      "span": {
+        "end_line": 34,
+        "start_line": 34
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Finset.dvd_prod_of_mem",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": null,
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "(1 : ℕ) ≤ a",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "term",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "this",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "(1 : ℕ) ≤ a",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "a ≠ (0 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hne.h2.this",
+              "kind": "have",
+              "name": "this",
+              "span": {
+                "end_line": 38,
+                "start_line": 38
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": {
+            "printed": "reliable",
+            "text": "(1 : ℝ) < (2 : ℝ) ^ a",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) < (2 : ℝ) ^ a",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(2 : ℝ) ^ a - (1 : ℝ) ≠ (0 : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hne.h2",
+          "kind": "have",
+          "name": "h2",
+          "span": {
+            "end_line": 38,
+            "start_line": 38
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "one_lt_pow₀",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ a ∈ s, (↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) ≠ (0 : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hne",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ a ∈ s, (↑((2 : ℕ) ^ a - (1 : ℕ)) : ℝ) ≠ (0 : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hne",
+      "kind": "have",
+      "name": "hne",
+      "span": {
+        "end_line": 39,
+        "start_line": 35
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑D : ℝ) * ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑N : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hDN",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑D : ℝ) * ∑ a ∈ s, (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) = (↑N : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hDN",
+      "kind": "have",
+      "name": "hDN",
+      "span": {
+        "end_line": 45,
+        "start_line": 41
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.cast_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mul_sum",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.sum_congr",
+            "tags": []
+          },
+          {
+            "doc": "`rfl : a = a` is the unique constructor of the equality type.",
+            "name": "rfl",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Nat.cast_div",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(0 : ℝ) < (2 : ℝ) ^ j",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "automation",
+            "tactics": [
+              "positivity"
+            ]
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h2j",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(0 : ℝ) < (2 : ℝ) ^ j",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "D = (2 : ℕ) ^ j * N",
+              "truncated": false
+            }
+          },
+          "id": "hnat.h2j",
+          "kind": "have",
+          "name": "h2j",
+          "span": {
+            "end_line": 48,
+            "start_line": 48
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(↑D : ℝ) = (2 : ℝ) ^ j * (↑N : ℝ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "h",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑D : ℝ) = (2 : ℝ) ^ j * (↑N : ℝ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "D = (2 : ℕ) ^ j * N",
+              "truncated": false
+            }
+          },
+          "id": "hnat.h",
+          "kind": "have",
+          "name": "h",
+          "span": {
+            "end_line": 51,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "D = (2 : ℕ) ^ j * N",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hnat",
+            "type": {
+              "printed": "reliable",
+              "text": "D = (2 : ℕ) ^ j * N",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "hnat",
+      "kind": "have",
+      "name": "hnat",
+      "span": {
+        "end_line": 52,
+        "start_line": 47
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Even D",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "heven",
+            "type": {
+              "printed": "reliable",
+              "text": "Even D",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "False",
+          "truncated": false
+        }
+      },
+      "id": "heven",
+      "kind": "have",
+      "name": "heven",
+      "span": {
+        "end_line": 55,
+        "start_line": 53
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "An element `a` of a type `α` with addition satisfies `Even a` if `a = r + r`, for some `r : α`.",
+            "name": "Even",
+            "tags": []
+          },
+          {
+            "doc": "If `m` and `n` are natural numbers, then the natural number `m^n` is even if and only if `m` is even and `n` is positive.",
+            "name": "Nat.even_pow",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "even_two",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "False",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 56,
+        "start_line": 56
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Nat.not_even_iff_odd",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
