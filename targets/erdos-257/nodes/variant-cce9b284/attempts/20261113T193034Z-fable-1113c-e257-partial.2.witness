@@ -1,0 +1,6 @@
+-- hole: h_finite_not_dyadic_general
+
+import Mathlib
+
+theorem witness : ∃ (j : ℕ) (A : Set ℕ), (1 : ℕ) ≤ j ∧ A.Finite ∧ ∀ a ∈ A, (1 : ℕ) ≤ a :=
+  ⟨1, ∅, le_refl 1, Set.finite_empty, fun a ha => by simp at ha⟩
