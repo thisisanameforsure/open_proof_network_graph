@@ -1,0 +1,273 @@
+{
+  "artifact": {
+    "hash": "a6f852e794d66188579e705d5b150f857b42095e96c40197b3114524f3c08eda",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "variant-cce9b284--h5",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑((2 : ℕ) ^ (1280 : ℕ)) : ℝ) ≤ (↑((2 : ℕ) ^ (1300 : ℕ)) : ℝ) * r (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hlo",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑((2 : ℕ) ^ (1280 : ℕ)) : ℝ) ≤ (↑((2 : ℕ) ^ (1300 : ℕ)) : ℝ) * r (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+          "truncated": false
+        }
+      },
+      "id": "hlo",
+      "kind": "have",
+      "name": "hlo",
+      "span": {
+        "end_line": 169,
+        "start_line": 166
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "pow_add",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(↑((2 : ℕ) ^ (1300 : ℕ)) : ℝ) * r (0 : ℕ) ≤ (↑((2 : ℕ) ^ (1280 : ℕ)) : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hhi",
+            "type": {
+              "printed": "reliable",
+              "text": "(↑((2 : ℕ) ^ (1300 : ℕ)) : ℝ) * r (0 : ℕ) ≤ (↑((2 : ℕ) ^ (1280 : ℕ)) : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+          "truncated": false
+        }
+      },
+      "id": "hhi",
+      "kind": "have",
+      "name": "hhi",
+      "span": {
+        "end_line": 173,
+        "start_line": 170
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "pow_add",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "r (1 : ℕ) = r (0 : ℕ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h1",
+            "type": {
+              "printed": "reliable",
+              "text": "r (1 : ℕ) = r (0 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+          "truncated": false
+        }
+      },
+      "id": "h1",
+      "kind": "have",
+      "name": "h1",
+      "span": {
+        "end_line": 175,
+        "start_line": 174
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "if_neg",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ) + (1 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "this",
+            "type": {
+              "printed": "reliable",
+              "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ) + (1 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+          "truncated": false
+        }
+      },
+      "id": "this",
+      "kind": "have",
+      "name": "this",
+      "span": {
+        "end_line": 177,
+        "start_line": 176
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A version of `le_refl` where the argument is implicit",
+            "name": "le_rfl",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ), n + (1 : ℕ) + (1 : ℕ) + i = n + (2 : ℕ) + i",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "e",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : ℕ), n + (1 : ℕ) + (1 : ℕ) + i = n + (2 : ℕ) + i",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+          "truncated": false
+        }
+      },
+      "id": "e",
+      "kind": "have",
+      "name": "e",
+      "span": {
+        "end_line": 178,
+        "start_line": 178
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "¬(r (n + (1 : ℕ)) < (1 : ℝ) / ((2 : ℝ) ^ (n + (1 : ℕ)) - (1 : ℝ)) ∧\n    ∑' (i : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + (2 : ℕ) + i) - (1 : ℝ)) < r (n + (1 : ℕ)))",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 180,
+        "start_line": 179
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
