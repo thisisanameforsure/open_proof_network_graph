@@ -1,0 +1,669 @@
+{
+  "artifact": {
+    "hash": "48d08015072146b3ef015f28ea7f695f25687bcfe9f066ad8d59530000b184fa",
+    "kind": "proof",
+    "path": "Proof.lean"
+  },
+  "gate": "cc2e782e6648a30ce667135dede3aa224f3b0ce8",
+  "node": "variant-cce9b284--h4",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ), {a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.Finite",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfin",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : ℕ), {a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.Finite",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hfin",
+      "kind": "have",
+      "name": "hfin",
+      "span": {
+        "end_line": 63,
+        "start_line": 62
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.finite_Iio",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)} ⊆ (↑(Finset.range m) : Set ℕ)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hsub'",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)} ⊆ (↑(Finset.range m) : Set ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤ (↑m : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hcard.hsub'",
+          "kind": "have",
+          "name": "hsub'",
+          "span": {
+            "end_line": 67,
+            "start_line": 66
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "A set is a collection of elements of some type `α`.",
+                "name": "Set",
+                "tags": []
+              },
+              {
+                "doc": "`range n` is the set of natural numbers less than `n`.",
+                "name": "Finset.range",
+                "tags": []
+              },
+              {
+                "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+                "name": "Finset",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_coe",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "Finset.mem_range",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard ≤ (↑(Finset.range m) : Set ℕ).ncard",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard ≤ (↑(Finset.range m) : Set ℕ).ncard",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤ (↑m : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hcard.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 68,
+            "start_line": 68
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "Set.ncard_le_ncard",
+                "tags": []
+              },
+              {
+                "doc": "Gives a `Set.Finite` for the `Finset` coerced to a `Set`.",
+                "name": "Finset.finite_toSet",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ), (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤ (↑m : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hcard",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : ℕ), (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤ (↑m : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hcard",
+      "kind": "have",
+      "name": "hcard",
+      "span": {
+        "end_line": 70,
+        "start_line": 64
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.ncard_coe_finset",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.card_range",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "a ∈ {a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "ha1",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℕ) ≤ a",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "han",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ≤ n",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hta",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hdvd",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ∣ m + i + (1 : ℕ)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "a ∈ {a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}",
+              "truncated": false
+            }
+          },
+          "id": "hsub.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 75,
+            "start_line": 75
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ),\n  {a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)} ⊆\n    {a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hsub",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : ℕ),\n  {a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)} ⊆\n    {a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hsub",
+      "kind": "have",
+      "name": "hsub",
+      "span": {
+        "end_line": 78,
+        "start_line": 72
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (i : ℕ),\n  (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hterm",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : ℕ),\n  (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hterm",
+      "kind": "have",
+      "name": "hterm",
+      "span": {
+        "end_line": 84,
+        "start_line": 79
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_le_mul_of_nonneg_left",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Set.ncard_le_ncard",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Summable ((fun (i : ℕ) => (1 / 2 : ℝ) ^ i * (↑m : ℝ)) ∘ fun (x : ℕ) => x + (1 : ℕ))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "this",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Summable ((fun (i : ℕ) => (1 / 2 : ℝ) ^ i * (↑m : ℝ)) ∘ fun (x : ℕ) => x + (1 : ℕ))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "Summable fun (i : ℕ) => (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑m : ℝ)",
+              "truncated": false
+            }
+          },
+          "id": "hgeom.this",
+          "kind": "have",
+          "name": "this",
+          "span": {
+            "end_line": 87,
+            "start_line": 87
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "summable_geometric_two",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "add_left_injective",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (i : ℕ) => (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑m : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hgeom",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (i : ℕ) => (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑m : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hgeom",
+      "kind": "have",
+      "name": "hgeom",
+      "span": {
+        "end_line": 88,
+        "start_line": 86
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (i : ℕ) => (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hR",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (i : ℕ) => (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hR",
+      "kind": "have",
+      "name": "hR",
+      "span": {
+        "end_line": 92,
+        "start_line": 89
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "mul_le_mul_of_nonneg_left",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Summable fun (i : ℕ) =>\n  (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n    (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hL",
+            "type": {
+              "printed": "reliable",
+              "text": "Summable fun (i : ℕ) =>\n  (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n    (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+          "truncated": false
+        }
+      },
+      "id": "hL",
+      "kind": "have",
+      "name": "hL",
+      "span": {
+        "end_line": 95,
+        "start_line": 93
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`Summable f` means that `f` has some (infinite) sum with respect to `L`.",
+            "name": "Summable",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∑' (i : ℕ),\n    (1 / 2 : ℝ) ^ (i + (1 : ℕ)) *\n      (↑{a : ℕ | (1 : ℕ) ≤ a ∧ a ≤ n ∧ (1 : ℝ) / ((2 : ℝ) ^ a - (1 : ℝ)) ≤ r a ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ) ≤\n  ∑' (i : ℕ), (1 / 2 : ℝ) ^ (i + (1 : ℕ)) * (↑{a : ℕ | (20 : ℕ) < a ∧ a < m ∧ a ∣ m + i + (1 : ℕ)}.ncard : ℝ)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 96,
+        "start_line": 96
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": null,
+            "name": "Summable.tsum_le_tsum",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-257"
+}
