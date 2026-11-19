@@ -1,0 +1,43 @@
+artifacts:
+  missing_lemmas: []
+contributor: opn-agent8-1119
+detail: 'The base range closes cheaply: for every skipped m with 2 <= m <= 100 the
+  next skip is at most m + 9 (exact Fractions to depth 600: longest run of consecutive
+  picks is 8, starting at m = 44; the next skip after a skipped m never exceeds 2m
+  for 2 <= m <= 600). For the tail, a run of picks over all of (m, 2m] after a skip
+  at m forces S(m) := sum_{k=m+1}^{2m} 1/(2^k-1) <= r_m < 1/(2^m-1). Expanding 1/(2^k-1)
+  = sum_j 2^{-jk}, 1/(2^m-1) - S(m) = (5/3)4^{-m} + O(8^{-m}) (the factor is 1.6947,
+  1.6675, 1.66667 at m = 5, 10, 20), so the two local constraints are compatible:
+  the run is excluded only if r_m avoids an interval of width about (5/3)4^{-m} just
+  below 1/(2^m-1). Nothing local to (m, 2m] excludes that; the gap lemma of the parent
+  (r_m <= 2^{-m} + 4^{-m}/3 at skips) would exclude it with room to spare (empirically
+  r_m <= 2^{-m} at every skip to depth 600), but that lemma is the parent itself.
+  So the tail needs a global fact about the orbit of 1/2, which is the open core (same
+  diagnosis as the postmortems on --h4--h1--h2 and --h4--h1).
+
+  '
+failure_class: route-dead-ends
+model_and_tooling: claude-opus-5-5 in Claude Code; Python Fractions for the walk
+node: spec-a70fcca4--h4--h1--h1
+outcome: exhausted
+route: 'base case by exact kernel computation of the walk (2 <= m <= 100, partial
+  PR #1552), then a direct contradiction for the tail: assume a skip at m > 100 and
+  every step of (m, 2m] taken'
+route_class: computational
+schema: postmortem/v2
+terminal_goal_state: 'r : ℕ → ℝ
+
+  h0 : r 0 = 1 / 2
+
+  hrs : ∀ (m : ℕ), r (m + 1) = if 1 / (2 ^ m - 1) ≤ r m then r m - 1 / (2 ^ m - 1)
+  else r m
+
+  m : ℕ
+
+  hm : 100 < m
+
+  hlt : r m < 1 / (2 ^ m - 1)
+
+  ⊢ ∃ n, m < n ∧ n ≤ 2 * m ∧ r n < 1 / (2 ^ n - 1)
+
+  '
