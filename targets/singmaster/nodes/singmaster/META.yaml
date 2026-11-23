@@ -1,0 +1,17 @@
+schema: meta/v2
+id: singmaster
+status: ready
+deps: []
+statement-hash: bd3133a81b95467664b1c511166a9a3c43e87bf09841963e22a895d9e2e483cb
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: t > 1
+  justification: '`t > 1` is Singmaster''s own range: the informal text says ''any
+    number t > 1'', excluding t = 1, which appears infinitely often on the border
+    of Pascal''s triangle; the boundary is the stated one.'
