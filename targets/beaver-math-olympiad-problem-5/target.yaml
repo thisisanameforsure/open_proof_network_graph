@@ -1,0 +1,61 @@
+schema: target/v3
+id: beaver-math-olympiad-problem-5
+title: Beaver Math Olympiad (BMO)
+informal: '[BMO#5](https://wiki.bbchallenge.org/wiki/Beaver_Math_Olympiad#5._1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE_(bbch))
+  Let $(a_n)_{n \ge 1}$ and $(b_n)_{n \ge 1}$ be two sequences such that $(a_1, b_1)
+  = (0, 5)$ and $$(a_{n+1}, b_{n+1}) = \begin{cases} (a_n+1, b_n-f(a_n)) & \text{if
+  } b_n \ge f(a_n) \cr (a_n, 3b_n+a_n+5) & \text{if } b_n < f(a_n) \end{cases}$$ where
+  $f(x)=10\cdot 2^x-1$ for all non-negative integers $x$. Does there exist a positive
+  integer $i$ such that $b_i = f(a_i)-1$? [BMO#5](https://wiki.bbchallenge.org/wiki/Beaver_Math_Olympiad#5._1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE_(bbch))
+  is equivalent to asking whether the 6-state Turing machine [`1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE`](https://wiki.bbchallenge.org/wiki/1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE)
+  halts or not. There is presently no consensus on whether the machine halts or not,
+  hence the problem is tagged as a `question`. The machine was discovered by [bbchallenge.org](https://bbchallenge.org)
+  contributor mxdys on August 7th 2024. The correspondence between the machine''s
+  halting problem and the below reformulation has been proven in [Rocq](https://github.com/ccz181078/busycoq/blob/BB6/verify/1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE.v).'
+paraphrase: null
+track: open
+source:
+  kind: formal-conjectures
+  ref: FormalConjectures/Other/BeaverMathOlympiad.lean
+  url: https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Other/BeaverMathOlympiad.lean
+curator: thisisanameforsure
+prior_art:
+  arxiv_query: null
+  forum_url: null
+  summary: 'Catalog score 2 (C) at registry commit d8d031d4998c: +1 Lean statement
+    public for 180+ days; -1 file modified in the last 30 days; +1 no misformalization
+    issue ever filed; +1 no file-local definitions in the statement (Mathlib vocabulary
+    only). AlphaProof Nexus attempts: none on record. In the registry since 2025-07-03.
+    Drafted by gate/tools/wave.py (F14-T11); the curator reads it before import (R13).'
+library_coverage:
+  mathlib_sha: 0df444a360eaa60ab8c11dca51a86af692955474
+  missing_prerequisites: []
+provenance:
+  statement_source: formal-conjectures
+  author: The Formal Conjectures Authors
+  adversarially_reviewed: false
+  upstream_commit: d8d031d4998c78575159ccab9a7a9e95ce043883
+  upstream_path: FormalConjectures/Other/BeaverMathOlympiad.lean
+sources:
+- kind: formal-conjectures
+  url: https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Other/BeaverMathOlympiad.lean
+  accessed: '2026-11-23'
+  licence: Apache-2.0
+  attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures),
+    Apache-2.0
+  quote_policy: cite
+attack_routes: []
+posting: null
+domains:
+- combinatorics
+- computer-science
+- number-theory
+qa_summary: null
+classification:
+  arxiv:
+  - math.CO
+  - math.NT
+  msc2020:
+  - 05-xx
+  - 11-xx
+  - 68-xx
