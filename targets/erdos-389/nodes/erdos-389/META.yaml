@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-389
+status: ready
+deps: []
+statement-hash: e03a040ab7f33f739e9e693bdbae6d730be3ab10b7a26d8319e82a6ef6fb1105
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: '`k ≥ 1` is the problem''s meaning of "there is a k", because the
+    products n(n+1)⋯(n+k−1) and (n+k)⋯(n+2k−1) are written as nonempty products; k
+    = 0 would make both sides the empty product 1 and the divisibility vacuous, which
+    is not the question asked. The registry states the same bound.'
+- checker: off-by-one-range
+  location: n ≥ 1
+  justification: '`n ≥ 1` is the problem''s range "for every n ≥ 1" as the informal
+    text states it; the boundary is inclusive and is the stated one.'
