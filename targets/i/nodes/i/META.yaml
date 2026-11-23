@@ -1,0 +1,20 @@
+schema: meta/v2
+id: i
+status: ready
+deps: []
+statement-hash: e8e96f8630957574188aaa2c284c57ac5831f36b83fb98b90a8f13a0342ce4b4
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: nat-sub
+  location: x - 1
+  justification: '`x - 1` cannot truncate: the hypothesis `2 ≤ x` gives `x - 1 ≥ 1`,
+    so `x * (x - 1)` is the integer x(x−1) of the informal statement.'
+- checker: off-by-one-range
+  location: 2 ≤ x
+  justification: '`2 ≤ x` is Oppermann''s own range ''for every integer x ≥ 2'', inclusive
+    at 2 (x = 1 gives the empty interval (0, 1)); the boundary is the stated one.'
