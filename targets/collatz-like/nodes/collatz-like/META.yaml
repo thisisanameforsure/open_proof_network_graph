@@ -1,0 +1,18 @@
+schema: meta/v2
+id: collatz-like
+status: ready
+deps: []
+statement-hash: 7929624db72e85821ede29d09379ff3cdc51111b90b4b12b1763472ec8a65948
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 8 < n
+  justification: '`8 < n` is the problem''s range n > 8 exactly as the informal text
+    states it ("For n > 8, 2^n is not the sum of distinct powers of 3"); the boundary
+    is exclusive and is the stated one, and n = 8 is a genuine exception (2^8 = 256
+    = 3^5 + 3^2 + 3 + 1 has no digit 2 in base 3), so it must be excluded.'

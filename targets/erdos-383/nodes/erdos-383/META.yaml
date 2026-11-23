@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-383
+status: ready
+deps: []
+statement-hash: afc895848e2ad5b2b55d697171a26f980f7266cd1a6b5434478759e13a69e0a6
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: Finset.Icc 0 k
+  justification: '`Finset.Icc 0 k` is the problem''s index range: the informal text
+    writes the product as ∏_{i=0}^{k} (p^2 + i), both endpoints included, so the inclusive
+    interval from 0 to k is the stated one (k + 1 factors, p^2 among them).'

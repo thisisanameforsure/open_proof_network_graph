@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-98
+status: ready
+deps: []
+statement-hash: 44c55107cd9ed1cd9f6be2f451a3a8f63506a3a8adfbe56af5382f0018cf9b5f
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(Erdos98.h n) / ↑n
+  justification: '`↑(Erdos98.h n) / ↑n` is the problem''s h(n)/n, because the division
+    is in ℝ and the statement is a limit as n → ∞ (`Tendsto … atTop`); the denominator
+    is zero only at the single point n = 0, which cannot affect the limit, and is
+    positive for every n ≥ 1.'

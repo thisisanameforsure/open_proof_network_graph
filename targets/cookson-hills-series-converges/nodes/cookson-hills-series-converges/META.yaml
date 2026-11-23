@@ -1,0 +1,19 @@
+schema: meta/v2
+id: cookson-hills-series-converges
+status: ready
+deps: []
+statement-hash: bd759c2cb9a848496cda6d96030bd4474e55f3b5bc11520944a462a203effc55
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ((↑n + 1) ^ 3 * Real.cos (↑n + 1) ^ 2)
+  justification: 'The divisor `(n+1)^3 * cos(n+1)^2` is never zero: `n + 1 ≥ 1` is
+    a positive integer, and `Real.cos` vanishes only at odd multiples of π/2, which
+    are irrational, so `cos (n+1) ≠ 0` for every natural n. The term is therefore
+    the problem''s `sec(n)^2 / n^3` summed from n = 1 exactly, with no appeal to Lean''s
+    division-by-zero convention.'
