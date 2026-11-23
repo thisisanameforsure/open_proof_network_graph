@@ -1,0 +1,17 @@
+schema: meta/v2
+id: green-62
+status: ready
+deps: []
+statement-hash: 1f5bc950e720776a4af7d997d9de5ef550f8cf2f1899f3c9d28edafd74266c1e
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 1 ≤ x
+  justification: '`1 ≤ x` together with `x < p` is the problem''s range x ∈ {1, …,
+    p - 1}, the nonzero residues mod p, so the inclusive lower bound 1 is the stated
+    one.'
