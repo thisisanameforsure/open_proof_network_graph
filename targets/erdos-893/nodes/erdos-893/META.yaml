@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-893
+status: ready
+deps: []
+statement-hash: 621d2304b2564d6b72606c47383a62be88f2b3f5c31c76d0ef262f2f5ce7fe04
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(Erdos893.f (2 * n)) / ↑(Erdos893.f n)
+  justification: '`↑(Erdos893.f (2 * n)) / ↑(Erdos893.f n)` is the problem''s f(2n)/f(n),
+    because f n = ∑_{1 ≤ k ≤ n} τ(2^k − 1) ≥ τ(1) = 1 for every n ≥ 1, so the denominator
+    is positive for every n ≥ 1 and zero only at the single point n = 0, which cannot
+    affect the limit as n → ∞ (`Tendsto … atTop`).'
