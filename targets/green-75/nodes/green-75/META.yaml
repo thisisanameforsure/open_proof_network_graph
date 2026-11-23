@@ -1,0 +1,22 @@
+schema: meta/v2
+id: green-75
+status: ready
+deps: []
+statement-hash: 9ec53f3f2e8817678dc9f7e62abf94c1ef1d3b06a60b56e640d06f8356300f1b
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: '2 ≤ #X'
+  justification: '2 ≤ #X is the problem''s n ≥ 2 (inclusive), which the informal text
+    states explicitly: a line through two points of X needs two points.'
+- checker: off-by-one-range
+  location: Green75.imbalance X p q ≤ 100
+  justification: 'imbalance X p q ≤ 100 is the problem''s ''the numbers of points
+    on either side of ℓ differ by at most 100'' (inclusive): imbalance is the absolute
+    difference of the two side counts (defs/Local.lean), and ''at most 100'' is ≤
+    100.'

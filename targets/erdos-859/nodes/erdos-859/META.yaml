@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-859
+status: ready
+deps: []
+statement-hash: 805606e04f8e42bf4f0596d9d5daa49656d5d5c6abc45b8ed049f2622df55199
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: c₁ / Real.log ↑t ^ c₂
+  justification: '`c₁ / Real.log ↑t ^ c₂` is the problem''s asymptotic c₁/(log t)^{c₂},
+    compared by `~[atTop]` which only constrains the tail; for t ≥ 2 we have log t
+    > 0 so the denominator is positive, and the finitely many t ≤ 1 do not enter.'

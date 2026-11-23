@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-462
+status: ready
+deps: []
+statement-hash: 20484d247debab60a49d2fde86d6af989150897ddb51fe2176b7c5d4a4f0f821
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑n.minFac / ↑n
+  justification: '`↑n.minFac / ↑n` is the problem''s summand p(n)/n, and its denominator
+    is positive because the sum runs over n ∈ Icc x ⌊…⌋₊ so n ≥ x, while the statement
+    holds only eventually (∀ᶠ x in atTop) so x ≥ 1 for every x it depends on.'
