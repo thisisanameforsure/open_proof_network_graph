@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-323
+status: ready
+deps: []
+statement-hash: 48eb9c27cc773b2336e9cce21b20a516e9f4ee6d6f80428d6e34a998006f8217
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: '`k ≥ 1` is the problem''s domain for f_{k,k}, because the registry
+    defines f_{k,m}(x) for `1 ≤ m ≤ k` (upstream 323.lean, docstring of `Erdos323.f`),
+    so with m = k the smallest admissible k is 1; k = 0 (sums of 0th powers) is not
+    part of the problem.'
