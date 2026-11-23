@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-65
+status: ready
+deps: []
+statement-hash: fd5ac3c48f8a37c882d3fd00019b3661d0e7664e51af5926b0ae2d6dda97f7b8
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑a
+  justification: '`1 / ↑a` sums over a ∈ G.cycleLengths, the lengths of cycles of
+    a simple graph (defs: a walk with IsCycle), and a cycle in a simple graph has
+    length ≥ 3, so every denominator is positive; this is the problem''s sum of 1/a_i
+    over cycle lengths.'
