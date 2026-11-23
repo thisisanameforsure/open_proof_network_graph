@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-15
+status: ready
+deps: []
+statement-hash: d160180a8c453e140f5cd036e8897f79f34ca11bce8bb2063f7262196f1ac5b3
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: (-1) ^ (k + 1) * (↑k + 1) / ↑(Nat.nth Nat.Prime k)
+  justification: The divisor ↑(Nat.nth Nat.Prime k) is the k-th prime p_{k+1} (0-indexed,
+    as the record says), which is ≥ 2 > 0 for every k, so the division is the problem's
+    n/p_n with n = k+1 and never hits Lean's x/0.
