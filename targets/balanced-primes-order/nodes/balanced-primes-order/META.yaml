@@ -1,0 +1,22 @@
+schema: meta/v2
+id: balanced-primes-order
+status: ready
+deps: []
+statement-hash: 55afe61f31e778892f462ed3068857c60744fecc7355e0a513f76dcdf07e7fea
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: nat-sub
+  location: n - i
+  justification: '`n - i` is the index of the prime p_{n-i} in the registry''s sum
+    over i = 1..k, and it never truncates because the set carries the hypothesis `k
+    ≤ n` and every summation index satisfies i ≤ k, so n - i ≥ n - k ≥ 0 as an integer.'
+- checker: off-by-one-range
+  location: Finset.Ioc 0 k
+  justification: '`Finset.Ioc 0 k` is the index set {1, …, k} of the registry''s sum
+    ∑_{i=1}^{k}, because Ioc excludes the left endpoint 0 and includes the right endpoint
+    k, which is exactly the stated range.'

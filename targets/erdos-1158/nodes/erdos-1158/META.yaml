@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-1158
+status: ready
+deps: []
+statement-hash: c17d6091425088aef5a3c494c070cc0d43c6794c39a09007de609ad7e7f4e52f
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 2 ≤ r
+  justification: 2 ≤ r is the problem's range 'for all t, r ≥ 2' (inclusive); the
+    informal text says the restriction r ≥ 2 excludes forbidding a single edge, so
+    r = 2 is deliberately the first case.
+- checker: off-by-one-range
+  location: 2 ≤ t
+  justification: 2 ≤ t is the problem's range 'for all t, r ≥ 2' (inclusive) stated
+    in the informal text; t is the uniformity of the hypergraph.
