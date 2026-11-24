@@ -1,0 +1,17 @@
+schema: meta/v2
+id: green-60
+status: ready
+deps: []
+statement-hash: 23dc9dc4a9d81dfea47cc93845c3e35e3d62030cd7890fc72ad4f8a52ad7667d
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 2 ≤ A.card
+  justification: '`2 ≤ A.card` is the problem''s `|A| ≥ 2` in the informal text, inclusive
+    at 2 (for |A| = 1 the inequality |A + A| ≥ |A|^{1+c} is 1 ≥ 1 and carries no content);
+    the boundary is the stated one.'

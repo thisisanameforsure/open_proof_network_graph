@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-826
+status: ready
+deps: []
+statement-hash: 42011ca828e30ef120f093526dc61c4627970a77a344202e009c7278c714394d
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: '`k ≥ 1` is the problem''s range: the informal text says ''for all
+    k ≥ 1, τ(n + k) ≪ k'', inclusive at 1 (k = 0 would ask τ(n) ≤ 0, which is false
+    and is not the problem); the boundary is the stated one.'

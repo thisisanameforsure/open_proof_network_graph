@@ -1,0 +1,17 @@
+schema: meta/v2
+id: rlog-rlog-two-transcendental
+status: ready
+deps: []
+statement-hash: e406b25baafe4f2bedaee4cdb7371d7e1804199ca4b5478db12e9899a1699575
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: junk-value
+  location: Real.log (Real.log 2)
+  justification: 'Real.log (Real.log 2) is the problem''s log(log 2): the inner argument
+    2 > 0 and log 2 ≈ 0.693 > 0, so both logarithms take positive arguments and no
+    junk value arises (the value is a genuine negative real, ≈ −0.367).'

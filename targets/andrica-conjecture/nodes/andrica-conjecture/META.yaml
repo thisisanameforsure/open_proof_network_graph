@@ -1,0 +1,17 @@
+schema: meta/v2
+id: andrica-conjecture
+status: ready
+deps: []
+statement-hash: ed5654f898483456c363673d404ae71eef534f20b32b17f93ec77c5494e8840d
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: √↑(Nat.nth Nat.Prime (n + 1)) - √↑(Nat.nth Nat.Prime n) < 1
+  justification: '`< 1` is the problem''s own strict inequality, because the registry
+    states Andrica''s conjecture as sqrt(p_{n+1}) - sqrt(p_n) < 1 for all n; the bound
+    is the claim itself, not a range.'

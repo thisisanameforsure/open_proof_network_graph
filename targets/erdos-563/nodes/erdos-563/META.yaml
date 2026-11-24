@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-563
+status: ready
+deps: []
+statement-hash: 00de94ca5b2cf1da5267a8ca9c22e16b122d19fc29e38e004211d50c457b1636
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(Erdos563.F n α) / Real.log ↑n
+  justification: '`↑(Erdos563.F n α) / Real.log ↑n` is the problem''s ratio F(n, α)/log
+    n whose limit c_α is asserted at `atTop`, and Real.log n = 0 only for n ∈ {0,
+    1}, which a limit along atTop never sees, so the denominator is positive wherever
+    it matters.'

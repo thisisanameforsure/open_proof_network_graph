@@ -1,0 +1,18 @@
+schema: meta/v2
+id: class-number-problem
+status: ready
+deps: []
+statement-hash: ee527dbee6ee16f94825bf851dd987c657353d486b003b7c8d1163c88971431a
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: d > 1
+  justification: '`d > 1` is the problem''s own condition on the discriminant, because
+    the registry''s informal text says `d > 1` is a squarefree integer (a real quadratic
+    field needs d ≥ 2; d = 1 gives ℚ itself), so the strict boundary is the stated
+    one.'

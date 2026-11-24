@@ -1,0 +1,18 @@
+schema: meta/v2
+id: buchi-problem
+status: ready
+deps: []
+statement-hash: 38b2664ec1a048c22ffcc509b05139955e7e1c90ea56ea47960a530c73f08d8c
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 1 ≤ M
+  justification: '`1 ≤ M` is the problem''s own range, because the informal statement
+    asks for ''a positive integer M''; M = 0 would make IsBuchi vacuous (Finset.range
+    0 is empty, so the hypothesis holds for every a) and is excluded exactly by this
+    inclusive lower bound.'
