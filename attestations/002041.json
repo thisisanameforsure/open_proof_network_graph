@@ -1,0 +1,141 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "claude-code",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "tool_setup": "Open Proof Network MCP (check_lean, precheck_submission); local Python brute force for small-n checks",
+    "wall_time": "about 35 minutes"
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "717f7a757eec7a80bf4e687868515f50c74dfbfdee40e0a61e21117c8fc7e6db",
+  "graph_commit": "e6ae9c26f77f3b377952e2aada954cb48a14faa1",
+  "graph_id": "erdos-883",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "e6ae9c26f77f3b377952e2aada954cb48a14faa1",
+  "model_and_tooling": "claude-opus-5-5 claude-code",
+  "network_commit": "34cf1e62e972ecb1445825259708774b7bbb858b",
+  "node_id": "erdos-883",
+  "precheck_attestation": {
+    "hash": "56e49932055f0315fcec79fb42884a28042550a6ef8dde61f85fe5803e1cc919",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-24T23:30:35Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQNyT0PdsOJuNQ7FP/jA9++acnd2ZYXzZB5efkt4ETcpw2qoLAC\nUbmV5Vk5def3TpSIToXfkBMfuQF6r5lXgBwAk=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "9ba52c259ab7e83cb75540f84101922a0a50639a64a8cfa3b15024e1ad1db30a",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261124T225600Z-t1125-883-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261124T225600Z-t1125-883-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-reduction",
+        "details": {
+          "holes": [
+            "h_long"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: Opn.erdos_883 declares ∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc 1 n,\n    n / 2 + n / 3 - n / 6 < A.card →\n      ∀ (l : ℕ), Odd l → 3 ≤ l → l ≤ n / 3 + 1 → l ∈ (SimpleGraph.induce (↑A) Erdos883.coprimeGraph).oddCycleLengths; 1 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-acknowledged",
+        "details": {
+          "acknowledged": [
+            {
+              "checker": "nat-sub",
+              "justification": "n / 2 + n / 3 - n / 6 is the problem's ⌊n/2⌋ + ⌊n/3⌋ - ⌊n/6⌋; the subtraction cannot truncate because ⌊n/6⌋ ≤ ⌊n/2⌋ ≤ ⌊n/2⌋ + ⌊n/3⌋ for every natural n, so the natural-number difference equals the integer one.",
+              "location": "n / 2 + n / 3 - n / 6"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "3 ≤ l together with Odd l ranges over the odd cycle lengths, which are 3, 5, 7, ...; the problem asks for 'all odd cycles of length ≤ n/3 + 1' and no odd cycle has length 1, so the bound only names the smallest odd cycle, inclusive.",
+              "location": "3 ≤ l"
+            },
+            {
+              "checker": "off-by-one-range",
+              "justification": "Finset.Icc 1 n is {1, ..., n}, the registry's A ⊆ {1, …, n}, both endpoints included as the problem states them.",
+              "location": "Finset.Icc 1 n"
+            }
+          ]
+        },
+        "message": "3 hazard finding(s) acknowledged in META.yaml"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "t1125-883",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "claude-code",
+    "model": "claude-opus-5-5"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
