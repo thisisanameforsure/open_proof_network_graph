@@ -1,0 +1,20 @@
+schema: meta/v2
+id: lehmer-totient
+status: ready
+deps: []
+statement-hash: fd4ceccda50b16c1166e11af739f38ef2a53314970a14526cf2a1d5eb40e7541
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: nat-sub
+  location: n - 1
+  justification: '`n - 1` is the problem''s n - 1 and never truncates because the
+    statement carries `n > 1`, so n - 1 ≥ 1 as an integer.'
+- checker: off-by-one-range
+  location: n > 1
+  justification: '`n > 1` is the problem''s own ''composite number n > 1'', so the
+    strict boundary is the stated one.'
