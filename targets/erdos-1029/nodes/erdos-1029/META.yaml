@@ -1,0 +1,19 @@
+schema: meta/v2
+id: erdos-1029
+status: ready
+deps: []
+statement-hash: 460719b943fb53a53689a1f69c743173748f17a6e6926d0a1b14980fd3bcfc33
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(SimpleGraph.diagonalRamsey k) / (↑k * 2 ^ (↑k / 2))
+  justification: The denominator `k * 2^(k/2)` is positive for every k ≥ 1 (a product
+    of a positive integer and a real power of 2), so the quotient is the problem's
+    R(k)/(k 2^{k/2}) for all k ≥ 1; the only junk value is at k = 0, and `Tendsto
+    … atTop atTop` is a statement about k eventually, so a single finite index cannot
+    change the claim.

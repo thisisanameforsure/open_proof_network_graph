@@ -1,0 +1,18 @@
+schema: meta/v2
+id: stability-threshold-tight
+status: ready
+deps: []
+statement-hash: 81ce2f6b4fd8b65c9ce1e2d64778dd0884a7a09106f87b3c4ac1bcafcef7e1c3
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 3 ≤ N₀
+  justification: '`3 ≤ N₀` is the registry''s own threshold inside ''for every sufficiently
+    large N'' (∃ N₀, ∀ N ≥ N₀); it does not change the claim, since any threshold
+    N₀ can be replaced by max(N₀, 3), so the statement is equivalent to the informal
+    one.'
