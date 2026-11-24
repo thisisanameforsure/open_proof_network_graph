@@ -1,0 +1,430 @@
+{
+  "artifact": {
+    "hash": "b895c3791a64db761ac63120eb1f2e5711b28ff362549678bca454923feffa48",
+    "kind": "partial",
+    "path": "attempts/20261124T143900Z-opus-1124-sing-partial.lean"
+  },
+  "gate": "9080756273460bfbcb31dff88e0ced95eebba1eb",
+  "node": "singmaster",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "singmaster--h1",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (t : ℕ), (solutions t).Finite",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h1",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (t : ℕ), (solutions t).Finite",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (t : ℕ), (solutions t).Finite",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s1.h1",
+              "kind": "hole",
+              "name": "h1",
+              "span": {
+                "end_line": 42,
+                "start_line": 42
+              },
+              "uses": {
+                "defs": [
+                  "Singmaster.solutions"
+                ],
+                "mathlib": [
+                  {
+                    "doc": "A set is finite if the corresponding `Subtype` is finite, i.e., if there exists a natural `n : ℕ` and an equivalence `s ≃ Fin n`.",
+                    "name": "Set.Finite",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (t : ℕ), (solutions t).Finite",
+              "truncated": false
+            }
+          },
+          "id": "hall.s1",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 43,
+            "start_line": 39
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "singmaster--h2",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∀ (t C : ℕ),\n  {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n    (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h2",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∀ (t C : ℕ),\n  {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n    (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∀ (t C : ℕ),\n  {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n    (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s2.h2",
+              "kind": "hole",
+              "name": "h2",
+              "span": {
+                "end_line": 49,
+                "start_line": 47
+              },
+              "uses": {
+                "defs": [
+                  "Singmaster.solutions"
+                ],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The cardinality of `s : Set α` .",
+                    "name": "Set.ncard",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∀ (t C : ℕ),\n  {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n    (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          "id": "hall.s2",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 50,
+            "start_line": 44
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [
+            {
+              "child_node": "singmaster--h3",
+              "children": [],
+              "claim": {
+                "printed": "reliable",
+                "text": "∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+                "truncated": false
+              },
+              "closed_by": {
+                "kind": "hole",
+                "tactics": []
+              },
+              "goal": {
+                "hypotheses": [
+                  {
+                    "name": "h3",
+                    "type": {
+                      "printed": "reliable",
+                      "text": "∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+                      "truncated": false
+                    }
+                  }
+                ],
+                "target": {
+                  "printed": "reliable",
+                  "text": "∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+                  "truncated": false
+                }
+              },
+              "id": "hall.s3.h3",
+              "kind": "hole",
+              "name": "h3",
+              "span": {
+                "end_line": 55,
+                "start_line": 54
+              },
+              "uses": {
+                "defs": [],
+                "mathlib": [
+                  {
+                    "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+                    "name": "Nat.choose",
+                    "tags": []
+                  },
+                  {
+                    "doc": "The cardinality of `s : Set α` .",
+                    "name": "Set.ncard",
+                    "tags": []
+                  }
+                ],
+                "nodes": []
+              }
+            }
+          ],
+          "claim": null,
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [],
+            "target": {
+              "printed": "reliable",
+              "text": "∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+              "truncated": false
+            }
+          },
+          "id": "hall.s3",
+          "kind": "case",
+          "name": null,
+          "span": {
+            "end_line": 56,
+            "start_line": 51
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (t : ℕ), (solutions t).Finite) ∧\n  (∀ (t C : ℕ),\n      {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n        (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)) ∧\n    ∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hall",
+            "type": {
+              "printed": "reliable",
+              "text": "(∀ (t : ℕ), (solutions t).Finite) ∧\n  (∀ (t C : ℕ),\n      {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n        (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)) ∧\n    ∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ), ∀ t > (1 : ℕ), (solutions t).Finite ∧ (solutions t).ncard ≤ C",
+          "truncated": false
+        }
+      },
+      "id": "hall",
+      "kind": "have",
+      "name": "hall",
+      "span": {
+        "end_line": 56,
+        "start_line": 33
+      },
+      "uses": {
+        "defs": [
+          "Singmaster.solutions"
+        ],
+        "mathlib": [
+          {
+            "doc": "A set is finite if the corresponding `Subtype` is finite, i.e., if there exists a natural `n : ℕ` and an equivalence `s ≃ Fin n`.",
+            "name": "Set.Finite",
+            "tags": []
+          },
+          {
+            "doc": "`choose n k` is the number of `k`-element subsets in an `n`-element set.",
+            "name": "Nat.choose",
+            "tags": []
+          },
+          {
+            "doc": "The cardinality of `s : Set α` .",
+            "name": "Set.ncard",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "(∀ (t : ℕ), (solutions t).Finite) ∧\n  (∀ (t C : ℕ),\n      {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n        (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)) ∧\n    ∃ (C : ℕ), ∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hfin",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (t : ℕ), (solutions t).Finite",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hred",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (t C : ℕ),\n  {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C →\n    (solutions t).ncard ≤ (2 : ℕ) * C + (2 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "C",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hC",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (t : ℕ), {p : ℕ × ℕ | (2 : ℕ) ≤ p.2 ∧ (2 : ℕ) * p.2 ≤ p.1 ∧ p.1.choose p.2 = t}.ncard ≤ C",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∃ (C : ℕ), ∀ t > (1 : ℕ), (solutions t).Finite ∧ (solutions t).ncard ≤ C",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 57,
+        "start_line": 57
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (C : ℕ), ∀ t > (1 : ℕ), (solutions t).Finite ∧ (solutions t).ncard ≤ C",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 58,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "singmaster"
+}
