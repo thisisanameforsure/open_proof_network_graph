@@ -1,0 +1,10 @@
+import Mathlib
+import Defs.AlgebraWeylAlgebra
+import Defs.AnalysisSpecialFunctionsAdditiveCharacter
+import Defs.FieldTheoryMilnorKTheory
+import Defs.GroupTheoryRationalClasses
+import Defs.Local
+open Singmaster
+
+theorem witness : ∃ t C : ℕ, ({p : ℕ × ℕ | 2 ≤ p.2 ∧ 2 * p.2 ≤ p.1 ∧ Nat.choose p.1 p.2 = t}).ncard ≤ C :=
+  ⟨1, ({p : ℕ × ℕ | 2 ≤ p.2 ∧ 2 * p.2 ≤ p.1 ∧ Nat.choose p.1 p.2 = 1}).ncard, le_rfl⟩
