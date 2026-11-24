@@ -1,0 +1,18 @@
+schema: meta/v2
+id: kourovka-20-51
+status: ready
+deps: []
+statement-hash: 446c6a84f74aeeb7697d35553992e60a1a6c7127ddd191d2777ef69ebd4feb06
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: t > 3
+  justification: '`t > 3` is the problem''s `every odd integer t > 3` (strict), because
+    the informal statement writes t > 3, so the first case is t = 5; t = 3 is excluded
+    as the registry intends (a non-abelian group of odd order with exactly 3 conjugacy
+    classes does not exist, which is why the question starts above it).'
