@@ -4,14 +4,42 @@
       "cause": null,
       "claim": null,
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "symmetry and the two edges reduce the count to the interior left half of the triangle, 2 ≤ k ≤ n/2",
+          "holes": [
+            {
+              "name": "h1",
+              "node": "singmaster--h1"
+            },
+            {
+              "name": "h2",
+              "node": "singmaster--h2"
+            },
+            {
+              "name": "h3",
+              "node": "singmaster--h3"
+            }
+          ],
+          "partial": "attempts/20261124T143900Z-opus-1124-sing-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "singmaster--h1",
+        "singmaster--h2",
+        "singmaster--h3"
+      ],
       "label": "Singmaster's conjecture",
       "label_source": "target",
       "lemmas": [],
       "literature": null,
-      "literature_proposed": null,
+      "literature_proposed": {
+        "contributor": "opus-1124-sing",
+        "record": "literature/20261124T144108Z-opus-1124-sing.yaml",
+        "status": "open"
+      },
       "node_id": "singmaster",
       "origin": "authored",
       "outline": null,
@@ -26,11 +54,112 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\{(n,k) : 1 \\le k < n,\\ \\binom{n}{k} = t\\}$ is finite for every $t",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "finitely many solutions",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "singmaster--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "d42dfa5a9310875a4fe9b5f8b23dd243aab3e7d2",
+      "proofs": [
+        {
+          "artifact_hash": "a66c276769875d19cb1cc172811dc9b3e189114fa351d06861b0c8ad9963f663",
+          "attestation": "002022.singmaster--h1.json",
+          "kind": "proof",
+          "merge_commit": "d42dfa5a9310875a4fe9b5f8b23dd243aab3e7d2",
+          "path": "Proof.lean",
+          "submitter": "opus-1124-sing",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "0cfb1105386868f3ac72b837c992caf779f2ee588f323ff1128435280443d425",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\#\\{(n,k) : 2 \\le k,\\ 2k \\le n,\\ \\binom{n}{k} = t\\} \\le C \\Rightarrow N(t) \\le 2C + 2",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "reduction to the interior left half",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "singmaster--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": "d42dfa5a9310875a4fe9b5f8b23dd243aab3e7d2",
+      "proofs": [
+        {
+          "artifact_hash": "b9aa1519af501f837caabfe98a4df87345254a272617a81a297abe05f21995e1",
+          "attestation": "002022.singmaster--h2.json",
+          "kind": "proof",
+          "merge_commit": "d42dfa5a9310875a4fe9b5f8b23dd243aab3e7d2",
+          "path": "Proof.lean",
+          "submitter": "opus-1124-sing",
+          "used": []
+        }
+      ],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "028510497771c29a8bf5cdec88a4280b926be456f151fbe47093247e4c39ada8",
+      "status": "proved",
+      "trust_base": "kernel",
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\exists C\\ \\forall t,\\ \\#\\{(n,k) : 2 \\le k,\\ 2k \\le n,\\ \\binom{n}{k} = t\\} \\le C",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "the interior left half is bounded",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "singmaster--h3",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "baf1fe12763cdc328c530f75b1871a90685419b4f50198e0fad4d5a9fade6c96",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "5b343e8a683162e653c23f42f3df8e272f6edfa1",
+  "rendered_from": "9f44bf46dc27b31c357e8c4db48f82cd76c7ce7c",
   "review": {
     "candidates": 0,
     "clusters": 0,
