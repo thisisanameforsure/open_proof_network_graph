@@ -1,0 +1,18 @@
+schema: meta/v2
+id: infinitely-many-proth-primes-multiplier-three
+status: ready
+deps: []
+statement-hash: 8ffa79d6bd5946030b9364ff912c4da1253e41ef45bf63b8ced9e432d441aa16
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 2 ≤ n
+  justification: '`2 ≤ n` is the problem''s ''integers n ≥ 2'', which the registry''s
+    informal text explains is what makes 3·2^n + 1 a Proth number (the multiplier
+    3 must satisfy 3 < 2^n), so the inclusive boundary is the stated one and n = 1
+    is deliberately excluded.'
