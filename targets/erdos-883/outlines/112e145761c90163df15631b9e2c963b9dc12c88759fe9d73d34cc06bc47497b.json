@@ -1,0 +1,370 @@
+{
+  "artifact": {
+    "hash": "112e145761c90163df15631b9e2c963b9dc12c88759fe9d73d34cc06bc47497b",
+    "kind": "partial",
+    "path": "attempts/20261124T225600Z-t1125-883-partial.lean"
+  },
+  "gate": "34cf1e62e972ecb1445825259708774b7bbb858b",
+  "node": "erdos-883",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-883--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l → l ≤ n / (3 : ℕ) + (1 : ℕ) → l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_long",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l → l ≤ n / (3 : ℕ) + (1 : ℕ) → l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (3 : ℕ) ≤ l → l ≤ n / (3 : ℕ) + (1 : ℕ) → l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "h_long",
+      "kind": "hole",
+      "name": "h_long",
+      "span": {
+        "end_line": 344,
+        "start_line": 341
+      },
+      "uses": {
+        "defs": [
+          "Erdos883.coprimeGraph",
+          "SimpleGraph.oddCycleLengths"
+        ],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": "`s.card` is the number of elements of `s`, aka its cardinality.",
+            "name": "Finset.card",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "Restrict a graph to the vertices in the set `s`, deleting all edges incident to vertices outside the set.",
+            "name": "SimpleGraph.induce",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "Odd l",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "k",
+            "type": {
+              "printed": "reliable",
+              "text": "ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ≤ (2 : ℕ) * k + (1 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hln",
+            "type": {
+              "printed": "reliable",
+              "text": "(2 : ℕ) * k + (1 : ℕ) ≤ n / (3 : ℕ) + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(2 : ℕ) * k + (1 : ℕ) = (3 : ℕ) ∨ (5 : ℕ) ≤ (2 : ℕ) * k + (1 : ℕ)",
+          "truncated": false
+        }
+      },
+      "id": "s2",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 346,
+        "start_line": 346
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ a ∈ A, ∃ b ∈ A, ∃ c ∈ A, a ≠ b ∧ b ≠ c ∧ a ≠ c ∧ a.Coprime b ∧ b.Coprime c ∧ a.Coprime c",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "a",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "ha",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "b",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hb",
+                "type": {
+                  "printed": "reliable",
+                  "text": "b ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "c",
+                "type": {
+                  "printed": "reliable",
+                  "text": "ℕ",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "c ∈ A",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hab",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ≠ b",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hbc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "b ≠ c",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hac",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a ≠ c",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "cab",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a.Coprime b",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "cbc",
+                "type": {
+                  "printed": "reliable",
+                  "text": "b.Coprime c",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "cac",
+                "type": {
+                  "printed": "reliable",
+                  "text": "a.Coprime c",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+              "truncated": false
+            }
+          },
+          "id": "s3.s1",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 348,
+            "start_line": 347
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "hl",
+            "type": {
+              "printed": "reliable",
+              "text": "Odd (3 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "h3",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ≤ (3 : ℕ)",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hln",
+            "type": {
+              "printed": "reliable",
+              "text": "(3 : ℕ) ≤ n / (3 : ℕ) + (1 : ℕ)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "(3 : ℕ) ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 349,
+        "start_line": 347
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": null,
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h5",
+            "type": {
+              "printed": "reliable",
+              "text": "(5 : ℕ) ≤ l",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "s4",
+      "kind": "case",
+      "name": null,
+      "span": {
+        "end_line": 350,
+        "start_line": 350
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-883"
+}
