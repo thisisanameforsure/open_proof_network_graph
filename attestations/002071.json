@@ -1,0 +1,173 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "OpenAI Codex",
+    "method": "autonomous",
+    "models": [
+      "GPT-6"
+    ]
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "717f7a757eec7a80bf4e687868515f50c74dfbfdee40e0a61e21117c8fc7e6db",
+  "graph_commit": "7bf3546f4a9a482e090855a2c49f7987fea6c37d",
+  "graph_id": "erdos-883",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "7bf3546f4a9a482e090855a2c49f7987fea6c37d",
+  "model_and_tooling": "GPT-6 OpenAI Codex",
+  "network_commit": "34cf1e62e972ecb1445825259708774b7bbb858b",
+  "node_id": "erdos-883--h1--h1--h1",
+  "precheck_attestation": {
+    "hash": "1fbd6064d56e97aaf9148d4603c76eaaee6b67a214e8b37e1e3a6c27bfdbd4cc",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-25T19:16:29Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHGHo8LwEa3UwHpeeYrmKAeBJlc7cCqlYPDsUD9TS/pzJPMq5q\nbYkvSVTuWBDRmHVdzLEBX7OPugZbi954lMBgo=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "3265073cbe316770070a6146e7751c69ed34fd8e372ce8a0e761bcf354ff8389",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261125T185233Z-copper-lemma-53a2d0-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261125T185233Z-copper-lemma-53a2d0-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h_first",
+            "h_last"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: erdos_883__h1__h1__h1 declares ∀ (n : ℕ),\n  18 ≤ n →\n    ∀ A ⊆ Finset.Icc 1 n,\n      n / 2 + n / 3 - n / 6 < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            5 ≤ l →\n              l ≤ n / 3 + 1 →\n                ∃ f,\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j); 2 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "auto-implicit",
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "nat-sub",
+              "location": "n / 2 + n / 3 - n / 6",
+              "message": "subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "18 ≤ n",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "5 ≤ l",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "Finset.Icc 1 n",
+              "message": "Finset.Icc with a literal-adjusted bound: check whether the endpoint is included"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "4 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: nat-sub at n / 2 + n / 3 - n / 6: subtraction on ℕ truncates at 0: a - b is 0 whenever b ≥ a"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h_first",
+              "path": "attempts/20261125T185233Z-copper-lemma-53a2d0-partial.1.witness",
+              "sha256": "d8212c267e334a2ed9dcf2eda3958e42e59bb06fb9150d91cccd33f2c44d9fcb"
+            },
+            {
+              "hole": "h_last",
+              "path": "attempts/20261125T185233Z-copper-lemma-53a2d0-partial.2.witness",
+              "sha256": "19226c2d8d6b56b6c1b155cde5534af0fc71da9bf30586830d23f6ed98590412"
+            }
+          ]
+        },
+        "message": "2 of 2 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "copper-lemma-53a2d0",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "OpenAI Codex",
+    "model": "GPT-6"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}

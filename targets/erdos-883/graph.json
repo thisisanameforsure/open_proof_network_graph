@@ -127,9 +127,28 @@
       "cause": null,
       "claim": "\\forall n\\ge18,\\ \\forall A\\subseteq[1,n],\\ |A|>\\lfloor n/2\\rfloor+\\lfloor n/3\\rfloor-\\lfloor n/6\\rfloor\\ \\Rightarrow\\ \\forall\\text{ odd }l\\in[5,\\lfloor n/3\\rfloor+1],\\ \\exists\\text{ an injective coprime cyclic ordering of length }l\\text{ in }A",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "Cut each interval at 6k+1 and compare its loss in vertices with the decrease in the density threshold.",
+          "holes": [
+            {
+              "name": "h_first",
+              "node": "erdos-883--h1--h1--h1--h1"
+            },
+            {
+              "name": "h_last",
+              "node": "erdos-883--h1--h1--h1--h2"
+            }
+          ],
+          "partial": "attempts/20261125T185233Z-copper-lemma-53a2d0-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-883--h1--h1--h1--h1",
+        "erdos-883--h1--h1--h1--h2"
+      ],
       "label": "Coprime cyclic orderings from size 18",
       "label_source": "gloss",
       "lemmas": [],
@@ -149,11 +168,65 @@
       "trust_base": null,
       "tutorial": false,
       "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall k\\ge3,\\ \\forall A\\subseteq[1,6k+1],\\ |A|>4k\\ \\Rightarrow\\ \\forall\\text{ odd }l\\in[5,2k+1],\\ \\exists\\text{ an injective coprime cyclic ordering of length }l\\text{ in }A",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "Coprime cyclic orderings on intervals ending at 6k+1",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-883--h1--h1--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "f1fd231a0d105aaf14c70d333680f3c0020701427de4f971d6647c2d6ea44f17",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "\\forall k\\ge3,\\ \\forall A\\subseteq[1,6k+5],\\ [6k+2,6k+5]\\subseteq A\\ \\land\\ |A|=4k+4\\ \\Rightarrow\\ \\forall\\text{ odd }l\\in[5,2k+1],\\ \\exists\\text{ an injective coprime cyclic ordering of length }l\\text{ in }A",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "Minimum-size sets containing the four final vertices",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-883--h1--h1--h1--h2",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "2014fa69eaf5fa5861b657f1542ff1eb5888691ec092d000ebfe9f202f4ba5d2",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
     }
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "13aff85240fc6e2c3dba97f10938213d45d5c216",
+  "rendered_from": "7bf3546f4a9a482e090855a2c49f7987fea6c37d",
   "review": {
     "candidates": 0,
     "clusters": 0,

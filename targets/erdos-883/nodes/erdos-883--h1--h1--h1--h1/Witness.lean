@@ -1,0 +1,20 @@
+import Mathlib
+import Defs.AlgebraWeylAlgebra
+import Defs.AnalysisSpecialFunctionsAdditiveCharacter
+import Defs.CombinatoricsSimpleGraphCircumference
+import Defs.CombinatoricsSimpleGraphClique
+import Defs.CombinatoricsSimpleGraphColoringVertex
+import Defs.DataNatPrimeFinset
+import Defs.FieldTheoryMilnorKTheory
+import Defs.GroupTheoryRationalClasses
+import Defs.Local
+
+open Filter
+open scoped Classical
+open Erdos883
+
+
+theorem witness : ∃ (k : ℕ) (A : Finset ℕ) (l : ℕ), 3 ≤ k ∧
+    A ⊆ Finset.Icc 1 (6 * k + 1) ∧ 4 * k < A.card ∧
+      Odd l ∧ 5 ≤ l ∧ l ≤ 2 * k + 1 :=
+  ⟨3, Finset.Icc 1 19, 7, by decide, by decide, by decide, ⟨3, rfl⟩, by decide, by decide⟩
