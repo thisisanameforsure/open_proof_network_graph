@@ -50,6 +50,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## arxiv-2504-17644-margulis-conjecture-1-1
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/2504.17644/Margulis.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## babai-seress-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/DiameterSimpleFiniteGroups.lean)
