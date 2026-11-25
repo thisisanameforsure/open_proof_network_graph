@@ -1,0 +1,205 @@
+{
+  "artifact": {
+    "hash": "d4b705b15265ddee1bee4bd685c3a990c011b62cca92ffdd8841c91eba0a7db6",
+    "kind": "partial",
+    "path": "attempts/20261125T185233Z-copper-lemma-53a2d0-partial.lean"
+  },
+  "gate": "34cf1e62e972ecb1445825259708774b7bbb858b",
+  "node": "erdos-883--h1--h1--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-883--h1--h1--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ),\n  (3 : ℕ) ≤ k →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) ((6 : ℕ) * k + (1 : ℕ)),\n      (4 : ℕ) * k < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            (5 : ℕ) ≤ l →\n              l ≤ (2 : ℕ) * k + (1 : ℕ) →\n                ∃ (f : Fin l → ℕ),\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_first",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  (3 : ℕ) ≤ k →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) ((6 : ℕ) * k + (1 : ℕ)),\n      (4 : ℕ) * k < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            (5 : ℕ) ≤ l →\n              l ≤ (2 : ℕ) * k + (1 : ℕ) →\n                ∃ (f : Fin l → ℕ),\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (18 : ℕ) ≤ n →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n      n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            (5 : ℕ) ≤ l →\n              l ≤ n / (3 : ℕ) + (1 : ℕ) →\n                ∃ (f : Fin l → ℕ),\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+          "truncated": false
+        }
+      },
+      "id": "h_first",
+      "kind": "hole",
+      "name": "h_first",
+      "span": {
+        "end_line": 95,
+        "start_line": 92
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": "`s.card` is the number of elements of `s`, aka its cardinality.",
+            "name": "Finset.card",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+            "name": "Function.Injective",
+            "tags": []
+          },
+          {
+            "doc": "Cycle graph over `Fin n`",
+            "name": "SimpleGraph.cycleGraph",
+            "tags": []
+          },
+          {
+            "doc": "The adjacency relation of a simple graph.",
+            "name": "SimpleGraph.Adj",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": "erdos-883--h1--h1--h1--h2",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (k : ℕ),\n  (3 : ℕ) ≤ k →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) ((6 : ℕ) * k + (5 : ℕ)),\n      Finset.Icc ((6 : ℕ) * k + (2 : ℕ)) ((6 : ℕ) * k + (5 : ℕ)) ⊆ A →\n        A.card = (4 : ℕ) * k + (4 : ℕ) →\n          ∀ (l : ℕ),\n            Odd l →\n              (5 : ℕ) ≤ l →\n                l ≤ (2 : ℕ) * k + (1 : ℕ) →\n                  ∃ (f : Fin l → ℕ),\n                    Function.Injective f ∧\n                      (∀ (i : Fin l), f i ∈ A) ∧\n                        ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_last",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (k : ℕ),\n  (3 : ℕ) ≤ k →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) ((6 : ℕ) * k + (5 : ℕ)),\n      Finset.Icc ((6 : ℕ) * k + (2 : ℕ)) ((6 : ℕ) * k + (5 : ℕ)) ⊆ A →\n        A.card = (4 : ℕ) * k + (4 : ℕ) →\n          ∀ (l : ℕ),\n            Odd l →\n              (5 : ℕ) ≤ l →\n                l ≤ (2 : ℕ) * k + (1 : ℕ) →\n                  ∃ (f : Fin l → ℕ),\n                    Function.Injective f ∧\n                      (∀ (i : Fin l), f i ∈ A) ∧\n                        ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  (18 : ℕ) ≤ n →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n      n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            (5 : ℕ) ≤ l →\n              l ≤ n / (3 : ℕ) + (1 : ℕ) →\n                ∃ (f : Fin l → ℕ),\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+          "truncated": false
+        }
+      },
+      "id": "h_last",
+      "kind": "hole",
+      "name": "h_last",
+      "span": {
+        "end_line": 103,
+        "start_line": 99
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": "`s.card` is the number of elements of `s`, aka its cardinality.",
+            "name": "Finset.card",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+            "name": "Function.Injective",
+            "tags": []
+          },
+          {
+            "doc": "Cycle graph over `Fin n`",
+            "name": "SimpleGraph.cycleGraph",
+            "tags": []
+          },
+          {
+            "doc": "The adjacency relation of a simple graph.",
+            "name": "SimpleGraph.Adj",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  (18 : ℕ) ≤ n →\n    ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n      n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n        ∀ (l : ℕ),\n          Odd l →\n            (5 : ℕ) ≤ l →\n              l ≤ n / (3 : ℕ) + (1 : ℕ) →\n                ∃ (f : Fin l → ℕ),\n                  Function.Injective f ∧\n                    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 104,
+        "start_line": 104
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-883"
+}
