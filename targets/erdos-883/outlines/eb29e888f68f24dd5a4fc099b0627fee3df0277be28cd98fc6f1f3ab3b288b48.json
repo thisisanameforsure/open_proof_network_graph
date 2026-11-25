@@ -1,0 +1,526 @@
+{
+  "artifact": {
+    "hash": "eb29e888f68f24dd5a4fc099b0627fee3df0277be28cd98fc6f1f3ab3b288b48",
+    "kind": "partial",
+    "path": "attempts/20261125T154325Z-t1125-883-partial.lean"
+  },
+  "gate": "34cf1e62e972ecb1445825259708774b7bbb858b",
+  "node": "erdos-883--h1",
+  "schema": "outline/v1",
+  "steps": [
+    {
+      "child_node": "erdos-883--h1--h1",
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l →\n            l ≤ n / (3 : ℕ) + (1 : ℕ) →\n              ∃ (f : Fin l → ℕ),\n                Function.Injective f ∧\n                  (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "hole",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "h_seq",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l →\n            l ≤ n / (3 : ℕ) + (1 : ℕ) →\n              ∃ (f : Fin l → ℕ),\n                Function.Injective f ∧\n                  (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l → l ≤ n / (3 : ℕ) + (1 : ℕ) → l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "h_seq",
+      "kind": "hole",
+      "name": "h_seq",
+      "span": {
+        "end_line": 35,
+        "start_line": 31
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "The finset $[a, b]$ of elements `x` such that `a ≤ x` and `x ≤ b`.",
+            "name": "Finset.Icc",
+            "tags": []
+          },
+          {
+            "doc": "`s.card` is the number of elements of `s`, aka its cardinality.",
+            "name": "Finset.card",
+            "tags": []
+          },
+          {
+            "doc": "An element `a` of a semiring is odd if there exists `k` such `a = 2*k + 1`.",
+            "name": "Odd",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+            "name": "Function.Injective",
+            "tags": []
+          },
+          {
+            "doc": "Cycle graph over `Fin n`",
+            "name": "SimpleGraph.cycleGraph",
+            "tags": []
+          },
+          {
+            "doc": "The adjacency relation of a simple graph.",
+            "name": "SimpleGraph.Adj",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "Function.Injective (⇑φ : Fin l → (↑(↑A : Set ℕ) : Type))",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "steps",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hφ",
+                "type": {
+                  "printed": "reliable",
+                  "text": "Function.Injective (⇑φ : Fin l → (↑(↑A : Set ℕ) : Type))",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).cycleLengths",
+              "truncated": false
+            }
+          },
+          "id": "bridge.h_x3c6",
+          "kind": "have",
+          "name": "hφ",
+          "span": {
+            "end_line": 51,
+            "start_line": 49
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+                "name": "Function.Injective",
+                "tags": []
+              },
+              {
+                "doc": "Congruence in the function argument: if `a₁ = a₂` then `f a₁ = f a₂` for any (nondependent) function `f`.",
+                "name": "congrArg",
+                "tags": []
+              },
+              {
+                "doc": "The value in the underlying type that satisfies the predicate.",
+                "name": "Subtype.val",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "(SimpleGraph.cycleGraph l).IsContained (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph)",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "hcopy",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(SimpleGraph.cycleGraph l).IsContained (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph)",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).cycleLengths",
+              "truncated": false
+            }
+          },
+          "id": "bridge.hcopy",
+          "kind": "have",
+          "name": "hcopy",
+          "span": {
+            "end_line": 54,
+            "start_line": 52
+          },
+          "uses": {
+            "defs": [
+              "Erdos883.coprimeGraph"
+            ],
+            "mathlib": [
+              {
+                "doc": "The relation `IsContained A B`, `A ⊑ B` says that `B` contains a copy of `A`.",
+                "name": "SimpleGraph.IsContained",
+                "tags": []
+              },
+              {
+                "doc": "Cycle graph over `Fin n`",
+                "name": "SimpleGraph.cycleGraph",
+                "tags": []
+              },
+              {
+                "doc": "Restrict a graph to the vertices in the set `s`, deleting all edges incident to vertices outside the set.",
+                "name": "SimpleGraph.induce",
+                "tags": []
+              },
+              {
+                "doc": "A set is a collection of elements of some type `α`.",
+                "name": "Set",
+                "tags": []
+              },
+              {
+                "doc": "If `val : α`, then `α` is nonempty.",
+                "name": "Nonempty.intro",
+                "tags": []
+              },
+              {
+                "doc": null,
+                "name": "SimpleGraph.Copy.mk",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        },
+        {
+          "child_node": null,
+          "children": [],
+          "claim": {
+            "printed": "reliable",
+            "text": "∃ (v : (↑(↑A : Set ℕ) : Type)) (p : (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).Walk v v), p.IsCycle ∧ p.length = l",
+            "truncated": false
+          },
+          "closed_by": {
+            "kind": "term",
+            "tactics": []
+          },
+          "goal": {
+            "hypotheses": [
+              {
+                "name": "v",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(↑(↑A : Set ℕ) : Type)",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "p",
+                "type": {
+                  "printed": "reliable",
+                  "text": "(SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).Walk v v",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hp",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.IsCycle",
+                  "truncated": false
+                }
+              },
+              {
+                "name": "hlen",
+                "type": {
+                  "printed": "reliable",
+                  "text": "p.length = l",
+                  "truncated": false
+                }
+              }
+            ],
+            "target": {
+              "printed": "reliable",
+              "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).cycleLengths",
+              "truncated": false
+            }
+          },
+          "id": "bridge.s3",
+          "kind": "obtain",
+          "name": null,
+          "span": {
+            "end_line": 55,
+            "start_line": 55
+          },
+          "uses": {
+            "defs": [],
+            "mathlib": [
+              {
+                "doc": null,
+                "name": "SimpleGraph.cycleGraph_isContained_iff",
+                "tags": []
+              }
+            ],
+            "nodes": []
+          }
+        }
+      ],
+      "claim": {
+        "printed": "reliable",
+        "text": "∀ (A : Finset ℕ) (l : ℕ),\n  (2 : ℕ) < l →\n    ∀ (f : Fin l → ℕ),\n      Function.Injective f →\n        (∀ (i : Fin l), f i ∈ A) →\n          (∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)) →\n            l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).cycleLengths",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "bridge",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (A : Finset ℕ) (l : ℕ),\n  (2 : ℕ) < l →\n    ∀ (f : Fin l → ℕ),\n      Function.Injective f →\n        (∀ (i : Fin l), f i ∈ A) →\n          (∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)) →\n            l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).cycleLengths",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "∀ (n : ℕ),\n  ∀ A ⊆ Finset.Icc (1 : ℕ) n,\n    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card →\n      ∀ (l : ℕ),\n        Odd l →\n          (5 : ℕ) ≤ l → l ≤ n / (3 : ℕ) + (1 : ℕ) → l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "bridge",
+      "kind": "have",
+      "name": "bridge",
+      "span": {
+        "end_line": 56,
+        "start_line": 37
+      },
+      "uses": {
+        "defs": [
+          "Erdos883.coprimeGraph",
+          "SimpleGraph.cycleLengths"
+        ],
+        "mathlib": [
+          {
+            "doc": "`Finset α` is the type of finite sets of elements of `α`.",
+            "name": "Finset",
+            "tags": []
+          },
+          {
+            "doc": "Natural numbers less than some upper bound.",
+            "name": "Fin",
+            "tags": []
+          },
+          {
+            "doc": "A function `f : α → β` is called injective if `f x = f y` implies `x = y`.",
+            "name": "Function.Injective",
+            "tags": []
+          },
+          {
+            "doc": "Cycle graph over `Fin n`",
+            "name": "SimpleGraph.cycleGraph",
+            "tags": []
+          },
+          {
+            "doc": "The adjacency relation of a simple graph.",
+            "name": "SimpleGraph.Adj",
+            "tags": []
+          },
+          {
+            "doc": "`m` and `n` are coprime, or relatively prime, if their `gcd` is 1.",
+            "name": "Nat.Coprime",
+            "tags": []
+          },
+          {
+            "doc": "Restrict a graph to the vertices in the set `s`, deleting all edges incident to vertices outside the set.",
+            "name": "SimpleGraph.induce",
+            "tags": []
+          },
+          {
+            "doc": "A set is a collection of elements of some type `α`.",
+            "name": "Set",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Subtype.mk",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "Finset.mem_coe",
+            "tags": []
+          },
+          {
+            "doc": "Modus ponens for if and only if, reversed.",
+            "name": "Iff.mpr",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "SimpleGraph.fromRel_adj",
+            "tags": []
+          },
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          },
+          {
+            "doc": null,
+            "name": "SimpleGraph.Adj.ne",
+            "tags": []
+          },
+          {
+            "doc": "`Or.inl` is \"left injection\" into an `Or`.",
+            "name": "Or.inl",
+            "tags": []
+          },
+          {
+            "doc": "Existential introduction.",
+            "name": "Exists.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "∃ (f : Fin l → ℕ),\n  Function.Injective f ∧\n    (∀ (i : Fin l), f i ∈ A) ∧ ∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "term",
+        "tactics": []
+      },
+      "goal": {
+        "hypotheses": [
+          {
+            "name": "f",
+            "type": {
+              "printed": "reliable",
+              "text": "Fin l → ℕ",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hinj",
+            "type": {
+              "printed": "reliable",
+              "text": "Function.Injective f",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hfA",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i : Fin l), f i ∈ A",
+              "truncated": false
+            }
+          },
+          {
+            "name": "hc",
+            "type": {
+              "printed": "reliable",
+              "text": "∀ (i j : Fin l), (SimpleGraph.cycleGraph l).Adj i j → (f i).Coprime (f j)",
+              "truncated": false
+            }
+          }
+        ],
+        "target": {
+          "printed": "reliable",
+          "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+          "truncated": false
+        }
+      },
+      "id": "s3",
+      "kind": "obtain",
+      "name": null,
+      "span": {
+        "end_line": 58,
+        "start_line": 58
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [],
+        "nodes": []
+      }
+    },
+    {
+      "child_node": null,
+      "children": [],
+      "claim": {
+        "printed": "reliable",
+        "text": "l ∈ (SimpleGraph.induce (↑A : Set ℕ) coprimeGraph).oddCycleLengths",
+        "truncated": false
+      },
+      "closed_by": {
+        "kind": "steps",
+        "tactics": []
+      },
+      "goal": null,
+      "id": "close",
+      "kind": "term",
+      "name": null,
+      "span": {
+        "end_line": 59,
+        "start_line": 59
+      },
+      "uses": {
+        "defs": [],
+        "mathlib": [
+          {
+            "doc": "`And.intro : a → b → a ∧ b` is the constructor for the And operation.",
+            "name": "And.intro",
+            "tags": []
+          }
+        ],
+        "nodes": []
+      }
+    }
+  ],
+  "target": "erdos-883"
+}
