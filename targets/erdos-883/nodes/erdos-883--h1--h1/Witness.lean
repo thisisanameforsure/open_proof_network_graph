@@ -13,10 +13,9 @@ open Filter
 open scoped Classical
 open Erdos883
 
-/-! The witness slot for a hole (D-29, F07-R6). Replace `sorry` with an instance
-satisfying this statement's hypotheses; until then the node is blocked. -/
+/-! Non-vacuity witness: n = 12, A = {1, …, 12} (12 elements, more than 12/2 + 12/3 − 12/6 = 8), and the odd length l = 5 ≤ 12/3 + 1 = 5. -/
 
 theorem witness : ∃ (n : ℕ) (A : Finset ℕ) (l : ℕ),
   A ⊆ Finset.Icc (1 : ℕ) n ∧
-    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card ∧ Odd l ∧ (5 : ℕ) ≤ l ∧ l ≤ n / (3 : ℕ) + (1 : ℕ) := by
-  sorry
+    n / (2 : ℕ) + n / (3 : ℕ) - n / (6 : ℕ) < A.card ∧ Odd l ∧ (5 : ℕ) ≤ l ∧ l ≤ n / (3 : ℕ) + (1 : ℕ) :=
+  ⟨12, Finset.Icc 1 12, 5, Finset.Subset.refl _, by simp, ⟨2, rfl⟩, by norm_num, by norm_num⟩
