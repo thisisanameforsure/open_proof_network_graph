@@ -104,12 +104,6 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
-## buchi-problem-m5
-
-- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/Buchi.lean)
-- licence: Apache-2.0
-- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
-
 ## butson-hadamard-fourth-roots-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ButsonHadamardMatrix.lean)
