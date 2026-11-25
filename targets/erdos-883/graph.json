@@ -42,12 +42,26 @@
       "uses": []
     },
     {
-      "cause": "witness-missing",
+      "cause": null,
       "claim": "A\\subseteq\\{1,\\dots,n\\},\\ |A|>\\lfloor n/2\\rfloor+\\lfloor n/3\\rfloor-\\lfloor n/6\\rfloor,\\ l\\ \\text{odd},\\ 5\\le l\\le\\lfloor n/3\\rfloor+1\\implies C_l\\subseteq G(A)",
       "closure": null,
-      "decompositions": [],
+      "decompositions": [
+        {
+          "annex": null,
+          "approach": "reduce to arithmetic: l distinct elements of A in cyclic order, consecutive ones coprime, form a copy of cycleGraph l in G(A)",
+          "holes": [
+            {
+              "name": "h_seq",
+              "node": "erdos-883--h1--h1"
+            }
+          ],
+          "partial": "attempts/20261125T154325Z-t1125-883-partial.lean"
+        }
+      ],
       "defect_claims": [],
-      "deps": [],
+      "deps": [
+        "erdos-883--h1--h1"
+      ],
       "label": "Odd cycles of length 5 to n/3 + 1",
       "label_source": "gloss",
       "lemmas": [],
@@ -63,7 +77,34 @@
       "relevance": null,
       "shelved": null,
       "statement_hash": "3054dcd8d3b76f0991b643ad32ad26376674daf68248928e7429c1c2157006da",
-      "status": "blocked",
+      "status": "ready",
+      "trust_base": null,
+      "tutorial": false,
+      "uses": []
+    },
+    {
+      "cause": null,
+      "claim": "|A|>\\lfloor n/2\\rfloor+\\lfloor n/3\\rfloor-\\lfloor n/6\\rfloor,\\ l\\text{ odd},\\ 5\\le l\\le\\lfloor n/3\\rfloor+1\\implies\\exists\\text{ distinct }a_0,\\dots,a_{l-1}\\in A\\text{ with }\\gcd(a_i,a_{(i+1)\\bmod l})=1",
+      "closure": null,
+      "decompositions": [],
+      "defect_claims": [],
+      "deps": [],
+      "label": "Cyclic coprime sequence of odd length l in A",
+      "label_source": "gloss",
+      "lemmas": [],
+      "literature": null,
+      "literature_proposed": null,
+      "node_id": "erdos-883--h1--h1",
+      "origin": "compiler-derived",
+      "outline": null,
+      "proof_commit": null,
+      "proofs": [],
+      "proposed_for": null,
+      "relation": null,
+      "relevance": null,
+      "shelved": null,
+      "statement_hash": "a7e9bc44a48b9d39adc8c129a9777e32e50d59cdda9accdc1c7444ba2774abed",
+      "status": "ready",
       "trust_base": null,
       "tutorial": false,
       "uses": []
@@ -71,7 +112,7 @@
   ],
   "open_pairs": [],
   "registrations": [],
-  "rendered_from": "6974509a62e6ae69d75fc071bdae79f8bbb1b719",
+  "rendered_from": "b9a3f9ccb66d1b5a4f236d24094ccb0a4a22c3d7",
   "review": {
     "candidates": 0,
     "clusters": 0,
