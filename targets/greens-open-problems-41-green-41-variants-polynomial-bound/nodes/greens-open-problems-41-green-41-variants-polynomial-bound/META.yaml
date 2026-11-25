@@ -1,0 +1,19 @@
+schema: meta/v2
+id: greens-open-problems-41-green-41-variants-polynomial-bound
+status: ready
+deps: []
+statement-hash: de057607b1f184c0274fea466ea2267701a086285d916c9c413bce8147bad197
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: Set.Ioc 0 ε₀
+  justification: '`Set.Ioc 0 ε₀` is the registry''s range "all sufficiently small
+    ε > 0": the left endpoint 0 is excluded because the pyjama set has positive width
+    ε > 0 (at ε = 0 it is a union of lines and no finite number of rotations covers
+    the plane), and the right endpoint ε₀ is included, which changes nothing since
+    ε₀ is existentially chosen.'
