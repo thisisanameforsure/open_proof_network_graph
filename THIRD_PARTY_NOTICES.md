@@ -26,6 +26,30 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## artin-primitive-roots-conjecture-artin-primitive-roots-parts-i
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ArtinPrimitiveRootsConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## artin-primitive-roots-conjecture-artin-primitive-roots-parts-ii
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ArtinPrimitiveRootsConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## arxiv-1207-5099-subprime-fibonacci-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/1207.5099/SubprimeFibonacci.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## arxiv-2501-03234-arithmetic-sum-s-conjecture-1-1
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/2501.03234/ArithmeticSumS.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## babai-seress-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/DiameterSimpleFiniteGroups.lean)
@@ -1670,6 +1694,18 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## greens-open-problems-24-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/GreensOpenProblems/24.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## greens-open-problems-41-green-41-variants-polynomial-bound
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/GreensOpenProblems/41.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## grimm-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/Grimm.lean)
@@ -2615,6 +2651,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## weighing-matrix-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/WeighingMatrix.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## wikipedia-selfridge-selfridge-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/Selfridge.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
