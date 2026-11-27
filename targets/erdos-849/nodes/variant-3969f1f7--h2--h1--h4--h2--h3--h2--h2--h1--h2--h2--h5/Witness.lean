@@ -1,0 +1,5 @@
+import Mathlib
+
+open Nat
+
+theorem witness : ∃ (x : ℕ), (6713221 : ℕ) ≤ x ∧ x < (9167657 : ℕ) := ⟨6713221, by decide, by decide⟩

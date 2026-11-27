@@ -1,0 +1,274 @@
+{
+  "artifact_hash": null,
+  "automation": {
+    "framework": "Claude Code (VS Code), ChatGPT, Codex; versions unknown",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5",
+      "GPT-6.2",
+      "Codex (underlying model unknown)"
+    ],
+    "tool_setup": "Human director MotoSquid; independent agent research and coordinator reconciliation; Lean 4.33.1 with pinned Mathlib; bounded local computation and official hosted precheck. Claude authored assembly and interval witnesses; Codex contributed certificate research and benchmarking. Partial assembly only; 20 prime-coverage obligations remain."
+  },
+  "carried_by": null,
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "030b25785c6f146a572fc2a0ec82d006c28f0dc324d7e56717fc22d295e8e594",
+  "graph_commit": "bbc2c97273c0962c353c268d791ddd51dd877958",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "bbc2c97273c0962c353c268d791ddd51dd877958",
+  "model_and_tooling": "Claude (claude-opus-5-5, self-reported); OpenAI GPT-6.2; Codex model identifier unknown Claude Code (VS Code), ChatGPT, Codex; harness versions unknown",
+  "network_commit": "0b54e7c6b224775cfffc1eb1bf9b6a8ba6a7d3e4",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2--h1--h2--h2",
+  "precheck_attestation": {
+    "hash": "07f60a8f6fdaacd1d3b6584da6d51ecf8fa39df8e507f19fef0611b2d51149e2",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-27T15:40:18Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQHMJJT/1x4daNzUMQve9mxodRU5/2cEcMeV28hdHzTO44pfsHW\nR3NBYqFOh/1kPuyTBf/RGX08XBM1NHqR+zAAU=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "31edcd5d1aae1d842d35284a62b998df35599bd2ef65d5dcf2fe456c15088992",
+  "steps": [
+    {
+      "diagnostic": {
+        "code": "mathlib-pinned",
+        "details": {
+          "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "packages": 8
+        },
+        "message": "Mathlib 0df444a360ea resolved from the pinned checkout"
+      },
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": {
+        "code": "partial-submission",
+        "details": {
+          "path": "attempts/20261127T135405Z-MotoSquid-partial.lean"
+        },
+        "message": "a partial proof: attempts/20261127T135405Z-MotoSquid-partial.lean (D-12 #5)"
+      },
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": {
+        "code": "artifact-partial",
+        "details": {
+          "holes": [
+            "h01",
+            "h02",
+            "h03",
+            "h04",
+            "h05",
+            "h06",
+            "h07",
+            "h08",
+            "h09",
+            "h10",
+            "h11",
+            "h12",
+            "h13",
+            "h14",
+            "h15",
+            "h16",
+            "h17",
+            "h18",
+            "h19",
+            "h20"
+          ],
+          "kind": "partial"
+        },
+        "message": "partial: variant_3969f1f7__h2__h1__h4__h2__h3__h2__h2__h1__h2__h2 declares ∀ (x : ℕ), 2010760 ≤ x → x < 1100000000 → ∃ p, Nat.Prime p ∧ x < p ∧ 16597 * p < 16598 * x; 20 hole(s)"
+      },
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "auto-implicit",
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "2010760 ≤ x",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "x < 1100000000",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 2010760 ≤ x: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": {
+        "code": "hole-witnesses",
+        "details": {
+          "witnesses": [
+            {
+              "hole": "h01",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.1.witness",
+              "sha256": "e74606e5fdfcce81c40215ed9dac9a5538dad7ee4993f3282f2a6e55d9d812c3"
+            },
+            {
+              "hole": "h02",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.2.witness",
+              "sha256": "280294eb0cb11f62130eb64bd122f87228dd923a551692b0259449cf6b94b24c"
+            },
+            {
+              "hole": "h03",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.3.witness",
+              "sha256": "418c4d8f01e3852bdc9a4f5fedf2e22b63343ced0fcd97b16dc74df9c48eed94"
+            },
+            {
+              "hole": "h04",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.4.witness",
+              "sha256": "700faac1ac391f5c22435a6f43d4240c59b77d3a840006d7db5b5b9ecb954594"
+            },
+            {
+              "hole": "h05",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.5.witness",
+              "sha256": "6efa5b69cf55d61abfe5cfdbe4224e1898b8c3f538ef26ab96187bc0d329d4d1"
+            },
+            {
+              "hole": "h06",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.6.witness",
+              "sha256": "62771c65e44ce45a9eb4b5e6e5a5b760b27c97d4418ec7b8f3f787590622431d"
+            },
+            {
+              "hole": "h07",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.7.witness",
+              "sha256": "15e5e4fbcfa5d3db94d68399dea5f63bed3a7b00664b6d8978612b86b9da2590"
+            },
+            {
+              "hole": "h08",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.8.witness",
+              "sha256": "57c6a776d97400bd14946beabc64f6b51368066afaab692f3ec48b19d20b0afb"
+            },
+            {
+              "hole": "h09",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.9.witness",
+              "sha256": "6e260f02ccf0ae5d24b1d4b856d587c22cc3b92128b7e2910d342ff70963b7ac"
+            },
+            {
+              "hole": "h10",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.10.witness",
+              "sha256": "dd44b4d1d48ee182cb7aafebc74d5a267be33951d87dad354c6e8cbc9311e3e2"
+            },
+            {
+              "hole": "h11",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.11.witness",
+              "sha256": "e6effd36e4be021e0955be982faa8f25b992bc34efb3a5db11812d4865dbd207"
+            },
+            {
+              "hole": "h12",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.12.witness",
+              "sha256": "ff7a479520e67d30c2076bcfc4756e5f0028f9da05805f33f8e969f83fd5cf93"
+            },
+            {
+              "hole": "h13",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.13.witness",
+              "sha256": "ad731c8e08ac37d692d6d3e5068e27be6bfbab8f0956f8ebaabf7c55ab266d6f"
+            },
+            {
+              "hole": "h14",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.14.witness",
+              "sha256": "228867947d19a6684f4da23b4e16b1abd4345fcba09859af882c5cf5e85eb654"
+            },
+            {
+              "hole": "h15",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.15.witness",
+              "sha256": "38c724f825f329d63841a2a00ec0fbe2f50ad9c28b3cd481bb2768d1d423dddc"
+            },
+            {
+              "hole": "h16",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.16.witness",
+              "sha256": "b42515e2b05c901f1e5ecd89eb88be0136832656f1f107cff83ae59ddfb800f7"
+            },
+            {
+              "hole": "h17",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.17.witness",
+              "sha256": "acae68d0a42ef597d7c5b2d71fda69c39c6099f281c9270e51650e12bc712af4"
+            },
+            {
+              "hole": "h18",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.18.witness",
+              "sha256": "27b59aa780a1c97ec3aed1c082bf8ba4453827d9f164428577e8620ca23e07f6"
+            },
+            {
+              "hole": "h19",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.19.witness",
+              "sha256": "77ccb404a6f049b2fc25c4f87edc64e698e927d5e6ec23a489587fe9c8fd7a02"
+            },
+            {
+              "hole": "h20",
+              "path": "attempts/20261127T135405Z-MotoSquid-partial.20.witness",
+              "sha256": "fd81b903e5a4bb7f69ec04af0784fa08d48467552b84deb6f08cbf23edaa9b97"
+            }
+          ]
+        },
+        "message": "20 of 20 hole(s) carry a witness, each checked as step 7 checks a node's (F07-R23)"
+      },
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "MotoSquid",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (VS Code), ChatGPT, Codex; harness versions unknown",
+    "model": "Claude (claude-opus-5-5, self-reported); OpenAI GPT-6.2; Codex model identifier unknown"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
