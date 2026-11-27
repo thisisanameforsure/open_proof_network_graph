@@ -1,0 +1,136 @@
+{
+  "artifact_hash": "0a8a7debbcb7d9e86c42d6667b4d4702535ca725ef1f500b26feccede267e9e1",
+  "automation": {
+    "framework": "Claude Code (VS Code), ChatGPT, Codex; versions unknown",
+    "method": "agent",
+    "models": [
+      "claude-opus-5-5",
+      "GPT-6.2",
+      "Codex (underlying model unknown)"
+    ],
+    "tool_setup": "Human director MotoSquid authorized research, supervised sequential slots and publication. Claude authored the table-walk carried proofs, interval witnesses and assembly. Codex independently developed Lucas certificate checks, tested direct assembly and reviewed protocol. ChatGPT coordinated scope, bounded resources, pinned protocol review, evidence reconciliation and hosted prechecks. Lean 4.33.1 with pinned Mathlib; production 4 GiB, 2 CPU, 300 s local guard. Six carried proofs and six witnesses accepted by official full-bundle precheck. H01 closure remains subject to merge and closure sweep."
+  },
+  "carried_by": {
+    "assembly": {
+      "artifact_hash": "8e201fd6f974d061e46e86a26d5908451424ee5588b25a3d5135bf8dc4fa3c37",
+      "path": "attempts/20261127T184429Z-MotoSquid-partial.lean"
+    },
+    "carried": {
+      "path": "attempts/20261127T184429Z-MotoSquid-partial.2.proof",
+      "sha256": "69f21e98dfdb67c43af7f9d82e13924cdf2e0ea8411b784efc98a9d91ba09523"
+    },
+    "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2--h1--h2--h2--h1"
+  },
+  "diagnostic": null,
+  "first_failing_step": null,
+  "footprint": {
+    "nodes": []
+  },
+  "gate_spec_hash": "030b25785c6f146a572fc2a0ec82d006c28f0dc324d7e56717fc22d295e8e594",
+  "graph_commit": "0728f41907c208b45c4baa1206b904f645d67249",
+  "graph_id": "erdos-849",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_sha": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "merge_commit": "0728f41907c208b45c4baa1206b904f645d67249",
+  "model_and_tooling": "Claude (claude-opus-5-5, self-reported); OpenAI GPT-6.2; Codex model identifier unknown Claude Code (VS Code), ChatGPT, Codex; harness versions unknown",
+  "network_commit": "0b54e7c6b224775cfffc1eb1bf9b6a8ba6a7d3e4",
+  "node_id": "variant-3969f1f7--h2--h1--h4--h2--h3--h2--h2--h1--h2--h2--h1--h2",
+  "precheck_attestation": {
+    "hash": "4985a9c2ed41e09b028309b99f310fddbae635d2f65266a76f259beee1588d65",
+    "signature_kind": "service"
+  },
+  "review": {
+    "kind": "intermediate",
+    "reference": null,
+    "reviewer": null
+  },
+  "runner": "hosted",
+  "schema": "attestation/v8",
+  "signature": {
+    "key_id": "SHA256:XOd3xiS7BYG+uqfTlo5j3uEH96wPy5SCfmBWEsAKZLI",
+    "kind": "gate",
+    "timestamp": "2026-11-27T19:53:47Z",
+    "value": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg/0CrS22AvUGT9mSnPoKDoPcVUP\niyEO8YoRslzDQ33+kAAAAPb3BuLWF0dGVzdGF0aW9uAAAAAAAAAAZzaGE1MTIAAABTAAAA\nC3NzaC1lZDI1NTE5AAAAQLTe3ovMedu5rifXttBEuczKDV0Xf/XUU7DDKGOm26fUQI05p7\nNp0j2+Hnn/IaWqHRaNzjc0c+zHSnPGZM4llQA=\n-----END SSH SIGNATURE-----\n"
+  },
+  "statement_hash": "9730d4d5adb60fad26b283e199c169b69ef02fc1ba5dece76bc22a0cb5b14781",
+  "steps": [
+    {
+      "diagnostic": null,
+      "name": "toolchain",
+      "result": "pass",
+      "step": 1
+    },
+    {
+      "diagnostic": null,
+      "name": "paths",
+      "result": "pass",
+      "step": 2
+    },
+    {
+      "diagnostic": null,
+      "name": "kernel-replay",
+      "result": "pass",
+      "step": 4
+    },
+    {
+      "diagnostic": null,
+      "name": "axioms",
+      "result": "pass",
+      "step": 5
+    },
+    {
+      "diagnostic": {
+        "code": "hazards-derived-statement",
+        "details": {
+          "acknowledged": [],
+          "checkers": [
+            "auto-implicit",
+            "div-zero",
+            "int-trunc",
+            "junk-value",
+            "nat-sub",
+            "off-by-one-range",
+            "unused-binder"
+          ],
+          "findings": [
+            {
+              "checker": "off-by-one-range",
+              "location": "2110699 ≤ x",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            },
+            {
+              "checker": "off-by-one-range",
+              "location": "x < 2215471",
+              "message": "comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+            }
+          ],
+          "origin": "compiler-derived"
+        },
+        "message": "2 hazard finding(s) on a statement the gate derived from a merged assembly, recorded and not refused; first: off-by-one-range at 2110699 ≤ x: comparison against an explicit literal: check whether the boundary is inclusive or exclusive"
+      },
+      "name": "hazards",
+      "result": "pass",
+      "step": 6
+    },
+    {
+      "diagnostic": null,
+      "name": "witness",
+      "result": "pass",
+      "step": 7
+    },
+    {
+      "diagnostic": null,
+      "name": "deps",
+      "result": "pass",
+      "step": 8
+    }
+  ],
+  "submitter": "MotoSquid",
+  "toolchain_hash": "f54d0bc916bf76a7fae460ce9d078ccd1f74aeb4fd12c4b6546bca28b6aa1c63",
+  "tooling": {
+    "harness": "Claude Code (VS Code), ChatGPT, Codex; harness versions unknown",
+    "model": "Claude (claude-opus-5-5, self-reported); OpenAI GPT-6.2; Codex model identifier unknown"
+  },
+  "trust_base": "kernel",
+  "verdict": "pass"
+}
