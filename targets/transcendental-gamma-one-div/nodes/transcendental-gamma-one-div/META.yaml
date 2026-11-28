@@ -1,0 +1,21 @@
+schema: meta/v2
+id: transcendental-gamma-one-div
+status: ready
+deps: []
+statement-hash: bc2b38edfcba938b14582f1e8772cd4a6b34741816b88b00f3cf5d3b964e3998
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑n
+  justification: '1 / ↑n is the problem''s 1/n in Γ(1/n), and the divisor is positive
+    because the hypothesis hn : 2 ≤ n gives (n : ℝ) ≥ 2.'
+- checker: off-by-one-range
+  location: 2 ≤ n
+  justification: '`2 ≤ n` is the statement''s own range: the docstring says ''Γ(1/n)
+    for n ≥ 2 is transcendental''. At n = 1, Γ(1) = 1 is algebraic, so the bound is
+    needed.'
