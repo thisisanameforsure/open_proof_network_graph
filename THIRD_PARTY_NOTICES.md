@@ -86,6 +86,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## barker-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/2104.00502/BarkerSequence.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## bass-conjecture-integral-domain
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/math.0703548/FarrellJonesConsequences.lean)
@@ -200,6 +206,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## cerny-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/CernyConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## charmichael-totient
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/CarmichaelTotient.lean)
@@ -296,6 +308,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## edge-reconstruction-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ReconstructionConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## elliott-halberstam
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ElliottHalberstamConjecture.lean)
@@ -356,6 +374,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-1049
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1049.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-1052
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1052.lean)
@@ -401,6 +425,18 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-1075
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1075.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-108
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/108.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-1083
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1083.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -455,6 +491,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-1122
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1122.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-1137
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/1137.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -545,6 +587,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-137
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/137.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-143
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/143.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -668,6 +716,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-247
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/247.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-25
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/25.lean)
@@ -788,6 +842,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-325
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/325.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-340
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/340.lean)
@@ -803,6 +863,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-352
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/352.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-359
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/359.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -929,6 +995,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-454
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/454.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-455
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/455.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -1136,6 +1208,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-626
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/626.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-642
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/642.lean)
@@ -1307,6 +1385,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## erdos-782
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/782.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## erdos-802
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/802.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -1544,6 +1628,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## erdos-951
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/ErdosProblems/951.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## erdos-952
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/c7f31d5fd3d2ca3d69979f2d213eb9b58fe956ae/FormalConjectures/ErdosProblems/952.lean)
@@ -1766,6 +1856,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## finrank-adjoin-triple-le
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Other/GerstenhaberThreeMatrices.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## firoozbakht-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/Firoozbakht.lean)
@@ -1817,6 +1913,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## goormaghtigh-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/Goormaghtigh.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## green-12
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/GreensOpenProblems/12.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -2426,6 +2528,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## latin-square-near-transversal
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Paper/LatinSquare.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## latin-square-order11-transversal
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Paper/LatinSquare.lean)
@@ -2489,6 +2597,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## littlewood-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/LittlewoodConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## lonely-runner-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/LonelyRunnerConjecture.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -2756,6 +2870,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
+## problem-10-61
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Books/BugeaudDistributionModuloOne/Problem10_61.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
 ## problem-10-7
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Books/BugeaudDistributionModuloOne/Problem10_7.lean)
@@ -2783,6 +2903,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## rational-distance-problem
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/RationalDistanceProblem.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## reconstruction-conjecture
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ReconstructionConjecture.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
@@ -2879,6 +3005,12 @@ Statements copied into this graph from elsewhere, with the licence that permitte
 ## scholz-conjecture
 
 - upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Wikipedia/ScholzConjecture.lean)
+- licence: Apache-2.0
+- attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
+
+## second-moment
+
+- upstream: google-deepmind/formal-conjectures (https://github.com/google-deepmind/formal-conjectures/blob/d8d031d4998c78575159ccab9a7a9e95ce043883/FormalConjectures/Arxiv/1701.08900/SecondMoment.lean)
 - licence: Apache-2.0
 - attribution: The Formal Conjectures Authors (google-deepmind/formal-conjectures), Apache-2.0
 
