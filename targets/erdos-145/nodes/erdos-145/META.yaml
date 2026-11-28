@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-145
+status: ready
+deps: []
+statement-hash: b5fbc4a701c802322f70314153ba726784de25201ec49bdff001a0959074468a
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / x
+  justification: The limit is along atTop in x, so only large x matter; for x > 0
+    the factor 1/x is the docstring's (1/x)·Σ. The junk value 1/0 = 0 at x = 0 cannot
+    affect whether the limit exists.
