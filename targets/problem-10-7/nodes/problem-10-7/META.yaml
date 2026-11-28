@@ -1,0 +1,25 @@
+schema: meta/v2
+id: problem-10-7
+status: ready
+deps: []
+statement-hash: 682d5c099b87aea754d4f51674d3b0362e55c37254700e7f896292c194fb63a1
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ε / α
+  justification: '`ε / α` is the problem''s interval length ε/α. In the instances
+    that carry the claim the divisor is positive: the statement quantifies `∀ M, ∃
+    α, M < α`, and any instance with M ≤ 0 is implied by the instance M = 1 (whose
+    α exceeds 1 and works for every smaller M), so the proposition is equivalent to
+    the one restricted to M > 0, where α > M > 0 and Lean''s division is the real
+    quotient; the convention at α = 0 never changes the truth value.'
+- checker: off-by-one-range
+  location: 1 ≤ n
+  justification: '`1 ≤ n` is the problem''s own range: the docstring asks that all
+    fractional parts {α^n}, n ≥ 1, lie in an interval of length ε/α. n = 0 gives α^0
+    = 1 with fractional part 0 and is excluded by the problem.'
