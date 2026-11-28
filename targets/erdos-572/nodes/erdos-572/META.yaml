@@ -1,0 +1,20 @@
+schema: meta/v2
+id: erdos-572
+status: ready
+deps: []
+statement-hash: 4c798104afe30cc54e9c33bda66e915a8fc6b174eaf12c4c8b882349ed1d56f8
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑k
+  justification: '1 / ↑k is the problem''s exponent 1 + 1/k, and the divisor is positive
+    because the hypothesis hk : 3 ≤ k gives (k : ℝ) ≥ 3 > 0.'
+- checker: off-by-one-range
+  location: 3 ≤ k
+  justification: '`3 ≤ k` is the problem''s own range: the docstring says ''Show that
+    for k ≥ 3'', ex(n; C_2k) ≫ n^(1+1/k). The boundary k = 3 is included, as stated.'

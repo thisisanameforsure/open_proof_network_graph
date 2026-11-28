@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-1075
+status: ready
+deps: []
+statement-hash: cbe003e4572a072a633a78e735459e27e77c8cf0593ce708c0ed5c666894d402
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑n / ↑r
+  justification: '`n / r` is the problem''s (n/r) in the edge bound (1+ε)(n/r)^r,
+    because the statement is under the hypothesis `3 ≤ r`, so the real denominator
+    r is at least 3 and never zero.'
+- checker: off-by-one-range
+  location: 3 ≤ r
+  justification: '`3 ≤ r` is the problem''s own range: the docstring says ''Let r
+    ≥ 3'' for r-uniform hypergraphs.'
