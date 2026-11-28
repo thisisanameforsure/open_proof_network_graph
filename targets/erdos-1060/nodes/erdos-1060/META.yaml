@@ -1,0 +1,23 @@
+schema: meta/v2
+id: erdos-1060
+status: ready
+deps: []
+statement-hash: 3f40cc1bfa09dcb59293cd9bff2f04005127d809d1154436b8f6345cc3f9f3d3
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / Real.log (Real.log ↑n)
+  justification: '`1 / Real.log (Real.log ↑n)` is the problem''s exponent scale 1/log
+    log n in a little-o relation at `atTop`, which only constrains the tail; for n
+    ≥ 16 we have log log n > 0, so the denominator is nonzero for every n the relation
+    depends on and the finitely many small n with Lean''s junk value are irrelevant.'
+- checker: junk-value
+  location: Real.log (Real.log ↑n)
+  justification: This sits in `1 / log (log n)` inside a little-o along atTop, so
+    only large n matter. For n ≥ 3, log n > 1 and log log n > 0, so the junk value
+    at n ≤ 2 cannot change the asymptotic claim f(n) ≤ n^(o(1/log log n)) of the docstring.
