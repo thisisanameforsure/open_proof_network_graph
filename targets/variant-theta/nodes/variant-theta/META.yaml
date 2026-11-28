@@ -1,0 +1,20 @@
+schema: meta/v2
+id: variant-theta
+status: ready
+deps: []
+statement-hash: 0aafbac1ddaac5150ec132d3ea07400016f90d11b706151ab98e36e8dcfc6949
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: C > 1
+  justification: '`C > 1` is the problem''s own constant range. proportionCoverable
+    p k c is monotone in c (it counts sets coverable by at most c translates), so
+    ∃ C > 1 is equivalent to ∃ C > 0; and a set of size k = ⌊p^θ⌋ with c translates
+    covers at most k·c elements, below p whenever C ≤ 1, so no constant ≤ 1 could
+    work. Green''s own constants (100, and 1.01 in the registry''s neighbouring variant)
+    all exceed 1.'
