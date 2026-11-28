@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-143
+status: ready
+deps: []
+statement-hash: 76c6acd2e94eddf9cc7d0f8fc4eb44fd757c19eadb529f54e1412bd4b12a3643
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (↑x * Real.log ↑x)
+  justification: 'WellSeparatedSet A includes A ⊆ (1, ∞) (the docstring''s ''A ⊆ (1,
+    ∞)''), so every x in A has x > 1 and log x > 0: the divisor x · log x is positive
+    and never zero.'
+- checker: junk-value
+  location: Real.log ↑x
+  justification: WellSeparatedSet A includes A ⊆ (1, ∞), so every x in A has x > 1;
+    Real.log is only taken of a value above 1, never a non-positive one.
