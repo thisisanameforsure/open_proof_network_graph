@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-368
+status: ready
+deps: []
+statement-hash: dc56e4e2d97a2ef7f0ea4f1eb29cb8707df660ee23c3728eec04e1abdaf134a1
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: 1 ≤ n
+  justification: '`1 ≤ n` takes ''for all n'' over the positive integers, where n(n+1)
+    has a largest prime factor. At n = 0 the bound would read c·log(0)^2 = 0 ≤ F 0,
+    true anyway, so the restriction cannot change the statement''s truth.'
