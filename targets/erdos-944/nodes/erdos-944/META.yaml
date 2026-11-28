@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-944
+status: ready
+deps: []
+statement-hash: ea904dcb8bcf1348dba18729da33fdcca3be81ea1cf3a77331d4a7e8174fe377
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 4
+  justification: '`k ≥ 4` is the problem''s own range: the docstring says ''Let k
+    ≥ 4 and r ≥ 1'', and asks for a graph of chromatic number k with these criticality
+    properties.'
+- checker: off-by-one-range
+  location: r ≥ 1
+  justification: '`r ≥ 1` is the problem''s own range: the docstring says ''Let k
+    ≥ 4 and r ≥ 1''; every critical edge set must have size > r.'
