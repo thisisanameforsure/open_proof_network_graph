@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-325
+status: ready
+deps: []
+statement-hash: f97801626a7bf195caf121394f9e5f340edc9fc33bce5efc18e9a388fa9bc320
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 3 / ↑k
+  justification: '(3 / k : ℝ) is the problem''s exponent 3/k in f_{k,3}(x) ≫ x^{3/k},
+    taken as a real division; the statement assumes 3 ≤ k, so the denominator is positive.'
+- checker: off-by-one-range
+  location: 3 ≤ k
+  justification: '`3 ≤ k` is the problem''s range: for k ≤ 2, x^(3/k) ≥ x^(3/2) exceeds
+    the number of integers ≤ x, so f_(k,3)(x) ≫ x^(3/k) is trivially false; the question
+    is only posed for k ≥ 3.'
