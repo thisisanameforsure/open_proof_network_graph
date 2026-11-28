@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-839
+status: ready
+deps: []
+statement-hash: 3328f75efef896d69b866a62924364a5fca85b8d6d11ec8fc8f4e3cf181ef01c
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(a n) / ↑n
+  justification: '`↑(a n) / ↑n` is the a_n / n of the problem in ℝ≥0∞, and the statement
+    is a limsup along atTop, which ignores finitely many terms; only n = 0 has a zero
+    denominator (giving ⊤ for a 0 ≥ 1), and it does not affect the limsup.'
+- checker: off-by-one-range
+  location: 1 ≤ a n
+  justification: '`1 ≤ a n` is the docstring''s ''1 ≤ a_1 < a_2 < ...'', a sequence
+    of positive integers; the registry indexes it from 0, so every term is at least
+    1, as the problem requires.'
