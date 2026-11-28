@@ -1,0 +1,27 @@
+schema: meta/v2
+id: erdos-1137
+status: ready
+deps: []
+statement-hash: beff68b645b7e6076f6a782ba6aee785b4c93581082aa468e83117cc6bd153a3
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑((Finset.range x).sup fun n => primeGap n * primeGap (n - 1)) / ↑((Finset.range
+    x).sup primeGap) ^ 2
+  justification: This is the problem's max_{n<x} d_n d_{n-1} / (max_{n<x} d_n)^2.
+    primeGap n = nth Prime (n+1) - nth Prime n ≥ 1 for every n (consecutive primes
+    are distinct, so no truncation), so for x ≥ 1 the sup over the nonempty range
+    is ≥ 1 and the denominator is positive; it is zero only at x = 0, which cannot
+    affect the limit x → ∞. (The n = 0 term's truncated index gives d_0 d_0 = 1, never
+    above the later terms, so the numerator agrees with the informal max.)
+- checker: nat-sub
+  location: n - 1
+  justification: At n = 0 the term d_0 · d_(0-1) reads d_0 · d_0, a single fixed value
+    standing in for the undefined d_(-1). Inside a max whose denominator (max d_n)^2
+    tends to infinity, a fixed term c contributes at most c / (max d_n)^2 → 0, so
+    it cannot change the limit.
