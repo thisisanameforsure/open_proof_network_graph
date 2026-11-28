@@ -1,0 +1,20 @@
+schema: meta/v2
+id: erdos-247
+status: ready
+deps: []
+statement-hash: f401f4c36620318534f87ea12f4fd97974764d7b73f372fa54225d6d06b61589
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / 2 ^ n k
+  justification: The divisor 2^(n_k) is a positive power of two for every k, never
+    zero; this is the docstring's Σ 1/2^(n_k).
+- checker: div-zero
+  location: ↑(n k) / ↑k.succ
+  justification: k.succ ≥ 1, so the divisor is never zero; the registry indexes from
+    0 and shifts k by one, which is the docstring's n_k / k for k ≥ 1.
