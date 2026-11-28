@@ -1,0 +1,20 @@
+schema: meta/v2
+id: erdos-864
+status: ready
+deps: []
+statement-hash: 06dc0222e043a2596aa35c5f64cd4b047e1e8b1c17dbf803a73eacd6702f930f
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 2 / √3
+  justification: 2 / √3 is the problem's constant 2/√3 in |A| ≤ (1+o(1))·(2/√3)·N^{1/2};
+    its divisor Real.sqrt 3 is a positive constant, so no x/0 arises.
+- checker: off-by-one-range
+  location: Finset.Icc 1 N
+  justification: '`Finset.Icc 1 N` is the docstring''s ''A ⊆ {1, ..., N}'', both endpoints
+    included.'
