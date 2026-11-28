@@ -1,0 +1,21 @@
+schema: meta/v2
+id: irving-leather-growth-rate
+status: ready
+deps: []
+statement-hash: edf000ee4480cd4e46b97d4d142d9d744f579565ca278b4d5919a9bcb7db9de9
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (↑n + 1)
+  justification: The denominator is a natural number plus one cast to the reals, at
+    least 1, never zero. The docstring says 'The first sequence is indexed by n+1
+    to start at positive sizes', so this is M(n+1)^(1/(n+1)).
+- checker: div-zero
+  location: 1 / 2 ^ k
+  justification: The denominator 2^k is positive for every k, so the division is never
+    by zero; it is the docstring's exponent 1/2^k in a_k^(1/2^k).
