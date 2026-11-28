@@ -1,0 +1,23 @@
+schema: meta/v2
+id: pittel-hyperbola-threshold
+status: ready
+deps: []
+statement-hash: 7037264071605131ab92570fcb842a2cc7034ea6749e2ff83208da8205c1454b
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 9 / 4 * Real.log ↑n ^ 2 / ↑n
+  justification: (9/4)·(log n)²/n is the problem's lower bound (9/4)(log n)²/n on
+    the threshold, asserted only eventually (∀ᶠ n in atTop), so the single n = 0 where
+    Lean returns 0 is irrelevant and for n ≥ 1 the divisor is positive.
+- checker: off-by-one-range
+  location: Set.Ioo 0 1
+  justification: 'Both uses are open, as the docstring states: the threshold p*(n)
+    lies strictly between 0 and 1 (it lies between (9/4)(log n)^2/n and 1), and ''for
+    each fixed 0 < δ < 1''. Excluding the endpoints keeps both comparison ranges nonempty,
+    as the docstring says.'
