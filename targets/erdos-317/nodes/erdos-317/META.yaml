@@ -1,0 +1,26 @@
+schema: meta/v2
+id: erdos-317
+status: ready
+deps: []
+statement-hash: e088f134f1f3a973d652a1ab8cd0ad2ac8842dfc70700e470650180f93c68401
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: c / 2 ^ n
+  justification: '`c / 2 ^ n` is the problem''s bound c/2^n, and its denominator 2^n
+    is positive for every n, so the division is never by zero.'
+- checker: div-zero
+  location: ↑(δ k) / (↑↑k + 1)
+  justification: 'The index k : Fin n is shifted by one, so the denominator k + 1
+    runs over 1, ..., n, exactly the docstring''s δ_k / k for 1 ≤ k ≤ n. It is a natural
+    number plus one cast to the reals, at least 1, never zero.'
+- checker: off-by-one-range
+  location: n ≥ 1
+  justification: '`n ≥ 1` is the problem''s own range: the docstring says ''for every
+    n ≥ 1''. At n = 0 the sum is empty and 0 < |sum| fails, so including it would
+    make the statement false for a reason the problem excludes.'
