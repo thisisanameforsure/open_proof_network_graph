@@ -1,0 +1,18 @@
+schema: meta/v2
+id: erdos-812
+status: ready
+deps: []
+statement-hash: 77a321115def91a06c79ae1739dd608e5711335a0c7989bfbf8449b4c5793851
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(R (n + 1)) / ↑(R n)
+  justification: R n is the diagonal Ramsey number R(n,n) (hypergraphRamsey 2 n, the
+    sInf of a set Ramsey's theorem makes nonempty, every member of which is ≥ n),
+    so R n ≥ n > 0 for every n ≥ 1; and the claim is ∀ᶠ n in atTop, 'for all large
+    n' as the registry states it, so n = 0 is outside the claim in any case.
