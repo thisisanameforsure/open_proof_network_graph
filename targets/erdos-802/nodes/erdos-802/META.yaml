@@ -1,0 +1,26 @@
+schema: meta/v2
+id: erdos-802
+status: ready
+deps: []
+statement-hash: d6f80141c515e6e052aaeb012b561b78490f43119fb473f9a86ca68ce913bcc8
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: Real.log ↑G.averageDegree / ↑G.averageDegree
+  justification: '`log t / t` with t = G.averageDegree (sum of degrees over the vertex
+    count) is the problem''s (log t)/t. The denominator is zero only at t = 0 (an
+    edgeless graph, or n = 0), where the junk value makes the bound `c · 0 · n ≤ indepNum`,
+    which is true, as is the problem''s claim there (an edgeless graph on n vertices
+    has independence number n). So the junk value neither admits a false case nor
+    removes a meant one, and the conjecture is about large t anyway.'
+- checker: junk-value
+  location: Real.log ↑G.averageDegree
+  justification: averageDegree is a sum of degrees over the vertex count, never negative.
+    At t = 0, and for 0 < t < 1 where log t < 0, the left side c · (log t / t) · n
+    is at most 0 and the bound holds trivially; the docstring's ≫ (log t / t) n is
+    about large t, unaffected.
