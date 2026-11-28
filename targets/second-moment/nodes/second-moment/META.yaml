@@ -1,0 +1,20 @@
+schema: meta/v2
+id: second-moment
+status: ready
+deps: []
+statement-hash: d4ae8a71795bd326f39f339b2451279004eb78dc48cf1b98bca2f379d56e44c0
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(d n) / ↑n
+  justification: d n / n → 0 is a limit along atTop, so only large n matter; the junk
+    value at n = 0 cannot change it. It is the docstring's d_n / n → 0.
+- checker: off-by-one-range
+  location: 1 ≤ d n
+  justification: '`1 ≤ d n` is the docstring''s ''d_n ≥ 1'', inclusive: at least one
+    more worker than firms.'
