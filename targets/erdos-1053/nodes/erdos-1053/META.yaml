@@ -1,0 +1,24 @@
+schema: meta/v2
+id: erdos-1053
+status: ready
+deps: []
+statement-hash: cb78996806fd2426c43fa36838a4b07da862db50e3f56c38bef1444d7ff377e8
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑((σ 1) n) / ↑n
+  justification: '`σ 1 n / n` is the multiplier k of a k-perfect number, because the
+    little-o is taken along atTop ⊓ 𝓟 {n | ∃ k, IsPerfectFor n 1 k}, and IsPerfectFor
+    requires 0 < n, so every n on the filter has n ≥ 1 (and n → ∞ besides); the denominator
+    is never 0 where the statement looks.'
+- checker: junk-value
+  location: Real.log (Real.log ↑n)
+  justification: The comparison is little-o along atTop (intersected with the multiperfect
+    numbers), so only large n matter. For n ≥ 3, log n > 1 and log log n > 0, so the
+    junk value at n ≤ 2 cannot change whether σ(n)/n = o(log log n), the docstring's
+    question.
