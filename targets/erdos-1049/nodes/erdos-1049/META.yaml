@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-1049
+status: ready
+deps: []
+statement-hash: ff52b26ee06b704a6129b47cd9c77fa16189f407d485588df256e5d4a1778ed6
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (↑t ^ ↑n - 1)
+  justification: 'The divisor (t : ℝ)^n - 1 is a real subtraction and is positive,
+    because the hypothesis t > 1 and the index n : ℕ+ (so n ≥ 1) give t^n > 1; the
+    sum is the registry''s ∑_{n≥1} 1/(t^n - 1) with every denominator nonzero.'
+- checker: off-by-one-range
+  location: t > 1
+  justification: '`t > 1` is the docstring''s ''Let t > 1 be a rational number'':
+    strict, as the problem states (at t = 1 the series has zero denominators).'
