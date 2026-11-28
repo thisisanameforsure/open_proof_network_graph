@@ -1,0 +1,17 @@
+schema: meta/v2
+id: erdos-155
+status: ready
+deps: []
+statement-hash: b99eff2f484f3d9a4b0e8ee6f9f409e73d61036f23dff37c296d6f813167b807
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: off-by-one-range
+  location: k ≥ 1
+  justification: '`k ≥ 1` is the problem''s own range: the docstring asks ''for every
+    k ≥ 1'' whether F(N + k) ≤ F(N) + 1 for large N. k = 0 is trivial and excluded
+    by the problem.'
