@@ -453,12 +453,7 @@ jobs:
             return 1
           }
           dispatch_replays() {  # F07-T45: merges this run cannot record, each replayed on its own
-            for n in $replay; do
-              if python3 "$helper" credited HEAD "$n"; then continue; fi
-              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="$n" \
-                && echo "postmerge: dispatched a replay of #$n" \
-                || echo "::warning::a replay of #$n was not dispatched; dispatch gate.yml with replay_pr=$n"
-            done
+            [ -z "$replay" ] || python3 "$helper" dispatch-replay HEAD $replay  # F07-T90
           }
           cat > "$helper" <<'PY'
           """Which merges this post-merge run records (F07-T45). Pure functions over the first-parent
@@ -695,6 +690,20 @@ jobs:
               return pin
 
 
+          def dispatch_replay(number, *, rev=None):
+              """F07-T90: every replay this job asks for is dispatched here. `rev`: skip a merge it credits."""
+              if rev is not None and credited([s for _sha, _p, s in first_parent_log(rev)], int(number)):
+                  return
+              done = subprocess.run(
+                  ["gh", "workflow", "run", "gate.yml", "--repo", os.environ.get("GITHUB_REPOSITORY", ""),
+                   "--ref", "main", "-f", f"replay_pr={number}"], check=False,
+              )
+              if done.returncode == 0:
+                  print(f"postmerge: dispatched a replay of #{number}")
+              else:
+                  print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
+
+
           def in_flight(sha):
               """F07-T55: whether the gate workflow's run for this push is still going, from the host. A host
               that does not answer is read as not in flight: a replay then costs a run, and `owed` keeps
@@ -773,14 +782,7 @@ jobs:
 
               def replay(owed_pairs):
                   for number, _merge in owed_pairs:
-                      done = subprocess.run(
-                          ["gh", "workflow", "run", "gate.yml", "--repo", env["GITHUB_REPOSITORY"],
-                           "--ref", "main", "-f", f"replay_pr={number}"], check=False,
-                      )
-                      if done.returncode == 0:
-                          print(f"postmerge: dispatched a replay of #{number}")
-                      else:
-                          print(f"::warning::a replay of #{number} was not dispatched; dispatch gate.yml with replay_pr={number}")
+                      dispatch_replay(number)  # F07-T90
 
               def follow():
                   """The record landed without the products: render.yml renders them on main as it is.
@@ -824,6 +826,10 @@ jobs:
 
           if __name__ == "__main__":
               command, args = sys.argv[1], sys.argv[2:]
+              if command == "dispatch-replay":  # dispatch-replay <rev> <number>...: F07-T90
+                  for number in args[1:]:
+                      dispatch_replay(int(number), rev=args[0])
+                  sys.exit(0)
               if command == "credited":  # credited <rev> <number>: exit 0 if a gate commit credits it
                   subjects = [subject for _sha, _p, subject in first_parent_log(args[0])]
                   sys.exit(0 if credited(subjects, int(args[1])) else 1)
@@ -1373,12 +1379,7 @@ jobs:
           trap 'rm -f "$RUNNER_TEMP/deploy_key"' EXIT  # C8: on every path out of this step
           helper="$RUNNER_TEMP/postmerge_batch.py"  # written by the first step (F07-T45)
           replay_owed() {  # replay_owed <rev> "<numbers>": each not yet credited on rev, replayed
-            for n in $2; do
-              if python3 "$helper" credited "$1" "$n"; then continue; fi
-              gh workflow run gate.yml --repo "$GITHUB_REPOSITORY" --ref main -f replay_pr="$n" \
-                && echo "postmerge: dispatched a replay of #$n" \
-                || echo "::warning::a replay of #$n was not dispatched; dispatch gate.yml with replay_pr=$n"
-            done
+            [ -z "$2" ] || python3 "$helper" dispatch-replay "$1" $2  # F07-T90
           }
           if [ -z "$NUMBERS" ]; then
             echo "postmerge: nothing in this batch could be recorded here"
