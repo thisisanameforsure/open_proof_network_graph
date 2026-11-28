@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-626
+status: ready
+deps: []
+statement-hash: d6e4c10dacba98dc684aa3ff824c324090265894bf067d4ae34afab8d63076e3
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(Erdos626.g k n) / Real.log ↑n
+  justification: '(g k n : ℝ) / Real.log n has a zero divisor only at n = 0 and n
+    = 1, where Lean''s quotient is 0; the statement asks whether lim_{n→∞} g_k(n)/log
+    n exists (Tendsto ... atTop), and two initial values do not change a limit at
+    infinity. For n ≥ 2, log n > 0.'
+- checker: off-by-one-range
+  location: 4 ≤ k
+  justification: '`4 ≤ k` is the problem''s own range: the docstring says ''Let k
+    ≥ 4''.'
