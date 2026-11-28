@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-1191
+status: ready
+deps: []
+statement-hash: 91e3cd8836fd5f52e276cd2023ac7295a881f4241c95a4e420fefd1419f3efe5
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(A ∩ Set.Icc 1 x).ncard / ↑x ^ (1 / 2)
+  justification: '`|A ∩ [1,x]| / x^(1/2)` is the problem''s own density ratio, because
+    the informal statement is liminf_{x→∞} |A ∩ [1,x]| / x^{1/2} · (log x)^{1/2} with
+    x running over ℕ; the denominator vanishes only at x = 0, a single point that
+    a liminf along atTop ignores (for x ≥ 1 the real power is positive).'
+- checker: off-by-one-range
+  location: Set.Icc 1 x
+  justification: '`Set.Icc 1 x` is the docstring''s |A ∩ [1, x]|, with x running over
+    N as the docstring says; both endpoints included.'
