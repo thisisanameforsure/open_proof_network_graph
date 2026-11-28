@@ -1,0 +1,24 @@
+schema: meta/v2
+id: erdos-89
+status: ready
+deps: []
+statement-hash: 8126b7e674edd763e4e6a372798e3a4446d22529a02ae9f58cff60a076ac29cc
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑n / √(Real.log ↑n)
+  justification: '`n / sqrt (log n)` is the problem''s own lower-bound function `n
+    / √(log n)`; its divisor is zero only at n = 0 and n = 1 (log 0 = log 1 = 0),
+    where Lean returns 0, and `=O[atTop]` is a statement about all sufficiently large
+    n, unchanged by finitely many values, so the asymptotic claim is the informal
+    text''s.'
+- checker: junk-value
+  location: √(Real.log ↑n)
+  justification: This is the denominator of n/√(log n) in a big-O along atTop, so
+    only large n matter. For n ≥ 2, log n > 0 and the square root is positive; the
+    junk values at n ≤ 1 cannot change whether n/√(log n) = O(distinct distances).
