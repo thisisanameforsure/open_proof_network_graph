@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-340
+status: ready
+deps: []
+statement-hash: ea9e9c7c954f2d8a512f4585464d0858fb4e4da09c11d133a0781d966e53f485
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: √↑n / ↑n ^ ε
+  justification: '`√n / n^ε` is n^{1/2-ε}, the problem''s lower-bound scale |A ∩ {1..N}|
+    ≫ N^{1/2-ε}, because ε > 0 is a hypothesis and the division is a real power on
+    n ≥ 1; the only zero denominator is n = 0 (0^ε = 0 for ε > 0), a single point
+    that =O[atTop] ignores.'
+- checker: off-by-one-range
+  location: Set.Icc 1 n
+  justification: '`Set.Icc 1 n` is the docstring''s |A ∩ {1, ..., N}|, both endpoints
+    included.'
