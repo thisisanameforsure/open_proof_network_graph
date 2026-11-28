@@ -1,0 +1,25 @@
+schema: meta/v2
+id: erdos-1210
+status: ready
+deps: []
+statement-hash: 17ef0af37ed59f6c09c67822311c9e7ac6f85c6ab709b22ad9df1385b021daf7
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / (↑n - ↑a)
+  justification: '`1 / (↑n - ↑a)` is the problem''s summand 1/(n - a) with the subtraction
+    in ℝ (no truncation), and its denominator is positive because the hypothesis `a
+    < n` on every a ∈ A gives n - a ≥ 1, matching A ⊆ [1, n).'
+- checker: div-zero
+  location: 1 / ↑p
+  justification: p ranges over the primes below n (`(range n).filter Prime`), so p
+    ≥ 2 and 1/p is never a division by zero; this is the docstring's Σ_{p<n} 1/p.
+- checker: off-by-one-range
+  location: 1 ≤ a
+  justification: '`1 ≤ a ∧ a < n` is the docstring''s ''A ⊆ [1, n)'': integers from
+    1 inclusive to n exclusive.'
