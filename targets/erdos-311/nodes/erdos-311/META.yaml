@@ -1,0 +1,30 @@
+schema: meta/v2
+id: erdos-311
+status: ready
+deps: []
+statement-hash: fad7d85cfccef8f1f08a9d60873d4f1834ccc351944254d96524e4a194269a74
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: -Real.log (Erdos311.delta N) / ↑N
+  justification: The divisor `N` is zero only at N = 0, one term of a sequence whose
+    `Tendsto ... atTop` is unchanged by finitely many terms; and `delta N` is positive
+    for every N (it is the infimum of a finite nonempty set of positive reals — the
+    subsets of {1..N} are finitely many and the empty set contributes 1 — so the minimum
+    is attained and nonzero), so `-log (delta N) / N` is the informal text's own `-log
+    δ(N) / N → c`.
+- checker: junk-value
+  location: Real.log (Erdos311.delta N)
+  justification: delta N is the infimum of the nonzero values |1 - Σ_{n∈A} 1/n| over
+    the finitely many A ⊆ {1..N}; the set is finite and nonempty (A = ∅ gives 1),
+    so the infimum is a minimum of positive reals and delta N > 0. The log is never
+    taken of a non-positive value.
+- checker: off-by-one-range
+  location: Set.Ioo 0 1
+  justification: '`Set.Ioo 0 1` is the docstring''s ''for some constant c ∈ (0,1)'':
+    the open interval, both endpoints excluded, as the problem states.'
