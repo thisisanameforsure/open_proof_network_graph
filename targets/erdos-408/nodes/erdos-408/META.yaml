@@ -1,0 +1,19 @@
+schema: meta/v2
+id: erdos-408
+status: ready
+deps: []
+statement-hash: 5227cb9f7efb27869b60f131e8fc444c79a811e150b96497786f55a2e7e59002
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑(Erdos408.f n) / Real.log ↑n
+  justification: '(f n : ℝ) / Real.log n has a zero divisor only at n = 0 and n =
+    1 (log 0 = log 1 = 0), where Lean''s quotient is 0; the claim is about the natural
+    density of {n : f(n)/log n ≤ c}, which two integers cannot change, and the registry''s
+    own text says so: ''for n ≤ 1 the quotient is 0 in Lean, which does not affect
+    densities''. For n ≥ 2, log n > 0.'
