@@ -1,0 +1,26 @@
+schema: meta/v2
+id: conjecture-1-3-to-2-3
+status: ready
+deps: []
+statement-hash: 3c7c4a82186b94d2b463802e8569fb1a53b7ccb1e283bd3b8475306850d3fe45
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: ↑{σ | σ ∈ total_ext ∧ σ x < σ y}.ncard / ↑total_ext.ncard
+  justification: 'The quotient is the problem''s probability that x precedes y in
+    a uniformly random linear extension: the denominator total_ext.ncard is the number
+    of linear extensions, which is positive because total_ext is a finite set (maps
+    from the finite P into Icc 1 (card P)) and every finite poset has a linear extension;
+    and were it 0 the quotient would be 0 ∉ Icc (1/3) (2/3), so Lean''s x/0 = 0 could
+    only make the claim false, never vacuously true.'
+- checker: off-by-one-range
+  location: Set.Icc 1 (Nat.card P)
+  justification: '`Set.Icc 1 (Nat.card P)` is the docstring''s own encoding: linear
+    extensions are ''order preserving bijections of P onto 1, ..., n'', with n = |P|.
+    An order map from P onto exactly {1, ..., n} is such a bijection, so both endpoints
+    belong in the range.'
