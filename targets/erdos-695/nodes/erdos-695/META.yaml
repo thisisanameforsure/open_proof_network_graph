@@ -1,0 +1,22 @@
+schema: meta/v2
+id: erdos-695
+status: ready
+deps: []
+statement-hash: 131fa1fcbf96c83bb54e050a0f9eb315a8185b2d1c40945549ca84771ad7d720
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 1 / ↑k
+  justification: '`1 / k` is the exponent of the problem''s own q_k^{1/k}, because
+    the informal statement asks whether lim_{k→∞} q_k^{1/k} = ∞; k = 0 (where Lean
+    reads 1/0 = 0 and q 0 ^ 0 = 1) is a single point that the limit along atTop ignores,
+    and for k ≥ 1 the exponent is the intended 1/k.'
+- checker: div-zero
+  location: q (i + 1) % q i
+  justification: The hypotheses state every q i is prime, so q i ≥ 2 and the modulus
+    is never zero; `q (i+1) % q i = 1` is the docstring's q_{i+1} ≡ 1 (mod q_i).
