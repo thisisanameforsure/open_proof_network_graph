@@ -690,9 +690,44 @@ jobs:
               return pin
 
 
+          REPLAY_TITLE_RE = re.compile(r"^gate: replay of #(\d+)$")  # the workflow's run-name (F07-T58)
+
+
+          def pending_replays(number, runs):
+              """F07-T90: the ids of the runs in `runs` (the host's listing) that replay `number` and have
+              not ended, oldest first. A replay that ended without crediting is not a record of anything."""
+              found = []
+              for run in runs:
+                  matched = REPLAY_TITLE_RE.match(str(run.get("display_title", "")))
+                  if matched and int(matched.group(1)) == int(number) and run.get("status") != "completed":
+                      found.append(int(run["id"]))
+              return sorted(found)
+
+
+          def dispatched_runs():
+              """The gate workflow's newest dispatched runs, from the host; None if it does not answer."""
+              path = (f"repos/{os.environ.get('GITHUB_REPOSITORY', '')}/actions/workflows/gate.yml/runs"
+                      "?event=workflow_dispatch&per_page=100")
+              try:
+                  out = subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True).stdout
+                  return list(json.loads(out)["workflow_runs"])
+              except (OSError, subprocess.CalledProcessError, ValueError, KeyError, TypeError):
+                  return None
+
+
           def dispatch_replay(number, *, rev=None):
-              """F07-T90: every replay this job asks for is dispatched here. `rev`: skip a merge it credits."""
+              """F07-T90: every replay this job asks for is dispatched here, and only one per merge. On
+              2026-11-24 nearly every run for 85 minutes found #1681 owed and dispatched a replay of its
+              own, 177 in all; they filled the account's twenty concurrent jobs, every gate queued behind
+              them, and #1681 stayed owed. A merge `rev` credits is skipped, and so is one whose replay the
+              host lists as queued or running. A host that does not answer is read as none pending (C7: a
+              record is never lost to it), and the replay's own check keeps it from crediting twice."""
               if rev is not None and credited([s for _sha, _p, s in first_parent_log(rev)], int(number)):
+                  return
+              runs = dispatched_runs()
+              pending = pending_replays(number, runs) if runs is not None else []
+              if pending:
+                  print(f"postmerge: a replay of #{number} is already queued or running (run {pending[0]}); not dispatched again")
                   return
               done = subprocess.run(
                   ["gh", "workflow", "run", "gate.yml", "--repo", os.environ.get("GITHUB_REPOSITORY", ""),
@@ -826,6 +861,12 @@ jobs:
 
           if __name__ == "__main__":
               command, args = sys.argv[1], sys.argv[2:]
+              if command == "older-replay":  # older-replay <number> <run id>: the oldest pending replay before it
+                  runs = dispatched_runs() or []
+                  own = int(args[1]) if args[1:] and args[1].isdigit() else None
+                  older = [i for i in pending_replays(args[0], runs) if own is not None and i < own]
+                  print(older[0] if older else "")
+                  sys.exit(0)
               if command == "dispatch-replay":  # dispatch-replay <rev> <number>...: F07-T90
                   for number in args[1:]:
                       dispatch_replay(int(number), rev=args[0])
@@ -871,8 +912,18 @@ jobs:
               echo "::error::PR #$number is not merged; there is no post-merge job to replay"; exit 1
             fi
             # Idempotent: the ledger appends, so a merge that has its commit is never replayed.
-            if python3 "$helper" credited HEAD "$number"; then
+            # F07-T90: read from main as the host has it now. A replay may wait in the queue for
+            # hours, and the commit it was dispatched at says nothing of what landed since.
+            git fetch --quiet origin main || echo "::warning::main could not be fetched; the credit is read at ${GITHUB_SHA}"
+            if python3 "$helper" credited HEAD "$number" || python3 "$helper" credited origin/main "$number"; then
               echo "postmerge: PR #$number already has its gate commit; nothing to replay"
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+            # F07-T90: two runs dispatching at one moment can each find nothing queued. The newer
+            # replay yields to the older, which goes on, so the merge is replayed once and never dropped.
+            older="$(python3 "$helper" older-replay "$number" "${GITHUB_RUN_ID:-}")"
+            if [ -n "$older" ]; then
+              echo "postmerge: an older replay of #$number (run $older) is queued or running; this one yields to it"
               echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
             author="$(printf '%s' "$pr" | python3 -c "import json,sys; print(json.load(sys.stdin)['user']['login'])")"
