@@ -1,0 +1,21 @@
+schema: meta/v2
+id: erdos-1083
+status: ready
+deps: []
+statement-hash: 5c7ed5d2a45a4ddf32d3be45fb4cde21d70521b20c99b73146bb057ad4bfdf42
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: 2 / ↑d
+  justification: '2 / (d : ℝ) is the exponent 2/d of the problem''s conjectured f_d(n)
+    = n^{2/d - o(1)}, and d ≥ 3 is a hypothesis of the statement, so the denominator
+    is a positive real.'
+- checker: off-by-one-range
+  location: 3 ≤ d
+  justification: '`3 ≤ d` is the problem''s own range: the docstring says ''Let d
+    ≥ 3''.'
