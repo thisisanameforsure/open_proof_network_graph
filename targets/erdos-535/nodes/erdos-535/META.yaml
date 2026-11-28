@@ -1,0 +1,27 @@
+schema: meta/v2
+id: erdos-535
+status: ready
+deps: []
+statement-hash: d90b908f8b143f82a698903bea6c1790a6446428282f0d24fb2c01b81f6556f1
+origin: authored
+provenance:
+  author: upstream
+  model: null
+  source: null
+tutorial: false
+acknowledged_hazards:
+- checker: div-zero
+  location: c / Real.log (Real.log ↑N)
+  justification: '`c / log (log N)` is the problem''s exponent c/log log N in N^{c/log
+    log N}, because the statement is `∀ᶠ N in atTop`, and for every N ≥ 3 we have
+    log N > 1 so log log N > 0; the finitely many N where the denominator is zero
+    or negative are outside the eventual range and cannot change the claim.'
+- checker: junk-value
+  location: Real.log (Real.log ↑N)
+  justification: This sits in N^(c / log log N) under ∀ᶠ N in atTop, so only large
+    N matter. For N ≥ 3, log N > 1 and log log N > 0, so the junk value at N ≤ 2 cannot
+    change the claimed upper bound f_r(N) ≤ N^(c/log log N).
+- checker: off-by-one-range
+  location: r ≥ 3
+  justification: '`r ≥ 3` is the problem''s own range: the docstring says ''Let r
+    ≥ 3'' and states the conjectural upper bound ''for all r ≥ 3''.'
